@@ -3,11 +3,14 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
+
 class ContainerView: UIView {
     
     /* MARK: - Atributos */
     
     // Views
+    
+    /// Título da tela do container
     public let titleLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.numberOfLines = 2
@@ -15,7 +18,12 @@ class ContainerView: UIView {
         return lbl
     }()
     
-    public let contentView: UIView = CustomViews.newView()
+    /// Espaço para colocar os elemento UI da tela
+    public let contentView: UIView = {
+        let view = CustomViews.newView()
+        view.backgroundColor = UIColor(.viewBack)
+        return view
+    }()
     
     
     // Outros
@@ -30,10 +38,6 @@ class ContainerView: UIView {
     init() {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.backgroundColor = .cyan
-        self.titleLabel.backgroundColor = .orange
-        self.contentView.backgroundColor = .white
         
         self.setupViews()
     }
@@ -73,6 +77,7 @@ class ContainerView: UIView {
     
     /// Personalização da UI
     private func setupUI() {
+        self.backgroundColor = UIColor(.viewBack)
         self.layer.cornerRadius = 30
     }
     

@@ -8,8 +8,15 @@ import UIKit
 class MainController: UITabBarController {
     
     /* MARK: - Atributos */
+    
+    /// Controller da tela 01: Ver todas as hortas
+    private let gardenController = GardenController()
+    
+    /// Controller da tela 02: Ver todas os alimentos
+    private let foodController = FoodController()
+    
+    /// Controller da tela 03: Ver os favoritos
     private let favoriteController = FavoriteViewController()
-    private let favoriteController2 = FavoriteViewController()
     
     
     
@@ -38,7 +45,8 @@ class MainController: UITabBarController {
     /// Define as controllers que vão aparecer na Tab Bar
     private func setupControllers() {
         self.viewControllers = [
-            self.favoriteController2,
+            self.gardenController,
+            self.foodController,
             self.favoriteController,
         ]
     }
@@ -46,10 +54,8 @@ class MainController: UITabBarController {
     
     /// Configura os ícones e títulos de cada item da tab bar
     private func setupTabBarItens() {
-        self.favoriteController2.tabBarItem.title = "Food"
-        self.favoriteController2.tabBarItem.image = UIImage(.foodTab)
-        
-        self.favoriteController.tabBarItem.title = "Favorite"
-        self.favoriteController.tabBarItem.image = UIImage(.favoriteTab)
+        self.gardenController.setupTab(text: "Garden", icon: .gardenTab)
+        self.foodController.setupTab(text: "Food", icon: .foodTab)
+        self.favoriteController.setupTab(text: "Favorite", icon: .favoriteTab)
     }
 }
