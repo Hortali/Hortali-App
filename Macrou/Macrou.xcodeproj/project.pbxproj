@@ -230,7 +230,7 @@
 		2229381E28C7C3DD00515095 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				2229385128C89ABB00515095 /* Launc */,
+				2229385128C89ABB00515095 /* Launch */,
 				2229385028C89AAA00515095 /* View */,
 				2229381F28C7C3FC00515095 /* MainController.swift */,
 			);
@@ -412,12 +412,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		2229385128C89ABB00515095 /* Launc */ = {
+		2229385128C89ABB00515095 /* Launch */ = {
 			isa = PBXGroup;
 			children = (
 				222937CB28C66B5800515095 /* LaunchScreen.storyboard */,
 			);
-			path = Launc;
+			path = Launch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
