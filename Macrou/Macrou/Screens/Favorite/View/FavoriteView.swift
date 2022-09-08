@@ -74,11 +74,11 @@ class FavoriteView: MainView {
     private func setupUI() {
         self.backgroundColor = UIColor(.favoriteBack)
         
-        self.foodGroup.titleLabel.backgroundColor = .red
-        self.foodGroup.collection.backgroundColor = .blue
+        // self.foodGroup.titleLabel.backgroundColor = .red
+        // self.foodGroup.collection.backgroundColor = .blue
         
-        self.gardenGroup.titleLabel.backgroundColor = .red
-        self.gardenGroup.collection.backgroundColor = .blue
+        // self.gardenGroup.titleLabel.backgroundColor = .red
+        // self.gardenGroup.collection.backgroundColor = .blue
     }
     
     
@@ -87,28 +87,33 @@ class FavoriteView: MainView {
         /* Labels */
         self.setTitleText(with: "Favoritos da sua \nmesa")
         
+        let subTitleSize: CGFloat = self.getEquivalent(25)
+        
         self.foodGroup.titleLabel.setupText(with: FontInfo(
-            text: "Alimentos", fontSize: 25, weight: .regular)
+            text: "Alimentos", fontSize: subTitleSize, weight: .regular)
         )
         
         self.gardenGroup.titleLabel.setupText(with: FontInfo(
-            text: "Hortas", fontSize: 25, weight: .regular)
+            text: "Hortas", fontSize: subTitleSize, weight: .regular)
         )
     }
 	  
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let lateral: CGFloat = 15
-        let between: CGFloat = 28
+        let lateral: CGFloat = self.getEquivalent(15)
+        let between: CGFloat = self.getEquivalent(28)
        
+        let foodGpHeight = self.getEquivalent(187)   // 150+12+25
+        
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
-    
+        
         self.dynamicConstraints = [
             self.foodGroup.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             self.foodGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
             self.foodGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.foodGroup.heightAnchor.constraint(equalToConstant: 187), // 150+12+25
+            self.foodGroup.heightAnchor.constraint(equalToConstant: foodGpHeight),
             
             
             self.gardenGroup.topAnchor.constraint(equalTo: self.foodGroup.bottomAnchor, constant: between),

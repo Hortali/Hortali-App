@@ -64,8 +64,6 @@ public class CollectionGroup: UIView {
         super.layoutSubviews()
 	      
         self.setupDynamicConstraints()
-
-        self.reloadInputViews()
     }
     
     
@@ -82,8 +80,11 @@ public class CollectionGroup: UIView {
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let between: CGFloat = 12
-       
+        let between: CGFloat = self.getEquivalent(12)
+        
+        let titleLabelHeight: CGFloat = self.getEquivalent(25)
+        
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         switch self.style {
@@ -92,7 +93,7 @@ public class CollectionGroup: UIView {
                 self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
                 self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                 self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                self.titleLabel.heightAnchor.constraint(equalToConstant: 25),
+                self.titleLabel.heightAnchor.constraint(equalToConstant: titleLabelHeight),
                 
                 self.collection.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: between),
                 self.collection.bottomAnchor.constraint(equalTo: self.bottomAnchor),

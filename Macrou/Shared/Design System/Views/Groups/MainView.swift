@@ -36,13 +36,11 @@ class MainView: UIView {
     
     /* MARK: - Encapsulamento */
     
-    
     /// Define o título da tela
     /// - Parameter text: título da tela
     public func setTitleText(with text: String) {
         self.container.setTitleText(with: text)
     }
-    
     
     
 

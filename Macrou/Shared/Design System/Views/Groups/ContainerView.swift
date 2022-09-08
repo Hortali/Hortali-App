@@ -58,6 +58,9 @@ class ContainerView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        // self.backgroundColor = .cyan
+        // self.contentView.backgroundColor = .cyan
 	      
         self.setupUI()
         self.setupStaticTexts()
@@ -78,22 +81,26 @@ class ContainerView: UIView {
     /// Personalização da UI
     private func setupUI() {
         self.backgroundColor = UIColor(.viewBack)
-        self.layer.cornerRadius = 30
+        self.layer.cornerRadius = self.getEquivalent(30)
     }
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
+        let titleSize: CGFloat =  self.getEquivalent(35)
+        
         self.titleLabel.setupText(with: FontInfo(
-            fontSize: 35, weight: .bold
+            fontSize: titleSize, weight: .bold
         ))
     }
 	  
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let lateral: CGFloat = 15
-        let between: CGFloat = 30
+        let lateral: CGFloat = self.getEquivalent(15)
+        let between: CGFloat = self.getEquivalent(30)
+        
+        let titleLabelHeight = self.getEquivalent(75)
        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
@@ -101,7 +108,7 @@ class ContainerView: UIView {
             self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: between),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
-            self.titleLabel.heightAnchor.constraint(equalToConstant: 75),
+            self.titleLabel.heightAnchor.constraint(equalToConstant: titleLabelHeight),
             
             
             self.contentView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: lateral),
