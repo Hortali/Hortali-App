@@ -40,6 +40,13 @@
 		2229384A28C8934100515095 /* FoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229384928C8934100515095 /* FoodView.swift */; };
 		2229384D28C8942B00515095 /* UIViewController+setupTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229384C28C8942B00515095 /* UIViewController+setupTab.swift */; };
 		2229384F28C8964200515095 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229384E28C8964200515095 /* MainView.swift */; };
+		2229385528C9335C00515095 /* UIView+AdpativeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229385428C9335C00515095 /* UIView+AdpativeLayout.swift */; };
+		2229385928C9D1DF00515095 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229385828C9D1DF00515095 /* Screens.swift */; };
+		2229385B28C9D3AC00515095 /* ScreenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229385A28C9D3AC00515095 /* ScreenInfo.swift */; };
+		2229385D28C9D55700515095 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229385C28C9D55700515095 /* Dimension.swift */; };
+		2229386128C9D59700515095 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386028C9D59700515095 /* ScreenSize.swift */; };
+		2229386328C9D5CE00515095 /* AdptiveLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386228C9D5CE00515095 /* AdptiveLayout.swift */; };
+		2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +85,13 @@
 		2229384928C8934100515095 /* FoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodView.swift; sourceTree = "<group>"; };
 		2229384C28C8942B00515095 /* UIViewController+setupTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+setupTab.swift"; sourceTree = "<group>"; };
 		2229384E28C8964200515095 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		2229385428C9335C00515095 /* UIView+AdpativeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AdpativeLayout.swift"; sourceTree = "<group>"; };
+		2229385828C9D1DF00515095 /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
+		2229385A28C9D3AC00515095 /* ScreenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenInfo.swift; sourceTree = "<group>"; };
+		2229385C28C9D55700515095 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
+		2229386028C9D59700515095 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		2229386228C9D5CE00515095 /* AdptiveLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdptiveLayout.swift; sourceTree = "<group>"; };
+		2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+setupIconsColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +135,7 @@
 		222937D428C66B6200515095 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				2229384B28C893FB00515095 /* Extensions */,
+				222937DE28C66F4D00515095 /* Extensions */,
 				222937DA28C66B9800515095 /* Delegates */,
 			);
 			path = General;
@@ -156,9 +170,9 @@
 		222937D828C66B8900515095 /* Design System */ = {
 			isa = PBXGroup;
 			children = (
+				2229385328C9334100515095 /* Adaptive Layout */,
 				2229380528C694EB00515095 /* Views */,
 				222937DD28C66F3F00515095 /* Models */,
-				222937DE28C66F4D00515095 /* Extensions */,
 			);
 			path = "Design System";
 			sourceTree = "<group>";
@@ -204,7 +218,9 @@
 		222937DE28C66F4D00515095 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2229384C28C8942B00515095 /* UIViewController+setupTab.swift */,
 				2229382828C85EF700515095 /* UITextField+setupPlaceHolder.swift */,
+				2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -231,7 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				2229385128C89ABB00515095 /* Launch */,
-				2229385028C89AAA00515095 /* View */,
 				2229381F28C7C3FC00515095 /* MainController.swift */,
 			);
 			path = Main;
@@ -309,6 +324,7 @@
 			children = (
 				2229383728C8815000515095 /* CollectionGroup */,
 				222937F428C6846700515095 /* ContainerView.swift */,
+				2229384E28C8964200515095 /* MainView.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -396,28 +412,49 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		2229384B28C893FB00515095 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				2229384C28C8942B00515095 /* UIViewController+setupTab.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		2229385028C89AAA00515095 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				2229384E28C8964200515095 /* MainView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		2229385128C89ABB00515095 /* Launch */ = {
 			isa = PBXGroup;
 			children = (
 				222937CB28C66B5800515095 /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
+			sourceTree = "<group>";
+		};
+		2229385328C9334100515095 /* Adaptive Layout */ = {
+			isa = PBXGroup;
+			children = (
+				2229385E28C9D56600515095 /* Protocol */,
+				2229385F28C9D57000515095 /* Model */,
+				2229385428C9335C00515095 /* UIView+AdpativeLayout.swift */,
+			);
+			path = "Adaptive Layout";
+			sourceTree = "<group>";
+		};
+		2229385E28C9D56600515095 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				2229386028C9D59700515095 /* ScreenSize.swift */,
+				2229386228C9D5CE00515095 /* AdptiveLayout.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		2229385F28C9D57000515095 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2229386428C9D6F200515095 /* Enum */,
+				2229385A28C9D3AC00515095 /* ScreenInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2229386428C9D6F200515095 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				2229385828C9D1DF00515095 /* Screens.swift */,
+				2229385C28C9D55700515095 /* Dimension.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -496,8 +533,10 @@
 				2229383F28C8924400515095 /* GardenView.swift in Sources */,
 				2229382628C852D200515095 /* CustomButton.swift in Sources */,
 				222937BE28C66B5600515095 /* AppDelegate.swift in Sources */,
+				2229386128C9D59700515095 /* ScreenSize.swift in Sources */,
 				2229384D28C8942B00515095 /* UIViewController+setupTab.swift in Sources */,
 				222937EB28C6828500515095 /* UILabel+FontInfo.swift in Sources */,
+				2229385B28C9D3AC00515095 /* ScreenInfo.swift in Sources */,
 				2229382028C7C3FC00515095 /* MainController.swift in Sources */,
 				222937E528C6779500515095 /* UIColors+AppColors.swift in Sources */,
 				2229382E28C87BE300515095 /* OrginalColor.swift in Sources */,
@@ -507,19 +546,24 @@
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,
 				222937FC28C68C8200515095 /* CollectionGroupStyle.swift in Sources */,
+				2229386328C9D5CE00515095 /* AdptiveLayout.swift in Sources */,
+				2229385D28C9D55700515095 /* Dimension.swift in Sources */,
 				2229383A28C8829000515095 /* UIFont+setupFont.swift in Sources */,
 				2229384128C8927500515095 /* GardenController.swift in Sources */,
 				222937F128C6837500515095 /* UIButton+IconInfo.swift in Sources */,
 				2229382928C85EF700515095 /* UITextField+setupPlaceHolder.swift in Sources */,
+				2229385928C9D1DF00515095 /* Screens.swift in Sources */,
 				2229382228C7C5DE00515095 /* UIImage+AppIcons.swift in Sources */,
 				222937E328C66F7F00515095 /* AppColors.swift in Sources */,
 				222937FF28C68EE100515095 /* FavoriteViewController.swift in Sources */,
 				222937E928C6824600515095 /* IconInfo.swift in Sources */,
 				2229384828C8931B00515095 /* FoodController.swift in Sources */,
 				222937E128C66F7300515095 /* AppIcons.swift in Sources */,
+				2229385528C9335C00515095 /* UIView+AdpativeLayout.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
 				2229384F28C8964200515095 /* MainView.swift in Sources */,
 				2229380128C68EF500515095 /* FavoriteView.swift in Sources */,
+				2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */,
 				222937F328C6844E00515095 /* CustomViews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
