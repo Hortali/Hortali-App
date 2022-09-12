@@ -4,15 +4,10 @@
 import UIKit
 
 
-/// Controller responsável pela tela X
+/// Controller responsável pela tela de favoritos
 class FavoriteViewController: UIViewController {
     
     /* MARK: - Atributos */
-    /*
-        Implementação das variáveis (atributos) da classe.
-
-        AVISO: Apague esse campo de comentário
-    */
     
     /* View */
 
@@ -34,7 +29,6 @@ class FavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setupNavigation()
         self.setupDelegates()
         self.setupButtonsAction()
     }
@@ -42,36 +36,14 @@ class FavoriteViewController: UIViewController {
 
 
     /* MARK: - Protocolo */
-    /*
-        Implementação das funções do protocolo que a controller está herdando.
-
-        AVISO: Apague esse campo de comentário.
-    */
     
 	
 
     /* MARK: - Ações de botões */
-    /*
-        Implementação das funções de ações dos botões. Todas as funções que estão 
-        nessa área do mark devem ter o @objc apenas.
-
-        AVISO: Apague esse campo de comentário.
-    */
     
     
     
     /* MARK: - Configurações */
-    /*
-        Funções responsáveis por fazer configurações gerais.
-
-        AVISO: Apague esse campo de comentário.
-    */
-
-    /// Configurções da navigation
-    private func setupNavigation() {
-    
-    }
-
     
     /// Definindo as ações dos botões
     private func setupButtonsAction() {

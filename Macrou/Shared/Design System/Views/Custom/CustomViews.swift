@@ -5,6 +5,7 @@ import UIKit
 import MapKit
 
 
+/// Componentes de UI já padronizados de acordo com o projeto.
 struct CustomViews {
     
     /// Cria uma nova label de acordo com a padronização do projeto
@@ -89,5 +90,22 @@ struct CustomViews {
         search.searchTextField.setupIconsColor(with: .searchIcons)
         
         return search
+    }
+    
+    
+    /// Cria uma segmentation control de acordo com a padronização do projeto
+    /// - Parameter itens: itens que a segmentation pode ter caso for do tipo menu
+    /// - Returns: Retorna uma segmentation personalizada
+    static func newSegmentation(with itens: [String]?) -> UISegmentedControl {
+        var seg = UISegmentedControl()
+        
+        if let itens = itens {
+            seg = UISegmentedControl(items: itens)
+            seg.selectedSegmentTintColor = UIColor(.segBackSelected)
+            seg.backgroundColor = UIColor(.segBackNotSelected)
+        }
+    
+        seg.translatesAutoresizingMaskIntoConstraints = false
+        return seg
     }
  }

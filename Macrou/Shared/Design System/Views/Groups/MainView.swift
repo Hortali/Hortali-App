@@ -3,14 +3,18 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
+
+/// Componentes de toda tela inicial.
 class MainView: UIView {
     
     /* MARK: - Atributos */
     
     // Views
     
+    /// Tela de acordo com o padrão da tela
     private let container = ContainerView()
     
+    /// Espaço para colocar os componentes da tela
     public var contentView: UIView
         
     
@@ -36,13 +40,11 @@ class MainView: UIView {
     
     /* MARK: - Encapsulamento */
     
-    
     /// Define o título da tela
     /// - Parameter text: título da tela
     public func setTitleText(with text: String) {
         self.container.setTitleText(with: text)
     }
-    
     
     
 

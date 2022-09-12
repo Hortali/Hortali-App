@@ -4,6 +4,8 @@
 import UIKit
 
 
+/// View que contém o estilo de modal (de acordo com o padrão do projeto), o título
+/// da tela e a área em que os elementos vão ser adicionados na tela.
 class ContainerView: UIView {
     
     /* MARK: - Atributos */
@@ -15,6 +17,7 @@ class ContainerView: UIView {
         let lbl = CustomViews.newLabel()
         lbl.numberOfLines = 2
         lbl.adjustsFontSizeToFitWidth = true
+        lbl.textColor = UIColor(.title)
         return lbl
     }()
     
@@ -48,6 +51,8 @@ class ContainerView: UIView {
     
     /* MARK: - Encapsulamento */
     
+    /// Define o título da tela
+    /// - Parameter text: título da tela
     public func setTitleText(with text: String) {
         self.titleLabel.text = text
     }
@@ -58,7 +63,7 @@ class ContainerView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-	      
+        
         self.setupUI()
         self.setupStaticTexts()
         self.setupDynamicConstraints()
@@ -78,22 +83,26 @@ class ContainerView: UIView {
     /// Personalização da UI
     private func setupUI() {
         self.backgroundColor = UIColor(.viewBack)
-        self.layer.cornerRadius = 30
+        self.layer.cornerRadius = self.getEquivalent(30)
     }
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
+        let titleSize: CGFloat =  self.getEquivalent(35)
+        
         self.titleLabel.setupText(with: FontInfo(
-            fontSize: 35, weight: .bold
+            fontSize: titleSize, weight: .bold
         ))
     }
 	  
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let lateral: CGFloat = 15
-        let between: CGFloat = 30
+        let lateral: CGFloat = self.getEquivalent(15)
+        let between: CGFloat = self.getEquivalent(30)
+        
+        let titleLabelHeight = self.getEquivalent(75)
        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
@@ -101,7 +110,7 @@ class ContainerView: UIView {
             self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: between),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
-            self.titleLabel.heightAnchor.constraint(equalToConstant: 75),
+            self.titleLabel.heightAnchor.constraint(equalToConstant: titleLabelHeight),
             
             
             self.contentView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: lateral),

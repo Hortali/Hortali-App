@@ -1,7 +1,8 @@
 /* Macro - Grupo 05 */
 
 /* Bibliotecas necessárias: */
-import UIKit
+import class UIKit.UIViewController
+import class UIKit.UIImage
 
 
 extension UIViewController {
