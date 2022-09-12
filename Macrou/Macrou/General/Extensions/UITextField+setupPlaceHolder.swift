@@ -6,7 +6,7 @@ import UIKit
 
 extension UITextField {
     
-    /// Define o texto e a cor (do texto) do place holder (texto de background)
+    /// Define o texto e a cor do place holder (texto de background)
     /// - Parameters:
     ///   - text: texto do place holder
     ///   - color: cor do texto do place holder

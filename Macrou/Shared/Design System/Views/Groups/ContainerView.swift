@@ -4,6 +4,8 @@
 import UIKit
 
 
+/// View que contém o estilo de modal (de acordo com o padrão do projeto), o título
+/// da tela e a área em que os elementos vão ser adicionados na tela.
 class ContainerView: UIView {
     
     /* MARK: - Atributos */
@@ -15,6 +17,7 @@ class ContainerView: UIView {
         let lbl = CustomViews.newLabel()
         lbl.numberOfLines = 2
         lbl.adjustsFontSizeToFitWidth = true
+        lbl.textColor = UIColor(.title)
         return lbl
     }()
     
@@ -48,6 +51,8 @@ class ContainerView: UIView {
     
     /* MARK: - Encapsulamento */
     
+    /// Define o título da tela
+    /// - Parameter text: título da tela
     public func setTitleText(with text: String) {
         self.titleLabel.text = text
     }
@@ -59,9 +64,6 @@ class ContainerView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        // self.backgroundColor = .cyan
-        // self.contentView.backgroundColor = .cyan
-	      
         self.setupUI()
         self.setupStaticTexts()
         self.setupDynamicConstraints()

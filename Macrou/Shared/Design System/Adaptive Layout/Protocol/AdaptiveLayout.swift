@@ -9,7 +9,7 @@ import struct CoreGraphics.CGFloat
 ///
 /// Os tipos que conformam com esse protocolo faz com que o layout adaptativo
 /// seja possível e simplificado.
-protocol AdptiveLayout {
+protocol AdaptiveLayout {
     
     func getEquivalent(_ space: CGFloat, dimension: Dimension) -> CGFloat
     

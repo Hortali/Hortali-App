@@ -9,10 +9,10 @@ struct SizeInfo {
     
     /* MARK: - Atributos */
     
-    /// Tamanho da tela (largura x altura)
+    /// Tamanho da tela (largura E altura)
     var screenSize: CGSize
     
-    /// Dimensão de referência (largura ou altura)
+    /// Dimensão de referência (largura OU altura)
     var dimension: Dimension
     
     /// Tipo de tela
@@ -22,11 +22,10 @@ struct SizeInfo {
     
     /* MARK: - Construtores */
     
-    
     /// Cria um modelo a partir das informações passadas
     /// - Parameters:
     ///   - screenSize: largura e altura da tela
-    ///   - dimension: dimensão de referencia
+    ///   - dimension: dimensão de referência
     init(screenSize: CGSize, dimension: Dimension) {
         self.screenSize = screenSize
         self.dimension = dimension
@@ -37,7 +36,7 @@ struct SizeInfo {
     /// Cria um modelo a partir das informações passadas
     /// - Parameters:
     ///   - screen: tipo de tela
-    ///   - dimension: dimensão de referencia
+    ///   - dimension: dimensão de referência
     init(screen: Screens, dimension: Dimension) {
         self.screenSize = screen.size
         self.dimension = dimension

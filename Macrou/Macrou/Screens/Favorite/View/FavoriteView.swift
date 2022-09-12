@@ -3,6 +3,8 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
+
+/// UI da tela de ver os favoritos
 class FavoriteView: MainView {
     
     /* MARK: - Atributos */
@@ -73,12 +75,6 @@ class FavoriteView: MainView {
     /// Personalização da UI
     private func setupUI() {
         self.backgroundColor = UIColor(.favoriteBack)
-        
-        // self.foodGroup.titleLabel.backgroundColor = .red
-        // self.foodGroup.collection.backgroundColor = .blue
-        
-        // self.gardenGroup.titleLabel.backgroundColor = .red
-        // self.gardenGroup.collection.backgroundColor = .blue
     }
     
     

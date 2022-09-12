@@ -3,28 +3,32 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
+
+/// Responsável pela criação do conjunto que compõe a collection de acordo com
+/// o padrão do app.
+///
+/// É possível definir qual dos dois estilos vai ser criado com `CollectionGroupStyle`:
+/// sendo apenas a collection ou acompanhada de um título.
 public class CollectionGroup: UIView {
     
     /* MARK: - Atributos */
     
     // Views
     
-    /// Título da tela
+    /// Título da collection
     public let titleLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textColor = UIColor(.subTitle)
-        
         return lbl
     }()
     
-    /// Collection relacionada ao título
+    /// Collection (relacionada ao título)
     public let collection: UICollectionView = CustomViews.newCollectionView()
     
     
     // Outros
     
-    /// Estilo do grupo, pondendo ter somente a collection (.justCollection) ou
-    /// a collection com o título dela (.complete - padrão).
+    /// Estilo do grupo de acordo com o `CollectionGroupStyle`.
     public var style: CollectionGroupStyle = .complete {
         didSet {
             switch self.style {
@@ -45,6 +49,8 @@ public class CollectionGroup: UIView {
 
     /* MARK: - Construtor */
     
+    /// Inicializador podendo definir o estilo do grupo
+    /// - Parameter style: estilo do grupo (padrão: .complete)
     init(style: CollectionGroupStyle = .complete) {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false

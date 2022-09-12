@@ -7,7 +7,7 @@ import UIKit
 extension UIColor {
     
     /// Cria uma cor de acordo com os casos de uso das cores do projeto
-    /// - Parameter appColor: caso de uso
+    /// - Parameter appColor: tipo de cor
     convenience init?(_ appColor: AppColors) {
         self.init(originalColor: appColor.colorName)
     }
@@ -18,7 +18,7 @@ extension UIColor {
     ///
     /// Atenção: verifique se não existe um caso de uso de cor específico para a cor que
     /// está sendo definida.
-    /// Basta acrescentar o `.` que todas as opçòes vão aparecer.
+    /// Basta acrescentar o `.` que todas as opções vão aparecer - UIColor(.
     convenience init?(originalColor: AppPureColors) {
         self.init(named: originalColor.description)
     }

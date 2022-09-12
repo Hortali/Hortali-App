@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// Criando a tab bar
+/// Controller principal usada para a criação da tab bar
 class MainController: UITabBarController {
     
     /* MARK: - Atributos */
@@ -34,7 +34,7 @@ class MainController: UITabBarController {
     
     /* MARK: - Configurações */
     
-    /// Configura a Tab Bar
+    /// Configurações iniciais da Tab Bar
     private func setupTab() {
         self.tabBar.backgroundColor = UIColor(.viewBack)
         self.tabBar.tintColor = UIColor(.tabSelected)
@@ -54,8 +54,8 @@ class MainController: UITabBarController {
     
     /// Configura os ícones e títulos de cada item da tab bar
     private func setupTabBarItens() {
-        self.gardenController.setupTab(text: "Garden", icon: .gardenTab)
-        self.foodController.setupTab(text: "Food", icon: .foodTab)
-        self.favoriteController.setupTab(text: "Favorite", icon: .favoriteTab)
+        self.gardenController.setupTab(text: "Hortas", icon: .gardenTab)
+        self.foodController.setupTab(text: "Alimentos", icon: .foodTab)
+        self.favoriteController.setupTab(text: "Favoritos", icon: .favoriteTab)
     }
 }

@@ -4,13 +4,26 @@
 import UIKit
 
 
-///
+/// Botão costumizado podendo deixar redondo (por padrão é redondo)
 class CustomButton: UIButton {
     
     /* MARK: - Atributos */
     
     /// Estado de quando o botão é circular ou não. (Padrão: true)
-    public var isRounded: Bool = true
+    public var isCircular: Bool = true {
+        didSet {
+            self.setupCorner()
+        }
+    }
+    
+    /// Tamanho do botão quando for circular (Padrão: 45)
+    public var circleSize: CGFloat = 45 {
+        didSet {
+            self.circleSize = self.getEquivalent(self.circleSize)
+            self.setupCorner()
+        }
+    }
+    
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
@@ -47,12 +60,12 @@ class CustomButton: UIButton {
     }
     
     
-    /// Configura a borda para quando o botão for redondo ou não
+    /// Configura a borda para quando o botão for redondo (ou não)
     private func setupCorner() {
-        switch self.isRounded {
+        switch self.isCircular {
         case true:
             self.layer.cornerRadius = self.bounds.height/2
-            self.setupRoundedCoonstraints()
+            self.setupRoundedConstraints()
             
         case false:
             NSLayoutConstraint.deactivate(self.dynamicConstraints)
@@ -60,15 +73,13 @@ class CustomButton: UIButton {
     }
     
     
-    /// Define as pra quando o botào for arredondado
-    private func setupRoundedCoonstraints() {
+    /// Define as contraints de altura e largura pra quando o botão for arredondado
+    private func setupRoundedConstraints() {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
-        let btSize = self.getEquivalent(45)
-        
         self.dynamicConstraints = [
-            self.heightAnchor.constraint(equalToConstant: btSize),
-            self.widthAnchor.constraint(equalToConstant: btSize),
+            self.heightAnchor.constraint(equalToConstant: self.circleSize),
+            self.widthAnchor.constraint(equalToConstant: self.circleSize),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

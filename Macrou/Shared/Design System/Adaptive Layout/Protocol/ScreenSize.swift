@@ -4,10 +4,9 @@
 import struct CoreGraphics.CGSize
 
 
-/// Tipo com um tamanho contendo largura e altura
+/// Tipo com um tamanho contendo largura e altura (CGSize)
 ///
-/// Os tipos que conformam com esse protocolo cria casos específicos que retornam
-/// proporções de tamanho (largura x altura) para cada caso
+/// Os tipos que conformam com esse protocolo salva dimensões de tela (largura x altura)
 protocol ScreenSize {
     
     var size: CGSize { get }

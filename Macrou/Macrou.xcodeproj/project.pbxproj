@@ -45,7 +45,7 @@
 		2229385B28C9D3AC00515095 /* ScreenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229385A28C9D3AC00515095 /* ScreenInfo.swift */; };
 		2229385D28C9D55700515095 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229385C28C9D55700515095 /* Dimension.swift */; };
 		2229386128C9D59700515095 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386028C9D59700515095 /* ScreenSize.swift */; };
-		2229386328C9D5CE00515095 /* AdptiveLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386228C9D5CE00515095 /* AdptiveLayout.swift */; };
+		2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386228C9D5CE00515095 /* AdaptiveLayout.swift */; };
 		2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +90,7 @@
 		2229385A28C9D3AC00515095 /* ScreenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenInfo.swift; sourceTree = "<group>"; };
 		2229385C28C9D55700515095 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
 		2229386028C9D59700515095 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
-		2229386228C9D5CE00515095 /* AdptiveLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdptiveLayout.swift; sourceTree = "<group>"; };
+		2229386228C9D5CE00515095 /* AdaptiveLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveLayout.swift; sourceTree = "<group>"; };
 		2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+setupIconsColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -434,7 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				2229386028C9D59700515095 /* ScreenSize.swift */,
-				2229386228C9D5CE00515095 /* AdptiveLayout.swift */,
+				2229386228C9D5CE00515095 /* AdaptiveLayout.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -546,7 +546,7 @@
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,
 				222937FC28C68C8200515095 /* CollectionGroupStyle.swift in Sources */,
-				2229386328C9D5CE00515095 /* AdptiveLayout.swift in Sources */,
+				2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */,
 				2229385D28C9D55700515095 /* Dimension.swift in Sources */,
 				2229383A28C8829000515095 /* UIFont+setupFont.swift in Sources */,
 				2229384128C8927500515095 /* GardenController.swift in Sources */,

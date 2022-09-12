@@ -9,10 +9,10 @@ public enum Screens: ScreenSize {
     
     /* MARK: - Casos */
     
-    /// A classe view mãe do componeten (self.view.bounds..)
+    /// A classe (view) do componte (self.view.bounds..)
     case view
     
-    /// Uma tamanho personalizado
+    /// Um tamanho personalizado
     case custom
     
     /// Tamanho da tela do iPhone12
@@ -31,7 +31,7 @@ public enum Screens: ScreenSize {
         case .iPhone12:
             return CGSize(width: 390, height: 844)
         case .iPhone8:
-            return CGSize(width: 390, height: 844)
+            return CGSize(width: 375, height: 667)
         case .view, .custom:
             return CGSize()
         }
