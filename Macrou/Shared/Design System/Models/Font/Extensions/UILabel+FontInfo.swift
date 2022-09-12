@@ -12,7 +12,6 @@ extension UILabel {
         if let text = config.text {
             self.text = text
         }
-        
         self.font = UIFont.setupFont(with: config)
     }
 }

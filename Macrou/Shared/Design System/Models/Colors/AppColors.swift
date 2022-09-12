@@ -1,20 +1,20 @@
 /* Macro - Grupo 05 */
 
 
-/// Casos de cores usadas no projeto
+/// Casos de uso das cores usadas no projeto
 enum AppColors: OriginalColor {
     
     /* MARK: - Casos */
     
     /* Textos */
     
-    /// Usada em títulos da página
+    /// Títulos da página
     case title
     
     /// Sub títulos no geral
     case subTitle
     
-    /// Parágrafos de textos
+    /// Parágrafos (textos extensos)
     case paragraph
     
     
@@ -63,7 +63,7 @@ enum AppColors: OriginalColor {
     
     /* Search Bar */
     
-    /// Search Bar: fundo da serch
+    /// Search Bar: fundo
     case searchBack
     
     /// Search Bar: textos
@@ -89,7 +89,7 @@ enum AppColors: OriginalColor {
     
     /* MARK: - Nome dos botões */
     
-    /// Nome dos botões
+    /// Nome das cores
     var colorName: AppPureColors {
         switch self {
             
@@ -122,7 +122,8 @@ enum AppColors: OriginalColor {
         case .searchBack: return .greenLight
         case .searchText: return .greenDark
         case .searchIcons: return .greenDark
-                    
+          
+        
         /* Botões */
         case .favoriteSelected: return .pinkButton
         case .favoriteNotSelected: return .greyButton
