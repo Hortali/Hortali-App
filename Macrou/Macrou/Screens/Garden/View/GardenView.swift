@@ -24,8 +24,11 @@ class GardenView: MainView {
     /// Configurações do layout da collection
     private let collectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
-//        cvFlow.scrollDirection = .horizontal
-		     
+        cvFlow.scrollDirection = .horizontal
+        cvFlow.itemSize = CGSize(width: 240 , height: 400)
+        cvFlow.minimumInteritemSpacing = CGFloat(10.0)
+       
+        
         return cvFlow
     }()
 
@@ -58,7 +61,7 @@ class GardenView: MainView {
 
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+     override internal func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()
@@ -74,13 +77,14 @@ class GardenView: MainView {
     
     /// Registra as células nas collections/table
     private func registerCells() {
-        
+
     }
 
 
     /// Define o layout da collection
     private func setupCollectionFlow() {
-        // self.collection.collectionViewLayout = self.collectionFlow
+        self.collectionView.collection.collectionViewLayout = self.collectionFlow
+        
     }
 
 
@@ -100,8 +104,10 @@ class GardenView: MainView {
     private func setupUI() {
         // self.collectionFlow.itemSize = CGSize(width: 100, height: 100)
         self.backgroundColor = UIColor(.gardenBack)
-        self.collectionView.collection.backgroundColor = .red
-        self.contentView.backgroundColor = .green
+        self.collectionView.collection.backgroundColor = .systemRed
+        self.contentView.backgroundColor = .systemGray4
+        
+        
     }
     
     
@@ -126,8 +132,8 @@ class GardenView: MainView {
     
         self.dynamicConstraints = [
             search.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            search.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            search.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            search.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            search.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             search.heightAnchor.constraint(equalToConstant: 36),
             
             referenceView.topAnchor.constraint(equalTo: self.search.bottomAnchor),
@@ -138,10 +144,7 @@ class GardenView: MainView {
             collectionView.heightAnchor.constraint(equalToConstant: heightCollection),
             collectionView.centerYAnchor.constraint(equalTo: self.referenceView.centerYAnchor),
             collectionView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            
-            
-            
+            collectionView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
             
         ]
         
