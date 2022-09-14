@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Componentes de toda tela inicial.
-class MainView: UIView {
+ class MainView: UIView {
     
     /* MARK: - Atributos */
     
@@ -15,7 +15,7 @@ class MainView: UIView {
     private let container = ContainerView()
     
     /// Espaço para colocar os componentes da tela
-    public var contentView: UIView
+    var contentView: UIView
         
     
     // Outros
@@ -42,7 +42,7 @@ class MainView: UIView {
     
     /// Define o título da tela
     /// - Parameter text: título da tela
-    public func setTitleText(with text: String) {
+    func setTitleText(with text: String) {
         self.container.setTitleText(with: text)
     }
     
