@@ -10,7 +10,9 @@ class GardenView: MainView {
     /* MARK: - Atributos */
 
     // Views
-    
+    let search: UISearchBar = CustomViews.newSearch()
+    let collectionView = CollectionGroup(style: .justCollection)
+    let referenceView: UIView = CustomViews.newView()
     
     
     // Outros
@@ -87,18 +89,26 @@ class GardenView: MainView {
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
 
+        self.addSubview(self.search)
+        self.contentView.addSubview(self.collectionView)
+        self.contentView.addSubview(self.referenceView)
+        
     }
     
     
     /// Personalização da UI
     private func setupUI() {
         // self.collectionFlow.itemSize = CGSize(width: 100, height: 100)
+        self.backgroundColor = UIColor(.gardenBack)
+        self.collectionView.collection.backgroundColor = .red
+        self.contentView.backgroundColor = .green
     }
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {		
         /* Labels */
+        self.setTitleText(with: "Descubra novas \nhortas")
         
 
         /* Botões */
@@ -109,10 +119,29 @@ class GardenView: MainView {
     private func setupDynamicConstraints() { 
 //        let lateral: CGFloat =
 //        let between: CGFloat =
+        
+        let heightCollection = self.getEquivalent(400)
        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
+            search.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            search.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            search.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            search.heightAnchor.constraint(equalToConstant: 36),
+            
+            referenceView.topAnchor.constraint(equalTo: self.search.bottomAnchor),
+            referenceView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            referenceView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            referenceView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            
+            collectionView.heightAnchor.constraint(equalToConstant: heightCollection),
+            collectionView.centerYAnchor.constraint(equalTo: self.referenceView.centerYAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            
+            
+            
             
         ]
         
