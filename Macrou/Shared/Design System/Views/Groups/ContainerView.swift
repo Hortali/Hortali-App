@@ -13,7 +13,7 @@ class ContainerView: UIView {
     // Views
     
     /// Título da tela do container
-    public let titleLabel: UILabel = {
+    internal let titleLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.numberOfLines = 2
         lbl.adjustsFontSizeToFitWidth = true
@@ -22,7 +22,7 @@ class ContainerView: UIView {
     }()
     
     /// Espaço para colocar os elemento UI da tela
-    public let contentView: UIView = {
+    internal let contentView: UIView = {
         let view = CustomViews.newView()
         view.backgroundColor = UIColor(.viewBack)
         return view

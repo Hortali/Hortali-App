@@ -36,7 +36,8 @@ struct CustomViews {
         let layout = UICollectionViewFlowLayout()
         let col = UICollectionView(frame: .zero, collectionViewLayout: layout)
         col.translatesAutoresizingMaskIntoConstraints = false
-        col.backgroundColor = UIColor(.viewBack)
+//        col.backgroundColor = UIColor(.viewBack)
+        col.backgroundColor = .blue
         
         return col
     }
