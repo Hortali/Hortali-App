@@ -6,24 +6,22 @@ import UIKit
 class GardenDataSource: NSObject, UICollectionViewDataSource {
     
     /* MARK: - Atributos */
-       
-     private weak var gardenProtocol: GardenProtocol?
-        
-        
-
+    
+    private weak var gardenProtocol: GardenProtocol?
+    
+    
     /* MARK: - Construtor */
     
     override init() {
         super.init()
-          
+        
     }
-
+    
     
     /* MARK: - Encapsulamento */
-    
-     public func setProtocol(with gProtocol: GardenProtocol) {
+    internal func setProtocol(with gProtocol: GardenProtocol) {
         self.gardenProtocol = gProtocol
-     }
+    }
     
     
     
@@ -43,7 +41,7 @@ class GardenDataSource: NSObject, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-//        let row = indexPath.row
+        //        let row = indexPath.row
         
         return cell
     }

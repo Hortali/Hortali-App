@@ -8,39 +8,34 @@ import UIKit
 class GardenView: MainView {
     
     /* MARK: - Atributos */
-    
+
     // Views
-    
-    private let search: UISearchBar = CustomViews.newSearch()
-    
-    /// Define o estilo da Collection e retira o indicador de scroll
-    private let collectionView = {
-        let collGroup = CollectionGroup(style: .justCollection)
-        collGroup.collection.showsHorizontalScrollIndicator = false
-        
-        return collGroup
-    }()
-    
-    /// View de referência que serva para centralizar as células da Collection
-    private let referenceView: UIView = CustomViews.newView()
-    
-    /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
+    let search: UISearchBar = CustomViews.newSearch()
+    let collectionView = CustomViews.newCollectionView()
+    let referenceView: UIView = CustomViews.newView()
     
     
     // Outros
     
+    /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
+    private var dynamicConstraints: [NSLayoutConstraint] = []
+		
+		
     /// Configurações do layout da collection
     private let collectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
-        cvFlow.minimumInteritemSpacing = CGFloat(10)
+//        cvFlow.itemSize = CGSize(width: 240 , height: 400)
+//        cvFlow.minimumInteritemSpacing = CGFloat(10)
+       
         
         return cvFlow
+        
+        print("cliquei")
     }()
-    
-    
-    
+
+
+
     /* MARK: - Construtor */
     
     override init() {
@@ -56,72 +51,76 @@ class GardenView: MainView {
     
     
     /* MARK: - Encapsulamento */
-    
-    /// Encapsulamento que define o dataSource da Collection
-    /// - Parameter dataSource: Encapsulamento do dataSource costumizado da Collection
-    internal func setDataSource(with dataSource: GardenDataSource) {
+
+    public func setDataSource(with dataSource: GardenDataSource) {
         
-        self.collectionView.collection.dataSource = dataSource
+        self.collectionView.dataSource = dataSource
         
-    }
-    
-    internal func setDelegate(with delegate: GardenDelegate) {
-        
-        self.collectionView.collection.delegate = delegate
         
     }
     
     
+    /* Ações de botões */
+
+    /// Ação do botão X
+//    public func setButtonAction(target: Any?, action: Selector) -> Void {
+//        self.someButton.addTarget(target, action: action, for: .touchDown)
+//    }
+    
+    
+
     /* MARK: - Ciclo de Vida */
     
-    override internal func layoutSubviews() {
+     override internal func layoutSubviews() {
         super.layoutSubviews()
-        
+	      
         self.setupUI()
         self.setupStaticTexts()
         self.setupDynamicConstraints()
-        
     }
     
     
     
     /* MARK: - Configurações */
-    
+
     /* Collection */
     
     /// Registra as células nas collections/table
     private func registerCells() {
-        self.collectionView.collection.register(GardenCell.self, forCellWithReuseIdentifier: GardenCell.identifier)
+        self.collectionView.register(GardenCell.self, forCellWithReuseIdentifier: GardenCell.identifier)
     }
-    
-    
+
+
     /// Define o layout da collection
     private func setupCollectionFlow() {
-        self.collectionView.collection.collectionViewLayout = self.collectionFlow
+        self.collectionView.collectionViewLayout = self.collectionFlow
         
     }
-    
-    
+
+
     /* Geral */
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-        
+
         self.addSubview(self.search)
-        self.contentView.addSubview(self.referenceView)
         self.contentView.addSubview(self.collectionView)
+        self.contentView.addSubview(self.referenceView)
         
     }
     
     
     /// Personalização da UI
     private func setupUI() {
+        // self.collectionFlow.itemSize = CGSize(width: 100, height: 100)
         self.backgroundColor = UIColor(.gardenBack)
-        //        self.collectionView.collection.backgroundColor = .systemRed
-        //        self.contentView.backgroundColor = .systemGray4
+        self.collectionView.backgroundColor = .systemRed
+        self.contentView.backgroundColor = .systemGray4
         
-        self.collectionFlow.itemSize = CGSize(width: self.getEquivalent(240),
-                                              height: self.getEquivalent(400))
+        
+        self.collectionFlow.itemSize = CGSize(width: 240 , height: 400)
+        self.collectionFlow.minimumInteritemSpacing = CGFloat(10)
+
         
     }
     
@@ -131,18 +130,20 @@ class GardenView: MainView {
         /* Labels */
         self.setTitleText(with: "Descubra novas \nhortas")
         
-        
+
         /* Botões */
     }
-    
+	  
     
     /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() {
+    private func setupDynamicConstraints() { 
+//        let lateral: CGFloat =
+//        let between: CGFloat =
         
         let heightCollection = self.getEquivalent(400)
-        
+       
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
-        
+    
         self.dynamicConstraints = [
             search.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             search.trailingAnchor.constraint(equalTo: self.trailingAnchor),
@@ -162,6 +163,5 @@ class GardenView: MainView {
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
-        
     }
 }
