@@ -7,7 +7,7 @@ class GardenDataSource: NSObject, UICollectionViewDataSource {
     
     /* MARK: - Atributos */
        
-    // private weak var protocol: ?
+     private weak var gardenProtocol: GardenProtocol?
         
         
 
@@ -19,12 +19,11 @@ class GardenDataSource: NSObject, UICollectionViewDataSource {
     }
 
     
-    
     /* MARK: - Encapsulamento */
     
-    // public func setProtocol(with protocol: ) {
-    //    self.protocol = protocol
-    // }
+     public func setProtocol(with gProtocol: GardenProtocol) {
+        self.gardenProtocol = gProtocol
+     }
     
     
     
@@ -32,7 +31,7 @@ class GardenDataSource: NSObject, UICollectionViewDataSource {
     
     /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 4
     }
     
     

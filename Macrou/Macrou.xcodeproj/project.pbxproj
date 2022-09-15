@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0629FD2F28D38E7A0017A8F8 /* GardenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0629FD2E28D38E7A0017A8F8 /* GardenProtocol.swift */; };
 		065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFBD28D2526600F024E7 /* GardenCell.swift */; };
 		065ECFC228D26A4500F024E7 /* GardenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFC128D26A4500F024E7 /* GardenDelegate.swift */; };
 		065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0629FD2E28D38E7A0017A8F8 /* GardenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenProtocol.swift; sourceTree = "<group>"; };
 		065ECFBD28D2526600F024E7 /* GardenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCell.swift; sourceTree = "<group>"; };
 		065ECFC128D26A4500F024E7 /* GardenDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDelegate.swift; sourceTree = "<group>"; };
 		065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDataSource.swift; sourceTree = "<group>"; };
@@ -111,6 +113,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0629FD2D28D38E630017A8F8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0629FD2E28D38E7A0017A8F8 /* GardenProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		065ECFBC28D2522100F024E7 /* View Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +390,7 @@
 		2229383B28C8922000515095 /* Garden */ = {
 			isa = PBXGroup;
 			children = (
+				0629FD2D28D38E630017A8F8 /* Protocols */,
 				065ECFC028D26A2F00F024E7 /* DataSource */,
 				065ECFBF28D26A2200F024E7 /* Delegate */,
 				2229383D28C8923300515095 /* View */,
@@ -597,6 +608,7 @@
 				2229382E28C87BE300515095 /* OrginalColor.swift in Sources */,
 				222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */,
 				222937F928C68B9B00515095 /* CollectionGroup.swift in Sources */,
+				0629FD2F28D38E7A0017A8F8 /* GardenProtocol.swift in Sources */,
 				222937C028C66B5600515095 /* SceneDelegate.swift in Sources */,
 				065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */,
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,

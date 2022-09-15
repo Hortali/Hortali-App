@@ -59,6 +59,8 @@ class GardenCell: UICollectionViewCell {
          Aqui vão adicionar os elementos na tela (.addSubViews())
          */
         self.contentView.addSubview(gardenImage)
+        self.contentView.addSubview(titleLabel)
+        self.contentView.addSubview(adressLabel)
         
     }
     

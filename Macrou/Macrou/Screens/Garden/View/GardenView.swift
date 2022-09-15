@@ -26,7 +26,7 @@ class GardenView: MainView {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
         cvFlow.itemSize = CGSize(width: 240 , height: 400)
-        cvFlow.minimumInteritemSpacing = CGFloat(10.0)
+        cvFlow.minimumInteritemSpacing = CGFloat(10)
        
         
         return cvFlow
@@ -50,6 +50,14 @@ class GardenView: MainView {
     
     /* MARK: - Encapsulamento */
 
+    public func setDataSource(with dataSource: GardenDataSource) {
+        
+        self.collectionView.collection.dataSource = dataSource
+        
+        
+    }
+    
+    
     /* Ações de botões */
 
     /// Ação do botão X
@@ -77,7 +85,7 @@ class GardenView: MainView {
     
     /// Registra as células nas collections/table
     private func registerCells() {
-
+        self.collectionView.collection.register(GardenCell.self, forCellWithReuseIdentifier: GardenCell.identifier)
     }
 
 
