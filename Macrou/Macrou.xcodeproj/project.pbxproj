@@ -121,12 +121,12 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		065ECFBC28D2522100F024E7 /* View Cell */ = {
+		065ECFBC28D2522100F024E7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				065ECFBD28D2526600F024E7 /* GardenCell.swift */,
 			);
-			path = "View Cell";
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		065ECFBF28D26A2200F024E7 /* Delegate */ = {
@@ -222,7 +222,6 @@
 			children = (
 				2229381E28C7C3DD00515095 /* Main */,
 				2229383B28C8922000515095 /* Garden */,
-				065ECFBC28D2522100F024E7 /* View Cell */,
 				2229384428C892E900515095 /* Food */,
 				222937FD28C68EC500515095 /* Favorite */,
 			);
@@ -390,11 +389,11 @@
 		2229383B28C8922000515095 /* Garden */ = {
 			isa = PBXGroup;
 			children = (
-				0629FD2D28D38E630017A8F8 /* Protocols */,
+				2229383C28C8922D00515095 /* Controller */,
 				065ECFC028D26A2F00F024E7 /* DataSource */,
 				065ECFBF28D26A2200F024E7 /* Delegate */,
-				2229383D28C8923300515095 /* View */,
-				2229383C28C8922D00515095 /* Controller */,
+				0629FD2D28D38E630017A8F8 /* Protocols */,
+				2229383D28C8923300515095 /* Views */,
 			);
 			path = Garden;
 			sourceTree = "<group>";
@@ -407,12 +406,13 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		2229383D28C8923300515095 /* View */ = {
+		2229383D28C8923300515095 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				065ECFBC28D2522100F024E7 /* Cell */,
 				2229383E28C8924400515095 /* GardenView.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		2229384228C892D500515095 /* View */ = {

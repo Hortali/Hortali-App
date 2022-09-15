@@ -144,20 +144,20 @@ class GardenView: MainView {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
-            search.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            search.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            search.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            search.heightAnchor.constraint(equalToConstant: 36),
+            self.search.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            self.search.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.search.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.search.heightAnchor.constraint(equalToConstant: 36),
             
-            referenceView.topAnchor.constraint(equalTo: self.search.bottomAnchor),
-            referenceView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            referenceView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            referenceView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            self.referenceView.topAnchor.constraint(equalTo: self.search.bottomAnchor),
+            self.referenceView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            self.referenceView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.referenceView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
             
-            collectionView.heightAnchor.constraint(equalToConstant: heightCollection),
-            collectionView.centerYAnchor.constraint(equalTo: self.referenceView.centerYAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
+            self.collectionView.heightAnchor.constraint(equalToConstant: heightCollection),
+            self.collectionView.centerYAnchor.constraint(equalTo: self.referenceView.centerYAnchor),
+            self.collectionView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.collectionView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
             
         ]
         
