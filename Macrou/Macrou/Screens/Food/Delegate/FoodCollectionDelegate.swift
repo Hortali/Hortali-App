@@ -3,7 +3,7 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
-class NAME_Delegate: NSObject, UICollectionViewDelegate {
+class FoodCollectionDelegate: NSObject, UICollectionViewDelegate {
     
     /* MARK: - Atributos */
     // private weak var protocol: ?
@@ -14,8 +14,8 @@ class NAME_Delegate: NSObject, UICollectionViewDelegate {
     
 
         /// Define o protocolo (View Controller -> Delegate)
-    public func setProtocol(with protocolo: FoodProtocol) -> Void {
-        self.protocol = protocol
+    internal func setProtocol(with protocolo: FoodProtocol) -> Void {
+//        self.protocol = protocol
     }
     
     
@@ -23,7 +23,7 @@ class NAME_Delegate: NSObject, UICollectionViewDelegate {
     /* MARK: - Delegate */
     
     /// Ação de quando clica em uma célula
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let protocol = self.protocol else {return}
+    internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let protocol = self.protocol else {return}
     }
 }

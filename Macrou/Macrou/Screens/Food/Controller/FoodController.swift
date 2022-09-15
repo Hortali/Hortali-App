@@ -5,7 +5,11 @@ import UIKit
 
 
 /// Controller responsável pela tela de alimentos
-class FoodController: UIViewController {
+class FoodController: UIViewController, FoodProtocol {
+    func updateCell() {
+        
+    }
+    
     
     /* MARK: - Atributos */
 
@@ -16,7 +20,8 @@ class FoodController: UIViewController {
     
     
     /* Delegate & Data Sources */
-    
+    let foodCollectionDataSource = FoodCollectionDataSource()
+    let foodCollectionDelegate = FoodCollectionDelegate()
 
 		
     /* MARK: - Ciclo de Vida */
@@ -53,6 +58,7 @@ class FoodController: UIViewController {
     
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-    
+        self.myView.foodCollection.dataSource = foodCollectionDataSource
+        self.myView.foodCollection.delegate = foodCollectionDelegate
     }
 }

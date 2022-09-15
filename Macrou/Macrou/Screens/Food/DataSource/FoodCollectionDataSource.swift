@@ -6,7 +6,7 @@ import UIKit
 class FoodCollectionDataSource: NSObject, UICollectionViewDataSource {
     
     /* MARK: - Atributos */
-       
+    private weak var foodprotocol: FoodProtocol?
     // private weak var protocol: ?
         
         
@@ -25,7 +25,9 @@ class FoodCollectionDataSource: NSObject, UICollectionViewDataSource {
     // public func setProtocol(with protocol: ) {
     //    self.protocol = protocol
     // }
-    
+    internal func setProtocol(with protocolo: FoodProtocol) -> Void {
+        self.foodprotocol = protocolo
+    }
     
     
     /* MARK: - Data Sources */
