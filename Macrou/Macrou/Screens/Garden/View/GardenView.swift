@@ -56,7 +56,7 @@ class GardenView: MainView {
 
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+    override internal func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()

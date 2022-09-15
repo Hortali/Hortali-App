@@ -53,7 +53,7 @@ class ContainerView: UIView {
     
     /// Define o título da tela
     /// - Parameter text: título da tela
-    public func setTitleText(with text: String) {
+    internal func setTitleText(with text: String) {
         self.titleLabel.text = text
     }
     
@@ -89,7 +89,7 @@ class ContainerView: UIView {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        let titleSize: CGFloat =  self.getEquivalent(35)
+        let titleSize: CGFloat = self.getEquivalent(35)
         
         self.titleLabel.setupText(with: FontInfo(
             fontSize: titleSize, weight: .bold

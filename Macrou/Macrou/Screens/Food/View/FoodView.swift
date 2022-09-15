@@ -22,7 +22,6 @@ class FoodView: MainView {
     private let collectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .vertical
-        cvFlow.itemSize = CGSize(width: 170, height: 170)
 		     
         return cvFlow
     }()
@@ -79,7 +78,7 @@ class FoodView: MainView {
 
     /// Define o layout da collection
     private func setupCollectionFlow() {
-        // self.collection.collectionViewLayout = self.collectionFlow
+         self.foodCollection.collectionViewLayout = self.collectionFlow
     }
 
 
@@ -94,7 +93,7 @@ class FoodView: MainView {
     
     /// Personalização da UI
     private func setupUI() {
-        // self.collectionFlow.itemSize = CGSize(width: 500, height: 500)
+         self.collectionFlow.itemSize = CGSize(width: 170, height: 192)
     }
     
     

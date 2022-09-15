@@ -1,8 +1,9 @@
 /* Macro - Grupo 05 */
 
 /* Bibliotecas necessárias: */
-import UIKit
 import MapKit
+import UIKit
+
 
 
 /// Componentes de UI já padronizados de acordo com o projeto.
@@ -36,8 +37,7 @@ struct CustomViews {
         let layout = UICollectionViewFlowLayout()
         let col = UICollectionView(frame: .zero, collectionViewLayout: layout)
         col.translatesAutoresizingMaskIntoConstraints = false
-//        col.backgroundColor = UIColor(.viewBack)
-        col.backgroundColor = .blue
+        col.backgroundColor = UIColor(.viewBack)
         
         return col
     }
@@ -53,6 +53,7 @@ struct CustomViews {
     static func newImage() -> UIImageView {
         let imgV = UIImageView()
         imgV.translatesAutoresizingMaskIntoConstraints = false
+        imgV.backgroundColor = .red
         
         return imgV
     }
