@@ -74,7 +74,7 @@ import UIKit
             self.container.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             self.container.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
             self.container.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
-            self.container.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+            self.container.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraintsMain)
