@@ -5,11 +5,7 @@ import UIKit
 
 
 /// Controller responsável pela tela de alimentos
-class FoodController: UIViewController, FoodProtocol {
-    func updateCell() {
-        
-    }
-    
+class FoodController: UIViewController {
     
     /* MARK: - Atributos */
 

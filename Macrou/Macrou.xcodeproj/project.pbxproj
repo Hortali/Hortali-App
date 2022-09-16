@@ -52,7 +52,6 @@
 		B241564728D26E4C009F011C /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564628D26E4C009F011C /* FoodCell.swift */; };
 		B241564C28D2722B009F011C /* FoodCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564B28D2722B009F011C /* FoodCollectionDataSource.swift */; };
 		B241564E28D27284009F011C /* FoodCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564D28D27284009F011C /* FoodCollectionDelegate.swift */; };
-		B241565028D272DC009F011C /* FoodProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564F28D272DC009F011C /* FoodProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,7 +102,6 @@
 		B241564628D26E4C009F011C /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		B241564B28D2722B009F011C /* FoodCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionDataSource.swift; sourceTree = "<group>"; };
 		B241564D28D27284009F011C /* FoodCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionDelegate.swift; sourceTree = "<group>"; };
-		B241564F28D272DC009F011C /* FoodProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -502,7 +500,6 @@
 		B241564828D27198009F011C /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				B241564F28D272DC009F011C /* FoodProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -643,7 +640,6 @@
 				2229383A28C8829000515095 /* UIFont+setupFont.swift in Sources */,
 				2229384128C8927500515095 /* GardenController.swift in Sources */,
 				222937F128C6837500515095 /* UIButton+IconInfo.swift in Sources */,
-				B241565028D272DC009F011C /* FoodProtocol.swift in Sources */,
 				2229382928C85EF700515095 /* UITextField+setupPlaceHolder.swift in Sources */,
 				2229385928C9D1DF00515095 /* Screens.swift in Sources */,
 				2229382228C7C5DE00515095 /* UIImage+AppIcons.swift in Sources */,
