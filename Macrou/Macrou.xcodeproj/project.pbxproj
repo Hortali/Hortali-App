@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0629FD2F28D38E7A0017A8F8 /* GardenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0629FD2E28D38E7A0017A8F8 /* GardenProtocol.swift */; };
 		065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFBD28D2526600F024E7 /* GardenCell.swift */; };
-		065ECFC228D26A4500F024E7 /* GardenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFC128D26A4500F024E7 /* GardenDelegate.swift */; };
 		065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */; };
 		222937BE28C66B5600515095 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BD28C66B5600515095 /* AppDelegate.swift */; };
 		222937C028C66B5600515095 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BF28C66B5600515095 /* SceneDelegate.swift */; };
@@ -51,16 +49,10 @@
 		2229386128C9D59700515095 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386028C9D59700515095 /* ScreenSize.swift */; };
 		2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386228C9D5CE00515095 /* AdaptiveLayout.swift */; };
 		2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */; };
-		B241564728D26E4C009F011C /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564628D26E4C009F011C /* FoodCell.swift */; };
-		B241564C28D2722B009F011C /* FoodCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564B28D2722B009F011C /* FoodCollectionDataSource.swift */; };
-		B241564E28D27284009F011C /* FoodCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564D28D27284009F011C /* FoodCollectionDelegate.swift */; };
-		B241565028D272DC009F011C /* FoodProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564F28D272DC009F011C /* FoodProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0629FD2E28D38E7A0017A8F8 /* GardenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenProtocol.swift; sourceTree = "<group>"; };
 		065ECFBD28D2526600F024E7 /* GardenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCell.swift; sourceTree = "<group>"; };
-		065ECFC128D26A4500F024E7 /* GardenDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDelegate.swift; sourceTree = "<group>"; };
 		065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDataSource.swift; sourceTree = "<group>"; };
 		222937BA28C66B5600515095 /* Macrou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macrou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222937BD28C66B5600515095 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,10 +96,6 @@
 		2229386028C9D59700515095 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		2229386228C9D5CE00515095 /* AdaptiveLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveLayout.swift; sourceTree = "<group>"; };
 		2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+setupIconsColor.swift"; sourceTree = "<group>"; };
-		B241564628D26E4C009F011C /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
-		B241564B28D2722B009F011C /* FoodCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionDataSource.swift; sourceTree = "<group>"; };
-		B241564D28D27284009F011C /* FoodCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionDelegate.swift; sourceTree = "<group>"; };
-		B241564F28D272DC009F011C /* FoodProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,28 +109,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0629FD2D28D38E630017A8F8 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				0629FD2E28D38E7A0017A8F8 /* GardenProtocol.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		065ECFBC28D2522100F024E7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				065ECFBD28D2526600F024E7 /* GardenCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		065ECFBF28D26A2200F024E7 /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				065ECFC128D26A4500F024E7 /* GardenDelegate.swift */,
-			);
-			path = Delegate;
 			sourceTree = "<group>";
 		};
 		065ECFC028D26A2F00F024E7 /* DataSource */ = {
@@ -399,8 +371,6 @@
 			children = (
 				2229383C28C8922D00515095 /* Controller */,
 				065ECFC028D26A2F00F024E7 /* DataSource */,
-				065ECFBF28D26A2200F024E7 /* Delegate */,
-				0629FD2D28D38E630017A8F8 /* Protocols */,
 				2229383D28C8923300515095 /* Views */,
 			);
 			path = Garden;
@@ -442,9 +412,6 @@
 		2229384428C892E900515095 /* Food */ = {
 			isa = PBXGroup;
 			children = (
-				B241564A28D271AA009F011C /* DataSource */,
-				B241564928D271A3009F011C /* Delegate */,
-				B241564828D27198009F011C /* Protocol */,
 				2229384528C8930400515095 /* View */,
 				2229384628C8930900515095 /* Controller */,
 			);
@@ -454,7 +421,6 @@
 		2229384528C8930400515095 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B241564528D26E27009F011C /* Cell */,
 				2229384928C8934100515095 /* FoodView.swift */,
 			);
 			path = View;
@@ -511,38 +477,6 @@
 				2229385C28C9D55700515095 /* Dimension.swift */,
 			);
 			path = Enum;
-			sourceTree = "<group>";
-		};
-		B241564528D26E27009F011C /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				B241564628D26E4C009F011C /* FoodCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		B241564828D27198009F011C /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				B241564F28D272DC009F011C /* FoodProtocol.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
-		B241564928D271A3009F011C /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				B241564D28D27284009F011C /* FoodCollectionDelegate.swift */,
-			);
-			path = Delegate;
-			sourceTree = "<group>";
-		};
-		B241564A28D271AA009F011C /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				B241564B28D2722B009F011C /* FoodCollectionDataSource.swift */,
-			);
-			path = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -641,20 +575,17 @@
 				2229382C28C87BC400515095 /* AppPureColors.swift in Sources */,
 				222937EF28C6831300515095 /* UITextField+FontInfo.swift in Sources */,
 				2229383F28C8924400515095 /* GardenView.swift in Sources */,
-				B241564728D26E4C009F011C /* FoodCell.swift in Sources */,
 				2229382628C852D200515095 /* CustomButton.swift in Sources */,
 				222937BE28C66B5600515095 /* AppDelegate.swift in Sources */,
 				2229386128C9D59700515095 /* ScreenSize.swift in Sources */,
 				2229384D28C8942B00515095 /* UIViewController+setupTab.swift in Sources */,
 				222937EB28C6828500515095 /* UILabel+FontInfo.swift in Sources */,
 				2229385B28C9D3AC00515095 /* ScreenInfo.swift in Sources */,
-				B241564E28D27284009F011C /* FoodCollectionDelegate.swift in Sources */,
 				2229382028C7C3FC00515095 /* MainController.swift in Sources */,
 				222937E528C6779500515095 /* UIColors+AppColors.swift in Sources */,
 				2229382E28C87BE300515095 /* OrginalColor.swift in Sources */,
 				222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */,
 				222937F928C68B9B00515095 /* CollectionGroup.swift in Sources */,
-				B241564C28D2722B009F011C /* FoodCollectionDataSource.swift in Sources */,
 				222937C028C66B5600515095 /* SceneDelegate.swift in Sources */,
 				065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */,
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
@@ -665,7 +596,6 @@
 				2229383A28C8829000515095 /* UIFont+setupFont.swift in Sources */,
 				2229384128C8927500515095 /* GardenController.swift in Sources */,
 				222937F128C6837500515095 /* UIButton+IconInfo.swift in Sources */,
-				B241565028D272DC009F011C /* FoodProtocol.swift in Sources */,
 				2229382928C85EF700515095 /* UITextField+setupPlaceHolder.swift in Sources */,
 				2229385928C9D1DF00515095 /* Screens.swift in Sources */,
 				2229382228C7C5DE00515095 /* UIImage+AppIcons.swift in Sources */,
@@ -676,7 +606,6 @@
 				222937E128C66F7300515095 /* AppIcons.swift in Sources */,
 				2229385528C9335C00515095 /* UIView+AdpativeLayout.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
-				065ECFC228D26A4500F024E7 /* GardenDelegate.swift in Sources */,
 				2229384F28C8964200515095 /* MainView.swift in Sources */,
 				2229380128C68EF500515095 /* FavoriteView.swift in Sources */,
 				2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */,
@@ -819,7 +748,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QMPGVXKJVA;
+				DEVELOPMENT_TEAM = UZ6JTAUWH8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macrou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -847,7 +776,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QMPGVXKJVA;
+				DEVELOPMENT_TEAM = UZ6JTAUWH8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macrou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
