@@ -5,8 +5,7 @@ import UIKit
 
 
 /// Controller responsável pela principal de ver todas as hortas
-class GardenController: UIViewController, GardenProtocol {
-    
+class GardenController: UIViewController {
     
     /* MARK: - Atributos */
     
@@ -17,8 +16,10 @@ class GardenController: UIViewController, GardenProtocol {
     
     
     /* Delegate & Data Sources */
+    
+    /// dataSource das hortas
     private let gardenDataSource = GardenDataSource()
-    private let gardenDelegate = GardenDelegate()
+    
     
     
     /* MARK: - Ciclo de Vida */
@@ -37,27 +38,16 @@ class GardenController: UIViewController, GardenProtocol {
     }
     
     
-    
-    /* MARK: - Protocolo */
-    
-    func gardenProtocol() {
-        
-    }
-    
-    
-    
-    /* MARK: - Ações de botões */
-    
-    
-    
-    /* MARK: - Configurações */
-    
+    /* MARK: Ações de botões*/
     /// Função para retirar o teclado da tela
     @objc
     func dismissKeyboard() {
         self.view.endEditing(true)
     }
     
+    
+    
+    /* MARK: - Configurações */
     
     ///Função parar reconhecer toque na tela e retirar o teclado ao ser clicado fora da search
     private func setupKeyboardHandler() {
@@ -73,16 +63,7 @@ class GardenController: UIViewController, GardenProtocol {
     
     
     /// Definindo os delegates, data sources e protocolos
-    ///  Delegate da célula
-    private func setupDataSource() {
-        
-        self.myView.setDelegate(with: gardenDelegate)
-    }
-    
-    /// DataSource da célula
     private func setupDelegates() {
-        
         self.myView.setDataSource(with: gardenDataSource)
-        
     }
 }

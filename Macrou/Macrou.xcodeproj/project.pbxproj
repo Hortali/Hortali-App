@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0629FD2F28D38E7A0017A8F8 /* GardenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0629FD2E28D38E7A0017A8F8 /* GardenProtocol.swift */; };
 		065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFBD28D2526600F024E7 /* GardenCell.swift */; };
-		065ECFC228D26A4500F024E7 /* GardenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFC128D26A4500F024E7 /* GardenDelegate.swift */; };
 		065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */; };
 		222937BE28C66B5600515095 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BD28C66B5600515095 /* AppDelegate.swift */; };
 		222937C028C66B5600515095 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BF28C66B5600515095 /* SceneDelegate.swift */; };
@@ -58,9 +56,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0629FD2E28D38E7A0017A8F8 /* GardenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenProtocol.swift; sourceTree = "<group>"; };
 		065ECFBD28D2526600F024E7 /* GardenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCell.swift; sourceTree = "<group>"; };
-		065ECFC128D26A4500F024E7 /* GardenDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDelegate.swift; sourceTree = "<group>"; };
 		065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDataSource.swift; sourceTree = "<group>"; };
 		222937BA28C66B5600515095 /* Macrou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macrou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222937BD28C66B5600515095 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,28 +117,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0629FD2D28D38E630017A8F8 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				0629FD2E28D38E7A0017A8F8 /* GardenProtocol.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		065ECFBC28D2522100F024E7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				065ECFBD28D2526600F024E7 /* GardenCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		065ECFBF28D26A2200F024E7 /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				065ECFC128D26A4500F024E7 /* GardenDelegate.swift */,
-			);
-			path = Delegate;
 			sourceTree = "<group>";
 		};
 		065ECFC028D26A2F00F024E7 /* DataSource */ = {
@@ -399,8 +379,6 @@
 			children = (
 				2229383C28C8922D00515095 /* Controller */,
 				065ECFC028D26A2F00F024E7 /* DataSource */,
-				065ECFBF28D26A2200F024E7 /* Delegate */,
-				0629FD2D28D38E630017A8F8 /* Protocols */,
 				2229383D28C8923300515095 /* Views */,
 			);
 			path = Garden;
@@ -676,7 +654,6 @@
 				222937E128C66F7300515095 /* AppIcons.swift in Sources */,
 				2229385528C9335C00515095 /* UIView+AdpativeLayout.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
-				065ECFC228D26A4500F024E7 /* GardenDelegate.swift in Sources */,
 				2229384F28C8964200515095 /* MainView.swift in Sources */,
 				2229380128C68EF500515095 /* FavoriteView.swift in Sources */,
 				2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */,
