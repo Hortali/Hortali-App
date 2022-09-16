@@ -11,6 +11,11 @@
 		220A63E928D24C7100D9E2A9 /* InfoGardenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */; };
 		220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */; };
 		220A63EE28D3BDF700D9E2A9 /* CustomScrooll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63ED28D3BDF700D9E2A9 /* CustomScrooll.swift */; };
+		2210244628D5201500F412A5 /* InfoGardenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244528D5201500F412A5 /* InfoGardenCell.swift */; };
+		2210244828D5230C00F412A5 /* InfoGardenCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244728D5230C00F412A5 /* InfoGardenCellType.swift */; };
+		2210244B28D5272C00F412A5 /* InfoGardenMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244A28D5272C00F412A5 /* InfoGardenMapCell.swift */; };
+		2210245128D529FA00F412A5 /* InfoGardenReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210245028D529FA00F412A5 /* InfoGardenReportCell.swift */; };
+		2210245428D52B2B00F412A5 /* InfoGardenDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210245328D52B2B00F412A5 /* InfoGardenDataSource.swift */; };
 		222937BE28C66B5600515095 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BD28C66B5600515095 /* AppDelegate.swift */; };
 		222937C028C66B5600515095 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BF28C66B5600515095 /* SceneDelegate.swift */; };
 		222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 222937C628C66B5600515095 /* DataBase.xcdatamodeld */; };
@@ -58,6 +63,11 @@
 		220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenController.swift; sourceTree = "<group>"; };
 		220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExpansive.swift; sourceTree = "<group>"; };
 		220A63ED28D3BDF700D9E2A9 /* CustomScrooll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrooll.swift; sourceTree = "<group>"; };
+		2210244528D5201500F412A5 /* InfoGardenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenCell.swift; sourceTree = "<group>"; };
+		2210244728D5230C00F412A5 /* InfoGardenCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenCellType.swift; sourceTree = "<group>"; };
+		2210244A28D5272C00F412A5 /* InfoGardenMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenMapCell.swift; sourceTree = "<group>"; };
+		2210245028D529FA00F412A5 /* InfoGardenReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenReportCell.swift; sourceTree = "<group>"; };
+		2210245328D52B2B00F412A5 /* InfoGardenDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenDataSource.swift; sourceTree = "<group>"; };
 		222937BA28C66B5600515095 /* Macrou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macrou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222937BD28C66B5600515095 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		222937BF28C66B5600515095 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +126,7 @@
 		220A63E228D24C1600D9E2A9 /* InfoGarden */ = {
 			isa = PBXGroup;
 			children = (
+				2210245228D52B0500F412A5 /* Data Source */,
 				220A63E528D24C3B00D9E2A9 /* View */,
 				220A63E728D24C5700D9E2A9 /* Controller */,
 			);
@@ -135,6 +146,8 @@
 		220A63E628D24C4000D9E2A9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				2210244928D526EB00F412A5 /* Types */,
+				2210244528D5201500F412A5 /* InfoGardenCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -153,6 +166,56 @@
 				220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */,
 			);
 			path = LabelExpansive;
+			sourceTree = "<group>";
+		};
+		2210244928D526EB00F412A5 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				2210244728D5230C00F412A5 /* InfoGardenCellType.swift */,
+				2210244F28D529D800F412A5 /* InfoGardenReportCell */,
+				2210244E28D529AC00F412A5 /* InfoGardenContactCell */,
+				2210244D28D5299600F412A5 /* InfoGardenTimeCell */,
+				2210244C28D5298A00F412A5 /* InfoGardenMapCell */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		2210244C28D5298A00F412A5 /* InfoGardenMapCell */ = {
+			isa = PBXGroup;
+			children = (
+				2210244A28D5272C00F412A5 /* InfoGardenMapCell.swift */,
+			);
+			path = InfoGardenMapCell;
+			sourceTree = "<group>";
+		};
+		2210244D28D5299600F412A5 /* InfoGardenTimeCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = InfoGardenTimeCell;
+			sourceTree = "<group>";
+		};
+		2210244E28D529AC00F412A5 /* InfoGardenContactCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = InfoGardenContactCell;
+			sourceTree = "<group>";
+		};
+		2210244F28D529D800F412A5 /* InfoGardenReportCell */ = {
+			isa = PBXGroup;
+			children = (
+				2210245028D529FA00F412A5 /* InfoGardenReportCell.swift */,
+			);
+			path = InfoGardenReportCell;
+			sourceTree = "<group>";
+		};
+		2210245228D52B0500F412A5 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				2210245328D52B2B00F412A5 /* InfoGardenDataSource.swift */,
+			);
+			path = "Data Source";
 			sourceTree = "<group>";
 		};
 		222937B128C66B5600515095 = {
@@ -608,11 +671,14 @@
 				2229382628C852D200515095 /* CustomButton.swift in Sources */,
 				222937BE28C66B5600515095 /* AppDelegate.swift in Sources */,
 				220A63E928D24C7100D9E2A9 /* InfoGardenController.swift in Sources */,
+				2210244B28D5272C00F412A5 /* InfoGardenMapCell.swift in Sources */,
 				2229386128C9D59700515095 /* ScreenSize.swift in Sources */,
 				2229384D28C8942B00515095 /* UIViewController+setupTab.swift in Sources */,
+				2210244828D5230C00F412A5 /* InfoGardenCellType.swift in Sources */,
 				222937EB28C6828500515095 /* UILabel+FontInfo.swift in Sources */,
 				2229385B28C9D3AC00515095 /* ScreenInfo.swift in Sources */,
 				2229382028C7C3FC00515095 /* MainController.swift in Sources */,
+				2210245428D52B2B00F412A5 /* InfoGardenDataSource.swift in Sources */,
 				222937E528C6779500515095 /* UIColors+AppColors.swift in Sources */,
 				220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */,
 				2229382E28C87BE300515095 /* OrginalColor.swift in Sources */,
@@ -620,6 +686,7 @@
 				222937F928C68B9B00515095 /* CollectionGroup.swift in Sources */,
 				222937C028C66B5600515095 /* SceneDelegate.swift in Sources */,
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
+				2210245128D529FA00F412A5 /* InfoGardenReportCell.swift in Sources */,
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,
 				220A63EE28D3BDF700D9E2A9 /* CustomScrooll.swift in Sources */,
 				222937FC28C68C8200515095 /* CollectionGroupStyle.swift in Sources */,
@@ -637,6 +704,7 @@
 				2229384828C8931B00515095 /* FoodController.swift in Sources */,
 				222937E128C66F7300515095 /* AppIcons.swift in Sources */,
 				2229385528C9335C00515095 /* UIView+AdpativeLayout.swift in Sources */,
+				2210244628D5201500F412A5 /* InfoGardenCell.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
 				2229384F28C8964200515095 /* MainView.swift in Sources */,
 				2229380128C68EF500515095 /* FavoriteView.swift in Sources */,

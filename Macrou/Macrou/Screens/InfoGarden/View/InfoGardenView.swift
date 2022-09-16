@@ -37,6 +37,14 @@ class InfoGardenView: UIView {
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
+    
+    /// Configurações do layout da collection
+    private let collectionFlow: UICollectionViewFlowLayout = {
+        let cvFlow = UICollectionViewFlowLayout()
+        cvFlow.scrollDirection = .horizontal
+             
+        return cvFlow
+    }()
 
 
 
@@ -46,6 +54,8 @@ class InfoGardenView: UIView {
         super.init(frame: .zero)
         
         self.setupViews()
+        self.registerCell()
+        self.setupCollectionFlow()
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -66,7 +76,18 @@ class InfoGardenView: UIView {
     public func setFavoriteButtonAction(target: Any?, action: Selector) -> Void {
         self.favoriteButton.addTarget(target, action: action, for: .touchDown)
     }
-
+    
+    
+    /* Collection */
+    
+    public func setInfoDataSource(for dataSource: InfoGardenDataSource) {
+        self.collectionGroup.collection.dataSource = dataSource
+    }
+    
+    
+    public func setInfoDelegate(for delegate: UICollectionViewDelegate) {
+        self.collectionGroup.collection.delegate = delegate
+    }
 
 
     /* MARK: - Ciclo de Vida */
@@ -82,6 +103,17 @@ class InfoGardenView: UIView {
     
     
     /* MARK: - Configurações */
+    
+    /// Registra as células nas collections/table
+    private func registerCell() {
+        self.collectionGroup.collection.register(InfoGardenCell.self, forCellWithReuseIdentifier: InfoGardenCell.identifier)
+    }
+
+
+    /// Define o layout da collection
+    private func setupCollectionFlow() {
+        self.collectionGroup.collection.collectionViewLayout = self.collectionFlow
+    }
 
 
     /* Geral */
@@ -106,6 +138,13 @@ class InfoGardenView: UIView {
             width: self.getEquivalent(self.bounds.width),
             height: self.getEquivalent(870)
         )
+        
+        
+        self.collectionFlow.itemSize = CGSize(
+            width: self.getEquivalent(350),
+            height: self.getEquivalent(200)
+        )
+        self.collectionFlow.minimumLineSpacing = self.getEquivalent(10)
     }
     
     

@@ -63,6 +63,8 @@ struct CustomViews {
     static func newMap() -> MKMapView {
         let map = MKMapView()
         map.translatesAutoresizingMaskIntoConstraints = false
+        map.isZoomEnabled = false
+        map.isScrollEnabled = false
         
         return map
     }

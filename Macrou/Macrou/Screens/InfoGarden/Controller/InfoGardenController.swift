@@ -16,6 +16,9 @@ class InfoGardenController: UIViewController {
     
     
     /* Delegate & Data Sources */
+    
+    /// Data Source
+    private let infoDataSource = InfoGardenDataSource()
 
 
 		
@@ -54,6 +57,6 @@ class InfoGardenController: UIViewController {
     
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-    
+        self.myView.setInfoDataSource(for: self.infoDataSource)
     }
 }
