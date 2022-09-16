@@ -19,7 +19,6 @@ class CustomButton: UIButton {
     /// Tamanho do botão quando for circular (Padrão: 45)
     public var circleSize: CGFloat = 45 {
         didSet {
-            self.circleSize = self.getEquivalent(self.circleSize)
             self.setupCorner()
         }
     }
@@ -47,7 +46,7 @@ class CustomButton: UIButton {
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     
-    
+
     
     /* MARK: - Configurações */
     
@@ -64,7 +63,7 @@ class CustomButton: UIButton {
     private func setupCorner() {
         switch self.isCircular {
         case true:
-            self.layer.cornerRadius = self.bounds.height/2
+            self.layer.cornerRadius = self.bounds.height / 2
             self.setupRoundedConstraints()
             
         case false:

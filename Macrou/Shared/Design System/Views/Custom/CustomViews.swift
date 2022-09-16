@@ -43,8 +43,10 @@ struct CustomViews {
     
     
     /// Cria um botão de acordo com a padronização do projeto
-    static func newButton() -> UIButton {
-        return CustomButton()
+    static func newButton() -> CustomButton {
+        let but = CustomButton()
+        but.tintColor = UIColor(.viewBack)
+        return but
     }
     
     
@@ -67,11 +69,8 @@ struct CustomViews {
     
     
     /// Cria uma scrool view de acordo com a padronização do projeto
-    static func newScrool() -> UIScrollView {
-        let scrool = UIScrollView()
-        scrool.translatesAutoresizingMaskIntoConstraints = false
-        
-        return scrool
+    static func newScrool() -> CustomScroll {
+        return CustomScroll()
     }
     
     

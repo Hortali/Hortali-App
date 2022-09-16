@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */; };
+		220A63E928D24C7100D9E2A9 /* InfoGardenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */; };
+		220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */; };
+		220A63EE28D3BDF700D9E2A9 /* CustomScrooll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63ED28D3BDF700D9E2A9 /* CustomScrooll.swift */; };
 		222937BE28C66B5600515095 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BD28C66B5600515095 /* AppDelegate.swift */; };
 		222937C028C66B5600515095 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BF28C66B5600515095 /* SceneDelegate.swift */; };
 		222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 222937C628C66B5600515095 /* DataBase.xcdatamodeld */; };
@@ -50,6 +54,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenView.swift; sourceTree = "<group>"; };
+		220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenController.swift; sourceTree = "<group>"; };
+		220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExpansive.swift; sourceTree = "<group>"; };
+		220A63ED28D3BDF700D9E2A9 /* CustomScrooll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrooll.swift; sourceTree = "<group>"; };
 		222937BA28C66B5600515095 /* Macrou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macrou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222937BD28C66B5600515095 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		222937BF28C66B5600515095 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +113,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220A63E228D24C1600D9E2A9 /* InfoGarden */ = {
+			isa = PBXGroup;
+			children = (
+				220A63E528D24C3B00D9E2A9 /* View */,
+				220A63E728D24C5700D9E2A9 /* Controller */,
+			);
+			path = InfoGarden;
+			sourceTree = "<group>";
+		};
+		220A63E528D24C3B00D9E2A9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				220A63EA28D24CC000D9E2A9 /* LabelExpansive */,
+				220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */,
+				220A63E628D24C4000D9E2A9 /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		220A63E628D24C4000D9E2A9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		220A63E728D24C5700D9E2A9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		220A63EA28D24CC000D9E2A9 /* LabelExpansive */ = {
+			isa = PBXGroup;
+			children = (
+				220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */,
+			);
+			path = LabelExpansive;
+			sourceTree = "<group>";
+		};
 		222937B128C66B5600515095 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +234,7 @@
 				2229383B28C8922000515095 /* Garden */,
 				2229384428C892E900515095 /* Food */,
 				222937FD28C68EC500515095 /* Favorite */,
+				220A63E228D24C1600D9E2A9 /* InfoGarden */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -257,6 +308,7 @@
 			children = (
 				2229382528C852D200515095 /* CustomButton.swift */,
 				222937F228C6844E00515095 /* CustomViews.swift */,
+				220A63ED28D3BDF700D9E2A9 /* CustomScrooll.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -550,22 +602,26 @@
 			files = (
 				222937ED28C682C900515095 /* UIButton+FontInfo.swift in Sources */,
 				2229382C28C87BC400515095 /* AppPureColors.swift in Sources */,
+				220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */,
 				222937EF28C6831300515095 /* UITextField+FontInfo.swift in Sources */,
 				2229383F28C8924400515095 /* GardenView.swift in Sources */,
 				2229382628C852D200515095 /* CustomButton.swift in Sources */,
 				222937BE28C66B5600515095 /* AppDelegate.swift in Sources */,
+				220A63E928D24C7100D9E2A9 /* InfoGardenController.swift in Sources */,
 				2229386128C9D59700515095 /* ScreenSize.swift in Sources */,
 				2229384D28C8942B00515095 /* UIViewController+setupTab.swift in Sources */,
 				222937EB28C6828500515095 /* UILabel+FontInfo.swift in Sources */,
 				2229385B28C9D3AC00515095 /* ScreenInfo.swift in Sources */,
 				2229382028C7C3FC00515095 /* MainController.swift in Sources */,
 				222937E528C6779500515095 /* UIColors+AppColors.swift in Sources */,
+				220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */,
 				2229382E28C87BE300515095 /* OrginalColor.swift in Sources */,
 				222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */,
 				222937F928C68B9B00515095 /* CollectionGroup.swift in Sources */,
 				222937C028C66B5600515095 /* SceneDelegate.swift in Sources */,
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,
+				220A63EE28D3BDF700D9E2A9 /* CustomScrooll.swift in Sources */,
 				222937FC28C68C8200515095 /* CollectionGroupStyle.swift in Sources */,
 				2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */,
 				2229385D28C9D55700515095 /* Dimension.swift in Sources */,
@@ -724,7 +780,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UZ6JTAUWH8;
+				DEVELOPMENT_TEAM = 534V229RMK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macrou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
