@@ -20,17 +20,24 @@ class InfoGardenView: UIView {
     /// Botão de favoritar a hora
     private let favoriteButton = CustomViews.newButton()
     
-    /// Conjunto de imagens da hora
-    private let segImage = CustomViews.newSegmentation(with: nil)
+    /// Conjunto de imagens da horta
+    private let imagesCollectionGp: CollectionGroup = {
+        let colGp = CollectionGroup(style: .justCollection)
+        colGp.collection.isPagingEnabled = true
+        return colGp
+    }()
+
+    /// Controle de páginas
+    private let imagesPageControl = CustomViews.newPageControl()
     
-    /// Grupo de UI para colocar os elementos de informaçào sobre a horta
+    /// Grupo de UI para colocar os elementos de informação sobre a horta
     private let container = ContainerView()
     
     /// Label expandível
     private let expansiveLabel = ExpansiveLabel()
     
     /// Collection de informações sobre a horta
-    private let collectionGroup = CollectionGroup(style: .justCollection)
+    private let infosCollectionGp = CollectionGroup(style: .justCollection)
         
     
     // Outros
@@ -38,11 +45,18 @@ class InfoGardenView: UIView {
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
     
-    /// Configurações do layout da collection
-    private let collectionFlow: UICollectionViewFlowLayout = {
+    /// Configurações do layout da collection de informações
+    private let infosCollectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
-             
+        return cvFlow
+    }()
+    
+    /// Configurações do layout da collection de imagens
+    private let imagesCollectionFlow: UICollectionViewFlowLayout = {
+        let cvFlow = UICollectionViewFlowLayout()
+        cvFlow.scrollDirection = .horizontal
+        cvFlow.minimumLineSpacing = 0
         return cvFlow
     }()
 
@@ -58,11 +72,19 @@ class InfoGardenView: UIView {
         self.setupCollectionFlow()
     }
     
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     
     
     /* MARK: - Encapsulamento */
+    
+    
+    /// Atualiza a pa'gina no Page Control
+    /// - Parameter index: index (número) da página
+    public func updateCurrentPage(for index: Int) {
+        self.imagesPageControl.currentPage = index
+    }
+    
 
     /* Ações de botões */
     
@@ -80,13 +102,23 @@ class InfoGardenView: UIView {
     
     /* Collection */
     
-    public func setInfoDataSource(for dataSource: InfoGardenDataSource) {
-        self.collectionGroup.collection.dataSource = dataSource
+    public func setInfoDataSource(for dataSource: InfoGardenInfosDataSource) {
+        self.infosCollectionGp.collection.dataSource = dataSource
     }
     
     
-    public func setInfoDelegate(for delegate: UICollectionViewDelegate) {
-        self.collectionGroup.collection.delegate = delegate
+    public func setInfoDelegate(for delegate: InfoGardenInfosDelegate) {
+        self.infosCollectionGp.collection.delegate = delegate
+    }
+    
+    
+    public func setImagesDataSource(for dataSource: InfoGardenImagesDataSource) {
+        self.imagesCollectionGp.collection.dataSource = dataSource
+        self.imagesPageControl.numberOfPages = dataSource.getDataCount()
+    }
+    
+    public func setImagesDelegate(for delegate: InfoGardenImagesDelegate) {
+        self.imagesCollectionGp.collection.delegate = delegate
     }
 
 
@@ -106,13 +138,16 @@ class InfoGardenView: UIView {
     
     /// Registra as células nas collections/table
     private func registerCell() {
-        self.collectionGroup.collection.register(InfoGardenCell.self, forCellWithReuseIdentifier: InfoGardenCell.identifier)
+        self.infosCollectionGp.collection.register(InfoGardenInfosCell.self, forCellWithReuseIdentifier: InfoGardenInfosCell.identifier)
+        
+        self.imagesCollectionGp.collection.register(InfoGardenImagesCell.self, forCellWithReuseIdentifier: InfoGardenImagesCell.identifier)
     }
 
 
     /// Define o layout da collection
     private func setupCollectionFlow() {
-        self.collectionGroup.collection.collectionViewLayout = self.collectionFlow
+        self.infosCollectionGp.collection.collectionViewLayout = self.infosCollectionFlow
+        self.imagesCollectionGp.collection.collectionViewLayout = self.imagesCollectionFlow
     }
 
 
@@ -122,29 +157,38 @@ class InfoGardenView: UIView {
     private func setupViews() {
         self.addSubview(self.scrollView)
                 
-        self.scrollView.contentView.addSubview(self.segImage)
+        self.scrollView.contentView.addSubview(self.imagesCollectionGp)
+        self.scrollView.contentView.addSubview(self.imagesPageControl)
         self.scrollView.contentView.addSubview(self.backButton)
         self.scrollView.contentView.addSubview(self.favoriteButton)
         self.scrollView.contentView.addSubview(self.container)
         
         self.container.contentView.addSubview(self.expansiveLabel)
-        self.container.contentView.addSubview(self.collectionGroup)
+        self.scrollView.contentView.addSubview(self.infosCollectionGp)
     }
     
     
     /// Personalização da UI
     private func setupUI() {
+        self.imagesPageControl.layer.cornerRadius = self.imagesPageControl.bounds.height/2
+        
         self.scrollView.scrollContentSize = CGSize(
             width: self.getEquivalent(self.bounds.width),
             height: self.getEquivalent(870)
         )
         
         
-        self.collectionFlow.itemSize = CGSize(
+        self.infosCollectionFlow.itemSize = CGSize(
             width: self.getEquivalent(350),
             height: self.getEquivalent(200)
         )
-        self.collectionFlow.minimumLineSpacing = self.getEquivalent(10)
+        self.infosCollectionFlow.minimumLineSpacing = self.getEquivalent(10)
+        
+        
+        self.imagesCollectionFlow.itemSize = CGSize(
+            width: self.getEquivalent(390),
+            height: self.getEquivalent(510)
+        )
     }
     
     
@@ -200,10 +244,14 @@ class InfoGardenView: UIView {
             self.scrollView.widthAnchor.constraint(equalTo: self.widthAnchor),
             
             
-            self.segImage.topAnchor.constraint(equalTo: self.scrollView.contentView.topAnchor),
-            self.segImage.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
-            self.segImage.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
-            self.segImage.heightAnchor.constraint(equalToConstant: segHeight),
+            self.imagesCollectionGp.topAnchor.constraint(equalTo: self.scrollView.contentView.topAnchor),
+            self.imagesCollectionGp.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
+            self.imagesCollectionGp.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
+            self.imagesCollectionGp.heightAnchor.constraint(equalToConstant: segHeight),
+            
+            
+            self.imagesPageControl.bottomAnchor.constraint(equalTo: self.container.topAnchor, constant: -between / 2),
+            self.imagesPageControl.centerXAnchor.constraint(equalTo: self.imagesCollectionGp.centerXAnchor),
             
             
             self.backButton.topAnchor.constraint(equalTo: self.scrollView.contentView.topAnchor, constant: safeAreaGap),
@@ -216,7 +264,7 @@ class InfoGardenView: UIView {
             
             /* Container */
             
-            self.container.topAnchor.constraint(equalTo: self.segImage.bottomAnchor, constant: -gap),
+            self.container.topAnchor.constraint(equalTo: self.imagesCollectionGp.bottomAnchor, constant: -gap),
             self.container.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
             self.container.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
             self.container.heightAnchor.constraint(equalToConstant: containerHeight),
@@ -228,10 +276,10 @@ class InfoGardenView: UIView {
             self.expansiveLabel.heightAnchor.constraint(equalToConstant: expLabelHeight),
             
             
-            self.collectionGroup.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
-            self.collectionGroup.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
-            self.collectionGroup.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
-            self.collectionGroup.heightAnchor.constraint(equalToConstant: collectionHeight)
+            self.infosCollectionGp.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
+            self.infosCollectionGp.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.infosCollectionGp.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
+            self.infosCollectionGp.heightAnchor.constraint(equalToConstant: collectionHeight)
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Célula que mostra as informações da tela de ver as inforações das hortas
-class InfoGardenCell: UICollectionViewCell {
+class InfoGardenInfosCell: UICollectionViewCell {
     
     /* MARK: - Atributos */
     
@@ -22,7 +22,7 @@ class InfoGardenCell: UICollectionViewCell {
     }()
     
     /// View que vai estar dentro da contentView
-    private var cellView: InfoGardenReportCell = InfoGardenReportCell()
+    private var cellView = UIView()
         
     
     // Outros
@@ -40,10 +40,6 @@ class InfoGardenCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // self.backgroundColor = .red
-        // self.titleLabel.backgroundColor = .black
-        // self.customContentView.backgroundColor = .purple
-        
         self.setupViews()
     }
     
@@ -57,10 +53,10 @@ class InfoGardenCell: UICollectionViewCell {
     public func setupCell(for cellType: InfoGardenCellType) {
         self.titleLabel.text = cellType.title
         
-        self.cellView = InfoGardenReportCell() //  cellType.view
-        // self.cellView.removeFromSuperview()
+        self.cellView = cellType.view
+        self.cellView.removeFromSuperview()
         self.customContentView.addSubview(self.cellView)
-        
+
         self.setupDynamicConstraints()
     }
     

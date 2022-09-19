@@ -93,6 +93,7 @@ class ExpansiveLabel: UIView {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {		
         /* Labels */
+        print("Qtd : ", "A hortinha da saúde é muito bem cuidada".count)
         self.paragraphLabel.text = """
         A hortinha da saúde é muito bem cuidada e sempre tem ótimos alimentos frescos que são plantados e cuidados com muito
         """

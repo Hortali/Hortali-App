@@ -19,10 +19,10 @@ enum InfoGardenCellType {
         
     var view: UIView {
         switch self {
-        case .map: return InfoGardenMapCell()
-        case .time: return InfoGardenMapCell()
-        case .contact: return InfoGardenMapCell()
-        case .report: return InfoGardenReportCell()
+        case .map: return InfoGardenMap()
+        case .time: return InfoGardenReport()
+        case .contact: return InfoGardenMap()
+        case .report: return InfoGardenReport()
         }
     }
     

@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// O que essa classe faz?
+/// Cria uma scroll view e já configura ela de acordo com o tamanho que vai ser definido pra ela
 class CustomScroll: UIView {
     
     /* MARK: - Atributos */
@@ -15,7 +15,7 @@ class CustomScroll: UIView {
     public let scroll: UIScrollView = {
         let scrool = UIScrollView()
         scrool.translatesAutoresizingMaskIntoConstraints = false
-        
+        scrool.backgroundColor = UIColor(.viewBack)
         return scrool
     }()
     
@@ -28,7 +28,7 @@ class CustomScroll: UIView {
     
     // Outros
     
-    /// Tamanho da scollView
+    /// Tamanho da scrollView
     public var scrollContentSize: CGSize = CGSize() {
         didSet {
             self.setupScroollSize()
@@ -85,22 +85,22 @@ class CustomScroll: UIView {
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
-        
         let safeAreaTop = self.scroll.safeAreaInsets.top
+        
+        NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
             self.scroll.topAnchor.constraint(equalTo: self.topAnchor),
             self.scroll.leftAnchor.constraint(equalTo: self.leftAnchor),
             self.scroll.rightAnchor.constraint(equalTo: self.rightAnchor),
-            self.scroll.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+            self.scroll.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.scroll.widthAnchor.constraint(equalTo: self.widthAnchor),
             
             
             self.contentView.topAnchor.constraint(equalTo: self.scroll.topAnchor, constant: -safeAreaTop),
             self.contentView.leftAnchor.constraint(equalTo: self.scroll.leftAnchor),
             self.contentView.rightAnchor.constraint(equalTo: self.scroll.rightAnchor),
-            self.contentView.bottomAnchor.constraint(equalTo: self.scroll.bottomAnchor),
+            self.contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.contentView.widthAnchor.constraint(equalTo: self.scroll.widthAnchor),
         ]
         

@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Data source da collection da tela de info garden
-class InfoGardenDataSource: NSObject, UICollectionViewDataSource {
+class InfoGardenInfosDataSource: NSObject, UICollectionViewDataSource {
         
     /* MARK: - Data Source */
     
@@ -17,12 +17,12 @@ class InfoGardenDataSource: NSObject, UICollectionViewDataSource {
     
     /// Faz a configuração de cada célula
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfoGardenCell.identifier, for: indexPath) as? InfoGardenCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfoGardenInfosCell.identifier, for: indexPath) as? InfoGardenInfosCell else {
             return UICollectionViewCell()
         }
         
         switch indexPath.row {
-        case 0: cell.setupCell(for: .report)
+        case 0: cell.setupCell(for: .map)
         case 1: cell.setupCell(for: .time)
         case 2: cell.setupCell(for: .contact)
         case 3: cell.setupCell(for: .report)

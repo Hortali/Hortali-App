@@ -5,31 +5,18 @@ import MapKit
 
 
 /// O que essa classe faz?
-class InfoGardenMapCell: UIView {
+class InfoGardenMap: UIView {
     
     /* MARK: - Atributos */
 
     // Views
     
-    
-    private let mapView: UIView = {
-        let map = CustomViews.newView()
+    /// Mapa
+    private let mapView: MKMapView = {
+        let map = CustomViews.newMap()
         
-        map.backgroundColor = .brown
         return map
     }()
-    
-//    /// Mapa
-//    private let mapView: MKMapView = {
-//        let map = CustomViews.newMap()
-//        
-//        let initialPlace = CLLocationCoordinate2D(latitude: 0, longitude: 0)
-//        let radius: CLLocationDistance = 1000
-//        let region = MKCoordinateRegion(center: initialPlace, latitudinalMeters: radius, longitudinalMeters: radius)
-//        
-//        map.setRegion(region, animated: true)
-//        return map
-//    }()
     
     /// Endereço da rua
     private let addressLabel: UILabel = {
@@ -105,7 +92,7 @@ class InfoGardenMapCell: UIView {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
-            self.mapView.topAnchor.constraint(equalTo: self.bottomAnchor),
+            self.mapView.topAnchor.constraint(equalTo: self.topAnchor),
             self.mapView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.mapView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.mapView.bottomAnchor.constraint(equalTo: self.bottomAnchor),

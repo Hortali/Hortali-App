@@ -4,8 +4,8 @@
 import UIKit
 
 
-/// Controller responsável POR
-class InfoGardenController: UIViewController {
+/// Controller responsável pela tela de ver informações da Horta
+class InfoGardenController: UIViewController, InfoGardenProtocol {
     
     /* MARK: - Atributos */
 
@@ -17,8 +17,18 @@ class InfoGardenController: UIViewController {
     
     /* Delegate & Data Sources */
     
-    /// Data Source
-    private let infoDataSource = InfoGardenDataSource()
+    /// Data Source da collection de informações da horta
+    private let infoDataSource = InfoGardenInfosDataSource()
+    
+    /// Delegate da collection de informações da horta
+    private let infoDelegate = InfoGardenInfosDelegate()
+    
+    /// Data Source da collection de imagens da horta
+    private let imagesDataSource = InfoGardenImagesDataSource()
+    
+    /// Delegate da collection de imagens da horta
+    private let imagesDelegate = InfoGardenImagesDelegate()
+    
 
 
 		
@@ -39,10 +49,33 @@ class InfoGardenController: UIViewController {
 
 
     /* MARK: - Protocolo */
-
+    
+    internal func updateCurrentPage(to index: Int) {
+        self.myView.updateCurrentPage(for: index)
+    }
 	
 
+    
     /* MARK: - Ações de botões */
+    
+    @objc
+    private func backAction() {
+        self.dismiss(animated: true)
+    }
+    
+    @objc
+    private func favoriteAction() {
+        
+    }
+    
+    
+    @objc
+    private func showStoreTimePage() {
+        let vc = UIViewController()
+        vc.modalTransitionStyle = .coverVertical
+        
+        self.present(vc, animated: true)
+    }
     
     
     
@@ -51,12 +84,19 @@ class InfoGardenController: UIViewController {
     
     /// Definindo as ações dos botões
     private func setupButtonsAction() {
-	  
+        self.myView.setBackButtonAction(target: self, action: #selector(self.backAction))
+        self.myView.setFavoriteButtonAction(target: self, action: #selector(self.favoriteAction))
     }
     
     
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
+        self.imagesDelegate.setProtocol(with: self)
+        
         self.myView.setInfoDataSource(for: self.infoDataSource)
+        self.myView.setInfoDelegate(for: self.infoDelegate)
+        
+        self.myView.setImagesDataSource(for: self.imagesDataSource)
+        self.myView.setImagesDelegate(for: self.imagesDelegate)
     }
 }

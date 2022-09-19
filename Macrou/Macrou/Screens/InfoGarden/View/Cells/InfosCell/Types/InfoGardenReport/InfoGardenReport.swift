@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Célula para reportar algo
-class InfoGardenReportCell: UIView {
+class InfoGardenReport: UIView {
     
     /* MARK: - Atributos */
 
@@ -59,9 +59,6 @@ class InfoGardenReportCell: UIView {
         let imageName = "ReportIcon"
         let image = UIImage(named: imageName)
         
-        if let image = image {
-            print("A imagem criou")
-        }
         self.imageReport.image = image
     }
     
@@ -70,7 +67,7 @@ class InfoGardenReportCell: UIView {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
-            self.imageReport.topAnchor.constraint(equalTo: self.bottomAnchor),
+            self.imageReport.topAnchor.constraint(equalTo: self.topAnchor),
             self.imageReport.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.imageReport.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.imageReport.bottomAnchor.constraint(equalTo: self.bottomAnchor),

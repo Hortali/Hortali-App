@@ -109,4 +109,25 @@ struct CustomViews {
         seg.translatesAutoresizingMaskIntoConstraints = false
         return seg
     }
+    
+    
+    /// Cria uma page control de acordo com a padronização do projeto
+    static func newPageControl() -> UIPageControl {
+        let page = UIPageControl()
+        page.translatesAutoresizingMaskIntoConstraints = false
+        
+        page.currentPageIndicatorTintColor = UIColor(.pageSelected)
+        page.pageIndicatorTintColor = UIColor(.pageNotSelected)
+        
+        page.numberOfPages = 1
+        page.currentPage = 0
+        
+        if #available(iOS 14.0, *) {
+            page.backgroundStyle = .automatic
+            page.allowsContinuousInteraction = false
+        }
+        
+        page.backgroundColor = UIColor(.backgroundButton)?.withAlphaComponent(0.65)
+        return page
+    }
  }

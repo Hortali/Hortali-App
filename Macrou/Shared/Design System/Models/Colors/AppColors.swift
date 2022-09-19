@@ -61,6 +61,16 @@ enum AppColors: OriginalColor {
     
     
     
+    /* Page Control */
+    
+    /// Page Control: item selecionado
+    case pageSelected
+    
+    /// Page Control: item não selecionado
+    case pageNotSelected
+    
+    
+    
     /* Search Bar */
     
     /// Search Bar: fundo
@@ -116,6 +126,11 @@ enum AppColors: OriginalColor {
         /* Tab */
         case .tabSelected: return .greenDark
         case .tabNotSelected: return .greenLight
+            
+        
+        /* Tab */
+        case .pageSelected: return .greenDark
+        case .pageNotSelected: return .greenLight
             
         
         /* Search */
