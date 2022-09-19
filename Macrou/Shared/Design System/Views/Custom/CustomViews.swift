@@ -50,6 +50,7 @@ struct CustomViews {
     static func newImage() -> UIImageView {
         let imgV = UIImageView()
         imgV.translatesAutoresizingMaskIntoConstraints = false
+        imgV.backgroundColor = .red
         
         return imgV
     }

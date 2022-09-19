@@ -15,7 +15,7 @@ class GardenView: MainView {
     private let search: UISearchBar = CustomViews.newSearch()
     
     /// Define o estilo da Collection e retira o indicador de scroll
-    private let collectionView = {
+    private let collectionView: CollectionGroup = {
         let collGroup = CollectionGroup(style: .justCollection)
         collGroup.collection.showsHorizontalScrollIndicator = false
         
