@@ -127,7 +127,7 @@ struct CustomViews {
             page.allowsContinuousInteraction = false
         }
         
-        page.backgroundColor = UIColor(.backgroundButton)?.withAlphaComponent(0.65)
+        page.backgroundColor = UIColor(.backgroundButton)?.withAlphaComponent(0.95)
         return page
     }
  }
