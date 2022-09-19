@@ -8,21 +8,20 @@ import UIKit
 class FoodView: MainView {
     
     /* MARK: - Atributos */
-
-    // Views
     
+    /// Controle das views segmentadas para os diferentes tipos de alimentos
+    internal let foodSegmented: UISegmentedControl = CustomViews.newSegmentation(with: ["Frutas", "Legumes", "Vegetais", "Ervas"])
     
-    
-    // Outros
+    /// CollectionView principal da tela de alimentos
+    internal let foodCollection: UICollectionView = CustomViews.newCollectionView()
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
 		
-		
     /// Configurações do layout da collection
     private let collectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
-//        cvFlow.scrollDirection = .horizontal
+        cvFlow.scrollDirection = .vertical
 		     
         return cvFlow
     }()
@@ -31,32 +30,34 @@ class FoodView: MainView {
 
     /* MARK: - Construtor */
     
+    
     override init() {
         super.init()
         
         self.setupViews()
         self.registerCells()
         self.setupCollectionFlow()
+        
     }
     
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     
+    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+
     
     
     /* MARK: - Encapsulamento */
-
-    /* Ações de botões */
-
-    /// Ação do botão X
-//    public func setButtonAction(target: Any?, action: Selector) -> Void {
-//        self.someButton.addTarget(target, action: action, for: .touchDown)
-//    }
     
+    /// Encapsulamento que define o dataSource da Collection
+    /// - Parameter dataSource: Encapsulamento do dataSource costumizado da Collection
+    public func setDataSource(with dataSource: FoodCollectionDataSource) {
+        self.foodCollection.dataSource = dataSource
+    }
     
 
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+    
+    override internal func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()
@@ -67,53 +68,57 @@ class FoodView: MainView {
     
     
     /* MARK: - Configurações */
-
-    /* Collection */
+    
     
     /// Registra as células nas collections/table
     private func registerCells() {
-        
+        self.foodCollection.register(FoodCell.self, forCellWithReuseIdentifier: FoodCell.identifier)
     }
 
 
     /// Define o layout da collection
     private func setupCollectionFlow() {
-        // self.collection.collectionViewLayout = self.collectionFlow
+         self.foodCollection.collectionViewLayout = self.collectionFlow
     }
 
-
-    /* Geral */
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-
+        self.addSubview(foodSegmented)
+        self.addSubview(foodCollection)
     }
     
     
     /// Personalização da UI
     private func setupUI() {
-        // self.collectionFlow.itemSize = CGSize(width: 100, height: 100)
+         self.collectionFlow.itemSize = CGSize(width: 170, height: 192)
     }
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {		
-        /* Labels */
-        
-
-        /* Botões */
+        self.setTitleText(with: "Hora da sua\ncolheita")
     }
 	  
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() { 
-//        let lateral: CGFloat =
-//        let between: CGFloat =
+        let lateral: CGFloat = self.getEquivalent(15)
+        let between: CGFloat = self.getEquivalent(20)
        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
+            self.foodSegmented.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: lateral),
+            self.foodSegmented.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.foodSegmented.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
+            self.foodSegmented.heightAnchor.constraint(equalToConstant: lateral * 2),
             
+            
+            self.foodCollection.topAnchor.constraint(equalTo: self.foodSegmented.bottomAnchor, constant: between),
+            self.foodCollection.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.foodCollection.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
+            self.foodCollection.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
