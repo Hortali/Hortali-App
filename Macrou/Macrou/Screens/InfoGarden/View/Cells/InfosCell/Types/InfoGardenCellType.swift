@@ -21,7 +21,7 @@ enum InfoGardenCellType {
         switch self {
         case .map: return InfoGardenMap()
         case .time: return InfoGardenReport()
-        case .contact: return InfoGardenMap()
+        case .contact: return InfoGardenContact()
         case .report: return InfoGardenReport()
         }
     }

@@ -122,6 +122,7 @@ class InfoGardenView: UIView {
     }
 
 
+    
     /* MARK: - Ciclo de Vida */
     
     override public func layoutSubviews() {
@@ -170,13 +171,15 @@ class InfoGardenView: UIView {
     
     /// Personalização da UI
     private func setupUI() {
-        self.imagesPageControl.layer.cornerRadius = self.imagesPageControl.bounds.height/2
+        self.imagesPageControl.layer.cornerRadius = self.imagesPageControl.bounds.height / 2
         
         self.scrollView.scrollContentSize = CGSize(
             width: self.getEquivalent(self.bounds.width),
             height: self.getEquivalent(870)
         )
         
+        
+        // Collections
         
         self.infosCollectionFlow.itemSize = CGSize(
             width: self.getEquivalent(350),

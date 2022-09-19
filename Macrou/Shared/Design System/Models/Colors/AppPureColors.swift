@@ -15,7 +15,7 @@ enum AppPureColors: CustomStringConvertible {
     case pinkButton
     case white
     case greyDark
-    
+    case yellow
 
     
     /* MARK: Nome das cores */
@@ -32,6 +32,7 @@ enum AppPureColors: CustomStringConvertible {
         case .pinkButton: return "Pink_ED7070"
         case .white: return "White_FEFEFE"
         case .greyDark: return "Grey_6A6A6A"
+        case .yellow: return "Yellow_EFBE49"
         }
     }
 }

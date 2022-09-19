@@ -22,6 +22,10 @@
 		2210245F28D84B4D00F412A5 /* InfoGardenImagesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210245E28D84B4D00F412A5 /* InfoGardenImagesDelegate.swift */; };
 		2210246228D84C6800F412A5 /* InfoGardenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210246128D84C6800F412A5 /* InfoGardenProtocol.swift */; };
 		2210246628D8DC0800F412A5 /* InfoGardenContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210246528D8DC0800F412A5 /* InfoGardenContact.swift */; };
+		2210246828D8F9BC00F412A5 /* ContactGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210246728D8F9BC00F412A5 /* ContactGroup.swift */; };
+		2210246A28D9013E00F412A5 /* ContactIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210246928D9013E00F412A5 /* ContactIcon.swift */; };
+		2210246C28D9017700F412A5 /* UIImage+ContactIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210246B28D9017700F412A5 /* UIImage+ContactIcon.swift */; };
+		2210246F28D9020900F412A5 /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210246E28D9020900F412A5 /* ContactInfo.swift */; };
 		222937BE28C66B5600515095 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BD28C66B5600515095 /* AppDelegate.swift */; };
 		222937C028C66B5600515095 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BF28C66B5600515095 /* SceneDelegate.swift */; };
 		222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 222937C628C66B5600515095 /* DataBase.xcdatamodeld */; };
@@ -80,6 +84,10 @@
 		2210245E28D84B4D00F412A5 /* InfoGardenImagesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenImagesDelegate.swift; sourceTree = "<group>"; };
 		2210246128D84C6800F412A5 /* InfoGardenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenProtocol.swift; sourceTree = "<group>"; };
 		2210246528D8DC0800F412A5 /* InfoGardenContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenContact.swift; sourceTree = "<group>"; };
+		2210246728D8F9BC00F412A5 /* ContactGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactGroup.swift; sourceTree = "<group>"; };
+		2210246928D9013E00F412A5 /* ContactIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactIcon.swift; sourceTree = "<group>"; };
+		2210246B28D9017700F412A5 /* UIImage+ContactIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ContactIcon.swift"; sourceTree = "<group>"; };
+		2210246E28D9020900F412A5 /* ContactInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
 		222937BA28C66B5600515095 /* Macrou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macrou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222937BD28C66B5600515095 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		222937BF28C66B5600515095 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +220,7 @@
 		2210244E28D529AC00F412A5 /* InfoGardenContact */ = {
 			isa = PBXGroup;
 			children = (
+				2210246728D8F9BC00F412A5 /* ContactGroup.swift */,
 				2210246528D8DC0800F412A5 /* InfoGardenContact.swift */,
 			);
 			path = InfoGardenContact;
@@ -268,6 +277,14 @@
 			path = Protocolo;
 			sourceTree = "<group>";
 		};
+		2210246D28D901F200F412A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2210246E28D9020900F412A5 /* ContactInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		222937B128C66B5600515095 = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +315,7 @@
 		222937D428C66B6200515095 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				2210246D28D901F200F412A5 /* Model */,
 				222937DE28C66F4D00515095 /* Extensions */,
 				222937DA28C66B9800515095 /* Delegates */,
 			);
@@ -471,6 +489,7 @@
 				2229383328C87D5D00515095 /* Extension */,
 				222937E028C66F7300515095 /* AppIcons.swift */,
 				222937E828C6824600515095 /* IconInfo.swift */,
+				2210246928D9013E00F412A5 /* ContactIcon.swift */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -480,6 +499,7 @@
 			children = (
 				2229382128C7C5DE00515095 /* UIImage+AppIcons.swift */,
 				222937F028C6837500515095 /* UIButton+IconInfo.swift */,
+				2210246B28D9017700F412A5 /* UIImage+ContactIcon.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -713,6 +733,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2210246F28D9020900F412A5 /* ContactInfo.swift in Sources */,
 				222937ED28C682C900515095 /* UIButton+FontInfo.swift in Sources */,
 				2229382C28C87BC400515095 /* AppPureColors.swift in Sources */,
 				220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */,
@@ -732,14 +753,17 @@
 				2229382028C7C3FC00515095 /* MainController.swift in Sources */,
 				2210245428D52B2B00F412A5 /* InfoGardenInfosDataSource.swift in Sources */,
 				222937E528C6779500515095 /* UIColors+AppColors.swift in Sources */,
+				2210246A28D9013E00F412A5 /* ContactIcon.swift in Sources */,
 				2210245F28D84B4D00F412A5 /* InfoGardenImagesDelegate.swift in Sources */,
 				220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */,
 				2229382E28C87BE300515095 /* OrginalColor.swift in Sources */,
+				2210246828D8F9BC00F412A5 /* ContactGroup.swift in Sources */,
 				222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */,
 				222937F928C68B9B00515095 /* CollectionGroup.swift in Sources */,
 				222937C028C66B5600515095 /* SceneDelegate.swift in Sources */,
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
 				2210245128D529FA00F412A5 /* InfoGardenReport.swift in Sources */,
+				2210246C28D9017700F412A5 /* UIImage+ContactIcon.swift in Sources */,
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,
 				220A63EE28D3BDF700D9E2A9 /* CustomScrooll.swift in Sources */,
 				222937FC28C68C8200515095 /* CollectionGroupStyle.swift in Sources */,

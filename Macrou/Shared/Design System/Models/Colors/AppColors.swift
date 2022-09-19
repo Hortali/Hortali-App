@@ -97,6 +97,13 @@ enum AppColors: OriginalColor {
     
     
     
+    /* Outros */
+    
+    /// Fundo da célula de contato
+    case contactCellBack
+    
+    
+    
     /* MARK: - Nome dos botões */
     
     /// Nome das cores
@@ -143,6 +150,10 @@ enum AppColors: OriginalColor {
         case .favoriteSelected: return .pinkButton
         case .favoriteNotSelected: return .greyButton
         case .backgroundButton: return .greyButton
+            
+            
+        /* Outros */
+        case .contactCellBack: return .yellow
         }
     }
 }
