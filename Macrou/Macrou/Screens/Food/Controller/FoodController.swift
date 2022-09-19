@@ -9,7 +9,6 @@ class FoodController: UIViewController {
     
     /* MARK: - Atributos */
 
-    /* View */
 
     /// View principal que a classe vai controlar
     private let myView = FoodView()
@@ -20,7 +19,9 @@ class FoodController: UIViewController {
     let foodCollectionDelegate = FoodCollectionDelegate()
 
 		
+    
     /* MARK: - Ciclo de Vida */
+    
     
     override func loadView() {
         self.view = self.myView
@@ -45,6 +46,7 @@ class FoodController: UIViewController {
     
     
     /* MARK: - Configurações */
+    
     
     /// Definindo as ações dos botões
     private func setupButtonsAction() {

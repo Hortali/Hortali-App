@@ -9,14 +9,11 @@ class FoodView: MainView {
     
     /* MARK: - Atributos */
 
-    // Views
-    
-    // Outros
     internal let foodSegmented: UISegmentedControl = CustomViews.newSegmentation(with: ["Frutas", "Legumes", "Vegetais", "Ervas"])
     internal let foodCollection: UICollectionView = CustomViews.newCollectionView()
+    
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
-		
 		
     /// Configurações do layout da collection
     private let collectionFlow: UICollectionViewFlowLayout = {
@@ -30,6 +27,7 @@ class FoodView: MainView {
 
     /* MARK: - Construtor */
     
+    
     override init() {
         super.init()
         
@@ -39,22 +37,13 @@ class FoodView: MainView {
         
     }
     
+    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-    
-    
-    
-    /* MARK: - Encapsulamento */
 
-    /* Ações de botões */
-
-    /// Ação do botão X
-//    public func setButtonAction(target: Any?, action: Selector) -> Void {
-//        self.someButton.addTarget(target, action: action, for: .touchDown)
-//    }
-    
     
 
     /* MARK: - Ciclo de Vida */
+    
     
     override internal func layoutSubviews() {
         super.layoutSubviews()
@@ -67,8 +56,7 @@ class FoodView: MainView {
     
     
     /* MARK: - Configurações */
-
-    /* Collection */
+    
     
     /// Registra as células nas collections/table
     private func registerCells() {
@@ -81,8 +69,6 @@ class FoodView: MainView {
          self.foodCollection.collectionViewLayout = self.collectionFlow
     }
 
-
-    /* Geral */
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
@@ -99,9 +85,7 @@ class FoodView: MainView {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {		
-        /* Labels */
         self.setTitleText(with: "Hora da sua\ncolheita")
-        /* Botões */
     }
 	  
     

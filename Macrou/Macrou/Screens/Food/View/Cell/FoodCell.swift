@@ -7,18 +7,16 @@ class FoodCell: UICollectionViewCell {
     
     /* MARK: - Atributos */
     
-        /// Identificador da célula
+    /// Identificador da célula
     static let identifier = "FoodCellIdentifier"
     private let foodLabel: UILabel = CustomViews.newLabel()
     private let foodImage: UIImageView = CustomViews.newImage()
-    
-    // Views
-   
     
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
     
       
+    
     /* MARK: - Construtor */
     
     override init(frame: CGRect) {
@@ -27,11 +25,8 @@ class FoodCell: UICollectionViewCell {
         self.setupViews()
     }
     
+    
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
-    
-    
-    
-    /* MARK: - Encapsulamento */
 
     
     
@@ -51,42 +46,24 @@ class FoodCell: UICollectionViewCell {
     
     /* MARK: - Configurações */
     
+    
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.contentView.addSubview(foodImage)
         self.contentView.addSubview(foodLabel)
-        /*
-         
-                    Aqui vão adicionar os elementos na tela (.addSubViews())
-                */
     }
     
     
     /// Personalização da UI
     private func setupUI() {
-//        self.backgroundColor = .yellow
         foodImage.layer.cornerRadius = 20
-        /*
-                    Aqui vão definidos as bordas, cor de fundo da view
-                */
-                
-                // Define o tamanho que a célula vai ter
-                // self.collectionFlow.itemSize = CGSize(width: 100, height: 100)
     }
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        /*
-                    Aqui vão ser configurados os textos estáticos, ícones dos botões
-                    tamanho das fontes, peso das fontes.. (para botões e labels ou até
-                    mesmo para putrp elemento caso tenha)
-                */
-                
-                /* Labels */
         self.foodLabel.setupText(with: FontInfo(text: "Alimento", fontSize: 15, weight: .regular))
 
-                /* Botões */
     }
       
     
@@ -103,9 +80,6 @@ class FoodCell: UICollectionViewCell {
             self.foodLabel.topAnchor.constraint(equalTo: foodImage.bottomAnchor, constant: 2),
             self.foodLabel.heightAnchor.constraint(equalToConstant: 20),
             self.foodLabel.centerXAnchor.constraint(equalTo: foodImage.centerXAnchor),
-//            self.foodLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-//            self.foodLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            //self.foodLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

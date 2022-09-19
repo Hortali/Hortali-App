@@ -5,32 +5,14 @@ import UIKit
 
 class FoodCollectionDataSource: NSObject, UICollectionViewDataSource {
     
-    /* MARK: - Atributos */
-    private weak var foodprotocol: FoodProtocol?
-    // private weak var protocol: ?
-        
-        
-
     /* MARK: - Construtor */
+    
     
     override init() {
         super.init()
-          
-    }
-
-    
-    
-    /* MARK: - Encapsulamento */
-    
-    // public func setProtocol(with protocol: ) {
-    //    self.protocol = protocol
-    // }
-    internal func setProtocol(with protocolo: FoodProtocol) -> Void {
-        self.foodprotocol = protocolo
+        
     }
     
-    
-    /* MARK: - Data Sources */
     
     /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -40,14 +22,10 @@ class FoodCollectionDataSource: NSObject, UICollectionViewDataSource {
     
     /// Configura uma célula
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         // Cria uma variácel para mexer com uma célula que foi criada
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodCell.identifier, for: indexPath) as? FoodCell else {
             return UICollectionViewCell()
         }
-        
-        //let row = indexPath.row
-        
         
         return cell
     }
