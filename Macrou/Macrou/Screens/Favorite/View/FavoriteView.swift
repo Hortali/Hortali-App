@@ -22,8 +22,8 @@ class FavoriteView: MainView {
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
-		
-		
+    
+    
     /// Configurações do layout da collection de Alimentos
     private let foodCollectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
@@ -36,12 +36,12 @@ class FavoriteView: MainView {
     private let gardenCollectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
-             
+        
         return cvFlow
     }()
-
-
-
+    
+    
+    
     /* MARK: - Construtor */
     
     override init() {
@@ -59,17 +59,21 @@ class FavoriteView: MainView {
     /* MARK: - Encapsulamento */
     /// Encapsulamento que define o dataSource da Collection
     /// - Parameter dataSource: Encapsulamento do dataSource costumizado da Collection
-    public func setDataSource(with dataSource: GardenDataSource) {
+    public func setFoodDataSource(with dataSource: FoodCollectionDataSource) {
+        self.foodGroup.collection.dataSource = dataSource
+    }
+    
+    public func setGardenDataSource(with dataSource: GardenDataSource) {
         self.gardenGroup.collection.dataSource = dataSource
     }
     
     
-
+    
     /* MARK: - Ciclo de Vida */
     
     override func layoutSubviews() {
         super.layoutSubviews()
-	      
+        
         self.setupUI()
         self.setupStaticTexts()
         self.setupDynamicConstraints()
@@ -78,17 +82,17 @@ class FavoriteView: MainView {
     
     
     /* MARK: - Configurações */
-
+    
     /// Registra as células nas collections/table
     private func registerCells() {
+        self.foodGroup.collection.register(FoodCell.self, forCellWithReuseIdentifier: FoodCell.identifier)
         self.gardenGroup.collection.register(GardenCell.self, forCellWithReuseIdentifier: GardenCell.identifier)
-//        self.foodGroup.collection.register(, forCellWithReuseIdentifier: <#T##String#>)
     }
     
     /// Define o layout da collection
     private func setupCollectionFlow() {
-        self.gardenGroup.collection.collectionViewLayout = self.gardenCollectionFlow
         self.foodGroup.collection.collectionViewLayout = self.foodCollectionFlow
+        self.gardenGroup.collection.collectionViewLayout = self.gardenCollectionFlow
     }
     
     /// Adiciona os elementos (Views) na tela
@@ -102,9 +106,8 @@ class FavoriteView: MainView {
     private func setupUI() {
         self.backgroundColor = UIColor(.favoriteBack)
         
-        let screenReferenceSize: SizeInfo = SizeInfo(screenSize: CGSize(width: 240,
-                                                                        height: 400),
-                                                     dimension: .height)
+        let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
+        let cellReferenceSize = SizeInfo(screenSize: CGSize(width: 150, height: 150), dimension: .height)
         
         if self.gardenGroup.collection.bounds.width != 0 {
             self.gardenCollectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
@@ -117,9 +120,10 @@ class FavoriteView: MainView {
         if self.foodGroup.collection.bounds.width != 0 {
             self.foodCollectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
             self.foodCollectionFlow.itemSize = CGSize(
-                width: self.foodGroup.collection.getEquivalent(240, screenReference: screenReferenceSize),
-                height: self.foodGroup.collection.bounds.height
-            )
+                width: self.foodGroup.collection.getEquivalent(170, screenReference: cellReferenceSize),
+                height: self.foodGroup.collection.getEquivalent(170, screenReference: cellReferenceSize))
+        
+            
         }
     }
     
@@ -139,13 +143,13 @@ class FavoriteView: MainView {
             text: "Hortas", fontSize: subTitleSize, weight: .regular)
         )
     }
-	  
+    
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
         let lateral: CGFloat = self.getEquivalent(15)
         let between: CGFloat = self.getEquivalent(28)
-       
+        
         let foodGpHeight = self.getEquivalent(187)   // 150+12+25
         
         
