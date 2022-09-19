@@ -9,7 +9,11 @@ class FoodCell: UICollectionViewCell {
     
     /// Identificador da célula
     static let identifier = "FoodCellIdentifier"
+    
+    /// Nome célula de cada alimento
     private let foodLabel: UILabel = CustomViews.newLabel()
+    
+    /// ImageView da célula de cada alimento
     private let foodImage: UIImageView = CustomViews.newImage()
     
     /// Constraints que vão mudar de acordo com o tamanho da tela
@@ -63,7 +67,6 @@ class FoodCell: UICollectionViewCell {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
         self.foodLabel.setupText(with: FontInfo(text: "Alimento", fontSize: 15, weight: .regular))
-
     }
       
     
@@ -76,6 +79,7 @@ class FoodCell: UICollectionViewCell {
             self.foodImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             self.foodImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             self.foodImage.heightAnchor.constraint(equalToConstant: 170),
+            
             
             self.foodLabel.topAnchor.constraint(equalTo: foodImage.bottomAnchor, constant: 2),
             self.foodLabel.heightAnchor.constraint(equalToConstant: 20),

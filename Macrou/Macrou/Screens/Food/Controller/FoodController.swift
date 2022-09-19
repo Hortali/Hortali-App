@@ -13,9 +13,11 @@ class FoodController: UIViewController {
     /// View principal que a classe vai controlar
     private let myView = FoodView()
     
-    
     /* Delegate & Data Sources */
+    /// Instancia da classe Data Source
     let foodCollectionDataSource = FoodCollectionDataSource()
+    
+    /// Instancia da classe Delegate
     let foodCollectionDelegate = FoodCollectionDelegate()
 
 		
@@ -56,7 +58,6 @@ class FoodController: UIViewController {
     
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-        self.myView.foodCollection.dataSource = foodCollectionDataSource
-        self.myView.foodCollection.delegate = foodCollectionDelegate
+        self.myView.setDataSource(with: self.foodCollectionDataSource)
     }
 }

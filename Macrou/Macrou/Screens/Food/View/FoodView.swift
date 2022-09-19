@@ -8,8 +8,11 @@ import UIKit
 class FoodView: MainView {
     
     /* MARK: - Atributos */
-
+    
+    /// Controle das views segmentadas para os diferentes tipos de alimentos
     internal let foodSegmented: UISegmentedControl = CustomViews.newSegmentation(with: ["Frutas", "Legumes", "Vegetais", "Ervas"])
+    
+    /// CollectionView principal da tela de alimentos
     internal let foodCollection: UICollectionView = CustomViews.newCollectionView()
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
@@ -41,6 +44,15 @@ class FoodView: MainView {
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
 
     
+    
+    /* MARK: - Encapsulamento */
+    
+    /// Encapsulamento que define o dataSource da Collection
+    /// - Parameter dataSource: Encapsulamento do dataSource costumizado da Collection
+    public func setDataSource(with dataSource: FoodCollectionDataSource) {
+        self.foodCollection.dataSource = dataSource
+    }
+    
 
     /* MARK: - Ciclo de Vida */
     
@@ -60,7 +72,7 @@ class FoodView: MainView {
     
     /// Registra as células nas collections/table
     private func registerCells() {
-        foodCollection.register(FoodCell.self, forCellWithReuseIdentifier: FoodCell.identifier)
+        self.foodCollection.register(FoodCell.self, forCellWithReuseIdentifier: FoodCell.identifier)
     }
 
 
@@ -97,15 +109,16 @@ class FoodView: MainView {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
-            self.foodSegmented.topAnchor.constraint(equalTo: contentView.topAnchor, constant: lateral),
-            self.foodSegmented.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            self.foodSegmented.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -lateral),
-            self.foodSegmented.heightAnchor.constraint(equalToConstant: 30),
+            self.foodSegmented.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: lateral),
+            self.foodSegmented.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.foodSegmented.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
+            self.foodSegmented.heightAnchor.constraint(equalToConstant: lateral * 2),
             
-            self.foodCollection.topAnchor.constraint(equalTo: foodSegmented.bottomAnchor, constant: between),
-            self.foodCollection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            self.foodCollection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -lateral),
-            self.foodCollection.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            
+            self.foodCollection.topAnchor.constraint(equalTo: self.foodSegmented.bottomAnchor, constant: between),
+            self.foodCollection.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.foodCollection.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
+            self.foodCollection.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

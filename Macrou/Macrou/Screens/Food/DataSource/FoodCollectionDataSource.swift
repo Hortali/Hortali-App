@@ -5,15 +5,6 @@ import UIKit
 
 class FoodCollectionDataSource: NSObject, UICollectionViewDataSource {
     
-    /* MARK: - Construtor */
-    
-    
-    override init() {
-        super.init()
-        
-    }
-    
-    
     /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 30
