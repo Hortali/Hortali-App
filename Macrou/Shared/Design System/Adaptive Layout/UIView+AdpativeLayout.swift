@@ -44,7 +44,7 @@ extension UIView: AdaptiveLayout {
         let proportionValue: CGFloat = self.getScreenDimension(for: proportion)
         
         // self.bounds.height * 0.1
-        return proportionValue * space/(screenValue)
+        return proportionValue * space / (screenValue)
     }
     
     
