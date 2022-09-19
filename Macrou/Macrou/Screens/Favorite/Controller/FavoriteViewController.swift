@@ -16,6 +16,7 @@ class FavoriteViewController: UIViewController {
     
     
     /* Delegate & Data Sources */
+    private let gardenDataSource = GardenDataSource()
 
 
 		
@@ -53,6 +54,6 @@ class FavoriteViewController: UIViewController {
     
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-    
+        self.myView.setDataSource(with: gardenDataSource)
     }
 }
