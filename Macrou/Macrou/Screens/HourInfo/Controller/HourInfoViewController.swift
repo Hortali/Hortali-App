@@ -36,22 +36,11 @@ class HourInfoViewController: UIViewController {
 
 
     /* MARK: - Protocolo */
-    /*
-        Implementação das funções do protocolo que a controller está herdando.
-
-        AVISO: Apague esse campo de comentário.
-    */
     
     
 
     /* MARK: - Ações de botões */
-    /*
-        Implementação das funções de ações dos botões. Todas as funções que estão
-        nessa área do mark devem ter o @objc apenas.
 
-        AVISO: Apague esse campo de comentário.
-    */
-    
     
     
     /* MARK: - Configurações */

@@ -78,7 +78,6 @@ class HourInfoCell: UICollectionViewCell {
         self.contentView.addSubview(dayLabel)
         self.contentView.addSubview(statusLabel)
         self.contentView.addSubview(hourLabel)
-        
     }
     
     
