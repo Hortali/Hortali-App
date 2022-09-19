@@ -49,6 +49,10 @@
 		2229386128C9D59700515095 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386028C9D59700515095 /* ScreenSize.swift */; };
 		2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386228C9D5CE00515095 /* AdaptiveLayout.swift */; };
 		2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */; };
+		B2C6367B28D8E10500682FF7 /* HourInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C6367A28D8E10500682FF7 /* HourInfoViewController.swift */; };
+		B2C6367D28D8E16400682FF7 /* HourInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C6367C28D8E16400682FF7 /* HourInfoView.swift */; };
+		B2C6368028D8E7DA00682FF7 /* HourInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C6367F28D8E7DA00682FF7 /* HourInfoCell.swift */; };
+		B2C6368328D8EB2D00682FF7 /* HourInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C6368228D8EB2D00682FF7 /* HourInfoDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +100,10 @@
 		2229386028C9D59700515095 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		2229386228C9D5CE00515095 /* AdaptiveLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveLayout.swift; sourceTree = "<group>"; };
 		2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+setupIconsColor.swift"; sourceTree = "<group>"; };
+		B2C6367A28D8E10500682FF7 /* HourInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoViewController.swift; sourceTree = "<group>"; };
+		B2C6367C28D8E16400682FF7 /* HourInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoView.swift; sourceTree = "<group>"; };
+		B2C6367F28D8E7DA00682FF7 /* HourInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoCell.swift; sourceTree = "<group>"; };
+		B2C6368228D8EB2D00682FF7 /* HourInfoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +208,7 @@
 		222937D928C66B9200515095 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				B2C6367728D8E0C700682FF7 /* HourInfo */,
 				2229381E28C7C3DD00515095 /* Main */,
 				2229383B28C8922000515095 /* Garden */,
 				2229384428C892E900515095 /* Food */,
@@ -479,6 +488,49 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		B2C6367728D8E0C700682FF7 /* HourInfo */ = {
+			isa = PBXGroup;
+			children = (
+				B2C6368128D8EB1700682FF7 /* DataSource */,
+				B2C6367928D8E0E500682FF7 /* Controller */,
+				B2C6367828D8E0DE00682FF7 /* View */,
+			);
+			path = HourInfo;
+			sourceTree = "<group>";
+		};
+		B2C6367828D8E0DE00682FF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B2C6367E28D8E7CE00682FF7 /* Cell */,
+				B2C6367C28D8E16400682FF7 /* HourInfoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B2C6367928D8E0E500682FF7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B2C6367A28D8E10500682FF7 /* HourInfoViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B2C6367E28D8E7CE00682FF7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B2C6367F28D8E7DA00682FF7 /* HourInfoCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		B2C6368128D8EB1700682FF7 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				B2C6368228D8EB2D00682FF7 /* HourInfoDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -584,6 +636,7 @@
 				2229382028C7C3FC00515095 /* MainController.swift in Sources */,
 				222937E528C6779500515095 /* UIColors+AppColors.swift in Sources */,
 				2229382E28C87BE300515095 /* OrginalColor.swift in Sources */,
+				B2C6368028D8E7DA00682FF7 /* HourInfoCell.swift in Sources */,
 				222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */,
 				222937F928C68B9B00515095 /* CollectionGroup.swift in Sources */,
 				222937C028C66B5600515095 /* SceneDelegate.swift in Sources */,
@@ -597,6 +650,7 @@
 				2229384128C8927500515095 /* GardenController.swift in Sources */,
 				222937F128C6837500515095 /* UIButton+IconInfo.swift in Sources */,
 				2229382928C85EF700515095 /* UITextField+setupPlaceHolder.swift in Sources */,
+				B2C6368328D8EB2D00682FF7 /* HourInfoDataSource.swift in Sources */,
 				2229385928C9D1DF00515095 /* Screens.swift in Sources */,
 				2229382228C7C5DE00515095 /* UIImage+AppIcons.swift in Sources */,
 				222937E328C66F7F00515095 /* AppColors.swift in Sources */,
@@ -605,8 +659,10 @@
 				2229384828C8931B00515095 /* FoodController.swift in Sources */,
 				222937E128C66F7300515095 /* AppIcons.swift in Sources */,
 				2229385528C9335C00515095 /* UIView+AdpativeLayout.swift in Sources */,
+				B2C6367B28D8E10500682FF7 /* HourInfoViewController.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
 				2229384F28C8964200515095 /* MainView.swift in Sources */,
+				B2C6367D28D8E16400682FF7 /* HourInfoView.swift in Sources */,
 				2229380128C68EF500515095 /* FavoriteView.swift in Sources */,
 				2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */,
 				222937F328C6844E00515095 /* CustomViews.swift in Sources */,
@@ -748,7 +804,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UZ6JTAUWH8;
+				DEVELOPMENT_TEAM = QMPGVXKJVA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macrou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -776,7 +832,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = UZ6JTAUWH8;
+				DEVELOPMENT_TEAM = QMPGVXKJVA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macrou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

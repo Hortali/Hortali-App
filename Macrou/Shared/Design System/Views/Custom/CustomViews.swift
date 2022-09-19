@@ -1,8 +1,8 @@
 /* Macro - Grupo 05 */
 
 /* Bibliotecas necessárias: */
-import UIKit
 import MapKit
+import UIKit
 
 
 /// Componentes de UI já padronizados de acordo com o projeto.
@@ -13,7 +13,6 @@ struct CustomViews {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.layer.masksToBounds = true
-        
         lbl.backgroundColor = UIColor(.viewBack)
         lbl.textColor = UIColor(.subTitle)
         
@@ -37,7 +36,6 @@ struct CustomViews {
         let col = UICollectionView(frame: .zero, collectionViewLayout: layout)
         col.translatesAutoresizingMaskIntoConstraints = false
         col.backgroundColor = UIColor(.viewBack)
-        
         return col
     }
     
