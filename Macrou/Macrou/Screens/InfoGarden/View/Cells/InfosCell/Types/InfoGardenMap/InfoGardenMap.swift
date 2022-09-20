@@ -72,23 +72,25 @@ class InfoGardenMap: UIView {
     
     /// Personalização da UI
     private func setupUI() {
-        self.addressLabel.layer.cornerRadius = 10
+        self.addressLabel.layer.cornerRadius = self.getConstant(for: 10)
     }
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {		
         self.addressLabel.setupText(with: FontInfo(
-            fontSize: 20, weight: .regular
+            fontSize: self.getConstant(for: 20), weight: .regular
         ))
     }
 	  
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() { 
-        let lateral: CGFloat = 10
-
-       
+        let lateral: CGFloat = self.getConstant(for: 10)
+        
+        let labelHeight: CGFloat = self.getConstant(for: 35)
+        
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
@@ -98,7 +100,7 @@ class InfoGardenMap: UIView {
             self.mapView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             
-            self.addressLabel.heightAnchor.constraint(equalToConstant: 35),
+            self.addressLabel.heightAnchor.constraint(equalToConstant: labelHeight),
             self.addressLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
             self.addressLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
             self.addressLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -lateral),
@@ -107,6 +109,15 @@ class InfoGardenMap: UIView {
         NSLayoutConstraint.activate(self.dynamicConstraints)
     }
     
+    
+    private func getConstant(for space: CGFloat) -> CGFloat{
+        let screenReference = SizeInfo(
+            screenSize: CGSize(width: 350, height: 160),
+            dimension: .width
+        )
+        
+        return self.getEquivalent(space, screenReference: screenReference)
+    }
     
     private func DADOS_TESTE() {
         self.addressLabel.text = "R: Pacaratu, 66 - Parque Imperial, SP"

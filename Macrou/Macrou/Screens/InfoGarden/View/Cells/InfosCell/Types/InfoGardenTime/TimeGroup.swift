@@ -69,7 +69,7 @@ class TimeGroup: UIView {
 
     
     public func setupInfos(for infos: String) {
-        
+        self.weekLabel.text = infos
     }
     
     
@@ -84,7 +84,7 @@ class TimeGroup: UIView {
 
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()
@@ -108,32 +108,35 @@ class TimeGroup: UIView {
     
     /// Personalização da UI
     private func setupUI() {
-        self.barView.layer.cornerRadius = self.barView.bounds.width/2
+        self.barView.layer.cornerRadius = self.barView.bounds.width / 2
     }
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
+        let bigFontSize: CGFloat = self.getConstant(for: 15)
+        
         self.closeLabel.setupText(with: FontInfo(
-            text: "Fechado", fontSize: 15, weight: .medium
+            text: "Fechado", fontSize: bigFontSize, weight: .medium
         ))
         
         self.weekLabel.setupText(with: FontInfo(
-            fontSize: 15, weight: .medium
+            fontSize: bigFontSize, weight: .medium
         ))
         
         self.hourLabel.setupText(with: FontInfo(
-            fontSize: 12, weight: .medium
+            fontSize: self.getConstant(for: 12), weight: .medium
         ))
     }
 	  
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let between: CGFloat = 4
+        let between: CGFloat = self.getConstant(for: 4)
        
-        let weekLabelHeight: CGFloat = 20
+        let weekLabelHeight: CGFloat = self.getConstant(for: 20)
         
+        let barLine: CGFloat = self.getConstant(for: 2)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
@@ -141,7 +144,7 @@ class TimeGroup: UIView {
             self.barView.topAnchor.constraint(equalTo: self.topAnchor),
             self.barView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.barView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.barView.widthAnchor.constraint(equalToConstant: 2),
+            self.barView.widthAnchor.constraint(equalToConstant: barLine),
             
             
             self.closeLabel.leftAnchor.constraint(equalTo: self.weekLabel.leftAnchor),
@@ -166,6 +169,15 @@ class TimeGroup: UIView {
     }
     
     
+    
+    private func getConstant(for space: CGFloat) -> CGFloat{
+        let screenReference = SizeInfo(
+            screenSize: CGSize(width: 120, height: 35),
+            dimension: .width
+        )
+        
+        return self.getEquivalent(space, screenReference: screenReference)
+    }
     
     private func DADOS_TESTE() {
         self.weekLabel.text = "Segunda Feira"

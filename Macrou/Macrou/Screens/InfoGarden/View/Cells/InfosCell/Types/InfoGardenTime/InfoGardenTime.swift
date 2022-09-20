@@ -32,7 +32,7 @@ class InfoGardenTime: UIView {
     }()
     
     
-    private let daysAfterStack: UIStackView = CustomViews.newStackView()
+    private let daysAfterStack: CustomStack = CustomViews.newStackView()
     
     
     private let daysAfter: [TimeGroup] = [TimeGroup(), TimeGroup(), TimeGroup()]
@@ -67,7 +67,7 @@ class InfoGardenTime: UIView {
 
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()
@@ -101,44 +101,48 @@ class InfoGardenTime: UIView {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {		
         self.todayLabel.setupText(with: FontInfo(
-            text: "Hoje", fontSize: 25, weight: .medium
+            text: "Hoje", fontSize: self.getConstant(for: 25), weight: .medium
         ))
         
         
         self.todayWeekLabel.setupText(with: FontInfo(
-            fontSize: 20, weight: .regular
+            fontSize: self.getConstant(for: 20), weight: .regular
         ))
     }
     
     
     /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() { 
-        let lateral: CGFloat = 15
+    private func setupDynamicConstraints() {
+        // Espçamentos
+        let lateral: CGFloat = self.getConstant(for: 15)
         
-        let timeGroupHeight: CGFloat = 35
+        let timeGroupHeight: CGFloat = self.getConstant(for: 35)
+        let todayWeekHeight: CGFloat = self.getConstant(for: 25)
+        let todayLabelHeight: CGFloat = self.getConstant(for: 30)
         
-        let spaceToDivide: CGFloat = CGFloat(35 * self.daysAfter.count) - self.bounds.height
-        let spaceStack: CGFloat = spaceToDivide / CGFloat(self.daysAfter.count + 1)
-       
+        let widthStack: CGFloat = self.getConstant(for: 120)
+        let spaceStack = self.daysAfterStack.getEqualSpace(for: timeGroupHeight)
+        
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
             self.todayWeekLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
             self.todayWeekLabel.trailingAnchor.constraint(equalTo: self.centerXAnchor),
             self.todayWeekLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            self.todayWeekLabel.heightAnchor.constraint(equalToConstant: 25),
+            self.todayWeekLabel.heightAnchor.constraint(equalToConstant: todayWeekHeight),
             
             
             self.todayLabel.bottomAnchor.constraint(equalTo: self.todayWeekLabel.topAnchor),
             self.todayLabel.leadingAnchor.constraint(equalTo: self.todayWeekLabel.leadingAnchor),
             self.todayLabel.trailingAnchor.constraint(equalTo: self.todayWeekLabel.trailingAnchor),
-            self.todayLabel.heightAnchor.constraint(equalToConstant: 30),
+            self.todayLabel.heightAnchor.constraint(equalToConstant: todayLabelHeight),
             
             
             self.todayTimeGroup.topAnchor.constraint(equalTo: self.todayWeekLabel.bottomAnchor),
             self.todayTimeGroup.leadingAnchor.constraint(equalTo: self.todayWeekLabel.leadingAnchor),
-            self.todayTimeGroup.trailingAnchor.constraint(equalTo: self.todayWeekLabel.trailingAnchor),
             self.todayTimeGroup.heightAnchor.constraint(equalToConstant: timeGroupHeight),
+            self.todayTimeGroup.widthAnchor.constraint(equalToConstant: widthStack),
             
             
             // Stack
@@ -146,18 +150,11 @@ class InfoGardenTime: UIView {
             self.daysAfterStack.topAnchor.constraint(equalTo: self.topAnchor, constant: -spaceStack),
             self.daysAfterStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: spaceStack),
             self.daysAfterStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.daysAfterStack.widthAnchor.constraint(equalToConstant: 120),
+            self.daysAfterStack.widthAnchor.constraint(equalToConstant: widthStack),
             
             
-            self.daysAfter[0].widthAnchor.constraint(equalTo: self.daysAfterStack.widthAnchor),
             self.daysAfter[0].heightAnchor.constraint(equalToConstant: timeGroupHeight),
-            
-            
-            self.daysAfter[1].widthAnchor.constraint(equalTo: self.daysAfterStack.widthAnchor),
             self.daysAfter[1].heightAnchor.constraint(equalToConstant: timeGroupHeight),
-            
-            
-            self.daysAfter[2].widthAnchor.constraint(equalTo: self.daysAfterStack.widthAnchor),
             self.daysAfter[2].heightAnchor.constraint(equalToConstant: timeGroupHeight),
         ]
         
@@ -165,7 +162,20 @@ class InfoGardenTime: UIView {
     }
     
     
+    private func getConstant(for space: CGFloat) -> CGFloat{
+        let screenReference = SizeInfo(
+            screenSize: CGSize(width: 350, height: 160),
+            dimension: .width
+        )
+        
+        return self.getEquivalent(space, screenReference: screenReference)
+    }
+    
+    
+    
     private func DADOS_TESTE() {
         self.todayWeekLabel.text = "Sexta - Feira"
+        
+        self.todayTimeGroup.setupInfos(for: "Aberto")
     }
 }

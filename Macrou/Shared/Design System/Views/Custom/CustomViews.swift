@@ -137,8 +137,8 @@ struct CustomViews {
     /// Valores padronizados:
     /// - Direção: vertical
     /// - Distribuição e alinhamento: centralizado
-    static func newStackView() -> UIStackView {
-        let stack = UIStackView()
+    static func newStackView() -> CustomStack {
+        let stack = CustomStack()
         stack.translatesAutoresizingMaskIntoConstraints = false
         
         stack.axis = .vertical

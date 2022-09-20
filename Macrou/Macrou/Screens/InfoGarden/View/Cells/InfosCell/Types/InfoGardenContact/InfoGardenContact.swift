@@ -11,9 +11,9 @@ class InfoGardenContact: UIView {
 
     // Views
     
-    private let contactOne = ContactGroup()
+    private let contactStack: CustomStack = CustomViews.newStackView()
     
-    private let contactTwo = ContactGroup()
+    private let contactViews: [ContactGroup] = [ContactGroup(), ContactGroup()]
     
     
     // Outros
@@ -44,12 +44,12 @@ class InfoGardenContact: UIView {
     /// - Parameter infos: contatos disponiveis
     public func setupContactInfos(with infos: [ContactInfo]) {
         if infos.count == 1 {
-            self.contactTwo.isHidden = true
-            self.contactOne.setupContactInfo(with: infos[0])
+            self.contactViews[1].isHidden = true
+            self.contactViews[0].setupContactInfo(with: infos[0])
         } else {
-            self.contactTwo.isHidden = false
-            self.contactOne.setupContactInfo(with: infos[0])
-            self.contactTwo.setupContactInfo(with: infos[1])
+            self.contactViews[1].isHidden = false
+            self.contactViews[0].setupContactInfo(with: infos[0])
+            self.contactViews[1].setupContactInfo(with: infos[1])
         }
     }
     
@@ -69,8 +69,10 @@ class InfoGardenContact: UIView {
 
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-        self.addSubview(self.contactOne)
-        self.addSubview(self.contactTwo)
+        self.addSubview(self.contactStack)
+        
+        self.contactStack.addArrangedSubview(self.contactViews[0])
+        self.contactStack.addArrangedSubview(self.contactViews[1])
     }
     
     
@@ -81,29 +83,41 @@ class InfoGardenContact: UIView {
    
     
     /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() { 
-        let lateral: CGFloat = 15 // self.getEquivalent(15)
-        let between: CGFloat = 10 // self.getEquivalent(10)
+    private func setupDynamicConstraints() {
+        let lateral: CGFloat = self.getConstant(for: 15)
         
-        let groupHeight: CGFloat = 50
+        let groupHeight: CGFloat = self.getConstant(for: 50)
+        
+        let spaceStack = self.contactStack.getEqualSpace(for: groupHeight)
        
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
-            self.contactOne.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
-            self.contactOne.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
-            self.contactOne.bottomAnchor.constraint(equalTo: self.centerYAnchor, constant: -between),
-            self.contactOne.heightAnchor.constraint(equalToConstant: groupHeight),
-
-
-            self.contactTwo.leadingAnchor.constraint(equalTo: self.contactOne.leadingAnchor),
-            self.contactTwo.trailingAnchor.constraint(equalTo: self.contactOne.trailingAnchor),
-            self.contactTwo.topAnchor.constraint(equalTo: self.centerYAnchor, constant: between),
-            self.contactTwo.heightAnchor.constraint(equalToConstant: groupHeight),
+            self.contactStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
+            self.contactStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
+            self.contactStack.topAnchor.constraint(equalTo: self.topAnchor, constant: -spaceStack),
+            self.contactStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: spaceStack),
+    
+    
+            self.contactViews[0].heightAnchor.constraint(equalToConstant: groupHeight),
+            self.contactViews[1].heightAnchor.constraint(equalToConstant: groupHeight),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
     }
+    
+    
+    
+    private func getConstant(for space: CGFloat) -> CGFloat{
+        let screenReference = SizeInfo(
+            screenSize: CGSize(width: 350, height: 160),
+            dimension: .width
+        )
+        
+        return self.getEquivalent(space, screenReference: screenReference)
+    }
+    
     
     
     private func DADOS_TESTE() {

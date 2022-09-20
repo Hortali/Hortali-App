@@ -85,23 +85,23 @@ class InfoGardenInfosCell: UICollectionViewCell {
     
     /// Personalização da UI
     private func setupUI() {
-        self.customContentView.layer.cornerRadius = 15
+        self.customContentView.layer.cornerRadius = self.getConstant(for: 15)
     }
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {		
         self.titleLabel.setupText(with: FontInfo(
-            fontSize: 25, weight: .medium
+            fontSize: self.getConstant(for: 25), weight: .medium
         ))
     }
 	  
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let between: CGFloat = 12
+        let between: CGFloat = self.getConstant(for: 12)
         
-        let labelHeight: CGFloat = 25
+        let labelHeight: CGFloat = self.getConstant(for: 25)
        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
@@ -125,5 +125,15 @@ class InfoGardenInfosCell: UICollectionViewCell {
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
+    }
+    
+    
+    private func getConstant(for space: CGFloat) -> CGFloat{
+        let screenReference = SizeInfo(
+            screenSize: CGSize(width: 350, height: 197),
+            dimension: .width
+        )
+        
+        return self.getEquivalent(space, screenReference: screenReference)
     }
 }

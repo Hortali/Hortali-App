@@ -84,7 +84,7 @@ class ContactGroup: UIView {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        let fontSize: CGFloat = 15 // self.getEquivalent(15)
+        let fontSize: CGFloat = self.getConstant(for: 15)
         
         self.contactLabel.setupText(with: FontInfo(
             fontSize: fontSize, weight: .semibold
@@ -98,9 +98,9 @@ class ContactGroup: UIView {
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() { 
-        let between: CGFloat = 10 // self.getEquivalent(10)
+        let between: CGFloat = self.getConstant(for: 10)
         
-        let labelHeight: CGFloat = 20 //self.getEquivalent(20)
+        let labelHeight: CGFloat = self.getConstant(for: 20)
         let imageHeight: CGFloat = self.bounds.height
        
         
@@ -126,5 +126,15 @@ class ContactGroup: UIView {
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
+    }
+    
+    
+    private func getConstant(for space: CGFloat) -> CGFloat{
+        let screenReference = SizeInfo(
+            screenSize: CGSize(width: 350, height: 160),
+            dimension: .width
+        )
+        
+        return self.getEquivalent(space, screenReference: screenReference)
     }
 }
