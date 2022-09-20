@@ -11,18 +11,29 @@ class FavoriteView: MainView {
     
     // Views
     
-    /// Collection de alimentos
-    private let foodGroup = CollectionGroup()
+    /// Collection de alimentos e esconder scroll
+    private let foodGroup: CollectionGroup = {
+        let group = CollectionGroup()
+        
+        group.collection.showsHorizontalScrollIndicator = false
+        
+        return group
+    }()
     
-    /// Collection das hortas
-    private let gardenGroup = CollectionGroup()
+    /// Collection das hortas e esconder scroll
+    private let gardenGroup: CollectionGroup = {
+        let group = CollectionGroup()
+        
+        group.collection.showsHorizontalScrollIndicator = false
+        
+        return group
+    }()
     
     
     // Outros
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
-    
     
     /// Configurações do layout da collection de Alimentos
     private let foodCollectionFlow: UICollectionViewFlowLayout = {
@@ -89,11 +100,13 @@ class FavoriteView: MainView {
         self.gardenGroup.collection.register(GardenCell.self, forCellWithReuseIdentifier: GardenCell.identifier)
     }
     
+    
     /// Define o layout da collection
     private func setupCollectionFlow() {
         self.foodGroup.collection.collectionViewLayout = self.foodCollectionFlow
         self.gardenGroup.collection.collectionViewLayout = self.gardenCollectionFlow
     }
+    
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
@@ -107,23 +120,22 @@ class FavoriteView: MainView {
         self.backgroundColor = UIColor(.favoriteBack)
         
         let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
-        let cellReferenceSize = SizeInfo(screenSize: CGSize(width: 150, height: 150), dimension: .height)
+        let cellReferenceSize = SizeInfo(screenSize: CGSize(width: 170, height: 192), dimension: .height)
+        let minimumSpace = self.getEquivalent(10)
         
         if self.gardenGroup.collection.bounds.width != 0 {
-            self.gardenCollectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
+            self.gardenCollectionFlow.minimumInteritemSpacing = minimumSpace
             self.gardenCollectionFlow.itemSize = CGSize(
-                width: self.gardenGroup.collection.getEquivalent(240, screenReference: screenReferenceSize),
+                width: self.gardenGroup.collection.getEquivalent(209, sizeProporsion: screenReferenceSize, screenReference: screenReferenceSize),
                 height: self.gardenGroup.collection.bounds.height
             )
         }
         
         if self.foodGroup.collection.bounds.width != 0 {
-            self.foodCollectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
+            self.foodCollectionFlow.minimumInteritemSpacing = minimumSpace
             self.foodCollectionFlow.itemSize = CGSize(
-                width: self.foodGroup.collection.getEquivalent(170, screenReference: cellReferenceSize),
-                height: self.foodGroup.collection.getEquivalent(170, screenReference: cellReferenceSize))
-        
-            
+                width: self.getEquivalent(132, sizeProporsion: cellReferenceSize, screenReference: cellReferenceSize),
+                height: self.foodGroup.collection.bounds.height)
         }
     }
     
@@ -152,18 +164,17 @@ class FavoriteView: MainView {
         
         let foodGpHeight = self.getEquivalent(187)   // 150+12+25
         
-        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
             self.foodGroup.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            self.foodGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
+            self.foodGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.foodGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.foodGroup.heightAnchor.constraint(equalToConstant: foodGpHeight),
             
             
             self.gardenGroup.topAnchor.constraint(equalTo: self.foodGroup.bottomAnchor, constant: between),
-            self.gardenGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
+            self.gardenGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.gardenGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.gardenGroup.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -lateral),
             

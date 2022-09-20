@@ -102,9 +102,6 @@ class GardenCell: UICollectionViewCell {
         self.adressLabel.setupText(with: FontInfo(
             fontSize: subtitleSize,
             weight: .regular))
-        
-        print(titleSize)
-        print(subtitleSize)
     }
     
     

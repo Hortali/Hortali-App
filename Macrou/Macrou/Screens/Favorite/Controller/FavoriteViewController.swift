@@ -55,7 +55,7 @@ class FavoriteViewController: UIViewController {
     
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-        self.myView.setGardenDataSource(with: gardenDataSource)
         self.myView.setFoodDataSource(with: foodDataSource)
+        self.myView.setGardenDataSource(with: gardenDataSource)
     }
 }
