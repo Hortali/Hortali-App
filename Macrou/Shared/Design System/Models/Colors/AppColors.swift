@@ -86,6 +86,13 @@ enum AppColors: OriginalColor {
     case backgroundButton
     
     
+    /* Células */
+    
+    /// Célula CL08 - Status fechado
+    case closeStatus
+    
+    
+    
     
     /* MARK: - Nome dos botões */
     
@@ -128,6 +135,10 @@ enum AppColors: OriginalColor {
         case .favoriteSelected: return .pinkButton
         case .favoriteNotSelected: return .greyButton
         case .backgroundButton: return .greyButton
+            
+        
+        /* Botões */
+        case .closeStatus: return .red
         }
     }
 }
