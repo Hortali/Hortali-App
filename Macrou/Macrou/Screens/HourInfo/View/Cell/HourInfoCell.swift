@@ -18,7 +18,7 @@ class HourInfoCell: UICollectionViewCell {
     private let dayLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.backgroundColor = UIColor(originalColor: .greenLight)?.withAlphaComponent(0.4)
+        lbl.backgroundColor = .clear
         
         return lbl
     }()
@@ -28,7 +28,7 @@ class HourInfoCell: UICollectionViewCell {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
         lbl.backgroundColor = .clear
-        lbl.textColor = UIColor(.closeStatus)
+        lbl.textColor = UIColor(.title)
         return lbl
     }()
     
@@ -37,7 +37,7 @@ class HourInfoCell: UICollectionViewCell {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
         lbl.backgroundColor = .clear
-        lbl.textAlignment = .center
+        lbl.textAlignment = .right
         
         return lbl
     }()
@@ -89,7 +89,7 @@ class HourInfoCell: UICollectionViewCell {
     
     /// Personalização da UI
     private func setupUI() {
-        self.backgroundColor = .cyan
+        self.backgroundColor = UIColor(originalColor: .greenLight)?.withAlphaComponent(0.4)
         self.layer.cornerRadius = 10
     }
     
