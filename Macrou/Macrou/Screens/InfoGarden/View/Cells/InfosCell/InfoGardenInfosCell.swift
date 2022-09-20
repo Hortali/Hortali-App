@@ -21,7 +21,7 @@ class InfoGardenInfosCell: UICollectionViewCell {
         return view
     }()
     
-    /// View que vai estar dentro da contentView
+    /// View com o contetúdo da célula que vai estar dentro da contentView
     private var cellView = UIView()
         
     
@@ -64,7 +64,7 @@ class InfoGardenInfosCell: UICollectionViewCell {
 
     /* MARK: - Ciclo de Vida */
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()
@@ -103,6 +103,7 @@ class InfoGardenInfosCell: UICollectionViewCell {
         
         let labelHeight: CGFloat = self.getConstant(for: 25)
        
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
@@ -128,7 +129,10 @@ class InfoGardenInfosCell: UICollectionViewCell {
     }
     
     
-    private func getConstant(for space: CGFloat) -> CGFloat{
+    /// Responsável por pegar o valor referente à célula
+    /// - Parameter space: valor para ser convertido
+    /// - Returns: valor em relação à tela
+    private func getConstant(for space: CGFloat) -> CGFloat {
         let screenReference = SizeInfo(
             screenSize: CGSize(width: 350, height: 197),
             dimension: .width

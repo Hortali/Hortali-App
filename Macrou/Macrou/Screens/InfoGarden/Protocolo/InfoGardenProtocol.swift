@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// 
+/// Protocolo voltado para a controller da tela de ver informações de uma horta
 protocol InfoGardenProtocol: NSObject {
     
     /// Atualiza o page control

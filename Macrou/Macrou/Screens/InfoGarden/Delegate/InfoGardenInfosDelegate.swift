@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// O que essa classe faz?
+/// Delegate da collection de informações de uma horta da tela de info garden
 class InfoGardenInfosDelegate: NSObject, UICollectionViewDelegate {
     
     

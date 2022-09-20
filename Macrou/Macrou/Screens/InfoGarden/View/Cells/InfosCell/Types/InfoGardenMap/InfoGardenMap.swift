@@ -4,7 +4,7 @@
 import MapKit
 
 
-/// O que essa classe faz?
+/// Conteúdo da célula para mostrar o local
 class InfoGardenMap: UIView {
     
     /* MARK: - Atributos */
@@ -12,11 +12,7 @@ class InfoGardenMap: UIView {
     // Views
     
     /// Mapa
-    private let mapView: MKMapView = {
-        let map = CustomViews.newMap()
-        
-        return map
-    }()
+    private let mapView: MKMapView = CustomViews.newMap()
     
     /// Endereço da rua
     private let addressLabel: UILabel = {
@@ -51,7 +47,7 @@ class InfoGardenMap: UIView {
 
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()
@@ -110,7 +106,10 @@ class InfoGardenMap: UIView {
     }
     
     
-    private func getConstant(for space: CGFloat) -> CGFloat{
+    /// Responsável por pegar o valor referente à célula
+    /// - Parameter space: valor para ser convertido
+    /// - Returns: valor em relação à tela
+    private func getConstant(for space: CGFloat) -> CGFloat {
         let screenReference = SizeInfo(
             screenSize: CGSize(width: 350, height: 160),
             dimension: .width
@@ -118,6 +117,7 @@ class InfoGardenMap: UIView {
         
         return self.getEquivalent(space, screenReference: screenReference)
     }
+    
     
     private func DADOS_TESTE() {
         self.addressLabel.text = "R: Pacaratu, 66 - Parque Imperial, SP"

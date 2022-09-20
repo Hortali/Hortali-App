@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// Cria a área de visualizar os contatos 
+/// Cria a área de visualizar um contato
 class ContactGroup: UIView {
     
     /* MARK: - Atributos */
@@ -14,7 +14,7 @@ class ContactGroup: UIView {
     /// Imagem da rede social
     private let imageView = CustomViews.newImage()
     
-    /// O contato
+    /// O contato em si
     private let contactLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.backgroundColor = UIColor(.contactCellBack)
@@ -52,7 +52,7 @@ class ContactGroup: UIView {
     /* MARK: - Encapsulamento */
     
     /// Configura as informações de contato a partir das informações passadas
-    /// - Parameter contactInfo: conjutno de informações de contato
+    /// - Parameter contactInfo: conjunto de informações de contato
     public func setupContactInfo(with contactInfo: ContactInfo) {
         self.imageView.image = UIImage(contactInfo.icon)
         self.contactLabel.text = contactInfo.contact
@@ -63,7 +63,7 @@ class ContactGroup: UIView {
 
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupStaticTexts()
@@ -129,7 +129,10 @@ class ContactGroup: UIView {
     }
     
     
-    private func getConstant(for space: CGFloat) -> CGFloat{
+    /// Responsável por pegar o valor referente à célula
+    /// - Parameter space: valor para ser convertido
+    /// - Returns: valor em relação à tela
+    private func getConstant(for space: CGFloat) -> CGFloat {
         let screenReference = SizeInfo(
             screenSize: CGSize(width: 350, height: 160),
             dimension: .width

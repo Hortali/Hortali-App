@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// Célula para reportar algo
+/// Conteúdo da célula para reportar algum problema da horta
 class InfoGardenReport: UIView {
     
     /* MARK: - Atributos */
@@ -29,7 +29,7 @@ class InfoGardenReport: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.setupViews()
-        self.setupUI()
+        self.setupInfo()
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -47,20 +47,18 @@ class InfoGardenReport: UIView {
     
     
     /* MARK: - Configurações */
+    
+    /// Configura as informaçòes dessa view
+    private func setupInfo() {
+        self.imageReport.image = UIImage(appImage: .report)
+    }
 
+    
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.addSubview(self.imageReport)
     }
     
-    
-    /// Personalização da UI
-    private func setupUI() {
-        let imageName = "ReportIcon"
-        let image = UIImage(named: imageName)
-        
-        self.imageReport.image = image
-    }
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {

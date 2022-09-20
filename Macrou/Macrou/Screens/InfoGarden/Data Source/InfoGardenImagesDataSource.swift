@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// O que essa classe faz?
+/// Data source da collection de imagens de uma horta da tela de info garden
 class InfoGardenImagesDataSource: NSObject, UICollectionViewDataSource {
         
     /* MARK: - Atributos */
@@ -15,7 +15,9 @@ class InfoGardenImagesDataSource: NSObject, UICollectionViewDataSource {
     
     
     /* MARK: - Encapsulamento */
-        
+    
+    /// Pega a quantidade de células que vão ser mostradas
+    /// - Returns: quantidade de dados
     public func getDataCount() -> Int {
         return self.data.count
     }

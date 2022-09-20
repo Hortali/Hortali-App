@@ -4,15 +4,17 @@
 import UIKit
 
 
-/// O que essa classe faz?
+/// Conteúdo da célula para mostrar os contatos disponíveis
 class InfoGardenContact: UIView {
     
     /* MARK: - Atributos */
 
     // Views
     
+    /// Uma stack vertical para colocar as views de contato
     private let contactStack: CustomStack = CustomViews.newStackView()
     
+    /// Views de contatos
     private let contactViews: [ContactGroup] = [ContactGroup(), ContactGroup()]
     
     
@@ -108,8 +110,10 @@ class InfoGardenContact: UIView {
     }
     
     
-    
-    private func getConstant(for space: CGFloat) -> CGFloat{
+    /// Responsável por pegar o valor referente à célula
+    /// - Parameter space: valor para ser convertido
+    /// - Returns: valor em relação à tela
+    private func getConstant(for space: CGFloat) -> CGFloat {
         let screenReference = SizeInfo(
             screenSize: CGSize(width: 350, height: 160),
             dimension: .width

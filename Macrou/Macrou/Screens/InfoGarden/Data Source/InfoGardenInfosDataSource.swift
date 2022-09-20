@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// Data source da collection da tela de info garden
+/// Data source da collection de informações de uma horta da tela de info garden
 class InfoGardenInfosDataSource: NSObject, UICollectionViewDataSource {
         
     /* MARK: - Data Source */

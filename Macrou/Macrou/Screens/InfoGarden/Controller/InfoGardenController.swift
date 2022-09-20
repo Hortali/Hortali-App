@@ -23,6 +23,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     /// Delegate da collection de informações da horta
     private let infoDelegate = InfoGardenInfosDelegate()
     
+    
     /// Data Source da collection de imagens da horta
     private let imagesDataSource = InfoGardenImagesDataSource()
     
@@ -31,7 +32,6 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     
 
 
-		
     /* MARK: - Ciclo de Vida */
     
     override func loadView() {
@@ -70,18 +70,17 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     
     
     @objc
-    private func showStoreTimePage() {
-        let vc = UIViewController()
-        vc.modalTransitionStyle = .coverVertical
+    private func showHourInfoPage() {
+        let controller = UIViewController()
+        controller.modalTransitionStyle = .coverVertical
         
-        self.present(vc, animated: true)
+        self.present(controller, animated: true)
     }
     
     
     
     /* MARK: - Configurações */
 
-    
     /// Definindo as ações dos botões
     private func setupButtonsAction() {
         self.myView.setBackButtonAction(target: self, action: #selector(self.backAction))

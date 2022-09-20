@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// O que essa classe faz?
+/// Tela com os elementos de UI da tela de ver informações de uma horta
 class InfoGardenView: UIView {
     
     /* MARK: - Atributos */
@@ -36,7 +36,7 @@ class InfoGardenView: UIView {
     /// Label expandível
     private let expansiveLabel = ExpansiveLabel()
     
-    /// Collection de informações sobre a horta
+    /// Collection das informações sobre a horta
     private let infosCollectionGp = CollectionGroup(style: .justCollection)
         
     
@@ -78,8 +78,7 @@ class InfoGardenView: UIView {
     
     /* MARK: - Encapsulamento */
     
-    
-    /// Atualiza a pa'gina no Page Control
+    /// Atualiza a página no Page Control
     /// - Parameter index: index (número) da página
     public func updateCurrentPage(for index: Int) {
         self.imagesPageControl.currentPage = index
@@ -88,13 +87,13 @@ class InfoGardenView: UIView {
 
     /* Ações de botões */
     
-    /// Ação do botão de voltar
+    /// Define a ação do botão de voltar
     public func setBackButtonAction(target: Any?, action: Selector) -> Void {
         self.backButton.addTarget(target, action: action, for: .touchDown)
     }
     
     
-    /// Ação do botão de favorito
+    /// Define a ação do botão de favorito
     public func setFavoriteButtonAction(target: Any?, action: Selector) -> Void {
         self.favoriteButton.addTarget(target, action: action, for: .touchDown)
     }
@@ -102,21 +101,30 @@ class InfoGardenView: UIView {
     
     /* Collection */
     
+    /// Define o data source da collection de informações da horta
+    /// - Parameter dataSource: data source da collection
     public func setInfoDataSource(for dataSource: InfoGardenInfosDataSource) {
         self.infosCollectionGp.collection.dataSource = dataSource
     }
     
     
+    /// Define o delegate da collection de informações da horta
+    /// - Parameter delegate: delegate da collection
     public func setInfoDelegate(for delegate: InfoGardenInfosDelegate) {
         self.infosCollectionGp.collection.delegate = delegate
     }
     
     
+    /// Define o data source da collection das imagens da horta
+    /// - Parameter dataSource: data source da collection
     public func setImagesDataSource(for dataSource: InfoGardenImagesDataSource) {
         self.imagesCollectionGp.collection.dataSource = dataSource
         self.imagesPageControl.numberOfPages = dataSource.getDataCount()
     }
     
+    
+    /// Define o delegate da collection das imagens da horta
+    /// - Parameter delegate: delegate da collection
     public func setImagesDelegate(for delegate: InfoGardenImagesDelegate) {
         self.imagesCollectionGp.collection.delegate = delegate
     }
@@ -125,7 +133,7 @@ class InfoGardenView: UIView {
     
     /* MARK: - Ciclo de Vida */
     
-    override public func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()
@@ -223,11 +231,9 @@ class InfoGardenView: UIView {
         
         let safeAreaGap = self.scrollView.scroll.safeAreaInsets.top
         
-        
         // Altura dos botões
         self.backButton.circleSize = self.getEquivalent(45)
         self.favoriteButton.circleSize = self.getEquivalent(45)
-        
         
         // Altura dos elementos
         let segHeight = self.getEquivalent(510)

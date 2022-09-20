@@ -4,37 +4,38 @@
 import UIKit
 
 
-/// O que essa classe faz?
+/// Conteúdo da célula para mostrar os horários de funcionamento
 class InfoGardenTime: UIView {
     
     /* MARK: - Atributos */
 
     // Views
     
+    /// Mostra o "Hoje"
     private let todayLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.backgroundColor = UIColor(originalColor: .greenLight)
         return lbl
     }()
     
-    
+    /// Mostra o dia da semana que é
     private let todayWeekLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.backgroundColor = UIColor(originalColor: .greenLight)
         return lbl
     }()
     
-    
+    /// Mostra as informações do dia da semana
     private let todayTimeGroup: TimeGroup = {
         let group = TimeGroup()
         group.setTintColor(for: UIColor(.subTitle))
         return group
     }()
     
-    
+    /// Stack para colocar as informações dos próximos dias
     private let daysAfterStack: CustomStack = CustomViews.newStackView()
     
-    
+    /// Grupos de informações dos próximos dias
     private let daysAfter: [TimeGroup] = [TimeGroup(), TimeGroup(), TimeGroup()]
 
     
@@ -59,15 +60,9 @@ class InfoGardenTime: UIView {
     
     
     
-    /* MARK: - Encapsulamento */
-
- 
-    
-    
-
     /* MARK: - Ciclo de Vida */
     
-    override public func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()
@@ -162,7 +157,10 @@ class InfoGardenTime: UIView {
     }
     
     
-    private func getConstant(for space: CGFloat) -> CGFloat{
+    /// Responsável por pegar o valor referente à célula
+    /// - Parameter space: valor para ser convertido
+    /// - Returns: valor em relação à tela
+    private func getConstant(for space: CGFloat) -> CGFloat {
         let screenReference = SizeInfo(
             screenSize: CGSize(width: 350, height: 160),
             dimension: .width
@@ -172,10 +170,8 @@ class InfoGardenTime: UIView {
     }
     
     
-    
     private func DADOS_TESTE() {
         self.todayWeekLabel.text = "Sexta - Feira"
-        
         self.todayTimeGroup.setupInfos(for: "Aberto")
     }
 }

@@ -4,13 +4,14 @@
 import UIKit
 
 
-/// O que essa classe faz?
+/// Cria a área de visualizar uma dia da semana e o horário de funcionamento
 class TimeGroup: UIView {
     
     /* MARK: - Atributos */
 
     // Views
     
+    /// Mostra qual dia da semana
     private let weekLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.backgroundColor = UIColor(originalColor: .greenLight)
@@ -18,7 +19,7 @@ class TimeGroup: UIView {
         return lbl
     }()
     
-    
+    /// Mostra o horário
     private let hourLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.backgroundColor = UIColor(originalColor: .greenLight)
@@ -26,7 +27,7 @@ class TimeGroup: UIView {
         return lbl
     }()
     
-    
+    /// Barra lateral
     private let barView: UIView = {
         let view = CustomViews.newView()
         view.backgroundColor = UIColor(originalColor: .greyDark)
@@ -34,7 +35,7 @@ class TimeGroup: UIView {
         return view
     }()
     
-    
+    /// Mostra quando está fechado
     private let closeLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.backgroundColor = UIColor(originalColor: .greenLight)
@@ -67,12 +68,16 @@ class TimeGroup: UIView {
     
     /* MARK: - Encapsulamento */
 
-    
+    /// Define as informações que vão ser mostradas
+    /// - Parameter infos: texto que vai ser definido
     public func setupInfos(for infos: String) {
         self.weekLabel.text = infos
     }
     
     
+    
+    /// Define a cor que o componente vai ter
+    /// - Parameter color: cor
     public func setTintColor(for color: UIColor?) {
         self.weekLabel.textColor = color
         self.hourLabel.textColor = color
@@ -84,7 +89,7 @@ class TimeGroup: UIView {
 
     /* MARK: - Ciclo de Vida */
     
-    override public func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()
@@ -169,8 +174,10 @@ class TimeGroup: UIView {
     }
     
     
-    
-    private func getConstant(for space: CGFloat) -> CGFloat{
+    /// Responsável por pegar o valor referente à célula
+    /// - Parameter space: valor para ser convertido
+    /// - Returns: valor em relação à tela
+    private func getConstant(for space: CGFloat) -> CGFloat {
         let screenReference = SizeInfo(
             screenSize: CGSize(width: 120, height: 35),
             dimension: .width
@@ -178,6 +185,7 @@ class TimeGroup: UIView {
         
         return self.getEquivalent(space, screenReference: screenReference)
     }
+    
     
     private func DADOS_TESTE() {
         self.weekLabel.text = "Segunda Feira"
