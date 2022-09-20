@@ -130,4 +130,21 @@ struct CustomViews {
         page.backgroundColor = UIColor(.backgroundButton)?.withAlphaComponent(0.95)
         return page
     }
+    
+    
+    /// Cria uma page control de acordo com a padronização do projeto
+    ///
+    /// Valores padronizados:
+    /// - Direção: vertical
+    /// - Distribuição e alinhamento: centralizado
+    static func newStackView() -> UIStackView {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        stack.axis = .vertical
+        
+        stack.distribution = .equalCentering
+        stack.alignment = .center
+        return stack
+    }
  }
