@@ -34,7 +34,7 @@
 		2229382628C852D200515095 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229382528C852D200515095 /* CustomButton.swift */; };
 		2229382928C85EF700515095 /* UITextField+setupPlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229382828C85EF700515095 /* UITextField+setupPlaceHolder.swift */; };
 		2229382C28C87BC400515095 /* AppPureColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229382B28C87BC400515095 /* AppPureColors.swift */; };
-		2229382E28C87BE300515095 /* OrginalColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229382D28C87BE300515095 /* OrginalColor.swift */; };
+		2229382E28C87BE300515095 /* OriginalColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229382D28C87BE300515095 /* OriginalColor.swift */; };
 		2229383A28C8829000515095 /* UIFont+setupFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229383928C8829000515095 /* UIFont+setupFont.swift */; };
 		2229383F28C8924400515095 /* GardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229383E28C8924400515095 /* GardenView.swift */; };
 		2229384128C8927500515095 /* GardenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229384028C8927500515095 /* GardenController.swift */; };
@@ -88,7 +88,7 @@
 		2229382528C852D200515095 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		2229382828C85EF700515095 /* UITextField+setupPlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+setupPlaceHolder.swift"; sourceTree = "<group>"; };
 		2229382B28C87BC400515095 /* AppPureColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPureColors.swift; sourceTree = "<group>"; };
-		2229382D28C87BE300515095 /* OrginalColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrginalColor.swift; sourceTree = "<group>"; };
+		2229382D28C87BE300515095 /* OriginalColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalColor.swift; sourceTree = "<group>"; };
 		2229383928C8829000515095 /* UIFont+setupFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+setupFont.swift"; sourceTree = "<group>"; };
 		2229383E28C8924400515095 /* GardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenView.swift; sourceTree = "<group>"; };
 		2229384028C8927500515095 /* GardenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenController.swift; sourceTree = "<group>"; };
@@ -310,7 +310,7 @@
 		2229382F28C87CFC00515095 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				2229382D28C87BE300515095 /* OrginalColor.swift */,
+				2229382D28C87BE300515095 /* OriginalColor.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -678,7 +678,7 @@
 				B241564E28D27284009F011C /* FoodCollectionDelegate.swift in Sources */,
 				2229382028C7C3FC00515095 /* MainController.swift in Sources */,
 				222937E528C6779500515095 /* UIColors+AppColors.swift in Sources */,
-				2229382E28C87BE300515095 /* OrginalColor.swift in Sources */,
+				2229382E28C87BE300515095 /* OriginalColor.swift in Sources */,
 				222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */,
 				222937F928C68B9B00515095 /* CollectionGroup.swift in Sources */,
 				B241564C28D2722B009F011C /* FoodCollectionDataSource.swift in Sources */,
