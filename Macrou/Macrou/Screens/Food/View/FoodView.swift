@@ -86,12 +86,15 @@ class FoodView: MainView {
     private func setupViews() {
         self.addSubview(foodSegmented)
         self.addSubview(foodCollection)
+        
+
     }
     
     
     /// Personalização da UI
     private func setupUI() {
-         self.collectionFlow.itemSize = CGSize(width: 170, height: 192)
+        self.collectionFlow.itemSize = CGSize(width: self.getEquivalent(170), height: self.getEquivalent(192))
+        self.foodCollection.showsVerticalScrollIndicator = false
     }
     
     

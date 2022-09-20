@@ -72,17 +72,22 @@ class FoodCell: UICollectionViewCell {
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
+        let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 170 , height: 192), dimension: .height)
+        let imageHeight: CGFloat = self.bounds.width
+        let upside: CGFloat = self.getEquivalent(20, sizeProporsion: screenReferenceSize, screenReference: screenReferenceSize)
+        
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
             self.foodImage.topAnchor.constraint(equalTo: contentView.topAnchor),
             self.foodImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             self.foodImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            self.foodImage.heightAnchor.constraint(equalToConstant: 170),
+            self.foodImage.heightAnchor.constraint(equalToConstant: imageHeight),
             
             
-            self.foodLabel.topAnchor.constraint(equalTo: foodImage.bottomAnchor, constant: 2),
-            self.foodLabel.heightAnchor.constraint(equalToConstant: 20),
+            self.foodLabel.topAnchor.constraint(equalTo: foodImage.bottomAnchor, constant: upside / 10),
+            self.foodLabel.heightAnchor.constraint(equalToConstant: upside),
             self.foodLabel.centerXAnchor.constraint(equalTo: foodImage.centerXAnchor),
         ]
         
