@@ -49,6 +49,10 @@
 		2229386128C9D59700515095 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386028C9D59700515095 /* ScreenSize.swift */; };
 		2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386228C9D5CE00515095 /* AdaptiveLayout.swift */; };
 		2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */; };
+		22EDD4B328DA2D4F001CE093 /* HourInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4B228DA2D4F001CE093 /* HourInfoController.swift */; };
+		22EDD4B528DA2DC7001CE093 /* HourInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4B428DA2DC7001CE093 /* HourInfoDataSource.swift */; };
+		22EDD4B728DA2E00001CE093 /* HourInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4B628DA2E00001CE093 /* HourInfoCell.swift */; };
+		22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4B828DA313B001CE093 /* HourInfoView.swift */; };
 		B241564728D26E4C009F011C /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564628D26E4C009F011C /* FoodCell.swift */; };
 		B241564C28D2722B009F011C /* FoodCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564B28D2722B009F011C /* FoodCollectionDataSource.swift */; };
 		B241564E28D27284009F011C /* FoodCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564D28D27284009F011C /* FoodCollectionDelegate.swift */; };
@@ -99,6 +103,10 @@
 		2229386028C9D59700515095 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		2229386228C9D5CE00515095 /* AdaptiveLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveLayout.swift; sourceTree = "<group>"; };
 		2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+setupIconsColor.swift"; sourceTree = "<group>"; };
+		22EDD4B228DA2D4F001CE093 /* HourInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoController.swift; sourceTree = "<group>"; };
+		22EDD4B428DA2DC7001CE093 /* HourInfoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoDataSource.swift; sourceTree = "<group>"; };
+		22EDD4B628DA2E00001CE093 /* HourInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoCell.swift; sourceTree = "<group>"; };
+		22EDD4B828DA313B001CE093 /* HourInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoView.swift; sourceTree = "<group>"; };
 		B241564628D26E4C009F011C /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		B241564B28D2722B009F011C /* FoodCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionDataSource.swift; sourceTree = "<group>"; };
 		B241564D28D27284009F011C /* FoodCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +214,7 @@
 		222937D928C66B9200515095 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				22EDD4AC28DA2D08001CE093 /* HourInfo */,
 				2229381E28C7C3DD00515095 /* Main */,
 				2229383B28C8922000515095 /* Garden */,
 				2229384428C892E900515095 /* Food */,
@@ -489,6 +498,49 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		22EDD4AC28DA2D08001CE093 /* HourInfo */ = {
+			isa = PBXGroup;
+			children = (
+				22EDD4B028DA2D30001CE093 /* View */,
+				22EDD4AE28DA2D1E001CE093 /* Data Source */,
+				22EDD4AF28DA2D28001CE093 /* Controller */,
+			);
+			path = HourInfo;
+			sourceTree = "<group>";
+		};
+		22EDD4AE28DA2D1E001CE093 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				22EDD4B428DA2DC7001CE093 /* HourInfoDataSource.swift */,
+			);
+			path = "Data Source";
+			sourceTree = "<group>";
+		};
+		22EDD4AF28DA2D28001CE093 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				22EDD4B228DA2D4F001CE093 /* HourInfoController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		22EDD4B028DA2D30001CE093 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				22EDD4B128DA2D38001CE093 /* Cell */,
+				22EDD4B828DA313B001CE093 /* HourInfoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		22EDD4B128DA2D38001CE093 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				22EDD4B628DA2E00001CE093 /* HourInfoCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		B241564528D26E27009F011C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -643,15 +695,19 @@
 				2229382928C85EF700515095 /* UITextField+setupPlaceHolder.swift in Sources */,
 				2229385928C9D1DF00515095 /* Screens.swift in Sources */,
 				2229382228C7C5DE00515095 /* UIImage+AppIcons.swift in Sources */,
+				22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */,
+				22EDD4B528DA2DC7001CE093 /* HourInfoDataSource.swift in Sources */,
 				222937E328C66F7F00515095 /* AppColors.swift in Sources */,
 				222937FF28C68EE100515095 /* FavoriteViewController.swift in Sources */,
 				222937E928C6824600515095 /* IconInfo.swift in Sources */,
 				2229384828C8931B00515095 /* FoodController.swift in Sources */,
 				222937E128C66F7300515095 /* AppIcons.swift in Sources */,
 				2229385528C9335C00515095 /* UIView+AdpativeLayout.swift in Sources */,
+				22EDD4B728DA2E00001CE093 /* HourInfoCell.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
 				2229384F28C8964200515095 /* MainView.swift in Sources */,
 				2229380128C68EF500515095 /* FavoriteView.swift in Sources */,
+				22EDD4B328DA2D4F001CE093 /* HourInfoController.swift in Sources */,
 				2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */,
 				222937F328C6844E00515095 /* CustomViews.swift in Sources */,
 			);
@@ -792,7 +848,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QMPGVXKJVA;
+				DEVELOPMENT_TEAM = 534V229RMK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macrou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
