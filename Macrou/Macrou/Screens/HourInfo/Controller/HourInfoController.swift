@@ -4,26 +4,22 @@
 import UIKit
 
 
-/// Controller responsável pela tela de alimentos
-class FoodController: UIViewController {
+/// Controller responsável POR
+class HourInfoController: UIViewController {
     
     /* MARK: - Atributos */
 
-
     /// View principal que a classe vai controlar
-    private let myView = FoodView()
+    private let myView = HourInfoView()
     
     /* Delegate & Data Sources */
-    /// Instancia da classe Data Source
-    let foodCollectionDataSource = FoodCollectionDataSource()
     
-    /// Instancia da classe Delegate
-    let foodCollectionDelegate = FoodCollectionDelegate()
+    /// Data source da collection de horários de funcionamento
+    private let collectionDataSource = HourInfoDataSource()
 
-		
     
+        
     /* MARK: - Ciclo de Vida */
-    
     
     override func loadView() {
         self.view = self.myView
@@ -40,24 +36,23 @@ class FoodController: UIViewController {
 
 
     /* MARK: - Protocolo */
-
-	
+    
+    
 
     /* MARK: - Ações de botões */
-    
+
     
     
     /* MARK: - Configurações */
     
-    
     /// Definindo as ações dos botões
     private func setupButtonsAction() {
-	  
+        
     }
     
     
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-        self.myView.setDataSource(with: self.foodCollectionDataSource)
+        self.myView.setDataSource(with: self.collectionDataSource)
     }
 }

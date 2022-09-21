@@ -1,8 +1,9 @@
 /* Macro - Grupo 05 */
 
 /* Bibliotecas necessárias: */
-import UIKit
 import MapKit
+import UIKit
+
 
 
 /// Componentes de UI já padronizados de acordo com o projeto.
@@ -54,6 +55,7 @@ struct CustomViews {
     static func newImage() -> UIImageView {
         let imgV = UIImageView()
         imgV.translatesAutoresizingMaskIntoConstraints = false
+        imgV.backgroundColor = .red
         
         return imgV
     }

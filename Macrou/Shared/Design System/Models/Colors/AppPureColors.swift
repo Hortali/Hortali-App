@@ -16,6 +16,8 @@ enum AppPureColors: CustomStringConvertible {
     case white
     case greyDark
     case yellow
+    case red
+    
 
     
     /* MARK: Nome das cores */
@@ -33,6 +35,7 @@ enum AppPureColors: CustomStringConvertible {
         case .white: return "White_FEFEFE"
         case .greyDark: return "Grey_6A6A6A"
         case .yellow: return "Yellow_EFBE49"
+        case .red: return "Red_820A0A"
         }
     }
 }

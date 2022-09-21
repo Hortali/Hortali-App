@@ -66,7 +66,7 @@ public class CollectionGroup: UIView {
 
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupDynamicConstraints()
@@ -87,7 +87,6 @@ public class CollectionGroup: UIView {
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
         let between: CGFloat = self.getEquivalent(12)
-        
         let titleLabelHeight: CGFloat = self.getEquivalent(25)
         
         

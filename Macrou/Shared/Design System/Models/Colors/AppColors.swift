@@ -96,6 +96,13 @@ enum AppColors: OriginalColor {
     case backgroundButton
     
     
+    /* Células */
+    
+    /// Célula CL08 - Status fechado
+    case closeStatus
+    
+    
+    
     
     /* Outros */
     
@@ -154,6 +161,9 @@ enum AppColors: OriginalColor {
             
         /* Outros */
         case .contactCellBack: return .yellow
+        
+        /* Botões */
+        case .closeStatus: return .red
         }
     }
 }

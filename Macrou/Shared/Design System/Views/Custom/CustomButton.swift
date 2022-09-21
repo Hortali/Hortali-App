@@ -10,14 +10,14 @@ class CustomButton: UIButton {
     /* MARK: - Atributos */
     
     /// Estado de quando o botão é circular ou não. (Padrão: true)
-    public var isCircular: Bool = true {
+    internal var isCircular = true {
         didSet {
             self.setupCorner()
         }
     }
     
     /// Tamanho do botão quando for circular (Padrão: 45)
-    public var circleSize: CGFloat = 45 {
+    internal var circleSize: CGFloat = 45 {
         didSet {
             self.setupCorner()
         }
