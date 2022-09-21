@@ -316,6 +316,7 @@
 				2210246E28D9020900F412A5 /* ContactInfo.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
 		};
 		065ECFBC28D2522100F024E7 /* Cell */ = {
 			isa = PBXGroup;
@@ -630,7 +631,6 @@
 			children = (
 				B241564A28D271AA009F011C /* DataSource */,
 				B241564928D271A3009F011C /* Delegate */,
-				B241564828D27198009F011C /* Protocol */,
 				2229384528C8930400515095 /* View */,
 				2229384628C8930900515095 /* Controller */,
 			);
@@ -765,13 +765,6 @@
 				B241564628D26E4C009F011C /* FoodCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		B241564828D27198009F011C /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocol;
 			sourceTree = "<group>";
 		};
 		B241564928D271A3009F011C /* Delegate */ = {
