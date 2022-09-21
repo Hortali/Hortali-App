@@ -3,6 +3,8 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
+
+/// Célula da collection que mostra os alimentos
 class FoodCell: UICollectionViewCell {
     
     /* MARK: - Atributos */
@@ -10,11 +12,16 @@ class FoodCell: UICollectionViewCell {
     /// Identificador da célula
     static let identifier = "FoodCellIdentifier"
     
+    // Views
+    
     /// Nome célula de cada alimento
     private let foodLabel: UILabel = CustomViews.newLabel()
     
     /// ImageView da célula de cada alimento
     private let foodImage: UIImageView = CustomViews.newImage()
+    
+    
+    // Outros
     
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
@@ -50,23 +57,24 @@ class FoodCell: UICollectionViewCell {
     
     /* MARK: - Configurações */
     
-    
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-        self.contentView.addSubview(foodImage)
-        self.contentView.addSubview(foodLabel)
+        self.contentView.addSubview(self.foodImage)
+        self.contentView.addSubview(self.foodLabel)
     }
     
     
     /// Personalização da UI
     private func setupUI() {
-        foodImage.layer.cornerRadius = 20
+        self.foodImage.layer.cornerRadius = 20
     }
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        self.foodLabel.setupText(with: FontInfo(text: "Alimento", fontSize: 15, weight: .regular))
+        self.foodLabel.setupText(with: FontInfo(
+            text: "Alimento", fontSize: 15, weight: .regular
+        ))
     }
       
     

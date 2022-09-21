@@ -18,9 +18,5 @@ extension UIButton {
         
         let image = UIImage(systemName: config.icon.description, withConfiguration: configIcon)
         self.setImage(image, for: .normal)
-        
-        if let btColor = UIColor(.viewBack) {
-            self.tintColor = btColor
-        }
     }
 }

@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Controller responsável pela principal de ver todas as hortas
-class GardenController: UIViewController {
+class GardenController: MenuController, GardenProtocol {
     
     /* MARK: - Atributos */
     
@@ -17,8 +17,11 @@ class GardenController: UIViewController {
     
     /* Delegate & Data Sources */
     
-    /// dataSource das hortas
+    /// Data source da collections das hortas
     private let gardenDataSource = GardenDataSource()
+    
+    /// Delegate da collection das hortas
+    private let gardenDelegate = GardenDelegate()
     
     
     
@@ -38,10 +41,25 @@ class GardenController: UIViewController {
     }
     
     
-    /* MARK: Ações de botões*/
+    
+    /* MARK: - Protocolo */
+    
+    internal func openGardenInfo(for index: Int) {
+        let controller = InfoGardenController()
+        controller.modalTransitionStyle = .crossDissolve
+        controller.modalPresentationStyle = .fullScreen
+        
+        self.tabBarProtocol?.showTabBar(is: false)
+        self.present(controller, animated: true)
+    }
+    
+    
+    
+    /* MARK: - Ações de Botões */
+    
     /// Função para retirar o teclado da tela
     @objc
-    func dismissKeyboard() {
+    private func dismissKeyboard() {
         self.view.endEditing(true)
     }
     
@@ -49,9 +67,10 @@ class GardenController: UIViewController {
     
     /* MARK: - Configurações */
     
-    ///Função parar reconhecer toque na tela e retirar o teclado ao ser clicado fora da search
+    /// Lida com o toque na tela para retirar o teclado
     private func setupKeyboardHandler() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
     }
     
@@ -64,6 +83,9 @@ class GardenController: UIViewController {
     
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-        self.myView.setDataSource(with: gardenDataSource)
+        self.gardenDelegate.setProtocol(with: self)
+        
+        self.myView.setDataSource(with: self.gardenDataSource)
+        self.myView.setDelegate(with: self.gardenDelegate)
     }
 }

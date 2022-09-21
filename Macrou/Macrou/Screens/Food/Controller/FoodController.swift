@@ -5,19 +5,19 @@ import UIKit
 
 
 /// Controller responsável pela tela de alimentos
-class FoodController: UIViewController {
+class FoodController: MenuController {
     
     /* MARK: - Atributos */
-
 
     /// View principal que a classe vai controlar
     private let myView = FoodView()
     
     /* Delegate & Data Sources */
-    /// Instancia da classe Data Source
+    
+    /// Data source da collection de alimentos
     let foodCollectionDataSource = FoodCollectionDataSource()
     
-    /// Instancia da classe Delegate
+    /// Delegate da collection de alimentos
     let foodCollectionDelegate = FoodCollectionDelegate()
 
 		
@@ -34,28 +34,16 @@ class FoodController: UIViewController {
         super.viewDidLoad()
 
         self.setupDelegates()
-        self.setupButtonsAction()
     }
     
 
 
     /* MARK: - Protocolo */
-
-	
-
-    /* MARK: - Ações de botões */
     
     
     
     /* MARK: - Configurações */
-    
-    
-    /// Definindo as ações dos botões
-    private func setupButtonsAction() {
-	  
-    }
-    
-    
+        
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
         self.myView.setDataSource(with: self.foodCollectionDataSource)

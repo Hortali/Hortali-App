@@ -9,11 +9,21 @@ class FoodView: MainView {
     
     /* MARK: - Atributos */
     
-    /// Controle das views segmentadas para os diferentes tipos de alimentos
-    internal let foodSegmented: UISegmentedControl = CustomViews.newSegmentation(with: ["Frutas", "Legumes", "Vegetais", "Ervas"])
+    // Views
     
-    /// CollectionView principal da tela de alimentos
-    internal let foodCollection: UICollectionView = CustomViews.newCollectionView()
+    /// Controle das views segmentadas para os diferentes tipos de alimentos
+    private let foodSegmented: UISegmentedControl = CustomViews.newSegmentation(with: ["Frutas", "Legumes", "Vegetais", "Ervas"])
+    
+    /// Grupo da collection de alimentos
+    private let foodGroup: CollectionGroup = {
+        let group = CollectionGroup()
+        group.collection.showsVerticalScrollIndicator = false
+        
+        return group
+    }()
+    
+    
+    // Outros
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
@@ -30,14 +40,12 @@ class FoodView: MainView {
 
     /* MARK: - Construtor */
     
-    
     override init() {
         super.init()
         
         self.setupViews()
         self.registerCells()
         self.setupCollectionFlow()
-        
     }
     
     
@@ -47,15 +55,14 @@ class FoodView: MainView {
     
     /* MARK: - Encapsulamento */
     
-    /// Encapsulamento que define o dataSource da Collection
-    /// - Parameter dataSource: Encapsulamento do dataSource costumizado da Collection
+    /// Define o data source da collection de alimentos
+    /// - Parameter dataSource: data source
     public func setDataSource(with dataSource: FoodCollectionDataSource) {
-        self.foodCollection.dataSource = dataSource
+        self.foodGroup.collection.dataSource = dataSource
     }
     
 
     /* MARK: - Ciclo de Vida */
-    
     
     override internal func layoutSubviews() {
         super.layoutSubviews()
@@ -69,32 +76,31 @@ class FoodView: MainView {
     
     /* MARK: - Configurações */
     
-    
     /// Registra as células nas collections/table
     private func registerCells() {
-        self.foodCollection.register(FoodCell.self, forCellWithReuseIdentifier: FoodCell.identifier)
+        self.foodGroup.collection.register(FoodCell.self, forCellWithReuseIdentifier: FoodCell.identifier)
     }
 
 
     /// Define o layout da collection
     private func setupCollectionFlow() {
-         self.foodCollection.collectionViewLayout = self.collectionFlow
+         self.foodGroup.collection.collectionViewLayout = self.collectionFlow
     }
 
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-        self.addSubview(foodSegmented)
-        self.addSubview(foodCollection)
-        
-
+        self.addSubview(self.foodSegmented)
+        self.addSubview(self.foodGroup)
     }
     
     
     /// Personalização da UI
     private func setupUI() {
-        self.collectionFlow.itemSize = CGSize(width: self.getEquivalent(170), height: self.getEquivalent(192))
-        self.foodCollection.showsVerticalScrollIndicator = false
+        self.collectionFlow.itemSize = CGSize(
+            width: self.getEquivalent(170),
+            height: self.getEquivalent(192)
+        )
     }
     
     
@@ -118,10 +124,10 @@ class FoodView: MainView {
             self.foodSegmented.heightAnchor.constraint(equalToConstant: lateral * 2),
             
             
-            self.foodCollection.topAnchor.constraint(equalTo: self.foodSegmented.bottomAnchor, constant: between),
-            self.foodCollection.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.foodCollection.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
-            self.foodCollection.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
+            self.foodGroup.collection.topAnchor.constraint(equalTo: self.foodSegmented.bottomAnchor, constant: between),
+            self.foodGroup.collection.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.foodGroup.collection.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
+            self.foodGroup.collection.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

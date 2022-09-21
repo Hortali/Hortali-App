@@ -19,7 +19,6 @@ class CustomButton: UIButton {
     /// Tamanho do botão quando for circular (Padrão: 45)
     internal var circleSize: CGFloat = 45 {
         didSet {
-            self.circleSize = self.getEquivalent(self.circleSize)
             self.setupCorner()
         }
     }
@@ -47,7 +46,7 @@ class CustomButton: UIButton {
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
     
-    
+
     
     /* MARK: - Configurações */
     
@@ -56,7 +55,7 @@ class CustomButton: UIButton {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.masksToBounds = true
         
-        self.backgroundColor = UIColor(.backgroundButton)
+        self.backgroundColor = UIColor(.backgroundButton)?.withAlphaComponent(0.65)
     }
     
     
