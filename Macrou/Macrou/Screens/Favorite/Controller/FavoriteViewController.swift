@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Controller responsável pela tela de favoritos
-class FavoriteViewController: UIViewController {
+class FavoriteViewController: MenuController, GardenProtocol {
     
     /* MARK: - Atributos */
     
@@ -16,8 +16,18 @@ class FavoriteViewController: UIViewController {
     
     
     /* Delegate & Data Sources */
+    
+    /// Data source da collection de alimentos
     private let foodDataSource = FoodCollectionDataSource()
+    
+    /// Delegate da collection de alimentos
+    // private let foodDelegate = FoodDelegate()
+    
+    /// Data source da collection das hortas
     private let gardenDataSource = GardenDataSource()
+    
+    /// Delegate da collection das hortas
+    private let gardenDelegate = GardenDelegate()
 
 
 		
@@ -32,30 +42,32 @@ class FavoriteViewController: UIViewController {
         super.viewDidLoad()
 
         self.setupDelegates()
-        self.setupButtonsAction()
     }
     
 
 
     /* MARK: - Protocolo */
     
-	
-
-    /* MARK: - Ações de botões */
+    internal func openGardenInfo(for index: Int) {
+        let controller = InfoGardenController()
+        controller.modalPresentationStyle = .fullScreen
+        
+        self.tabBarProtocol?.showTabBar(is: false)
+        self.present(controller, animated: true)
+    }
     
     
     
     /* MARK: - Configurações */
-    
-    /// Definindo as ações dos botões
-    private func setupButtonsAction() {
-	  
-    }
-    
-    
+
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-        self.myView.setFoodDataSource(with: foodDataSource)
-        self.myView.setGardenDataSource(with: gardenDataSource)
+        self.gardenDelegate.setProtocol(with: self)
+        
+        self.myView.setFoodDataSource(with: self.foodDataSource)
+        // self.myView.setFoodDelegate(with: self.foodDelegate)
+        
+        self.myView.setGardenDataSource(with: self.gardenDataSource)
+        self.myView.setGardenDelegate(with: self.gardenDelegate)
     }
 }

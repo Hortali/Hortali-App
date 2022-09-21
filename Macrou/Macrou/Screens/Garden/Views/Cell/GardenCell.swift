@@ -3,11 +3,13 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
+
+/// Célula que a horta disponivel
 class GardenCell: UICollectionViewCell {
     
     /* MARK: - Atributos */
     
-    //Views
+    // Views
     
     /// Imagem que aparecerá dentro das células da Collection
     private let gardenImage: UIImageView = CustomViews.newImage()
@@ -29,6 +31,7 @@ class GardenCell: UICollectionViewCell {
         
         return lbl
     }()
+    
     
     // Outros
     
@@ -81,14 +84,13 @@ class GardenCell: UICollectionViewCell {
     
     /// Personalização da UI
     private func setupUI() {
-        
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 20
     }
     
     
     /// Define as propriedades dos textos que aparecerão dentro da célula
-    func setupStaticText() {
+    private func setupStaticText() {
         let screenReferenceSize =
         SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
         
@@ -132,11 +134,11 @@ class GardenCell: UICollectionViewCell {
             self.titleLabel.trailingAnchor.constraint(equalTo: self.adressLabel.trailingAnchor),
             self.titleLabel.bottomAnchor.constraint(equalTo: self.adressLabel.topAnchor, constant: -lateral / 2),
             self.titleLabel.heightAnchor.constraint(equalToConstant: lateral * 2 )
-            
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
     }
+    
     
     private func INFOS_TESTE() {
         let gardenImage = "image.jpg"

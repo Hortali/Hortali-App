@@ -54,27 +54,28 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
         self.myView.updateCurrentPage(for: index)
     }
 	
+    
+    internal func openHourInfoPage(for index: Int) {
+        let controller = HourInfoController()
+        controller.modalTransitionStyle = .coverVertical
+        
+        self.present(controller, animated: true)
+    }
 
     
     /* MARK: - Ações de botões */
     
+    /// Ação de voltar para a tela anterior
     @objc
     private func backAction() {
         self.dismiss(animated: true)
     }
     
+    
+    /// Ação de favoritar um card
     @objc
     private func favoriteAction() {
         
-    }
-    
-    
-    @objc
-    private func showHourInfoPage() {
-        let controller = UIViewController()
-        controller.modalTransitionStyle = .coverVertical
-        
-        self.present(controller, animated: true)
     }
     
     
@@ -91,6 +92,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
         self.imagesDelegate.setProtocol(with: self)
+        self.infoDelegate.setProtocol(with: self)
         
         self.myView.setInfoDataSource(for: self.infoDataSource)
         self.myView.setInfoDelegate(for: self.infoDelegate)

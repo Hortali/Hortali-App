@@ -11,19 +11,17 @@ class FavoriteView: MainView {
     
     // Views
     
-    /// Collection de alimentos e esconder scroll
+    /// Collection de alimentos
     private let foodGroup: CollectionGroup = {
         let group = CollectionGroup()
-        
         group.collection.showsHorizontalScrollIndicator = false
         
         return group
     }()
     
-    /// Collection das hortas e esconder scroll
+    /// Collection das hortas
     private let gardenGroup: CollectionGroup = {
         let group = CollectionGroup()
-        
         group.collection.showsHorizontalScrollIndicator = false
         
         return group
@@ -68,14 +66,25 @@ class FavoriteView: MainView {
     
     
     /* MARK: - Encapsulamento */
-    /// Encapsulamento que define o dataSource da Collection
-    /// - Parameter dataSource: Encapsulamento do dataSource costumizado da Collection
+    
+    /// Define o data source da collection de alimentos
+    /// - Parameter dataSource: data source da collection de alimentos
     public func setFoodDataSource(with dataSource: FoodCollectionDataSource) {
         self.foodGroup.collection.dataSource = dataSource
     }
     
+    
+    /// Define o data source da collection de hortas
+    /// - Parameter dataSource: data source da collection de hortas
     public func setGardenDataSource(with dataSource: GardenDataSource) {
         self.gardenGroup.collection.dataSource = dataSource
+    }
+    
+    
+    /// Define o delegate da collection de hortas
+    /// - Parameter dataSource: data source da collection de hortas
+    public func setGardenDelegate(with delegate: GardenDelegate) {
+        self.gardenGroup.collection.delegate = delegate
     }
     
     
@@ -119,6 +128,8 @@ class FavoriteView: MainView {
     private func setupUI() {
         self.backgroundColor = UIColor(.favoriteBack)
         
+        // Collection
+        
         let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
         let cellReferenceSize = SizeInfo(screenSize: CGSize(width: 170, height: 192), dimension: .height)
         let minimumSpace = self.getEquivalent(10)
@@ -142,7 +153,6 @@ class FavoriteView: MainView {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        /* Labels */
         self.setTitleText(with: "Favoritos da sua \nmesa")
         
         let subTitleSize: CGFloat = self.getEquivalent(25)
@@ -177,7 +187,6 @@ class FavoriteView: MainView {
             self.gardenGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.gardenGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.gardenGroup.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -lateral),
-            
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
