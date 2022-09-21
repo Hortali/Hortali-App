@@ -53,8 +53,10 @@ class InfoGardenInfosCell: UICollectionViewCell {
     public func setupCell(for cellType: InfoGardenCellType) {
         self.titleLabel.text = cellType.title
         
-        self.cellView = cellType.view
+        NSLayoutConstraint.deactivate(self.dynamicConstraints)
         self.cellView.removeFromSuperview()
+        
+        self.cellView = cellType.view
         self.customContentView.addSubview(self.cellView)
 
         self.setupDynamicConstraints()
@@ -80,6 +82,8 @@ class InfoGardenInfosCell: UICollectionViewCell {
     private func setupViews() {
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.customContentView)
+        
+        self.customContentView.addSubview(self.cellView)
     }
     
     

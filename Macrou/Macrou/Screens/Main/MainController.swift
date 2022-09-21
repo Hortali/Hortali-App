@@ -10,7 +10,7 @@ class MainController: UITabBarController {
     /* MARK: - Atributos */
     
     /// Controller da tela 01: Ver todas as hortas
-    private let gardenController = InfoGardenController()//GardenController()
+    private let gardenController = GardenController()
     
     /// Controller da tela 02: Ver todas os alimentos
     private let foodController = FoodController()
