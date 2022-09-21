@@ -25,6 +25,7 @@ class GardenView: MainView {
     /// View de referência que serva para centralizar as células da Collection
     private let referenceView: UIView = CustomViews.newView()
     
+    
     // Outros
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
@@ -58,10 +59,16 @@ class GardenView: MainView {
     
     /* MARK: - Encapsulamento */
     
-    /// Encapsulamento que define o dataSource da Collection
-    /// - Parameter dataSource: Encapsulamento do dataSource costumizado da Collection
+    /// Define o data source da collection das hortas
+    /// - Parameter dataSource: data source da collection das hortas
     public func setDataSource(with dataSource: GardenDataSource) {
         self.collectionView.collection.dataSource = dataSource
+    }
+    
+    /// Define o delegate da collection das hortas
+    /// - Parameter delegate: delegate da collection das hortas
+    public func setDelegate(with delegate: GardenDelegate) {
+        self.collectionView.collection.delegate = delegate
     }
     
     

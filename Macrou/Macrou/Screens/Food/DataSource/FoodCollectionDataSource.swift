@@ -3,6 +3,8 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
+
+/// Data source da collection de mostrar os alimentos
 class FoodCollectionDataSource: NSObject, UICollectionViewDataSource {
     
     /// Mostra quantas células vão ser mostradas

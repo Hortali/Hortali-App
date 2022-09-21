@@ -61,6 +61,16 @@ enum AppColors: OriginalColor {
     
     
     
+    /* Page Control */
+    
+    /// Page Control: item selecionado
+    case pageSelected
+    
+    /// Page Control: item não selecionado
+    case pageNotSelected
+    
+    
+    
     /* Search Bar */
     
     /// Search Bar: fundo
@@ -86,11 +96,18 @@ enum AppColors: OriginalColor {
     case backgroundButton
     
     
+    
     /* Células */
     
     /// Célula CL08 - Status fechado
     case closeStatus
     
+    
+    
+    /* Outros */
+    
+    /// Fundo da célula de contato
+    case contactCellBack
     
     
     
@@ -125,6 +142,11 @@ enum AppColors: OriginalColor {
         case .tabNotSelected: return .greenLight
             
         
+        /* Page Control */
+        case .pageSelected: return .greenDark
+        case .pageNotSelected: return .greenLight
+            
+        
         /* Search */
         case .searchBack: return .greenLight
         case .searchText: return .greenDark
@@ -136,8 +158,9 @@ enum AppColors: OriginalColor {
         case .favoriteNotSelected: return .greyButton
         case .backgroundButton: return .greyButton
             
-        
-        /* Botões */
+            
+        /* Outros */
+        case .contactCellBack: return .yellow
         case .closeStatus: return .red
         }
     }

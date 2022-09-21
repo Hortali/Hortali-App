@@ -9,6 +9,29 @@
 /* Begin PBXBuildFile section */
 		065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFBD28D2526600F024E7 /* GardenCell.swift */; };
 		065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */; };
+		220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */; };
+		220A63E928D24C7100D9E2A9 /* InfoGardenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */; };
+		220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */; };
+		220A63EE28D3BDF700D9E2A9 /* CustomScrooll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63ED28D3BDF700D9E2A9 /* CustomScrooll.swift */; };
+		2210244628D5201500F412A5 /* InfoGardenInfosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244528D5201500F412A5 /* InfoGardenInfosCell.swift */; };
+		2210244828D5230C00F412A5 /* InfoGardenCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244728D5230C00F412A5 /* InfoGardenCellType.swift */; };
+		2210244B28D5272C00F412A5 /* InfoGardenMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244A28D5272C00F412A5 /* InfoGardenMap.swift */; };
+		2210245128D529FA00F412A5 /* InfoGardenReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210245028D529FA00F412A5 /* InfoGardenReport.swift */; };
+		2210245428D52B2B00F412A5 /* InfoGardenInfosDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210245328D52B2B00F412A5 /* InfoGardenInfosDataSource.swift */; };
+		2210245728D53F3300F412A5 /* InfoGardenInfosDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210245628D53F3300F412A5 /* InfoGardenInfosDelegate.swift */; };
+		2210245928D845D800F412A5 /* InfoGardenImagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210245828D845D800F412A5 /* InfoGardenImagesDataSource.swift */; };
+		2210245D28D8494A00F412A5 /* InfoGardenImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210245C28D8494A00F412A5 /* InfoGardenImagesCell.swift */; };
+		2210245F28D84B4D00F412A5 /* InfoGardenImagesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210245E28D84B4D00F412A5 /* InfoGardenImagesDelegate.swift */; };
+		2210246228D84C6800F412A5 /* InfoGardenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210246128D84C6800F412A5 /* InfoGardenProtocol.swift */; };
+		2210246628D8DC0800F412A5 /* InfoGardenContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210246528D8DC0800F412A5 /* InfoGardenContact.swift */; };
+		2210246828D8F9BC00F412A5 /* ContactGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210246728D8F9BC00F412A5 /* ContactGroup.swift */; };
+		2210246A28D9013E00F412A5 /* ContactIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210246928D9013E00F412A5 /* ContactIcon.swift */; };
+		2210246C28D9017700F412A5 /* UIImage+ContactIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210246B28D9017700F412A5 /* UIImage+ContactIcon.swift */; };
+		2210246F28D9020900F412A5 /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210246E28D9020900F412A5 /* ContactInfo.swift */; };
+		2212E82B28DB8734004CCBAA /* GardenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E82A28DB8734004CCBAA /* GardenDelegate.swift */; };
+		2212E82D28DB877B004CCBAA /* GardenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E82C28DB877B004CCBAA /* GardenProtocol.swift */; };
+		2212E83128DB884E004CCBAA /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E83028DB884E004CCBAA /* MenuController.swift */; };
+		2212E83328DB88D9004CCBAA /* TabBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E83228DB88D9004CCBAA /* TabBarProtocol.swift */; };
 		222937BE28C66B5600515095 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BD28C66B5600515095 /* AppDelegate.swift */; };
 		222937C028C66B5600515095 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BF28C66B5600515095 /* SceneDelegate.swift */; };
 		222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 222937C628C66B5600515095 /* DataBase.xcdatamodeld */; };
@@ -49,10 +72,15 @@
 		2229386128C9D59700515095 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386028C9D59700515095 /* ScreenSize.swift */; };
 		2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386228C9D5CE00515095 /* AdaptiveLayout.swift */; };
 		2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */; };
+		22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */; };
+		22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8C4E328D918B500CE6061 /* TimeGroup.swift */; };
+		22EDD4AB28D95812001CE093 /* CustomStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4AA28D95812001CE093 /* CustomStack.swift */; };
 		22EDD4B328DA2D4F001CE093 /* HourInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4B228DA2D4F001CE093 /* HourInfoController.swift */; };
 		22EDD4B528DA2DC7001CE093 /* HourInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4B428DA2DC7001CE093 /* HourInfoDataSource.swift */; };
 		22EDD4B728DA2E00001CE093 /* HourInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4B628DA2E00001CE093 /* HourInfoCell.swift */; };
 		22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4B828DA313B001CE093 /* HourInfoView.swift */; };
+		22EDD4BE28DA4A6A001CE093 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4BD28DA4A6A001CE093 /* AppImages.swift */; };
+		22EDD4C128DA4B33001CE093 /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4C028DA4B33001CE093 /* UIImage+AppImages.swift */; };
 		B241564728D26E4C009F011C /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564628D26E4C009F011C /* FoodCell.swift */; };
 		B241564C28D2722B009F011C /* FoodCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564B28D2722B009F011C /* FoodCollectionDataSource.swift */; };
 		B241564E28D27284009F011C /* FoodCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564D28D27284009F011C /* FoodCollectionDelegate.swift */; };
@@ -61,6 +89,29 @@
 /* Begin PBXFileReference section */
 		065ECFBD28D2526600F024E7 /* GardenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCell.swift; sourceTree = "<group>"; };
 		065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDataSource.swift; sourceTree = "<group>"; };
+		220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenView.swift; sourceTree = "<group>"; };
+		220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenController.swift; sourceTree = "<group>"; };
+		220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExpansive.swift; sourceTree = "<group>"; };
+		220A63ED28D3BDF700D9E2A9 /* CustomScrooll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrooll.swift; sourceTree = "<group>"; };
+		2210244528D5201500F412A5 /* InfoGardenInfosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenInfosCell.swift; sourceTree = "<group>"; };
+		2210244728D5230C00F412A5 /* InfoGardenCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenCellType.swift; sourceTree = "<group>"; };
+		2210244A28D5272C00F412A5 /* InfoGardenMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenMap.swift; sourceTree = "<group>"; };
+		2210245028D529FA00F412A5 /* InfoGardenReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenReport.swift; sourceTree = "<group>"; };
+		2210245328D52B2B00F412A5 /* InfoGardenInfosDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenInfosDataSource.swift; sourceTree = "<group>"; };
+		2210245628D53F3300F412A5 /* InfoGardenInfosDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenInfosDelegate.swift; sourceTree = "<group>"; };
+		2210245828D845D800F412A5 /* InfoGardenImagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenImagesDataSource.swift; sourceTree = "<group>"; };
+		2210245C28D8494A00F412A5 /* InfoGardenImagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenImagesCell.swift; sourceTree = "<group>"; };
+		2210245E28D84B4D00F412A5 /* InfoGardenImagesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenImagesDelegate.swift; sourceTree = "<group>"; };
+		2210246128D84C6800F412A5 /* InfoGardenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenProtocol.swift; sourceTree = "<group>"; };
+		2210246528D8DC0800F412A5 /* InfoGardenContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenContact.swift; sourceTree = "<group>"; };
+		2210246728D8F9BC00F412A5 /* ContactGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactGroup.swift; sourceTree = "<group>"; };
+		2210246928D9013E00F412A5 /* ContactIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactIcon.swift; sourceTree = "<group>"; };
+		2210246B28D9017700F412A5 /* UIImage+ContactIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ContactIcon.swift"; sourceTree = "<group>"; };
+		2210246E28D9020900F412A5 /* ContactInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
+		2212E82A28DB8734004CCBAA /* GardenDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDelegate.swift; sourceTree = "<group>"; };
+		2212E82C28DB877B004CCBAA /* GardenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenProtocol.swift; sourceTree = "<group>"; };
+		2212E83028DB884E004CCBAA /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		2212E83228DB88D9004CCBAA /* TabBarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarProtocol.swift; sourceTree = "<group>"; };
 		222937BA28C66B5600515095 /* Macrou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macrou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222937BD28C66B5600515095 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		222937BF28C66B5600515095 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,10 +154,15 @@
 		2229386028C9D59700515095 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		2229386228C9D5CE00515095 /* AdaptiveLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveLayout.swift; sourceTree = "<group>"; };
 		2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+setupIconsColor.swift"; sourceTree = "<group>"; };
+		22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenTime.swift; sourceTree = "<group>"; };
+		22E8C4E328D918B500CE6061 /* TimeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeGroup.swift; sourceTree = "<group>"; };
+		22EDD4AA28D95812001CE093 /* CustomStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStack.swift; sourceTree = "<group>"; };
 		22EDD4B228DA2D4F001CE093 /* HourInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoController.swift; sourceTree = "<group>"; };
 		22EDD4B428DA2DC7001CE093 /* HourInfoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoDataSource.swift; sourceTree = "<group>"; };
 		22EDD4B628DA2E00001CE093 /* HourInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoCell.swift; sourceTree = "<group>"; };
 		22EDD4B828DA313B001CE093 /* HourInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoView.swift; sourceTree = "<group>"; };
+		22EDD4BD28DA4A6A001CE093 /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
+		22EDD4C028DA4B33001CE093 /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
 		B241564628D26E4C009F011C /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		B241564B28D2722B009F011C /* FoodCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionDataSource.swift; sourceTree = "<group>"; };
 		B241564D28D27284009F011C /* FoodCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +195,174 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		220A63E228D24C1600D9E2A9 /* InfoGarden */ = {
+			isa = PBXGroup;
+			children = (
+				2210246028D84C4600F412A5 /* Protocol */,
+				2210245528D53F2400F412A5 /* Delegate */,
+				2210245228D52B0500F412A5 /* Data Source */,
+				220A63E528D24C3B00D9E2A9 /* View */,
+				220A63E728D24C5700D9E2A9 /* Controller */,
+			);
+			path = InfoGarden;
+			sourceTree = "<group>";
+		};
+		220A63E528D24C3B00D9E2A9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				220A63E628D24C4000D9E2A9 /* Cells */,
+				220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		220A63E628D24C4000D9E2A9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2210245B28D8464900F412A5 /* ImagesCell */,
+				2210245A28D8463600F412A5 /* InfosCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		220A63E728D24C5700D9E2A9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		220A63EA28D24CC000D9E2A9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		2210244928D526EB00F412A5 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				2210244728D5230C00F412A5 /* InfoGardenCellType.swift */,
+				2210244F28D529D800F412A5 /* InfoGardenReport */,
+				2210244E28D529AC00F412A5 /* InfoGardenContact */,
+				2210244D28D5299600F412A5 /* InfoGardenTime */,
+				2210244C28D5298A00F412A5 /* InfoGardenMap */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		2210244C28D5298A00F412A5 /* InfoGardenMap */ = {
+			isa = PBXGroup;
+			children = (
+				2210244A28D5272C00F412A5 /* InfoGardenMap.swift */,
+			);
+			path = InfoGardenMap;
+			sourceTree = "<group>";
+		};
+		2210244D28D5299600F412A5 /* InfoGardenTime */ = {
+			isa = PBXGroup;
+			children = (
+				22E8C4E328D918B500CE6061 /* TimeGroup.swift */,
+				22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */,
+			);
+			path = InfoGardenTime;
+			sourceTree = "<group>";
+		};
+		2210244E28D529AC00F412A5 /* InfoGardenContact */ = {
+			isa = PBXGroup;
+			children = (
+				2210246728D8F9BC00F412A5 /* ContactGroup.swift */,
+				2210246528D8DC0800F412A5 /* InfoGardenContact.swift */,
+			);
+			path = InfoGardenContact;
+			sourceTree = "<group>";
+		};
+		2210244F28D529D800F412A5 /* InfoGardenReport */ = {
+			isa = PBXGroup;
+			children = (
+				2210245028D529FA00F412A5 /* InfoGardenReport.swift */,
+			);
+			path = InfoGardenReport;
+			sourceTree = "<group>";
+		};
+		2210245228D52B0500F412A5 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				2210245328D52B2B00F412A5 /* InfoGardenInfosDataSource.swift */,
+				2210245828D845D800F412A5 /* InfoGardenImagesDataSource.swift */,
+			);
+			path = "Data Source";
+			sourceTree = "<group>";
+		};
+		2210245528D53F2400F412A5 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				2210245628D53F3300F412A5 /* InfoGardenInfosDelegate.swift */,
+				2210245E28D84B4D00F412A5 /* InfoGardenImagesDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		2210245A28D8463600F412A5 /* InfosCell */ = {
+			isa = PBXGroup;
+			children = (
+				2210244928D526EB00F412A5 /* Types */,
+				2210244528D5201500F412A5 /* InfoGardenInfosCell.swift */,
+			);
+			path = InfosCell;
+			sourceTree = "<group>";
+		};
+		2210245B28D8464900F412A5 /* ImagesCell */ = {
+			isa = PBXGroup;
+			children = (
+				2210245C28D8494A00F412A5 /* InfoGardenImagesCell.swift */,
+			);
+			path = ImagesCell;
+			sourceTree = "<group>";
+		};
+		2210246028D84C4600F412A5 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				2210246128D84C6800F412A5 /* InfoGardenProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		2210246D28D901F200F412A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2210246E28D9020900F412A5 /* ContactInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2212E82E28DB87F2004CCBAA /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				2212E82A28DB8734004CCBAA /* GardenDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		2212E82F28DB87FE004CCBAA /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				2212E82C28DB877B004CCBAA /* GardenProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		2212E83428DB894A004CCBAA /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				2212E83028DB884E004CCBAA /* MenuController.swift */,
+				2212E83228DB88D9004CCBAA /* TabBarProtocol.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		222937B128C66B5600515095 = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +393,8 @@
 		222937D428C66B6200515095 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				220A63EA28D24CC000D9E2A9 /* Components */,
+				2210246D28D901F200F412A5 /* Model */,
 				222937DE28C66F4D00515095 /* Extensions */,
 				222937DA28C66B9800515095 /* Delegates */,
 			);
@@ -214,11 +440,12 @@
 		222937D928C66B9200515095 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				22EDD4AC28DA2D08001CE093 /* HourInfo */,
 				2229381E28C7C3DD00515095 /* Main */,
 				2229383B28C8922000515095 /* Garden */,
 				2229384428C892E900515095 /* Food */,
 				222937FD28C68EC500515095 /* Favorite */,
+				220A63E228D24C1600D9E2A9 /* InfoGarden */,
+				22EDD4AC28DA2D08001CE093 /* HourInfo */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -243,6 +470,7 @@
 		222937DD28C66F3F00515095 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				22EDD4BC28DA4A51001CE093 /* Images */,
 				2229383228C87D5700515095 /* Icons */,
 				2229383028C87D2A00515095 /* Font */,
 				2229382A28C87B7F00515095 /* Colors */,
@@ -281,6 +509,7 @@
 		2229381E28C7C3DD00515095 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				2212E83428DB894A004CCBAA /* Menu */,
 				2229385128C89ABB00515095 /* Launch */,
 				2229381F28C7C3FC00515095 /* MainController.swift */,
 			);
@@ -292,6 +521,8 @@
 			children = (
 				2229382528C852D200515095 /* CustomButton.swift */,
 				222937F228C6844E00515095 /* CustomViews.swift */,
+				220A63ED28D3BDF700D9E2A9 /* CustomScrooll.swift */,
+				22EDD4AA28D95812001CE093 /* CustomStack.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -341,6 +572,7 @@
 				2229383328C87D5D00515095 /* Extension */,
 				222937E028C66F7300515095 /* AppIcons.swift */,
 				222937E828C6824600515095 /* IconInfo.swift */,
+				2210246928D9013E00F412A5 /* ContactIcon.swift */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -350,6 +582,7 @@
 			children = (
 				2229382128C7C5DE00515095 /* UIImage+AppIcons.swift */,
 				222937F028C6837500515095 /* UIButton+IconInfo.swift */,
+				2210246B28D9017700F412A5 /* UIImage+ContactIcon.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -384,9 +617,11 @@
 		2229383B28C8922000515095 /* Garden */ = {
 			isa = PBXGroup;
 			children = (
-				2229383C28C8922D00515095 /* Controller */,
+				2212E82F28DB87FE004CCBAA /* Protocol */,
+				2212E82E28DB87F2004CCBAA /* Delegate */,
 				065ECFC028D26A2F00F024E7 /* DataSource */,
 				2229383D28C8923300515095 /* Views */,
+				2229383C28C8922D00515095 /* Controller */,
 			);
 			path = Garden;
 			sourceTree = "<group>";
@@ -429,7 +664,6 @@
 			children = (
 				B241564A28D271AA009F011C /* DataSource */,
 				B241564928D271A3009F011C /* Delegate */,
-				B241564828D27198009F011C /* Protocol */,
 				2229384528C8930400515095 /* View */,
 				2229384628C8930900515095 /* Controller */,
 			);
@@ -541,19 +775,29 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		22EDD4BC28DA4A51001CE093 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				22EDD4BF28DA4B14001CE093 /* Extension */,
+				22EDD4BD28DA4A6A001CE093 /* AppImages.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		22EDD4BF28DA4B14001CE093 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				22EDD4C028DA4B33001CE093 /* UIImage+AppImages.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		B241564528D26E27009F011C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				B241564628D26E4C009F011C /* FoodCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		B241564828D27198009F011C /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocol;
 			sourceTree = "<group>";
 		};
 		B241564928D271A3009F011C /* Delegate */ = {
@@ -663,33 +907,58 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2212E82D28DB877B004CCBAA /* GardenProtocol.swift in Sources */,
+				2210246F28D9020900F412A5 /* ContactInfo.swift in Sources */,
 				065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */,
 				222937ED28C682C900515095 /* UIButton+FontInfo.swift in Sources */,
 				2229382C28C87BC400515095 /* AppPureColors.swift in Sources */,
+				220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */,
 				222937EF28C6831300515095 /* UITextField+FontInfo.swift in Sources */,
+				2210245D28D8494A00F412A5 /* InfoGardenImagesCell.swift in Sources */,
 				2229383F28C8924400515095 /* GardenView.swift in Sources */,
 				B241564728D26E4C009F011C /* FoodCell.swift in Sources */,
 				2229382628C852D200515095 /* CustomButton.swift in Sources */,
 				222937BE28C66B5600515095 /* AppDelegate.swift in Sources */,
+				220A63E928D24C7100D9E2A9 /* InfoGardenController.swift in Sources */,
+				2212E82B28DB8734004CCBAA /* GardenDelegate.swift in Sources */,
+				2210244B28D5272C00F412A5 /* InfoGardenMap.swift in Sources */,
 				2229386128C9D59700515095 /* ScreenSize.swift in Sources */,
+				22EDD4AB28D95812001CE093 /* CustomStack.swift in Sources */,
 				2229384D28C8942B00515095 /* UIViewController+setupTab.swift in Sources */,
+				2210244828D5230C00F412A5 /* InfoGardenCellType.swift in Sources */,
 				222937EB28C6828500515095 /* UILabel+FontInfo.swift in Sources */,
+				2210246228D84C6800F412A5 /* InfoGardenProtocol.swift in Sources */,
 				2229385B28C9D3AC00515095 /* ScreenInfo.swift in Sources */,
 				B241564E28D27284009F011C /* FoodCollectionDelegate.swift in Sources */,
 				2229382028C7C3FC00515095 /* MainController.swift in Sources */,
+				2210245428D52B2B00F412A5 /* InfoGardenInfosDataSource.swift in Sources */,
+				2212E83328DB88D9004CCBAA /* TabBarProtocol.swift in Sources */,
+				2212E83128DB884E004CCBAA /* MenuController.swift in Sources */,
 				222937E528C6779500515095 /* UIColors+AppColors.swift in Sources */,
+				2210246A28D9013E00F412A5 /* ContactIcon.swift in Sources */,
+				2210245F28D84B4D00F412A5 /* InfoGardenImagesDelegate.swift in Sources */,
+				220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */,
+				2229382E28C87BE300515095 /* OriginalColor.swift in Sources */,
+				2210246828D8F9BC00F412A5 /* ContactGroup.swift in Sources */,
 				2229382E28C87BE300515095 /* OriginalColor.swift in Sources */,
 				222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */,
+				22EDD4BE28DA4A6A001CE093 /* AppImages.swift in Sources */,
 				222937F928C68B9B00515095 /* CollectionGroup.swift in Sources */,
 				B241564C28D2722B009F011C /* FoodCollectionDataSource.swift in Sources */,
 				222937C028C66B5600515095 /* SceneDelegate.swift in Sources */,
 				065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */,
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
+				22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */,
+				2210245128D529FA00F412A5 /* InfoGardenReport.swift in Sources */,
+				2210246C28D9017700F412A5 /* UIImage+ContactIcon.swift in Sources */,
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,
+				220A63EE28D3BDF700D9E2A9 /* CustomScrooll.swift in Sources */,
 				222937FC28C68C8200515095 /* CollectionGroupStyle.swift in Sources */,
+				2210245728D53F3300F412A5 /* InfoGardenInfosDelegate.swift in Sources */,
 				2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */,
 				2229385D28C9D55700515095 /* Dimension.swift in Sources */,
 				2229383A28C8829000515095 /* UIFont+setupFont.swift in Sources */,
+				22EDD4C128DA4B33001CE093 /* UIImage+AppImages.swift in Sources */,
 				2229384128C8927500515095 /* GardenController.swift in Sources */,
 				222937F128C6837500515095 /* UIButton+IconInfo.swift in Sources */,
 				2229382928C85EF700515095 /* UITextField+setupPlaceHolder.swift in Sources */,
@@ -701,10 +970,14 @@
 				222937FF28C68EE100515095 /* FavoriteViewController.swift in Sources */,
 				222937E928C6824600515095 /* IconInfo.swift in Sources */,
 				2229384828C8931B00515095 /* FoodController.swift in Sources */,
+				2210246628D8DC0800F412A5 /* InfoGardenContact.swift in Sources */,
 				222937E128C66F7300515095 /* AppIcons.swift in Sources */,
 				2229385528C9335C00515095 /* UIView+AdpativeLayout.swift in Sources */,
+				2210245928D845D800F412A5 /* InfoGardenImagesDataSource.swift in Sources */,
+				2210244628D5201500F412A5 /* InfoGardenInfosCell.swift in Sources */,
 				22EDD4B728DA2E00001CE093 /* HourInfoCell.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
+				22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */,
 				2229384F28C8964200515095 /* MainView.swift in Sources */,
 				2229380128C68EF500515095 /* FavoriteView.swift in Sources */,
 				22EDD4B328DA2D4F001CE093 /* HourInfoController.swift in Sources */,
