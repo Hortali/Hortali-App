@@ -370,7 +370,7 @@
 		2212E83528DB9F2E004CCBAA /* InfoFood */ = {
 			isa = PBXGroup;
 			children = (
-				2212E83828DB9F44004CCBAA /* DataSource */,
+				B2587B0A28DBA4A600D7F281 /* DataSource */,
 				2212E83728DB9F3E004CCBAA /* View */,
 				2212E83628DB9F3A004CCBAA /* Controller */,
 			);
@@ -388,24 +388,10 @@
 		2212E83728DB9F3E004CCBAA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2212E83928DB9F54004CCBAA /* Cell */,
+				B2587B0B28DBA4B700D7F281 /* Cell */,
 				2212E83C28DB9F7B004CCBAA /* InfoFoodView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		2212E83828DB9F44004CCBAA /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataSource;
-			sourceTree = "<group>";
-		};
-		2212E83928DB9F54004CCBAA /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		222937B128C66B5600515095 = {
@@ -860,6 +846,20 @@
 				B241564B28D2722B009F011C /* FoodCollectionDataSource.swift */,
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		B2587B0A28DBA4A600D7F281 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		B2587B0B28DBA4B700D7F281 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

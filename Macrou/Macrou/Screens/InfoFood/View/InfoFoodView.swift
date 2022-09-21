@@ -29,6 +29,18 @@ class InfoFoodView: UIView {
     /// Label expandível
     private let expansiveLabel = ExpansiveLabel()
     
+    /// Label seção vitaminas
+    private let vitaminsLabel = CustomViews.newLabel()
+    
+    /// Label primeira vitmaina
+    private let firstVitaminLabel = CustomViews.newLabel()
+    
+    /// Label segunda vitmaina
+    private let secondVitaminLabel = CustomViews.newLabel()
+    
+    /// Label terceira vitmaina
+    private let thirdVitaminLabel = CustomViews.newLabel()
+    
     
     // Outros
     
@@ -119,6 +131,10 @@ class InfoFoodView: UIView {
         self.scrollView.contentView.addSubview(self.container)
         
         self.container.contentView.addSubview(self.expansiveLabel)
+        self.container.contentView.addSubview(self.vitaminsLabel)
+        self.container.contentView.addSubview(self.firstVitaminLabel)
+        self.container.contentView.addSubview(self.secondVitaminLabel)
+        self.container.contentView.addSubview(self.thirdVitaminLabel)
     }
     
     
@@ -135,6 +151,7 @@ class InfoFoodView: UIView {
     private func setupStaticTexts() {
         /* Labels */
         self.container.setTitleText(with: "Morango")
+        self.vitaminsLabel.setupText(with: FontInfo(text: "Vitaminas", fontSize: 25, weight: .medium))
         
 
         /* Botões */
@@ -206,6 +223,16 @@ class InfoFoodView: UIView {
             self.expansiveLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
             self.expansiveLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
             self.expansiveLabel.heightAnchor.constraint(equalToConstant: expLabelHeight),
+            
+            self.vitaminsLabel.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
+            self.vitaminsLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.vitaminsLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
+            self.vitaminsLabel.heightAnchor.constraint(equalToConstant: gap),
+            
+            self.firstVitaminLabel.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
+            self.firstVitaminLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.firstVitaminLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
+            self.firstVitaminLabel.heightAnchor.constraint(equalToConstant: gap),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
