@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// O que essa classe faz?
+/// Grupo que lida com a label e um botão que faz com que a label se expanda
 class ExpansiveLabel: UIView {
     
     /* MARK: - Atributos */
@@ -14,6 +14,7 @@ class ExpansiveLabel: UIView {
     private let paragraphLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textColor = UIColor(.paragraph)
+        lbl.numberOfLines = 0
         return lbl
     }()
     
@@ -40,6 +41,7 @@ class ExpansiveLabel: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.setupViews()
+        self.DADOS_TESTE()
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -49,6 +51,7 @@ class ExpansiveLabel: UIView {
     /* MARK: - Encapsulamento */
 
     /// Define o texto que a label vai receber
+    /// - Parameter text: texto que vai ser definido
     public func setInfoText(for text: String) {
         self.paragraphLabel.text = text
     }
@@ -93,11 +96,6 @@ class ExpansiveLabel: UIView {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {		
         /* Labels */
-        print("Qtd : ", "A hortinha da saúde é muito bem cuidada".count)
-        self.paragraphLabel.text = """
-        A hortinha da saúde é muito bem cuidada e sempre tem ótimos alimentos frescos que são plantados e cuidados com muito
-        """
-        self.paragraphLabel.numberOfLines = 0
         self.paragraphLabel.setupText(with: FontInfo(
             fontSize: 20, weight: .regular
         ))
@@ -128,5 +126,13 @@ class ExpansiveLabel: UIView {
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
+    }
+    
+    
+    
+    private func DADOS_TESTE() {
+        self.paragraphLabel.text = """
+        A hortinha da saúde é muito bem cuidada e sempre tem ótimos alimentos frescos que são plantados e cuidados com muito
+        """
     }
 }

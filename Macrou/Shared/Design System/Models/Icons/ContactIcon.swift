@@ -11,6 +11,7 @@ enum ContactIcon: CustomStringConvertible {
     case whatts
     
     
+    /// Descrição do contato
     var description: String {
         switch self {
         case .insta: return "perfil do instagram"

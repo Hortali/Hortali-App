@@ -198,7 +198,7 @@
 		220A63E228D24C1600D9E2A9 /* InfoGarden */ = {
 			isa = PBXGroup;
 			children = (
-				2210246028D84C4600F412A5 /* Protocolo */,
+				2210246028D84C4600F412A5 /* Protocol */,
 				2210245528D53F2400F412A5 /* Delegate */,
 				2210245228D52B0500F412A5 /* Data Source */,
 				220A63E528D24C3B00D9E2A9 /* View */,
@@ -210,7 +210,6 @@
 		220A63E528D24C3B00D9E2A9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				220A63EA28D24CC000D9E2A9 /* Componentes */,
 				220A63E628D24C4000D9E2A9 /* Cells */,
 				220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */,
 			);
@@ -234,12 +233,12 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		220A63EA28D24CC000D9E2A9 /* Componentes */ = {
+		220A63EA28D24CC000D9E2A9 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */,
 			);
-			path = Componentes;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		2210244928D526EB00F412A5 /* Types */ = {
@@ -323,12 +322,12 @@
 			path = ImagesCell;
 			sourceTree = "<group>";
 		};
-		2210246028D84C4600F412A5 /* Protocolo */ = {
+		2210246028D84C4600F412A5 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
 				2210246128D84C6800F412A5 /* InfoGardenProtocol.swift */,
 			);
-			path = Protocolo;
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		2210246D28D901F200F412A5 /* Model */ = {
@@ -394,6 +393,7 @@
 		222937D428C66B6200515095 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				220A63EA28D24CC000D9E2A9 /* Components */,
 				2210246D28D901F200F412A5 /* Model */,
 				222937DE28C66F4D00515095 /* Extensions */,
 				222937DA28C66B9800515095 /* Delegates */,

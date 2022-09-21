@@ -4,10 +4,12 @@
 import UIKit
 
 
+/// Cria uma stack view costumizada
 class CustomStack: UIStackView {
     
     /* MARK:  Atributos */
     
+    /// Deixar os elementos com a mesma largura
     public var isSameWidth: Bool = true {
         didSet {
             self.arrangedSubviews.forEach { element in
@@ -30,6 +32,12 @@ class CustomStack: UIStackView {
     
     /* MARK:  Configurações */
     
+    /// Pegar o espaçamento entre os elementos
+    /// - Parameter space: tamanho dos elmentos adicionados
+    /// - Returns: espaço entre os elementos
+    ///
+    /// Essa função só faz sentido para caso os elementos que foram adicionados na
+    /// stack view forem do mesmo tamanho.
     public func getEqualSpace(for space: CGFloat) -> CGFloat {
         var equalSpace: CGFloat = 0
         if let totalHeight = self.superview?.bounds.height {
@@ -37,7 +45,7 @@ class CustomStack: UIStackView {
             
             let spaceToDivide: CGFloat = space * totalViewsInStack - totalHeight
             
-            equalSpace = spaceToDivide / (totalViewsInStack+1)
+            equalSpace = spaceToDivide / (totalViewsInStack + 1)
         }
         
         self.spacing = equalSpace

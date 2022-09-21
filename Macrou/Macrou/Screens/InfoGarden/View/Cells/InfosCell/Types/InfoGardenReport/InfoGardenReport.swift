@@ -12,7 +12,7 @@ class InfoGardenReport: UIView {
     // Views
     
     /// Imagem de reportar
-    private let imageReport = CustomViews.newImage()
+    private let reportImage = CustomViews.newImage()
     
     
     // Outros
@@ -50,13 +50,13 @@ class InfoGardenReport: UIView {
     
     /// Configura as informaçòes dessa view
     private func setupInfo() {
-        self.imageReport.image = UIImage(appImage: .report)
+        self.reportImage.image = UIImage(appImage: .report)
     }
 
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-        self.addSubview(self.imageReport)
+        self.addSubview(self.reportImage)
     }
     
     
@@ -65,10 +65,10 @@ class InfoGardenReport: UIView {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
-            self.imageReport.topAnchor.constraint(equalTo: self.topAnchor),
-            self.imageReport.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.imageReport.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.imageReport.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.reportImage.topAnchor.constraint(equalTo: self.topAnchor),
+            self.reportImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.reportImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.reportImage.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

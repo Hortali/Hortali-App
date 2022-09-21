@@ -237,7 +237,6 @@ class InfoGardenView: UIView {
         
         // Altura dos elementos
         let segHeight = self.getEquivalent(510)
-        
         let containerHeight = self.getEquivalent(435)
         let expLabelHeight = self.getEquivalent(85)
         let collectionHeight = self.getEquivalent(200)

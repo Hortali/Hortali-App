@@ -143,6 +143,7 @@ class TimeGroup: UIView {
         
         let barLine: CGFloat = self.getConstant(for: 2)
         
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [

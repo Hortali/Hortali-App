@@ -96,11 +96,11 @@ enum AppColors: OriginalColor {
     case backgroundButton
     
     
+    
     /* Células */
     
     /// Célula CL08 - Status fechado
     case closeStatus
-    
     
     
     
@@ -142,7 +142,7 @@ enum AppColors: OriginalColor {
         case .tabNotSelected: return .greenLight
             
         
-        /* Tab */
+        /* Page Control */
         case .pageSelected: return .greenDark
         case .pageNotSelected: return .greenLight
             
@@ -161,8 +161,6 @@ enum AppColors: OriginalColor {
             
         /* Outros */
         case .contactCellBack: return .yellow
-        
-        /* Botões */
         case .closeStatus: return .red
         }
     }

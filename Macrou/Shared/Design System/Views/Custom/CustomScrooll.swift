@@ -40,7 +40,6 @@ class CustomScroll: UIView {
 
 
 
-
     /* MARK: - Construtor */
     
     init() {
