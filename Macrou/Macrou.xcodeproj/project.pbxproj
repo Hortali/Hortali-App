@@ -32,6 +32,8 @@
 		2212E82D28DB877B004CCBAA /* GardenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E82C28DB877B004CCBAA /* GardenProtocol.swift */; };
 		2212E83128DB884E004CCBAA /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E83028DB884E004CCBAA /* MenuController.swift */; };
 		2212E83328DB88D9004CCBAA /* TabBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E83228DB88D9004CCBAA /* TabBarProtocol.swift */; };
+		2212E83B28DB9F60004CCBAA /* InfoFoodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E83A28DB9F60004CCBAA /* InfoFoodController.swift */; };
+		2212E83D28DB9F7B004CCBAA /* InfoFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E83C28DB9F7B004CCBAA /* InfoFoodView.swift */; };
 		222937BE28C66B5600515095 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BD28C66B5600515095 /* AppDelegate.swift */; };
 		222937C028C66B5600515095 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BF28C66B5600515095 /* SceneDelegate.swift */; };
 		222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 222937C628C66B5600515095 /* DataBase.xcdatamodeld */; };
@@ -112,6 +114,8 @@
 		2212E82C28DB877B004CCBAA /* GardenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenProtocol.swift; sourceTree = "<group>"; };
 		2212E83028DB884E004CCBAA /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		2212E83228DB88D9004CCBAA /* TabBarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarProtocol.swift; sourceTree = "<group>"; };
+		2212E83A28DB9F60004CCBAA /* InfoFoodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoFoodController.swift; sourceTree = "<group>"; };
+		2212E83C28DB9F7B004CCBAA /* InfoFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoFoodView.swift; sourceTree = "<group>"; };
 		222937BA28C66B5600515095 /* Macrou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macrou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222937BD28C66B5600515095 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		222937BF28C66B5600515095 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -363,6 +367,47 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		2212E83528DB9F2E004CCBAA /* InfoFood */ = {
+			isa = PBXGroup;
+			children = (
+				2212E83828DB9F44004CCBAA /* DataSource */,
+				2212E83728DB9F3E004CCBAA /* View */,
+				2212E83628DB9F3A004CCBAA /* Controller */,
+			);
+			path = InfoFood;
+			sourceTree = "<group>";
+		};
+		2212E83628DB9F3A004CCBAA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2212E83A28DB9F60004CCBAA /* InfoFoodController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2212E83728DB9F3E004CCBAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2212E83928DB9F54004CCBAA /* Cell */,
+				2212E83C28DB9F7B004CCBAA /* InfoFoodView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2212E83828DB9F44004CCBAA /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		2212E83928DB9F54004CCBAA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		222937B128C66B5600515095 = {
 			isa = PBXGroup;
 			children = (
@@ -440,6 +485,7 @@
 		222937D928C66B9200515095 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2212E83528DB9F2E004CCBAA /* InfoFood */,
 				2229381E28C7C3DD00515095 /* Main */,
 				2229383B28C8922000515095 /* Garden */,
 				2229384428C892E900515095 /* Food */,
@@ -945,12 +991,14 @@
 				22EDD4BE28DA4A6A001CE093 /* AppImages.swift in Sources */,
 				222937F928C68B9B00515095 /* CollectionGroup.swift in Sources */,
 				B241564C28D2722B009F011C /* FoodCollectionDataSource.swift in Sources */,
+				2212E83D28DB9F7B004CCBAA /* InfoFoodView.swift in Sources */,
 				222937C028C66B5600515095 /* SceneDelegate.swift in Sources */,
 				065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */,
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
 				22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */,
 				2210245128D529FA00F412A5 /* InfoGardenReport.swift in Sources */,
 				2210246C28D9017700F412A5 /* UIImage+ContactIcon.swift in Sources */,
+				2212E83B28DB9F60004CCBAA /* InfoFoodController.swift in Sources */,
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,
 				220A63EE28D3BDF700D9E2A9 /* CustomScrooll.swift in Sources */,
 				222937FC28C68C8200515095 /* CollectionGroupStyle.swift in Sources */,
