@@ -142,8 +142,8 @@ class InfoGardenTime: UIView {
             
             // Stack
             
-            self.daysAfterStack.topAnchor.constraint(equalTo: self.topAnchor, constant: -spaceStack),
-            self.daysAfterStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: spaceStack),
+            self.daysAfterStack.topAnchor.constraint(equalTo: self.topAnchor, constant: spaceStack),
+            self.daysAfterStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -spaceStack),
             self.daysAfterStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.daysAfterStack.widthAnchor.constraint(equalToConstant: widthStack),
             

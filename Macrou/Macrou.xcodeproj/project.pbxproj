@@ -34,6 +34,7 @@
 		2212E83328DB88D9004CCBAA /* TabBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E83228DB88D9004CCBAA /* TabBarProtocol.swift */; };
 		2212E83B28DB9F60004CCBAA /* InfoFoodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E83A28DB9F60004CCBAA /* InfoFoodController.swift */; };
 		2212E83D28DB9F7B004CCBAA /* InfoFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E83C28DB9F7B004CCBAA /* InfoFoodView.swift */; };
+		2212E84228DCEC07004CCBAA /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E84128DCEC07004CCBAA /* CustomLabel.swift */; };
 		222937BE28C66B5600515095 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BD28C66B5600515095 /* AppDelegate.swift */; };
 		222937C028C66B5600515095 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BF28C66B5600515095 /* SceneDelegate.swift */; };
 		222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 222937C628C66B5600515095 /* DataBase.xcdatamodeld */; };
@@ -116,6 +117,7 @@
 		2212E83228DB88D9004CCBAA /* TabBarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarProtocol.swift; sourceTree = "<group>"; };
 		2212E83A28DB9F60004CCBAA /* InfoFoodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoFoodController.swift; sourceTree = "<group>"; };
 		2212E83C28DB9F7B004CCBAA /* InfoFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoFoodView.swift; sourceTree = "<group>"; };
+		2212E84128DCEC07004CCBAA /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		222937BA28C66B5600515095 /* Macrou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macrou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222937BD28C66B5600515095 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		222937BF28C66B5600515095 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -555,6 +557,7 @@
 				222937F228C6844E00515095 /* CustomViews.swift */,
 				220A63ED28D3BDF700D9E2A9 /* CustomScrooll.swift */,
 				22EDD4AA28D95812001CE093 /* CustomStack.swift */,
+				2212E84128DCEC07004CCBAA /* CustomLabel.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -982,6 +985,7 @@
 				2212E83128DB884E004CCBAA /* MenuController.swift in Sources */,
 				222937E528C6779500515095 /* UIColors+AppColors.swift in Sources */,
 				2210246A28D9013E00F412A5 /* ContactIcon.swift in Sources */,
+				2212E84228DCEC07004CCBAA /* CustomLabel.swift in Sources */,
 				2210245F28D84B4D00F412A5 /* InfoGardenImagesDelegate.swift in Sources */,
 				220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */,
 				2229382E28C87BE300515095 /* OriginalColor.swift in Sources */,

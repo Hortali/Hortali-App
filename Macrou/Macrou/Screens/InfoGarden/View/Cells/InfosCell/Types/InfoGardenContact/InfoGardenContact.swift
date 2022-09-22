@@ -98,8 +98,8 @@ class InfoGardenContact: UIView {
         self.dynamicConstraints = [
             self.contactStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
             self.contactStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
-            self.contactStack.topAnchor.constraint(equalTo: self.topAnchor, constant: -spaceStack),
-            self.contactStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: spaceStack),
+            self.contactStack.topAnchor.constraint(equalTo: self.topAnchor, constant: spaceStack),
+            self.contactStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -spaceStack),
     
     
             self.contactViews[0].heightAnchor.constraint(equalToConstant: groupHeight),

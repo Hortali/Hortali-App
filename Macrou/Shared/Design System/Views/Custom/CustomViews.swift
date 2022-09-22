@@ -5,16 +5,12 @@ import MapKit
 import UIKit
 
 
-
 /// Componentes de UI já padronizados de acordo com o projeto.
 struct CustomViews {
     
     /// Cria uma nova label de acordo com a padronização do projeto
-    static func newLabel() -> UILabel {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.layer.masksToBounds = true
-        
+    static func newLabel() -> CustomLabel {
+        let lbl = CustomLabel()
         lbl.backgroundColor = UIColor(.viewBack)
         lbl.textColor = UIColor(.subTitle)
         
@@ -47,6 +43,7 @@ struct CustomViews {
     static func newButton() -> CustomButton {
         let but = CustomButton()
         but.tintColor = UIColor(.viewBack)
+        
         return but
     }
     
@@ -100,6 +97,7 @@ struct CustomViews {
     /// - Returns: Retorna uma segmentation personalizada
     static func newSegmentation(with itens: [String]?) -> UISegmentedControl {
         var seg = UISegmentedControl()
+        seg.translatesAutoresizingMaskIntoConstraints = false
         
         if let itens = itens {
             seg = UISegmentedControl(items: itens)
@@ -107,7 +105,6 @@ struct CustomViews {
             seg.backgroundColor = UIColor(.segBackNotSelected)
         }
     
-        seg.translatesAutoresizingMaskIntoConstraints = false
         return seg
     }
     
@@ -129,6 +126,7 @@ struct CustomViews {
         }
         
         page.backgroundColor = UIColor(.backgroundButton)?.withAlphaComponent(0.95)
+        
         return page
     }
     
@@ -142,10 +140,10 @@ struct CustomViews {
         let stack = CustomStack()
         stack.translatesAutoresizingMaskIntoConstraints = false
         
-        stack.axis = .vertical
-        
         stack.distribution = .equalCentering
         stack.alignment = .center
+        stack.axis = .vertical
+        
         return stack
     }
  }
