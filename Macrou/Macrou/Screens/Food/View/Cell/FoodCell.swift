@@ -55,6 +55,15 @@ class FoodCell: UICollectionViewCell {
     
     
     
+    /* MARK: - Encapsulamento */
+    
+    public func setupCell(for image: String) {
+        self.foodLabel.text = image
+        self.foodImage.image = UIImage(named: "\(image)_Square")
+    }
+    
+    
+    
     /* MARK: - Configurações */
     
     /// Adiciona os elementos (Views) na tela
@@ -73,7 +82,7 @@ class FoodCell: UICollectionViewCell {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
         self.foodLabel.setupText(with: FontInfo(
-            text: "Alimento", fontSize: 15, weight: .regular
+            fontSize: 15, weight: .regular
         ))
     }
       

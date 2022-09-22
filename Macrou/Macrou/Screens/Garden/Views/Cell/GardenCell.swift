@@ -18,7 +18,8 @@ class GardenCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.backgroundColor = UIColor(.viewBack)?.withAlphaComponent(0)
+        lbl.backgroundColor = .clear
+        lbl.textColor = UIColor(originalColor: .white)
         
         return lbl
     }()
@@ -27,7 +28,8 @@ class GardenCell: UICollectionViewCell {
     private let adressLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.backgroundColor = UIColor(.viewBack)?.withAlphaComponent(0)
+        lbl.backgroundColor = .clear
+        lbl.textColor = UIColor(originalColor: .white)
         
         return lbl
     }()
@@ -70,6 +72,13 @@ class GardenCell: UICollectionViewCell {
         self.reloadInputViews()
     }
     
+    
+    
+    /* MARK: - Encapsulamento */
+    
+    public func setupCell(for imageName: String) {
+        self.gardenImage.image = UIImage(named: imageName)
+    }
     
     
     /* MARK: - Configurações */

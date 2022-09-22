@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Controller responsável pela tela de favoritos
-class FavoriteViewController: MenuController, GardenProtocol {
+class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
     
     /* MARK: - Atributos */
     
@@ -21,7 +21,7 @@ class FavoriteViewController: MenuController, GardenProtocol {
     private let foodDataSource = FoodCollectionDataSource()
     
     /// Delegate da collection de alimentos
-    // private let foodDelegate = FoodDelegate()
+    private let foodDelegate = FoodCollectionDelegate()
     
     /// Data source da collection das hortas
     private let gardenDataSource = GardenDataSource()
@@ -30,7 +30,7 @@ class FavoriteViewController: MenuController, GardenProtocol {
     private let gardenDelegate = GardenDelegate()
 
 
-		
+        
     /* MARK: - Ciclo de Vida */
     
     override func loadView() {
@@ -56,6 +56,15 @@ class FavoriteViewController: MenuController, GardenProtocol {
         self.present(controller, animated: true)
     }
     
+        
+    internal func openFoodInfo(for index: Int) {
+        let controller = InfoFoodController()
+        controller.modalTransitionStyle = .crossDissolve
+        controller.modalPresentationStyle = .fullScreen
+        
+        self.tabBarProtocol?.showTabBar(is: false)
+        self.present(controller, animated: true)
+    }
     
     
     /* MARK: - Configurações */
@@ -63,9 +72,10 @@ class FavoriteViewController: MenuController, GardenProtocol {
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
         self.gardenDelegate.setProtocol(with: self)
+        self.foodDelegate.setProtocol(with: self)
         
         self.myView.setFoodDataSource(with: self.foodDataSource)
-        // self.myView.setFoodDelegate(with: self.foodDelegate)
+        self.myView.setFoodDelegate(with: self.foodDelegate)
         
         self.myView.setGardenDataSource(with: self.gardenDataSource)
         self.myView.setGardenDelegate(with: self.gardenDelegate)

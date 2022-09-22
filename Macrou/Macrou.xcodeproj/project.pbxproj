@@ -35,6 +35,7 @@
 		2212E83B28DB9F60004CCBAA /* InfoFoodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E83A28DB9F60004CCBAA /* InfoFoodController.swift */; };
 		2212E83D28DB9F7B004CCBAA /* InfoFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E83C28DB9F7B004CCBAA /* InfoFoodView.swift */; };
 		2212E84228DCEC07004CCBAA /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E84128DCEC07004CCBAA /* CustomLabel.swift */; };
+		2212E84528DD0DA9004CCBAA /* FoodProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212E84428DD0DA9004CCBAA /* FoodProtocol.swift */; };
 		222937BE28C66B5600515095 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BD28C66B5600515095 /* AppDelegate.swift */; };
 		222937C028C66B5600515095 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937BF28C66B5600515095 /* SceneDelegate.swift */; };
 		222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 222937C628C66B5600515095 /* DataBase.xcdatamodeld */; };
@@ -118,6 +119,7 @@
 		2212E83A28DB9F60004CCBAA /* InfoFoodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoFoodController.swift; sourceTree = "<group>"; };
 		2212E83C28DB9F7B004CCBAA /* InfoFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoFoodView.swift; sourceTree = "<group>"; };
 		2212E84128DCEC07004CCBAA /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		2212E84428DD0DA9004CCBAA /* FoodProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodProtocol.swift; sourceTree = "<group>"; };
 		222937BA28C66B5600515095 /* Macrou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macrou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222937BD28C66B5600515095 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		222937BF28C66B5600515095 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -396,6 +398,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2212E84328DD0D99004CCBAA /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				2212E84428DD0DA9004CCBAA /* FoodProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		222937B128C66B5600515095 = {
 			isa = PBXGroup;
 			children = (
@@ -473,13 +483,13 @@
 		222937D928C66B9200515095 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				2212E83528DB9F2E004CCBAA /* InfoFood */,
 				2229381E28C7C3DD00515095 /* Main */,
 				2229383B28C8922000515095 /* Garden */,
 				2229384428C892E900515095 /* Food */,
 				222937FD28C68EC500515095 /* Favorite */,
 				220A63E228D24C1600D9E2A9 /* InfoGarden */,
 				22EDD4AC28DA2D08001CE093 /* HourInfo */,
+				2212E83528DB9F2E004CCBAA /* InfoFood */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -697,6 +707,7 @@
 		2229384428C892E900515095 /* Food */ = {
 			isa = PBXGroup;
 			children = (
+				2212E84328DD0D99004CCBAA /* Protocol */,
 				B241564A28D271AA009F011C /* DataSource */,
 				B241564928D271A3009F011C /* Delegate */,
 				2229384528C8930400515095 /* View */,
@@ -1027,6 +1038,7 @@
 				2229385528C9335C00515095 /* UIView+AdpativeLayout.swift in Sources */,
 				2210245928D845D800F412A5 /* InfoGardenImagesDataSource.swift in Sources */,
 				2210244628D5201500F412A5 /* InfoGardenInfosCell.swift in Sources */,
+				2212E84528DD0DA9004CCBAA /* FoodProtocol.swift in Sources */,
 				22EDD4B728DA2E00001CE093 /* HourInfoCell.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
 				22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */,

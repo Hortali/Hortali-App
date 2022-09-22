@@ -74,6 +74,13 @@ class FavoriteView: MainView {
     }
     
     
+    /// Define o delegate da collection de alimentos
+    /// - Parameter dataSource: data source da collection de alimentos
+    public func setFoodDelegate(with delegate: FoodCollectionDelegate) {
+        self.foodGroup.collection.delegate = delegate
+    }
+    
+    
     /// Define o data source da collection de hortas
     /// - Parameter dataSource: data source da collection de hortas
     public func setGardenDataSource(with dataSource: GardenDataSource) {
@@ -86,7 +93,7 @@ class FavoriteView: MainView {
     public func setGardenDelegate(with delegate: GardenDelegate) {
         self.gardenGroup.collection.delegate = delegate
     }
-    
+        
     
     
     /* MARK: - Ciclo de Vida */

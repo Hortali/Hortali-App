@@ -7,9 +7,12 @@ import UIKit
 /// Data source da collection de mostrar os alimentos
 class FoodCollectionDataSource: NSObject, UICollectionViewDataSource {
     
+    var data: [String] = ["Abacate", "Cenoura", "Limao", "Morango"]
+    
+    
     /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return self.data.count
     }
     
     
@@ -19,6 +22,10 @@ class FoodCollectionDataSource: NSObject, UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodCell.identifier, for: indexPath) as? FoodCell else {
             return UICollectionViewCell()
         }
+        
+        let imageName = self.data[indexPath.row]
+        cell.setupCell(for: imageName)
+        
         
         return cell
     }

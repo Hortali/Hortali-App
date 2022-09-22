@@ -354,5 +354,7 @@ class InfoFoodView: UIView {
     private func DADOS_TESTE() {
         self.container.setTitleText(with: "Morango")
         self.vitaminsInfoLabel.text = "E minerais como fosfato, potássio, dentre outros. E de compostos bioativos."
+        
+        self.coverImage.image = UIImage(named: "Morango_Square")
     }
 }

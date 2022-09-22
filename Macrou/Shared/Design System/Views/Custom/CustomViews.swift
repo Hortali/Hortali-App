@@ -52,6 +52,7 @@ struct CustomViews {
     static func newImage() -> UIImageView {
         let imgV = UIImageView()
         imgV.translatesAutoresizingMaskIntoConstraints = false
+        imgV.clipsToBounds = true
         
         return imgV
     }
