@@ -16,7 +16,10 @@ class InfoFoodController: UIViewController {
     
     
     /* Delegate & Data Sources */
-
+    private let gardenDataSource = GardenDataSource()
+    
+    /// Delegate da collection das hortas
+    private let gardenDelegate = GardenDelegate()
 
 		
     /* MARK: - Ciclo de Vida */
@@ -65,6 +68,8 @@ class InfoFoodController: UIViewController {
     
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-    
+        //self.gardenDelegate.setProtocol(with: self)
+        
+      //  self.myView.setDataSource(with: self.gardenDataSource)
     }
 }
