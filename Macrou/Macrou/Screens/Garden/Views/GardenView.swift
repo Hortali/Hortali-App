@@ -145,7 +145,7 @@ class GardenView: MainView {
             self.referenceView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
             
             
-            self.collectionView.heightAnchor.constraint(equalToConstant: collectionHeight),
+            self.collectionView.heightAnchor.constraint(equalToConstant: getEquivalent(collectionHeight)),
             self.collectionView.centerYAnchor.constraint(equalTo: self.referenceView.centerYAnchor),
             self.collectionView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.collectionView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
