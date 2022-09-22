@@ -98,7 +98,6 @@ struct CustomViews {
     /// - Returns: Retorna uma segmentation personalizada
     static func newSegmentation(with itens: [String]?) -> UISegmentedControl {
         var seg = UISegmentedControl()
-        seg.translatesAutoresizingMaskIntoConstraints = false
         
         if let itens = itens {
             seg = UISegmentedControl(items: itens)
@@ -106,6 +105,7 @@ struct CustomViews {
             seg.backgroundColor = UIColor(.segBackNotSelected)
         }
     
+        seg.translatesAutoresizingMaskIntoConstraints = false
         return seg
     }
     
