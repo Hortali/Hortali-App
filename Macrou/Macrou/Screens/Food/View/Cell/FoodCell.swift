@@ -15,7 +15,11 @@ class FoodCell: UICollectionViewCell {
     // Views
     
     /// Nome célula de cada alimento
-    private let foodLabel: UILabel = CustomViews.newLabel()
+    private let foodLabel: UILabel = {
+        let lbl = CustomViews.newLabel()
+        lbl.textAlignment = .center
+        return lbl
+    }()
     
     /// ImageView da célula de cada alimento
     private let foodImage: UIImageView = CustomViews.newImage()
@@ -75,37 +79,37 @@ class FoodCell: UICollectionViewCell {
     
     /// Personalização da UI
     private func setupUI() {
-        self.foodImage.layer.cornerRadius = 20
+        self.foodImage.layer.cornerRadius = self.superview?.getEquivalent(20) ?? 0
     }
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
         self.foodLabel.setupText(with: FontInfo(
-            fontSize: 15, weight: .regular
+            fontSize: self.superview?.getEquivalent(16) ?? 0, weight: .regular
         ))
     }
       
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 170 , height: 192), dimension: .height)
         let imageHeight: CGFloat = self.bounds.width
-        let upside: CGFloat = self.getEquivalent(20, sizeProporsion: screenReferenceSize, screenReference: screenReferenceSize)
+        let between: CGFloat = self.getEquivalent(2)
         
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
-            self.foodImage.topAnchor.constraint(equalTo: contentView.topAnchor),
-            self.foodImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            self.foodImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            self.foodImage.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            self.foodImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.foodImage.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.foodImage.heightAnchor.constraint(equalToConstant: imageHeight),
             
             
-            self.foodLabel.topAnchor.constraint(equalTo: foodImage.bottomAnchor, constant: upside / 10),
-            self.foodLabel.heightAnchor.constraint(equalToConstant: upside),
-            self.foodLabel.centerXAnchor.constraint(equalTo: foodImage.centerXAnchor),
+            self.foodLabel.topAnchor.constraint(equalTo: self.foodImage.bottomAnchor, constant: between),
+            self.foodLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.foodLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            self.foodLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

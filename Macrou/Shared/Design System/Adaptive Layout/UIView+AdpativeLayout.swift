@@ -30,12 +30,18 @@ extension UIView: AdaptiveLayout {
             if let screenReference = screenReference {
                 return screenReference
             }
+            if let sizeProporsion = sizeProporsion {
+                return SizeInfo(screen: .iPhone12, dimension: sizeProporsion.dimension)
+            }
             return SizeInfo(screen: .iPhone12, dimension: .width)
         }()
         
         let proportion: SizeInfo = {
             if let sizeProporsion = sizeProporsion {
                 return sizeProporsion
+            }
+            if let screenReference = screenReference {
+                return SizeInfo(screen: .view, dimension: screenReference.dimension)
             }
             return SizeInfo(screen: .view, dimension: .width)
         }()
@@ -44,7 +50,7 @@ extension UIView: AdaptiveLayout {
         let proportionValue: CGFloat = self.getScreenDimension(for: proportion)
         
         // self.bounds.height * 0.1
-        return proportionValue * space / (screenValue)
+        return proportionValue * (space / screenValue)
     }
     
     

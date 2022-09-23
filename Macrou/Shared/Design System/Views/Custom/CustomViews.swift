@@ -103,8 +103,14 @@ struct CustomViews {
             seg = UISegmentedControl(items: itens)
             seg.selectedSegmentTintColor = UIColor(.segBackSelected)
             seg.backgroundColor = UIColor(.segBackNotSelected)
+            seg.tintColor = UIColor(.segTextSelected)
         }
-    
+        
+        let titleTextAttributes: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor(.segTextSelected) ?? .clear
+        ]
+        seg.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        
         seg.translatesAutoresizingMaskIntoConstraints = false
         return seg
     }
