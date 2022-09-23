@@ -2,7 +2,7 @@
 
 
 /// Casos de uso das cores usadas no projeto
-enum AppColors: OriginalColor {
+enum AppColors {
     
     /* MARK: - Casos */
     

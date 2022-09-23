@@ -56,13 +56,13 @@ class InfoGardenTime: UIView {
         self.DADOS_TESTE()
     }
     
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     
     
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()

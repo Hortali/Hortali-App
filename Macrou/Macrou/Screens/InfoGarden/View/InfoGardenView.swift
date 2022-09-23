@@ -133,7 +133,7 @@ class InfoGardenView: UIView {
     
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()
