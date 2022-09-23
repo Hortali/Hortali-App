@@ -140,14 +140,16 @@ class InfoFoodView: UIView {
     
     /// Cria e adiciona as views que vão ser colocadas na stack
     private func setupStackViews() {
+        // Loop Unrolling
+        
         self.vitaminsTypesLabels.append(self.getVitaminLabel())
         self.vitaminsTypesLabels.append(self.getVitaminLabel())
         self.vitaminsTypesLabels.append(self.getVitaminLabel())
         
         // Adicionando na stack
-        for label in self.vitaminsTypesLabels {
-            self.vitaminsStack.addArrangedSubview(label)
-        }
+        self.vitaminsStack.addArrangedSubview(self.vitaminsTypesLabels[0])
+        self.vitaminsStack.addArrangedSubview(self.vitaminsTypesLabels[1])
+        self.vitaminsStack.addArrangedSubview(self.vitaminsTypesLabels[2])
     }
     
     
