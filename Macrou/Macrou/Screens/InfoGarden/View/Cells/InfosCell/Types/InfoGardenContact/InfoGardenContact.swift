@@ -36,7 +36,7 @@ class InfoGardenContact: UIView {
         self.DADOS_TESTE()
     }
     
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     
     
@@ -59,7 +59,7 @@ class InfoGardenContact: UIView {
     
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupDynamicConstraints()
@@ -98,8 +98,8 @@ class InfoGardenContact: UIView {
         self.dynamicConstraints = [
             self.contactStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
             self.contactStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
-            self.contactStack.topAnchor.constraint(equalTo: self.topAnchor, constant: -spaceStack),
-            self.contactStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: spaceStack),
+            self.contactStack.topAnchor.constraint(equalTo: self.topAnchor, constant: spaceStack),
+            self.contactStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -spaceStack),
     
     
             self.contactViews[0].heightAnchor.constraint(equalToConstant: groupHeight),

@@ -10,7 +10,7 @@ class InfoGardenImagesDataSource: NSObject, UICollectionViewDataSource {
     /* MARK: - Atributos */
     
     /// Nome das imagens
-    private var data: [String] = ["ImagemHorta", "ImagemHorta", "ImagemHorta"]
+    private var data: [String] = ["Horta_01", "Horta_02", "Horta_03"]
     
     
     

@@ -56,13 +56,13 @@ class InfoGardenTime: UIView {
         self.DADOS_TESTE()
     }
     
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     
     
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()
@@ -142,8 +142,8 @@ class InfoGardenTime: UIView {
             
             // Stack
             
-            self.daysAfterStack.topAnchor.constraint(equalTo: self.topAnchor, constant: -spaceStack),
-            self.daysAfterStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: spaceStack),
+            self.daysAfterStack.topAnchor.constraint(equalTo: self.topAnchor, constant: spaceStack),
+            self.daysAfterStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -spaceStack),
             self.daysAfterStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.daysAfterStack.widthAnchor.constraint(equalToConstant: widthStack),
             

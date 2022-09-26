@@ -133,7 +133,7 @@ class InfoGardenView: UIView {
     
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()
@@ -183,7 +183,7 @@ class InfoGardenView: UIView {
         
         self.scrollView.scrollContentSize = CGSize(
             width: self.getEquivalent(self.bounds.width),
-            height: self.getEquivalent(870)
+            height: 870
         )
         
         

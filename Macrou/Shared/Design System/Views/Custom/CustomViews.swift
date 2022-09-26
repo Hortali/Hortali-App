@@ -5,16 +5,12 @@ import MapKit
 import UIKit
 
 
-
 /// Componentes de UI já padronizados de acordo com o projeto.
 struct CustomViews {
     
     /// Cria uma nova label de acordo com a padronização do projeto
-    static func newLabel() -> UILabel {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.layer.masksToBounds = true
-        
+    static func newLabel() -> CustomLabel {
+        let lbl = CustomLabel()
         lbl.backgroundColor = UIColor(.viewBack)
         lbl.textColor = UIColor(.subTitle)
         
@@ -47,6 +43,7 @@ struct CustomViews {
     static func newButton() -> CustomButton {
         let but = CustomButton()
         but.tintColor = UIColor(.viewBack)
+        
         return but
     }
     
@@ -55,6 +52,7 @@ struct CustomViews {
     static func newImage() -> UIImageView {
         let imgV = UIImageView()
         imgV.translatesAutoresizingMaskIntoConstraints = false
+        imgV.clipsToBounds = true
         
         return imgV
     }
@@ -105,8 +103,14 @@ struct CustomViews {
             seg = UISegmentedControl(items: itens)
             seg.selectedSegmentTintColor = UIColor(.segBackSelected)
             seg.backgroundColor = UIColor(.segBackNotSelected)
+            seg.tintColor = UIColor(.segTextSelected)
         }
-    
+        
+        let titleTextAttributes: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor(.segTextSelected) ?? .clear
+        ]
+        seg.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        
         seg.translatesAutoresizingMaskIntoConstraints = false
         return seg
     }
@@ -129,6 +133,7 @@ struct CustomViews {
         }
         
         page.backgroundColor = UIColor(.backgroundButton)?.withAlphaComponent(0.95)
+        
         return page
     }
     
@@ -142,10 +147,10 @@ struct CustomViews {
         let stack = CustomStack()
         stack.translatesAutoresizingMaskIntoConstraints = false
         
-        stack.axis = .vertical
-        
         stack.distribution = .equalCentering
         stack.alignment = .center
+        stack.axis = .vertical
+        
         return stack
     }
  }

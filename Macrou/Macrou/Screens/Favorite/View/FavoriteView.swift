@@ -61,7 +61,7 @@ class FavoriteView: MainView {
         self.setupCollectionFlow()
     }
     
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     
     
@@ -71,6 +71,13 @@ class FavoriteView: MainView {
     /// - Parameter dataSource: data source da collection de alimentos
     public func setFoodDataSource(with dataSource: FoodCollectionDataSource) {
         self.foodGroup.collection.dataSource = dataSource
+    }
+    
+    
+    /// Define o delegate da collection de alimentos
+    /// - Parameter dataSource: data source da collection de alimentos
+    public func setFoodDelegate(with delegate: FoodCollectionDelegate) {
+        self.foodGroup.collection.delegate = delegate
     }
     
     
@@ -86,7 +93,7 @@ class FavoriteView: MainView {
     public func setGardenDelegate(with delegate: GardenDelegate) {
         self.gardenGroup.collection.delegate = delegate
     }
-    
+        
     
     
     /* MARK: - Ciclo de Vida */
@@ -94,9 +101,9 @@ class FavoriteView: MainView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.setupUI()
         self.setupStaticTexts()
         self.setupDynamicConstraints()
+        self.setupUI()
     }
     
     
@@ -129,24 +136,27 @@ class FavoriteView: MainView {
         self.backgroundColor = UIColor(.favoriteBack)
         
         // Collection
-        
-        let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
-        let cellReferenceSize = SizeInfo(screenSize: CGSize(width: 170, height: 192), dimension: .height)
         let minimumSpace = self.getEquivalent(10)
         
         if self.gardenGroup.collection.bounds.width != 0 {
-            self.gardenCollectionFlow.minimumInteritemSpacing = minimumSpace
+            let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
+            
             self.gardenCollectionFlow.itemSize = CGSize(
-                width: self.gardenGroup.collection.getEquivalent(209, sizeProporsion: screenReferenceSize, screenReference: screenReferenceSize),
+                width: self.gardenGroup.collection.getEquivalent(240, screenReference: screenReferenceSize),
                 height: self.gardenGroup.collection.bounds.height
             )
+            self.gardenCollectionFlow.minimumInteritemSpacing = minimumSpace
         }
         
+        
         if self.foodGroup.collection.bounds.width != 0 {
-            self.foodCollectionFlow.minimumInteritemSpacing = minimumSpace
+            let cellReferenceSize = SizeInfo(screenSize: CGSize(width: 170, height: 192), dimension: .height)
+            
             self.foodCollectionFlow.itemSize = CGSize(
-                width: self.getEquivalent(132, sizeProporsion: cellReferenceSize, screenReference: cellReferenceSize),
-                height: self.foodGroup.collection.bounds.height)
+                width: self.foodGroup.collection.getEquivalent(170, screenReference: cellReferenceSize),
+                height: self.foodGroup.collection.bounds.height
+            )
+            self.foodCollectionFlow.minimumInteritemSpacing = minimumSpace
         }
     }
     
@@ -155,14 +165,14 @@ class FavoriteView: MainView {
     private func setupStaticTexts() {
         self.setTitleText(with: "Favoritos da sua \nmesa")
         
-        let subTitleSize: CGFloat = self.getEquivalent(25)
+        let subTitleSize: CGFloat = self.getEquivalent(25, dimension: .height)
         
         self.foodGroup.titleLabel.setupText(with: FontInfo(
-            text: "Alimentos", fontSize: subTitleSize, weight: .regular)
+            text: "Alimentos", fontSize: subTitleSize, weight: .medium)
         )
         
         self.gardenGroup.titleLabel.setupText(with: FontInfo(
-            text: "Hortas", fontSize: subTitleSize, weight: .regular)
+            text: "Hortas", fontSize: subTitleSize, weight: .medium)
         )
     }
     
@@ -170,9 +180,10 @@ class FavoriteView: MainView {
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
         let lateral: CGFloat = self.getEquivalent(15)
-        let between: CGFloat = self.getEquivalent(28)
+        let between: CGFloat = self.getEquivalent(28, dimension: .height)
         
-        let foodGpHeight = self.getEquivalent(187)   // 150+12+25
+        
+        let foodGpHeight = self.getEquivalent(187, dimension: .height)   // 150+12+25
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         

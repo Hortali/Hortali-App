@@ -9,14 +9,8 @@ class CustomStack: UIStackView {
     
     /* MARK:  Atributos */
     
-    /// Deixar os elementos com a mesma largura
-    public var isSameWidth: Bool = true {
-        didSet {
-            self.arrangedSubviews.forEach { element in
-                element.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = self.isSameWidth
-            }
-        }
-    }
+    /// Deixar o valor das views igual a do stack
+    public var sameDimensionValue: Dimension = .width
     
     
     
@@ -25,7 +19,12 @@ class CustomStack: UIStackView {
     override func addArrangedSubview(_ view: UIView) {
         super.addArrangedSubview(view)
         
-        view.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = self.isSameWidth
+        switch self.sameDimensionValue {
+        case .height:
+            view.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        case .width:
+            view.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        }
     }
     
     
@@ -39,16 +38,25 @@ class CustomStack: UIStackView {
     /// Essa função só faz sentido para caso os elementos que foram adicionados na
     /// stack view forem do mesmo tamanho.
     public func getEqualSpace(for space: CGFloat) -> CGFloat {
-        var equalSpace: CGFloat = 0
-        if let totalHeight = self.superview?.bounds.height {
-            let totalViewsInStack = CGFloat(self.arrangedSubviews.count)
+        var superViewValue: CGFloat? = nil
+        
+        switch self.axis {
+        case .horizontal:
+            superViewValue = self.superview?.bounds.width
             
-            let spaceToDivide: CGFloat = space * totalViewsInStack - totalHeight
+        case .vertical:
+            superViewValue = self.superview?.bounds.height
             
-            equalSpace = spaceToDivide / (totalViewsInStack + 1)
+        @unknown default: break
         }
         
-        self.spacing = equalSpace
-        return equalSpace
+        if let superViewValue = superViewValue {
+            let totalViewsInStack = CGFloat(self.arrangedSubviews.count)
+            
+            let spaceToDivide: CGFloat = superViewValue - (space * totalViewsInStack)
+            
+            return spaceToDivide / (totalViewsInStack + 1)
+        }
+        return 0
     }
 }

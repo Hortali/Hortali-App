@@ -5,12 +5,13 @@ import UIKit
 
 
 /// Controller responsável pela tela de alimentos
-class FoodController: MenuController {
+class FoodController: MenuController, FoodProtocol {
     
     /* MARK: - Atributos */
 
     /// View principal que a classe vai controlar
     private let myView = FoodView()
+    
     
     /* Delegate & Data Sources */
     
@@ -20,10 +21,9 @@ class FoodController: MenuController {
     /// Delegate da collection de alimentos
     let foodCollectionDelegate = FoodCollectionDelegate()
 
-		
+        
     
     /* MARK: - Ciclo de Vida */
-    
     
     override func loadView() {
         self.view = self.myView
@@ -40,12 +40,24 @@ class FoodController: MenuController {
 
     /* MARK: - Protocolo */
     
+    internal func openFoodInfo(for index: Int) {
+        let controller = InfoFoodController()
+        controller.modalTransitionStyle = .crossDissolve
+        controller.modalPresentationStyle = .fullScreen
+        
+        self.tabBarProtocol?.showTabBar(is: false)
+        self.present(controller, animated: true)
+    }
+    
     
     
     /* MARK: - Configurações */
         
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
+        self.foodCollectionDelegate.setProtocol(with: self)
+        
         self.myView.setDataSource(with: self.foodCollectionDataSource)
+        self.myView.setDelegate(with: self.foodCollectionDelegate)
     }
 }

@@ -29,7 +29,7 @@ class CustomScroll: UIView {
     // Outros
     
     /// Tamanho da scrollView
-    public var scrollContentSize: CGSize = CGSize() {
+    public var scrollContentSize = CGSize() {
         didSet {
             self.setupScroollSize()
         }
@@ -49,13 +49,13 @@ class CustomScroll: UIView {
         self.setupViews()
     }
     
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
 
     
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupDynamicConstraints()
