@@ -94,25 +94,24 @@ class GardenCell: UICollectionViewCell {
     /// Personalização da UI
     private func setupUI() {
         self.layer.masksToBounds = true
-        self.layer.cornerRadius = 20
+        self.layer.cornerRadius = self.getEquivalent(20)
     }
     
     
     /// Define as propriedades dos textos que aparecerão dentro da célula
     private func setupStaticText() {
-        let screenReferenceSize =
-        SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
+        let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
         
-        let titleSize: CGFloat = self.getEquivalent(18, sizeProporsion: screenReferenceSize, screenReference: screenReferenceSize)
-        let subtitleSize: CGFloat = self.getEquivalent(12, sizeProporsion: screenReferenceSize, screenReference: screenReferenceSize)
+        let titleSize: CGFloat = self.getEquivalent(18, screenReference: screenReferenceSize)
+        let subtitleSize: CGFloat = self.getEquivalent(12, screenReference: screenReferenceSize)
         
         self.titleLabel.setupText(with: FontInfo(
-            fontSize: titleSize,
-            weight: .medium))
+            fontSize: titleSize, weight: .medium
+        ))
         
         self.adressLabel.setupText(with: FontInfo(
-            fontSize: subtitleSize,
-            weight: .regular))
+            fontSize: subtitleSize, weight: .regular
+        ))
     }
     
     
@@ -120,9 +119,8 @@ class GardenCell: UICollectionViewCell {
     private func setupDynamicConstraints() {
         let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
             
-        let lateral: CGFloat = self.getEquivalent(10, sizeProporsion: screenReferenceSize, screenReference: screenReferenceSize)
-        
-        let adressLabelHeight: CGFloat = self.getEquivalent(12, sizeProporsion: screenReferenceSize, screenReference: screenReferenceSize)
+        let lateral: CGFloat = self.getEquivalent(10, screenReference: screenReferenceSize)
+        let adressLabelHeight: CGFloat = self.getEquivalent(12, screenReference: screenReferenceSize)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
@@ -139,10 +137,10 @@ class GardenCell: UICollectionViewCell {
             self.adressLabel.heightAnchor.constraint(equalToConstant: adressLabelHeight),
             
             
-            self.titleLabel.leadingAnchor.constraint(equalTo: self.gardenImage.leadingAnchor, constant: lateral),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.adressLabel.leadingAnchor),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.adressLabel.trailingAnchor),
             self.titleLabel.bottomAnchor.constraint(equalTo: self.adressLabel.topAnchor, constant: -lateral / 2),
-            self.titleLabel.heightAnchor.constraint(equalToConstant: lateral * 2 )
+            self.titleLabel.heightAnchor.constraint(equalToConstant: lateral * 2)
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
