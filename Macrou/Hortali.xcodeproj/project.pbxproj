@@ -119,7 +119,7 @@
 		2212E83C28DB9F7B004CCBAA /* InfoFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoFoodView.swift; sourceTree = "<group>"; };
 		2212E84128DCEC07004CCBAA /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		2212E84428DD0DA9004CCBAA /* FoodProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodProtocol.swift; sourceTree = "<group>"; };
-		222937BA28C66B5600515095 /* Macrou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Macrou.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		222937BA28C66B5600515095 /* Hortali.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hortali.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		222937BD28C66B5600515095 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		222937BF28C66B5600515095 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		222937C728C66B5600515095 /* Macrou.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Macrou.xcdatamodel; sourceTree = "<group>"; };
@@ -416,7 +416,7 @@
 		222937BB28C66B5600515095 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				222937BA28C66B5600515095 /* Macrou.app */,
+				222937BA28C66B5600515095 /* Hortali.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -868,9 +868,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		222937B928C66B5600515095 /* Macrou */ = {
+		222937B928C66B5600515095 /* Hortali */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 222937D128C66B5800515095 /* Build configuration list for PBXNativeTarget "Macrou" */;
+			buildConfigurationList = 222937D128C66B5800515095 /* Build configuration list for PBXNativeTarget "Hortali" */;
 			buildPhases = (
 				222937B628C66B5600515095 /* Sources */,
 				222937B728C66B5600515095 /* Frameworks */,
@@ -881,9 +881,9 @@
 			);
 			dependencies = (
 			);
-			name = Macrou;
+			name = Hortali;
 			productName = Macrou;
-			productReference = 222937BA28C66B5600515095 /* Macrou.app */;
+			productReference = 222937BA28C66B5600515095 /* Hortali.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -901,7 +901,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 222937B528C66B5600515095 /* Build configuration list for PBXProject "Macrou" */;
+			buildConfigurationList = 222937B528C66B5600515095 /* Build configuration list for PBXProject "Hortali" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -914,7 +914,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				222937B928C66B5600515095 /* Macrou */,
+				222937B928C66B5600515095 /* Hortali */,
 			);
 		};
 /* End PBXProject section */
@@ -1171,12 +1171,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 534V229RMK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macrou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -1186,7 +1186,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = GUILHERME.REIS.Macrou;
+				PRODUCT_BUNDLE_IDENTIFIER = app.hortali;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1200,12 +1200,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 534V229RMK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Macrou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -1215,7 +1215,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = GUILHERME.REIS.Macrou;
+				PRODUCT_BUNDLE_IDENTIFIER = app.hortali;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1226,7 +1226,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		222937B528C66B5600515095 /* Build configuration list for PBXProject "Macrou" */ = {
+		222937B528C66B5600515095 /* Build configuration list for PBXProject "Hortali" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				222937CF28C66B5800515095 /* Debug */,
@@ -1235,7 +1235,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		222937D128C66B5800515095 /* Build configuration list for PBXNativeTarget "Macrou" */ = {
+		222937D128C66B5800515095 /* Build configuration list for PBXNativeTarget "Hortali" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				222937D228C66B5800515095 /* Debug */,
