@@ -408,7 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				222937D528C66B6D00515095 /* Shared */,
-				222937BC28C66B5600515095 /* Macrou */,
+				222937BC28C66B5600515095 /* iOS-App */,
 				222937BB28C66B5600515095 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -421,14 +421,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		222937BC28C66B5600515095 /* Macrou */ = {
+		222937BC28C66B5600515095 /* iOS-App */ = {
 			isa = PBXGroup;
 			children = (
 				222937D428C66B6200515095 /* General */,
 				222937D928C66B9200515095 /* Screens */,
 				222937CE28C66B5800515095 /* Info.plist */,
 			);
-			path = Macrou;
+			path = "iOS-App";
 			sourceTree = "<group>";
 		};
 		222937D428C66B6200515095 /* General */ = {
@@ -1174,7 +1174,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 534V229RMK;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Macrou/Info.plist;
+				INFOPLIST_FILE = "iOS-App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
@@ -1203,7 +1203,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 534V229RMK;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Macrou/Info.plist;
+				INFOPLIST_FILE = "iOS-App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
