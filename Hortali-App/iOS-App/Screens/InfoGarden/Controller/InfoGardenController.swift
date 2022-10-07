@@ -63,6 +63,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     }
 
     
+    
     /* MARK: - Ações de botões */
     
     /// Ação de voltar para a tela anterior
@@ -79,6 +80,13 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     }
     
     
+    /// Ação de expandir uma label
+    @objc
+    private func expandLabelAction() {
+        self.myView.expandLabel()
+    }
+    
+    
     
     /* MARK: - Configurações */
 
@@ -86,6 +94,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     private func setupButtonsAction() {
         self.myView.setBackButtonAction(target: self, action: #selector(self.backAction))
         self.myView.setFavoriteButtonAction(target: self, action: #selector(self.favoriteAction))
+        self.myView.setExpLabelButtonAction(target: self, action: #selector(self.expandLabelAction))
     }
     
     
