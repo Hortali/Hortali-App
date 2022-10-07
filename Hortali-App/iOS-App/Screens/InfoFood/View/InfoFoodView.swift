@@ -93,6 +93,25 @@ class InfoFoodView: UIView {
     
     /* MARK: - Encapsulamento */
     
+    /// Configura a view a partir dos dados recebidos
+    /// - Parameter data: dados recebidos
+    public func setupViewFor(data: String) {
+        
+    }
+    
+    
+    /// Configurações para expandir a label
+    public func expandLabel() {
+        var status = self.expansiveLabel.isExtended
+        status.toggle()
+        
+        self.expansiveLabel.setupExtension(extended: status)
+        self.expansiveLabel.setupButtonIcon()
+        self.setupExpansiveLabelHeight()
+        self.updateScrollSize()
+    }
+    
+    
     /* Ações de botões */
     
     /// Define a ação do botão de voltar
@@ -104,6 +123,12 @@ class InfoFoodView: UIView {
     /// Define a ação do botão de favorito
     public func setFavoriteButtonAction(target: Any?, action: Selector) -> Void {
         self.favoriteButton.addTarget(target, action: action, for: .touchDown)
+    }
+    
+    
+    /// Define a ação do botão de expandir a label
+    public func setExpLabelButtonAction(target: Any?, action: Selector) -> Void {
+        self.expansiveLabel.setExpansiveButtonAction(target: target, action: action)
     }
     
     
@@ -138,6 +163,22 @@ class InfoFoodView: UIView {
     
     /* MARK: - Configurações */
     
+    /* Geral */
+    
+    private func updateScrollSize() {
+        var scrollHeight: CGFloat = 1350
+        
+        if self.expansiveLabel.isExtended {
+            scrollHeight += self.expansiveLabel.expandedLabelSize
+        }
+        
+        self.scrollView.scrollContentSize = CGSize(
+            width: self.getEquivalent(self.bounds.width),
+            height: scrollHeight
+        )
+    }
+    
+    
     /// Cria e adiciona as views que vão ser colocadas na stack
     private func setupStackViews() {
         // Loop Unrolling
@@ -168,7 +209,7 @@ class InfoFoodView: UIView {
     }
     
     
-    /* Geral */
+    /* View */
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
@@ -190,10 +231,7 @@ class InfoFoodView: UIView {
     
     /// Personalização da UI
     private func setupUI() {
-        self.scrollView.scrollContentSize = CGSize(
-            width: self.getEquivalent(self.bounds.width),
-            height: self.getEquivalent(1340)
-        )
+        self.updateScrollSize()
         
         // Collection
         self.collectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
@@ -254,7 +292,6 @@ class InfoFoodView: UIView {
         
         // Altura dos elementos
         let imageHeight = self.getEquivalent(510)
-        let expLabelHeight = self.getEquivalent(85)
         let titlesLabelHeight = self.getEquivalent(25)
         let collectionHeight = self.getEquivalent(400)
         
@@ -309,7 +346,6 @@ class InfoFoodView: UIView {
             self.expansiveLabel.topAnchor.constraint(equalTo: self.benefitsLabel.bottomAnchor, constant: lateral),
             self.expansiveLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
             self.expansiveLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
-            self.expansiveLabel.heightAnchor.constraint(equalToConstant: expLabelHeight),
             
             
             self.vitaminsLabel.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
@@ -337,6 +373,16 @@ class InfoFoodView: UIView {
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
+        
+        self.setupExpansiveLabelHeight()
+    }
+    
+    
+    /* MARK: - Outros */
+    
+    /// Configura a altura da label expandível
+    private func setupExpansiveLabelHeight() {
+        self.expansiveLabel.setupHeight()
     }
     
     

@@ -84,7 +84,26 @@ class InfoGardenView: UIView {
         self.imagesPageControl.currentPage = index
     }
     
+    
+    /// Configura a view a partir dos dados recebidos
+    /// - Parameter data: dados recebidos
+    public func setupViewFor(data: String) {
+        
+    }
+    
+    
+    /// Configurações para expandir a label
+    public func expandLabel() {
+        var status = self.expansiveLabel.isExtended
+        status.toggle()
+        
+        self.expansiveLabel.setupExtension(extended: status)
+        self.expansiveLabel.setupButtonIcon()
+        self.setupExpansiveLabelHeight()
+        self.updateScrollSize()
+    }
 
+    
     /* Ações de botões */
     
     /// Define a ação do botão de voltar
@@ -96,6 +115,12 @@ class InfoGardenView: UIView {
     /// Define a ação do botão de favorito
     public func setFavoriteButtonAction(target: Any?, action: Selector) -> Void {
         self.favoriteButton.addTarget(target, action: action, for: .touchDown)
+    }
+    
+    
+    /// Define a ação do botão de expandir a label
+    public func setExpLabelButtonAction(target: Any?, action: Selector) -> Void {
+        self.expansiveLabel.setExpansiveButtonAction(target: target, action: action)
     }
     
     
@@ -145,6 +170,24 @@ class InfoGardenView: UIView {
     
     /* MARK: - Configurações */
     
+    /* Geral */
+    
+    private func updateScrollSize() {
+        var scrollHeight: CGFloat = 880
+        
+        if self.expansiveLabel.isExtended {
+            scrollHeight += self.expansiveLabel.expandedLabelSize
+        }
+        
+        self.scrollView.scrollContentSize = CGSize(
+            width: self.getEquivalent(self.bounds.width),
+            height: scrollHeight
+        )
+    }
+    
+    
+    /* Collection */
+    
     /// Registra as células nas collections/table
     private func registerCell() {
         self.infosCollectionGp.collection.register(InfoGardenInfosCell.self, forCellWithReuseIdentifier: InfoGardenInfosCell.identifier)
@@ -158,9 +201,9 @@ class InfoGardenView: UIView {
         self.infosCollectionGp.collection.collectionViewLayout = self.infosCollectionFlow
         self.imagesCollectionGp.collection.collectionViewLayout = self.imagesCollectionFlow
     }
-
-
-    /* Geral */
+    
+    
+    /* View */
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
@@ -181,11 +224,7 @@ class InfoGardenView: UIView {
     private func setupUI() {
         self.imagesPageControl.layer.cornerRadius = self.imagesPageControl.bounds.height / 2
         
-        self.scrollView.scrollContentSize = CGSize(
-            width: self.getEquivalent(self.bounds.width),
-            height: 870
-        )
-        
+        self.updateScrollSize()
         
         // Collections
         
@@ -220,7 +259,7 @@ class InfoGardenView: UIView {
             icon: .favorite, size: btSize, weight: .regular, scale: .default
         ))
     }
-	  
+    
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
@@ -238,7 +277,6 @@ class InfoGardenView: UIView {
         // Altura dos elementos
         let segHeight = self.getEquivalent(510)
         let containerHeight = self.getEquivalent(435)
-        let expLabelHeight = self.getEquivalent(85)
         let collectionHeight = self.getEquivalent(200)
         
         
@@ -281,7 +319,6 @@ class InfoGardenView: UIView {
             self.expansiveLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),
             self.expansiveLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
             self.expansiveLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
-            self.expansiveLabel.heightAnchor.constraint(equalToConstant: expLabelHeight),
             
             
             self.infosCollectionGp.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
@@ -291,5 +328,13 @@ class InfoGardenView: UIView {
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
+        
+        self.setupExpansiveLabelHeight()
+    }
+    
+    
+    /// Configura a altura da label expandível
+    private func setupExpansiveLabelHeight() {
+        self.expansiveLabel.setupHeight()
     }
 }

@@ -40,7 +40,9 @@ class InfoFoodController: UIViewController {
 
     /* MARK: - Protocolo */
 
-	
+    
+    
+    /* MARK: - Ações de botões */
 
     /// Ação de voltar para a tela anterior
     @objc
@@ -56,6 +58,13 @@ class InfoFoodController: UIViewController {
     }
     
     
+    /// Ação de expandir uma label
+    @objc
+    private func expandLabelAction() {
+        self.myView.expandLabel()
+    }
+    
+    
     
     /* MARK: - Configurações */
 
@@ -63,6 +72,7 @@ class InfoFoodController: UIViewController {
     private func setupButtonsAction() {
         self.myView.setBackButtonAction(target: self, action: #selector(self.backAction))
         self.myView.setFavoriteButtonAction(target: self, action: #selector(self.favoriteAction))
+        self.myView.setExpLabelButtonAction(target: self, action: #selector(self.expandLabelAction))
     }
     
     
