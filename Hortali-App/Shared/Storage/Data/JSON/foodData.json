@@ -52,7 +52,7 @@
         {
             "id": 2,
             "name": "Abacate",
-            "cateogory": "Legumes",
+            "cateogory": "Fruta",
             "benefits": "Ajuda a reduzir a pressão arterial. Isso acontece devido à presença de potássio no alimento. O abacate é um alimento com alto teor de gordura do tipo monoinsaturado, o que o torna um aliado do coração.",
             "minerals": "E minerais como cobre, manganês, magnésio, fósforo, potássio e zinco",
             "vitamins": [
@@ -124,7 +124,7 @@
         {
             "id": 5,
             "name": "Jabuticaba",
-            "cateogory": "Verduras",
+            "cateogory": "Ervas",
             "benefits": "Rica em fibras, que ajudam na regulação do intestino.",
             "minerals": "E minerais como cálcio, potássio, magnésio",
             "vitamins": [

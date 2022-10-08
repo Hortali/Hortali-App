@@ -84,6 +84,7 @@ class InfoFoodView: UIView {
         self.registerCells()
         self.setupCollectionFlow()
         
+        self.hideCollection()
         self.DADOS_TESTE()
     }
     
@@ -166,7 +167,7 @@ class InfoFoodView: UIView {
     /* Geral */
     
     private func updateScrollSize() {
-        var scrollHeight: CGFloat = 1350
+        var scrollHeight: CGFloat = 1350 - (465) // Collection escondida
         
         if self.expansiveLabel.isExtended {
             scrollHeight += self.expansiveLabel.expandedLabelSize
@@ -399,11 +400,16 @@ class InfoFoodView: UIView {
     }
     
     
+    private func hideCollection() {
+        self.howToCollection.isHidden = true
+    }
+    
+    
     private func DADOS_TESTE() {
         self.container.setTitleText(with: "Morango")
         self.vitaminsInfoLabel.text = "E minerais como fosfato, potássio, dentre outros. E de compostos bioativos."
         
-        let image = UIImage(named: "Morango_Square")
+        let image = UIImage(named: "Abacate_Page")
         self.coverImage.image = image
     }
 }
