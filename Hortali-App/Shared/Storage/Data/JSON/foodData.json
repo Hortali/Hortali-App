@@ -1,0 +1,197 @@
+{
+    "count": 6,
+    "foods": [
+        {   
+            "id": 0,
+            "name": "Abacate",
+            "cateogory": "Fruta",
+            "benefits": "Ajuda a reduzir a pressão arterial. Isso acontece devido à presença de potássio no alimento. O abacate é um alimento com alto teor de gordura do tipo monoinsaturado, o que o torna um aliado do coração.",
+            "minerals": "E minerais como cobre, manganês, magnésio, fósforo, potássio e zinco",
+            "vitamins": [
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Abacate_Cover"
+            },
+            "pageImage": {   
+                "name": "Abacate_Page"
+            }
+        },
+        {
+            "id": 1,
+            "name": "Jabuticaba",
+            "cateogory": "Fruta",
+            "benefits": "Rica em fibras, que ajudam na regulação do intestino.",
+            "minerals": "E minerais como cálcio, potássio, magnésio",
+            "vitamins": [
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "E"
+                }
+            ],
+            "coverImage": {
+                "name": "Jabuticaba_Cover"
+            },
+            "pageImage": {
+                "name": "Jabuticaba_Page"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Abacate",
+            "cateogory": "Legumes",
+            "benefits": "Ajuda a reduzir a pressão arterial. Isso acontece devido à presença de potássio no alimento. O abacate é um alimento com alto teor de gordura do tipo monoinsaturado, o que o torna um aliado do coração.",
+            "minerals": "E minerais como cobre, manganês, magnésio, fósforo, potássio e zinco",
+            "vitamins": [
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Abacate_Cover"
+            },
+            "pageImage": {
+                "name": "Abacate_Page"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Jabuticaba",
+            "cateogory": "Legumes",
+            "benefits": "Rica em fibras, que ajudam na regulação do intestino.",
+            "minerals": "E minerais como cálcio, potássio, magnésio",
+            "vitamins": [
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "E"
+                }
+            ],
+            "coverImage": {
+                "name": "Jabuticaba_Cover"
+            },
+            "pageImage": {
+                "name": "Jabuticaba_Page"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Abacate",
+            "cateogory": "Verduras",
+            "benefits": "Ajuda a reduzir a pressão arterial. Isso acontece devido à presença de potássio no alimento. O abacate é um alimento com alto teor de gordura do tipo monoinsaturado, o que o torna um aliado do coração.",
+            "minerals": "E minerais como cobre, manganês, magnésio, fósforo, potássio e zinco",
+            "vitamins": [
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Abacate_Cover"
+            },
+            "pageImage": {
+                "name": "Abacate_Page"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Jabuticaba",
+            "cateogory": "Verduras",
+            "benefits": "Rica em fibras, que ajudam na regulação do intestino.",
+            "minerals": "E minerais como cálcio, potássio, magnésio",
+            "vitamins": [
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "E"
+                }
+            ],
+            "coverImage": {
+                "name": "Jabuticaba_Cover"
+            },
+            "pageImage": {
+                "name": "Jabuticaba_Page"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Abacate",
+            "cateogory": "Ervas",
+            "benefits": "Ajuda a reduzir a pressão arterial. Isso acontece devido à presença de potássio no alimento. O abacate é um alimento com alto teor de gordura do tipo monoinsaturado, o que o torna um aliado do coração.",
+            "minerals": "E minerais como cobre, manganês, magnésio, fósforo, potássio e zinco",
+            "vitamins": [
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Abacate_Cover"
+            },
+            "pageImage": {
+                "name": "Abacate_Page"
+            }
+        },
+        {
+            "id": 7,
+            "name": "Jabuticaba",
+            "cateogory": "Ervas",
+            "benefits": "Rica em fibras, que ajudam na regulação do intestino.",
+            "minerals": "E minerais como cálcio, potássio, magnésio",
+            "vitamins": [
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "E"
+                }
+            ],
+            "coverImage": {
+                "name": "Jabuticaba_Cover"
+            },
+            "pageImage": {
+                "name": "Jabuticaba_Page"
+            }
+        }
+    ]
+}

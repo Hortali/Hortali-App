@@ -1,0 +1,84 @@
+{
+    "count": 1,
+    "gardens": [
+        {   
+            "id": 0,
+            "name": "Horta das Corujas",
+            "biograph": "A Horta das Corujas localiza-se em uma praça pública com mutirões abertos ao público!",
+            "address": "Av. das Corujas, 39 - Sumarezinho, São Paulo - SP",
+            "latitude": 23.546152,
+            "longitude": -46.697147,
+            "coverImage": {
+                "name": ""
+            },
+            "pageImages": [
+                {   
+                    "name": ""
+                },
+                {   
+                    "name": ""
+                },
+                {   
+                    "name": ""
+                }
+            ],
+            "contacts": [
+                {
+                    "type": "insta",
+                    "contact": "@hortadascorujas",
+                    "link": "https://www.instagram.com/hortadascorujas/"
+                }
+            ],
+            "hourInfo": [
+                {
+                    "status" : true,
+                    "week" : "Segunda",
+                    "startTime" : "06:00",
+                    "endTime" : "22:00"
+                },
+                {
+                    "status" : true,
+                    "week" : "Terça",
+                    "startTime" : "06:00",
+                    "endTime" : "22:00"
+                },
+                {
+                    "status" : true,
+                    "week" : "Quarta",
+                    "startTime" : "06:00",
+                    "endTime" : "22:00"
+                },
+                {
+                    "status" : true,
+                    "week" : "Quinta",
+                    "startTime" : "06:00",
+                    "endTime" : "22:00"
+                },
+                {
+                    "status" : true,
+                    "week" : "Sexta",
+                    "startTime" : "06:00",
+                    "endTime" : "22:00"
+                },
+                {
+                    "status" : true,
+                    "week" : "Sábado",
+                    "startTime" : "06:00",
+                    "endTime" : "22:00"
+                },
+                {
+                    "status" : true,
+                    "week" : "Domingo",
+                    "startTime" : "06:00",
+                    "endTime" : "22:00"
+                },
+                {
+                    "status" : false,
+                    "week" : "Feriados",
+                    "startTime" : "",
+                    "endTime" : ""
+                }
+            ]
+        }
+    ]
+}

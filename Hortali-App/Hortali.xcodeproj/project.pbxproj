@@ -75,6 +75,17 @@
 		2229386128C9D59700515095 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386028C9D59700515095 /* ScreenSize.swift */; };
 		2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386228C9D5CE00515095 /* AdaptiveLayout.swift */; };
 		2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */; };
+		223B75CB28F0D99B0034B2C4 /* UDHandler+DataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75CA28F0D99B0034B2C4 /* UDHandler+DataType.swift */; };
+		223B75CD28F0D9B00034B2C4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75CC28F0D9B00034B2C4 /* DataManager.swift */; };
+		223B75D028F0DA9B0034B2C4 /* EHDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75CF28F0DA9B0034B2C4 /* EHDataManager.swift */; };
+		223B75D528F0DB8A0034B2C4 /* foodData.json in Resources */ = {isa = PBXBuildFile; fileRef = 223B75D328F0DB890034B2C4 /* foodData.json */; };
+		223B75D628F0DB8A0034B2C4 /* gardenData.json in Resources */ = {isa = PBXBuildFile; fileRef = 223B75D428F0DB890034B2C4 /* gardenData.json */; };
+		223B75D928F0DBA60034B2C4 /* DataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75D828F0DBA60034B2C4 /* DataType.swift */; };
+		223B75DB28F0DC840034B2C4 /* ManagedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75DA28F0DC840034B2C4 /* ManagedModels.swift */; };
+		223B75E028F146920034B2C4 /* GardenDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75DF28F146920034B2C4 /* GardenDataManager.swift */; };
+		223B75E328F1473D0034B2C4 /* FoodDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E228F1473D0034B2C4 /* FoodDataManager.swift */; };
+		223B75E628F16D280034B2C4 /* FavoriteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E528F16D280034B2C4 /* FavoriteAction.swift */; };
+		223B75E828F16D670034B2C4 /* FavoriteUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */; };
 		22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */; };
 		22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8C4E328D918B500CE6061 /* TimeGroup.swift */; };
 		22EDD4AB28D95812001CE093 /* CustomStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4AA28D95812001CE093 /* CustomStack.swift */; };
@@ -160,6 +171,17 @@
 		2229386028C9D59700515095 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		2229386228C9D5CE00515095 /* AdaptiveLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveLayout.swift; sourceTree = "<group>"; };
 		2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+setupIconsColor.swift"; sourceTree = "<group>"; };
+		223B75CA28F0D99B0034B2C4 /* UDHandler+DataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UDHandler+DataType.swift"; sourceTree = "<group>"; };
+		223B75CC28F0D9B00034B2C4 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		223B75CF28F0DA9B0034B2C4 /* EHDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EHDataManager.swift; sourceTree = "<group>"; };
+		223B75D328F0DB890034B2C4 /* foodData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = foodData.json; sourceTree = "<group>"; };
+		223B75D428F0DB890034B2C4 /* gardenData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gardenData.json; sourceTree = "<group>"; };
+		223B75D828F0DBA60034B2C4 /* DataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataType.swift; sourceTree = "<group>"; };
+		223B75DA28F0DC840034B2C4 /* ManagedModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedModels.swift; sourceTree = "<group>"; };
+		223B75DF28F146920034B2C4 /* GardenDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDataManager.swift; sourceTree = "<group>"; };
+		223B75E228F1473D0034B2C4 /* FoodDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataManager.swift; sourceTree = "<group>"; };
+		223B75E528F16D280034B2C4 /* FavoriteAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAction.swift; sourceTree = "<group>"; };
+		223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUpdate.swift; sourceTree = "<group>"; };
 		22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenTime.swift; sourceTree = "<group>"; };
 		22E8C4E328D918B500CE6061 /* TimeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeGroup.swift; sourceTree = "<group>"; };
 		22EDD4AA28D95812001CE093 /* CustomStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStack.swift; sourceTree = "<group>"; };
@@ -443,9 +465,11 @@
 		222937D528C66B6D00515095 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				223B75CE28F0DA570034B2C4 /* Errors Handlers */,
 				222937D828C66B8900515095 /* Design System */,
 				222937D728C66B8200515095 /* Assets */,
-				222937D628C66B7200515095 /* Core Data */,
+				223B75C728F0D9770034B2C4 /* Storage */,
+				223B75D128F0DB690034B2C4 /* Models */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -765,6 +789,71 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		223B75C728F0D9770034B2C4 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				223B75D228F0DB770034B2C4 /* Data */,
+				223B75C828F0D97F0034B2C4 /* User Defaults */,
+				222937D628C66B7200515095 /* Core Data */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		223B75C828F0D97F0034B2C4 /* User Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				223B75CA28F0D99B0034B2C4 /* UDHandler+DataType.swift */,
+			);
+			path = "User Defaults";
+			sourceTree = "<group>";
+		};
+		223B75CE28F0DA570034B2C4 /* Errors Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				223B75CF28F0DA9B0034B2C4 /* EHDataManager.swift */,
+			);
+			path = "Errors Handlers";
+			sourceTree = "<group>";
+		};
+		223B75D128F0DB690034B2C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				223B75DA28F0DC840034B2C4 /* ManagedModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		223B75D228F0DB770034B2C4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				223B75DE28F146790034B2C4 /* JSON */,
+				223B75E428F16CFD0034B2C4 /* Models */,
+				223B75CC28F0D9B00034B2C4 /* DataManager.swift */,
+				223B75DF28F146920034B2C4 /* GardenDataManager.swift */,
+				223B75E228F1473D0034B2C4 /* FoodDataManager.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		223B75DE28F146790034B2C4 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				223B75D328F0DB890034B2C4 /* foodData.json */,
+				223B75D428F0DB890034B2C4 /* gardenData.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		223B75E428F16CFD0034B2C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				223B75D828F0DBA60034B2C4 /* DataType.swift */,
+				223B75E528F16D280034B2C4 /* FavoriteAction.swift */,
+				223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		22EDD4AC28DA2D08001CE093 /* HourInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -909,6 +998,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				222937CD28C66B5800515095 /* LaunchScreen.storyboard in Resources */,
+				223B75D528F0DB8A0034B2C4 /* foodData.json in Resources */,
+				223B75D628F0DB8A0034B2C4 /* gardenData.json in Resources */,
 				222937CA28C66B5800515095 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -941,6 +1032,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2212E82D28DB877B004CCBAA /* GardenProtocol.swift in Sources */,
+				223B75CD28F0D9B00034B2C4 /* DataManager.swift in Sources */,
 				2210246F28D9020900F412A5 /* ContactInfo.swift in Sources */,
 				065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */,
 				222937ED28C682C900515095 /* UIButton+FontInfo.swift in Sources */,
@@ -960,11 +1052,14 @@
 				2229384D28C8942B00515095 /* UIViewController+setupTab.swift in Sources */,
 				2210244828D5230C00F412A5 /* InfoGardenCellType.swift in Sources */,
 				222937EB28C6828500515095 /* UILabel+FontInfo.swift in Sources */,
+				223B75DB28F0DC840034B2C4 /* ManagedModels.swift in Sources */,
+				223B75D928F0DBA60034B2C4 /* DataType.swift in Sources */,
 				2210246228D84C6800F412A5 /* InfoGardenProtocol.swift in Sources */,
 				2229385B28C9D3AC00515095 /* ScreenInfo.swift in Sources */,
 				B241564E28D27284009F011C /* FoodCollectionDelegate.swift in Sources */,
 				2229382028C7C3FC00515095 /* MainController.swift in Sources */,
 				2210245428D52B2B00F412A5 /* InfoGardenInfosDataSource.swift in Sources */,
+				223B75D028F0DA9B0034B2C4 /* EHDataManager.swift in Sources */,
 				2212E83328DB88D9004CCBAA /* TabBarProtocol.swift in Sources */,
 				2212E83128DB884E004CCBAA /* MenuController.swift in Sources */,
 				222937E528C6779500515095 /* UIColors+AppColors.swift in Sources */,
@@ -980,6 +1075,7 @@
 				2212E83D28DB9F7B004CCBAA /* InfoFoodView.swift in Sources */,
 				222937C028C66B5600515095 /* SceneDelegate.swift in Sources */,
 				065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */,
+				223B75E328F1473D0034B2C4 /* FoodDataManager.swift in Sources */,
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
 				22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */,
 				2210245128D529FA00F412A5 /* InfoGardenReport.swift in Sources */,
@@ -988,6 +1084,7 @@
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,
 				220A63EE28D3BDF700D9E2A9 /* CustomScrooll.swift in Sources */,
 				222937FC28C68C8200515095 /* CollectionGroupStyle.swift in Sources */,
+				223B75E028F146920034B2C4 /* GardenDataManager.swift in Sources */,
 				2210245728D53F3300F412A5 /* InfoGardenInfosDelegate.swift in Sources */,
 				2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */,
 				2229385D28C9D55700515095 /* Dimension.swift in Sources */,
@@ -995,10 +1092,12 @@
 				22EDD4C128DA4B33001CE093 /* UIImage+AppImages.swift in Sources */,
 				2229384128C8927500515095 /* GardenController.swift in Sources */,
 				222937F128C6837500515095 /* UIButton+IconInfo.swift in Sources */,
+				223B75E628F16D280034B2C4 /* FavoriteAction.swift in Sources */,
 				2229382928C85EF700515095 /* UITextField+setupPlaceHolder.swift in Sources */,
 				2229385928C9D1DF00515095 /* Screens.swift in Sources */,
 				2229382228C7C5DE00515095 /* UIImage+AppIcons.swift in Sources */,
 				22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */,
+				223B75E828F16D670034B2C4 /* FavoriteUpdate.swift in Sources */,
 				22EDD4B528DA2DC7001CE093 /* HourInfoDataSource.swift in Sources */,
 				222937E328C66F7F00515095 /* AppColors.swift in Sources */,
 				222937FF28C68EE100515095 /* FavoriteViewController.swift in Sources */,
@@ -1009,6 +1108,7 @@
 				2229385528C9335C00515095 /* UIView+AdpativeLayout.swift in Sources */,
 				2210245928D845D800F412A5 /* InfoGardenImagesDataSource.swift in Sources */,
 				2210244628D5201500F412A5 /* InfoGardenInfosCell.swift in Sources */,
+				223B75CB28F0D99B0034B2C4 /* UDHandler+DataType.swift in Sources */,
 				2212E84528DD0DA9004CCBAA /* FoodProtocol.swift in Sources */,
 				22EDD4B728DA2E00001CE093 /* HourInfoCell.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
