@@ -7,7 +7,7 @@ import UIKit
 /// Data source da collection de mostrar os alimentos
 class FoodCollectionDataSource: NSObject, UICollectionViewDataSource {
     
-    var data: [String] = ["Abacate", "Cenoura", "Limao", "Morango"]
+    var data: [ManagedFood] = []
     
     
     /// Mostra quantas células vão ser mostradas
@@ -23,9 +23,8 @@ class FoodCollectionDataSource: NSObject, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        let imageName = self.data[indexPath.row]
-        cell.setupCell(for: imageName)
-        
+        let data = self.data[indexPath.row]
+        cell.setupCell(for: data)
         
         return cell
     }

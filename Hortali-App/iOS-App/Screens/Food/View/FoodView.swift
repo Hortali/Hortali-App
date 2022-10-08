@@ -13,7 +13,7 @@ class FoodView: MainView {
     
     /// Controle das views segmentadas para os diferentes tipos de alimentos
     private let foodSegmented: UISegmentedControl = {
-        let itensSeg = ["Frutas", "Legumes", "Vegetais", "Ervas"]
+        let itensSeg = DataManager.shared.getAllCategories()
         let seg = CustomViews.newSegmentation(with: itensSeg)
         seg.selectedSegmentIndex = 0
         
@@ -62,6 +62,19 @@ class FoodView: MainView {
     
     /* MARK: - Encapsulamento */
     
+    
+    /* Ações de botões */
+
+    /// Ação da segmentation
+    public func setSegAction(target: Any?, action: Selector) -> Void {
+        self.foodSegmented.addTarget(target, action: action, for: .valueChanged)
+    }
+    
+    
+    
+    
+    /* Collection */
+    
     /// Define o data source da collection de alimentos
     /// - Parameter dataSource: data source
     public func setDataSource(with dataSource: FoodCollectionDataSource) {
@@ -75,7 +88,14 @@ class FoodView: MainView {
         self.foodGroup.collection.delegate = delegate
     }
     
+    
+    public func reloadCollectionData() {
+        self.foodGroup.collection.reloadData()
+        self.foodGroup.collection.reloadInputViews()
+    }
+    
 
+    
     /* MARK: - Ciclo de Vida */
     
     override public func layoutSubviews() {
