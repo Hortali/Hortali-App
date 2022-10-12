@@ -1,11 +1,12 @@
 /* Macro - Grupo 05 */
 
+import struct CoreLocation.CLLocationCoordinate2D
+
 
 struct ManagedGardenData: Codable {
     let count: Int
     let gardens: [ManagedGarden]
 }
-
 
 
 struct ManagedGarden: Codable {
@@ -18,10 +19,16 @@ struct ManagedGarden: Codable {
     let latitude: Double
     let longitude: Double
     
+    var isFavorited: Bool?
+    
     let coverImage: ManagedImage
     let pageImages: [ManagedImage]
     let contacts: [ManagedContact]
     let hourInfo: [ManagedHourInfo]
+    
+    var coords: CLLocationCoordinate2D? {
+        return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
+    }
 }
 
 
@@ -31,6 +38,7 @@ struct ManagedContact: Codable {
     let type: String
     let contact: String
     let link: String
+    let description: String
 }
 
 

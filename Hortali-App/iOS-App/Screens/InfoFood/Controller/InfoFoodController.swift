@@ -68,7 +68,7 @@ class InfoFoodController: UIViewController {
     
     /// Ação de favoritar um card
     @objc
-    private func favoriteAction(sender: UIButton) {
+    private func favoriteAction() {
         switch self.myView.isFavorited() {
         case true:
             self.favUpdate.action = .add
@@ -98,6 +98,8 @@ class InfoFoodController: UIViewController {
     }
     
     
+    /// Configura a view pra caso for favorito
+    /// - Parameter data: dado
     private func setupFavoriteStatus(for data: ManagedFood) {
         for id in DataManager.shared.getFavoriteIds(for: .food) {
             if data.id == id {

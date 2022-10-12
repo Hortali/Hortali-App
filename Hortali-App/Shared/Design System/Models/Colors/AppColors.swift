@@ -102,6 +102,15 @@ enum AppColors {
     /// Célula CL08 - Status fechado
     case closeStatus
     
+    /// Célula CL08 - Fundo status fechado
+    case closeBackgroundStatus
+    
+    /// Célula CL08 - Status aberto
+    case openStatus
+    
+    /// Célula CL08 - Fundoi status aberto
+    case openBackgroundStatus
+    
     
     
     /* Outros */
@@ -161,7 +170,12 @@ enum AppColors {
             
         /* Outros */
         case .contactCellBack: return .yellow
+            
         case .closeStatus: return .red
+        case .closeBackgroundStatus: return .orange
+            
+        case .openStatus: return .greenDark
+        case .openBackgroundStatus: return .greenLight
         }
     }
 }

@@ -6,7 +6,13 @@ import UIKit
 
 /// Data source da collection de informações de uma horta da tela de info garden
 class InfoGardenInfosDataSource: NSObject, UICollectionViewDataSource {
-        
+    
+    /* MARK: - Atributos */
+
+    public var data: ManagedGarden?
+    
+    
+    
     /* MARK: - Data Source */
     
     /// Mostra quantas células vão ser mostradas
@@ -21,12 +27,14 @@ class InfoGardenInfosDataSource: NSObject, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        switch indexPath.row {
-        case 0: cell.setupCell(for: .map)
-        case 1: cell.setupCell(for: .time)
-        case 2: cell.setupCell(for: .contact)
-        case 3: cell.setupCell(for: .report)
-        default: break
+        if let data {
+            switch indexPath.row {
+            case 0: cell.setupCell(for: .map, with: data)
+            case 1: cell.setupCell(for: .time, with: data)
+            case 2: cell.setupCell(for: .contact, with: data)
+            case 3: cell.setupCell(for: .report, with: data)
+            default: break
+            }
         }
         
         return cell

@@ -57,8 +57,9 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
     /* MARK: - Protocolo */
     
     internal func openGardenInfo(for index: Int) {
-        let controller = InfoGardenController()
-        controller.modalPresentationStyle = .fullScreen
+        let selectedCell = self.gardenDataSource.data[index]
+        
+        let controller = InfoGardenController(with: selectedCell, in: index)
         
         self.tabBarProtocol?.showTabBar(is: false)
         self.present(controller, animated: true)

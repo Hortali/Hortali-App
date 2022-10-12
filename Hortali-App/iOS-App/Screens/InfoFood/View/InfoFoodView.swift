@@ -62,7 +62,8 @@ class InfoFoodView: UIView {
     
     // Views
     
-    private var favorited: Bool = false
+    /// Estado de favorito da view
+    private var ifFavorite: Bool = false
     
     
     
@@ -101,35 +102,27 @@ class InfoFoodView: UIView {
     
     /* MARK: - Encapsulamento */
     
-    
+    /// Configura a view para quando for favoritado ou desfavoritado
+    /// - Parameter fav: estado do favorito
+    /// - Returns: se está ou não favoritado
     public func isFavorited(is fav: Bool? = nil) -> Bool {
         if let fav {
-            self.favorited = fav
+            self.ifFavorite = fav
         } else {
-            self.favorited.toggle()
+            self.ifFavorite.toggle()
         }
         
         var favColor: AppColors = .favoriteNotSelected
-        if self.favorited {
+        if self.ifFavorite {
             favColor = .favoriteSelected
         }
         
         self.favoriteButton.backgroundColor = UIColor(favColor)
         
-        return self.favorited
+        return self.ifFavorite
     }
     
-    /// Configura a view a partir dos dados recebidos
-    /// - Parameter data: dados recebidos
-    public func setupViewFor(data: ManagedFood) {
-        self.coverImage.image = UIImage(named: data.pageImage.name)
-        self.container.setTitleText(with: data.name)
-        self.expansiveLabel.setInfoText(for: data.benefits)
-        self.setupVitaminsStackViews(for: data.vitamins)
-        self.vitaminsInfoLabel.text = data.minerals
-    }
-    
-    
+        
     /// Configurações para expandir a label
     public func expandLabel() {
         var status = self.expansiveLabel.isExtended
@@ -194,6 +187,17 @@ class InfoFoodView: UIView {
     /* MARK: - Configurações */
     
     /* Geral */
+    
+    /// Configura a view a partir dos dados recebidos
+    /// - Parameter data: dados recebidos
+    private func setupViewFor(data: ManagedFood) {
+        self.coverImage.image = UIImage(named: data.pageImage.name)
+        self.container.setTitleText(with: data.name)
+        self.expansiveLabel.setInfoText(for: data.benefits)
+        self.setupVitaminsStackViews(for: data.vitamins)
+        self.vitaminsInfoLabel.text = data.minerals
+    }
+    
     
     private func updateScrollSize() {
         var scrollHeight: CGFloat = 1350 - (465) // Collection escondida

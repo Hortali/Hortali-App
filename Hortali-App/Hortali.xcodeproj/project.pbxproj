@@ -86,6 +86,7 @@
 		223B75E328F1473D0034B2C4 /* FoodDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E228F1473D0034B2C4 /* FoodDataManager.swift */; };
 		223B75E628F16D280034B2C4 /* FavoriteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E528F16D280034B2C4 /* FavoriteAction.swift */; };
 		223B75E828F16D670034B2C4 /* FavoriteUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */; };
+		22A3916E28F6E62700A42DC1 /* InfoGardenCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3916D28F6E62700A42DC1 /* InfoGardenCellProtocol.swift */; };
 		22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */; };
 		22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8C4E328D918B500CE6061 /* TimeGroup.swift */; };
 		22EDD4AB28D95812001CE093 /* CustomStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4AA28D95812001CE093 /* CustomStack.swift */; };
@@ -182,6 +183,7 @@
 		223B75E228F1473D0034B2C4 /* FoodDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataManager.swift; sourceTree = "<group>"; };
 		223B75E528F16D280034B2C4 /* FavoriteAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAction.swift; sourceTree = "<group>"; };
 		223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUpdate.swift; sourceTree = "<group>"; };
+		22A3916D28F6E62700A42DC1 /* InfoGardenCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenCellProtocol.swift; sourceTree = "<group>"; };
 		22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenTime.swift; sourceTree = "<group>"; };
 		22E8C4E328D918B500CE6061 /* TimeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeGroup.swift; sourceTree = "<group>"; };
 		22EDD4AA28D95812001CE093 /* CustomStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStack.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				2210246128D84C6800F412A5 /* InfoGardenProtocol.swift */,
+				22A3916D28F6E62700A42DC1 /* InfoGardenCellProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -857,8 +860,8 @@
 		22EDD4AC28DA2D08001CE093 /* HourInfo */ = {
 			isa = PBXGroup;
 			children = (
-				22EDD4B028DA2D30001CE093 /* View */,
 				22EDD4AE28DA2D1E001CE093 /* Data Source */,
+				22EDD4B028DA2D30001CE093 /* View */,
 				22EDD4AF28DA2D28001CE093 /* Controller */,
 			);
 			path = HourInfo;
@@ -1069,6 +1072,7 @@
 				220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */,
 				2210246828D8F9BC00F412A5 /* ContactGroup.swift in Sources */,
 				222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */,
+				22A3916E28F6E62700A42DC1 /* InfoGardenCellProtocol.swift in Sources */,
 				22EDD4BE28DA4A6A001CE093 /* AppImages.swift in Sources */,
 				222937F928C68B9B00515095 /* CollectionGroup.swift in Sources */,
 				B241564C28D2722B009F011C /* FoodCollectionDataSource.swift in Sources */,

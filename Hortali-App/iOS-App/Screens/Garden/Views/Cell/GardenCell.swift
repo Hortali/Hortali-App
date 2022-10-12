@@ -76,9 +76,15 @@ class GardenCell: UICollectionViewCell {
     
     /* MARK: - Encapsulamento */
     
-    public func setupCell(for imageName: String) {
-        self.gardenImage.image = UIImage(named: imageName)
+    /// Configura a célula a partir dos dados recebidos
+    /// - Parameter data: dados recebidos
+    public func setupCell(for data: ManagedGarden) {
+        self.gardenImage.image = UIImage(named: data.coverImage.name)
+        
+        self.titleLabel.text = data.name
+        self.adressLabel.text = data.address
     }
+    
     
     
     /* MARK: - Configurações */

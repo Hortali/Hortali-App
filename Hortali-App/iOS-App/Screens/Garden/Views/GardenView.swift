@@ -59,11 +59,19 @@ class GardenView: MainView {
     
     /* MARK: - Encapsulamento */
     
+    /// Atualiza os dados da collection
+    public func reloadCollectionData() {
+        self.gardenGroup.collection.reloadData()
+        self.gardenGroup.collection.reloadInputViews()
+    }
+    
+    
     /// Define o data source da collection das hortas
     /// - Parameter dataSource: data source da collection das hortas
     public func setDataSource(with dataSource: GardenDataSource) {
         self.gardenGroup.collection.dataSource = dataSource
     }
+    
     
     /// Define o delegate da collection das hortas
     /// - Parameter delegate: delegate da collection das hortas

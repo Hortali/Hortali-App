@@ -12,11 +12,24 @@ class HourInfoController: UIViewController {
     /// View principal que a classe vai controlar
     private let myView = HourInfoView()
     
+    
     /* Delegate & Data Sources */
     
     /// Data source da collection de horários de funcionamento
     private let collectionDataSource = HourInfoDataSource()
 
+    
+    
+    /* MARK: - Construtor */
+    
+    init(with data: [ManagedHourInfo]) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.setupDataSourceData(for: data)
+    }
+    
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
     
         
     /* MARK: - Ciclo de Vida */
@@ -30,29 +43,22 @@ class HourInfoController: UIViewController {
         super.viewDidLoad()
 
         self.setupDelegates()
-        self.setupButtonsAction()
     }
     
-
-
-    /* MARK: - Protocolo */
-    
-    
-
-    /* MARK: - Ações de botões */
-
     
     
     /* MARK: - Configurações */
     
-    /// Definindo as ações dos botões
-    private func setupButtonsAction() {
-        
-    }
-    
-    
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
         self.myView.setDataSource(with: self.collectionDataSource)
+    }
+    
+    
+    /// Define os dados que vão aparecerna collection
+    /// - Parameter data: dados da collection
+    private func setupDataSourceData(for data: [ManagedHourInfo]) {
+        self.collectionDataSource.data = data
+        self.myView.reloadCollectionData()
     }
 }

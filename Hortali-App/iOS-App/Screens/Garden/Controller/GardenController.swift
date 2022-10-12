@@ -35,8 +35,8 @@ class GardenController: MenuController, GardenProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupDataSourceData()
         self.setupDelegates()
-        self.setupButtonsAction()
         self.setupKeyboardHandler()
     }
     
@@ -45,7 +45,9 @@ class GardenController: MenuController, GardenProtocol {
     /* MARK: - Protocolo */
     
     internal func openGardenInfo(for index: Int) {
-        let controller = InfoGardenController()
+        let selectedCell = self.gardenDataSource.data[index]
+        
+        let controller = InfoGardenController(with: selectedCell, in: index)
         controller.modalTransitionStyle = .crossDissolve
         controller.modalPresentationStyle = .fullScreen
         
@@ -75,17 +77,20 @@ class GardenController: MenuController, GardenProtocol {
     }
     
     
-    /// Definindo as ações dos botões
-    private func setupButtonsAction() {
-        
-    }
-    
-    
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
         self.gardenDelegate.setProtocol(with: self)
         
         self.myView.setDataSource(with: self.gardenDataSource)
         self.myView.setDelegate(with: self.gardenDelegate)
+    }
+    
+    
+    /// Define os dados da collection
+    private func setupDataSourceData() {
+        let gardenData = DataManager.shared.getGardenData()
+        
+        self.gardenDataSource.data = gardenData
+        //self.myView.reloadCollectionData()
     }
 }

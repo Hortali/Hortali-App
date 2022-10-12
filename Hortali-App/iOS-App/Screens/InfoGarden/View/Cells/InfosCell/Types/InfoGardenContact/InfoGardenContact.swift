@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Conteúdo da célula para mostrar os contatos disponíveis
-class InfoGardenContact: UIView {
+class InfoGardenContact: UIView, InfoGardenCellProtocol {
     
     /* MARK: - Atributos */
 
@@ -33,18 +33,22 @@ class InfoGardenContact: UIView {
         
         self.setupViews()
         self.setupUI()
-        self.DADOS_TESTE()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     
     
-    /* MARK: - Encapsulamento */
+    /* MARK: - Protocol */
+    
+    internal func setupView(for data: ManagedGarden) {
+        self.setupContactInfos(with: data.contacts)
+    }
+    
     
     /// Configura os contatos de acordo com a quantidade de contatos disponíveis
     /// - Parameter infos: contatos disponiveis
-    public func setupContactInfos(with infos: [ContactInfo]) {
+    private func setupContactInfos(with infos: [ManagedContact]) {
         if infos.count == 1 {
             self.contactViews[1].isHidden = true
             self.contactViews[0].setupContactInfo(with: infos[0])
@@ -120,14 +124,5 @@ class InfoGardenContact: UIView {
         )
         
         return self.getEquivalent(space, screenReference: screenReference)
-    }
-    
-    
-    
-    private func DADOS_TESTE() {
-        self.setupContactInfos(with: [
-            ContactInfo(icon: .insta, contact: "@hortadasaude"),
-            ContactInfo(icon: .whatts, contact: "+55 11 98888-8888"),
-        ])
     }
 }

@@ -10,7 +10,7 @@ class InfoGardenImagesDataSource: NSObject, UICollectionViewDataSource {
     /* MARK: - Atributos */
     
     /// Nome das imagens
-    private var data: [String] = ["Horta_01", "Horta_02", "Horta_03"]
+    public var data: [ManagedImage] = []
     
     
     
@@ -38,7 +38,7 @@ class InfoGardenImagesDataSource: NSObject, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        let currentImage = self.data[indexPath.row]
+        let currentImage = self.data[indexPath.row].name
         cell.setupCell(with: currentImage)
         
         return cell

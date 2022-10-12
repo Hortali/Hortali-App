@@ -21,7 +21,7 @@ class GardenDataManager {
                     found = ind
                     
                     var aux = item
-                    //aux.isFavorited = true
+                    aux.isFavorited = true
                     favorites.append(aux)
                     break
                 }

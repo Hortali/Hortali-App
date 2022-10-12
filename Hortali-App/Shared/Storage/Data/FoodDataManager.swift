@@ -23,8 +23,6 @@ class FoodDataManager {
     /// Faz a leitura dos dados e ja separa as categorias
     /// - Parameter data: dados com os alimentos
     public func analyze(data: [ManagedFood]) {
-        let favList = DataManager.shared.getFavoriteItens(for: .food) as? [ManagedFood] ?? []
-        
         for item in data {
             if self.cache[item.category] == nil {
                 self.cache[item.category] = [item]

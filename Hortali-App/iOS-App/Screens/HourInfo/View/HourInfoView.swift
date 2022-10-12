@@ -9,8 +9,13 @@ class HourInfoView: ContainerView {
     
     /* MARK: - Atributos */
     
-    /// CollectionView principal da tela
-    let hourInfoCollectionView: UICollectionView = CustomViews.newCollectionView()
+    // Views
+    
+    /// Collection principal da tela
+    private let hourInfoGp = CollectionGroup(style: .justCollection)
+    
+    
+    // Outros
     
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
@@ -27,7 +32,6 @@ class HourInfoView: ContainerView {
     
     /* MARK: - Construtor */
     
-    
     override init() {
         super.init()
         
@@ -42,10 +46,17 @@ class HourInfoView: ContainerView {
     
     /* MARK: - Encapsulamento */
     
-    
-    /// Define o Data Source da collection da tela como a classe Data Source passada no parametro.
+    /// Define o data source personalizado da collection
+    /// - Parameter dataSource: data source da collection
     public func setDataSource(with dataSource: HourInfoDataSource) {
-        self.hourInfoCollectionView.dataSource = dataSource
+        self.hourInfoGp.collection.dataSource = dataSource
+    }
+    
+    
+    /// Atualiza os dados da collection
+    public func reloadCollectionData() {
+        self.hourInfoGp.collection.reloadData()
+        self.hourInfoGp.collection.reloadInputViews()
     }
     
     
@@ -68,19 +79,19 @@ class HourInfoView: ContainerView {
     
     /// Registra as células nas collections/table
     private func registerCell() {
-        self.hourInfoCollectionView.register(HourInfoCell.self, forCellWithReuseIdentifier: HourInfoCell.identifier)
+        self.hourInfoGp.collection.register(HourInfoCell.self, forCellWithReuseIdentifier: HourInfoCell.identifier)
     }
     
     
     /// Define o layout da collection
     private func setupCollectionFlow() {
-        self.hourInfoCollectionView.collectionViewLayout = self.collectionFlow
+        self.hourInfoGp.collection.collectionViewLayout = self.collectionFlow
     }
 
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-        self.contentView.addSubview(hourInfoCollectionView)
+        self.contentView.addSubview(hourInfoGp)
     }
     
     
@@ -88,7 +99,7 @@ class HourInfoView: ContainerView {
     private func setupUI() {
         // Define o tamanho que a célula vai ter
         self.collectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
-        self.collectionFlow.itemSize = CGSize(width: hourInfoCollectionView.frame.width, height: 60)
+        self.collectionFlow.itemSize = CGSize(width: hourInfoGp.frame.width, height: 60)
     }
     
     
@@ -105,10 +116,10 @@ class HourInfoView: ContainerView {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
-            self.hourInfoCollectionView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: lateral),
-            self.hourInfoCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            self.hourInfoCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -lateral),
-            self.hourInfoCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            self.hourInfoGp.topAnchor.constraint(equalTo: contentView.topAnchor, constant: lateral),
+            self.hourInfoGp.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            self.hourInfoGp.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -lateral),
+            self.hourInfoGp.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

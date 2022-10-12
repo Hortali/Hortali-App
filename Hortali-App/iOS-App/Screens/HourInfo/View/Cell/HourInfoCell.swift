@@ -28,7 +28,6 @@ class HourInfoCell: UICollectionViewCell {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
         lbl.backgroundColor = .clear
-        lbl.textColor = UIColor(.title)
         return lbl
     }()
     
@@ -56,12 +55,41 @@ class HourInfoCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.setupViews()
-        self.DADOS_TESTE()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-
+    
+    
+    /* MARK: - Encapsulamento */
+    
+    /// Configura a célula a partir do dado
+    /// - Parameter data: dado
+    public func setupCell(for data: ManagedHourInfo) {
+        self.dayLabel.text = data.week
+        
+        switch data.status {
+        case true:
+            self.hourLabel.text = "\(data.startTime) - \(data.endTime)"
+            self.statusLabel.text = "Aberto"
+            self.statusLabel.textColor = UIColor(.openStatus)
+            
+            self.backgroundColor = UIColor(.openBackgroundStatus)?.withAlphaComponent(0.4)
+            
+        case false:
+            self.statusLabel.text = "Fechado"
+            self.statusLabel.textColor = UIColor(.closeStatus)
+            self.backgroundColor = UIColor(.closeBackgroundStatus)?.withAlphaComponent(0.4)
+        }
+        
+        if InfoGardenView.todayWeek == data.week {
+            self.layer.masksToBounds = true
+            self.layer.borderWidth = 5
+            self.layer.borderColor = self.backgroundColor?.withAlphaComponent(1).cgColor
+        }
+    }
+    
+    
     
     /* MARK: - Ciclo de Vida */
     
@@ -89,7 +117,6 @@ class HourInfoCell: UICollectionViewCell {
     
     /// Personalização da UI
     private func setupUI() {
-        self.backgroundColor = UIColor(originalColor: .greenLight)?.withAlphaComponent(0.4)
         self.layer.cornerRadius = 10
     }
     
@@ -130,13 +157,5 @@ class HourInfoCell: UICollectionViewCell {
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
-    }
-    
-    
-    
-    private func DADOS_TESTE() {
-        self.dayLabel.text = "Segunda - Feira"
-        self.statusLabel.text = "Aberto"
-        self.hourLabel.text = "09:00 - 17:00"
     }
 }

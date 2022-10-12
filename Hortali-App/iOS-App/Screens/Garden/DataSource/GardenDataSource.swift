@@ -5,7 +5,7 @@ import UIKit
 
 class GardenDataSource: NSObject, UICollectionViewDataSource {
     
-    var data: [ManagedGarden] = []
+    public var data: [ManagedGarden] = []
     
     
     /* MARK: - Data Sources */
@@ -23,6 +23,9 @@ class GardenDataSource: NSObject, UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GardenCell.identifier, for: indexPath) as? GardenCell else {
             return UICollectionViewCell()
         }
+        
+        let actualData = self.data[indexPath.row]
+        cell.setupCell(for: actualData)
         
         return cell
     }
