@@ -12,16 +12,36 @@ class InfoFoodController: UIViewController {
     /* View */
 
     /// View principal que a classe vai controlar
-    private let myView = InfoFoodView()
+    private var myView: InfoFoodView
     
     
-    /* Delegate & Data Sources */
-    private let gardenDataSource = GardenDataSource()
+    /* Outros */
     
-    /// Delegate da collection das hortas
-    private let gardenDelegate = GardenDelegate()
-
-		
+    /// Configuraçòes para atualizar o estado de favoritos
+    private var favUpdate: FavoriteUpdate
+    
+    
+    
+    /* MARK: - Construtor */
+    
+    init(with data: ManagedFood, in index: Int) {
+        self.myView = InfoFoodView(data: data)
+        
+        self.favUpdate = FavoriteUpdate(
+            favoriteType: .food,
+            id: data.id, cellId: index,
+            action: .add
+        )
+        
+        super.init(nibName: nil, bundle: nil)
+        
+        self.setupFavoriteStatus(for: data)
+    }
+    
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    
+    
     /* MARK: - Ciclo de Vida */
     
     override func loadView() {
@@ -32,14 +52,9 @@ class InfoFoodController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setupDelegates()
         self.setupButtonsAction()
     }
     
-
-
-    /* MARK: - Protocolo */
-
     
     
     /* MARK: - Ações de botões */
@@ -54,7 +69,14 @@ class InfoFoodController: UIViewController {
     /// Ação de favoritar um card
     @objc
     private func favoriteAction() {
+        switch self.myView.isFavorited() {
+        case true:
+            self.favUpdate.action = .add
+        case false:
+            self.favUpdate.action = .remove
+        }
         
+        DataManager.shared.updateFavoriteList(for: self.favUpdate)
     }
     
     
@@ -76,10 +98,14 @@ class InfoFoodController: UIViewController {
     }
     
     
-    /// Definindo os delegates, data sources e protocolos
-    private func setupDelegates() {
-        //self.gardenDelegate.setProtocol(with: self)
-        
-      //  self.myView.setDataSource(with: self.gardenDataSource)
+    /// Configura a view pra caso for favorito
+    /// - Parameter data: dado
+    private func setupFavoriteStatus(for data: ManagedFood) {
+        for id in DataManager.shared.getFavoriteIds(for: .food) {
+            if data.id == id {
+                let _ = self.myView.isFavorited(is: true)
+                break
+            }
+        }
     }
 }

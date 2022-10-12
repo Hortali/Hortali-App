@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Conteúdo da célula para mostrar os horários de funcionamento
-class InfoGardenTime: UIView {
+class InfoGardenTime: UIView, InfoGardenCellProtocol {
     
     /* MARK: - Atributos */
 
@@ -53,12 +53,19 @@ class InfoGardenTime: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.setupViews()
-        self.DADOS_TESTE()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     
+    
+    /* MARK: - Protocol */
+    
+    internal func setupView(for data: ManagedGarden) {
+        self.setupDates(for: data.hourInfo)
+    }
+    
+
     
     /* MARK: - Ciclo de Vida */
     
@@ -73,6 +80,63 @@ class InfoGardenTime: UIView {
     
     
     /* MARK: - Configurações */
+    
+    // Geral
+    
+    /// Configura as datas que são mostradas na célula
+    /// - Parameter data: Horários de funcionamento
+    private func setupDates(for data: [ManagedHourInfo]) {
+        let today = Date()
+        
+        // sunday 1 - 7 saturday
+        if let week = Calendar.current.dateComponents([.weekday], from: today).weekday {
+            var todayWeek = week - 2 // seg = 0 | dom = 6
+            if todayWeek < 0 {      // Domingo
+                todayWeek = 6
+            }
+            
+            if InfoGardenView.todayWeek == "" {
+                InfoGardenView.todayWeek = data[todayWeek].week
+            }
+            
+            // Hoje
+            let todayData = data[todayWeek]
+            self.todayTimeGroup.setupInfos(for: todayData, isToday: true)
+            self.todayWeekLabel.text = todayData.week
+            
+            // Dia seguinte 1
+            let nextDay1 = self.getNextDay(by: todayWeek)
+            let nextDay1Data = data[nextDay1]
+            self.daysAfter[0].setupInfos(for: nextDay1Data, isToday: false)
+            
+            
+            // Dia seguinte 2
+            let nextDay2 = self.getNextDay(by: nextDay1)
+            let nextDay2Data = data[nextDay2]
+            self.daysAfter[1].setupInfos(for: nextDay2Data, isToday: false)
+            
+            // Feriado
+            let holiday = 7
+            let holidayData = data[holiday]
+            self.self.daysAfter[2].setupInfos(for: holidayData, isToday: false)
+        }
+    }
+    
+    
+    /// Pega o index referente ao dia seguinte
+    /// - Parameter day: dia atual
+    /// - Returns: index do dia seguinte
+    private func getNextDay(by day: Int) -> Int {
+        var nextDay = day
+        nextDay += 1
+        if nextDay == 7 {
+            return 0
+        }
+        return nextDay
+    }
+    
+    
+    // Views
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
@@ -167,11 +231,5 @@ class InfoGardenTime: UIView {
         )
         
         return self.getEquivalent(space, screenReference: screenReference)
-    }
-    
-    
-    private func DADOS_TESTE() {
-        self.todayWeekLabel.text = "Sexta - Feira"
-        self.todayTimeGroup.setupInfos(for: "Aberto")
     }
 }

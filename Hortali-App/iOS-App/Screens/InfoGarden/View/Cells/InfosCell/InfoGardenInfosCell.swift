@@ -50,13 +50,20 @@ class InfoGardenInfosCell: UICollectionViewCell {
     /* MARK: - Encapsulamento */
     
     /// Define o tipo da célula
-    public func setupCell(for cellType: InfoGardenCellType) {
+    public func setupCell(for cellType: InfoGardenCellType, with data: ManagedGarden) {
+        let view = cellType.view
+        
+        if let viewProtocol = view as? InfoGardenCellProtocol {
+            viewProtocol.setupView(for: data)
+        }
+        
         self.titleLabel.text = cellType.title
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         self.cellView.removeFromSuperview()
         
-        self.cellView = cellType.view
+        
+        self.cellView = view
         self.customContentView.addSubview(self.cellView)
 
         self.setupDynamicConstraints()

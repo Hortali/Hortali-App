@@ -61,9 +61,9 @@ class FoodCell: UICollectionViewCell {
     
     /* MARK: - Encapsulamento */
     
-    public func setupCell(for image: String) {
-        self.foodLabel.text = image
-        self.foodImage.image = UIImage(named: "\(image)_Square")
+    public func setupCell(for data: ManagedFood) {
+        self.foodLabel.text = data.name
+        self.foodImage.image = UIImage(named: data.coverImage.name)
     }
     
     

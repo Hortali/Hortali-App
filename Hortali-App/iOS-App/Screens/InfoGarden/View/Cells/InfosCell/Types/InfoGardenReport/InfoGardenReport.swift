@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Conteúdo da célula para reportar algum problema da horta
-class InfoGardenReport: UIView {
+class InfoGardenReport: UIView, InfoGardenCellProtocol {
     
     /* MARK: - Atributos */
 
@@ -33,6 +33,12 @@ class InfoGardenReport: UIView {
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    
+    /* MARK: - Protocol */
+    
+    
+    internal func setupView(for data: ManagedGarden) { }
     
     
 

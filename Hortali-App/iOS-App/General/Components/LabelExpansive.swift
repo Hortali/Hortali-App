@@ -11,14 +11,16 @@ class ExpansiveLabel: UIView {
 
     // Views
     
+    /// Label para colocar o texto expandivel
     private let paragraphLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textColor = UIColor(.paragraph)
         lbl.numberOfLines = 0
+        lbl.lineBreakMode = .byWordWrapping
         return lbl
     }()
     
-    
+    /// Botão para expandir a label
     private let expansiveButton: CustomButton = {
         let but: CustomButton = CustomViews.newButton()
         but.backgroundColor = UIColor(originalColor: .greenLight)
@@ -32,31 +34,41 @@ class ExpansiveLabel: UIView {
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
     
-    
+    /// Constraints dinâmicas que mudam de acordo com a altura da view
     private var heightConstraints: [NSLayoutConstraint] = []
     
     
-    // Views sizes
+    // Tamanhos
     
+    /// Tamanho do botão
     private let btNormalSize: CGFloat = 30
     
+    /// Tamanho da label quando não está expandida
     private let lblNormalSize: CGFloat = 65
     
+    /// Tamanho da expansão da label
     private var expandedSize: CGFloat = 0
     
+    /// Tamanho do texto que fica aparecendo sem expandir
+    private let textCoundFit: Int = 75
+    
+    /// Estado se está expandida
     private var status: Bool = false
     
     
-    /* Encapsulamento (Variáveis Computáveis) */
+    /* Encapsulamento -> (Variáveis Computáveis) */
     
+    /// Tamanho atual da label
     public var actualLabelSize: CGFloat {
         return self.lblNormalSize + self.expandedSize
     }
     
+    /// Tamanho da expansão da label
     public var expandedLabelSize: CGFloat {
         return self.expandedSize
     }
     
+    /// Estado se está ou não expandida
     public var isExtended: Bool {
         return self.status
     }
@@ -71,7 +83,6 @@ class ExpansiveLabel: UIView {
         
         self.setupViews()
         self.setupExtension(extended: false)
-        self.DADOS_TESTE()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -84,24 +95,12 @@ class ExpansiveLabel: UIView {
     /// - Parameter text: texto que vai ser definido
     public func setInfoText(for text: String) {
         self.paragraphLabel.text = text
-    }
         
-    
-    /// Define o tamanho da label
-    /// - Parameter size: tamanho que a label vai ter
-    public func setLabelSize(for size: CGFloat) {
-        if size > self.lblNormalSize {
-            self.expandedSize = size - self.lblNormalSize
+        if text.count < self.textCoundFit {
+            self.expansiveButton.isHidden = true
         }
     }
-    
-    
-    /// Retorna a quantidade de caracteres do texto
-    /// - Returns: quantidade de caracteres do texto
-    public func getTextCount() -> Int {
-        return self.paragraphLabel.text?.count ?? 0
-    }
-    
+        
     
     /// Configurações para expandir ou reduzir o tamanho da label
     /// - Parameter isExtended: se está ou não expandida
@@ -111,7 +110,8 @@ class ExpansiveLabel: UIView {
         var extensionSize: CGFloat = 0
         
         if self.isExtended {
-            extensionSize = 35 * CGFloat(self.getTextCount() / 75)
+            let expandSize: Int = self.textCoundFit * (self.getTextCount() / self.textCoundFit)
+            extensionSize = CGFloat(expandSize)
         }
         
         let size = self.btNormalSize + self.lblNormalSize + extensionSize
@@ -170,6 +170,26 @@ class ExpansiveLabel: UIView {
     
     /* MARK: - Configurações */
     
+    /* Geral */
+    
+    /// Define o tamanho da label
+    /// - Parameter size: tamanho que a label vai ter
+    private func setLabelSize(for size: CGFloat) {
+        if size > self.lblNormalSize {
+            self.expandedSize = size - self.lblNormalSize
+        }
+    }
+    
+    
+    /// Retorna a quantidade de caracteres do texto
+    /// - Returns: quantidade de caracteres do texto
+    private func getTextCount() -> Int {
+        return self.paragraphLabel.text?.count ?? 0
+    }
+    
+    
+    /* View */
+    
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.addSubview(self.paragraphLabel)
@@ -207,13 +227,5 @@ class ExpansiveLabel: UIView {
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
-    }
-    
-    
-    private func DADOS_TESTE() {
-        let text = """
-        A hortinha da saúde é muito bem cuidada e sempre tem ótimos alimentos frescos que são plantados e cuidados com muito, A hortinha da saúde é muito bem cuidada e sempre tem ótimos alimentos frescos que são plantados e cuidados com muito
-        """
-        self.paragraphLabel.text = text
     }
 }

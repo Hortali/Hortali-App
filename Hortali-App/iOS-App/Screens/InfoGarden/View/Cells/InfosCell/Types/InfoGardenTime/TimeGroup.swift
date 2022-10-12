@@ -70,8 +70,30 @@ class TimeGroup: UIView {
 
     /// Define as informações que vão ser mostradas
     /// - Parameter infos: texto que vai ser definido
-    public func setupInfos(for infos: String) {
-        self.weekLabel.text = infos
+    public func setupInfos(for info: ManagedHourInfo, isToday: Bool) {
+        if isToday {
+            if info.status {
+                self.weekLabel.text = "Aberto"
+                self.hourLabel.text = "\(info.startTime) - \(info.endTime)"
+            } else {
+                self.closeLabel.text = "Fechado"
+                
+                self.weekLabel.isHidden = true
+                self.hourLabel.isHidden = true
+                self.closeLabel.isHidden = false
+            }
+            
+            return
+        }
+        
+        self.weekLabel.text = info.week
+        
+        if info.status {
+            self.hourLabel.text = "\(info.startTime) - \(info.endTime)"
+        } else {
+            self.hourLabel.text = "Fechado"
+        }
+        
     }
     
     

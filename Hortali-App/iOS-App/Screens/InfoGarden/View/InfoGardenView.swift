@@ -42,8 +42,20 @@ class InfoGardenView: UIView {
     
     // Outros
     
+    /// Estado de favorito da view
+    private var ifFavorite: Bool = false
+    
+    /// Fala qual é o dia da semana de hoje
+    static var todayWeek: String = ""
+    
+    
+    // Constraints
+    
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
+    
+    
+    // Collection
     
     /// Configurações do layout da collection de informações
     private let infosCollectionFlow: UICollectionViewFlowLayout = {
@@ -64,12 +76,13 @@ class InfoGardenView: UIView {
 
     /* MARK: - Construtor */
     
-    init() {
+    init(data: ManagedGarden) {
         super.init(frame: .zero)
         
         self.setupViews()
         self.registerCell()
         self.setupCollectionFlow()
+        self.setupViewFor(data: data)
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -78,17 +91,31 @@ class InfoGardenView: UIView {
     
     /* MARK: - Encapsulamento */
     
+    /// Configura a view para quando for favoritado ou desfavoritado
+    /// - Parameter fav: estado do favorito
+    /// - Returns: se está ou não favoritado
+    public func isFavorited(is fav: Bool? = nil) -> Bool {
+        if let fav {
+            self.ifFavorite = fav
+        } else {
+            self.ifFavorite.toggle()
+        }
+        
+        var favColor: AppColors = .favoriteNotSelected
+        if self.ifFavorite {
+            favColor = .favoriteSelected
+        }
+        
+        self.favoriteButton.backgroundColor = UIColor(favColor)
+        
+        return self.ifFavorite
+    }
+    
+    
     /// Atualiza a página no Page Control
     /// - Parameter index: index (número) da página
     public func updateCurrentPage(for index: Int) {
         self.imagesPageControl.currentPage = index
-    }
-    
-    
-    /// Configura a view a partir dos dados recebidos
-    /// - Parameter data: dados recebidos
-    public func setupViewFor(data: String) {
-        
     }
     
     
@@ -125,6 +152,16 @@ class InfoGardenView: UIView {
     
     
     /* Collection */
+    
+    /// Atualiza os dados das collections
+    public func reloadCollectionsData() {
+        self.imagesCollectionGp.collection.reloadData()
+        self.imagesCollectionGp.collection.reloadInputViews()
+        
+        self.infosCollectionGp.collection.reloadData()
+        self.infosCollectionGp.collection.reloadInputViews()
+    }
+    
     
     /// Define o data source da collection de informações da horta
     /// - Parameter dataSource: data source da collection
@@ -171,6 +208,14 @@ class InfoGardenView: UIView {
     /* MARK: - Configurações */
     
     /* Geral */
+    
+    /// Configura a view a partir dos dados recebidos
+    /// - Parameter data: dados recebidos
+    private func setupViewFor(data: ManagedGarden) {
+        self.container.setTitleText(with: data.name)
+        self.expansiveLabel.setInfoText(for: data.biograph)
+    }
+    
     
     private func updateScrollSize() {
         var scrollHeight: CGFloat = 880
@@ -244,11 +289,6 @@ class InfoGardenView: UIView {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        /* Labels */
-        self.container.setTitleText(with: "Horta Comunitária da Saúde")
-        
-        
-        /* Botões */
         let btSize: CGFloat = self.getEquivalent(22)
         
         self.backButton.setupIcon(with: IconInfo(

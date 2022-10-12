@@ -1,0 +1,91 @@
+{
+    "count": 1,
+    "gardens": [
+        {   
+            "id": 0,
+            "name": "UrbanFarm Ipiranga",
+            "biograph": "Um espaço de agricultura urbana orgânica que fomenta a produção descentralizada e o consumo local, com mais de 35 canteiros de produção de hortaliças e temperos. \nA Urban disponibiliza produtos muito mais frescos tendo em vista que não há entrepostos entre a fazenda e a sua casa.\nO objetivo é aproximar as pessoas de seus alimentos, abrindo nossas portas para que se possa plantar, cultivar e colher.\nAssim como todo produtor orgânico, formam algumas parcerias com outros produtores (todos pertencentes a agricultura orgânica familiar) para compor o mix de produtos e/ou cobrir a nossa demanda, tendo em vista o tamanho de nosso cultivar.",
+            "address": "R. Cipriano Barata, 2441 - Ipiranga, São Paulo - SP",
+            "latitude": -23.591322,
+            "longitude": -46.604746,
+            "coverImage": {
+                "name": "UrbanFarmIpiranga_Cover"
+            },
+            "pageImages": [
+                {   
+                    "name": "UrbanFarmIpiranga_Page0"
+                }
+            ],
+            "contacts": [
+                {
+                    "type": "insta",
+                    "contact": "@urbanfarmipiranga",
+                    "link": "https://www.instagram.com/urbanfarmipiranga/",
+                    "description": "Perfil do instagram"
+                },
+                {
+                    "type": "whatts",
+                    "contact": "11997141887",
+                    "link": "https://wa.me/5511997141887",
+                    "description": "Mensagem"
+                },
+                {
+                    "type": "fone",
+                    "contact": "11997141887",
+                    "link": "tel://11997141887",
+                    "description": "Ligação"
+                }
+            ],
+            "hourInfo": [
+                {
+                    "status" : true,
+                    "week" : "Segunda",
+                    "startTime" : "09:00",
+                    "endTime" : "17:00"
+                },
+                {
+                    "status" : true,
+                    "week" : "Terça",
+                    "startTime" : "09:00",
+                    "endTime" : "17:00"
+                },
+                {
+                    "status" : true,
+                    "week" : "Quarta",
+                    "startTime" : "09:00",
+                    "endTime" : "17:00"
+                },
+                {
+                    "status" : true,
+                    "week" : "Quinta",
+                    "startTime" : "09:00",
+                    "endTime" : "17:00"
+                },
+                {
+                    "status" : true,
+                    "week" : "Sexta",
+                    "startTime" : "09:00",
+                    "endTime" : "17:00"
+                },
+                {
+                    "status" : true,
+                    "week" : "Sábado",
+                    "startTime" : "09:00",
+                    "endTime" : "13:00"
+                },
+                {
+                    "status" : false,
+                    "week" : "Domingo",
+                    "startTime" : "",
+                    "endTime" : ""
+                },
+                {
+                    "status" : false,
+                    "week" : "Feriados",
+                    "startTime" : "",
+                    "endTime" : ""
+                }
+            ]
+        }
+    ]
+}
