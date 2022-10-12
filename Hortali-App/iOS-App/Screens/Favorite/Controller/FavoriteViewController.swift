@@ -58,7 +58,9 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
     
         
     internal func openFoodInfo(for index: Int) {
-        let controller = InfoFoodController()
+        let selectedCell = self.foodDataSource.data[index]
+        
+        let controller = InfoFoodController(with: selectedCell)
         controller.modalTransitionStyle = .crossDissolve
         controller.modalPresentationStyle = .fullScreen
         

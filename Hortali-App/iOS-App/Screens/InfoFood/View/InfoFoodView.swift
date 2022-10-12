@@ -52,6 +52,7 @@ class InfoFoodView: UIView {
         lbl.numberOfLines = 3
         lbl.adjustsFontSizeToFitWidth = true
         lbl.textColor = UIColor(AppColors.paragraph)
+        lbl.lineBreakMode = .byCharWrapping
         return lbl
     }()
     
@@ -76,16 +77,16 @@ class InfoFoodView: UIView {
     
     /* MARK: - Construtor */
     
-    init() {
+    init(data: ManagedFood) {
         super.init(frame: .zero)
         
         self.setupViews()
-        self.setupStackViews()
         self.registerCells()
         self.setupCollectionFlow()
         
         self.hideCollection()
-        self.DADOS_TESTE()
+        
+        self.setupViewFor(data: data)
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -96,8 +97,12 @@ class InfoFoodView: UIView {
     
     /// Configura a view a partir dos dados recebidos
     /// - Parameter data: dados recebidos
-    public func setupViewFor(data: String) {
-        
+    public func setupViewFor(data: ManagedFood) {
+        self.coverImage.image = UIImage(named: data.pageImage.name)
+        self.container.setTitleText(with: data.name)
+        self.expansiveLabel.setInfoText(for: data.benefits)
+        self.setupVitaminsStackViews(for: data.vitamins)
+        self.vitaminsInfoLabel.text = data.minerals
     }
     
     
@@ -181,17 +186,13 @@ class InfoFoodView: UIView {
     
     
     /// Cria e adiciona as views que vão ser colocadas na stack
-    private func setupStackViews() {
-        // Loop Unrolling
-        
-        self.vitaminsTypesLabels.append(self.getVitaminLabel())
-        self.vitaminsTypesLabels.append(self.getVitaminLabel())
-        self.vitaminsTypesLabels.append(self.getVitaminLabel())
-        
-        // Adicionando na stack
-        self.vitaminsStack.addArrangedSubview(self.vitaminsTypesLabels[0])
-        self.vitaminsStack.addArrangedSubview(self.vitaminsTypesLabels[1])
-        self.vitaminsStack.addArrangedSubview(self.vitaminsTypesLabels[2])
+    private func setupVitaminsStackViews(for vitamins: [ManagedVitamins]) {
+        for vitamin in vitamins {
+            let vitLabel = self.getVitaminLabel(for: vitamin)
+            
+            self.vitaminsTypesLabels.append(vitLabel)
+            self.vitaminsStack.addArrangedSubview(vitLabel)
+        }
     }
     
     
@@ -363,7 +364,7 @@ class InfoFoodView: UIView {
             
             self.vitaminsInfoLabel.topAnchor.constraint(equalTo: self.vitaminsStack.bottomAnchor, constant: lateral),
             self.vitaminsInfoLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
-            self.vitaminsInfoLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
+            self.vitaminsInfoLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
             self.vitaminsInfoLabel.heightAnchor.constraint(equalToConstant: self.getEquivalent(65)),
             
             
@@ -388,28 +389,20 @@ class InfoFoodView: UIView {
     
     
     /// Cria as labels da stack view
-    private func getVitaminLabel() -> CustomLabel {
+    private func getVitaminLabel(for vitamins: ManagedVitamins) -> CustomLabel {
         let lbl = CustomViews.newLabel()
         lbl.backgroundColor = UIColor(originalColor: .orange)
         lbl.textColor = UIColor(originalColor: .white)
         lbl.textAlignment = .center
         
         lbl.isCircular = true
-        lbl.text = "A"
+        
+        lbl.text = vitamins.name
         return lbl
     }
     
     
     private func hideCollection() {
         self.howToCollection.isHidden = true
-    }
-    
-    
-    private func DADOS_TESTE() {
-        self.container.setTitleText(with: "Morango")
-        self.vitaminsInfoLabel.text = "E minerais como fosfato, potássio, dentre outros. E de compostos bioativos."
-        
-        let image = UIImage(named: "Abacate_Page")
-        self.coverImage.image = image
     }
 }

@@ -27,19 +27,24 @@ struct ManagedGarden: Codable {
 
 
 struct ManagedContact: Codable {
-    let type, contact: String
+    let id: Int?
+    let type: String
+    let contact: String
     let link: String
 }
 
 
 
 struct ManagedImage: Codable {
+    let id: Int?
     let name: String
+    let type: String?
 }
 
 
 
 struct ManagedHourInfo: Codable {
+    let id: Int?
     let status: Bool
     let week: String
     let startTime: String
@@ -60,7 +65,7 @@ struct ManagedFood: Codable {
     let id: Int
     
     let name: String
-    let cateogory: String
+    let category: String
     let benefits: String
     let minerals: String
     
@@ -72,5 +77,6 @@ struct ManagedFood: Codable {
 
 
 struct ManagedVitamins: Codable {
+    let id: Int?
     let name: String
 }

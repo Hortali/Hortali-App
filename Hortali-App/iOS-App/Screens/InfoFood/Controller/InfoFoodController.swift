@@ -12,16 +12,19 @@ class InfoFoodController: UIViewController {
     /* View */
 
     /// View principal que a classe vai controlar
-    private let myView = InfoFoodView()
+    private var myView: InfoFoodView
     
     
-    /* Delegate & Data Sources */
-    private let gardenDataSource = GardenDataSource()
+    init(with data: ManagedFood) {
+        self.myView = InfoFoodView(data: data)
+        
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    /// Delegate da collection das hortas
-    private let gardenDelegate = GardenDelegate()
-
-		
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    
+    
     /* MARK: - Ciclo de Vida */
     
     override func loadView() {
@@ -32,14 +35,9 @@ class InfoFoodController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setupDelegates()
         self.setupButtonsAction()
     }
     
-
-
-    /* MARK: - Protocolo */
-
     
     
     /* MARK: - Ações de botões */
@@ -73,13 +71,5 @@ class InfoFoodController: UIViewController {
         self.myView.setBackButtonAction(target: self, action: #selector(self.backAction))
         self.myView.setFavoriteButtonAction(target: self, action: #selector(self.favoriteAction))
         self.myView.setExpLabelButtonAction(target: self, action: #selector(self.expandLabelAction))
-    }
-    
-    
-    /// Definindo os delegates, data sources e protocolos
-    private func setupDelegates() {
-        //self.gardenDelegate.setProtocol(with: self)
-        
-      //  self.myView.setDataSource(with: self.gardenDataSource)
     }
 }

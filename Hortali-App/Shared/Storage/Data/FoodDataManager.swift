@@ -24,11 +24,11 @@ class FoodDataManager {
     /// - Parameter data: dados com os alimentos
     public func analyze(data: [ManagedFood]) {
         for item in data {
-            if self.cache[item.cateogory] == nil {
-                self.cache[item.cateogory] = [item]
-                self.categories.append(item.cateogory)
+            if self.cache[item.category] == nil {
+                self.cache[item.category] = [item]
+                self.categories.append(item.category)
             } else {
-                self.cache[item.cateogory]?.append(item)
+                self.cache[item.category]?.append(item)
             }
         }
     }
