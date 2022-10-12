@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Whatts-Icon.png",
+      "filename" : "email-contact.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Whatts-Icon 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Whatts-Icon 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
