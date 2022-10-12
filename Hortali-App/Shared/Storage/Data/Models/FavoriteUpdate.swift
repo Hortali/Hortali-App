@@ -5,5 +5,5 @@ struct FavoriteUpdate {
     let favoriteType: DataType
     let id: Int
     let cellId: Int
-    let action: FavoriteAction
+    var action: FavoriteAction
 }

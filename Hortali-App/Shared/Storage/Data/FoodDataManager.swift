@@ -23,6 +23,8 @@ class FoodDataManager {
     /// Faz a leitura dos dados e ja separa as categorias
     /// - Parameter data: dados com os alimentos
     public func analyze(data: [ManagedFood]) {
+        let favList = DataManager.shared.getFavoriteItens(for: .food) as? [ManagedFood] ?? []
+        
         for item in data {
             if self.cache[item.category] == nil {
                 self.cache[item.category] = [item]
@@ -57,7 +59,10 @@ class FoodDataManager {
             for ind in 0..<allIds.count {
                 if item.id == allIds[ind] {
                     found = ind
-                    favorites.append(item)
+                    
+                    var aux = item
+                    aux.isFavorited = true
+                    favorites.append(aux)
                     break
                 }
             }

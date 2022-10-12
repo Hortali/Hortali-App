@@ -69,6 +69,8 @@ struct ManagedFood: Codable {
     let benefits: String
     let minerals: String
     
+    var isFavorited: Bool?
+    
     let vitamins: [ManagedVitamins]
     let coverImage: ManagedImage
     let pageImage: ManagedImage

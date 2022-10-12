@@ -19,7 +19,10 @@ class GardenDataManager {
             for ind in 0..<allIds.count {
                 if item.id == allIds[ind] {
                     found = ind
-                    favorites.append(item)
+                    
+                    var aux = item
+                    //aux.isFavorited = true
+                    favorites.append(aux)
                     break
                 }
             }

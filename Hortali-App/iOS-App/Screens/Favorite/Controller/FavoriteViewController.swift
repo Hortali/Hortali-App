@@ -44,6 +44,14 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
         self.setupDelegates()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.setupDataSourcesData()
+        self.myView.reloadCollectionsData()
+    }
+    
 
 
     /* MARK: - Protocolo */
@@ -60,7 +68,7 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
     internal func openFoodInfo(for index: Int) {
         let selectedCell = self.foodDataSource.data[index]
         
-        let controller = InfoFoodController(with: selectedCell)
+        let controller = InfoFoodController(with: selectedCell, in: index)
         controller.modalTransitionStyle = .crossDissolve
         controller.modalPresentationStyle = .fullScreen
         
@@ -81,5 +89,21 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
         
         self.myView.setGardenDataSource(with: self.gardenDataSource)
         self.myView.setGardenDelegate(with: self.gardenDelegate)
+    }
+    
+    
+    private func setupDataSourcesData() {
+        // Alimentos
+        let foodFavorite = DataManager.shared.getFavoriteItens(for: .food)
+        if let foodFav = foodFavorite as? [ManagedFood] {
+            self.foodDataSource.data = foodFav
+        }
+        
+        
+        // Hortas
+        let gardenFavorite = DataManager.shared.getFavoriteItens(for: .garden)
+        if let gardenFav = gardenFavorite as? [ManagedGarden] {
+            self.gardenDataSource.data = gardenFav
+        }
     }
 }

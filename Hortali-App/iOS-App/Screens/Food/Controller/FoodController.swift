@@ -46,7 +46,7 @@ class FoodController: MenuController, FoodProtocol {
     internal func openFoodInfo(for index: Int) {
         let selectedCell = self.foodCollectionDataSource.data[index]
         
-        let controller = InfoFoodController(with: selectedCell)
+        let controller = InfoFoodController(with: selectedCell, in: index)
         controller.modalTransitionStyle = .crossDissolve
         controller.modalPresentationStyle = .fullScreen
         

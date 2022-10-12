@@ -67,6 +67,16 @@ class FavoriteView: MainView {
     
     /* MARK: - Encapsulamento */
     
+    /// Atualiza os dados da collection
+    public func reloadCollectionsData() {
+        self.foodGroup.collection.reloadData()
+        self.foodGroup.collection.reloadInputViews()
+        
+        self.gardenGroup.collection.reloadData()
+        self.gardenGroup.collection.reloadInputViews()
+    }
+    
+    
     /// Define o data source da collection de alimentos
     /// - Parameter dataSource: data source da collection de alimentos
     public func setFoodDataSource(with dataSource: FoodCollectionDataSource) {

@@ -5,7 +5,7 @@ import UIKit
 
 class GardenDataSource: NSObject, UICollectionViewDataSource {
     
-    var data: [String] = ["Horta_01", "Horta_02", "Horta_03"]
+    var data: [ManagedGarden] = []
     
     
     /* MARK: - Data Sources */
@@ -23,9 +23,6 @@ class GardenDataSource: NSObject, UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GardenCell.identifier, for: indexPath) as? GardenCell else {
             return UICollectionViewCell()
         }
-        
-        let imageName = self.data[indexPath.row]
-        cell.setupCell(for: imageName)
         
         return cell
     }

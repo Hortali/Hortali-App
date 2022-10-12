@@ -60,6 +60,12 @@ class InfoFoodView: UIView {
     private let howToCollection = CollectionGroup()
     
     
+    // Views
+    
+    private var favorited: Bool = false
+    
+    
+    
     // Outros
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
@@ -94,6 +100,24 @@ class InfoFoodView: UIView {
 
     
     /* MARK: - Encapsulamento */
+    
+    
+    public func isFavorited(is fav: Bool? = nil) -> Bool {
+        if let fav {
+            self.favorited = fav
+        } else {
+            self.favorited.toggle()
+        }
+        
+        var favColor: AppColors = .favoriteNotSelected
+        if self.favorited {
+            favColor = .favoriteSelected
+        }
+        
+        self.favoriteButton.backgroundColor = UIColor(favColor)
+        
+        return self.favorited
+    }
     
     /// Configura a view a partir dos dados recebidos
     /// - Parameter data: dados recebidos

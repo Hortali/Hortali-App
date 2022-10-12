@@ -105,6 +105,11 @@ class DataManager {
     }
     
     
+    public func getFavoriteIds(for dataType: DataType) -> [Int] {
+        return UserDefaults.getFavoriteList(for: dataType)
+    }
+    
+    
     /*  MARK: - Gerenciamento dos Dados */
     
     /// Pega os dados da horta
