@@ -33,7 +33,7 @@ class ExpansiveLabel: UIView {
     /// Botão para expandir a label
     private let expansiveButton: CustomButton = {
         let but: CustomButton = CustomViews.newButton()
-        but.backgroundColor =  UIColor(originalColor: .greenLight)
+        but.backgroundColor = UIColor(originalColor: .greenLight)
         but.tintColor = UIColor(originalColor: .greenDark)
         return but
     }()
@@ -60,7 +60,7 @@ class ExpansiveLabel: UIView {
     private var expandedSize: CGFloat = 0
     
     /// Tamanho do texto que fica aparecendo sem expandir
-    private let textCoundFit: Int = 75
+    private let textCountFit: Int = 75
     
     /// Estado se está expandida
     private var status = false
@@ -109,7 +109,7 @@ class ExpansiveLabel: UIView {
         self.paragraphLabel.text = text
         self.invisibleLabel.text = text
         
-        if text.count < self.textCoundFit {
+        if text.count < self.textCountFit {
             self.expansiveButton.isHidden = true
         }
     }
