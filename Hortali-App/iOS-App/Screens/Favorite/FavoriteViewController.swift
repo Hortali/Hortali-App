@@ -18,10 +18,10 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
     /* Delegate & Data Sources */
     
     /// Data source da collection de alimentos
-    private let foodDataSource = FoodCollectionDataSource()
+    private let foodDataSource = FoodDataSource()
     
     /// Delegate da collection de alimentos
-    private let foodDelegate = FoodCollectionDelegate()
+    private let foodDelegate = FoodDelegate()
     
     /// Data source da collection das hortas
     private let gardenDataSource = GardenDataSource()
@@ -49,7 +49,6 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
         super.viewWillAppear(animated)
         
         self.setupDataSourcesData()
-        self.myView.reloadCollectionsData()
     }
     
 
@@ -60,6 +59,8 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
         let selectedCell = self.gardenDataSource.data[index]
         
         let controller = InfoGardenController(with: selectedCell, in: index)
+        controller.modalTransitionStyle = .crossDissolve
+        controller.modalPresentationStyle = .fullScreen
         
         self.tabBarProtocol?.showTabBar(is: false)
         self.present(controller, animated: true)
@@ -78,6 +79,7 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
     }
     
     
+    
     /* MARK: - Configurações */
 
     /// Definindo os delegates, data sources e protocolos
@@ -93,6 +95,7 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
     }
     
     
+    /// Configura os dadso das colelctions
     private func setupDataSourcesData() {
         // Alimentos
         let foodFavorite = DataManager.shared.getFavoriteItens(for: .food)
@@ -106,5 +109,7 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
         if let gardenFav = gardenFavorite as? [ManagedGarden] {
             self.gardenDataSource.data = gardenFav
         }
+        
+        self.myView.reloadCollectionsData()
     }
 }

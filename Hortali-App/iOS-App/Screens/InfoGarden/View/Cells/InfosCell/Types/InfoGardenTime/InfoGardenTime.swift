@@ -28,7 +28,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
     /// Mostra as informações do dia da semana
     private let todayTimeGroup: TimeGroup = {
         let group = TimeGroup()
-        group.setTintColor(for: UIColor(.subTitle))
+        group.isTodayComponent = true
         return group
     }()
     
@@ -91,7 +91,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         // sunday 1 - 7 saturday
         if let week = Calendar.current.dateComponents([.weekday], from: today).weekday {
             var todayWeek = week - 2 // seg = 0 | dom = 6
-            if todayWeek < 0 {      // Domingo
+            if todayWeek < 0 {       // Domingo
                 todayWeek = 6
             }
             
@@ -101,24 +101,24 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
             
             // Hoje
             let todayData = data[todayWeek]
-            self.todayTimeGroup.setupInfos(for: todayData, isToday: true)
+            self.todayTimeGroup.setupInfos(for: todayData)
             self.todayWeekLabel.text = todayData.week
             
             // Dia seguinte 1
             let nextDay1 = self.getNextDay(by: todayWeek)
             let nextDay1Data = data[nextDay1]
-            self.daysAfter[0].setupInfos(for: nextDay1Data, isToday: false)
+            self.daysAfter[0].setupInfos(for: nextDay1Data)
             
             
             // Dia seguinte 2
             let nextDay2 = self.getNextDay(by: nextDay1)
             let nextDay2Data = data[nextDay2]
-            self.daysAfter[1].setupInfos(for: nextDay2Data, isToday: false)
+            self.daysAfter[1].setupInfos(for: nextDay2Data)
             
             // Feriado
             let holiday = 7
             let holidayData = data[holiday]
-            self.self.daysAfter[2].setupInfos(for: holidayData, isToday: false)
+            self.self.daysAfter[2].setupInfos(for: holidayData)
         }
     }
     

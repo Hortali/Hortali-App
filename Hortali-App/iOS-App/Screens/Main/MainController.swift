@@ -28,8 +28,6 @@ class MainController: UITabBarController {
         self.setupTab()
         self.setupTabBarItens()
         self.setupControllers()
-        
-        teste()
     }
     
     
@@ -59,15 +57,5 @@ class MainController: UITabBarController {
         self.gardenController.setupTab(text: "Hortas", icon: .gardenTab)
         self.foodController.setupTab(text: "Alimentos", icon: .foodTab)
         self.favoriteController.setupTab(text: "Favoritos", icon: .favoriteTab)
-    }
-    
-    
-    
-    private func teste() {
-        let allCategories = DataManager.shared.getAllCategories()
-        let foodData = DataManager.shared.getFoodData()
-        
-        print("AA Categorias -> \(allCategories)")
-        print("AA Dados -> \(foodData)")
     }
 }

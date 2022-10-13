@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// Controller responsável POR
+/// Controller responsável por mostrar os horários de funcionamento das hortas
 class HourInfoController: UIViewController {
     
     /* MARK: - Atributos */

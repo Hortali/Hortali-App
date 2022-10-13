@@ -5,25 +5,36 @@ import UIKit
 
 
 /// Data source da collection de mostrar os alimentos
-class FoodCollectionDataSource: NSObject, UICollectionViewDataSource {
+class FoodDataSource: NSObject, UICollectionViewDataSource {
     
-    var data: [ManagedFood] = []
+    /* MARK: - Atributos */
     
+    /// Dados usados no data source
+    private var mainData : [ManagedFood] = []
+    
+    /// Dados que estão sendo usados no dados source
+    public var data: [ManagedFood] {
+        set (newData) { self.mainData = newData }
+        get { self.mainData }
+    }
+    
+    
+    
+    /* MARK: - Data Source */
     
     /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.data.count
+        return self.mainData.count
     }
     
     
     /// Configura uma célula
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // Cria uma variácel para mexer com uma célula que foi criada
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodCell.identifier, for: indexPath) as? FoodCell else {
             return UICollectionViewCell()
         }
         
-        let data = self.data[indexPath.row]
+        let data = self.mainData[indexPath.row]
         cell.setupCell(for: data)
         
         return cell

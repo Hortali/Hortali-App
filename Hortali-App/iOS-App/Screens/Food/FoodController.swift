@@ -16,10 +16,10 @@ class FoodController: MenuController, FoodProtocol {
     /* Delegate & Data Sources */
     
     /// Data source da collection de alimentos
-    let foodCollectionDataSource = FoodCollectionDataSource()
+    private let foodDataSource = FoodDataSource()
     
     /// Delegate da collection de alimentos
-    let foodCollectionDelegate = FoodCollectionDelegate()
+    private let foodDelegate = FoodDelegate()
 
         
     
@@ -44,7 +44,7 @@ class FoodController: MenuController, FoodProtocol {
     /* MARK: - Protocolo */
     
     internal func openFoodInfo(for index: Int) {
-        let selectedCell = self.foodCollectionDataSource.data[index]
+        let selectedCell = self.foodDataSource.data[index]
         
         let controller = InfoFoodController(with: selectedCell, in: index)
         controller.modalTransitionStyle = .crossDissolve
@@ -72,8 +72,8 @@ class FoodController: MenuController, FoodProtocol {
     
     /// Define os dados collection
     /// - Parameter data: dado que a collection vai mostrar
-    private func setCollectionData(for data: [ManagedFood]) {
-        self.foodCollectionDataSource.data = data
+    private func updateCollectionData(for data: [ManagedFood]) {
+        self.foodDataSource.data = data
         self.myView.reloadCollectionData()
     }
     
@@ -84,16 +84,16 @@ class FoodController: MenuController, FoodProtocol {
         let category = DataManager.shared.getAllCategories()[index]
     
         let foodData = DataManager.shared.getFoodData(for: category)
-        self.setCollectionData(for: foodData)
+        self.updateCollectionData(for: foodData)
     }
     
         
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-        self.foodCollectionDelegate.setProtocol(with: self)
+        self.foodDelegate.setProtocol(with: self)
         
-        self.myView.setDataSource(with: self.foodCollectionDataSource)
-        self.myView.setDelegate(with: self.foodCollectionDelegate)
+        self.myView.setDataSource(with: self.foodDataSource)
+        self.myView.setDelegate(with: self.foodDelegate)
     }
     
     

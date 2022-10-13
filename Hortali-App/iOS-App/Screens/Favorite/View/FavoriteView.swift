@@ -12,20 +12,10 @@ class FavoriteView: MainView {
     // Views
     
     /// Collection de alimentos
-    private let foodGroup: CollectionGroup = {
-        let group = CollectionGroup()
-        group.collection.showsHorizontalScrollIndicator = false
-        
-        return group
-    }()
+    private let foodGroup = CollectionGroup()
     
     /// Collection das hortas
-    private let gardenGroup: CollectionGroup = {
-        let group = CollectionGroup()
-        group.collection.showsHorizontalScrollIndicator = false
-        
-        return group
-    }()
+    private let gardenGroup = CollectionGroup()
     
     
     // Outros
@@ -79,14 +69,14 @@ class FavoriteView: MainView {
     
     /// Define o data source da collection de alimentos
     /// - Parameter dataSource: data source da collection de alimentos
-    public func setFoodDataSource(with dataSource: FoodCollectionDataSource) {
+    public func setFoodDataSource(with dataSource: FoodDataSource) {
         self.foodGroup.collection.dataSource = dataSource
     }
     
     
     /// Define o delegate da collection de alimentos
     /// - Parameter dataSource: data source da collection de alimentos
-    public func setFoodDelegate(with delegate: FoodCollectionDelegate) {
+    public func setFoodDelegate(with delegate: FoodDelegate) {
         self.foodGroup.collection.delegate = delegate
     }
     
@@ -120,6 +110,8 @@ class FavoriteView: MainView {
     
     /* MARK: - Configurações */
     
+    // Collection
+    
     /// Registra as células nas collections/table
     private func registerCells() {
         self.foodGroup.collection.register(FoodCell.self, forCellWithReuseIdentifier: FoodCell.identifier)
@@ -133,6 +125,8 @@ class FavoriteView: MainView {
         self.gardenGroup.collection.collectionViewLayout = self.gardenCollectionFlow
     }
     
+    
+    // Views
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {

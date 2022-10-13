@@ -53,7 +53,7 @@ class ExpansiveLabel: UIView {
     private let textCoundFit: Int = 75
     
     /// Estado se está expandida
-    private var status: Bool = false
+    private var status = false
     
     
     /* Encapsulamento -> (Variáveis Computáveis) */

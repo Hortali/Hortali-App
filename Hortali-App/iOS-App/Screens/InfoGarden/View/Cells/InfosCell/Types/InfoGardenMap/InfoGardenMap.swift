@@ -33,7 +33,7 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     
     // Data info
     
-    
+    /// Ponto no mapa
     private var pin: MKPointAnnotation?
 		
     
@@ -101,7 +101,7 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
         option.region = region
         option.region.center = pin.coordinate
         
-        // Tamanho
+        // Tamanho do mapa
         let gap: CGFloat = 50
         option.size = CGSize(width: self.mapView.bounds.width+gap, height: self.mapView.bounds.height+gap)
         

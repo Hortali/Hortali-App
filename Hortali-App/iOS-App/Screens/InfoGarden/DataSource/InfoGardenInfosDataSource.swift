@@ -9,8 +9,14 @@ class InfoGardenInfosDataSource: NSObject, UICollectionViewDataSource {
     
     /* MARK: - Atributos */
 
-    public var data: ManagedGarden?
-    
+    /// Dados usados no data source
+    private var mainData: ManagedGarden?
+        
+    /// Dados que estão sendo usados no dados source
+    public var data: ManagedGarden? {
+        set (newData) { self.mainData = newData }
+        get { self.mainData }
+    }
     
     
     /* MARK: - Data Source */

@@ -1,11 +1,18 @@
 /* Macro - Grupo 05 */
 
 
-/// Qual objetivo desse enum?
+/// Tipo dos dados do app
 enum DataType {
+    
+    /* MARK: - Casos */
+    
     case garden
     case food
     
+    
+    /* MARK: - Variáveis */
+    
+    /// Nome do json corresponsnde ao tipo de dado
     var jsonName: String {
         switch self {
         case .garden: return "gardenData"
@@ -14,6 +21,7 @@ enum DataType {
     }
     
     
+    /// Chave do user defaults corresponsnde ao tipo de dado
     var userDefaultKey: String {
         switch self {
         case .garden: return "gardenFavorites"

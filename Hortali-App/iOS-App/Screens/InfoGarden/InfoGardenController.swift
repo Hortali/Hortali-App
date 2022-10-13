@@ -15,12 +15,6 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     private var myView: InfoGardenView
     
     
-    /* Outros */
-    
-    /// Configuraçòes para atualizar o estado de favoritos
-    private var favUpdate: FavoriteUpdate
-    
-    
     /* Delegate & Data Sources */
     
     /// Data Source da collection de informações da horta
@@ -35,6 +29,12 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     
     /// Delegate da collection de imagens da horta
     private let imagesDelegate = InfoGardenImagesDelegate()
+    
+    
+    /* Outros */
+    
+    /// Configurações para atualizar o estado de favoritos
+    private var favUpdate: FavoriteUpdate
     
     
     
@@ -82,7 +82,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     }
 	
     
-    internal func openHourInfoPage(for index: Int) {
+    internal func openHourInfoPage() {
         let data = self.infoDataSource.data?.hourInfo ?? []
         
         let controller = HourInfoController(with: data)
@@ -148,7 +148,6 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
             }
         }
         
-        
         // Cria o alerta
         let alert = UIAlertController(
             title: "Contatos",
@@ -202,6 +201,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
             }
         }
         
+        // Cria o alerta
         let alert = UIAlertController(
             title: "Navegação",
             message: "Selecione uma opção de navegação",
@@ -228,6 +228,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
         
         self.present(alert, animated: true)
     }
+    
     
     
     /* MARK: - Configurações */

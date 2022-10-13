@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// Elemento de UI da tela de ver informaçõe da horta
+/// Elemento de UI da tela de ver informações dos aliementos
 class InfoFoodView: UIView {
     
     /* MARK: - Atributos */
@@ -192,13 +192,16 @@ class InfoFoodView: UIView {
     /// - Parameter data: dados recebidos
     private func setupViewFor(data: ManagedFood) {
         self.coverImage.image = UIImage(named: data.pageImage.name)
+        
         self.container.setTitleText(with: data.name)
         self.expansiveLabel.setInfoText(for: data.benefits)
+        
         self.setupVitaminsStackViews(for: data.vitamins)
         self.vitaminsInfoLabel.text = data.minerals
     }
     
     
+    /// Define o tamanho que a scroll vai ter
     private func updateScrollSize() {
         var scrollHeight: CGFloat = 1350 - (465) // Collection escondida
         
@@ -430,6 +433,7 @@ class InfoFoodView: UIView {
     }
     
     
+    /// Esconde a collection de como plantar (MVP)
     private func hideCollection() {
         self.howToCollection.isHidden = true
     }

@@ -43,7 +43,7 @@ class InfoGardenView: UIView {
     // Outros
     
     /// Estado de favorito da view
-    private var ifFavorite: Bool = false
+    private var isFavorited: Bool = false
     
     /// Fala qual é o dia da semana de hoje
     static var todayWeek: String = ""
@@ -82,6 +82,7 @@ class InfoGardenView: UIView {
         self.setupViews()
         self.registerCell()
         self.setupCollectionFlow()
+        
         self.setupViewFor(data: data)
     }
     
@@ -96,19 +97,19 @@ class InfoGardenView: UIView {
     /// - Returns: se está ou não favoritado
     public func isFavorited(is fav: Bool? = nil) -> Bool {
         if let fav {
-            self.ifFavorite = fav
+            self.isFavorited = fav
         } else {
-            self.ifFavorite.toggle()
+            self.isFavorited.toggle()
         }
         
         var favColor: AppColors = .favoriteNotSelected
-        if self.ifFavorite {
+        if self.isFavorited {
             favColor = .favoriteSelected
         }
         
         self.favoriteButton.backgroundColor = UIColor(favColor)
         
-        return self.ifFavorite
+        return self.isFavorited
     }
     
     
@@ -217,6 +218,7 @@ class InfoGardenView: UIView {
     }
     
     
+    /// Define o tamanho que a scroll vai ter
     private func updateScrollSize() {
         var scrollHeight: CGFloat = 880
         

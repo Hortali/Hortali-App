@@ -12,10 +12,12 @@ class FoodDataManager {
     /// Categorias dos alimentos
     private var categories: [String] = []
     
+    
     /// Retorna as categorias disponiveis
     public var getAllCategories: [String] {
         return self.categories
     }
+    
     
     
     /*  MARK: - Encapsulamento */

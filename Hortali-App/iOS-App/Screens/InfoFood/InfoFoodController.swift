@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// Controller responsável POR
+/// Controller responsável pela tela de mostrar as informações dos alimentos
 class InfoFoodController: UIViewController {
     
     /* MARK: - Atributos */

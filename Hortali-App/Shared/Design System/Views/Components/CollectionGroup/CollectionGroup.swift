@@ -23,13 +23,23 @@ public class CollectionGroup: UIView {
     }()
     
     /// Collection (relacionada ao título)
-    public let collection: UICollectionView = CustomViews.newCollectionView()
+    public let collection: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        
+        let col = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        col.translatesAutoresizingMaskIntoConstraints = false
+        col.backgroundColor = UIColor(.viewBack)
+        
+        col.showsHorizontalScrollIndicator = false
+        col.showsVerticalScrollIndicator = false
+        return col
+    }()
     
     
     // Outros
     
     /// Estilo do grupo de acordo com o `CollectionGroupStyle`.
-    public var style: CollectionGroupStyle = .complete {
+    private var style: CollectionGroupStyle = .complete {
         didSet {
             switch self.style {
             case .complete:
@@ -41,6 +51,8 @@ public class CollectionGroup: UIView {
         }
     }
     
+    
+    // Constraints
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
@@ -81,7 +93,6 @@ public class CollectionGroup: UIView {
         self.addSubview(self.titleLabel)
         self.addSubview(self.collection)
     }
-    
     
     
     /// Define as constraints que dependem do tamanho da tela

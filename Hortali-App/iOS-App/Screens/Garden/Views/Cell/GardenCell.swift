@@ -4,41 +4,28 @@
 import UIKit
 
 
-/// Célula que a horta disponivel
+/// Elementos de UI da célula das hortas
 class GardenCell: UICollectionViewCell {
     
     /* MARK: - Atributos */
     
-    // Views
-    
-    /// Imagem que aparecerá dentro das células da Collection
-    private let gardenImage: UIImageView = CustomViews.newImage()
-    
-    /// Label de título com largura ajustada
-    private let titleLabel: UILabel = {
-        let lbl = CustomViews.newLabel()
-        lbl.adjustsFontSizeToFitWidth = true
-        lbl.backgroundColor = .clear
-        lbl.textColor = UIColor(originalColor: .white)
-        
-        return lbl
-    }()
-    
-    /// Label de endereço com largura ajustada
-    private let adressLabel: UILabel = {
-        let lbl = CustomViews.newLabel()
-        lbl.adjustsFontSizeToFitWidth = true
-        lbl.backgroundColor = .clear
-        lbl.textColor = UIColor(originalColor: .white)
-        
-        return lbl
-    }()
-    
-    
-    // Outros
-    
     /// Identificador da célula
     static let identifier = "gardenCell"
+    
+    
+    // Views
+    
+    /// Imagem de capa das hortas
+    private let gardenImage: UIImageView = CustomViews.newImage()
+    
+    /// Nome da horta
+    private lazy var titleLabel = UILabel()
+    
+    /// Endereço da horta
+    private lazy var adressLabel = UILabel()
+    
+    
+    // Constraints
     
     /// Constraints dinâmicas que mudarão de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
@@ -50,10 +37,10 @@ class GardenCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.setupViews()
+        self.titleLabel = self.createCustomLabel()
+        self.adressLabel = self.createCustomLabel()
         
-        // TODO: Apenas para teste - Remover
-        self.INFOS_TESTE()
+        self.setupViews()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -68,8 +55,6 @@ class GardenCell: UICollectionViewCell {
         self.setupStaticText()
         self.setupDynamicConstraints()
         self.setupUI()
-        
-        self.reloadInputViews()
     }
     
     
@@ -88,6 +73,16 @@ class GardenCell: UICollectionViewCell {
     
     
     /* MARK: - Configurações */
+    
+    /// Cria a label customizada para a tela
+    /// - Returns: label customizada
+    private func createCustomLabel() -> UILabel {
+        let lbl = CustomViews.newLabel()
+        lbl.adjustsFontSizeToFitWidth = true
+        lbl.textColor = UIColor(.secondaryTitle)
+        
+        return lbl
+    }
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
@@ -150,15 +145,5 @@ class GardenCell: UICollectionViewCell {
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
-    }
-    
-    
-    private func INFOS_TESTE() {
-        let gardenImage = "image.jpg"
-        let image = UIImage(named: gardenImage)
-        self.gardenImage.image = image
-        
-        self.titleLabel.text = "Horta comunitária da Saúde"
-        self.adressLabel.text = "R. Paracatu, 66 - Parque Imperial, SP"
     }
 }

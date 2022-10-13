@@ -4,12 +4,12 @@
 import UIKit
 
 
-/// Delegate responsável pela collection de mostrar as hortas
+/// Delegate responsável pela collection das hortas
 class GardenDelegate: NSObject, UICollectionViewDelegate {
     
     /* MARK: - Atributos */
     
-    /// Comunicação entre o delegate com a controller
+    /// Comunicação entre com a controller 
     private weak var gardenProtocol: GardenProtocol?
         
 

@@ -11,7 +11,7 @@ class FoodView: MainView {
     
     // Views
     
-    /// Controle das views segmentadas para os diferentes tipos de alimentos
+    /// Menu dos alimentos separados por categorias
     private let foodSegmented: UISegmentedControl = {
         let itensSeg = DataManager.shared.getAllCategories()
         let seg = CustomViews.newSegmentation(with: itensSeg)
@@ -21,13 +21,8 @@ class FoodView: MainView {
     }()
     
     
-    /// Grupo da collection de alimentos
-    private let foodGroup: CollectionGroup = {
-        let group = CollectionGroup(style: .justCollection)
-        group.collection.showsVerticalScrollIndicator = false
-        
-        return group
-    }()
+    /// Collection de alimentos
+    private let foodGroup = CollectionGroup(style: .justCollection)
     
     
     // Outros
@@ -62,7 +57,6 @@ class FoodView: MainView {
     
     /* MARK: - Encapsulamento */
     
-    
     /* Ações de botões */
 
     /// Ação da segmentation
@@ -71,24 +65,23 @@ class FoodView: MainView {
     }
     
     
-    
-    
     /* Collection */
     
     /// Define o data source da collection de alimentos
     /// - Parameter dataSource: data source
-    public func setDataSource(with dataSource: FoodCollectionDataSource) {
+    public func setDataSource(with dataSource: FoodDataSource) {
         self.foodGroup.collection.dataSource = dataSource
     }
     
     
     /// Define o delegate da collection de alimentos
     /// - Parameter dataSource: delegate
-    public func setDelegate(with delegate: FoodCollectionDelegate) {
+    public func setDelegate(with delegate: FoodDelegate) {
         self.foodGroup.collection.delegate = delegate
     }
     
     
+    /// Atualiza os dados da collection
     public func reloadCollectionData() {
         self.foodGroup.collection.reloadData()
         self.foodGroup.collection.reloadInputViews()
@@ -110,6 +103,8 @@ class FoodView: MainView {
     
     /* MARK: - Configurações */
     
+    // Collection
+    
     /// Registra as células nas collections/table
     private func registerCells() {
         self.foodGroup.collection.register(FoodCell.self, forCellWithReuseIdentifier: FoodCell.identifier)
@@ -121,6 +116,8 @@ class FoodView: MainView {
          self.foodGroup.collection.collectionViewLayout = self.collectionFlow
     }
 
+    
+    // View
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {

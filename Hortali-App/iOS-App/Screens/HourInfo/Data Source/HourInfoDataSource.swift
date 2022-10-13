@@ -7,7 +7,18 @@ import UIKit
 /// Data Source da collection de horário de funcionamento
 class HourInfoDataSource: NSObject, UICollectionViewDataSource {
     
-    public var data: [ManagedHourInfo] = []
+    /* MARK: - Atributos */
+    
+    /// Dados usados no data source
+    private var mainData: [ManagedHourInfo] = []
+        
+    /// Dados que estão sendo usados no data source
+    public var data: [ManagedHourInfo] {
+        set (newData) { self.mainData = newData }
+        get { self.mainData }
+    }
+
+    
     
     /* MARK: - Data Sources */
     

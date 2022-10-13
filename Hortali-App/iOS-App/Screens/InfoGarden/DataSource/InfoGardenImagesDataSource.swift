@@ -9,9 +9,14 @@ class InfoGardenImagesDataSource: NSObject, UICollectionViewDataSource {
         
     /* MARK: - Atributos */
     
-    /// Nome das imagens
-    public var data: [ManagedImage] = []
-    
+    /// Dados usados no data source (nome das imagens)
+    private var mainData: [ManagedImage] = []
+        
+    /// Dados que estão sendo usados no dados source
+    public var data: [ManagedImage] {
+        set (newData) { self.mainData = newData }
+        get { self.mainData }
+    }
     
     
     /* MARK: - Encapsulamento */

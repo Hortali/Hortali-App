@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Delegate da collection de mostrar os alimentos
-class FoodCollectionDelegate: NSObject, UICollectionViewDelegate {
+class FoodDelegate: NSObject, UICollectionViewDelegate {
     
     /* MARK: - Atributos */
     
