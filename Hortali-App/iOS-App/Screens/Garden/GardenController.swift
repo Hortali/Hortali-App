@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Controller responsável pela principal de ver todas as hortas
-class GardenController: MenuController, GardenProtocol {
+class GardenController: MenuController, GardenProtocol, SearchProtocol {
     
     /* MARK: - Atributos */
     
@@ -23,6 +23,14 @@ class GardenController: MenuController, GardenProtocol {
     /// Delegate da collection das hortas
     private let gardenDelegate = GardenDelegate()
     
+    /// Delegate da barra de busca
+    private let searchDelegate = SearchDelegate()
+    
+    
+    /* Dados das Hortas */
+    
+    /// Dados das hortas
+    private lazy var gardenData: [ManagedGarden] = []
     
     
     /* MARK: - Ciclo de Vida */
@@ -44,6 +52,8 @@ class GardenController: MenuController, GardenProtocol {
     
     /* MARK: - Protocolo */
     
+    /* Garden Protocol */
+    
     internal func openGardenInfo(for index: Int) {
         let selectedCell = self.gardenDataSource.data[index]
         
@@ -53,6 +63,32 @@ class GardenController: MenuController, GardenProtocol {
         
         self.tabBarProtocol?.showTabBar(is: false)
         self.present(controller, animated: true)
+    }
+    
+    
+    /* Search Protocol */
+    
+    internal func updateCollection(with textSearch: String) {
+        if textSearch.isEmpty {
+            self.setupDataSourceData()
+            return
+        }
+        
+        var dataFiltered: [ManagedGarden] = []
+        
+        for data in self.gardenData {
+            if data.name.lowercased().contains(textSearch) {
+                dataFiltered.append(data)
+                continue
+            }
+            
+            if data.address.lowercased().contains(textSearch) {
+                dataFiltered.append(data)
+                continue
+            }
+        }
+        
+        self.setupDataSourceData(with: dataFiltered)
     }
     
     
@@ -79,18 +115,35 @@ class GardenController: MenuController, GardenProtocol {
     
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
+        // Collection
         self.gardenDelegate.setProtocol(with: self)
         
         self.myView.setDataSource(with: self.gardenDataSource)
         self.myView.setDelegate(with: self.gardenDelegate)
+        
+        
+        // Search
+        self.searchDelegate.setProtocol(with: self)
+        
+        self.myView.setSearchDelegate(with: self.searchDelegate)
     }
     
     
     /// Define os dados da collection
-    private func setupDataSourceData() {
+    private func setupDataSourceData(with data: [ManagedGarden]? = nil) {
+        if let data {
+            self.gardenDataSource.data = data
+            self.myView.reloadCollectionData()
+            return
+        }
+        
         let gardenData = DataManager.shared.getGardenData()
         
         self.gardenDataSource.data = gardenData
-        //self.myView.reloadCollectionData()
+        self.myView.reloadCollectionData()
+        
+        if self.gardenData.isEmpty {
+            self.gardenData = gardenData
+        }
     }
 }

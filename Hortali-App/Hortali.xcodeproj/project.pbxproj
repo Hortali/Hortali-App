@@ -92,6 +92,8 @@
 		22A3917D28F785C300A42DC1 /* ManagedFoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3917C28F785C300A42DC1 /* ManagedFoodData.swift */; };
 		22A3917F28F7860100A42DC1 /* ManagedFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3917E28F7860100A42DC1 /* ManagedFood.swift */; };
 		22A3918128F7862800A42DC1 /* ManagedVitamins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3918028F7862800A42DC1 /* ManagedVitamins.swift */; };
+		22A3918428F7AD5D00A42DC1 /* SearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3918328F7AD5D00A42DC1 /* SearchProtocol.swift */; };
+		22A3918628F7AE3000A42DC1 /* SearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3918528F7AE3000A42DC1 /* SearchDelegate.swift */; };
 		22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */; };
 		22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8C4E328D918B500CE6061 /* TimeGroup.swift */; };
 		22EDD4AB28D95812001CE093 /* CustomStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4AA28D95812001CE093 /* CustomStack.swift */; };
@@ -194,6 +196,8 @@
 		22A3917C28F785C300A42DC1 /* ManagedFoodData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedFoodData.swift; sourceTree = "<group>"; };
 		22A3917E28F7860100A42DC1 /* ManagedFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedFood.swift; sourceTree = "<group>"; };
 		22A3918028F7862800A42DC1 /* ManagedVitamins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedVitamins.swift; sourceTree = "<group>"; };
+		22A3918328F7AD5D00A42DC1 /* SearchProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProtocol.swift; sourceTree = "<group>"; };
+		22A3918528F7AE3000A42DC1 /* SearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDelegate.swift; sourceTree = "<group>"; };
 		22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenTime.swift; sourceTree = "<group>"; };
 		22E8C4E328D918B500CE6061 /* TimeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeGroup.swift; sourceTree = "<group>"; };
 		22EDD4AA28D95812001CE093 /* CustomStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStack.swift; sourceTree = "<group>"; };
@@ -435,6 +439,7 @@
 		222937D428C66B6200515095 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				22A3918228F7AD2000A42DC1 /* Protocol */,
 				222937DE28C66F4D00515095 /* Extensions */,
 				222937DA28C66B9800515095 /* Delegates */,
 			);
@@ -496,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				222937DB28C66B9E00515095 /* System */,
+				22A3918528F7AE3000A42DC1 /* SearchDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -840,6 +846,14 @@
 			path = Food;
 			sourceTree = "<group>";
 		};
+		22A3918228F7AD2000A42DC1 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				22A3918328F7AD5D00A42DC1 /* SearchProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		22EDD4AC28DA2D08001CE093 /* HourInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -1058,6 +1072,7 @@
 				22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */,
 				2210245128D529FA00F412A5 /* InfoGardenReport.swift in Sources */,
 				2210246C28D9017700F412A5 /* UIImage+ContactIcon.swift in Sources */,
+				22A3918428F7AD5D00A42DC1 /* SearchProtocol.swift in Sources */,
 				2212E83B28DB9F60004CCBAA /* InfoFoodController.swift in Sources */,
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,
 				220A63EE28D3BDF700D9E2A9 /* CustomScrooll.swift in Sources */,
@@ -1065,6 +1080,7 @@
 				223B75E028F146920034B2C4 /* GardenDataManager.swift in Sources */,
 				2210245728D53F3300F412A5 /* InfoGardenInfosDelegate.swift in Sources */,
 				2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */,
+				22A3918628F7AE3000A42DC1 /* SearchDelegate.swift in Sources */,
 				2229385D28C9D55700515095 /* Dimension.swift in Sources */,
 				2229383A28C8829000515095 /* UIFont+setupFont.swift in Sources */,
 				22EDD4C128DA4B33001CE093 /* UIImage+AppImages.swift in Sources */,

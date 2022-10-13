@@ -53,6 +53,17 @@ class GardenView: MainView {
     
     /* MARK: - Encapsulamento */
     
+    // Search
+    
+    /// Define o delegate da barra de busca das hortas
+    /// - Parameter delegate: delegate da barra de bysca
+    public func setSearchDelegate(with delegate: SearchDelegate) {
+        self.search.delegate = delegate
+    }
+    
+    
+    // Collection
+    
     /// Atualiza os dados da collection
     public func reloadCollectionData() {
         self.gardenGroup.collection.reloadData()
