@@ -1,0 +1,740 @@
+{
+    "count": 31,
+    "foods": [
+        {   
+            "id": 0,
+            "name": "Abacate",
+            "category": "Fruta",
+            "benefits": "Ajuda a reduzir a pressão arterial. Isso acontece devido à presença de potássio no alimento. O abacate é um alimento com alto teor de gordura do tipo monoinsaturado, o que o torna um aliado do coração.",
+            "minerals": "E minerais como cobre, manganês, magnésio, fósforo, potássio e zinco",
+            "vitamins": [
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Abacate_Cover"
+            },
+            "pageImage": {   
+                "name": "Abacate_Page"
+            }
+        },
+        {   
+            "id": 1,
+            "name": "Abobrinha",
+            "category": "Legume",
+            "benefits": "Seu consumo auxilia na visão, na digestão e ainda nos ossos.",
+            "minerals": "E minerais como fósforo, potássio, cálcio e magnésio",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                }
+            ],
+            "coverImage": {
+                "name": "Abobrinha_Cover"
+            },
+            "pageImage": {   
+                "name": "Abobrinha_Page"
+            }
+        },
+        {   
+            "id": 2,
+            "name": "Abóbora",
+            "category": "Legume",
+            "benefits": "Rica em betacaroteno, composto que nosso organismo transforma em vitamina A, que protege contra a degeneração da visão por idade.",
+            "minerals": "E minerais como cálcio, ferro, fósforo e potássio",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "E"
+                }
+            ],
+            "coverImage": {
+                "name": "Abobora_Cover"
+            },
+            "pageImage": {   
+                "name": "Abobora_Page"
+            }
+        },
+        {   
+            "id": 3,
+            "name": "Alface",
+            "category": "Vegetal",
+            "benefits": "Por ter vitamina A, luteína e zeaxantina, o consumo de alface pode trazer benefícios para a saúde ocular. As substâncias são carotenoides que atuam na redução de doenças oftalmológicas como a catarata e a degeneração macular, ambos problemas de saúde que são relacionados à idade e que podem levar à cegueira",
+            "minerals": "E minerais como cálcio e fósforo",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Alface_Cover"
+            },
+            "pageImage": {   
+                "name": "Alface_Page"
+            }
+        },
+        {   
+            "id": 4,
+            "name": "Alho",
+            "category": "Vegetal",
+            "benefits": "O consumo frequente de alho pode ajudar a diminuir o colesterol, regular a pressão sanguínea, combater fungos e bactérias no organismo e proteger o coração. Uma alimentação balanceada potencializa esses resultados, fazendo todos os alimentos trabalharem em conjunto para o bem do nosso metabolismo.",
+            "minerals": "E minerais como cálcio, cobre, potássio, fósforo, ferro",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                }
+            ],
+            "coverImage": {
+                "name": "Alho_Cover"
+            },
+            "pageImage": {   
+                "name": "Alho_Page"
+            }
+        },
+        {   
+            "id": 30,
+            "name": "Alho-poró",
+            "category": "Vegetal",
+            "benefits": "Rico em fibras, que ajudam a manter o funcionamento do sistema digestivo e prolongam a sensação de saciedade. Assim, elas conseguem controlar melhor a fome e a absorção de nutrientes.",
+            "minerals": "E minerais como cálcio, ferro, potássio, magnésio, zinco e cobre",
+            "vitamins": [
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                }
+            ],
+            "coverImage": {
+                "name": "AlhoPoro_Cover"
+            },
+            "pageImage": {   
+                "name": "AlhoPoro_Page"
+            }
+        },
+        {   
+            "id": 5,
+            "name": "Batata Doce",
+            "category": "Legume",
+            "benefits": "Contém também vitamina C, um antioxidante que protege as células do corpo contra as informações e os radicais livres.",
+            "minerals": "E minerais como ferro, cálcio, potássio, enxofre e magnésio",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                }
+            ],
+            "coverImage": {
+                "name": "BatataDoce_Cover"
+            },
+            "pageImage": {   
+                "name": "BatataDoce_Page"
+            }
+        },
+        {   
+            "id": 6,
+            "name": "Batata",
+            "category": "Legume",
+            "benefits": "É um alimento com propriedades antioxidantes, que colaboram com o retardo do envelhecimento, além de prevenir doenças degenerativas.",
+            "minerals": "E minerais como cálcio e fósforo",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "E"
+                }
+            ],
+            "coverImage": {
+                "name": "Batata_Cover"
+            },
+            "pageImage": {   
+                "name": "Batata_Page"
+            }
+        },
+        {   
+            "id": 7,
+            "name": "Beterraba",
+            "category": "Legume",
+            "benefits": "Ajuda a limpar o fígado, reduz o colesterol ruim, fortalece os ossos e ajuda no combate a anemia.",
+            "minerals": "E minerais como manganês, potássio e zinco",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                }
+            ],
+            "coverImage": {
+                "name": "Beterraba_Cover"
+            },
+            "pageImage": {   
+                "name": "Beterraba_Page"
+            }
+        },
+        {   
+            "id": 8,
+            "name": "Cebola",
+            "category": "Vegetal",
+            "benefits": "A cebola é uma grande aliada de quem sofre com pressão alta.",
+            "minerals": "E minerais como ferro, potássio, sódio, fósforo e cálcio",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                }
+            ],
+            "coverImage": {
+                "name": "Cebola_Cover"
+            },
+            "pageImage": {   
+                "name": "Cebola_Page"
+            }
+        },
+        {   
+            "id": 9,
+            "name": "Cebolinha",
+            "category": "Erva",
+            "benefits": "Auxilia contra problemas digestivos, possui ação anti-hipertensiva, detoxificante, além de equilibrar a imunidade",
+            "minerals": "E minerais como potássio, folato, cálcio, fósforo",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Cebolinha_Cover"
+            },
+            "pageImage": {   
+                "name": "Cebolinha_Page"
+            }
+        },
+        {   
+            "id": 10,
+            "name": "Cenoura",
+            "category": "Legume",
+            "benefits": "Auxilia a visão e a pressão arterial. Por ser fonte de um poderoso antioxidante chamado betacaroteno, a cenoura também beneficiar a saúde da pele, ajudando na prevenção dos danos causados pela ação dos raios UV.",
+            "minerals": "E minerais como potássio, carotenóides, fibras e antioxidantes",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Cenoura_Cover"
+            },
+            "pageImage": {   
+                "name": "Cenoura_Page"
+            }
+        },
+        {   
+            "id": 11,
+            "name": "Coentro",
+            "category": "Erva",
+            "benefits": "Graças aos carotenóides, que protegem contra o envelhecimento e reduzem os danos causados pelos raios UVB. Por conta das gorduras insaturadas e vitamina C, que ajudam a reduzir o colesterol ruim (LDL) e aumentar o bom (HDL).",
+            "minerals": "E minerais como cálcio, fósforo e ferro",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Coentro_Cover"
+            },
+            "pageImage": {   
+                "name": "Coentro_Page"
+            }
+        },
+        {   
+            "id": 12,
+            "name": "Couve",
+            "category": "Vegetal",
+            "benefits": "Controla a pressão arterial e a ação dos hormônios.",
+            "minerals": "E minerais como cálcio, ferro, magnésio e zinco",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Couve_Cover"
+            },
+            "pageImage": {   
+                "name": "Couve_Page"
+            }
+        },
+        {   
+            "id": 13,
+            "name": "Espinafre",
+            "category": "Vegetal",
+            "benefits": "Combate a anemia, a desnutrição, o cansaço, aumenta a energia e melhora a qualidade do sangue.",
+            "minerals": "E minerais como cálcio, magnésio e fósforo",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Espinafre_Cover"
+            },
+            "pageImage": {   
+                "name": "Espinafre_Page"
+            }
+        },
+        {   
+            "id": 14,
+            "name": "Gengibre",
+            "category": "Legume",
+            "benefits": "Pode ajudar na prevenção da catarata e evitar doenças degenerativas do cérebro, como é o caso do Alzheimer.",
+            "minerals": "E minerais como magnésio, cálcio e potássio",
+            "vitamins": [
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                }
+            ],
+            "coverImage": {
+                "name": "Gengibre_Cover"
+            },
+            "pageImage": {   
+                "name": "Gengibre_Page"
+            }
+        },
+        {   
+            "id": 15,
+            "name": "Hortelã",
+            "category": "Erva",
+            "benefits": "Indicada para distúrbios gastrointestinais como diarreia, náuseas e vômitos. Também possui ação vermífuga, antigases, analgésicos, antisséptico e anti-inflamatória.",
+            "minerals": "E minerais como sódio, ferro, magnésio e potássio",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                }
+            ],
+            "coverImage": {
+                "name": "Hortela_Cover"
+            },
+            "pageImage": {   
+                "name": "Hortela_Page"
+            }
+        },
+        {   
+            "id": 16,
+            "name": "Jabuticaba",
+            "category": "Fruta",
+            "benefits": "Rica em fibras, que ajudam na regulação do intestino.",
+            "minerals": "E minerais como cálcio, potássio, magnésio",
+            "vitamins": [
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "E"
+                }
+            ],
+            "coverImage": {
+                "name": "Jabuticaba_Cover"
+            },
+            "pageImage": {   
+                "name": "Jabuticaba_Page"
+            }
+        },
+        {   
+            "id": 17,
+            "name": "Laranja",
+            "category": "Fruta",
+            "benefits": "Diminui os níveis de colesterol ruim no organismo.",
+            "minerals": "E minerais como ferro, potássio, cálcio",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                }
+            ],
+            "coverImage": {
+                "name": "Laranja_Cover"
+            },
+            "pageImage": {   
+                "name": "Laranja_Page"
+            }
+        },
+        {   
+            "id": 18,
+            "name": "Limão",
+            "category": "Fruta",
+            "benefits": "Consumir limão com regularidade ajuda a retardar a digestão de açúcares e amidos e também no funcionamento intestinal.",
+            "minerals": "E minerais como potássio, fósforo, magnésio, cálcio",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "E"
+                }
+            ],
+            "coverImage": {
+                "name": "Limao_Cover"
+            },
+            "pageImage": {   
+                "name": "Limao_Page"
+            }
+        },
+        {   
+            "id": 19,
+            "name": "Manjericão",
+            "category": "Erva",
+            "benefits": "Com uma potente ação antioxidante, o manjericão tem como principal função proteger o corpo de ataques bacterianos, estimular a memória, atua também no manejo do estresse, além de possuir ação detoxificante, antisséptica, antiespasmódica ajudando o corpo a se proteger de todo tipo de infecção.",
+            "minerals": "E minerais como cálcio, fósforo e ferro.",
+            "vitamins": [
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Manjericao_Cover"
+            },
+            "pageImage": {   
+                "name": "Manjericao_Page"
+            }
+        },
+        {   
+            "id": 20,
+            "name": "Morango",
+            "category": "Fruta",
+            "benefits": "Ajuda a reduzir o colesterol por ser rico em antocianina, um tipo de antioxidante que impede a oxidação do colesterol ruim (LDL) e eleva as taxas do colesterol bom (HDL).",
+            "minerals": "E minerais como magnésio, manganês, potássio e silício",
+            "vitamins": [
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Morango_Cover"
+            },
+            "pageImage": {   
+                "name": "Morango_Page"
+            }
+        },
+        {
+            "id": 21,
+            "name": "Orégano",
+            "category": "Erva",
+            "benefits": "Seu consumo ajuda a controlar a pressão arterial, estimula a produção de enzimas digestivas.",
+            "minerals": "E minerais como zinco, magnésio, cálcio",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Oregano_Cover"
+            },
+            "pageImage": {
+                "name": "Oregano_Page"
+            }
+        },
+        {   
+            "id": 22,
+            "name": "Pepino",
+            "category": "Legume",
+            "benefits": "Graças à grande quantidade de água em sua composição, ajuda a manter o organismo hidratado, e contribui para o bom funcionamento do trânsito intestinal.",
+            "minerals": "E minerais como magnésio, potássio, fósforo, cálcio e manganês",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Pepino_Cover"
+            },
+            "pageImage": {   
+                "name": "Pepino_Page"
+            }
+        },
+        {   
+            "id": 23,
+            "name": "Pimentão",
+            "category": "Legume",
+            "benefits": "A cor está diretamente ligada ao grau de maturação e determina os benefícios à saúde. O pimentão vermelho é rico em licopeno, atuando na redução de problemas cardiovasculares. Já o verde é fonte de vitaminas B, e o amarelo contém maior quantidade de vitamina C.",
+            "minerals": "E minerais como potássio, fósforo, magnésio e cálcio",
+            "vitamins": [
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                }
+            ],
+            "coverImage": {
+                "name": "Pimentao_Cover"
+            },
+            "pageImage": {   
+                "name": "Pimentao_Page"
+            }
+        },
+        {   
+            "id": 24,
+            "name": "Rabanete",
+            "category": "Legume",
+            "benefits": "Além de conter fibras que ajudam no funcionamento do intestino, o rabanete também estimula a produção de bile, o que é benéfico para a digestão e para o fígado.",
+            "minerals": "E minerais como potássio, cálcio, magnésio, fósforo, cobre e zinco",
+            "vitamins": [
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Rabanete_Cover"
+            },
+            "pageImage": {   
+                "name": "Rabanete_Page"
+            }
+        },
+        {   
+            "id": 25,
+            "name": "Romã",
+            "category": "Fruta",
+            "benefits": "Possui antioxidantes chamados punicalagins. Eles são encontrados na semente e na casca do fruto e são os responsáveis por sua ação anti-inflamatória no nosso organismo. Lembrando que infamações crônicas estão entre os principais sintomas das doenças que mais matam, incluindo câncer, diabetes tipo 2, mal de Alzheimer, doenças do coração e obesidade.",
+            "minerals": "E minerais como potássio e fósforo",
+            "vitamins": [
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Roma_Cover"
+            },
+            "pageImage": {   
+                "name": "Roma_Page"
+            }
+        },
+        {   
+            "id": 26,
+            "name": "Rúcula",
+            "category": "Vegetal",
+            "benefits": "Ajuda a diminuir os níveis de glicose no sangue e a melhorar a resistência à insulina, além de proteger os vasos sanguíneos.",
+            "minerals": "E minerais como cálcio, ferro, fósforo, magnésio e potássio",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Rucula_Cover"
+            },
+            "pageImage": {   
+                "name": "Rucula_Page"
+            }
+        },
+        {   
+            "id": 27,
+            "name": "Tomate",
+            "category": "Legume",
+            "benefits": "Rico em licopeno, um pigmento carotenoide que exerce uma potente ação antioxidante no organismo, protegendo as células do efeito dos radicais livres, e inibindo a proliferação das células tumorais, prevenindo e atrasando o desenvolvimento de diferentes tipos de câncer, principalmente de próstata, mama e de ovário em mulheres na menopausa.",
+            "minerals": "E minerais como fósforo, potássio, cálcio e magnésio.",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "C"
+                },
+                {
+                    "name": "K"
+                }
+            ],
+            "coverImage": {
+                "name": "Tomate_Cover"
+            },
+            "pageImage": {   
+                "name": "Tomate_Page"
+            }
+        },
+        {   
+            "id": 28,
+            "name": "Tomilho",
+            "category": "Erva",
+            "benefits": "Apresenta propriedades antissépticas, podendo ser usado em casos de afecções pulmonares e como estimulante digestivo.",
+            "minerals": "E minerais como cálcio e potássio",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                }
+            ],
+            "coverImage": {
+                "name": "Tomilho_Cover"
+            },
+            "pageImage": {   
+                "name": "Tomilho_Page"
+            }
+        },
+        {   
+            "id": 29,
+            "name": "Vagem",
+            "category": "Legume",
+            "benefits": "Auxilia no funcionamento do intestino pois é rica em fibras, e contém nutrientes importantes que ajudam no humor. Entre eles, há magnésio, ácido fólico e vitaminas do complexo B, que ajudam na produção de serotonina. Este neurotransmissor é responsável pela sensação de bem-estar.",
+            "minerals": "E minerais como cálcio, magnésio, fósforo e potássio",
+            "vitamins": [
+                {
+                    "name": "A"
+                },
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                }
+            ],
+            "coverImage": {
+                "name": "Vagem_Cover"
+            },
+            "pageImage": {   
+                "name": "Vagem_Page"
+            }
+        }
+    ]
+}
