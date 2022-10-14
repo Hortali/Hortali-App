@@ -55,7 +55,7 @@ class CustomButton: UIButton {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.layer.masksToBounds = true
         
-        self.backgroundColor = UIColor(.backgroundButton)?.withAlphaComponent(0.65)
+        self.backgroundColor = UIColor(.backgroundButton)?.withAlphaComponent(0.85)
     }
     
     

@@ -52,7 +52,7 @@ class InfoFoodView: UIView {
         lbl.numberOfLines = 3
         lbl.adjustsFontSizeToFitWidth = true
         lbl.textColor = UIColor(AppColors.paragraph)
-        lbl.lineBreakMode = .byCharWrapping
+        lbl.lineBreakMode = .byWordWrapping
         return lbl
     }()
     

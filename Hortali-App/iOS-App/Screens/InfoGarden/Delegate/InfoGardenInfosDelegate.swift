@@ -35,8 +35,8 @@ class InfoGardenInfosDelegate: NSObject, UICollectionViewDelegate {
             self.infoGardenProtocol?.openHourInfoPage()
         case 2:
             self.infoGardenProtocol?.showContactOptions()
-        case 3:  // Página web
-            break
+        case 3:
+            self.infoGardenProtocol?.openReportLink()
         default: break
         }
     }

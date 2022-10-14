@@ -1,5 +1,5 @@
 {
-    "count": 30,
+    "count": 31,
     "foods": [
         {   
             "id": 0,
@@ -119,6 +119,27 @@
             },
             "pageImage": {   
                 "name": "Alho_Page"
+            }
+        },
+        {   
+            "id": 30,
+            "name": "Alho-poró",
+            "category": "Vegetal",
+            "benefits": "Rico em fibras, que ajudam a manter o funcionamento do sistema digestivo e prolongam a sensação de saciedade. Assim, elas conseguem controlar melhor a fome e a absorção de nutrientes.",
+            "minerals": "E minerais como cálcio, ferro, potássio, magnésio, zinco e cobre",
+            "vitamins": [
+                {
+                    "name": "B"
+                },
+                {
+                    "name": "C"
+                }
+            ],
+            "coverImage": {
+                "name": "AlhoPoro_Cover"
+            },
+            "pageImage": {   
+                "name": "AlhoPoro_Page"
             }
         },
         {   
@@ -502,7 +523,7 @@
                 "name": "Morango_Page"
             }
         },
-        {   
+        {
             "id": 21,
             "name": "Orégano",
             "category": "Erva",
@@ -522,7 +543,7 @@
             "coverImage": {
                 "name": "Oregano_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Oregano_Page"
             }
         },

@@ -23,4 +23,8 @@ protocol InfoGardenProtocol: NSObject {
     
     /// Mostra os contatos disponíves
     func showContactOptions()
+    
+    
+    /// Abre o link para reportar um erro
+    func openReportLink()
 }

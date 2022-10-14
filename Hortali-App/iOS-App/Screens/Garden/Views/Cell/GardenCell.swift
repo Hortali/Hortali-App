@@ -39,6 +39,7 @@ class GardenCell: UICollectionViewCell {
         
         self.titleLabel = self.createCustomLabel()
         self.adressLabel = self.createCustomLabel()
+        self.adressLabel.numberOfLines = 2
         
         self.setupViews()
     }
@@ -103,15 +104,15 @@ class GardenCell: UICollectionViewCell {
     private func setupStaticText() {
         let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
         
-        let titleSize: CGFloat = self.getEquivalent(18, screenReference: screenReferenceSize)
-        let subtitleSize: CGFloat = self.getEquivalent(12, screenReference: screenReferenceSize)
+        let titleSize: CGFloat = self.getEquivalent(25, screenReference: screenReferenceSize)
+        let subtitleSize: CGFloat = self.getEquivalent(20, screenReference: screenReferenceSize)
         
         self.titleLabel.setupText(with: FontInfo(
-            fontSize: titleSize, weight: .medium
+            fontSize: titleSize, weight: .semibold
         ))
         
         self.adressLabel.setupText(with: FontInfo(
-            fontSize: subtitleSize, weight: .regular
+            fontSize: subtitleSize, weight: .medium
         ))
     }
     
@@ -121,7 +122,9 @@ class GardenCell: UICollectionViewCell {
         let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
             
         let lateral: CGFloat = self.getEquivalent(10, screenReference: screenReferenceSize)
-        let adressLabelHeight: CGFloat = self.getEquivalent(12, screenReference: screenReferenceSize)
+        
+        let addressHeight: CGFloat = self.getEquivalent(35, screenReference: screenReferenceSize)
+        let titleHeight: CGFloat = self.getEquivalent(28, screenReference: screenReferenceSize)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
@@ -135,13 +138,13 @@ class GardenCell: UICollectionViewCell {
             self.adressLabel.leadingAnchor.constraint(equalTo: self.gardenImage.leadingAnchor, constant: lateral),
             self.adressLabel.trailingAnchor.constraint(equalTo: self.gardenImage.trailingAnchor, constant: -lateral),
             self.adressLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -lateral),
-            self.adressLabel.heightAnchor.constraint(equalToConstant: adressLabelHeight),
+            self.adressLabel.heightAnchor.constraint(equalToConstant: addressHeight),
             
             
             self.titleLabel.leadingAnchor.constraint(equalTo: self.adressLabel.leadingAnchor),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.adressLabel.trailingAnchor),
             self.titleLabel.bottomAnchor.constraint(equalTo: self.adressLabel.topAnchor, constant: -lateral / 2),
-            self.titleLabel.heightAnchor.constraint(equalToConstant: lateral * 2)
+            self.titleLabel.heightAnchor.constraint(equalToConstant: titleHeight)
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

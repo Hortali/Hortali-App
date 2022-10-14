@@ -100,6 +100,15 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     internal func showContactOptions() {
         self.openContactOptions()
     }
+    
+    
+    internal func openReportLink() {
+        let link = "https://docs.google.com/forms/d/1o8-PFkMjBntnbzUXTayIU9jsDUX08ZvIXOKRv3KRqQw/viewform?edit_requested=true"
+        
+        if let url = URL(string: link) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
 
     
     
