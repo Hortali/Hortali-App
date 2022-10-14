@@ -1,6 +1,6 @@
 # Hortali - App
 [![Versão](https://img.shields.io/badge/versão-1.0-3-orange)](https://github.com/Super-Macro/Hortali-App/releases/tag/mvp-01-3)
-![Tamanho](https://img.shields.io/badge/tamanho-1.5%20MB-blue)
+![Tamanho](https://img.shields.io/badge/tamanho-100%20MB-blue)
 ![Plataforma](https://img.shields.io/badge/plataforma-IOS-lightgrey?logo=ios)
 ![Framework](https://img.shields.io/badge/framework-UIKit-red?logo=uikit)
 [![Swift Versão](https://img.shields.io/badge/swift-v5.7+-blue?logo=swift)](https://swift.org/download/#releases)
