@@ -12,6 +12,7 @@ class HourInfoCell: UICollectionViewCell {
     /// Identificador da célula
     static let identifier = "HourInfoCell"
     
+    
     // Views
     
     /// Label responsável por exibir o dia da semana
@@ -70,9 +71,9 @@ class HourInfoCell: UICollectionViewCell {
         
         switch data.status {
         case true:
-            self.hourLabel.text = "\(data.startTime) - \(data.endTime)"
             self.statusLabel.text = "Aberto"
             self.statusLabel.textColor = UIColor(.openStatus)
+            self.hourLabel.text = "\(data.startTime) - \(data.endTime)"
             
             self.backgroundColor = UIColor(.openBackgroundStatus)?.withAlphaComponent(0.4)
             

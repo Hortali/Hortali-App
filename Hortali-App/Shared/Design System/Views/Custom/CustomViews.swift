@@ -11,7 +11,7 @@ struct CustomViews {
     /// Cria uma nova label de acordo com a padronização do projeto
     static func newLabel() -> CustomLabel {
         let lbl = CustomLabel()
-        lbl.backgroundColor = UIColor(.viewBack)
+        lbl.backgroundColor = .clear
         lbl.textColor = UIColor(.subTitle)
         
         lbl.textAlignment = .left
@@ -25,17 +25,6 @@ struct CustomViews {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
-    }
-    
-    
-    /// Cria uma collection de acordo com a padronização do projeto
-    static func newCollectionView() -> UICollectionView {
-        let layout = UICollectionViewFlowLayout()
-        let col = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        col.translatesAutoresizingMaskIntoConstraints = false
-        col.backgroundColor = UIColor(.viewBack)
-        
-        return col
     }
     
     

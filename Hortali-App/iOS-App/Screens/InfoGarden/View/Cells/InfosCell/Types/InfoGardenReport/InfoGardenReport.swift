@@ -29,7 +29,6 @@ class InfoGardenReport: UIView, InfoGardenCellProtocol {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.setupViews()
-        self.setupInfo()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -37,8 +36,9 @@ class InfoGardenReport: UIView, InfoGardenCellProtocol {
     
     /* MARK: - Protocol */
     
-    
-    internal func setupView(for data: ManagedGarden) { }
+    internal func setupView(for data: ManagedGarden) {
+        self.reportImage.image = UIImage(appImage: .report)
+    }
     
     
 
@@ -53,12 +53,6 @@ class InfoGardenReport: UIView, InfoGardenCellProtocol {
     
     
     /* MARK: - Configurações */
-    
-    /// Configura as informaçòes dessa view
-    private func setupInfo() {
-        self.reportImage.image = UIImage(appImage: .report)
-    }
-
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {

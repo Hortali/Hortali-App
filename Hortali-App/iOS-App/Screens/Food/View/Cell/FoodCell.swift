@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// Célula da collection que mostra os alimentos
+/// Célula que mostra os alimentos
 class FoodCell: UICollectionViewCell {
     
     /* MARK: - Atributos */
@@ -12,9 +12,10 @@ class FoodCell: UICollectionViewCell {
     /// Identificador da célula
     static let identifier = "FoodCellIdentifier"
     
+    
     // Views
     
-    /// Nome célula de cada alimento
+    /// Nome do alimento
     private let foodLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textAlignment = .center
@@ -61,6 +62,8 @@ class FoodCell: UICollectionViewCell {
     
     /* MARK: - Encapsulamento */
     
+    /// Configura a célula a partir dos dados passados
+    /// - Parameter data: dados da célula
     public func setupCell(for data: ManagedFood) {
         self.foodLabel.text = data.name
         self.foodImage.image = UIImage(named: data.coverImage.name)

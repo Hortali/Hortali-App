@@ -14,7 +14,7 @@ protocol InfoGardenProtocol: NSObject {
     
     /// Abre a página de horários de funcionamento
     /// - Parameter index: célula clicada
-    func openHourInfoPage(for index: Int)
+    func openHourInfoPage()
     
     
     /// Mostra as possiveis navegações para ir até o local
@@ -23,4 +23,8 @@ protocol InfoGardenProtocol: NSObject {
     
     /// Mostra os contatos disponíves
     func showContactOptions()
+    
+    
+    /// Abre o link para reportar um erro
+    func openReportLink()
 }

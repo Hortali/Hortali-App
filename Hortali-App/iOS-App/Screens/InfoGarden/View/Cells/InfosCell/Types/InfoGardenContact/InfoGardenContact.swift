@@ -46,20 +46,6 @@ class InfoGardenContact: UIView, InfoGardenCellProtocol {
     }
     
     
-    /// Configura os contatos de acordo com a quantidade de contatos disponíveis
-    /// - Parameter infos: contatos disponiveis
-    private func setupContactInfos(with infos: [ManagedContact]) {
-        if infos.count == 1 {
-            self.contactViews[1].isHidden = true
-            self.contactViews[0].setupContactInfo(with: infos[0])
-        } else {
-            self.contactViews[1].isHidden = false
-            self.contactViews[0].setupContactInfo(with: infos[0])
-            self.contactViews[1].setupContactInfo(with: infos[1])
-        }
-    }
-    
-
     
     /* MARK: - Ciclo de Vida */
     
@@ -72,7 +58,24 @@ class InfoGardenContact: UIView, InfoGardenCellProtocol {
     
     
     /* MARK: - Configurações */
-
+    
+    // Geral
+    
+    /// Configura os contatos de acordo com a quantidade de contatos disponíveis
+    /// - Parameter infos: contatos disponiveis
+    private func setupContactInfos(with infos: [ManagedContact]) {
+        if infos.count == 1 {
+            self.contactViews[1].isHidden = true
+            self.contactViews[0].setupContactInfo(with: infos[0])
+        } else {
+            self.contactViews[0].setupContactInfo(with: infos[0])
+            self.contactViews[1].setupContactInfo(with: infos[1])
+        }
+    }
+    
+    
+    // Views
+    
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.addSubview(self.contactStack)

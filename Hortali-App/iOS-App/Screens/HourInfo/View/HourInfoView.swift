@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// O que essa classe faz?
+/// Componentes de UI da tela que mostra os hor;arios de funcionamento
 class HourInfoView: ContainerView {
     
     /* MARK: - Atributos */
@@ -38,6 +38,7 @@ class HourInfoView: ContainerView {
         self.setupViews()
         self.registerCell()
         self.setupCollectionFlow()
+        self.setupStaticTexts()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -63,19 +64,16 @@ class HourInfoView: ContainerView {
     
     /* MARK: - Ciclo de Vida */
     
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
         self.setupUI()
-        self.setupStaticTexts()
         self.setupDynamicConstraints()
     }
     
     
     
     /* MARK: - Configurações */
-    
     
     /// Registra as células nas collections/table
     private func registerCell() {
@@ -91,7 +89,7 @@ class HourInfoView: ContainerView {
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-        self.contentView.addSubview(hourInfoGp)
+        self.contentView.addSubview(self.hourInfoGp)
     }
     
     
@@ -99,7 +97,7 @@ class HourInfoView: ContainerView {
     private func setupUI() {
         // Define o tamanho que a célula vai ter
         self.collectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
-        self.collectionFlow.itemSize = CGSize(width: hourInfoGp.frame.width, height: 60)
+        self.collectionFlow.itemSize = CGSize(width: self.hourInfoGp.frame.width, height: 60)
     }
     
     
@@ -116,10 +114,10 @@ class HourInfoView: ContainerView {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
-            self.hourInfoGp.topAnchor.constraint(equalTo: contentView.topAnchor, constant: lateral),
-            self.hourInfoGp.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            self.hourInfoGp.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -lateral),
-            self.hourInfoGp.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            self.hourInfoGp.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: lateral),
+            self.hourInfoGp.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.hourInfoGp.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
+            self.hourInfoGp.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

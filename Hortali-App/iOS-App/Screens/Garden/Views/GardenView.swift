@@ -11,18 +11,13 @@ class GardenView: MainView {
     
     // Views
     
-    /// Definindo o elemento que compõe a searchBar
+    /// Bara de busca das hortas
     private let search: UISearchBar = CustomViews.newSearch()
     
-    /// Define o estilo da Collection e retira o indicador de scroll
-    private let gardenGroup: CollectionGroup = {
-        let collGroup = CollectionGroup(style: .justCollection)
-        collGroup.collection.showsHorizontalScrollIndicator = false
-        
-        return collGroup
-    }()
+    /// Collection das hortas
+    private let gardenGroup = CollectionGroup(style: .justCollection)
     
-    /// View de referência que serva para centralizar as células da Collection
+    /// View de referência para centralizar as células da Collection
     private let referenceView: UIView = CustomViews.newView()
     
     
@@ -36,7 +31,6 @@ class GardenView: MainView {
     private let collectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
-        
         
         return cvFlow
     }()
@@ -58,6 +52,17 @@ class GardenView: MainView {
     
     
     /* MARK: - Encapsulamento */
+    
+    // Search
+    
+    /// Define o delegate da barra de busca das hortas
+    /// - Parameter delegate: delegate da barra de bysca
+    public func setSearchDelegate(with delegate: SearchDelegate) {
+        self.search.delegate = delegate
+    }
+    
+    
+    // Collection
     
     /// Atualiza os dados da collection
     public func reloadCollectionData() {

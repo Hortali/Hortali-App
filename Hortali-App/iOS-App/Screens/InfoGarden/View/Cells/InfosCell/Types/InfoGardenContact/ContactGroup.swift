@@ -54,10 +54,13 @@ class ContactGroup: UIView {
     /// Configura as informações de contato a partir das informações passadas
     /// - Parameter contactInfo: conjunto de informações de contato
     public func setupContactInfo(with info: ManagedContact) {
-        var image = UIImage(named: "general-contact")
-        if let contactImage = UIImage(named: "\(info.type)-contact") {
+        let prefix = "-contact"
+        
+        var image = UIImage(named: "general\(prefix)")
+        if let contactImage = UIImage(named: "\(info.type)\(prefix)") {
             image = contactImage
         }
+        
         self.imageView.image = image
         self.contactLabel.text = info.contact
         self.descriptionLabel.text = info.description

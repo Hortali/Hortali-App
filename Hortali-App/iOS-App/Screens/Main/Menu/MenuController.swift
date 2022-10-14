@@ -9,7 +9,7 @@ class MenuController: UIViewController {
     
     /* MARK: - Atributos */
 
-    /// Comunicação com a controlelr que tem a tab bar
+    /// Comunicação com a controller que tem a tab bar
     internal var tabBarProtocol: TabBarProtocol?
 
     

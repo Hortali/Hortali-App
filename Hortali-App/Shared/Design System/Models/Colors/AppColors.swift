@@ -17,6 +17,9 @@ enum AppColors {
     /// Parágrafos (textos extensos)
     case paragraph
     
+    /// Títulos secundários usados em sub views
+    case secondaryTitle
+    
     
     
     /* Telas */
@@ -97,7 +100,7 @@ enum AppColors {
     
     
     
-    /* Células */
+    /* Horário de Funcionamento */
     
     /// Célula CL08 - Status fechado
     case closeStatus
@@ -111,6 +114,8 @@ enum AppColors {
     /// Célula CL08 - Fundoi status aberto
     case openBackgroundStatus
     
+    /// Barra do componente TimeGroup
+    case barHourInfo
     
     
     /* Outros */
@@ -130,6 +135,7 @@ enum AppColors {
         case .title: return .greenDark
         case .subTitle: return .brownDark
         case .paragraph: return .greyDark
+        case .secondaryTitle: return .white
             
         
         /* Telas */
@@ -167,15 +173,19 @@ enum AppColors {
         case .favoriteNotSelected: return .greyButton
         case .backgroundButton: return .greyButton
             
-            
-        /* Outros */
-        case .contactCellBack: return .yellow
-            
+        
+        /* Horários de funcionamentos */
         case .closeStatus: return .red
         case .closeBackgroundStatus: return .orange
             
         case .openStatus: return .greenDark
         case .openBackgroundStatus: return .greenLight
+        
+        case .barHourInfo: return .greyDark
+        
+            
+        /* Outros */
+        case .contactCellBack: return .yellow
         }
     }
 }

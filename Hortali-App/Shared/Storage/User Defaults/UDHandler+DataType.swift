@@ -1,10 +1,6 @@
-//
-//  UDHandler.swift
-//  Hortali
-//
-//  Created by Gui Reis on 07/10/22.
-//
+/* Macro - Grupo 05 */
 
+/* Bibliotecas necessárias: */
 import class Foundation.UserDefaults
 
 

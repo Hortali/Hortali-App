@@ -14,7 +14,6 @@ class TimeGroup: UIView {
     /// Mostra qual dia da semana
     private let weekLabel: UILabel = {
         let lbl = CustomViews.newLabel()
-        lbl.backgroundColor = UIColor(originalColor: .greenLight)
         lbl.textColor = UIColor(.paragraph)
         return lbl
     }()
@@ -22,7 +21,6 @@ class TimeGroup: UIView {
     /// Mostra o horário
     private let hourLabel: UILabel = {
         let lbl = CustomViews.newLabel()
-        lbl.backgroundColor = UIColor(originalColor: .greenLight)
         lbl.textColor = UIColor(.paragraph)
         return lbl
     }()
@@ -30,7 +28,7 @@ class TimeGroup: UIView {
     /// Barra lateral
     private let barView: UIView = {
         let view = CustomViews.newView()
-        view.backgroundColor = UIColor(originalColor: .greyDark)
+        view.backgroundColor = UIColor(.barHourInfo)
         view.tintColor = UIColor(.paragraph)
         return view
     }()
@@ -38,7 +36,6 @@ class TimeGroup: UIView {
     /// Mostra quando está fechado
     private let closeLabel: UILabel = {
         let lbl = CustomViews.newLabel()
-        lbl.backgroundColor = UIColor(originalColor: .greenLight)
         lbl.tintColor = UIColor(.subTitle)
         lbl.isHidden = true
         return lbl
@@ -59,7 +56,6 @@ class TimeGroup: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.setupViews()
-        self.DADOS_TESTE()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -70,8 +66,8 @@ class TimeGroup: UIView {
 
     /// Define as informações que vão ser mostradas
     /// - Parameter infos: texto que vai ser definido
-    public func setupInfos(for info: ManagedHourInfo, isToday: Bool) {
-        if isToday {
+    public func setupInfos(for info: ManagedHourInfo) {
+        if self.isTodayComponent {
             if info.status {
                 self.weekLabel.text = "Aberto"
                 self.hourLabel.text = "\(info.startTime) - \(info.endTime)"
@@ -82,7 +78,6 @@ class TimeGroup: UIView {
                 self.hourLabel.isHidden = true
                 self.closeLabel.isHidden = false
             }
-            
             return
         }
         
@@ -97,14 +92,17 @@ class TimeGroup: UIView {
     }
     
     
-    
-    /// Define a cor que o componente vai ter
-    /// - Parameter color: cor
-    public func setTintColor(for color: UIColor?) {
-        self.weekLabel.textColor = color
-        self.hourLabel.textColor = color
-        self.closeLabel.textColor = color
-        self.barView.backgroundColor = color
+    /// Define se o componente mostra os dados do dia
+    public var isTodayComponent: Bool = false {
+        didSet {
+            if self.isTodayComponent {
+                let color = UIColor(.subTitle)
+                self.weekLabel.textColor = color
+                self.hourLabel.textColor = color
+                self.closeLabel.textColor = color
+                self.barView.backgroundColor = color
+            }
+        }
     }
     
     

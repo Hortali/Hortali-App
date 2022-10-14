@@ -4,27 +4,29 @@
 import Foundation
 
 
-
+/// Lida com os dados do aplicativo
 class DataManager {
     
     /*  MARK: - Atributos */
     
+    /// Singleton
     static let shared = DataManager()
     
     
     /// Memoization: salva os dados que ja foram lidos
     private var cache: [DataType:Any] = [:]
     
-    
+    /// Lida com as configurações voltadas para os alimentos
     private let foodManager = FoodDataManager()
     
+    /// Lida com as configurações voltadas para as hortas
     private let gardenManager = GardenDataManager()
-    
     
     
     
     /*  MARK: - Construtor */
     
+    // Faz com que não seja permitido a instância da classe, obrigando o uso do singleton
     private init() {}
     
     
@@ -79,6 +81,8 @@ class DataManager {
     
     /* MARK: Favoritos */
     
+    /// Atualiza a lista de favoritos
+    /// - Parameter config: atualização que vai ser feita
     public func updateFavoriteList(for config: FavoriteUpdate) {
         var list = UserDefaults.getFavoriteList(for: config.favoriteType)
         
@@ -93,6 +97,12 @@ class DataManager {
     }
     
     
+    /// Pega os itens que estão favoritados
+    /// - Parameter dataType: tipo do itens
+    /// - Returns: lista com os itens favoritados
+    ///
+    /// Essa função retorna uma lista de `[ManagedGarden]` quando o dataType for do tipo `.garden` ou uma
+    /// lista de `[ManagedFood]`quando o dataType for do tipo `.food`.
     public func getFavoriteItens(for dataType: DataType) -> [Any] {
         let favoriteIds = UserDefaults.getFavoriteList(for: dataType)
         
@@ -105,9 +115,13 @@ class DataManager {
     }
     
     
+    /// Pega os ids dos itens favoritados
+    /// - Parameter dataType: tipo dos itens
+    /// - Returns: lista com os ids favortados
     public func getFavoriteIds(for dataType: DataType) -> [Int] {
         return UserDefaults.getFavoriteList(for: dataType)
     }
+    
     
     
     /*  MARK: - Gerenciamento dos Dados */
@@ -150,8 +164,12 @@ class DataManager {
     /*  MARK: - Configurações */
     
     /// Pega os dados do JSON
-    /// - Parameter file: aquivo que vai ser acessado
-    /// - Returns: models correspondentes ao tipo de dado pedido
+    /// - Parameter file: tipo do aquivo que vai ser acessado
+    /// - Returns: modleos correspondentes ao tipo de dado pedido
+    ///
+    /// Se a leitura for bem sucedida, essa função retorna uma lista de `[ManagedGarden]` quando o
+    /// dataType for do tipo `.garden` ou uma lista de `[ManagedFood]`quando o dataType for do
+    /// tipo `.food`.
     private func readData(for file: DataType) -> Any? {
         if let jsonFile = Bundle.main.url(forResource: file.jsonName, withExtension: "json") {
             let data = try? Data(contentsOf: jsonFile)
