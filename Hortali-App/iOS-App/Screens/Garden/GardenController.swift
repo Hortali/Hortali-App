@@ -57,7 +57,7 @@ class GardenController: MenuController, GardenProtocol, SearchProtocol {
     internal func openGardenInfo(for index: Int) {
         let selectedCell = self.gardenDataSource.data[index]
         
-        let controller = InfoGardenController(with: selectedCell, in: index)
+        let controller = InfoGardenController(with: selectedCell)
         controller.modalTransitionStyle = .crossDissolve
         controller.modalPresentationStyle = .fullScreen
         

@@ -9,9 +9,6 @@ struct FavoriteUpdate {
     /// Id do dado
     let id: Int
     
-    /// Id da célula do dado
-    let cellId: Int
-    
     /// Açào que vai ser executada
     var action: FavoriteAction
 }
