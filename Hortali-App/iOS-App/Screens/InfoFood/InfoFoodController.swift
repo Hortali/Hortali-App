@@ -24,12 +24,12 @@ class InfoFoodController: UIViewController {
     
     /* MARK: - Construtor */
     
-    init(with data: ManagedFood, in index: Int) {
+    init(with data: ManagedFood) {
         self.myView = InfoFoodView(data: data)
         
         self.favUpdate = FavoriteUpdate(
             favoriteType: .food,
-            id: data.id, cellId: (index - 1),
+            id: data.id,
             action: .add
         )
         
