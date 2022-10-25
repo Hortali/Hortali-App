@@ -29,7 +29,7 @@ class InfoFoodController: UIViewController {
         
         self.favUpdate = FavoriteUpdate(
             favoriteType: .food,
-            id: data.id, cellId: index,
+            id: data.id, cellId: (index - 1),
             action: .add
         )
         
