@@ -309,7 +309,6 @@ class InfoGardenView: UIView {
         let lateral = self.getEquivalent(15)
         let between = self.getEquivalent(20)
         let gap = self.getEquivalent(25)
-        let safeAreaGap = self.getEquivalent(5)
         
         // Altura dos botões
         self.backButton.circleSize = self.getEquivalent(45)
@@ -341,7 +340,7 @@ class InfoGardenView: UIView {
             self.imagesPageControl.centerXAnchor.constraint(equalTo: self.imagesCollectionGp.centerXAnchor),
             
             
-            self.backButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: safeAreaGap),
+            self.backButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             self.backButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
 
 
