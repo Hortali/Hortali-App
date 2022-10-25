@@ -58,7 +58,7 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
     internal func openGardenInfo(for index: Int) {
         let selectedCell = self.gardenDataSource.data[index]
         
-        let controller = InfoGardenController(with: selectedCell, in: index)
+        let controller = InfoGardenController(with: selectedCell)
         controller.modalTransitionStyle = .crossDissolve
         controller.modalPresentationStyle = .fullScreen
         
@@ -70,7 +70,7 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
     internal func openFoodInfo(for index: Int) {
         let selectedCell = self.foodDataSource.data[index]
         
-        let controller = InfoFoodController(with: selectedCell, in: index)
+        let controller = InfoFoodController(with: selectedCell)
         controller.modalTransitionStyle = .crossDissolve
         controller.modalPresentationStyle = .fullScreen
         

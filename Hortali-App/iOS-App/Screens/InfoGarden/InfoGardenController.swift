@@ -40,12 +40,12 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     
     /* MARK: - Construtor */
     
-    init(with data: ManagedGarden, in index: Int) {
+    init(with data: ManagedGarden) {
         self.myView = InfoGardenView(data: data)
         
         self.favUpdate = FavoriteUpdate(
             favoriteType: .garden,
-            id: data.id, cellId: index,
+            id: data.id,
             action: .add
         )
         

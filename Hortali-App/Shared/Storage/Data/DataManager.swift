@@ -90,7 +90,13 @@ class DataManager {
         case .add:
             list.append(config.id)
         case .remove:
-            list.remove(at: config.cellId)
+            for index in 0..<list.count{
+                if list[index] == config.id{
+                    list.remove(at: index)
+                    break
+                }
+                
+            }
         }
         
         UserDefaults.updateFavoriteList(in: config.favoriteType, with: list)
