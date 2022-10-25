@@ -344,7 +344,7 @@ class InfoFoodView: UIView {
             self.scrollView.topAnchor.constraint(equalTo: self.topAnchor),
             self.scrollView.leftAnchor.constraint(equalTo: self.leftAnchor),
             self.scrollView.rightAnchor.constraint(equalTo: self.rightAnchor),
-            self.scrollView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+            self.scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.scrollView.widthAnchor.constraint(equalTo: self.widthAnchor),
             
             
