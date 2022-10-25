@@ -61,6 +61,7 @@ class InfoGardenView: UIView {
     private let infosCollectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
+        
         return cvFlow
     }()
     
@@ -69,6 +70,7 @@ class InfoGardenView: UIView {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
         cvFlow.minimumLineSpacing = 0
+        
         return cvFlow
     }()
 

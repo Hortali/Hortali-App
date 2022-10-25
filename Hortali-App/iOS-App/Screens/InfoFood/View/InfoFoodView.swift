@@ -316,7 +316,8 @@ class InfoFoodView: UIView {
         let between = self.getEquivalent(20)
         let gap = self.getEquivalent(25)
         
-        
+        let containerHeight = self.getEquivalent(435)
+
         let safeAreaGap = self.scrollView.scroll.safeAreaInsets.top
         
         // Altura dos botões
@@ -367,7 +368,7 @@ class InfoFoodView: UIView {
             self.container.topAnchor.constraint(equalTo: self.coverImage.bottomAnchor, constant: -gap),
             self.container.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
             self.container.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
-            self.container.bottomAnchor.constraint(equalTo: self.scrollView.contentView.bottomAnchor),
+            self.container.heightAnchor.constraint(equalToConstant: containerHeight),
             
             
             self.benefitsLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),
