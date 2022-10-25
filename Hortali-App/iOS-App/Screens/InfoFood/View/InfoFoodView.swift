@@ -248,9 +248,10 @@ class InfoFoodView: UIView {
     private func setupViews() {
         self.addSubview(self.scrollView)
         
+        self.addSubview(self.backButton)
+        self.addSubview(self.favoriteButton)
+        
         self.scrollView.contentView.addSubview(self.coverImage)
-        self.scrollView.contentView.addSubview(self.backButton)
-        self.scrollView.contentView.addSubview(self.favoriteButton)
         self.scrollView.contentView.addSubview(self.container)
         
         self.container.contentView.addSubview(self.benefitsLabel)
@@ -315,9 +316,7 @@ class InfoFoodView: UIView {
         let lateral = self.getEquivalent(15)
         let between = self.getEquivalent(20)
         let gap = self.getEquivalent(25)
-        
-        
-        let safeAreaGap = self.scrollView.scroll.safeAreaInsets.top
+
         
         // Altura dos botões
         self.backButton.circleSize = self.getEquivalent(45)
@@ -354,12 +353,12 @@ class InfoFoodView: UIView {
             self.coverImage.heightAnchor.constraint(equalToConstant: imageHeight),
             
             
-            self.backButton.topAnchor.constraint(equalTo: self.scrollView.contentView.topAnchor, constant: safeAreaGap),
-            self.backButton.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor, constant: lateral),
+            self.backButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            self.backButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
             
             
             self.favoriteButton.centerYAnchor.constraint(equalTo: self.backButton.centerYAnchor),
-            self.favoriteButton.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor, constant: -lateral),
+            self.favoriteButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
             
             
             /* Container */
