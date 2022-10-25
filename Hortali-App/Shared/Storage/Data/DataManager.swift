@@ -85,20 +85,14 @@ class DataManager {
     /// - Parameter config: atualização que vai ser feita
     public func updateFavoriteList(for config: FavoriteUpdate) {
         var list = UserDefaults.getFavoriteList(for: config.favoriteType)
-        print("A lista é: \(list)")
-        print("O config é: \(config)")
+        
         switch config.action {
         case .add:
             list.append(config.id)
-            print("A lista pós-remoção é: \(list)")
         case .remove:
             for index in 0..<list.count{
-                print("A lista index é: \(list[index])")
-                print("O index é: \(index)")
-                
                 if list[index] == config.id{
                     list.remove(at: index)
-                    print("A lista pós-remoção é: \(list)")
                     break
                 }
                 
