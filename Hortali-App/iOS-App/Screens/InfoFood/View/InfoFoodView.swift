@@ -203,7 +203,7 @@ class InfoFoodView: UIView {
     
     /// Define o tamanho que a scroll vai ter
     private func updateScrollSize() {
-        var scrollHeight: CGFloat = 1350 - (465) // Collection escondida
+        var scrollHeight: CGFloat = self.getEquivalent(885, dimension: .height)
         
         if self.expansiveLabel.isExtended {
             scrollHeight += self.expansiveLabel.expandedLabelSize
@@ -257,7 +257,7 @@ class InfoFoodView: UIView {
         self.container.contentView.addSubview(self.benefitsLabel)
         self.container.contentView.addSubview(self.expansiveLabel)
         self.container.contentView.addSubview(self.vitaminsLabel)
-        self.container.addSubview(self.vitaminsStack)
+        self.container.contentView.addSubview(self.vitaminsStack)
         self.container.contentView.addSubview(self.vitaminsInfoLabel)
         self.container.contentView.addSubview(self.howToCollection)
     }
@@ -317,10 +317,8 @@ class InfoFoodView: UIView {
         let between = self.getEquivalent(20)
         let gap = self.getEquivalent(25)
         
+        // Container
         let containerHeight = self.getEquivalent(435)
-
-        let safeAreaGap = self.scrollView.scroll.safeAreaInsets.top
-
         
         // Altura dos botões
         self.backButton.circleSize = self.getEquivalent(45)

@@ -14,6 +14,7 @@ class CustomScroll: UIView {
     /// Scrool view padrão do UIKit
     public let scroll: UIScrollView = {
         let scroll = UIScrollView()
+        scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.backgroundColor = UIColor(.viewBack)
         return scroll
     }()
@@ -68,10 +69,11 @@ class CustomScroll: UIView {
     /// Configura o tamanho da scroll e a contentView dela
     private func setupScroollSize() {
         self.scroll.frame = self.bounds
-        self.scroll.contentSize = self.contentView.frame.size
+        self.contentView.frame.size = self.scrollContentSize
+        
+        self.scroll.contentSize = self.scrollContentSize
         self.scroll.contentSize.width = 0
         
-        self.contentView.frame.size = self.scrollContentSize
     }
     
     

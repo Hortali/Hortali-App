@@ -222,7 +222,7 @@ class InfoGardenView: UIView {
     
     /// Define o tamanho que a scroll vai ter
     private func updateScrollSize() {
-        var scrollHeight: CGFloat = 880
+        var scrollHeight: CGFloat = self.getEquivalent(880, dimension: .height)
         
         if self.expansiveLabel.isExtended {
             scrollHeight += self.expansiveLabel.expandedLabelSize
