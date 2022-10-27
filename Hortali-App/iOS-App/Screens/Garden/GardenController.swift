@@ -37,6 +37,7 @@ class GardenController: MenuController, GardenProtocol, SearchProtocol {
     
     override func loadView() {
         self.view = self.myView
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     
@@ -58,11 +59,11 @@ class GardenController: MenuController, GardenProtocol, SearchProtocol {
         let selectedCell = self.gardenDataSource.data[index]
         
         let controller = InfoGardenController(with: selectedCell)
-        controller.modalTransitionStyle = .crossDissolve
-        controller.modalPresentationStyle = .fullScreen
         
-        self.tabBarProtocol?.showTabBar(is: false)
-        self.present(controller, animated: true)
+        let navigation = UINavigationController(rootViewController: InfoGardenController(with: selectedCell))
+        
+        navigation.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     

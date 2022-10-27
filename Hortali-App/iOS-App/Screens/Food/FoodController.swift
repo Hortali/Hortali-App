@@ -12,7 +12,7 @@ class FoodController: MenuController, FoodProtocol {
     /// View principal que a classe vai controlar
     private let myView = FoodView()
     
-    
+
     /* Delegate & Data Sources */
     
     /// Data source da collection de alimentos
@@ -27,6 +27,7 @@ class FoodController: MenuController, FoodProtocol {
     
     override func loadView() {
         self.view = self.myView
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     
@@ -35,6 +36,7 @@ class FoodController: MenuController, FoodProtocol {
 
         self.setupDelegates()
         self.setupButtonsAction()
+        
         
         self.updateFoodData(for: 0)
     }
@@ -47,11 +49,11 @@ class FoodController: MenuController, FoodProtocol {
         let selectedCell = self.foodDataSource.data[index]
         
         let controller = InfoFoodController(with: selectedCell)
-        controller.modalTransitionStyle = .crossDissolve
-        controller.modalPresentationStyle = .fullScreen
         
-        self.tabBarProtocol?.showTabBar(is: false)
-        self.present(controller, animated: true)
+        let navigation = UINavigationController(rootViewController: InfoFoodController(with: selectedCell))
+        
+        navigation.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     

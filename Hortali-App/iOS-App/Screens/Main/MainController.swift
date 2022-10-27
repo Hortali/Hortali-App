@@ -34,6 +34,14 @@ class MainController: UITabBarController {
     
     /* MARK: - Configurações */
     
+    private func getNavigation(for vc: UIViewController) -> UINavigationController {
+        let nav = UINavigationController()
+        nav.navigationBar.prefersLargeTitles = true
+        nav.pushViewController(vc, animated: true)
+        
+        return nav
+    }
+    
     /// Configurações iniciais da Tab Bar
     private func setupTab() {
         self.tabBar.backgroundColor = UIColor(.viewBack)
@@ -45,9 +53,9 @@ class MainController: UITabBarController {
     /// Define as controllers que vão aparecer na Tab Bar
     private func setupControllers() {
         self.viewControllers = [
-            self.gardenController,
-            self.foodController,
-            self.favoriteController,
+            self.getNavigation(for: self.gardenController),
+            self.getNavigation(for: self.foodController),
+            self.getNavigation(for: self.favoriteController),
         ]
     }
     
