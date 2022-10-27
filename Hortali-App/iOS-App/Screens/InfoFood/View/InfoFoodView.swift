@@ -317,8 +317,6 @@ class InfoFoodView: UIView {
         let between = self.getEquivalent(20)
         let gap = self.getEquivalent(25)
         
-        // Container
-        let containerHeight = self.getEquivalent(435)
         
         // Altura dos botões
         self.backButton.circleSize = self.getEquivalent(45)
@@ -368,8 +366,7 @@ class InfoFoodView: UIView {
             self.container.topAnchor.constraint(equalTo: self.coverImage.bottomAnchor, constant: -gap),
             self.container.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
             self.container.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
-            self.container.heightAnchor.constraint(equalToConstant: containerHeight),
-            
+            self.container.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
             
             self.benefitsLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),
             self.benefitsLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
