@@ -50,9 +50,8 @@ class FoodController: MenuController, FoodProtocol {
         
         let controller = InfoFoodController(with: selectedCell)
         
-        let navigation = UINavigationController(rootViewController: InfoFoodController(with: selectedCell))
-        
-        navigation.modalPresentationStyle = .fullScreen
+        controller.modalPresentationStyle = .fullScreen
+        controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

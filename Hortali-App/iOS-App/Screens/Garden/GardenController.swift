@@ -37,7 +37,6 @@ class GardenController: MenuController, GardenProtocol, SearchProtocol {
     
     override func loadView() {
         self.view = self.myView
-        self.navigationController?.isNavigationBarHidden = true
     }
     
     
@@ -47,6 +46,7 @@ class GardenController: MenuController, GardenProtocol, SearchProtocol {
         self.setupDataSourceData()
         self.setupDelegates()
         self.setupKeyboardHandler()
+        self.setupNavigation()
     }
     
     
@@ -57,12 +57,11 @@ class GardenController: MenuController, GardenProtocol, SearchProtocol {
     
     internal func openGardenInfo(for index: Int) {
         let selectedCell = self.gardenDataSource.data[index]
-        
+                
         let controller = InfoGardenController(with: selectedCell)
         
-        let navigation = UINavigationController(rootViewController: InfoGardenController(with: selectedCell))
-        
-        navigation.modalPresentationStyle = .fullScreen
+        controller.modalPresentationStyle = .fullScreen
+        controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -146,5 +145,10 @@ class GardenController: MenuController, GardenProtocol, SearchProtocol {
         if self.gardenData.isEmpty {
             self.gardenData = gardenData
         }
+    }
+    
+    
+    private func setupNavigation() {
+        self.navigationController?.isNavigationBarHidden = true
     }
 }
