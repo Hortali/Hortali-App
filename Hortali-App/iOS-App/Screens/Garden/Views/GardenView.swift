@@ -18,7 +18,23 @@ class GardenView: MainView {
     private let gardenGroup = CollectionGroup(style: .justCollection)
     
     /// View de referência para centralizar as células da Collection
-    private let referenceView: UIView = CustomViews.newView()
+//    private let referenceView: UIView = CustomViews.newView()
+    
+    private func getEmptySpace() -> CGFloat {
+        let searchSpace = search.frame.size.height
+//        let safeAreaSpace =
+        let gardenGroupSize = gardenGroup.frame.size.height
+        
+        let totalEmptyArea = (searchSpace - gardenGroupSize) / 2
+        
+        
+        print("Tamanho até a search", searchSpace)
+        print("Tamanho dos cards", gardenGroupSize)
+        print("area total", totalEmptyArea)
+        
+        
+        return totalEmptyArea
+    }
     
     
     // Outros
@@ -119,7 +135,6 @@ class GardenView: MainView {
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.addSubview(self.search)
-        self.contentView.addSubview(self.referenceView)
         self.contentView.addSubview(self.gardenGroup)
     }
     
@@ -146,6 +161,8 @@ class GardenView: MainView {
     private func setupDynamicConstraints() {
         let collectionHeight = self.getEquivalent(400, dimension: .height)
         
+        let emptySpace = getEmptySpace()
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
@@ -154,14 +171,8 @@ class GardenView: MainView {
             self.search.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             
             
-            self.referenceView.topAnchor.constraint(equalTo: self.search.bottomAnchor),
-            self.referenceView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.referenceView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.referenceView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            
-            
             self.gardenGroup.heightAnchor.constraint(equalToConstant: getEquivalent(collectionHeight)),
-            self.gardenGroup.centerYAnchor.constraint(equalTo: self.referenceView.centerYAnchor),
+            self.gardenGroup.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             self.gardenGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.gardenGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
         ]
