@@ -60,7 +60,7 @@
                     "description": "Mensagem"
                 },
                 {
-                    "type": "Telefone",
+                    "type": "Ligar",
                     "contact": "11997141887",
                     "link": "tel://11997141887",
                     "description": "Ligação"
@@ -238,7 +238,7 @@
                     "description": "Perfil do instagram"
                 },
                 {
-                    "type": "Telefone",
+                    "type": "Ligar",
                     "contact": "1130611713",
                     "link": "tel://1130611713",
                     "description": "Ligação"
