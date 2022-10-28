@@ -35,7 +35,6 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
     
     override func loadView() {
         self.view = self.myView
-        self.navigationController?.isNavigationBarHidden = true
     }
     
     
@@ -58,11 +57,11 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
     
     internal func openGardenInfo(for index: Int) {
         let selectedCell = self.gardenDataSource.data[index]
-        
+                
         let controller = InfoGardenController(with: selectedCell)
-        let navigation = UINavigationController(rootViewController: InfoGardenController(with: selectedCell))
         
-        navigation.modalPresentationStyle = .fullScreen
+        controller.modalPresentationStyle = .fullScreen
+        controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -71,9 +70,9 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
         let selectedCell = self.foodDataSource.data[index]
         
         let controller = InfoFoodController(with: selectedCell)
-        let navigation = UINavigationController(rootViewController: InfoFoodController(with: selectedCell))
         
-        navigation.modalPresentationStyle = .fullScreen
+        controller.modalPresentationStyle = .fullScreen
+        controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -110,5 +109,10 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
         }
         
         self.myView.reloadCollectionsData()
+    }
+    
+    
+    private func setupNavigation() {
+        self.navigationController?.isNavigationBarHidden = true
     }
 }

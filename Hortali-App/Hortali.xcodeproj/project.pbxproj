@@ -103,7 +103,6 @@
 		22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4B828DA313B001CE093 /* HourInfoView.swift */; };
 		22EDD4BE28DA4A6A001CE093 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4BD28DA4A6A001CE093 /* AppImages.swift */; };
 		22EDD4C128DA4B33001CE093 /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4C028DA4B33001CE093 /* UIImage+AppImages.swift */; };
-		B227C5CB290B032C00B07918 /* UINavigationController+GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227C5CA290B032C00B07918 /* UINavigationController+GestureRecognizer.swift */; };
 		B241564728D26E4C009F011C /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564628D26E4C009F011C /* FoodCell.swift */; };
 		B241564C28D2722B009F011C /* FoodDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564B28D2722B009F011C /* FoodDataSource.swift */; };
 		B241564E28D27284009F011C /* FoodDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564D28D27284009F011C /* FoodDelegate.swift */; };
@@ -208,7 +207,6 @@
 		22EDD4B828DA313B001CE093 /* HourInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoView.swift; sourceTree = "<group>"; };
 		22EDD4BD28DA4A6A001CE093 /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
 		22EDD4C028DA4B33001CE093 /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
-		B227C5CA290B032C00B07918 /* UINavigationController+GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+GestureRecognizer.swift"; sourceTree = "<group>"; };
 		B241564628D26E4C009F011C /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		B241564B28D2722B009F011C /* FoodDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataSource.swift; sourceTree = "<group>"; };
 		B241564D28D27284009F011C /* FoodDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDelegate.swift; sourceTree = "<group>"; };
@@ -534,7 +532,6 @@
 				2229384C28C8942B00515095 /* UIViewController+setupTab.swift */,
 				2229382828C85EF700515095 /* UITextField+setupPlaceHolder.swift */,
 				2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */,
-				B227C5CA290B032C00B07918 /* UINavigationController+GestureRecognizer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1120,7 +1117,6 @@
 				2229384F28C8964200515095 /* MainView.swift in Sources */,
 				2229380128C68EF500515095 /* FavoriteView.swift in Sources */,
 				22EDD4B328DA2D4F001CE093 /* HourInfoController.swift in Sources */,
-				B227C5CB290B032C00B07918 /* UINavigationController+GestureRecognizer.swift in Sources */,
 				2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */,
 				222937F328C6844E00515095 /* CustomViews.swift in Sources */,
 			);

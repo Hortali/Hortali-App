@@ -46,7 +46,6 @@ class InfoFoodController: UIViewController {
     
     override func loadView() {
         self.view = self.myView
-        self.navigationController?.isNavigationBarHidden = true
     }
     
     
@@ -107,6 +106,11 @@ class InfoFoodController: UIViewController {
                 break
             }
         }
+    }
+    
+    
+    private func setupNavigation() {
+        self.navigationController?.isNavigationBarHidden = true
     }
 }
 

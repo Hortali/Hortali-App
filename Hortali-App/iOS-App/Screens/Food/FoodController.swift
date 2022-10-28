@@ -27,15 +27,14 @@ class FoodController: MenuController, FoodProtocol {
     
     override func loadView() {
         self.view = self.myView
-        self.navigationController?.isNavigationBarHidden = true
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.setupDelegates()
         self.setupButtonsAction()
+        self.setupNavigation()
         
         
         self.updateFoodData(for: 0)
@@ -50,9 +49,8 @@ class FoodController: MenuController, FoodProtocol {
         
         let controller = InfoFoodController(with: selectedCell)
         
-        let navigation = UINavigationController(rootViewController: InfoFoodController(with: selectedCell))
-        
-        navigation.modalPresentationStyle = .fullScreen
+        controller.modalPresentationStyle = .fullScreen
+        controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -102,5 +100,10 @@ class FoodController: MenuController, FoodProtocol {
     /// Definindo as ações dos botões
     private func setupButtonsAction() {
         self.myView.setSegAction(target: self, action: #selector(self.segmentationAction(sender:)))
+    }
+    
+    
+    private func setupNavigation() {
+        self.navigationController?.isNavigationBarHidden = true
     }
 }
