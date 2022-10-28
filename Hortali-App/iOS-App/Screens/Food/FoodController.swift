@@ -36,6 +36,7 @@ class FoodController: MenuController, FoodProtocol {
 
         self.setupDelegates()
         self.setupButtonsAction()
+        self.setupNavigation() 
         
         
         self.updateFoodData(for: 0)
@@ -101,5 +102,10 @@ class FoodController: MenuController, FoodProtocol {
     /// Definindo as ações dos botões
     private func setupButtonsAction() {
         self.myView.setSegAction(target: self, action: #selector(self.segmentationAction(sender:)))
+    }
+    
+    
+    private func setupNavigation() {
+        self.navigationController?.isNavigationBarHidden = true
     }
 }
