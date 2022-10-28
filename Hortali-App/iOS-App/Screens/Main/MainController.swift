@@ -34,9 +34,9 @@ class MainController: UITabBarController {
     
     /* MARK: - Configurações */
     
+    /// Configurações iniciais da Navigation Controller
     private func getNavigation(for vc: UIViewController) -> UINavigationController {
         let nav = UINavigationController()
-        nav.navigationBar.prefersLargeTitles = true
         nav.pushViewController(vc, animated: true)
         
         return nav
