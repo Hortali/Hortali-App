@@ -17,31 +17,8 @@ class GardenView: MainView {
     /// Collection das hortas
     private let gardenGroup = CollectionGroup(style: .justCollection)
     
-    /// View de referência para centralizar as células da Collection
-//    private let referenceView: UIView = CustomViews.newView()
-    
-    private func getEmptySpace() -> CGFloat {
-        let searchSpace = search.frame.size.height
-//        let safeAreaSpace =
-        let gardenGroupSize = gardenGroup.frame.size.height
-        
-        let totalEmptyArea = (searchSpace - gardenGroupSize) / 2
-        
-        
-        print("Tamanho até a search", searchSpace)
-        print("Tamanho dos cards", gardenGroupSize)
-        print("area total", totalEmptyArea)
-        
-        
-        return totalEmptyArea
-    }
-    
-    
-    // Outros
-    
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
-    
     
     /// Configurações do layout da collection
     private let collectionFlow: UICollectionViewFlowLayout = {
@@ -51,6 +28,17 @@ class GardenView: MainView {
         return cvFlow
     }()
     
+   /// Espaço entre a collection das hortas
+    private func getEmptySpace() -> CGFloat {
+        let top = search.frame.origin.y + search.frame.height
+        let collection = self.getEquivalent(400) // Tamanho da Collection de Hortas
+        let bottom = self.safeAreaInsets.bottom
+        
+        let totalEmptySpace = (self.frame.height - top - collection - bottom) / 2
+        
+        return totalEmptySpace
+    }
+   
     
     
     /* MARK: - Construtor */
@@ -159,9 +147,7 @@ class GardenView: MainView {
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let collectionHeight = self.getEquivalent(400, dimension: .height)
-        
-        let emptySpace = getEmptySpace()
+        let emptySpace = self.getEmptySpace()
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
@@ -171,8 +157,8 @@ class GardenView: MainView {
             self.search.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             
             
-            self.gardenGroup.heightAnchor.constraint(equalToConstant: getEquivalent(collectionHeight)),
-            self.gardenGroup.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.gardenGroup.topAnchor.constraint(equalTo: self.search.bottomAnchor, constant: emptySpace),
+            self.gardenGroup.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -emptySpace),
             self.gardenGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.gardenGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
         ]
