@@ -1,10 +1,6 @@
-//
-//  UINavigationController+GestureRecognizer.swift
-//  Hortali
-//
-//  Created by Gabriel Batista on 27/10/22.
-//
+/* Macro - Grupo 05 */
 
+/* Bibliotecas necessárias: */
 import Foundation
 import UIKit
 
