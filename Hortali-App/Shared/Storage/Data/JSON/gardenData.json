@@ -60,7 +60,7 @@
                     "description": "Mensagem"
                 },
                 {
-                    "type": "Telephone",
+                    "type": "Telefone",
                     "contact": "11997141887",
                     "link": "tel://11997141887",
                     "description": "Ligação"
