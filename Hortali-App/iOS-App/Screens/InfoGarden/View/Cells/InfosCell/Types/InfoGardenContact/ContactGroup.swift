@@ -56,7 +56,7 @@ class ContactGroup: UIView {
     public func setupContactInfo(with info: ManagedContact) {
         let prefix = "-contact"
         
-        var image = UIImage(named: "general\(prefix)")
+        var image = UIImage(named: "General\(prefix)")
         if let contactImage = UIImage(named: "\(info.type)\(prefix)") {
             image = contactImage
         }

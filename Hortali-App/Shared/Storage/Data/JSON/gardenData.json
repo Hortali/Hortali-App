@@ -238,7 +238,7 @@
                     "description": "Perfil do instagram"
                 },
                 {
-                    "type": "Telephone",
+                    "type": "Telefone",
                     "contact": "1130611713",
                     "link": "tel://1130611713",
                     "description": "Ligação"
