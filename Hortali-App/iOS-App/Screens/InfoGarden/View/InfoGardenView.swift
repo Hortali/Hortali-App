@@ -61,6 +61,7 @@ class InfoGardenView: UIView {
     private let infosCollectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
+        
         return cvFlow
     }()
     
@@ -69,6 +70,7 @@ class InfoGardenView: UIView {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
         cvFlow.minimumLineSpacing = 0
+        
         return cvFlow
     }()
 
@@ -220,7 +222,7 @@ class InfoGardenView: UIView {
     
     /// Define o tamanho que a scroll vai ter
     private func updateScrollSize() {
-        var scrollHeight: CGFloat = 880
+        var scrollHeight: CGFloat = self.getEquivalent(880, dimension: .height)
         
         if self.expansiveLabel.isExtended {
             scrollHeight += self.expansiveLabel.expandedLabelSize
@@ -316,7 +318,7 @@ class InfoGardenView: UIView {
         
         // Altura dos elementos
         let segHeight = self.getEquivalent(510)
-        let containerHeight = self.getEquivalent(435)
+//        let containerHeight = self.getEquivalent(435)
         let collectionHeight = self.getEquivalent(200)
         
         
@@ -353,7 +355,7 @@ class InfoGardenView: UIView {
             self.container.topAnchor.constraint(equalTo: self.imagesCollectionGp.bottomAnchor, constant: -gap),
             self.container.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
             self.container.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
-            self.container.heightAnchor.constraint(equalToConstant: containerHeight),
+            self.container.bottomAnchor.constraint(equalTo: self.scrollView.contentView.bottomAnchor),
             
 
             self.expansiveLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),

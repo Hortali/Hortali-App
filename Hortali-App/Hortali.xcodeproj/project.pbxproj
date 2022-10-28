@@ -12,7 +12,7 @@
 		220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */; };
 		220A63E928D24C7100D9E2A9 /* InfoGardenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */; };
 		220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */; };
-		220A63EE28D3BDF700D9E2A9 /* CustomScrooll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63ED28D3BDF700D9E2A9 /* CustomScrooll.swift */; };
+		220A63EE28D3BDF700D9E2A9 /* CustomScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63ED28D3BDF700D9E2A9 /* CustomScroll.swift */; };
 		2210244628D5201500F412A5 /* InfoGardenInfosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244528D5201500F412A5 /* InfoGardenInfosCell.swift */; };
 		2210244828D5230C00F412A5 /* InfoGardenCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244728D5230C00F412A5 /* InfoGardenCellType.swift */; };
 		2210244B28D5272C00F412A5 /* InfoGardenMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244A28D5272C00F412A5 /* InfoGardenMap.swift */; };
@@ -114,7 +114,7 @@
 		220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenView.swift; sourceTree = "<group>"; };
 		220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenController.swift; sourceTree = "<group>"; };
 		220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExpansive.swift; sourceTree = "<group>"; };
-		220A63ED28D3BDF700D9E2A9 /* CustomScrooll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrooll.swift; sourceTree = "<group>"; };
+		220A63ED28D3BDF700D9E2A9 /* CustomScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScroll.swift; sourceTree = "<group>"; };
 		2210244528D5201500F412A5 /* InfoGardenInfosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenInfosCell.swift; sourceTree = "<group>"; };
 		2210244728D5230C00F412A5 /* InfoGardenCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenCellType.swift; sourceTree = "<group>"; };
 		2210244A28D5272C00F412A5 /* InfoGardenMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenMap.swift; sourceTree = "<group>"; };
@@ -810,7 +810,7 @@
 			children = (
 				2212E84128DCEC07004CCBAA /* CustomLabel.swift */,
 				22EDD4AA28D95812001CE093 /* CustomStack.swift */,
-				220A63ED28D3BDF700D9E2A9 /* CustomScrooll.swift */,
+				220A63ED28D3BDF700D9E2A9 /* CustomScroll.swift */,
 				2229382528C852D200515095 /* CustomButton.swift */,
 			);
 			path = Conponents;
@@ -1076,7 +1076,7 @@
 				22A3918428F7AD5D00A42DC1 /* SearchProtocol.swift in Sources */,
 				2212E83B28DB9F60004CCBAA /* InfoFoodController.swift in Sources */,
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,
-				220A63EE28D3BDF700D9E2A9 /* CustomScrooll.swift in Sources */,
+				220A63EE28D3BDF700D9E2A9 /* CustomScroll.swift in Sources */,
 				222937FC28C68C8200515095 /* CollectionGroupStyle.swift in Sources */,
 				223B75E028F146920034B2C4 /* GardenDataManager.swift in Sources */,
 				2210245728D53F3300F412A5 /* InfoGardenInfosDelegate.swift in Sources */,
@@ -1257,7 +1257,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = QMPGVXKJVA;
+				DEVELOPMENT_TEAM = UZ6JTAUWH8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1286,7 +1286,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = QMPGVXKJVA;
+				DEVELOPMENT_TEAM = UZ6JTAUWH8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -203,7 +203,7 @@ class InfoFoodView: UIView {
     
     /// Define o tamanho que a scroll vai ter
     private func updateScrollSize() {
-        var scrollHeight: CGFloat = 1350 - (465) // Collection escondida
+        var scrollHeight: CGFloat = self.getEquivalent(885, dimension: .height)
         
         if self.expansiveLabel.isExtended {
             scrollHeight += self.expansiveLabel.expandedLabelSize
@@ -257,7 +257,7 @@ class InfoFoodView: UIView {
         self.container.contentView.addSubview(self.benefitsLabel)
         self.container.contentView.addSubview(self.expansiveLabel)
         self.container.contentView.addSubview(self.vitaminsLabel)
-        self.container.addSubview(self.vitaminsStack)
+        self.container.contentView.addSubview(self.vitaminsStack)
         self.container.contentView.addSubview(self.vitaminsInfoLabel)
         self.container.contentView.addSubview(self.howToCollection)
     }
@@ -316,7 +316,7 @@ class InfoFoodView: UIView {
         let lateral = self.getEquivalent(15)
         let between = self.getEquivalent(20)
         let gap = self.getEquivalent(25)
-
+        
         
         // Altura dos botões
         self.backButton.circleSize = self.getEquivalent(45)
@@ -366,8 +366,7 @@ class InfoFoodView: UIView {
             self.container.topAnchor.constraint(equalTo: self.coverImage.bottomAnchor, constant: -gap),
             self.container.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
             self.container.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
-            self.container.bottomAnchor.constraint(equalTo: self.scrollView.contentView.bottomAnchor),
-            
+            self.container.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
             
             self.benefitsLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),
             self.benefitsLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
