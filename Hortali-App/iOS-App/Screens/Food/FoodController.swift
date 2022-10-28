@@ -64,6 +64,7 @@ class FoodController: MenuController, FoodProtocol {
     func segmentationAction(sender: UISegmentedControl) {
         let index = sender.selectedSegmentIndex
         self.updateFoodData(for: index)
+        self.myView.resetCollectionScroll()
     }
     
     
