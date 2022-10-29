@@ -15,11 +15,8 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     private let mapView: UIImageView = CustomViews.newImage()
     
     /// Endereço da rua
-    private let addressLabel: UILabel = {
-        let lbl = CustomViews.newLabel()
-        lbl.layer.masksToBounds = true
-        lbl.textAlignment = .center
-        lbl.adjustsFontSizeToFitWidth = true
+    private let addressView: ViewLabel = {
+        let lbl = ViewLabel()
         lbl.backgroundColor = UIColor(.viewBack)?.withAlphaComponent(0.6)
         return lbl
     }()
@@ -53,7 +50,7 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     /* MARK: - Protocol */
     
     internal func setupView(for data: ManagedGarden) {
-        self.addressLabel.text = data.address
+        self.addressView.label.text = data.address
         
         let pin = MKPointAnnotation()
         pin.coordinate = data.coords!
@@ -148,19 +145,19 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.addSubview(self.mapView)
-        self.addSubview(self.addressLabel)
+        self.addSubview(self.addressView)
     }
     
     
     /// Personalização da UI
     private func setupUI() {
-        self.addressLabel.layer.cornerRadius = self.getConstant(for: 10)
+        self.addressView.layer.cornerRadius = self.getConstant(for: 10)
     }
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {		
-        self.addressLabel.setupText(with: FontInfo(
+    private func setupStaticTexts() {
+        self.addressView.label.setupText(with: FontInfo(
             fontSize: self.getConstant(for: 20), weight: .regular
         ))
     }
@@ -181,10 +178,10 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
             self.mapView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             
-            self.addressLabel.heightAnchor.constraint(equalToConstant: labelHeight),
-            self.addressLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
-            self.addressLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
-            self.addressLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -lateral),
+            self.addressView.heightAnchor.constraint(equalToConstant: labelHeight),
+            self.addressView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
+            self.addressView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
+            self.addressView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -lateral),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

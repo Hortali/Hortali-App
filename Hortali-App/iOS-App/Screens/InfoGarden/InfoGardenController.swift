@@ -227,7 +227,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
         
         // Copiar o endereço
         let address = UIAlertAction(title: "Copiar endereço", style: .default, handler: { _ in
-            UIPasteboard.general.string = data.address
+            self.copyHandler(textToCopy: data.address)
         })
         alert.addAction(address)
         
@@ -281,5 +281,13 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
                 break
             }
         }
+    }
+    
+    
+    /// Lida com o processo de copiar um texto na área de tranferência
+    /// - Parameter textToCopy: texto que vai ser copiado
+    private func copyHandler(textToCopy: String) {
+        UIPasteboard.general.string = textToCopy
+        self.myView.showCopyWarning()
     }
 }

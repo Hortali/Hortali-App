@@ -96,6 +96,7 @@
 		22A75A8E290CC6DC001CEA7E /* CustomNavigationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A75A8D290CC6DC001CEA7E /* CustomNavigationProtocol.swift */; };
 		22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */; };
 		22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8C4E328D918B500CE6061 /* TimeGroup.swift */; };
+		22EBC067290D0028001C0A71 /* ViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EBC066290D0028001C0A71 /* ViewLabel.swift */; };
 		22EDD4AB28D95812001CE093 /* CustomStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4AA28D95812001CE093 /* CustomStack.swift */; };
 		22EDD4B328DA2D4F001CE093 /* HourInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4B228DA2D4F001CE093 /* HourInfoController.swift */; };
 		22EDD4B528DA2DC7001CE093 /* HourInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4B428DA2DC7001CE093 /* HourInfoDataSource.swift */; };
@@ -201,6 +202,7 @@
 		22A75A8D290CC6DC001CEA7E /* CustomNavigationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationProtocol.swift; sourceTree = "<group>"; };
 		22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenTime.swift; sourceTree = "<group>"; };
 		22E8C4E328D918B500CE6061 /* TimeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeGroup.swift; sourceTree = "<group>"; };
+		22EBC066290D0028001C0A71 /* ViewLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLabel.swift; sourceTree = "<group>"; };
 		22EDD4AA28D95812001CE093 /* CustomStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStack.swift; sourceTree = "<group>"; };
 		22EDD4B228DA2D4F001CE093 /* HourInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoController.swift; sourceTree = "<group>"; };
 		22EDD4B428DA2DC7001CE093 /* HourInfoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoDataSource.swift; sourceTree = "<group>"; };
@@ -625,6 +627,7 @@
 				222937F428C6846700515095 /* ContainerView.swift */,
 				220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */,
 				2229384E28C8964200515095 /* MainView.swift */,
+				22EBC066290D0028001C0A71 /* ViewLabel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1033,6 +1036,7 @@
 				222937BE28C66B5600515095 /* AppDelegate.swift in Sources */,
 				220A63E928D24C7100D9E2A9 /* InfoGardenController.swift in Sources */,
 				2212E82B28DB8734004CCBAA /* GardenDelegate.swift in Sources */,
+				22EBC067290D0028001C0A71 /* ViewLabel.swift in Sources */,
 				2210244B28D5272C00F412A5 /* InfoGardenMap.swift in Sources */,
 				2229386128C9D59700515095 /* ScreenSize.swift in Sources */,
 				22EDD4AB28D95812001CE093 /* CustomStack.swift in Sources */,

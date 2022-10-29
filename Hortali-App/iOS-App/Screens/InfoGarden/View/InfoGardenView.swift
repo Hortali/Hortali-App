@@ -38,6 +38,15 @@ class InfoGardenView: UIView {
     
     /// Collection das informações sobre a horta
     private let infosCollectionGp = CollectionGroup(style: .justCollection)
+    
+    /// Mostra que um texto foi copiado
+    private let copyWarning: ViewLabel = {
+        let lbl = ViewLabel()
+        lbl.isHidden = true
+        lbl.backgroundColor = UIColor(originalColor: .greenLight)
+        lbl.label.textColor = UIColor(originalColor: .greenDark)
+        return lbl
+    }()
         
     
     // Outros
@@ -93,6 +102,25 @@ class InfoGardenView: UIView {
     
     
     /* MARK: - Encapsulamento */
+    
+    /// Mostra com animação o aviso de texto copiado
+    public func showCopyWarning() -> Void {
+        // Mostra a view
+        UIView.transition(
+            with: self.copyWarning, duration: 0.5, options: .transitionCrossDissolve,
+            animations: {
+                self.copyWarning.isHidden = false
+            }
+        )
+        
+        let delay: TimeInterval = 3
+        
+        // Executa a ação depois do delay
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            self.copyWarning.isHidden = true
+        }
+    }
+    
     
     /// Configura a view para quando for favoritado ou desfavoritado
     /// - Parameter fav: estado do favorito
@@ -266,11 +294,14 @@ class InfoGardenView: UIView {
         
         self.container.contentView.addSubview(self.expansiveLabel)
         self.scrollView.contentView.addSubview(self.infosCollectionGp)
+        
+        self.addSubview(self.copyWarning)
     }
     
     
     /// Personalização da UI
     private func setupUI() {
+        self.copyWarning.layer.cornerRadius = 5
         self.imagesPageControl.layer.cornerRadius = self.imagesPageControl.bounds.height / 2
         
         self.updateScrollSize()
@@ -302,6 +333,12 @@ class InfoGardenView: UIView {
         self.favoriteButton.setupIcon(with: IconInfo(
             icon: .favorite, size: btSize, weight: .regular, scale: .default
         ))
+                
+        /* Labels */
+        
+        self.copyWarning.label.setupText(with: FontInfo(
+            text: "Texto copiado para área de tranferência", fontSize: self.getEquivalent(15), weight: .medium
+        ))
     }
     
     
@@ -311,6 +348,7 @@ class InfoGardenView: UIView {
         let lateral = self.getEquivalent(15)
         let between = self.getEquivalent(20)
         let gap = self.getEquivalent(25)
+        let warning = self.getEquivalent(10)
         
         // Altura dos botões
         self.backButton.circleSize = self.getEquivalent(45)
@@ -318,7 +356,6 @@ class InfoGardenView: UIView {
         
         // Altura dos elementos
         let segHeight = self.getEquivalent(510)
-//        let containerHeight = self.getEquivalent(435)
         let collectionHeight = self.getEquivalent(200)
         
         
@@ -366,7 +403,12 @@ class InfoGardenView: UIView {
             self.infosCollectionGp.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
             self.infosCollectionGp.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
             self.infosCollectionGp.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
-            self.infosCollectionGp.heightAnchor.constraint(equalToConstant: collectionHeight)
+            self.infosCollectionGp.heightAnchor.constraint(equalToConstant: collectionHeight),
+            
+            
+            self.copyWarning.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -warning),
+            self.copyWarning.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.copyWarning.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
