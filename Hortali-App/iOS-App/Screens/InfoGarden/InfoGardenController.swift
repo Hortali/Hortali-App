@@ -239,6 +239,14 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     }
     
     
+    /// Ação de quando altera a page control
+    /// - Parameter sender: page control que foi alterada
+    @objc
+    private func pageControlAction(sender: UIPageControl) {
+        self.myView.updateCurrentCell(for: sender.currentPage)
+    }
+    
+    
     
     /* MARK: - Configurações */
 
@@ -247,6 +255,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
         self.myView.setBackButtonAction(target: self, action: #selector(self.backAction))
         self.myView.setFavoriteButtonAction(target: self, action: #selector(self.favoriteAction))
         self.myView.setExpLabelButtonAction(target: self, action: #selector(self.expandLabelAction))
+        self.myView.setPageControlAction(target: self, action: #selector(self.pageControlAction(sender:)))
     }
     
     
