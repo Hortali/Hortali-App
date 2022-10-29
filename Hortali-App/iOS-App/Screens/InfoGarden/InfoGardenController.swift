@@ -63,14 +63,12 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     
     override func loadView() {
         self.view = self.myView
-        self.navigationController?.isNavigationBarHidden = true
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setupNavigation() 
         self.setupDelegates()
         self.setupButtonsAction()
     }
@@ -283,10 +281,5 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
                 break
             }
         }
-    }
-    
-    
-    private func setupNavigation() {
-        self.navigationController?.isNavigationBarHidden = true
     }
 }

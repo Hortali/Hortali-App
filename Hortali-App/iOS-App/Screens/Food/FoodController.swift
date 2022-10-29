@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Controller responsável pela tela de alimentos
-class FoodController: MenuController, FoodProtocol {
+class FoodController: UIViewController, FoodProtocol {
     
     /* MARK: - Atributos */
 
@@ -27,7 +27,6 @@ class FoodController: MenuController, FoodProtocol {
     
     override func loadView() {
         self.view = self.myView
-        self.navigationController?.isNavigationBarHidden = true
     }
     
     
@@ -36,8 +35,6 @@ class FoodController: MenuController, FoodProtocol {
 
         self.setupDelegates()
         self.setupButtonsAction()
-        self.setupNavigation() 
-        
         
         self.updateFoodData(for: 0)
     }
@@ -50,9 +47,8 @@ class FoodController: MenuController, FoodProtocol {
         let selectedCell = self.foodDataSource.data[index]
         
         let controller = InfoFoodController(with: selectedCell)
-        
-        controller.modalPresentationStyle = .fullScreen
         controller.hidesBottomBarWhenPushed = true
+        
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -102,10 +98,5 @@ class FoodController: MenuController, FoodProtocol {
     /// Definindo as ações dos botões
     private func setupButtonsAction() {
         self.myView.setSegAction(target: self, action: #selector(self.segmentationAction(sender:)))
-    }
-    
-    
-    private func setupNavigation() {
-        self.navigationController?.isNavigationBarHidden = true
     }
 }

@@ -51,8 +51,8 @@ class InfoFoodController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.setupButtonsAction()
-        self.setupNavigation() 
     }
     
     
@@ -107,11 +107,6 @@ class InfoFoodController: UIViewController {
                 break
             }
         }
-    }
-    
-    
-    private func setupNavigation() {
-        self.navigationController?.isNavigationBarHidden = true
     }
 }
 

@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Controller responsável pela principal de ver todas as hortas
-class GardenController: MenuController, GardenProtocol, SearchProtocol {
+class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     /* MARK: - Atributos */
     
@@ -46,7 +46,6 @@ class GardenController: MenuController, GardenProtocol, SearchProtocol {
         self.setupDataSourceData()
         self.setupDelegates()
         self.setupKeyboardHandler()
-        self.setupNavigation()
     }
     
     
@@ -59,9 +58,8 @@ class GardenController: MenuController, GardenProtocol, SearchProtocol {
         let selectedCell = self.gardenDataSource.data[index]
                 
         let controller = InfoGardenController(with: selectedCell)
-        
-        controller.modalPresentationStyle = .fullScreen
         controller.hidesBottomBarWhenPushed = true
+        
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -145,10 +143,5 @@ class GardenController: MenuController, GardenProtocol, SearchProtocol {
         if self.gardenData.isEmpty {
             self.gardenData = gardenData
         }
-    }
-    
-    
-    private func setupNavigation() {
-        self.navigationController?.isNavigationBarHidden = true
     }
 }
