@@ -1,11 +1,12 @@
 /* Macro - Grupo 05 */
 
 /* Bibliotecas necessárias: */
-import class UIKit.NSCoder
-import class UIKit.NSLayoutConstraint
+import class Foundation.NSCoder
 
+import class UIKit.NSLayoutConstraint
 import class UIKit.UIView
 import class UIKit.UILabel
+
 import struct CoreGraphics.CGFloat
 
 
