@@ -15,18 +15,10 @@ class ContactGroup: UIView {
     private let imageView = CustomViews.newImage()
     
     /// O contato em si
-    private let contactLabel: UILabel = {
-        let lbl = CustomViews.newLabel()
-        lbl.backgroundColor = UIColor(.contactCellBack)
-        return lbl
-    }()
+    private let contactLabel: UILabel = CustomViews.newLabel()
     
     /// Descrição do tipo do contato
-    private let descriptionLabel: UILabel = {
-        let lbl = CustomViews.newLabel()
-        lbl.backgroundColor = UIColor(.contactCellBack)
-        return lbl
-    }()
+    private let descriptionLabel: UILabel = CustomViews.newLabel()
     
     
     // Outros
