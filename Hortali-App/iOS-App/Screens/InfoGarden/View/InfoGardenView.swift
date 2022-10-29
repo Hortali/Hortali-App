@@ -150,6 +150,17 @@ class InfoGardenView: UIView {
     }
     
     
+    /// Atualiza  a célula que é mostrada a partir do item do page control selecionado
+    /// - Parameter index: index selecionado
+    public func updateCurrentCell(for index: Int) {
+        self.imagesCollectionGp.collection.scrollToItem(
+            at: IndexPath(row: index, section: 0),
+            at: .centeredHorizontally,
+            animated: true
+        )
+    }
+    
+    
     /// Configurações para expandir a label
     public func expandLabel() {
         var status = self.expansiveLabel.isExtended
@@ -179,6 +190,12 @@ class InfoGardenView: UIView {
     /// Define a ação do botão de expandir a label
     public func setExpLabelButtonAction(target: Any?, action: Selector) -> Void {
         self.expansiveLabel.setExpansiveButtonAction(target: target, action: action)
+    }
+    
+    
+    /// Define a ação do botão de expandir a label
+    public func setPageControlAction(target: Any?, action: Selector) -> Void {
+        self.imagesPageControl.addTarget(target, action: action, for: .valueChanged)
     }
     
     
