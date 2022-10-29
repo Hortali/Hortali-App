@@ -94,6 +94,7 @@
 		22A3918128F7862800A42DC1 /* ManagedVitamins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3918028F7862800A42DC1 /* ManagedVitamins.swift */; };
 		22A3918428F7AD5D00A42DC1 /* SearchProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3918328F7AD5D00A42DC1 /* SearchProtocol.swift */; };
 		22A3918628F7AE3000A42DC1 /* SearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3918528F7AE3000A42DC1 /* SearchDelegate.swift */; };
+		22A3DB2A290CED4700B34CEC /* ViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3DB29290CED4700B34CEC /* ViewLabel.swift */; };
 		22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */; };
 		22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8C4E328D918B500CE6061 /* TimeGroup.swift */; };
 		22EDD4AB28D95812001CE093 /* CustomStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4AA28D95812001CE093 /* CustomStack.swift */; };
@@ -198,6 +199,7 @@
 		22A3918028F7862800A42DC1 /* ManagedVitamins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedVitamins.swift; sourceTree = "<group>"; };
 		22A3918328F7AD5D00A42DC1 /* SearchProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProtocol.swift; sourceTree = "<group>"; };
 		22A3918528F7AE3000A42DC1 /* SearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDelegate.swift; sourceTree = "<group>"; };
+		22A3DB29290CED4700B34CEC /* ViewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLabel.swift; sourceTree = "<group>"; };
 		22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenTime.swift; sourceTree = "<group>"; };
 		22E8C4E328D918B500CE6061 /* TimeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeGroup.swift; sourceTree = "<group>"; };
 		22EDD4AA28D95812001CE093 /* CustomStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStack.swift; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 				222937F428C6846700515095 /* ContainerView.swift */,
 				220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */,
 				2229384E28C8964200515095 /* MainView.swift */,
+				22A3DB29290CED4700B34CEC /* ViewLabel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1061,6 +1064,7 @@
 				220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */,
 				2210246828D8F9BC00F412A5 /* ContactGroup.swift in Sources */,
 				222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */,
+				22A3DB2A290CED4700B34CEC /* ViewLabel.swift in Sources */,
 				22A3916E28F6E62700A42DC1 /* InfoGardenCellProtocol.swift in Sources */,
 				22EDD4BE28DA4A6A001CE093 /* AppImages.swift in Sources */,
 				222937F928C68B9B00515095 /* CollectionGroup.swift in Sources */,
@@ -1257,7 +1261,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = UZ6JTAUWH8;
+				DEVELOPMENT_TEAM = 534V229RMK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1286,7 +1290,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = UZ6JTAUWH8;
+				DEVELOPMENT_TEAM = 534V229RMK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
