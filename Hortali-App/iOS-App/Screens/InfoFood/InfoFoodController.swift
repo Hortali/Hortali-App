@@ -13,7 +13,7 @@ class InfoFoodController: UIViewController {
 
     /// View principal que a classe vai controlar
     private var myView: InfoFoodView
-    
+        
     
     /* Outros */
     
@@ -51,7 +51,7 @@ class InfoFoodController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.setupButtonsAction()
     }
     
@@ -62,7 +62,7 @@ class InfoFoodController: UIViewController {
     /// Ação de voltar para a tela anterior
     @objc
     private func backAction() {
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -109,3 +109,4 @@ class InfoFoodController: UIViewController {
         }
     }
 }
+

@@ -117,7 +117,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     /// Ação de voltar para a tela anterior
     @objc
     private func backAction() {
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
