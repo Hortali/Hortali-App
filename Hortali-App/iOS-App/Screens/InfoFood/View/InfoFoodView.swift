@@ -352,18 +352,18 @@ class InfoFoodView: UIView {
             self.container.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
             
             self.benefitsLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),
-            self.benefitsLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.benefitsLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor, constant: lateral),
             self.benefitsLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
             self.benefitsLabel.heightAnchor.constraint(equalToConstant: titlesLabelHeight),
             
             
             self.expansiveLabel.topAnchor.constraint(equalTo: self.benefitsLabel.bottomAnchor, constant: lateral),
-            self.expansiveLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
-            self.expansiveLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
+            self.expansiveLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
+            self.expansiveLabel.trailingAnchor.constraint(equalTo: self.benefitsLabel.trailingAnchor),
             
             
             self.vitaminsLabel.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
-            self.vitaminsLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.vitaminsLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
             self.vitaminsLabel.trailingAnchor.constraint(equalTo: self.container.trailingAnchor),
             self.vitaminsLabel.heightAnchor.constraint(equalToConstant: titlesLabelHeight),
             
@@ -375,8 +375,8 @@ class InfoFoodView: UIView {
             
             
             self.vitaminsInfoLabel.topAnchor.constraint(equalTo: self.vitaminsStack.bottomAnchor, constant: lateral),
-            self.vitaminsInfoLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
-            self.vitaminsInfoLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
+            self.vitaminsInfoLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
+            self.vitaminsInfoLabel.trailingAnchor.constraint(equalTo: self.benefitsLabel.trailingAnchor),
             
             
             self.howToCollection.topAnchor.constraint(equalTo: self.vitaminsInfoLabel.bottomAnchor, constant: between),

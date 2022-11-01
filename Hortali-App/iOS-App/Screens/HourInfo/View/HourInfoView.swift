@@ -115,7 +115,7 @@ class HourInfoView: ContainerView {
         
         self.dynamicConstraints = [
             self.hourInfoGp.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: lateral),
-            self.hourInfoGp.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.hourInfoGp.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
             self.hourInfoGp.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
             self.hourInfoGp.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
         ]

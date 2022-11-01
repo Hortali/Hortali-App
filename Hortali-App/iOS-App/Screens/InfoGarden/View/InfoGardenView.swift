@@ -320,6 +320,9 @@ class InfoGardenView: UIView {
         let collectionHeight = self.getEquivalent(200)
         
         
+        self.infosCollectionGp.setPadding(for: lateral)
+        
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
@@ -357,7 +360,7 @@ class InfoGardenView: UIView {
             
 
             self.expansiveLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),
-            self.expansiveLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.expansiveLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor, constant: lateral),
             self.expansiveLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
             
             

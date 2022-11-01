@@ -160,6 +160,9 @@ class GardenView: MainView {
     private func setupDynamicConstraints() {
         let emptySpace = self.getEmptySpace()
         
+        let lateral = self.getEquivalent(15)
+        self.gardenGroup.setPadding(for: lateral)
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
