@@ -53,6 +53,7 @@ class InfoFoodView: UIView {
         lbl.adjustsFontSizeToFitWidth = true
         lbl.textColor = UIColor(AppColors.paragraph)
         lbl.lineBreakMode = .byWordWrapping
+        lbl.sizeToFit()
         return lbl
     }()
     
@@ -125,13 +126,8 @@ class InfoFoodView: UIView {
         
     /// Configurações para expandir a label
     public func expandLabel() {
-        var status = self.expansiveLabel.isExtended
-        status.toggle()
-        
-        self.expansiveLabel.setupExtension(extended: status)
-        self.expansiveLabel.setupButtonIcon()
-        self.setupExpansiveLabelHeight()
-        self.updateScrollSize()
+        self.expansiveLabel.setupExtension()
+        self.scrollView.updateScrollSize()
     }
     
     
@@ -199,23 +195,8 @@ class InfoFoodView: UIView {
         self.setupVitaminsStackViews(for: data.vitamins)
         self.vitaminsInfoLabel.text = data.minerals
     }
-    
-    
-    /// Define o tamanho que a scroll vai ter
-    private func updateScrollSize() {
-        var scrollHeight: CGFloat = self.getEquivalent(885, dimension: .height)
+
         
-        if self.expansiveLabel.isExtended {
-            scrollHeight += self.expansiveLabel.expandedLabelSize
-        }
-        
-        self.scrollView.scrollContentSize = CGSize(
-            width: self.getEquivalent(self.bounds.width),
-            height: scrollHeight
-        )
-    }
-    
-    
     /// Cria e adiciona as views que vão ser colocadas na stack
     private func setupVitaminsStackViews(for vitamins: [ManagedVitamins]) {
         for vitamin in vitamins {
@@ -251,21 +232,23 @@ class InfoFoodView: UIView {
         self.addSubview(self.backButton)
         self.addSubview(self.favoriteButton)
         
-        self.scrollView.contentView.addSubview(self.coverImage)
-        self.scrollView.contentView.addSubview(self.container)
+        self.scrollView.addViewInScroll(self.coverImage)
+        self.scrollView.addViewInScroll(self.container)
         
         self.container.contentView.addSubview(self.benefitsLabel)
         self.container.contentView.addSubview(self.expansiveLabel)
         self.container.contentView.addSubview(self.vitaminsLabel)
         self.container.contentView.addSubview(self.vitaminsStack)
         self.container.contentView.addSubview(self.vitaminsInfoLabel)
+        
+        self.scrollView.addViewInScroll(self.vitaminsInfoLabel)
         self.container.contentView.addSubview(self.howToCollection)
     }
     
     
     /// Personalização da UI
     private func setupUI() {
-        self.updateScrollSize()
+        self.scrollView.updateScrollSize()
         
         // Collection
         self.collectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
@@ -394,7 +377,6 @@ class InfoFoodView: UIView {
             self.vitaminsInfoLabel.topAnchor.constraint(equalTo: self.vitaminsStack.bottomAnchor, constant: lateral),
             self.vitaminsInfoLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
             self.vitaminsInfoLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
-            self.vitaminsInfoLabel.heightAnchor.constraint(equalToConstant: self.getEquivalent(65)),
             
             
             self.howToCollection.topAnchor.constraint(equalTo: self.vitaminsInfoLabel.bottomAnchor, constant: between),
