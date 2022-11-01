@@ -15,11 +15,8 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     private let mapView: UIImageView = CustomViews.newImage()
     
     /// Endereço da rua
-    private let addressLabel: UILabel = {
-        let lbl = CustomViews.newLabel()
-        lbl.layer.masksToBounds = true
-        lbl.textAlignment = .center
-        lbl.adjustsFontSizeToFitWidth = true
+    private let addressLabel: ViewLabel = {
+        let lbl = ViewLabel()
         lbl.backgroundColor = UIColor(.viewBack)?.withAlphaComponent(0.6)
         return lbl
     }()
@@ -159,7 +156,7 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {		
+    private func setupStaticTexts() {
         self.addressLabel.setupText(with: FontInfo(
             fontSize: self.getConstant(for: 20), weight: .regular
         ))

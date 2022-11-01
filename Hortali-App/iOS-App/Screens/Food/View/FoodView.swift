@@ -87,6 +87,12 @@ class FoodView: MainView {
         self.foodGroup.collection.reloadInputViews()
     }
     
+    
+    /// Deixa a scroll no início da tela
+    public func resetCollectionScroll() {
+        self.foodGroup.collection.setContentOffset(.zero, animated: true)
+    }
+    
 
     
     /* MARK: - Ciclo de Vida */
