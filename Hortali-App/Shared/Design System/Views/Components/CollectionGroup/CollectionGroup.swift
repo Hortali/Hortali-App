@@ -58,7 +58,7 @@ public class CollectionGroup: UIView {
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
     
-    /// Espaço e diferen;ca que a label vai ter
+    /// Espaço de diferença que a label vai ter
     private var labelSpace: CGFloat = 0
 		
 
