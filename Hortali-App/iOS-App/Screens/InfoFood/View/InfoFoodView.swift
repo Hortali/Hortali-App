@@ -2,6 +2,7 @@
 
 /* Bibliotecas necessárias: */
 import UIKit
+import SpriteKit
 
 
 /// Elemento de UI da tela de ver informações dos aliementos
@@ -10,7 +11,9 @@ class InfoFoodView: UIView {
     /* MARK: - Atributos */
     
     // Teste
-    let gifURL: String = "https://media.tenor.com/j1IE4ue7s3MAAAAC/manoel-gomes-caneta-azul.gif"
+    let gifURL: String = "https://github.com/thallissousa/imagensSPerifa/blob/main/gif3.gif?raw=true"
+    
+    let gifFromApp =  UIImage.gifImageWithName("gif3")
     
     
     // Views
@@ -195,7 +198,42 @@ class InfoFoodView: UIView {
     /// Configura a view a partir dos dados recebidos
     /// - Parameter data: dados recebidos
     private func setupViewFor(data: ManagedFood) {
-        self.coverImage.image = UIImage.gifImageWithURL(gifURL)
+//        self.coverImage.image = image(texture: createTexture("GatoHome"))
+        
+//        self.coverImage.image = UIImage.gifImageWithName("gif3")
+        
+        func image(texture: SKTexture) -> UIImage {
+            let view = SKView(frame:CGRect(x: 0, y: 0, width: texture.size().width, height: texture.size().height))
+            let scene = SKScene(size: texture.size())
+            let sprite  = SKSpriteNode(texture: texture)
+            sprite.position = CGPoint(x: view.frame.midX, y: view.frame.midY)
+            scene.addChild(sprite)
+            view.presentScene(scene)
+
+            guard let render = view.texture(from: sprite) else { return UIImage() }
+            return UIImage(cgImage: render.cgImage())
+        }
+        
+        func createTexture(_ name: String) -> [SKTexture] {
+            let textureAtlas = SKTextureAtlas(named: name)
+            var frames = [SKTexture]()
+            for i in 1...textureAtlas.textureNames.count - 1 {
+                frames.append(textureAtlas.textureNamed(textureAtlas.textureNames[i]))
+            }
+            return frames
+        }
+        
+        
+        lazy var catAction: SKSpriteNode = {
+            var cat = SKSpriteNode(imageNamed: "gato0")
+            cat.texture?.filteringMode = .nearest
+            
+            let frames: [SKTexture] = createTexture("GatoHome")
+            cat.run(SKAction.repeatForever(SKAction.animate(with: frames,
+                                                            timePerFrame: TimeInterval(0.2),
+                                                            resize: false, restore: true)))
+            return cat
+        }()
         
         coverImage.frame = CGRect(x: 20, y: 30, width: container.frame.width - 30, height: self.container.frame.height - 30)
 

@@ -11,6 +11,7 @@
 		065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */; };
 		06EEDA9629119BAC003CD372 /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEDA9529119BAC003CD372 /* GifView.swift */; };
 		06EEDA9A29119BF4003CD372 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEDA9929119BF4003CD372 /* iOSDevCenters+GIF.swift */; };
+		06EEDA9C2911ABF5003CD372 /* gif3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 06EEDA9B2911ABF5003CD372 /* gif3.gif */; };
 		220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */; };
 		220A63E928D24C7100D9E2A9 /* InfoGardenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */; };
 		220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */; };
@@ -117,6 +118,7 @@
 		065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDataSource.swift; sourceTree = "<group>"; };
 		06EEDA9529119BAC003CD372 /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
 		06EEDA9929119BF4003CD372 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
+		06EEDA9B2911ABF5003CD372 /* gif3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif3.gif; sourceTree = "<group>"; };
 		220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenView.swift; sourceTree = "<group>"; };
 		220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenController.swift; sourceTree = "<group>"; };
 		220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExpansive.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 		222937D928C66B9200515095 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				06EEDA9B2911ABF5003CD372 /* gif3.gif */,
 				06EEDA9729119BB1003CD372 /* Gif */,
 				2229381E28C7C3DD00515095 /* Main */,
 				2229383B28C8922000515095 /* Garden */,
@@ -1011,6 +1014,7 @@
 			files = (
 				222937CD28C66B5800515095 /* LaunchScreen.storyboard in Resources */,
 				223B75D528F0DB8A0034B2C4 /* foodData.json in Resources */,
+				06EEDA9C2911ABF5003CD372 /* gif3.gif in Resources */,
 				223B75D628F0DB8A0034B2C4 /* gardenData.json in Resources */,
 				222937CA28C66B5800515095 /* Assets.xcassets in Resources */,
 			);
