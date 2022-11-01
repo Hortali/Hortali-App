@@ -32,6 +32,7 @@ public class CollectionGroup: UIView {
         
         col.showsHorizontalScrollIndicator = false
         col.showsVerticalScrollIndicator = false
+        
         return col
     }()
     
@@ -56,6 +57,9 @@ public class CollectionGroup: UIView {
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
+    
+    /// Espaço e diferen;ca que a label vai ter
+    private var labelSpace: CGFloat = 0
 		
 
 
@@ -73,6 +77,22 @@ public class CollectionGroup: UIView {
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    
+    /* MARK: - Encapsulamento */
+    
+    /// Configura o espaço lateral da primeira e última célula
+    /// - Parameter space: espaço que vai ser adicionado
+    public func setPadding(for space: CGFloat) {
+        self.collection.contentInset = .init(top: 0, left: space, bottom: 0, right: space)
+    }
+    
+    
+    /// Configura o espaço lateral da label
+    /// - Parameter space: espaço que vai ser adicionado
+    public func setLabelSpace(for space: CGFloat) {
+        self.labelSpace = space
+    }
     
     
 
@@ -106,7 +126,7 @@ public class CollectionGroup: UIView {
         case .complete:
             self.dynamicConstraints = [
                 self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
-                self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.labelSpace),
                 self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
                 self.titleLabel.heightAnchor.constraint(equalToConstant: titleLabelHeight),
                 
