@@ -90,8 +90,8 @@ class DataManager {
         case .add:
             list.append(config.id)
         case .remove:
-            for index in 0..<list.count{
-                if list[index] == config.id{
+            for index in 0..<list.count {
+                if list[index] == config.id {
                     list.remove(at: index)
                     break
                 }
