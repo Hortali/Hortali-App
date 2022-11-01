@@ -135,13 +135,8 @@ class InfoGardenView: UIView {
     
     /// Configurações para expandir a label
     public func expandLabel() {
-        var status = self.expansiveLabel.isExtended
-        status.toggle()
-        
-        self.expansiveLabel.setupExtension(extended: status)
-        self.expansiveLabel.setupButtonIcon()
-        self.setupExpansiveLabelHeight()
-        self.updateScrollSize()
+        self.expansiveLabel.setupExtension()
+        self.scrollView.updateScrollSize()
     }
 
     
@@ -236,21 +231,7 @@ class InfoGardenView: UIView {
         self.expansiveLabel.setInfoText(for: data.biograph)
     }
     
-    
-    /// Define o tamanho que a scroll vai ter
-    private func updateScrollSize() {
-        var scrollHeight: CGFloat = self.getEquivalent(880, dimension: .height)
-        
-        if self.expansiveLabel.isExtended {
-            scrollHeight += self.expansiveLabel.expandedLabelSize
-        }
-        
-        self.scrollView.scrollContentSize = CGSize(
-            width: self.getEquivalent(self.bounds.width),
-            height: scrollHeight
-        )
-    }
-    
+
     
     /* Collection */
     
@@ -274,23 +255,22 @@ class InfoGardenView: UIView {
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.addSubview(self.scrollView)
-                
-        self.scrollView.contentView.addSubview(self.imagesCollectionGp)
-        self.scrollView.contentView.addSubview(self.imagesPageControl)
-        self.addSubview(self.backButton)
-        self.addSubview(self.favoriteButton)
-        self.scrollView.contentView.addSubview(self.container)
+        
+        self.scrollView.addViewInScroll(self.imagesCollectionGp)
+        self.scrollView.addViewInScroll(self.imagesPageControl)
+        self.scrollView.addViewInScroll(self.container)
         
         self.container.contentView.addSubview(self.expansiveLabel)
-        self.scrollView.contentView.addSubview(self.infosCollectionGp)
+        self.scrollView.addViewInScroll(self.infosCollectionGp)
+        
+        self.addSubview(self.backButton)
+        self.addSubview(self.favoriteButton)
     }
     
     
     /// Personalização da UI
     private func setupUI() {
         self.imagesPageControl.layer.cornerRadius = self.imagesPageControl.bounds.height / 2
-        
-        self.updateScrollSize()
         
         // Collections
         
@@ -305,6 +285,8 @@ class InfoGardenView: UIView {
             width: self.getEquivalent(390),
             height: self.getEquivalent(510)
         )
+        
+        self.scrollView.updateScrollSize()
     }
     
     
@@ -335,7 +317,6 @@ class InfoGardenView: UIView {
         
         // Altura dos elementos
         let segHeight = self.getEquivalent(510)
-//        let containerHeight = self.getEquivalent(435)
         let collectionHeight = self.getEquivalent(200)
         
         
