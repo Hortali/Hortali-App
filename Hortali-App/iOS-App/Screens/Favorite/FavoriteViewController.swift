@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Controller responsável pela tela de favoritos
-class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
+class FavoriteViewController: UIViewController, GardenProtocol, FoodProtocol {
     
     /* MARK: - Atributos */
     
@@ -40,7 +40,7 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.setupDelegates()
     }
     
@@ -50,32 +50,28 @@ class FavoriteViewController: MenuController, GardenProtocol, FoodProtocol {
         
         self.setupDataSourcesData()
     }
+
     
-
-
+    
     /* MARK: - Protocolo */
     
     internal func openGardenInfo(for index: Int) {
         let selectedCell = self.gardenDataSource.data[index]
+                
+        let controller = InfoGardenController(with: selectedCell)
+        controller.hidesBottomBarWhenPushed = true
         
-        let controller = InfoGardenController(with: selectedCell, in: index)
-        controller.modalTransitionStyle = .crossDissolve
-        controller.modalPresentationStyle = .fullScreen
-        
-        self.tabBarProtocol?.showTabBar(is: false)
-        self.present(controller, animated: true)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
         
     internal func openFoodInfo(for index: Int) {
         let selectedCell = self.foodDataSource.data[index]
         
-        let controller = InfoFoodController(with: selectedCell, in: index)
-        controller.modalTransitionStyle = .crossDissolve
-        controller.modalPresentationStyle = .fullScreen
+        let controller = InfoFoodController(with: selectedCell)
+        controller.hidesBottomBarWhenPushed = true
         
-        self.tabBarProtocol?.showTabBar(is: false)
-        self.present(controller, animated: true)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     

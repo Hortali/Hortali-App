@@ -53,6 +53,7 @@ class InfoFoodView: UIView {
         lbl.adjustsFontSizeToFitWidth = true
         lbl.textColor = UIColor(AppColors.paragraph)
         lbl.lineBreakMode = .byWordWrapping
+        lbl.sizeToFit()
         return lbl
     }()
     
@@ -125,13 +126,8 @@ class InfoFoodView: UIView {
         
     /// Configurações para expandir a label
     public func expandLabel() {
-        var status = self.expansiveLabel.isExtended
-        status.toggle()
-        
-        self.expansiveLabel.setupExtension(extended: status)
-        self.expansiveLabel.setupButtonIcon()
-        self.setupExpansiveLabelHeight()
-        self.updateScrollSize()
+        self.expansiveLabel.setupExtension()
+        self.scrollView.updateScrollSize()
     }
     
     
@@ -199,23 +195,8 @@ class InfoFoodView: UIView {
         self.setupVitaminsStackViews(for: data.vitamins)
         self.vitaminsInfoLabel.text = data.minerals
     }
-    
-    
-    /// Define o tamanho que a scroll vai ter
-    private func updateScrollSize() {
-        var scrollHeight: CGFloat = 1350 - (465) // Collection escondida
+
         
-        if self.expansiveLabel.isExtended {
-            scrollHeight += self.expansiveLabel.expandedLabelSize
-        }
-        
-        self.scrollView.scrollContentSize = CGSize(
-            width: self.getEquivalent(self.bounds.width),
-            height: scrollHeight
-        )
-    }
-    
-    
     /// Cria e adiciona as views que vão ser colocadas na stack
     private func setupVitaminsStackViews(for vitamins: [ManagedVitamins]) {
         for vitamin in vitamins {
@@ -248,23 +229,26 @@ class InfoFoodView: UIView {
     private func setupViews() {
         self.addSubview(self.scrollView)
         
-        self.scrollView.contentView.addSubview(self.coverImage)
-        self.scrollView.contentView.addSubview(self.backButton)
-        self.scrollView.contentView.addSubview(self.favoriteButton)
-        self.scrollView.contentView.addSubview(self.container)
+        self.addSubview(self.backButton)
+        self.addSubview(self.favoriteButton)
+        
+        self.scrollView.addViewInScroll(self.coverImage)
+        self.scrollView.addViewInScroll(self.container)
         
         self.container.contentView.addSubview(self.benefitsLabel)
         self.container.contentView.addSubview(self.expansiveLabel)
         self.container.contentView.addSubview(self.vitaminsLabel)
-        self.container.addSubview(self.vitaminsStack)
+        self.container.contentView.addSubview(self.vitaminsStack)
         self.container.contentView.addSubview(self.vitaminsInfoLabel)
+        
+        self.scrollView.addViewInScroll(self.vitaminsInfoLabel)
         self.container.contentView.addSubview(self.howToCollection)
     }
     
     
     /// Personalização da UI
     private func setupUI() {
-        self.updateScrollSize()
+        self.scrollView.updateScrollSize()
         
         // Collection
         self.collectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
@@ -317,8 +301,6 @@ class InfoFoodView: UIView {
         let gap = self.getEquivalent(25)
         
         
-        let safeAreaGap = self.scrollView.scroll.safeAreaInsets.top
-        
         // Altura dos botões
         self.backButton.circleSize = self.getEquivalent(45)
         self.favoriteButton.circleSize = self.getEquivalent(45)
@@ -344,7 +326,7 @@ class InfoFoodView: UIView {
             self.scrollView.topAnchor.constraint(equalTo: self.topAnchor),
             self.scrollView.leftAnchor.constraint(equalTo: self.leftAnchor),
             self.scrollView.rightAnchor.constraint(equalTo: self.rightAnchor),
-            self.scrollView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+            self.scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.scrollView.widthAnchor.constraint(equalTo: self.widthAnchor),
             
             
@@ -354,12 +336,12 @@ class InfoFoodView: UIView {
             self.coverImage.heightAnchor.constraint(equalToConstant: imageHeight),
             
             
-            self.backButton.topAnchor.constraint(equalTo: self.scrollView.contentView.topAnchor, constant: safeAreaGap),
-            self.backButton.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor, constant: lateral),
+            self.backButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            self.backButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
             
             
             self.favoriteButton.centerYAnchor.constraint(equalTo: self.backButton.centerYAnchor),
-            self.favoriteButton.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor, constant: -lateral),
+            self.favoriteButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
             
             
             /* Container */
@@ -367,22 +349,21 @@ class InfoFoodView: UIView {
             self.container.topAnchor.constraint(equalTo: self.coverImage.bottomAnchor, constant: -gap),
             self.container.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
             self.container.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
-            self.container.bottomAnchor.constraint(equalTo: self.scrollView.contentView.bottomAnchor),
-            
+            self.container.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
             
             self.benefitsLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),
-            self.benefitsLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.benefitsLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor, constant: lateral),
             self.benefitsLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
             self.benefitsLabel.heightAnchor.constraint(equalToConstant: titlesLabelHeight),
             
             
             self.expansiveLabel.topAnchor.constraint(equalTo: self.benefitsLabel.bottomAnchor, constant: lateral),
-            self.expansiveLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
-            self.expansiveLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
+            self.expansiveLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
+            self.expansiveLabel.trailingAnchor.constraint(equalTo: self.benefitsLabel.trailingAnchor),
             
             
             self.vitaminsLabel.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
-            self.vitaminsLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.vitaminsLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
             self.vitaminsLabel.trailingAnchor.constraint(equalTo: self.container.trailingAnchor),
             self.vitaminsLabel.heightAnchor.constraint(equalToConstant: titlesLabelHeight),
             
@@ -394,9 +375,8 @@ class InfoFoodView: UIView {
             
             
             self.vitaminsInfoLabel.topAnchor.constraint(equalTo: self.vitaminsStack.bottomAnchor, constant: lateral),
-            self.vitaminsInfoLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
-            self.vitaminsInfoLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
-            self.vitaminsInfoLabel.heightAnchor.constraint(equalToConstant: self.getEquivalent(65)),
+            self.vitaminsInfoLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
+            self.vitaminsInfoLabel.trailingAnchor.constraint(equalTo: self.benefitsLabel.trailingAnchor),
             
             
             self.howToCollection.topAnchor.constraint(equalTo: self.vitaminsInfoLabel.bottomAnchor, constant: between),

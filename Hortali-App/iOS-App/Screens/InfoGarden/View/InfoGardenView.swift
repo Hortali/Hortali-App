@@ -61,6 +61,7 @@ class InfoGardenView: UIView {
     private let infosCollectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
+        
         return cvFlow
     }()
     
@@ -69,6 +70,7 @@ class InfoGardenView: UIView {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
         cvFlow.minimumLineSpacing = 0
+        
         return cvFlow
     }()
 
@@ -120,15 +122,21 @@ class InfoGardenView: UIView {
     }
     
     
+    /// Atualiza  a célula que é mostrada a partir do item do page control selecionado
+    /// - Parameter index: index selecionado
+    public func updateCurrentCell(for index: Int) {
+        self.imagesCollectionGp.collection.scrollToItem(
+            at: IndexPath(row: index, section: 0),
+            at: .centeredHorizontally,
+            animated: true
+        )
+    }
+    
+    
     /// Configurações para expandir a label
     public func expandLabel() {
-        var status = self.expansiveLabel.isExtended
-        status.toggle()
-        
-        self.expansiveLabel.setupExtension(extended: status)
-        self.expansiveLabel.setupButtonIcon()
-        self.setupExpansiveLabelHeight()
-        self.updateScrollSize()
+        self.expansiveLabel.setupExtension()
+        self.scrollView.updateScrollSize()
     }
 
     
@@ -149,6 +157,12 @@ class InfoGardenView: UIView {
     /// Define a ação do botão de expandir a label
     public func setExpLabelButtonAction(target: Any?, action: Selector) -> Void {
         self.expansiveLabel.setExpansiveButtonAction(target: target, action: action)
+    }
+    
+    
+    /// Define a ação do botão de expandir a label
+    public func setPageControlAction(target: Any?, action: Selector) -> Void {
+        self.imagesPageControl.addTarget(target, action: action, for: .valueChanged)
     }
     
     
@@ -217,21 +231,7 @@ class InfoGardenView: UIView {
         self.expansiveLabel.setInfoText(for: data.biograph)
     }
     
-    
-    /// Define o tamanho que a scroll vai ter
-    private func updateScrollSize() {
-        var scrollHeight: CGFloat = 880
-        
-        if self.expansiveLabel.isExtended {
-            scrollHeight += self.expansiveLabel.expandedLabelSize
-        }
-        
-        self.scrollView.scrollContentSize = CGSize(
-            width: self.getEquivalent(self.bounds.width),
-            height: scrollHeight
-        )
-    }
-    
+
     
     /* Collection */
     
@@ -255,23 +255,22 @@ class InfoGardenView: UIView {
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.addSubview(self.scrollView)
-                
-        self.scrollView.contentView.addSubview(self.imagesCollectionGp)
-        self.scrollView.contentView.addSubview(self.imagesPageControl)
-        self.scrollView.contentView.addSubview(self.backButton)
-        self.scrollView.contentView.addSubview(self.favoriteButton)
-        self.scrollView.contentView.addSubview(self.container)
+        
+        self.scrollView.addViewInScroll(self.imagesCollectionGp)
+        self.scrollView.addViewInScroll(self.imagesPageControl)
+        self.scrollView.addViewInScroll(self.container)
         
         self.container.contentView.addSubview(self.expansiveLabel)
-        self.scrollView.contentView.addSubview(self.infosCollectionGp)
+        self.scrollView.addViewInScroll(self.infosCollectionGp)
+        
+        self.addSubview(self.backButton)
+        self.addSubview(self.favoriteButton)
     }
     
     
     /// Personalização da UI
     private func setupUI() {
         self.imagesPageControl.layer.cornerRadius = self.imagesPageControl.bounds.height / 2
-        
-        self.updateScrollSize()
         
         // Collections
         
@@ -286,6 +285,8 @@ class InfoGardenView: UIView {
             width: self.getEquivalent(390),
             height: self.getEquivalent(510)
         )
+        
+        self.scrollView.updateScrollSize()
     }
     
     
@@ -310,16 +311,16 @@ class InfoGardenView: UIView {
         let between = self.getEquivalent(20)
         let gap = self.getEquivalent(25)
         
-        let safeAreaGap = self.scrollView.scroll.safeAreaInsets.top
-        
         // Altura dos botões
         self.backButton.circleSize = self.getEquivalent(45)
         self.favoriteButton.circleSize = self.getEquivalent(45)
         
         // Altura dos elementos
         let segHeight = self.getEquivalent(510)
-        let containerHeight = self.getEquivalent(435)
         let collectionHeight = self.getEquivalent(200)
+        
+        
+        self.infosCollectionGp.setPadding(for: lateral)
         
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
@@ -328,7 +329,7 @@ class InfoGardenView: UIView {
             self.scrollView.topAnchor.constraint(equalTo: self.topAnchor),
             self.scrollView.leftAnchor.constraint(equalTo: self.leftAnchor),
             self.scrollView.rightAnchor.constraint(equalTo: self.rightAnchor),
-            self.scrollView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+            self.scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.scrollView.widthAnchor.constraint(equalTo: self.widthAnchor),
             
             
@@ -342,12 +343,12 @@ class InfoGardenView: UIView {
             self.imagesPageControl.centerXAnchor.constraint(equalTo: self.imagesCollectionGp.centerXAnchor),
             
             
-            self.backButton.topAnchor.constraint(equalTo: self.scrollView.contentView.topAnchor, constant: safeAreaGap),
-            self.backButton.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor, constant: lateral),
+            self.backButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            self.backButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
 
 
             self.favoriteButton.centerYAnchor.constraint(equalTo: self.backButton.centerYAnchor),
-            self.favoriteButton.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor, constant: -lateral),
+            self.favoriteButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
             
             
             /* Container */
@@ -355,11 +356,11 @@ class InfoGardenView: UIView {
             self.container.topAnchor.constraint(equalTo: self.imagesCollectionGp.bottomAnchor, constant: -gap),
             self.container.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
             self.container.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
-            self.container.heightAnchor.constraint(equalToConstant: containerHeight),
+            self.container.bottomAnchor.constraint(equalTo: self.scrollView.contentView.bottomAnchor),
             
 
             self.expansiveLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),
-            self.expansiveLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.expansiveLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor, constant: lateral),
             self.expansiveLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
             
             

@@ -12,20 +12,16 @@ class GardenView: MainView {
     // Views
     
     /// Bara de busca das hortas
-    private let search: UISearchBar = CustomViews.newSearch()
+    private let search = CustomViews.newSearch()
     
     /// Collection das hortas
     private let gardenGroup = CollectionGroup(style: .justCollection)
-    
-    /// View de referência para centralizar as células da Collection
-    private let referenceView: UIView = CustomViews.newView()
     
     
     // Outros
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
-    
     
     /// Configurações do layout da collection
     private let collectionFlow: UICollectionViewFlowLayout = {
@@ -35,7 +31,7 @@ class GardenView: MainView {
         return cvFlow
     }()
     
-    
+   
     
     /* MARK: - Construtor */
     
@@ -116,10 +112,28 @@ class GardenView: MainView {
     
     /* Geral */
     
+    /// Espaço entre a collection das hortas
+    /// - Returns: distância entre os elemento
+    ///
+    /// Essa função calcula o espaço disponível que tem para a collection das hortas ser colocada
+    /// no centro.
+    ///
+    /// O valor retornado deve ser usado como espaço (`constant`) na hora de definir as constraints
+    /// de _top_ e _bottom_.
+    private func getEmptySpace() -> CGFloat {
+        let top = search.frame.origin.y + search.frame.height
+        let collectionHeight = self.getEquivalent(400)
+        let bottom = self.safeAreaInsets.bottom
+         
+        let totalEmptySpace = (self.frame.height - top - collectionHeight - bottom) / 2
+         
+        return totalEmptySpace
+    }
+    
+    
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.addSubview(self.search)
-        self.contentView.addSubview(self.referenceView)
         self.contentView.addSubview(self.gardenGroup)
     }
     
@@ -144,7 +158,10 @@ class GardenView: MainView {
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let collectionHeight = self.getEquivalent(400, dimension: .height)
+        let emptySpace = self.getEmptySpace()
+        
+        let lateral = self.getEquivalent(15)
+        self.gardenGroup.setPadding(for: lateral)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
@@ -154,14 +171,8 @@ class GardenView: MainView {
             self.search.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             
             
-            self.referenceView.topAnchor.constraint(equalTo: self.search.bottomAnchor),
-            self.referenceView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.referenceView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.referenceView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            
-            
-            self.gardenGroup.heightAnchor.constraint(equalToConstant: getEquivalent(collectionHeight)),
-            self.gardenGroup.centerYAnchor.constraint(equalTo: self.referenceView.centerYAnchor),
+            self.gardenGroup.topAnchor.constraint(equalTo: self.search.bottomAnchor, constant: emptySpace),
+            self.gardenGroup.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -emptySpace),
             self.gardenGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.gardenGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
         ]

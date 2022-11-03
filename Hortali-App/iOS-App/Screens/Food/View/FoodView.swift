@@ -87,6 +87,12 @@ class FoodView: MainView {
         self.foodGroup.collection.reloadInputViews()
     }
     
+    
+    /// Deixa a scroll no início da tela
+    public func resetCollectionScroll() {
+        self.foodGroup.collection.setContentOffset(.zero, animated: true)
+    }
+    
 
     
     /* MARK: - Ciclo de Vida */
@@ -147,17 +153,17 @@ class FoodView: MainView {
     private func setupDynamicConstraints() {
         let lateral: CGFloat = self.getEquivalent(15)
         let between: CGFloat = self.getEquivalent(20)
-       
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
             self.foodSegmented.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: lateral),
-            self.foodSegmented.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.foodSegmented.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
             self.foodSegmented.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
             
             
             self.foodGroup.topAnchor.constraint(equalTo: self.foodSegmented.bottomAnchor, constant: between),
-            self.foodGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.foodGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
             self.foodGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
             self.foodGroup.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
         ]

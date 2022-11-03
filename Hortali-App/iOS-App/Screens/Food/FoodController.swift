@@ -5,14 +5,14 @@ import UIKit
 
 
 /// Controller responsável pela tela de alimentos
-class FoodController: MenuController, FoodProtocol {
+class FoodController: UIViewController, FoodProtocol {
     
     /* MARK: - Atributos */
 
     /// View principal que a classe vai controlar
     private let myView = FoodView()
     
-    
+
     /* Delegate & Data Sources */
     
     /// Data source da collection de alimentos
@@ -46,12 +46,10 @@ class FoodController: MenuController, FoodProtocol {
     internal func openFoodInfo(for index: Int) {
         let selectedCell = self.foodDataSource.data[index]
         
-        let controller = InfoFoodController(with: selectedCell, in: index)
-        controller.modalTransitionStyle = .crossDissolve
-        controller.modalPresentationStyle = .fullScreen
+        let controller = InfoFoodController(with: selectedCell)
+        controller.hidesBottomBarWhenPushed = true
         
-        self.tabBarProtocol?.showTabBar(is: false)
-        self.present(controller, animated: true)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     
@@ -64,6 +62,7 @@ class FoodController: MenuController, FoodProtocol {
     func segmentationAction(sender: UISegmentedControl) {
         let index = sender.selectedSegmentIndex
         self.updateFoodData(for: index)
+        self.myView.resetCollectionScroll()
     }
     
     
