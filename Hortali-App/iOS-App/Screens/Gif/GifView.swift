@@ -10,7 +10,7 @@ class GifView: UIView {
     // Views
     
     /// Elementos que serão inseridos na tela
-    let gifURL: String = "https://media.tenor.com/j1IE4ue7s3MAAAAC/manoel-gomes-caneta-azul.gif"
+    let gifURL: String = ""
     // Outros
     
     private let imagesCollectionGp: CollectionGroup = {
