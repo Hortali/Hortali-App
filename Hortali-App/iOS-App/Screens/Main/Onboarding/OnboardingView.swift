@@ -8,13 +8,13 @@ class OnboardingView: UIView {
     /* MARK: - Atributos */
     
     // Views
-            
+    
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
     
     /// Collection das telas de onboarding
     private let onboardingGroup = CollectionGroup(style: .justCollection)
-        
+    
     /// Botão de fechar as telas de onboarding
     private let closeButton = {
         let btn = CustomViews.newButton()
@@ -31,7 +31,7 @@ class OnboardingView: UIView {
         btn.setupText(with: FontInfo(text: "Próximo",fontSize: 17, weight: .regular))
         btn.isCircular = false
         btn.backgroundColor = .clear
-
+        
         
         return btn
     }()
@@ -42,18 +42,18 @@ class OnboardingView: UIView {
         btn.setupText(with: FontInfo(text: "Voltar",fontSize: 17, weight: .regular))
         btn.isCircular = false
         btn.backgroundColor = .clear
-
+        
         
         return btn
     }()
     
     /// Controle de páginas
     private let screensPageControl = CustomViews.newPageControl()
-
+    
     /// Configurações do layout da collection
     private let collectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
-        cvFlow.scrollDirection = .vertical
+        cvFlow.scrollDirection = .horizontal
         
         return cvFlow
     }()
@@ -111,7 +111,7 @@ class OnboardingView: UIView {
     private func setupCollectionFlow() {
         self.onboardingGroup.collection.collectionViewLayout = self.collectionFlow
         onboardingGroup.collection.backgroundColor = UIColor(.gardenBack)
-
+        
     }
     
     
@@ -122,16 +122,16 @@ class OnboardingView: UIView {
     }
     
     
-//    public func setDelegate(with delegate: OnboardingDelegate) {
-//        self.onboardingGroup.collection.delegate = delegate
-//    }
+    //    public func setDelegate(with delegate: OnboardingDelegate) {
+    //        self.onboardingGroup.collection.delegate = delegate
+    //    }
     
     
     /* Geral */
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-
+        
         self.addSubview(self.onboardingGroup)
         self.addSubview(self.screensPageControl)
         self.addSubview(self.closeButton)
@@ -149,7 +149,9 @@ class OnboardingView: UIView {
         self.screensPageControl.layer.cornerRadius = self.screensPageControl.bounds.height / 2
         screensPageControl.numberOfPages = 4
         // Define o tamanho que a célula vai ter
-         self.collectionFlow.itemSize = CGSize(width: 200, height: 200)
+        let cellHeight = self.onboardingGroup.collection.frame.height
+        let cellWidth = self.frame.width
+        self.collectionFlow.itemSize = CGSize(width: cellWidth, height: cellHeight)
     }
     
     
@@ -162,7 +164,7 @@ class OnboardingView: UIView {
          */
         
         /* Labels */
-
+        
         /* Botões */
     }
     
@@ -190,7 +192,7 @@ class OnboardingView: UIView {
             self.nextButton.centerYAnchor.constraint(equalTo: self.screensPageControl.centerYAnchor),
             self.nextButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
             self.nextButton.leadingAnchor.constraint(equalTo: self.screensPageControl.trailingAnchor, constant: buttonBetween),
-
+            
             
             self.backButton.centerYAnchor.constraint(equalTo: self.screensPageControl.centerYAnchor),
             self.backButton.trailingAnchor.constraint(equalTo: self.screensPageControl.leadingAnchor, constant: -buttonBetween),
