@@ -13,7 +13,15 @@ class OnboardingCell: UICollectionViewCell {
     // Views
     
     /// Título da celula da tela de onboarding
-    private var screenTitle = UILabel()
+    private var screenTitle: UILabel = {
+        let lbl = CustomViews.newLabel()
+        lbl.adjustsFontSizeToFitWidth = true
+        lbl.backgroundColor = .blue
+        lbl.textColor = .white
+        lbl.numberOfLines = 2
+        
+        return lbl
+    }()
     
     /// Imagem usada nas telas de onboarding
     private let screenImage = CustomViews.newImage()
@@ -43,9 +51,10 @@ class OnboardingCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.setupStaticTexts()
+        
         self.setupDynamicConstraints()
         self.setupUI()
+        self.setupStaticTexts()
         
         self.reloadInputViews()
     }
@@ -60,6 +69,7 @@ class OnboardingCell: UICollectionViewCell {
          Aqui vão adicionar os elementos na tela (.addSubViews())
          */
         self.contentView.addSubview(screenTitle)
+        self.contentView.addSubview(screenImage)
     }
     
     
@@ -68,8 +78,8 @@ class OnboardingCell: UICollectionViewCell {
         /*
          Aqui vão definidos as bordas, cor de fundo da view
          */
-        screenTitle.backgroundColor = .blue
         self.backgroundColor = .red
+        self.screenImage.backgroundColor = .yellow
         // Define o tamanho que a célula vai ter
         // self.collectionFlow.itemSize = CGSize(width: 100, height: 100)
     }
@@ -84,8 +94,7 @@ class OnboardingCell: UICollectionViewCell {
          */
         
         /* Labels */
-        
-        screenTitle.text = "UUUUUAAAAA"
+        screenTitle.setupText(with: FontInfo(text: "Veja as hortas de São Paulo", fontSize: 28, weight: .bold))
         /* Botões */
     }
     
@@ -96,14 +105,24 @@ class OnboardingCell: UICollectionViewCell {
         
         let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
         
-        let between: CGFloat = self.getEquivalent(10, screenReference: screenReferenceSize)
+        let between: CGFloat = self.getEquivalent(30, screenReference: screenReferenceSize)
         
         let lateral: CGFloat = self.getEquivalent(15, screenReference: screenReferenceSize)
+        
+        let imageHeight: CGFloat = self.getEquivalent(200, screenReference: screenReferenceSize)
+        
+        let imageWidth: CGFloat = self.getEquivalent(100, screenReference: screenReferenceSize)
         
         self.dynamicConstraints = [
             self.screenTitle.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: between),
             self.screenTitle.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
             self.screenTitle.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
+            
+            self.screenImage.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            self.screenImage.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.screenImage.heightAnchor.constraint(equalToConstant: imageHeight),
+            self.screenImage.widthAnchor.constraint(equalToConstant: imageWidth),
+            
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
