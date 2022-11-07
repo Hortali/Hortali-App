@@ -8,9 +8,7 @@ class GifView: UIView {
     /* MARK: - Atributos */
     
     // Views
-    
-    /// Elementos que serão inseridos na tela
-    let gifURL: String = ""
+
     // Outros
     
     private let imagesCollectionGp: CollectionGroup = {
@@ -18,9 +16,7 @@ class GifView: UIView {
         colGp.collection.isPagingEnabled = true
         return colGp
     }()
-    
-//    private let sampleImage = CustomViews.newImage()
-    
+        
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
         
@@ -92,11 +88,17 @@ class GifView: UIView {
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-        let imageURL = UIImage.gifImageWithURL(gifURL)
-        let imageView2 = UIImageView(image: imageURL)
-        imageView2.frame = CGRect(x: 20, y: 30, width: imagesCollectionGp.frame.width - 30, height: self.imagesCollectionGp.frame.height - 30)
         
-        self.imagesCollectionGp.addSubview(imageView2)
+        
+        let linkDoGif: String = "https://c.tenor.com/x8oDQkCwHc0AAAAC/qualquer-coisa-vestibular.gif"
+        
+        
+        let enderecoDoGif = UIImage.gifImageWithURL(linkDoGif)
+        let gif = UIImageView(image: enderecoDoGif)
+       // return gif
+        gif.frame = CGRect(x: 20, y: 30, width: self.imagesCollectionGp.frame.width - 30, height: self.imagesCollectionGp.frame.height - 30)
+        
+        self.imagesCollectionGp.addSubview(gif)
     }
     
     

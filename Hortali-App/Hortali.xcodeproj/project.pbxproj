@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060903452919858000EC8314 /* GifHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060903442919858000EC8314 /* GifHandler.swift */; };
+		060903472919978500EC8314 /* gifPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060903462919978500EC8314 /* gifPackage.swift */; };
 		065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFBD28D2526600F024E7 /* GardenCell.swift */; };
 		065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */; };
 		06EEDA9629119BAC003CD372 /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEDA9529119BAC003CD372 /* GifView.swift */; };
@@ -120,6 +122,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		060903442919858000EC8314 /* GifHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifHandler.swift; sourceTree = "<group>"; };
+		060903462919978500EC8314 /* gifPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifPackage.swift; sourceTree = "<group>"; };
 		065ECFBD28D2526600F024E7 /* GardenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCell.swift; sourceTree = "<group>"; };
 		065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDataSource.swift; sourceTree = "<group>"; };
 		06EEDA9529119BAC003CD372 /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
@@ -264,7 +268,10 @@
 		06EEDA9729119BB1003CD372 /* Gif */ = {
 			isa = PBXGroup;
 			children = (
+				06EEDA9B2911ABF5003CD372 /* gif3.gif */,
 				06EEDA9529119BAC003CD372 /* GifView.swift */,
+				060903442919858000EC8314 /* GifHandler.swift */,
+				060903462919978500EC8314 /* gifPackage.swift */,
 			);
 			path = Gif;
 			sourceTree = "<group>";
@@ -516,7 +523,6 @@
 		222937D928C66B9200515095 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				06EEDA9B2911ABF5003CD372 /* gif3.gif */,
 				06EEDA9729119BB1003CD372 /* Gif */,
 				2229381E28C7C3DD00515095 /* Main */,
 				2229383B28C8922000515095 /* Garden */,
@@ -565,7 +571,6 @@
 				2229384C28C8942B00515095 /* UIViewController+setupTab.swift */,
 				2229382828C85EF700515095 /* UITextField+setupPlaceHolder.swift */,
 				2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */,
-				06C6D35A2915A8A6001CF9C7 /* iOSDevCenters+GIF.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1150,7 +1155,6 @@
 				220A63EE28D3BDF700D9E2A9 /* CustomScroll.swift in Sources */,
 				222937FC28C68C8200515095 /* CollectionGroupStyle.swift in Sources */,
 				223B75E028F146920034B2C4 /* GardenDataManager.swift in Sources */,
-				06C6D35B2915A8A6001CF9C7 /* iOSDevCenters+GIF.swift in Sources */,
 				2210245728D53F3300F412A5 /* InfoGardenInfosDelegate.swift in Sources */,
 				2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */,
 				22A3918628F7AE3000A42DC1 /* SearchDelegate.swift in Sources */,
@@ -1172,6 +1176,7 @@
 				22A3918128F7862800A42DC1 /* ManagedVitamins.swift in Sources */,
 				222937E328C66F7F00515095 /* AppColors.swift in Sources */,
 				22A3917828F7854000A42DC1 /* ManagedContact.swift in Sources */,
+				060903472919978500EC8314 /* gifPackage.swift in Sources */,
 				222937FF28C68EE100515095 /* FavoriteViewController.swift in Sources */,
 				222937E928C6824600515095 /* IconInfo.swift in Sources */,
 				2229384828C8931B00515095 /* FoodController.swift in Sources */,
@@ -1187,6 +1192,7 @@
 				22A75A8C290CC681001CEA7E /* PopGestureDelegate.swift in Sources */,
 				22EDD4B728DA2E00001CE093 /* HourInfoCell.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
+				060903452919858000EC8314 /* GifHandler.swift in Sources */,
 				22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */,
 				B2DE49582911AFCE00293E6A /* OnboardingDataSource.swift in Sources */,
 				2229384F28C8964200515095 /* MainView.swift in Sources */,

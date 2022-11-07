@@ -1,26 +1,30 @@
-// Código encontrado num repositório do Github
+/* Macro - Grupo 05 */
 
-
+/* Bibliotecas necessárias: */
 import UIKit
 import ImageIO
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
+
+//criar uma função chamada getImageView(gifUrl: String) -> UIImageView {
+// gifImageWithURL
+
+// criar a uiimage
+// var que receberá uma ImageView:
 
 
+//}
 
-extension UIImage {
+class gifHandler {
+   
+    public func getImageView(gifURL: String) -> UIImageView {
+        let url = gifImageWithURL(gifURL)
+        
+        let gif = UIImageView(image: url)
+        
+        return gif
+    }
     
-    public class func gifImageWithData(_ data: Data) -> UIImage? {
+    
+    public func gifImageWithData(_ data: Data) -> UIImage? {
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
             print("image doesn't exist")
             return nil
@@ -29,7 +33,7 @@ extension UIImage {
         return UIImage.animatedImageWithSource(source)
     }
     
-    public class func gifImageWithURL(_ gifUrl:String) -> UIImage? {
+    public func gifImageWithURL(_ gifUrl: String) -> UIImage? {
         guard let bundleURL:URL = URL(string: gifUrl)
             else {
                 print("image named \"\(gifUrl)\" doesn't exist")
@@ -43,21 +47,21 @@ extension UIImage {
         return gifImageWithData(imageData)
     }
     
-    public class func gifImageWithName(_ name: String) -> UIImage? {
-        guard let bundleURL = Bundle.main
-            .url(forResource: name, withExtension: "gif") else {
-                print("SwiftGif: This image named \"\(name)\" does not exist")
-                return nil
-        }
-        guard let imageData = try? Data(contentsOf: bundleURL) else {
-            print("SwiftGif: Cannot turn image named \"\(name)\" into NSData")
-            return nil
-        }
-
-        return gifImageWithData(imageData)
-    }
+//    public class func gifImageWithName(_ name: String) -> UIImage? {
+//        guard let bundleURL = Bundle.main
+//            .url(forResource: name, withExtension: "gif") else {
+//                print("SwiftGif: This image named \"\(name)\" does not exist")
+//                return nil
+//        }
+//        guard let imageData = try? Data(contentsOf: bundleURL) else {
+//            print("SwiftGif: Cannot turn image named \"\(name)\" into NSData")
+//            return nil
+//        }
+//
+//        return gifImageWithData(imageData)
+//    }
     
-    class func delayForImageAtIndex(_ index: Int, source: CGImageSource!) -> Double {
+    public func delayForImageAtIndex(_ index: Int, source: CGImageSource!) -> Double {
         var delay = 0.1
         
         let cfProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil)
@@ -130,7 +134,7 @@ extension UIImage {
         return gcd
     }
     
-    class func animatedImageWithSource(_ source: CGImageSource) -> UIImage? {
+    public func animatedImageWithSource(_ source: CGImageSource) -> UIImage? {
         let count = CGImageSourceGetCount(source)
         var images = [CGImage]()
         var delays = [Int]()
@@ -174,4 +178,15 @@ extension UIImage {
         
         return animation
     }
+}
+
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
 }
