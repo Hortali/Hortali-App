@@ -30,7 +30,7 @@ class gifHandler {
             return nil
         }
         
-        return UIImage.animatedImageWithSource(source)
+        return self.animatedImageWithSource(source)
     }
     
     public func gifImageWithURL(_ gifUrl: String) -> UIImage? {
