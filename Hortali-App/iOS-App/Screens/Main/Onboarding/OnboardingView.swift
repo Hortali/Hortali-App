@@ -21,6 +21,7 @@ class OnboardingView: UIView {
         btn.setupText(with: FontInfo(text: "Fechar",fontSize: 17, weight: .regular))
         btn.isCircular = false
         btn.backgroundColor = .clear
+        btn.setTitleColor(UIColor.white, for:.normal)
         
         return btn
     }()
@@ -31,7 +32,7 @@ class OnboardingView: UIView {
         btn.setupText(with: FontInfo(text: "Próximo",fontSize: 17, weight: .regular))
         btn.isCircular = false
         btn.backgroundColor = .clear
-        
+        btn.setTitleColor(UIColor.white, for:.normal)
         
         return btn
     }()
@@ -42,7 +43,7 @@ class OnboardingView: UIView {
         btn.setupText(with: FontInfo(text: "Voltar",fontSize: 17, weight: .regular))
         btn.isCircular = false
         btn.backgroundColor = .clear
-        
+        btn.setTitleColor(UIColor.white, for:.normal)
         
         return btn
     }()
@@ -110,7 +111,7 @@ class OnboardingView: UIView {
     /// Define o layout da collection
     private func setupCollectionFlow() {
         self.onboardingGroup.collection.collectionViewLayout = self.collectionFlow
-        onboardingGroup.collection.backgroundColor = UIColor(.gardenBack)
+        onboardingGroup.collection.backgroundColor = UIColor.white
         
     }
     
@@ -145,9 +146,11 @@ class OnboardingView: UIView {
         self.backgroundColor = .gray
         
         onboardingGroup.collection.layer.cornerRadius = self.getEquivalent(30)
+        onboardingGroup.collection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         self.screensPageControl.layer.cornerRadius = self.screensPageControl.bounds.height / 2
         screensPageControl.numberOfPages = 4
+        
         // Define o tamanho que a célula vai ter
         let cellHeight = self.onboardingGroup.collection.frame.height
         let cellWidth = self.frame.width
@@ -172,7 +175,7 @@ class OnboardingView: UIView {
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
         let lateral: CGFloat = self.getEquivalent(15)
-        let between: CGFloat = self.getEquivalent(25)
+        let between: CGFloat = self.getEquivalent(10)
         let buttonBetween: CGFloat = self.getEquivalent(40)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
@@ -184,7 +187,7 @@ class OnboardingView: UIView {
             self.onboardingGroup.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             self.screensPageControl.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.screensPageControl.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -between),
+            self.screensPageControl.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -between),
             
             self.closeButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: lateral),
             self.closeButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
@@ -192,7 +195,6 @@ class OnboardingView: UIView {
             self.nextButton.centerYAnchor.constraint(equalTo: self.screensPageControl.centerYAnchor),
             self.nextButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
             self.nextButton.leadingAnchor.constraint(equalTo: self.screensPageControl.trailingAnchor, constant: buttonBetween),
-            
             
             self.backButton.centerYAnchor.constraint(equalTo: self.screensPageControl.centerYAnchor),
             self.backButton.trailingAnchor.constraint(equalTo: self.screensPageControl.leadingAnchor, constant: -buttonBetween),

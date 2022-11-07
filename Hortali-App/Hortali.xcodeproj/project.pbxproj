@@ -108,6 +108,7 @@
 		B241564728D26E4C009F011C /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564628D26E4C009F011C /* FoodCell.swift */; };
 		B241564C28D2722B009F011C /* FoodDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564B28D2722B009F011C /* FoodDataSource.swift */; };
 		B241564E28D27284009F011C /* FoodDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564D28D27284009F011C /* FoodDelegate.swift */; };
+		B2AEBD05291998DC001F4472 /* amsterdam.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2AEBD04291998DC001F4472 /* amsterdam.ttf */; };
 		B2DE494D29118ADD00293E6A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE494C29118ADD00293E6A /* OnboardingView.swift */; };
 		B2DE494F29118F7000293E6A /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE494E29118F7000293E6A /* OnboardingViewController.swift */; };
 		B2DE4951291192E700293E6A /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE4950291192E700293E6A /* OnboardingCell.swift */; };
@@ -220,6 +221,7 @@
 		B241564628D26E4C009F011C /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		B241564B28D2722B009F011C /* FoodDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataSource.swift; sourceTree = "<group>"; };
 		B241564D28D27284009F011C /* FoodDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDelegate.swift; sourceTree = "<group>"; };
+		B2AEBD04291998DC001F4472 /* amsterdam.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = amsterdam.ttf; sourceTree = "<group>"; };
 		B2DE494C29118ADD00293E6A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B2DE494E29118F7000293E6A /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		B2DE4950291192E700293E6A /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
@@ -576,6 +578,7 @@
 		2229382728C85A6C00515095 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				B2AEBD03291998B5001F4472 /* CustomFonts */,
 				22A3916F28F780ED00A42DC1 /* Conponents */,
 				222937F228C6844E00515095 /* CustomViews.swift */,
 			);
@@ -941,6 +944,14 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		B2AEBD03291998B5001F4472 /* CustomFonts */ = {
+			isa = PBXGroup;
+			children = (
+				B2AEBD04291998DC001F4472 /* amsterdam.ttf */,
+			);
+			path = CustomFonts;
+			sourceTree = "<group>";
+		};
 		B2DE49522911AA7400293E6A /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -1032,6 +1043,7 @@
 				222937CD28C66B5800515095 /* LaunchScreen.storyboard in Resources */,
 				223B75D528F0DB8A0034B2C4 /* foodData.json in Resources */,
 				223B75D628F0DB8A0034B2C4 /* gardenData.json in Resources */,
+				B2AEBD05291998DC001F4472 /* amsterdam.ttf in Resources */,
 				222937CA28C66B5800515095 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
