@@ -128,7 +128,7 @@ class gifHandler {
         var gcd = array[0]
         
         for val in array {
-            gcd = UIImage.gcdForPair(val, gcd)
+            gcd = self.gcdForPair(val, gcd)
         }
         
         return gcd
@@ -144,7 +144,7 @@ class gifHandler {
                 images.append(image)
             }
             
-            let delaySeconds = UIImage.delayForImageAtIndex(Int(i),
+            let delaySeconds = self.delayForImageAtIndex(Int(i),
                 source: source)
             delays.append(Int(delaySeconds * 300.0)) // Seconds to ms
         }
@@ -159,7 +159,7 @@ class gifHandler {
             return sum
         }()
         
-        let gcd = gcdForArray(delays)
+        let gcd = gifHandler.gcdForArray(delays)
         var frames = [UIImage]()
         
         var frame: UIImage
