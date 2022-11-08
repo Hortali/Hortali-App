@@ -6,6 +6,8 @@ import UIKit
 
 extension UIImage {
     
+    /// Adiciona gif através da URL
+    /// - Parameter gifURL: String que receberá a url do Gif utilizado
     public class func gifImageWithData(_ data: Data) -> UIImage? {
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else {
             print("image doesn't exist")
