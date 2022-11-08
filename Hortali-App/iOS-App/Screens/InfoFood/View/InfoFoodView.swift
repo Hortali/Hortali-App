@@ -10,9 +10,6 @@ class InfoFoodView: UIView {
     
     /* MARK: - Atributos */
     
-    // Teste
-    let gifURL: String = "https://c.tenor.com/jhEQIOqHDeEAAAAd/horizontal-nahorizontal.gif"
-    
     // Views
     
     /// Scroll View da tela
@@ -195,12 +192,8 @@ class InfoFoodView: UIView {
     /// Configura a view a partir dos dados recebidos
     /// - Parameter data: dados recebidos
     private func setupViewFor(data: ManagedFood) {
-        
-        self.coverImage.image = UIImage.gifImageWithURL(gifURL)
-        
-        coverImage.frame = CGRect(x: 20, y: 30, width: container.frame.width - 30, height: self.container.frame.height - 30)
+        self.coverImage.image = UIImage(named: data.pageImage.name)
 
-        
         self.container.setTitleText(with: data.name)
         self.expansiveLabel.setInfoText(for: data.benefits)
         

@@ -7,13 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		060903452919858000EC8314 /* GifHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060903442919858000EC8314 /* GifHandler.swift */; };
-		060903472919978500EC8314 /* gifPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060903462919978500EC8314 /* gifPackage.swift */; };
 		065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFBD28D2526600F024E7 /* GardenCell.swift */; };
 		065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */; };
-		06EEDA9629119BAC003CD372 /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEDA9529119BAC003CD372 /* GifView.swift */; };
-		06EEDA9A29119BF4003CD372 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEDA9929119BF4003CD372 /* iOSDevCenters+GIF.swift */; };
-		06EEDA9C2911ABF5003CD372 /* gif3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 06EEDA9B2911ABF5003CD372 /* gif3.gif */; };
+		06EEDA9A29119BF4003CD372 /* UIImage + GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06EEDA9929119BF4003CD372 /* UIImage + GIF.swift */; };
 		220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */; };
 		220A63E928D24C7100D9E2A9 /* InfoGardenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */; };
 		220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */; };
@@ -122,13 +118,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		060903442919858000EC8314 /* GifHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifHandler.swift; sourceTree = "<group>"; };
-		060903462919978500EC8314 /* gifPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifPackage.swift; sourceTree = "<group>"; };
 		065ECFBD28D2526600F024E7 /* GardenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCell.swift; sourceTree = "<group>"; };
 		065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDataSource.swift; sourceTree = "<group>"; };
-		06EEDA9529119BAC003CD372 /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
-		06EEDA9929119BF4003CD372 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
-		06EEDA9B2911ABF5003CD372 /* gif3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = gif3.gif; sourceTree = "<group>"; };
+		06EEDA9929119BF4003CD372 /* UIImage + GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + GIF.swift"; sourceTree = "<group>"; };
 		220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenView.swift; sourceTree = "<group>"; };
 		220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenController.swift; sourceTree = "<group>"; };
 		220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExpansive.swift; sourceTree = "<group>"; };
@@ -263,25 +255,6 @@
 				065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */,
 			);
 			path = DataSource;
-			sourceTree = "<group>";
-		};
-		06EEDA9729119BB1003CD372 /* Gif */ = {
-			isa = PBXGroup;
-			children = (
-				06EEDA9B2911ABF5003CD372 /* gif3.gif */,
-				06EEDA9529119BAC003CD372 /* GifView.swift */,
-				060903442919858000EC8314 /* GifHandler.swift */,
-				060903462919978500EC8314 /* gifPackage.swift */,
-			);
-			path = Gif;
-			sourceTree = "<group>";
-		};
-		06EEDA9829119BD8003CD372 /* GifExtension */ = {
-			isa = PBXGroup;
-			children = (
-				06EEDA9929119BF4003CD372 /* iOSDevCenters+GIF.swift */,
-			);
-			path = GifExtension;
 			sourceTree = "<group>";
 		};
 		220A63E228D24C1600D9E2A9 /* InfoGarden */ = {
@@ -475,7 +448,6 @@
 		222937D428C66B6200515095 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				06EEDA9829119BD8003CD372 /* GifExtension */,
 				22A3918228F7AD2000A42DC1 /* Protocol */,
 				222937DE28C66F4D00515095 /* Extensions */,
 				222937DA28C66B9800515095 /* Delegates */,
@@ -523,7 +495,6 @@
 		222937D928C66B9200515095 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				06EEDA9729119BB1003CD372 /* Gif */,
 				2229381E28C7C3DD00515095 /* Main */,
 				2229383B28C8922000515095 /* Garden */,
 				2229384428C892E900515095 /* Food */,
@@ -568,6 +539,7 @@
 		222937DE28C66F4D00515095 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				06EEDA9929119BF4003CD372 /* UIImage + GIF.swift */,
 				2229384C28C8942B00515095 /* UIViewController+setupTab.swift */,
 				2229382828C85EF700515095 /* UITextField+setupPlaceHolder.swift */,
 				2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */,
@@ -1062,7 +1034,6 @@
 			files = (
 				222937CD28C66B5800515095 /* LaunchScreen.storyboard in Resources */,
 				223B75D528F0DB8A0034B2C4 /* foodData.json in Resources */,
-				06EEDA9C2911ABF5003CD372 /* gif3.gif in Resources */,
 				223B75D628F0DB8A0034B2C4 /* gardenData.json in Resources */,
 				222937CA28C66B5800515095 /* Assets.xcassets in Resources */,
 			);
@@ -1109,7 +1080,7 @@
 				2229382628C852D200515095 /* CustomButton.swift in Sources */,
 				222937BE28C66B5600515095 /* AppDelegate.swift in Sources */,
 				220A63E928D24C7100D9E2A9 /* InfoGardenController.swift in Sources */,
-				06EEDA9A29119BF4003CD372 /* iOSDevCenters+GIF.swift in Sources */,
+				06EEDA9A29119BF4003CD372 /* UIImage + GIF.swift in Sources */,
 				2212E82B28DB8734004CCBAA /* GardenDelegate.swift in Sources */,
 				2210244B28D5272C00F412A5 /* InfoGardenMap.swift in Sources */,
 				2229386128C9D59700515095 /* ScreenSize.swift in Sources */,
@@ -1137,7 +1108,6 @@
 				B2DE495A2911B76500293E6A /* ViewControllerProtocol.swift in Sources */,
 				22A3916E28F6E62700A42DC1 /* InfoGardenCellProtocol.swift in Sources */,
 				22EDD4BE28DA4A6A001CE093 /* AppImages.swift in Sources */,
-				06EEDA9629119BAC003CD372 /* GifView.swift in Sources */,
 				222937F928C68B9B00515095 /* CollectionGroup.swift in Sources */,
 				B241564C28D2722B009F011C /* FoodDataSource.swift in Sources */,
 				2212E83D28DB9F7B004CCBAA /* InfoFoodView.swift in Sources */,
@@ -1176,7 +1146,6 @@
 				22A3918128F7862800A42DC1 /* ManagedVitamins.swift in Sources */,
 				222937E328C66F7F00515095 /* AppColors.swift in Sources */,
 				22A3917828F7854000A42DC1 /* ManagedContact.swift in Sources */,
-				060903472919978500EC8314 /* gifPackage.swift in Sources */,
 				222937FF28C68EE100515095 /* FavoriteViewController.swift in Sources */,
 				222937E928C6824600515095 /* IconInfo.swift in Sources */,
 				2229384828C8931B00515095 /* FoodController.swift in Sources */,
@@ -1192,7 +1161,6 @@
 				22A75A8C290CC681001CEA7E /* PopGestureDelegate.swift in Sources */,
 				22EDD4B728DA2E00001CE093 /* HourInfoCell.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
-				060903452919858000EC8314 /* GifHandler.swift in Sources */,
 				22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */,
 				B2DE49582911AFCE00293E6A /* OnboardingDataSource.swift in Sources */,
 				2229384F28C8964200515095 /* MainView.swift in Sources */,
