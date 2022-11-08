@@ -181,7 +181,6 @@ class GardenView: MainView {
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let collectionHeight = self.getEquivalent(400, dimension: .height)
         let lateral = self.getEquivalent(25)
         let between = self.getEquivalent(34)
         let emptySpace = self.getEmptySpace()
