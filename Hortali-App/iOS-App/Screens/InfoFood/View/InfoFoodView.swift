@@ -2,6 +2,7 @@
 
 /* Bibliotecas necessárias: */
 import UIKit
+import SpriteKit
 
 
 /// Elemento de UI da tela de ver informações dos aliementos
@@ -188,7 +189,7 @@ class InfoFoodView: UIView {
     /// - Parameter data: dados recebidos
     private func setupViewFor(data: ManagedFood) {
         self.coverImage.image = UIImage(named: data.pageImage.name)
-        
+
         self.container.setTitleText(with: data.name)
         self.expansiveLabel.setInfoText(for: data.benefits)
         

@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.window = UIWindow(windowScene: windowScene)
         self.window?.rootViewController = MainController()
+//        self.window?.rootViewController = OnboardingViewController()
         self.window?.makeKeyAndVisible()
     }
 }
