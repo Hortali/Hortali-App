@@ -22,6 +22,7 @@ class OnboardingCell: UICollectionViewCell {
         return lbl
     }()
     
+    /// Título da celula da tela de onboarding com fonte autoral
     private var secondScreenTitle: UILabel = {
         let lbl = CustomViews.newLabel()
         //lbl.adjustsFontSizeToFitWidth = true
@@ -31,6 +32,7 @@ class OnboardingCell: UICollectionViewCell {
         return lbl
     }()
     
+    /// Texto explicativo da tela de onboarding
     private var firstScreenText: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
@@ -40,6 +42,7 @@ class OnboardingCell: UICollectionViewCell {
         return lbl
     }()
     
+    /// Texto explicativo da tela de onboarding com fonte autoral
     private var secondScreenText: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
@@ -50,7 +53,6 @@ class OnboardingCell: UICollectionViewCell {
         return lbl
     }()
     
-    
     /// Imagem usada nas telas de onboarding
     private let screenImage: UIImageView = {
         let img = CustomViews.newImage()
@@ -60,6 +62,7 @@ class OnboardingCell: UICollectionViewCell {
     
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
+    
     
     
     /* MARK: - Construtor */
@@ -97,9 +100,6 @@ class OnboardingCell: UICollectionViewCell {
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-        /*
-         Aqui vão adicionar os elementos na tela (.addSubViews())
-         */
         self.contentView.addSubview(firstScreenTitle)
         self.contentView.addSubview(secondScreenTitle)
         self.contentView.addSubview(screenImage)
@@ -110,26 +110,14 @@ class OnboardingCell: UICollectionViewCell {
     
     /// Personalização da UI
     private func setupUI() {
-        /*
-         Aqui vão definidos as bordas, cor de fundo da view
-         */
         self.backgroundColor = UIColor(.gardenBack)
         self.screenImage.backgroundColor = .white
         self.screenImage.layer.cornerRadius = self.getEquivalent(30)
-        // Define o tamanho que a célula vai ter
-        // self.collectionFlow.itemSize = CGSize(width: 100, height: 100)
     }
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        /*
-         Aqui vão ser configurados os textos estáticos, ícones dos botões
-         tamanho das fontes, peso das fontes.. (para botões e labels ou até
-         mesmo para putrp elemento caso tenha)
-         */
-        
-        /* Labels */
         self.firstScreenTitle.setupText(with: FontInfo(text: "Veja as hortas de", fontSize: 32, weight: .bold))
         self.secondScreenTitle.setupText(with: FontInfo(text: "Sao Paulo", fontSize: 32, weight: .bold))
         self.secondScreenTitle.font =  UIFont(name: "AmsterdamGraffiti", size: 52)
@@ -139,7 +127,6 @@ class OnboardingCell: UICollectionViewCell {
         self.secondScreenText.setupText(with: FontInfo(text: "onde você pode encontrar as hortas mais próximas ou até buscar por hortas específicas.",
                                                  fontSize: 20,
                                                  weight: .regular))
-        /* Botões */
     }
     
     
@@ -167,19 +154,22 @@ class OnboardingCell: UICollectionViewCell {
             self.firstScreenTitle.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
             self.firstScreenTitle.heightAnchor.constraint(equalToConstant: labelHeight/2),
             
+            
             self.secondScreenTitle.topAnchor.constraint(equalTo: self.firstScreenTitle.bottomAnchor, constant: -getEquivalent(15)),
             self.secondScreenTitle.leadingAnchor.constraint(equalTo: self.firstScreenTitle.leadingAnchor),
             self.secondScreenTitle.trailingAnchor.constraint(equalTo: self.firstScreenTitle.trailingAnchor),
-            //self.secondScreenTitle.heightAnchor.constraint(equalToConstant: labelHeight/2),
+
             
             self.screenImage.topAnchor.constraint(equalTo: self.secondScreenTitle.bottomAnchor, constant: labelBetween),
             self.screenImage.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             self.screenImage.heightAnchor.constraint(equalToConstant: imageHeight),
             self.screenImage.widthAnchor.constraint(equalToConstant: imageWidth),
             
+            
             self.firstScreenText.topAnchor.constraint(equalTo: self.screenImage.bottomAnchor, constant: (labelBetween / 2)),
             self.firstScreenText.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
             self.firstScreenText.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
+            
             
             self.secondScreenText.topAnchor.constraint(equalTo: self.firstScreenText.bottomAnchor),
             self.secondScreenText.leadingAnchor.constraint(equalTo: self.firstScreenText.leadingAnchor),

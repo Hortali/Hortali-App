@@ -9,9 +9,6 @@ class OnboardingView: UIView {
     
     // Views
     
-    /// Constraints que vão mudar de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-    
     /// Collection das telas de onboarding
     private let onboardingGroup = CollectionGroup(style: .justCollection)
     
@@ -29,7 +26,7 @@ class OnboardingView: UIView {
     /// Botão que leva a próxima tela de onboarding
     private let nextButton = {
         let btn = CustomViews.newButton()
-        btn.setupText(with: FontInfo(text: "Próximo",fontSize: 17, weight: .regular))
+        btn.setupText(with: FontInfo(text: "Proximo",fontSize: 17, weight: .regular))
         btn.isCircular = false
         btn.backgroundColor = .clear
         btn.setTitleColor(UIColor.white, for:.normal)
@@ -50,6 +47,13 @@ class OnboardingView: UIView {
     
     /// Controle de páginas
     private let screensPageControl = CustomViews.newPageControl()
+    
+    
+    // Outros
+    
+    /// Constraints que vão mudar de acordo com o tamanho da tela
+    private var dynamicConstraints: [NSLayoutConstraint] = []
+    
     
     /// Configurações do layout da collection
     private let collectionFlow: UICollectionViewFlowLayout = {
@@ -77,11 +81,11 @@ class OnboardingView: UIView {
     
     /* MARK: - Encapsulamento */
     
-    /* Ações dos Botões */
+    /* Ações de botões */
     
-    /// Define a ação do botão
-    public func setAction(target: Any?, action: Selector) -> Void {
-        // self. .addTarget(target, action: action, for: .touchDown)
+    /// Define a ação do botão de voltar
+    public func setCloseButtonAction(target: Any?, action: Selector) -> Void {
+        self.closeButton.addTarget(target, action: action, for: .touchDown)
     }
     
     
@@ -145,11 +149,11 @@ class OnboardingView: UIView {
     private func setupUI() {
         self.backgroundColor = .gray
         
-        onboardingGroup.collection.layer.cornerRadius = self.getEquivalent(30)
-        onboardingGroup.collection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        self.onboardingGroup.collection.layer.cornerRadius = self.getEquivalent(30)
+        self.onboardingGroup.collection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         self.screensPageControl.layer.cornerRadius = self.screensPageControl.bounds.height / 2
-        screensPageControl.numberOfPages = 4
+        self.screensPageControl.numberOfPages = 4
         
         // Define o tamanho que a célula vai ter
         let cellHeight = self.onboardingGroup.collection.frame.height
@@ -160,15 +164,9 @@ class OnboardingView: UIView {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        /*
-         Aqui vão ser configurados os textos estáticos, ícones dos botões
-         tamanho das fontes, peso das fontes.. (para botões e labels ou até
-         mesmo para putrp elemento caso tenha)
-         */
-        
-        /* Labels */
-        
-        /* Botões */
+        self.closeButton.titleLabel?.font = UIFont(name: "AmsterdamGraffiti", size: 24)
+        self.nextButton.titleLabel?.font = UIFont(name: "AmsterdamGraffiti", size: 24)
+        self.backButton.titleLabel?.font = UIFont(name: "AmsterdamGraffiti", size: 24)
     }
     
     
@@ -186,15 +184,19 @@ class OnboardingView: UIView {
             self.onboardingGroup.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.onboardingGroup.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
+            
             self.screensPageControl.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.screensPageControl.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -between),
+            
             
             self.closeButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: lateral),
             self.closeButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
             
+            
             self.nextButton.centerYAnchor.constraint(equalTo: self.screensPageControl.centerYAnchor),
             self.nextButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
             self.nextButton.leadingAnchor.constraint(equalTo: self.screensPageControl.trailingAnchor, constant: buttonBetween),
+            
             
             self.backButton.centerYAnchor.constraint(equalTo: self.screensPageControl.centerYAnchor),
             self.backButton.trailingAnchor.constraint(equalTo: self.screensPageControl.leadingAnchor, constant: -buttonBetween),

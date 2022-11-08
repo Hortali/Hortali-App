@@ -8,11 +8,6 @@ import UIKit
 class OnboardingViewController: UIViewController{
     
     /* MARK: - Atributos */
-    /*
-        Implementação das variáveis (atributos) da classe.
-
-        AVISO: Apague esse campo de comentário
-    */
     
     /* View */
 
@@ -35,7 +30,6 @@ class OnboardingViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setupNavigation()
         self.setupDelegates()
         self.setupButtonsAction()
     }
@@ -43,40 +37,24 @@ class OnboardingViewController: UIViewController{
 
 
     /* MARK: - Protocolo */
-    /*
-        Implementação das funções do protocolo que a controller está herdando.
-
-        AVISO: Apague esse campo de comentário.
-    */
     
     
 
     /* MARK: - Ações de botões */
-    /*
-        Implementação das funções de ações dos botões. Todas as funções que estão
-        nessa área do mark devem ter o @objc apenas.
-
-        AVISO: Apague esse campo de comentário.
-    */
+    
+    /// Ação de expandir uma label
+    @objc
+    private func closeAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     
     
     /* MARK: - Configurações */
-    /*
-        Funções responsáveis por fazer configurações gerais.
-
-        AVISO: Apague esse campo de comentário.
-    */
-
-    /// Configurções da navigation
-    private func setupNavigation() {
-    
-    }
-
     
     /// Definindo as ações dos botões
     private func setupButtonsAction() {
-      
+        self.myView.setCloseButtonAction(target: self, action: #selector(self.closeAction))
     }
     
     

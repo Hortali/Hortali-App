@@ -20,6 +20,17 @@ class GardenView: MainView {
     /// View de referência para centralizar as células da Collection
     private let referenceView: UIView = CustomViews.newView()
     
+    /// Botão que leva à tela de onboarding
+    private let onboardingButton: UIButton = {
+        let btn = CustomViews.newButton()
+        btn.setupText(with: FontInfo(text: "?",fontSize: 25, weight: .semibold))
+        btn.circleSize = 30
+        btn.backgroundColor = UIColor(originalColor: .greenLight)
+        btn.setTitleColor(UIColor(.title), for:.normal)
+        
+        return btn
+    }()
+    
     
     // Outros
     
@@ -85,6 +96,13 @@ class GardenView: MainView {
     }
     
     
+    /* Ações de botões */
+    
+    /// Define a ação do botão de voltar
+    public func setOnboardingButtonAction(target: Any?, action: Selector) -> Void {
+        self.onboardingButton.addTarget(target, action: action, for: .touchDown)
+    }
+    
     
     /* MARK: - Ciclo de Vida */
     
@@ -119,6 +137,7 @@ class GardenView: MainView {
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.addSubview(self.search)
+        self.addSubview(self.onboardingButton)
         self.contentView.addSubview(self.referenceView)
         self.contentView.addSubview(self.gardenGroup)
     }
@@ -145,6 +164,8 @@ class GardenView: MainView {
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
         let collectionHeight = self.getEquivalent(400, dimension: .height)
+        let lateral = self.getEquivalent(25)
+        let between = self.getEquivalent(34)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
@@ -163,7 +184,11 @@ class GardenView: MainView {
             self.gardenGroup.heightAnchor.constraint(equalToConstant: getEquivalent(collectionHeight)),
             self.gardenGroup.centerYAnchor.constraint(equalTo: self.referenceView.centerYAnchor),
             self.gardenGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.gardenGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
+            self.gardenGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            
+            
+            self.onboardingButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: between),
+            self.onboardingButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
