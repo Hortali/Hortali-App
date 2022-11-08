@@ -42,11 +42,17 @@ class FavoriteViewController: UIViewController, GardenProtocol, FoodProtocol {
         super.viewDidLoad()
         
         self.setupDelegates()
-        self.setupDataSourcesData()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.setupDataSourcesData()
+    }
 
-
+    
+    
     /* MARK: - Protocolo */
     
     internal func openGardenInfo(for index: Int) {

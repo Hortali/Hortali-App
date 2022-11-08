@@ -26,19 +26,25 @@ class CustomScroll: UIView {
     }()
     
     
+    // Constraints
+    
+    /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
+    private var dynamicConstraints: [NSLayoutConstraint] = []
+    
+    
     // Outros
     
     /// Tamanho da scrollView
-    public var scrollContentSize = CGSize() {
+    private var scrollContentSize = CGSize() {
         didSet {
             self.setupScroollSize()
         }
     }
     
-    /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-
-
+    /// Último elemento adicionado na scroll
+    private var lastViewAdded: UIView?
+    
+    
 
     /* MARK: - Construtor */
     
@@ -51,7 +57,18 @@ class CustomScroll: UIView {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-
+    
+    
+    /* MARK: - Encapsulamento */
+    
+    /// Adiciona uma view na scroll
+    /// - Parameter view: view que vai ser adicionada
+    public func addViewInScroll(_ view: UIView) {
+        self.contentView.addSubview(view)
+        self.lastViewAdded = view
+    }
+    
+    
     
     /* MARK: - Ciclo de Vida */
     
@@ -66,6 +83,32 @@ class CustomScroll: UIView {
     
     /* MARK: - Configurações */
     
+    /// Atualiza o tamanho da scroll a partir da posição do último elemento adicionado
+    public func updateScrollSize() {
+        guard
+            let lastViewAdded = self.lastViewAdded,
+            let superview = self.superview
+        else { return }
+         
+        var height = lastViewAdded.frame.origin.y + lastViewAdded.frame.height
+        
+        if height > self.frame.height {
+            let removeSpace = superview.safeAreaInsets.bottom
+            
+            if (height - removeSpace) > superview.bounds.height {
+                height -= removeSpace
+            }
+        }
+        
+        if height != self.frame.height {
+            self.scrollContentSize = CGSize(
+                width: superview.bounds.width,
+                height: height
+            )
+        }
+    }
+    
+    
     /// Configura o tamanho da scroll e a contentView dela
     private func setupScroollSize() {
         self.scroll.frame = self.bounds
@@ -73,7 +116,6 @@ class CustomScroll: UIView {
         
         self.scroll.contentSize = self.scrollContentSize
         self.scroll.contentSize.width = 0
-        
     }
     
     
