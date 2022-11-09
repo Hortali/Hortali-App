@@ -72,6 +72,20 @@
 		2229386128C9D59700515095 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386028C9D59700515095 /* ScreenSize.swift */; };
 		2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386228C9D5CE00515095 /* AdaptiveLayout.swift */; };
 		2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */; };
+		22306E10291C20B400FF46E5 /* DBImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306DFA291C20B400FF46E5 /* DBImage.swift */; };
+		22306E12291C20B400FF46E5 /* DBAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306DFC291C20B400FF46E5 /* DBAddress.swift */; };
+		22306E14291C20B400FF46E5 /* DBTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306DFE291C20B400FF46E5 /* DBTag.swift */; };
+		22306E16291C20B400FF46E5 /* DBCategorie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E00291C20B400FF46E5 /* DBCategorie.swift */; };
+		22306E18291C20B400FF46E5 /* DBContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E02291C20B400FF46E5 /* DBContact.swift */; };
+		22306E1A291C20B400FF46E5 /* DBGarden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E04291C20B400FF46E5 /* DBGarden.swift */; };
+		22306E1C291C20B400FF46E5 /* DBConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E06291C20B400FF46E5 /* DBConfiguration.swift */; };
+		22306E1E291C20B400FF46E5 /* DBHourInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E08291C20B400FF46E5 /* DBHourInfo.swift */; };
+		22306E20291C20B400FF46E5 /* DBFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E0A291C20B400FF46E5 /* DBFood.swift */; };
+		22306E22291C20B400FF46E5 /* DBVitamin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E0C291C20B400FF46E5 /* DBVitamin.swift */; };
+		22306E24291C20B400FF46E5 /* DBTutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E0E291C20B400FF46E5 /* DBTutorial.swift */; };
+		22306E29291C279D00FF46E5 /* CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E28291C279D00FF46E5 /* CoreDataProperties.swift */; };
+		22306E2D291C27FD00FF46E5 /* ErrorCDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E2B291C27FD00FF46E5 /* ErrorCDHandler.swift */; };
+		22306E2E291C27FD00FF46E5 /* ErrorWarnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E2C291C27FD00FF46E5 /* ErrorWarnings.swift */; };
 		223B75CB28F0D99B0034B2C4 /* UDHandler+DataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75CA28F0D99B0034B2C4 /* UDHandler+DataType.swift */; };
 		223B75CD28F0D9B00034B2C4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75CC28F0D9B00034B2C4 /* DataManager.swift */; };
 		223B75D528F0DB8A0034B2C4 /* foodData.json in Resources */ = {isa = PBXBuildFile; fileRef = 223B75D328F0DB890034B2C4 /* foodData.json */; };
@@ -178,6 +192,20 @@
 		2229386028C9D59700515095 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		2229386228C9D5CE00515095 /* AdaptiveLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveLayout.swift; sourceTree = "<group>"; };
 		2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+setupIconsColor.swift"; sourceTree = "<group>"; };
+		22306DFA291C20B400FF46E5 /* DBImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBImage.swift; sourceTree = "<group>"; };
+		22306DFC291C20B400FF46E5 /* DBAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBAddress.swift; sourceTree = "<group>"; };
+		22306DFE291C20B400FF46E5 /* DBTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBTag.swift; sourceTree = "<group>"; };
+		22306E00291C20B400FF46E5 /* DBCategorie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBCategorie.swift; sourceTree = "<group>"; };
+		22306E02291C20B400FF46E5 /* DBContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBContact.swift; sourceTree = "<group>"; };
+		22306E04291C20B400FF46E5 /* DBGarden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBGarden.swift; sourceTree = "<group>"; };
+		22306E06291C20B400FF46E5 /* DBConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBConfiguration.swift; sourceTree = "<group>"; };
+		22306E08291C20B400FF46E5 /* DBHourInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHourInfo.swift; sourceTree = "<group>"; };
+		22306E0A291C20B400FF46E5 /* DBFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBFood.swift; sourceTree = "<group>"; };
+		22306E0C291C20B400FF46E5 /* DBVitamin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBVitamin.swift; sourceTree = "<group>"; };
+		22306E0E291C20B400FF46E5 /* DBTutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBTutorial.swift; sourceTree = "<group>"; };
+		22306E28291C279D00FF46E5 /* CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataProperties.swift; sourceTree = "<group>"; };
+		22306E2B291C27FD00FF46E5 /* ErrorCDHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCDHandler.swift; sourceTree = "<group>"; };
+		22306E2C291C27FD00FF46E5 /* ErrorWarnings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorWarnings.swift; sourceTree = "<group>"; };
 		223B75CA28F0D99B0034B2C4 /* UDHandler+DataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UDHandler+DataType.swift"; sourceTree = "<group>"; };
 		223B75CC28F0D9B00034B2C4 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		223B75D328F0DB890034B2C4 /* foodData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = foodData.json; sourceTree = "<group>"; };
@@ -444,6 +472,7 @@
 		222937D528C66B6D00515095 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				22306E2A291C27EE00FF46E5 /* Errors Handlers */,
 				222937D828C66B8900515095 /* Design System */,
 				222937D728C66B8200515095 /* Assets */,
 				223B75C728F0D9770034B2C4 /* Storage */,
@@ -455,6 +484,8 @@
 		222937D628C66B7200515095 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				22306E27291C279000FF46E5 /* Protocols */,
+				22306E26291C210C00FF46E5 /* Entities */,
 				222937C628C66B5600515095 /* DataBase.xcdatamodeld */,
 			);
 			path = "Core Data";
@@ -742,6 +773,49 @@
 				2229385C28C9D55700515095 /* Dimension.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		22306E26291C210C00FF46E5 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				22306DFA291C20B400FF46E5 /* DBImage.swift */,
+				22306DFC291C20B400FF46E5 /* DBAddress.swift */,
+				22306DFE291C20B400FF46E5 /* DBTag.swift */,
+				22306E00291C20B400FF46E5 /* DBCategorie.swift */,
+				22306E02291C20B400FF46E5 /* DBContact.swift */,
+				22306E04291C20B400FF46E5 /* DBGarden.swift */,
+				22306E06291C20B400FF46E5 /* DBConfiguration.swift */,
+				22306E08291C20B400FF46E5 /* DBHourInfo.swift */,
+				22306E0A291C20B400FF46E5 /* DBFood.swift */,
+				22306E0C291C20B400FF46E5 /* DBVitamin.swift */,
+				22306E0E291C20B400FF46E5 /* DBTutorial.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		22306E27291C279000FF46E5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				22306E28291C279D00FF46E5 /* CoreDataProperties.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		22306E2A291C27EE00FF46E5 /* Errors Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				22306E2F291C280200FF46E5 /* Protocols */,
+				22306E2B291C27FD00FF46E5 /* ErrorCDHandler.swift */,
+			);
+			path = "Errors Handlers";
+			sourceTree = "<group>";
+		};
+		22306E2F291C280200FF46E5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				22306E2C291C27FD00FF46E5 /* ErrorWarnings.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		223B75C728F0D9770034B2C4 /* Storage */ = {
@@ -1033,12 +1107,16 @@
 				2229383F28C8924400515095 /* GardenView.swift in Sources */,
 				B241564728D26E4C009F011C /* FoodCell.swift in Sources */,
 				2229382628C852D200515095 /* CustomButton.swift in Sources */,
+				22306E1E291C20B400FF46E5 /* DBHourInfo.swift in Sources */,
 				222937BE28C66B5600515095 /* AppDelegate.swift in Sources */,
 				220A63E928D24C7100D9E2A9 /* InfoGardenController.swift in Sources */,
+				22306E2D291C27FD00FF46E5 /* ErrorCDHandler.swift in Sources */,
 				2212E82B28DB8734004CCBAA /* GardenDelegate.swift in Sources */,
 				2210244B28D5272C00F412A5 /* InfoGardenMap.swift in Sources */,
 				2229386128C9D59700515095 /* ScreenSize.swift in Sources */,
 				22EDD4AB28D95812001CE093 /* CustomStack.swift in Sources */,
+				22306E14291C20B400FF46E5 /* DBTag.swift in Sources */,
+				22306E20291C20B400FF46E5 /* DBFood.swift in Sources */,
 				2229384D28C8942B00515095 /* UIViewController+setupTab.swift in Sources */,
 				2210244828D5230C00F412A5 /* InfoGardenCellType.swift in Sources */,
 				222937EB28C6828500515095 /* UILabel+FontInfo.swift in Sources */,
@@ -1064,12 +1142,15 @@
 				222937F928C68B9B00515095 /* CollectionGroup.swift in Sources */,
 				B241564C28D2722B009F011C /* FoodDataSource.swift in Sources */,
 				2212E83D28DB9F7B004CCBAA /* InfoFoodView.swift in Sources */,
+				22306E1A291C20B400FF46E5 /* DBGarden.swift in Sources */,
+				22306E22291C20B400FF46E5 /* DBVitamin.swift in Sources */,
 				222937C028C66B5600515095 /* SceneDelegate.swift in Sources */,
 				065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */,
 				223B75E328F1473D0034B2C4 /* FoodDataManager.swift in Sources */,
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
 				22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */,
 				2210245128D529FA00F412A5 /* InfoGardenReport.swift in Sources */,
+				22306E18291C20B400FF46E5 /* DBContact.swift in Sources */,
 				2210246C28D9017700F412A5 /* UIImage+ContactIcon.swift in Sources */,
 				22A3918428F7AD5D00A42DC1 /* SearchProtocol.swift in Sources */,
 				2212E83B28DB9F60004CCBAA /* InfoFoodController.swift in Sources */,
@@ -1094,9 +1175,14 @@
 				22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */,
 				223B75E828F16D670034B2C4 /* FavoriteUpdate.swift in Sources */,
 				22EDD4B528DA2DC7001CE093 /* HourInfoDataSource.swift in Sources */,
+				22306E2E291C27FD00FF46E5 /* ErrorWarnings.swift in Sources */,
 				22A3918128F7862800A42DC1 /* ManagedVitamins.swift in Sources */,
+				22306E24291C20B400FF46E5 /* DBTutorial.swift in Sources */,
 				222937E328C66F7F00515095 /* AppColors.swift in Sources */,
 				22A3917828F7854000A42DC1 /* ManagedContact.swift in Sources */,
+				22306E16291C20B400FF46E5 /* DBCategorie.swift in Sources */,
+				22306E12291C20B400FF46E5 /* DBAddress.swift in Sources */,
+				22306E10291C20B400FF46E5 /* DBImage.swift in Sources */,
 				222937FF28C68EE100515095 /* FavoriteViewController.swift in Sources */,
 				222937E928C6824600515095 /* IconInfo.swift in Sources */,
 				2229384828C8931B00515095 /* FoodController.swift in Sources */,
@@ -1104,6 +1190,7 @@
 				22A3917428F784B200A42DC1 /* ManagedGardenData.swift in Sources */,
 				222937E128C66F7300515095 /* AppIcons.swift in Sources */,
 				2229385528C9335C00515095 /* UIView+AdpativeLayout.swift in Sources */,
+				22306E1C291C20B400FF46E5 /* DBConfiguration.swift in Sources */,
 				2210245928D845D800F412A5 /* InfoGardenImagesDataSource.swift in Sources */,
 				22A3917628F784FB00A42DC1 /* ManagedGarden.swift in Sources */,
 				2210244628D5201500F412A5 /* InfoGardenInfosCell.swift in Sources */,
@@ -1113,6 +1200,7 @@
 				22EDD4B728DA2E00001CE093 /* HourInfoCell.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
 				22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */,
+				22306E29291C279D00FF46E5 /* CoreDataProperties.swift in Sources */,
 				2229384F28C8964200515095 /* MainView.swift in Sources */,
 				2229380128C68EF500515095 /* FavoriteView.swift in Sources */,
 				22EDD4B328DA2D4F001CE093 /* HourInfoController.swift in Sources */,
