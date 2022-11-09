@@ -88,11 +88,21 @@ class OnboardingView: UIView {
         self.closeButton.addTarget(target, action: action, for: .touchDown)
     }
     
+    
     /// Atualiza a página no Page Control
     /// - Parameter index: index (número) da página
     public func updateCurrentPage(for index: Int) {
         self.screensPageControl.currentPage = index
     }
+
+
+    /// Define ação dos botões de voltar e próximo
+    public func setNextButtonAction(target: Any?, action: Selector) -> Void {
+        self.backButton.addTarget(target, action: action, for: .touchDown)
+        self.nextButton.addTarget(target, action: action, for: .touchDown)
+    }
+    
+    
     
     /* MARK: - Ciclo de Vida */
     

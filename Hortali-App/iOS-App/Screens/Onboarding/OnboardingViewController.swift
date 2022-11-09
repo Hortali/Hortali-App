@@ -53,6 +53,11 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
         self.navigationController?.popViewController(animated: true)
     }
     
+    @objc
+    private func nextAction() {
+        self.navigationController?.viewControllers.count
+    }
+    
     
     
     /* MARK: - Configurações */
@@ -60,6 +65,7 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     /// Definindo as ações dos botões
     private func setupButtonsAction() {
         self.myView.setCloseButtonAction(target: self, action: #selector(self.closeAction))
+        self.myView.setNextButtonAction(target: self, action: #selector(self.nextAction))
     }
     
     
