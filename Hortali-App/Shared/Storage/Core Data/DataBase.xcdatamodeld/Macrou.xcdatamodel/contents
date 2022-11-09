@@ -33,6 +33,7 @@
         <relationship name="categorie" maxCount="1" deletionRule="Nullify" destinationEntity="DBCategorie" inverseName="foods" inverseEntity="DBCategorie"/>
         <relationship name="cover" maxCount="1" deletionRule="Nullify" destinationEntity="DBImage" inverseName="foodCover" inverseEntity="DBImage"/>
         <relationship name="page" maxCount="1" deletionRule="Nullify" destinationEntity="DBImage" inverseName="foodPage" inverseEntity="DBImage"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBTag" inverseName="foods" inverseEntity="DBTag"/>
         <relationship name="tutorials" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBTutorial" inverseName="foods" inverseEntity="DBTutorial"/>
         <relationship name="vitamins" toMany="YES" deletionRule="Nullify" destinationEntity="DBVitamin" inverseName="foods" inverseEntity="DBVitamin"/>
     </entity>
@@ -71,7 +72,7 @@
     <entity name="DBTag" representedClassName="DBTag" syncable="YES">
         <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
-        <relationship name="foods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBFood"/>
+        <relationship name="foods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBFood" inverseName="tags" inverseEntity="DBFood"/>
         <relationship name="gardens" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBGarden" inverseName="tags" inverseEntity="DBGarden"/>
     </entity>
     <entity name="DBTutorial" representedClassName="DBTutorial" syncable="YES">
