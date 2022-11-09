@@ -12,12 +12,6 @@
         <attribute name="name" attributeType="String"/>
         <relationship name="foods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBFood" inverseName="categorie" inverseEntity="DBFood"/>
     </entity>
-    <entity name="DBConfiguration" representedClassName="DBConfiguration" syncable="YES">
-        <attribute name="gardenVisualization" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="isFirstTime" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="lastUpdate" attributeType="String"/>
-        <attribute name="version" attributeType="String"/>
-    </entity>
     <entity name="DBContact" representedClassName="DBContact" syncable="YES">
         <attribute name="contact" attributeType="String"/>
         <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -68,6 +62,12 @@
         <relationship name="gardenCover" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBGarden" inverseName="cover" inverseEntity="DBGarden"/>
         <relationship name="gardenPages" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBGarden" inverseName="pages" inverseEntity="DBGarden"/>
         <relationship name="tutorial" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBTutorial" inverseName="image" inverseEntity="DBTutorial"/>
+    </entity>
+    <entity name="DBSetting" representedClassName="DBSetting" syncable="YES">
+        <attribute name="gardenVisualization" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isFirstTime" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="lastUpdate" attributeType="String"/>
+        <attribute name="version" attributeType="String"/>
     </entity>
     <entity name="DBTag" representedClassName="DBTag" syncable="YES">
         <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
