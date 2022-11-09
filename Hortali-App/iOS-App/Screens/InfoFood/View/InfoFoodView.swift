@@ -2,7 +2,6 @@
 
 /* Bibliotecas necessárias: */
 import UIKit
-import SpriteKit
 
 
 /// Elemento de UI da tela de ver informações dos aliementos
