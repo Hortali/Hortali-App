@@ -4,8 +4,8 @@
 import CoreData
 
 
-@objc(DBConfiguration)
-public class DBConfiguration: NSManagedObject, Identifiable {
+@objc(DBSetting)
+public class DBSetting: NSManagedObject, Identifiable {
     
     /* MARK: - Atributos */
     
@@ -19,7 +19,7 @@ public class DBConfiguration: NSManagedObject, Identifiable {
     /* MARK: - Métodos */
     
     @nonobjc
-    public class func fetchRequest() -> NSFetchRequest<DBConfiguration> {
-        return NSFetchRequest<DBConfiguration>(entityName: "DBConfiguration")
+    public class func fetchRequest() -> NSFetchRequest<DBSetting> {
+        return NSFetchRequest<DBSetting>(entityName: "DBSetting")
     }
 }

@@ -78,7 +78,7 @@
 		22306E16291C20B400FF46E5 /* DBCategorie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E00291C20B400FF46E5 /* DBCategorie.swift */; };
 		22306E18291C20B400FF46E5 /* DBContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E02291C20B400FF46E5 /* DBContact.swift */; };
 		22306E1A291C20B400FF46E5 /* DBGarden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E04291C20B400FF46E5 /* DBGarden.swift */; };
-		22306E1C291C20B400FF46E5 /* DBConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E06291C20B400FF46E5 /* DBConfiguration.swift */; };
+		22306E1C291C20B400FF46E5 /* DBSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E06291C20B400FF46E5 /* DBSetting.swift */; };
 		22306E1E291C20B400FF46E5 /* DBHourInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E08291C20B400FF46E5 /* DBHourInfo.swift */; };
 		22306E20291C20B400FF46E5 /* DBFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E0A291C20B400FF46E5 /* DBFood.swift */; };
 		22306E22291C20B400FF46E5 /* DBVitamin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E0C291C20B400FF46E5 /* DBVitamin.swift */; };
@@ -198,7 +198,7 @@
 		22306E00291C20B400FF46E5 /* DBCategorie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBCategorie.swift; sourceTree = "<group>"; };
 		22306E02291C20B400FF46E5 /* DBContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBContact.swift; sourceTree = "<group>"; };
 		22306E04291C20B400FF46E5 /* DBGarden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBGarden.swift; sourceTree = "<group>"; };
-		22306E06291C20B400FF46E5 /* DBConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBConfiguration.swift; sourceTree = "<group>"; };
+		22306E06291C20B400FF46E5 /* DBSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBSetting.swift; sourceTree = "<group>"; };
 		22306E08291C20B400FF46E5 /* DBHourInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHourInfo.swift; sourceTree = "<group>"; };
 		22306E0A291C20B400FF46E5 /* DBFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBFood.swift; sourceTree = "<group>"; };
 		22306E0C291C20B400FF46E5 /* DBVitamin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBVitamin.swift; sourceTree = "<group>"; };
@@ -784,7 +784,7 @@
 				22306E00291C20B400FF46E5 /* DBCategorie.swift */,
 				22306E02291C20B400FF46E5 /* DBContact.swift */,
 				22306E04291C20B400FF46E5 /* DBGarden.swift */,
-				22306E06291C20B400FF46E5 /* DBConfiguration.swift */,
+				22306E06291C20B400FF46E5 /* DBSetting.swift */,
 				22306E08291C20B400FF46E5 /* DBHourInfo.swift */,
 				22306E0A291C20B400FF46E5 /* DBFood.swift */,
 				22306E0C291C20B400FF46E5 /* DBVitamin.swift */,
@@ -1190,7 +1190,7 @@
 				22A3917428F784B200A42DC1 /* ManagedGardenData.swift in Sources */,
 				222937E128C66F7300515095 /* AppIcons.swift in Sources */,
 				2229385528C9335C00515095 /* UIView+AdpativeLayout.swift in Sources */,
-				22306E1C291C20B400FF46E5 /* DBConfiguration.swift in Sources */,
+				22306E1C291C20B400FF46E5 /* DBSetting.swift in Sources */,
 				2210245928D845D800F412A5 /* InfoGardenImagesDataSource.swift in Sources */,
 				22A3917628F784FB00A42DC1 /* ManagedGarden.swift in Sources */,
 				2210244628D5201500F412A5 /* InfoGardenInfosCell.swift in Sources */,
