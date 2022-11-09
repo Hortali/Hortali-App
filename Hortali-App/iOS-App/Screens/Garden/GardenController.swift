@@ -105,7 +105,9 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     private func onboardingAction() {
         let controller = OnboardingViewController()
         controller.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(controller, animated: true)
+        
+        self.navigationController?.present(controller, animated: true)
+        self.navigationController?.modalTransitionStyle = .coverVertical
     }
     
     

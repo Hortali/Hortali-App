@@ -46,6 +46,7 @@ class OnboardingViewController: UIViewController{
     @objc
     private func closeAction() {
         self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true)
     }
     
     @objc
