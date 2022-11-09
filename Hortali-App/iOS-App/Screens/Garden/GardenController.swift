@@ -101,6 +101,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     }
     
     
+    /// Função para exibir tela de onboarding
     @objc
     private func onboardingAction() {
         let controller = OnboardingViewController()

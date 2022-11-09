@@ -4,8 +4,8 @@
 import UIKit
 
 
-/// Controller responsável POR
-class OnboardingViewController: UIViewController{
+/// Controller responsável pela tela de onboarding
+class OnboardingViewController: UIViewController, OnboardingProtocol{
     
     /* MARK: - Atributos */
     
@@ -17,6 +17,8 @@ class OnboardingViewController: UIViewController{
     
     /* Delegate & Data Sources */
     private let onboardingDataSource = OnboardingDataSource()
+    
+    private let onboardingDelegate = OnboardingDelegate()
     
 
         
@@ -38,11 +40,14 @@ class OnboardingViewController: UIViewController{
 
     /* MARK: - Protocolo */
     
+    internal func updateCurrentPage(to index: Int) {
+        self.myView.updateCurrentPage(for: index)
+    }
     
 
     /* MARK: - Ações de botões */
     
-    /// Ação de expandir uma label
+    /// Ação de fechar a tela de onboarding
     @objc
     private func closeAction() {
         self.navigationController?.popViewController(animated: true)
@@ -60,6 +65,9 @@ class OnboardingViewController: UIViewController{
     
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
+        self.onboardingDelegate.setProtocol(with: self)
+        
         self.myView.setDataSource(with: self.onboardingDataSource)
+        self.myView.setDelegate(with: self.onboardingDelegate)
     }
 }

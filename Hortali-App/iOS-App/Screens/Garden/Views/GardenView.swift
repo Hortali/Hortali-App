@@ -23,8 +23,6 @@ class GardenView: MainView {
     /// Botão que leva à tela de onboarding
     private let onboardingButton: UIButton = {
         let btn = CustomViews.newButton()
-        btn.setupText(with: FontInfo(text: "?",fontSize: 25, weight: .semibold))
-        btn.circleSize = 30
         btn.backgroundColor = UIColor(originalColor: .greenLight)
         btn.setTitleColor(UIColor(.title), for:.normal)
         
@@ -97,7 +95,7 @@ class GardenView: MainView {
     
     /* Ações de botões */
     
-    /// Define a ação do botão de voltar
+    /// Define a ação do botão de ajuda
     public func setOnboardingButtonAction(target: Any?, action: Selector) -> Void {
         self.onboardingButton.addTarget(target, action: action, for: .touchDown)
     }
@@ -176,13 +174,14 @@ class GardenView: MainView {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
         self.setTitleText(with: "Descubra novas \nhortas")
+        self.onboardingButton.setupText(with: FontInfo(text: "?",fontSize: 25, weight: .semibold))
     }
     
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
         let lateral = self.getEquivalent(25)
-        let between = self.getEquivalent(34)
+        let between = self.getEquivalent(36)
         let emptySpace = self.getEmptySpace()
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
@@ -201,6 +200,8 @@ class GardenView: MainView {
             
             self.onboardingButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: between),
             self.onboardingButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
+            self.onboardingButton.widthAnchor.constraint(equalToConstant: getEquivalent(30)),
+            self.onboardingButton.heightAnchor.constraint(equalToConstant: getEquivalent(30)),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

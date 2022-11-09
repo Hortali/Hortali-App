@@ -88,7 +88,11 @@ class OnboardingView: UIView {
         self.closeButton.addTarget(target, action: action, for: .touchDown)
     }
     
-    
+    /// Atualiza a página no Page Control
+    /// - Parameter index: index (número) da página
+    public func updateCurrentPage(for index: Int) {
+        self.screensPageControl.currentPage = index
+    }
     
     /* MARK: - Ciclo de Vida */
     
@@ -127,9 +131,9 @@ class OnboardingView: UIView {
     }
     
     
-    //    public func setDelegate(with delegate: OnboardingDelegate) {
-    //        self.onboardingGroup.collection.delegate = delegate
-    //    }
+    public func setDelegate(with delegate: OnboardingDelegate) {
+        self.onboardingGroup.collection.delegate = delegate
+    }
     
     
     /* Geral */
@@ -151,6 +155,7 @@ class OnboardingView: UIView {
         
         self.onboardingGroup.collection.layer.cornerRadius = self.getEquivalent(30)
         self.onboardingGroup.collection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        self.onboardingGroup.collection.isPagingEnabled = true
         
         self.screensPageControl.layer.cornerRadius = self.screensPageControl.bounds.height / 2
         self.screensPageControl.numberOfPages = 4
@@ -159,6 +164,7 @@ class OnboardingView: UIView {
         let cellHeight = self.onboardingGroup.collection.frame.height
         let cellWidth = self.frame.width
         self.collectionFlow.itemSize = CGSize(width: cellWidth, height: cellHeight)
+        self.collectionFlow.minimumLineSpacing = 0
     }
     
     
@@ -174,7 +180,6 @@ class OnboardingView: UIView {
     private func setupDynamicConstraints() {
         let lateral: CGFloat = self.getEquivalent(15)
         let between: CGFloat = self.getEquivalent(10)
-        let buttonBetween: CGFloat = self.getEquivalent(40)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
@@ -195,11 +200,9 @@ class OnboardingView: UIView {
             
             self.nextButton.centerYAnchor.constraint(equalTo: self.screensPageControl.centerYAnchor),
             self.nextButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
-            self.nextButton.leadingAnchor.constraint(equalTo: self.screensPageControl.trailingAnchor, constant: buttonBetween),
             
             
             self.backButton.centerYAnchor.constraint(equalTo: self.screensPageControl.centerYAnchor),
-            self.backButton.trailingAnchor.constraint(equalTo: self.screensPageControl.leadingAnchor, constant: -buttonBetween),
             self.backButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
         ]
         

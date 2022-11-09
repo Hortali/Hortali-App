@@ -105,6 +105,8 @@
 		22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4B828DA313B001CE093 /* HourInfoView.swift */; };
 		22EDD4BE28DA4A6A001CE093 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4BD28DA4A6A001CE093 /* AppImages.swift */; };
 		22EDD4C128DA4B33001CE093 /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4C028DA4B33001CE093 /* UIImage+AppImages.swift */; };
+		B214C3E8291AF4E30033CFAE /* OnboardingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B214C3E7291AF4E30033CFAE /* OnboardingProtocol.swift */; };
+		B214C3EA291AF5180033CFAE /* OnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B214C3E9291AF5180033CFAE /* OnboardingDelegate.swift */; };
 		B227C5CB290B032C00B07918 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227C5CA290B032C00B07918 /* CustomNavigationController.swift */; };
 		B241564728D26E4C009F011C /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564628D26E4C009F011C /* FoodCell.swift */; };
 		B241564C28D2722B009F011C /* FoodDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564B28D2722B009F011C /* FoodDataSource.swift */; };
@@ -217,6 +219,8 @@
 		22EDD4B828DA313B001CE093 /* HourInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoView.swift; sourceTree = "<group>"; };
 		22EDD4BD28DA4A6A001CE093 /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
 		22EDD4C028DA4B33001CE093 /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
+		B214C3E7291AF4E30033CFAE /* OnboardingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingProtocol.swift; sourceTree = "<group>"; };
+		B214C3E9291AF5180033CFAE /* OnboardingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDelegate.swift; sourceTree = "<group>"; };
 		B227C5CA290B032C00B07918 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		B241564628D26E4C009F011C /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		B241564B28D2722B009F011C /* FoodDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataSource.swift; sourceTree = "<group>"; };
@@ -476,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				222937C928C66B5800515095 /* Assets.xcassets */,
+				B2AEBD03291998B5001F4472 /* CustomFonts */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -494,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				2229381E28C7C3DD00515095 /* Main */,
+				B2DE49522911AA7400293E6A /* Onboarding */,
 				2229383B28C8922000515095 /* Garden */,
 				2229384428C892E900515095 /* Food */,
 				222937FD28C68EC500515095 /* Favorite */,
@@ -566,7 +572,6 @@
 		2229381E28C7C3DD00515095 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				B2DE49522911AA7400293E6A /* Onboarding */,
 				2229385128C89ABB00515095 /* Launch */,
 				2229381F28C7C3FC00515095 /* MainController.swift */,
 				B227C5CA290B032C00B07918 /* CustomNavigationController.swift */,
@@ -577,7 +582,6 @@
 		2229382728C85A6C00515095 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				B2AEBD03291998B5001F4472 /* CustomFonts */,
 				22A3916F28F780ED00A42DC1 /* Conponents */,
 				222937F228C6844E00515095 /* CustomViews.swift */,
 			);
@@ -919,6 +923,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		B214C3E6291AF4B70033CFAE /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				B214C3E7291AF4E30033CFAE /* OnboardingProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		B241564528D26E27009F011C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -954,6 +966,7 @@
 		B2DE49522911AA7400293E6A /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				B214C3E6291AF4B70033CFAE /* Protocol */,
 				B2DE49542911AF9F00293E6A /* DataSource */,
 				B2DE49532911AF9300293E6A /* Delegate */,
 				B2DE494C29118ADD00293E6A /* OnboardingView.swift */,
@@ -966,6 +979,7 @@
 		B2DE49532911AF9300293E6A /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
+				B214C3E9291AF5180033CFAE /* OnboardingDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -1138,10 +1152,12 @@
 				22EDD4C128DA4B33001CE093 /* UIImage+AppImages.swift in Sources */,
 				22A3917D28F785C300A42DC1 /* ManagedFoodData.swift in Sources */,
 				2229384128C8927500515095 /* GardenController.swift in Sources */,
+				B214C3EA291AF5180033CFAE /* OnboardingDelegate.swift in Sources */,
 				22A3917F28F7860100A42DC1 /* ManagedFood.swift in Sources */,
 				222937F128C6837500515095 /* UIButton+IconInfo.swift in Sources */,
 				223B75E628F16D280034B2C4 /* FavoriteAction.swift in Sources */,
 				2229382928C85EF700515095 /* UITextField+setupPlaceHolder.swift in Sources */,
+				B214C3E8291AF4E30033CFAE /* OnboardingProtocol.swift in Sources */,
 				2229385928C9D1DF00515095 /* Screens.swift in Sources */,
 				2229382228C7C5DE00515095 /* UIImage+AppIcons.swift in Sources */,
 				22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */,
