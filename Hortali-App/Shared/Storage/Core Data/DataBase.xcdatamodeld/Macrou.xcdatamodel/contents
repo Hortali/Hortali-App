@@ -1,4 +1,64 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="22A380" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DBAddress" representedClassName="DBAddress" syncable="YES">
+        <attribute name="address" attributeType="String"/>
+        <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="DBCategorie" representedClassName="DBCategorie" syncable="YES">
+        <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+    </entity>
+    <entity name="DBConfiguration" representedClassName="DBConfiguration" syncable="YES">
+        <attribute name="gardenVisualization" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isFirstTime" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="lastUpdate" attributeType="String"/>
+        <attribute name="version" attributeType="String"/>
+    </entity>
+    <entity name="DBContact" representedClassName="DBContact" syncable="YES">
+        <attribute name="contact" attributeType="String"/>
+        <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="type" attributeType="String"/>
+    </entity>
+    <entity name="DBFavorite" representedClassName="DBFavorite" syncable="YES">
+        <attribute name="type" attributeType="String"/>
+    </entity>
+    <entity name="DBFood" representedClassName="DBFood" syncable="YES">
+        <attribute name="benefits" attributeType="String"/>
+        <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="minerals" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+    </entity>
+    <entity name="DBGarden" representedClassName="DBGarden" syncable="YES">
+        <attribute name="biography" attributeType="String"/>
+        <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastUpdate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="moreInfo" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+    </entity>
+    <entity name="DBHourInfo" representedClassName="DBHourInfo" syncable="YES">
+        <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="startTIme" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="status" attributeType="Boolean" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="week" attributeType="String"/>
+    </entity>
+    <entity name="DBImage" representedClassName="DBImage" syncable="YES">
+        <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="type" attributeType="String"/>
+    </entity>
+    <entity name="DBTag" representedClassName="DBTag" syncable="YES">
+        <attribute name="type" attributeType="String"/>
+    </entity>
+    <entity name="DBTutorial" representedClassName="DBTutorial" syncable="YES">
+        <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="stepDescription" attributeType="String"/>
+    </entity>
+    <entity name="DBVitamin" representedClassName="DBVitamin" syncable="YES">
+        <attribute name="about" attributeType="String"/>
+        <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+    </entity>
 </model>
