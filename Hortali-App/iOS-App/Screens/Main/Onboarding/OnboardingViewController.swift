@@ -50,7 +50,6 @@ class OnboardingViewController: UIViewController{
     
     @objc
     private func nextAction() {
-        self.navigationController?.viewControllers.count
     }
     
     

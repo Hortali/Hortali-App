@@ -6,12 +6,13 @@
 
 import Foundation
 
+/// Criando a extensão e um enum para validação posterior
 extension UserDefaults {
     private enum UserDefaultsKeys: String {
         case isOnboarding
     }
     
-/// Validação se o usuário já entrou no aplicativo
+/// Verifica se o usuário já entrou ou não no aplicativo
     var isOnboarding: Bool {
         get {
             bool(forKey: UserDefaultsKeys.isOnboarding.rawValue)

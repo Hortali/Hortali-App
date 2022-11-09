@@ -19,7 +19,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         self.window = UIWindow(windowScene: windowScene)
-        self.window?.rootViewController = MainController()
-        self.window?.makeKeyAndVisible()
+
+        var controller: UIViewController
+    
+        /// Verifica para qual tela o usuário será direcionado
+        if UserDefaults.standard.isOnboarding {
+            controller = MainController()
+        } else {
+            controller = OnboardingViewController()
+        }
+        
+        window?.rootViewController = controller
+        window?.makeKeyAndVisible()
     }
 }

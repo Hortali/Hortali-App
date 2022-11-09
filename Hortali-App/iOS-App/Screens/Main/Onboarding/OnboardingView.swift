@@ -90,8 +90,6 @@ class OnboardingView: UIView {
     
     /// Define ação dos botões de voltar e próximo
     public func setNextButtonAction(target: Any?, action: Selector) -> Void {
-        self.backButton.addTarget(target, action: action, for: .touchDown)
-        self.nextButton.addTarget(target, action: action, for: .touchDown)
     }
     
     
