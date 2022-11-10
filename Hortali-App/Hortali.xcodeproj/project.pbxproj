@@ -86,6 +86,11 @@
 		22306E29291C279D00FF46E5 /* CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E28291C279D00FF46E5 /* CoreDataProperties.swift */; };
 		22306E2D291C27FD00FF46E5 /* ErrorCDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E2B291C27FD00FF46E5 /* ErrorCDHandler.swift */; };
 		22306E2E291C27FD00FF46E5 /* ErrorWarnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E2C291C27FD00FF46E5 /* ErrorWarnings.swift */; };
+		22306E31291C30E800FF46E5 /* CDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E30291C30E800FF46E5 /* CDManager.swift */; };
+		22306E33291C323500FF46E5 /* SettingCDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E32291C323500FF46E5 /* SettingCDManager.swift */; };
+		22306E36291C32A800FF46E5 /* ManagedSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E35291C32A800FF46E5 /* ManagedSetting.swift */; };
+		22306E39291C353400FF46E5 /* Date+DateFormatTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E38291C353400FF46E5 /* Date+DateFormatTypes.swift */; };
+		22306E3B291C353900FF46E5 /* DateFormatTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22306E3A291C353900FF46E5 /* DateFormatTypes.swift */; };
 		223B75CB28F0D99B0034B2C4 /* UDHandler+DataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75CA28F0D99B0034B2C4 /* UDHandler+DataType.swift */; };
 		223B75CD28F0D9B00034B2C4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75CC28F0D9B00034B2C4 /* DataManager.swift */; };
 		223B75D528F0DB8A0034B2C4 /* foodData.json in Resources */ = {isa = PBXBuildFile; fileRef = 223B75D328F0DB890034B2C4 /* foodData.json */; };
@@ -206,6 +211,11 @@
 		22306E28291C279D00FF46E5 /* CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataProperties.swift; sourceTree = "<group>"; };
 		22306E2B291C27FD00FF46E5 /* ErrorCDHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCDHandler.swift; sourceTree = "<group>"; };
 		22306E2C291C27FD00FF46E5 /* ErrorWarnings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorWarnings.swift; sourceTree = "<group>"; };
+		22306E30291C30E800FF46E5 /* CDManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDManager.swift; sourceTree = "<group>"; };
+		22306E32291C323500FF46E5 /* SettingCDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCDManager.swift; sourceTree = "<group>"; };
+		22306E35291C32A800FF46E5 /* ManagedSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSetting.swift; sourceTree = "<group>"; };
+		22306E38291C353400FF46E5 /* Date+DateFormatTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+DateFormatTypes.swift"; sourceTree = "<group>"; };
+		22306E3A291C353900FF46E5 /* DateFormatTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatTypes.swift; sourceTree = "<group>"; };
 		223B75CA28F0D99B0034B2C4 /* UDHandler+DataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UDHandler+DataType.swift"; sourceTree = "<group>"; };
 		223B75CC28F0D9B00034B2C4 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		223B75D328F0DB890034B2C4 /* foodData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = foodData.json; sourceTree = "<group>"; };
@@ -486,6 +496,8 @@
 			children = (
 				22306E27291C279000FF46E5 /* Protocols */,
 				22306E26291C210C00FF46E5 /* Entities */,
+				22306E34291C323900FF46E5 /* Managers */,
+				22306E30291C30E800FF46E5 /* CDManager.swift */,
 				222937C628C66B5600515095 /* DataBase.xcdatamodeld */,
 			);
 			path = "Core Data";
@@ -545,6 +557,7 @@
 		222937DD28C66F3F00515095 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				22306E37291C351E00FF46E5 /* Date */,
 				22EDD4BC28DA4A51001CE093 /* Images */,
 				2229383228C87D5700515095 /* Icons */,
 				2229383028C87D2A00515095 /* Font */,
@@ -818,6 +831,23 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		22306E34291C323900FF46E5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				22306E32291C323500FF46E5 /* SettingCDManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		22306E37291C351E00FF46E5 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				22306E3A291C353900FF46E5 /* DateFormatTypes.swift */,
+				22306E38291C353400FF46E5 /* Date+DateFormatTypes.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
 		223B75C728F0D9770034B2C4 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,6 +872,7 @@
 				22A3917228F7849900A42DC1 /* Food */,
 				22A3917128F7848400A42DC1 /* Garden */,
 				223B75DA28F0DC840034B2C4 /* ManagedImage.swift */,
+				22306E35291C32A800FF46E5 /* ManagedSetting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1131,6 +1162,7 @@
 				2210245428D52B2B00F412A5 /* InfoGardenInfosDataSource.swift in Sources */,
 				222937E528C6779500515095 /* UIColors+AppColors.swift in Sources */,
 				2210246A28D9013E00F412A5 /* ContactIcon.swift in Sources */,
+				22306E33291C323500FF46E5 /* SettingCDManager.swift in Sources */,
 				2212E84228DCEC07004CCBAA /* CustomLabel.swift in Sources */,
 				2210245F28D84B4D00F412A5 /* InfoGardenImagesDelegate.swift in Sources */,
 				220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */,
@@ -1139,6 +1171,7 @@
 				22A3DB2A290CED4700B34CEC /* ViewLabel.swift in Sources */,
 				22A3916E28F6E62700A42DC1 /* InfoGardenCellProtocol.swift in Sources */,
 				22EDD4BE28DA4A6A001CE093 /* AppImages.swift in Sources */,
+				22306E3B291C353900FF46E5 /* DateFormatTypes.swift in Sources */,
 				222937F928C68B9B00515095 /* CollectionGroup.swift in Sources */,
 				B241564C28D2722B009F011C /* FoodDataSource.swift in Sources */,
 				2212E83D28DB9F7B004CCBAA /* InfoFoodView.swift in Sources */,
@@ -1156,6 +1189,7 @@
 				2212E83B28DB9F60004CCBAA /* InfoFoodController.swift in Sources */,
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,
 				220A63EE28D3BDF700D9E2A9 /* CustomScroll.swift in Sources */,
+				22306E39291C353400FF46E5 /* Date+DateFormatTypes.swift in Sources */,
 				222937FC28C68C8200515095 /* CollectionGroupStyle.swift in Sources */,
 				223B75E028F146920034B2C4 /* GardenDataManager.swift in Sources */,
 				2210245728D53F3300F412A5 /* InfoGardenInfosDelegate.swift in Sources */,
@@ -1197,6 +1231,7 @@
 				223B75CB28F0D99B0034B2C4 /* UDHandler+DataType.swift in Sources */,
 				2212E84528DD0DA9004CCBAA /* FoodProtocol.swift in Sources */,
 				22A75A8C290CC681001CEA7E /* PopGestureDelegate.swift in Sources */,
+				22306E36291C32A800FF46E5 /* ManagedSetting.swift in Sources */,
 				22EDD4B728DA2E00001CE093 /* HourInfoCell.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
 				22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */,
@@ -1204,6 +1239,7 @@
 				2229384F28C8964200515095 /* MainView.swift in Sources */,
 				2229380128C68EF500515095 /* FavoriteView.swift in Sources */,
 				22EDD4B328DA2D4F001CE093 /* HourInfoController.swift in Sources */,
+				22306E31291C30E800FF46E5 /* CDManager.swift in Sources */,
 				B227C5CB290B032C00B07918 /* CustomNavigationController.swift in Sources */,
 				2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */,
 				222937F328C6844E00515095 /* CustomViews.swift in Sources */,

@@ -22,4 +22,14 @@ public class DBSetting: NSManagedObject, Identifiable {
     public class func fetchRequest() -> NSFetchRequest<DBSetting> {
         return NSFetchRequest<DBSetting>(entityName: "DBSetting")
     }
+    
+    
+    /// Edita os valores da instancia
+    /// - Parameter data: dados que vão ser definidos
+    internal func editInstance(with data: ManagedSetting, in context: CoreDataProperties) {
+        self.isFirstTime = data.isFirstTime
+        self.lastUpdate = data.lastUpdate
+        self.gardenVisualization = Int16(data.gardenVisualization)
+        self.isFirstTime = data.isFirstTime
+    }
 }
