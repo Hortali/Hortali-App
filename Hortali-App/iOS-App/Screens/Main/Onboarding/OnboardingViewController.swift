@@ -51,6 +51,8 @@ class OnboardingViewController: UIViewController{
     
     @objc
     private func nextAction() {
+        
+        
     }
     
     

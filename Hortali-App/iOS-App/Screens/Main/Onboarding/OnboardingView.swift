@@ -83,13 +83,19 @@ class OnboardingView: UIView {
     
     /* Ações de botões */
     
-    /// Define a ação do botão de voltar
+    /// Define a ação do botão de fechar
     public func setCloseButtonAction(target: Any?, action: Selector) -> Void {
         self.closeButton.addTarget(target, action: action, for: .touchDown)
     }
     
-    /// Define ação dos botões de voltar e próximo
+    /// Define ação do botão de voltar
+    public func setBackButtonAction(target: Any?, action: Selector) -> Void {
+        
+    }
+    
+    /// Define ação dos botões de próximo
     public func setNextButtonAction(target: Any?, action: Selector) -> Void {
+        
     }
     
     
