@@ -10,7 +10,6 @@
 		062ACD00291AC81900243628 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062ACCFF291AC81900243628 /* UIImage+Gif.swift */; };
 		065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFBD28D2526600F024E7 /* GardenCell.swift */; };
 		065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */; };
-		06C6D35B2915A8A6001CF9C7 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6D35A2915A8A6001CF9C7 /* iOSDevCenters+GIF.swift */; };
 		220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */; };
 		220A63E928D24C7100D9E2A9 /* InfoGardenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */; };
 		220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */; };
@@ -123,7 +122,6 @@
 		062ACCFF291AC81900243628 /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		065ECFBD28D2526600F024E7 /* GardenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCell.swift; sourceTree = "<group>"; };
 		065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDataSource.swift; sourceTree = "<group>"; };
-		06C6D35A2915A8A6001CF9C7 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
 		220A63E328D24C3800D9E2A9 /* InfoGardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenView.swift; sourceTree = "<group>"; };
 		220A63E828D24C7100D9E2A9 /* InfoGardenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenController.swift; sourceTree = "<group>"; };
 		220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExpansive.swift; sourceTree = "<group>"; };
@@ -574,7 +572,6 @@
 		2229381E28C7C3DD00515095 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				B2D1A8BE291D681900C8B66A /* New Group */,
 				2229385128C89ABB00515095 /* Launch */,
 				2229381F28C7C3FC00515095 /* MainController.swift */,
 				B227C5CA290B032C00B07918 /* CustomNavigationController.swift */,
@@ -966,13 +963,6 @@
 			path = CustomFonts;
 			sourceTree = "<group>";
 		};
-		B2D1A8BE291D681900C8B66A /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		B2D1A8BF291D682A00C8B66A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1170,7 +1160,6 @@
 				220A63EE28D3BDF700D9E2A9 /* CustomScroll.swift in Sources */,
 				222937FC28C68C8200515095 /* CollectionGroupStyle.swift in Sources */,
 				223B75E028F146920034B2C4 /* GardenDataManager.swift in Sources */,
-				06C6D35B2915A8A6001CF9C7 /* iOSDevCenters+GIF.swift in Sources */,
 				2210245728D53F3300F412A5 /* InfoGardenInfosDelegate.swift in Sources */,
 				2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */,
 				22A3918628F7AE3000A42DC1 /* SearchDelegate.swift in Sources */,
@@ -1356,7 +1345,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = QMPGVXKJVA;
+				DEVELOPMENT_TEAM = 534V229RMK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1385,7 +1374,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = QMPGVXKJVA;
+				DEVELOPMENT_TEAM = 534V229RMK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

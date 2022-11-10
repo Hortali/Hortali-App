@@ -18,7 +18,13 @@ class GardenView: MainView {
     private let gardenGroup = CollectionGroup(style: .justCollection)
     
     /// Botão que leva à tela de onboarding
-    private let onboardingButton = CustomViews.newButton()
+    private let onboardingButton: CustomButton = {
+        let btn = CustomViews.newButton()
+        btn.backgroundColor = UIColor(originalColor: .greenLight)
+        btn.setTitleColor(UIColor(.title), for:.normal)
+        
+        return btn
+    }()
     
     // Outros
     
@@ -151,9 +157,6 @@ class GardenView: MainView {
     /// Personalização da UI
     private func setupUI() {
         self.backgroundColor = UIColor(.gardenBack)
-        
-        self.onboardingButton.backgroundColor = UIColor(originalColor: .greenLight)
-        self.onboardingButton.setTitleColor(UIColor(.title), for:.normal)
         
         self.collectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
         self.collectionFlow.itemSize = CGSize(
