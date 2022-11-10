@@ -9,6 +9,10 @@
 		<string>waze</string>
 		<string>moovit</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>amsterdam.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

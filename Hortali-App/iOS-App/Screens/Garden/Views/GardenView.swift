@@ -17,6 +17,14 @@ class GardenView: MainView {
     /// Collection das hortas
     private let gardenGroup = CollectionGroup(style: .justCollection)
     
+    /// Botão que leva à tela de onboarding
+    private let onboardingButton: CustomButton = {
+        let btn = CustomViews.newButton()
+        btn.backgroundColor = UIColor(originalColor: .greenLight)
+        btn.setTitleColor(UIColor(.title), for:.normal)
+        
+        return btn
+    }()
     
     // Outros
     
@@ -81,6 +89,13 @@ class GardenView: MainView {
     }
     
     
+    /* Ações de botões */
+    
+    /// Define a ação do botão de ajuda
+    public func setOnboardingButtonAction(target: Any?, action: Selector) -> Void {
+        self.onboardingButton.addTarget(target, action: action, for: .touchDown)
+    }
+    
     
     /* MARK: - Ciclo de Vida */
     
@@ -134,6 +149,7 @@ class GardenView: MainView {
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.addSubview(self.search)
+        self.addSubview(self.onboardingButton)
         self.contentView.addSubview(self.gardenGroup)
     }
     
@@ -153,15 +169,19 @@ class GardenView: MainView {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
         self.setTitleText(with: "Descubra novas \nhortas")
+        self.onboardingButton.setupText(with: FontInfo(text: "?",fontSize: 25, weight: .semibold))
     }
     
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
+        let lateral = self.getEquivalent(15)
+        let between = self.getEquivalent(36)
         let emptySpace = self.getEmptySpace()
         
-        let lateral = self.getEquivalent(15)
         self.gardenGroup.setPadding(for: lateral)
+        
+        self.onboardingButton.circleSize = self.getEquivalent(35)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
@@ -174,7 +194,11 @@ class GardenView: MainView {
             self.gardenGroup.topAnchor.constraint(equalTo: self.search.bottomAnchor, constant: emptySpace),
             self.gardenGroup.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -emptySpace),
             self.gardenGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.gardenGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
+            self.gardenGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            
+            
+            self.onboardingButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: between),
+            self.onboardingButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

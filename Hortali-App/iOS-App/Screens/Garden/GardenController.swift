@@ -46,6 +46,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         self.setupDataSourceData()
         self.setupDelegates()
         self.setupKeyboardHandler()
+        self.setupButtonsAction()
     }
     
     
@@ -100,6 +101,14 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     }
     
     
+    /// Função para exibir tela de onboarding
+    @objc
+    private func onboardingAction() {
+        let controller = OnboardingViewController()
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
     
     /* MARK: - Configurações */
     
@@ -108,6 +117,12 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+    }
+    
+    
+    /// Definindo as ações dos botões
+    private func setupButtonsAction() {
+        self.myView.setOnboardingButtonAction(target: self, action: #selector(self.onboardingAction))
     }
     
     

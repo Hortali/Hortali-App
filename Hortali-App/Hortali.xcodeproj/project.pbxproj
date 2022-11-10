@@ -105,10 +105,17 @@
 		22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4B828DA313B001CE093 /* HourInfoView.swift */; };
 		22EDD4BE28DA4A6A001CE093 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4BD28DA4A6A001CE093 /* AppImages.swift */; };
 		22EDD4C128DA4B33001CE093 /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4C028DA4B33001CE093 /* UIImage+AppImages.swift */; };
+		B214C3E8291AF4E30033CFAE /* OnboardingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B214C3E7291AF4E30033CFAE /* OnboardingProtocol.swift */; };
+		B214C3EA291AF5180033CFAE /* OnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B214C3E9291AF5180033CFAE /* OnboardingDelegate.swift */; };
 		B227C5CB290B032C00B07918 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227C5CA290B032C00B07918 /* CustomNavigationController.swift */; };
 		B241564728D26E4C009F011C /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564628D26E4C009F011C /* FoodCell.swift */; };
 		B241564C28D2722B009F011C /* FoodDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564B28D2722B009F011C /* FoodDataSource.swift */; };
 		B241564E28D27284009F011C /* FoodDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241564D28D27284009F011C /* FoodDelegate.swift */; };
+		B2AEBD05291998DC001F4472 /* amsterdam.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2AEBD04291998DC001F4472 /* amsterdam.ttf */; };
+		B2DE494D29118ADD00293E6A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE494C29118ADD00293E6A /* OnboardingView.swift */; };
+		B2DE494F29118F7000293E6A /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE494E29118F7000293E6A /* OnboardingViewController.swift */; };
+		B2DE4951291192E700293E6A /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE4950291192E700293E6A /* OnboardingCell.swift */; };
+		B2DE49582911AFCE00293E6A /* OnboardingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE49572911AFCE00293E6A /* OnboardingDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,10 +219,17 @@
 		22EDD4B828DA313B001CE093 /* HourInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoView.swift; sourceTree = "<group>"; };
 		22EDD4BD28DA4A6A001CE093 /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
 		22EDD4C028DA4B33001CE093 /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
+		B214C3E7291AF4E30033CFAE /* OnboardingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingProtocol.swift; sourceTree = "<group>"; };
+		B214C3E9291AF5180033CFAE /* OnboardingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDelegate.swift; sourceTree = "<group>"; };
 		B227C5CA290B032C00B07918 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		B241564628D26E4C009F011C /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		B241564B28D2722B009F011C /* FoodDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataSource.swift; sourceTree = "<group>"; };
 		B241564D28D27284009F011C /* FoodDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDelegate.swift; sourceTree = "<group>"; };
+		B2AEBD04291998DC001F4472 /* amsterdam.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = amsterdam.ttf; sourceTree = "<group>"; };
+		B2DE494C29118ADD00293E6A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		B2DE494E29118F7000293E6A /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		B2DE4950291192E700293E6A /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
+		B2DE49572911AFCE00293E6A /* OnboardingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				222937C928C66B5800515095 /* Assets.xcassets */,
+				B2AEBD03291998B5001F4472 /* CustomFonts */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -484,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				2229381E28C7C3DD00515095 /* Main */,
+				B2DE49522911AA7400293E6A /* Onboarding */,
 				2229383B28C8922000515095 /* Garden */,
 				2229384428C892E900515095 /* Food */,
 				222937FD28C68EC500515095 /* Favorite */,
@@ -907,6 +923,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		B214C3E6291AF4B70033CFAE /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				B214C3E7291AF4E30033CFAE /* OnboardingProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		B241564528D26E27009F011C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -927,6 +951,59 @@
 			isa = PBXGroup;
 			children = (
 				B241564B28D2722B009F011C /* FoodDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		B2AEBD03291998B5001F4472 /* CustomFonts */ = {
+			isa = PBXGroup;
+			children = (
+				B2AEBD04291998DC001F4472 /* amsterdam.ttf */,
+			);
+			path = CustomFonts;
+			sourceTree = "<group>";
+		};
+		B2D1A8BF291D682A00C8B66A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2D1A8C0291D683F00C8B66A /* Cell */,
+				B2DE494C29118ADD00293E6A /* OnboardingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B2D1A8C0291D683F00C8B66A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B2DE4950291192E700293E6A /* OnboardingCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		B2DE49522911AA7400293E6A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				B214C3E6291AF4B70033CFAE /* Protocol */,
+				B2DE49532911AF9300293E6A /* Delegate */,
+				B2DE49542911AF9F00293E6A /* DataSource */,
+				B2D1A8BF291D682A00C8B66A /* Views */,
+				B2DE494E29118F7000293E6A /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		B2DE49532911AF9300293E6A /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				B214C3E9291AF5180033CFAE /* OnboardingDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		B2DE49542911AF9F00293E6A /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				B2DE49572911AFCE00293E6A /* OnboardingDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -993,6 +1070,7 @@
 				222937CD28C66B5800515095 /* LaunchScreen.storyboard in Resources */,
 				223B75D528F0DB8A0034B2C4 /* foodData.json in Resources */,
 				223B75D628F0DB8A0034B2C4 /* gardenData.json in Resources */,
+				B2AEBD05291998DC001F4472 /* amsterdam.ttf in Resources */,
 				222937CA28C66B5800515095 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1072,6 +1150,7 @@
 				065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */,
 				223B75E328F1473D0034B2C4 /* FoodDataManager.swift in Sources */,
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
+				B2DE4951291192E700293E6A /* OnboardingCell.swift in Sources */,
 				22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */,
 				2210245128D529FA00F412A5 /* InfoGardenReport.swift in Sources */,
 				2210246C28D9017700F412A5 /* UIImage+ContactIcon.swift in Sources */,
@@ -1089,10 +1168,12 @@
 				22EDD4C128DA4B33001CE093 /* UIImage+AppImages.swift in Sources */,
 				22A3917D28F785C300A42DC1 /* ManagedFoodData.swift in Sources */,
 				2229384128C8927500515095 /* GardenController.swift in Sources */,
+				B214C3EA291AF5180033CFAE /* OnboardingDelegate.swift in Sources */,
 				22A3917F28F7860100A42DC1 /* ManagedFood.swift in Sources */,
 				222937F128C6837500515095 /* UIButton+IconInfo.swift in Sources */,
 				223B75E628F16D280034B2C4 /* FavoriteAction.swift in Sources */,
 				2229382928C85EF700515095 /* UITextField+setupPlaceHolder.swift in Sources */,
+				B214C3E8291AF4E30033CFAE /* OnboardingProtocol.swift in Sources */,
 				2229385928C9D1DF00515095 /* Screens.swift in Sources */,
 				2229382228C7C5DE00515095 /* UIImage+AppIcons.swift in Sources */,
 				22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */,
@@ -1117,12 +1198,15 @@
 				22EDD4B728DA2E00001CE093 /* HourInfoCell.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
 				22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */,
+				B2DE49582911AFCE00293E6A /* OnboardingDataSource.swift in Sources */,
 				2229384F28C8964200515095 /* MainView.swift in Sources */,
 				2229380128C68EF500515095 /* FavoriteView.swift in Sources */,
 				22EDD4B328DA2D4F001CE093 /* HourInfoController.swift in Sources */,
 				B227C5CB290B032C00B07918 /* CustomNavigationController.swift in Sources */,
 				2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */,
 				222937F328C6844E00515095 /* CustomViews.swift in Sources */,
+				B2DE494F29118F7000293E6A /* OnboardingViewController.swift in Sources */,
+				B2DE494D29118ADD00293E6A /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1260,7 +1344,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 534V229RMK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-App/Info.plist";
@@ -1289,7 +1373,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 534V229RMK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-App/Info.plist";
