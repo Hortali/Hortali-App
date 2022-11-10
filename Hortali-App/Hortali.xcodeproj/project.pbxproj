@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		062ACD00291AC81900243628 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062ACCFF291AC81900243628 /* UIImage+Gif.swift */; };
 		065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFBD28D2526600F024E7 /* GardenCell.swift */; };
 		065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */; };
 		06C6D35B2915A8A6001CF9C7 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6D35A2915A8A6001CF9C7 /* iOSDevCenters+GIF.swift */; };
@@ -119,6 +120,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		062ACCFF291AC81900243628 /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		065ECFBD28D2526600F024E7 /* GardenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCell.swift; sourceTree = "<group>"; };
 		065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDataSource.swift; sourceTree = "<group>"; };
 		06C6D35A2915A8A6001CF9C7 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
@@ -546,7 +548,7 @@
 				2229384C28C8942B00515095 /* UIViewController+setupTab.swift */,
 				2229382828C85EF700515095 /* UITextField+setupPlaceHolder.swift */,
 				2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */,
-				06C6D35A2915A8A6001CF9C7 /* iOSDevCenters+GIF.swift */,
+				062ACCFF291AC81900243628 /* UIImage+Gif.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1113,6 +1115,7 @@
 			files = (
 				2212E82D28DB877B004CCBAA /* GardenProtocol.swift in Sources */,
 				223B75CD28F0D9B00034B2C4 /* DataManager.swift in Sources */,
+				062ACD00291AC81900243628 /* UIImage+Gif.swift in Sources */,
 				065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */,
 				222937ED28C682C900515095 /* UIButton+FontInfo.swift in Sources */,
 				2229382C28C87BC400515095 /* AppPureColors.swift in Sources */,
