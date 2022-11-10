@@ -266,7 +266,8 @@
 			children = (
 				B2DE494C29118ADD00293E6A /* OnboardingView.swift */,
 			);
-			path = View;
+			name = View;
+			path = ../View;
 			sourceTree = "<group>";
 		};
 		065ECFBC28D2522100F024E7 /* Cell */ = {
@@ -598,7 +599,6 @@
 			isa = PBXGroup;
 			children = (
 				B2DE49522911AA7400293E6A /* Onboarding */,
-				06180ADF291D752300F86E68 /* View */,
 				2229385128C89ABB00515095 /* Launch */,
 				2229381F28C7C3FC00515095 /* MainController.swift */,
 				B227C5CA290B032C00B07918 /* CustomNavigationController.swift */,
@@ -986,6 +986,7 @@
 		B2DE49522911AA7400293E6A /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				06180ADF291D752300F86E68 /* View */,
 				06180ADA291D689300F86E68 /* Protocol */,
 				06180AD9291D688900F86E68 /* Delegate */,
 				B2DE49542911AF9F00293E6A /* DataSource */,

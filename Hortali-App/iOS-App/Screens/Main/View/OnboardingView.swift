@@ -51,8 +51,15 @@ class OnboardingView: UIView {
     }()
     
     /// Controle de páginas
-    private let screensPageControl = CustomViews.newPageControl()
-    
+    private let screensPageControl = {
+        let page = CustomViews.newPageControl()
+        page.numberOfPages = 4
+        page.backgroundStyle = .minimal
+        page.backgroundColor = .clear
+        page.currentPageIndicatorTintColor = UIColor(originalColor: .white)
+        
+        return page
+    }()
     
     // Outros
     
