@@ -7,17 +7,14 @@ import UIKit
 /// Data source da colelction das hortas
 class OnboardingDataSource: NSObject, UICollectionViewDataSource {
     
-    /* MARK: - Atributos */
-    
-    /// Dados usados no data source
-    
-    
+    let data: Int = 4
     
     /* MARK: - Data Sources */
     
     /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return self.data
+        
     }
     
     
@@ -26,7 +23,8 @@ class OnboardingDataSource: NSObject, UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCell.identifier, for: indexPath) as? OnboardingCell else {
             return UICollectionViewCell()
         }
-
+        
+        let currentPage = self.data
         
         return cell
     }

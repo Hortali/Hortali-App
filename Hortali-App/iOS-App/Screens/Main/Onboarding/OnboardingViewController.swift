@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Controller responsável POR
-class OnboardingViewController: UIViewController{
+class OnboardingViewController: UIViewController, OnboardingProtocol {
     
     /* MARK: - Atributos */
     
@@ -16,8 +16,12 @@ class OnboardingViewController: UIViewController{
     
     
     /* Delegate & Data Sources */
+    
+    /// Data Source da collection de Onboarding
     private let onboardingDataSource = OnboardingDataSource()
     
+    /// Delegate da collection de Onboarding
+    private let onboardingDelegate = OnboardingDelegate()
 
         
     /* MARK: - Ciclo de Vida */
@@ -38,6 +42,12 @@ class OnboardingViewController: UIViewController{
 
     /* MARK: - Protocolo */
     
+    /// Protocolo de atualização de página do Page Control
+   internal func updateCurrentPage(to index: Int) {
+        self.myView.updateCurrentPage(for: index)
+       self.myView.reloadCollectionData()
+    }
+
     
 
     /* MARK: - Ações de botões */
@@ -56,6 +66,14 @@ class OnboardingViewController: UIViewController{
     }
     
     
+    /// Ação que observa quando altera a page control é alterada
+    /// - Parameter sender: page control que foi alterada
+    @objc
+    private func pageControlAction(sender: UIPageControl) {
+        self.myView.updateCurrentPage(for: sender.currentPage)
+    }
+    
+    
     
     /* MARK: - Configurações */
     
@@ -63,11 +81,15 @@ class OnboardingViewController: UIViewController{
     private func setupButtonsAction() {
         self.myView.setCloseButtonAction(target: self, action: #selector(self.closeAction))
         self.myView.setNextButtonAction(target: self, action: #selector(self.nextAction))
+        self.myView.setPageControlAction(target: self, action: #selector(self.pageControlAction(sender:)))
     }
     
     
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
+        self.onboardingDelegate.setProtocol(with: self)
+        
         self.myView.setDataSource(with: self.onboardingDataSource)
+        self.myView.setDelegate(with: self.onboardingDelegate)
     }
 }

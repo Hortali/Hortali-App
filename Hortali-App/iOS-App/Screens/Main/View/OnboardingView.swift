@@ -10,7 +10,12 @@ class OnboardingView: UIView {
     // Views
     
     /// Collection das telas de onboarding
-    private let onboardingGroup = CollectionGroup(style: .justCollection)
+    private let onboardingGroup: CollectionGroup = {
+        let oCgp = CollectionGroup(style: .justCollection)
+        oCgp.collection.isPagingEnabled = true
+     
+        return oCgp
+    }()
     
     /// Botão de fechar as telas de onboarding
     private let closeButton = {
@@ -99,6 +104,29 @@ class OnboardingView: UIView {
     }
     
     
+    /// Ação de mudança de página no Page Control
+    public func setPageControlAction(target: Any?, action: Selector) -> Void {
+        self.screensPageControl.addTarget(target, action: action, for: .valueChanged)
+    }
+    
+    
+    /// Atualiza a página no Page Control
+    ///  - Parameter index: Index da página
+    public func updateCurrentPage(for index: Int) {
+        self.screensPageControl.currentPage = index
+    }
+    
+    
+    /// Atualiza a célula que é mostrada a partir do item do page control selecionado
+    /// - Parameter index: index selecionado
+    public func updateCurrentOnboarding(for index: Int) {
+        self.onboardingGroup.collection.scrollToItem(
+            at: IndexPath(row: index, section: 0),
+            at: .centeredHorizontally,
+            animated: true
+        )
+    }
+    
     
     /* MARK: - Ciclo de Vida */
     
@@ -131,15 +159,24 @@ class OnboardingView: UIView {
     
     
     /// Define o data source da collection de onboarding
-    /// - Parameter dataSource: data source da collection das hortas
+    /// - Parameter dataSource: data source da collection de Onboarding
     public func setDataSource(with dataSource: OnboardingDataSource) {
         self.onboardingGroup.collection.dataSource = dataSource
     }
     
     
-    //    public func setDelegate(with delegate: OnboardingDelegate) {
-    //        self.onboardingGroup.collection.delegate = delegate
-    //    }
+    /// Define o delegate da collection de onboarding
+    /// - Parameter delegate: delegate da collection de Onboarding
+        public func setDelegate(with delegate: OnboardingDelegate) {
+            self.onboardingGroup.collection.delegate = delegate
+        }
+    
+    
+    /// Atualiza as páginas da collection
+    public func reloadCollectionData() {
+        self.onboardingGroup.collection.reloadData()
+        self.onboardingGroup.collection.reloadInputViews()
+    }
     
     
     /* Geral */

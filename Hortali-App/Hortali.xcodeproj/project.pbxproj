@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06180ADC291D689D00F86E68 /* OnboardingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180ADB291D689D00F86E68 /* OnboardingProtocol.swift */; };
+		06180ADE291D69CF00F86E68 /* OnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06180ADD291D69CF00F86E68 /* OnboardingDelegate.swift */; };
 		065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFBD28D2526600F024E7 /* GardenCell.swift */; };
 		065ECFC428D26A4D00F024E7 /* GardenDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */; };
 		067E4249291AEF4D00C65181 /* Onboarding+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067E4248291AEF4D00C65181 /* Onboarding+UserDefaults.swift */; };
@@ -118,6 +120,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06180ADB291D689D00F86E68 /* OnboardingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingProtocol.swift; sourceTree = "<group>"; };
+		06180ADD291D69CF00F86E68 /* OnboardingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDelegate.swift; sourceTree = "<group>"; };
 		065ECFBD28D2526600F024E7 /* GardenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCell.swift; sourceTree = "<group>"; };
 		065ECFC328D26A4D00F024E7 /* GardenDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenDataSource.swift; sourceTree = "<group>"; };
 		067E4248291AEF4D00C65181 /* Onboarding+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding+UserDefaults.swift"; sourceTree = "<group>"; };
@@ -241,6 +245,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06180AD9291D688900F86E68 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				06180ADD291D69CF00F86E68 /* OnboardingDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		06180ADA291D689300F86E68 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				06180ADB291D689D00F86E68 /* OnboardingProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		06180ADF291D752300F86E68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B2DE494C29118ADD00293E6A /* OnboardingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		065ECFBC28D2522100F024E7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -570,6 +598,7 @@
 			isa = PBXGroup;
 			children = (
 				B2DE49522911AA7400293E6A /* Onboarding */,
+				06180ADF291D752300F86E68 /* View */,
 				2229385128C89ABB00515095 /* Launch */,
 				2229381F28C7C3FC00515095 /* MainController.swift */,
 				B227C5CA290B032C00B07918 /* CustomNavigationController.swift */,
@@ -957,8 +986,9 @@
 		B2DE49522911AA7400293E6A /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				06180ADA291D689300F86E68 /* Protocol */,
+				06180AD9291D688900F86E68 /* Delegate */,
 				B2DE49542911AF9F00293E6A /* DataSource */,
-				B2DE494C29118ADD00293E6A /* OnboardingView.swift */,
 				B2DE494E29118F7000293E6A /* OnboardingViewController.swift */,
 				B2DE4950291192E700293E6A /* OnboardingCell.swift */,
 			);
@@ -1142,6 +1172,7 @@
 				22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */,
 				223B75E828F16D670034B2C4 /* FavoriteUpdate.swift in Sources */,
 				22EDD4B528DA2DC7001CE093 /* HourInfoDataSource.swift in Sources */,
+				06180ADE291D69CF00F86E68 /* OnboardingDelegate.swift in Sources */,
 				22A3918128F7862800A42DC1 /* ManagedVitamins.swift in Sources */,
 				222937E328C66F7F00515095 /* AppColors.swift in Sources */,
 				22A3917828F7854000A42DC1 /* ManagedContact.swift in Sources */,
@@ -1156,6 +1187,7 @@
 				2210245928D845D800F412A5 /* InfoGardenImagesDataSource.swift in Sources */,
 				22A3917628F784FB00A42DC1 /* ManagedGarden.swift in Sources */,
 				2210244628D5201500F412A5 /* InfoGardenInfosCell.swift in Sources */,
+				06180ADC291D689D00F86E68 /* OnboardingProtocol.swift in Sources */,
 				223B75CB28F0D99B0034B2C4 /* UDHandler+DataType.swift in Sources */,
 				2212E84528DD0DA9004CCBAA /* FoodProtocol.swift in Sources */,
 				22A75A8C290CC681001CEA7E /* PopGestureDelegate.swift in Sources */,
