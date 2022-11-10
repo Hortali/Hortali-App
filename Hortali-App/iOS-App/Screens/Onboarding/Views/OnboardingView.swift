@@ -3,6 +3,8 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
+
+/// UI da tela de onboarding
 class OnboardingView: UIView {
     
     /* MARK: - Atributos */
@@ -10,15 +12,19 @@ class OnboardingView: UIView {
     // Views
     
     /// Collection das telas de onboarding
-    private let onboardingGroup = CollectionGroup(style: .justCollection)
+    private let onboardingGroup = {
+        let col = CollectionGroup(style: .justCollection)
+        col.collection.isPagingEnabled = true
+        
+        return col
+    }()
     
     /// Botão de fechar as telas de onboarding
     private let closeButton = {
         let btn = CustomViews.newButton()
-        btn.setupText(with: FontInfo(text: "Fechar",fontSize: 17, weight: .regular))
         btn.isCircular = false
         btn.backgroundColor = .clear
-        btn.setTitleColor(UIColor.white, for:.normal)
+        btn.setTitleColor(UIColor(originalColor: .white), for:.normal)
         
         return btn
     }()
@@ -26,10 +32,9 @@ class OnboardingView: UIView {
     /// Botão que leva a próxima tela de onboarding
     private let nextButton = {
         let btn = CustomViews.newButton()
-        btn.setupText(with: FontInfo(text: "Proximo",fontSize: 17, weight: .regular))
         btn.isCircular = false
         btn.backgroundColor = .clear
-        btn.setTitleColor(UIColor.white, for:.normal)
+        btn.setTitleColor(UIColor(originalColor: .white), for: .normal)
         
         return btn
     }()
@@ -37,19 +42,27 @@ class OnboardingView: UIView {
     /// Botão que retorna a tela de onboarding anterior
     private let backButton = {
         let btn = CustomViews.newButton()
-        btn.setupText(with: FontInfo(text: "Voltar",fontSize: 17, weight: .regular))
         btn.isCircular = false
         btn.backgroundColor = .clear
-        btn.setTitleColor(UIColor.white, for:.normal)
+        btn.setTitleColor(UIColor(originalColor: .white), for:.normal)
         
         return btn
     }()
     
     /// Controle de páginas
-    private let screensPageControl = CustomViews.newPageControl()
+    private let screensPageControl = {
+        let page = CustomViews.newPageControl()
+        page.numberOfPages = 4
+        page.backgroundStyle = .minimal
+        page.backgroundColor = .clear
+        page.currentPageIndicatorTintColor = UIColor(originalColor: .white)
+        
+        return page
+    }()
     
     
     // Outros
+    
     
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
@@ -59,6 +72,7 @@ class OnboardingView: UIView {
     private let collectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
+        cvFlow.minimumLineSpacing = 0
         
         return cvFlow
     }()
@@ -119,18 +133,19 @@ class OnboardingView: UIView {
     /// Define o layout da collection
     private func setupCollectionFlow() {
         self.onboardingGroup.collection.collectionViewLayout = self.collectionFlow
-        onboardingGroup.collection.backgroundColor = UIColor.white
+        onboardingGroup.collection.backgroundColor = UIColor(originalColor: .white)
         
     }
     
     
     /// Define o data source da collection de onboarding
-    /// - Parameter dataSource: data source da collection das hortas
+    /// - Parameter dataSource: data source da collection de onboarding
     public func setDataSource(with dataSource: OnboardingDataSource) {
         self.onboardingGroup.collection.dataSource = dataSource
     }
     
-    
+    /// Define o delegate da collection de onboarding
+    /// - Parameter delegate: delegate da collection de onboarding
     public func setDelegate(with delegate: OnboardingDelegate) {
         self.onboardingGroup.collection.delegate = delegate
     }
@@ -140,7 +155,6 @@ class OnboardingView: UIView {
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-        
         self.addSubview(self.onboardingGroup)
         self.addSubview(self.screensPageControl)
         self.addSubview(self.closeButton)
@@ -151,27 +165,27 @@ class OnboardingView: UIView {
     
     /// Personalização da UI
     private func setupUI() {
-        self.backgroundColor = .gray
+        self.backgroundColor = UIColor(originalColor: .greyButton)
         
         self.onboardingGroup.collection.layer.cornerRadius = self.getEquivalent(30)
         self.onboardingGroup.collection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        self.onboardingGroup.collection.isPagingEnabled = true
-        
-        self.screensPageControl.layer.cornerRadius = self.screensPageControl.bounds.height / 2
-        self.screensPageControl.numberOfPages = 4
         
         // Define o tamanho que a célula vai ter
         let cellHeight = self.onboardingGroup.collection.frame.height
         let cellWidth = self.frame.width
         self.collectionFlow.itemSize = CGSize(width: cellWidth, height: cellHeight)
-        self.collectionFlow.minimumLineSpacing = 0
     }
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
+        self.closeButton.setupText(with: FontInfo(text: "Fechar",fontSize: 24, weight: .regular))
         self.closeButton.titleLabel?.font = UIFont(name: "AmsterdamGraffiti", size: 24)
+        
+        self.nextButton.setupText(with: FontInfo(text: "Proximo",fontSize: 24, weight: .regular))
         self.nextButton.titleLabel?.font = UIFont(name: "AmsterdamGraffiti", size: 24)
+        
+        self.backButton.setupText(with: FontInfo(text: "Voltar",fontSize: 24, weight: .regular))
         self.backButton.titleLabel?.font = UIFont(name: "AmsterdamGraffiti", size: 24)
     }
     

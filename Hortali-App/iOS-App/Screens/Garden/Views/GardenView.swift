@@ -17,18 +17,8 @@ class GardenView: MainView {
     /// Collection das hortas
     private let gardenGroup = CollectionGroup(style: .justCollection)
     
-    /// View de referência para centralizar as células da Collection
-    private let referenceView: UIView = CustomViews.newView()
-    
     /// Botão que leva à tela de onboarding
-    private let onboardingButton: UIButton = {
-        let btn = CustomViews.newButton()
-        btn.backgroundColor = UIColor(originalColor: .greenLight)
-        btn.setTitleColor(UIColor(.title), for:.normal)
-        
-        return btn
-    }()
-    
+    private let onboardingButton = CustomViews.newButton()
     
     // Outros
     
@@ -154,7 +144,6 @@ class GardenView: MainView {
     private func setupViews() {
         self.addSubview(self.search)
         self.addSubview(self.onboardingButton)
-        self.contentView.addSubview(self.referenceView)
         self.contentView.addSubview(self.gardenGroup)
     }
     
@@ -162,6 +151,9 @@ class GardenView: MainView {
     /// Personalização da UI
     private func setupUI() {
         self.backgroundColor = UIColor(.gardenBack)
+        
+        self.onboardingButton.backgroundColor = UIColor(originalColor: .greenLight)
+        self.onboardingButton.setTitleColor(UIColor(.title), for:.normal)
         
         self.collectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
         self.collectionFlow.itemSize = CGSize(
@@ -180,9 +172,13 @@ class GardenView: MainView {
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let lateral = self.getEquivalent(25)
+        let lateral = self.getEquivalent(15)
         let between = self.getEquivalent(36)
         let emptySpace = self.getEmptySpace()
+        
+        self.gardenGroup.setPadding(for: lateral)
+        
+        self.onboardingButton.circleSize = self.getEquivalent(35)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
@@ -200,8 +196,6 @@ class GardenView: MainView {
             
             self.onboardingButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: between),
             self.onboardingButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
-            self.onboardingButton.widthAnchor.constraint(equalToConstant: getEquivalent(30)),
-            self.onboardingButton.heightAnchor.constraint(equalToConstant: getEquivalent(30)),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

@@ -572,6 +572,7 @@
 		2229381E28C7C3DD00515095 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				B2D1A8BE291D681900C8B66A /* New Group */,
 				2229385128C89ABB00515095 /* Launch */,
 				2229381F28C7C3FC00515095 /* MainController.swift */,
 				B227C5CA290B032C00B07918 /* CustomNavigationController.swift */,
@@ -963,15 +964,38 @@
 			path = CustomFonts;
 			sourceTree = "<group>";
 		};
+		B2D1A8BE291D681900C8B66A /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		B2D1A8BF291D682A00C8B66A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2D1A8C0291D683F00C8B66A /* Cell */,
+				B2DE494C29118ADD00293E6A /* OnboardingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B2D1A8C0291D683F00C8B66A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B2DE4950291192E700293E6A /* OnboardingCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		B2DE49522911AA7400293E6A /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
 				B214C3E6291AF4B70033CFAE /* Protocol */,
-				B2DE49542911AF9F00293E6A /* DataSource */,
 				B2DE49532911AF9300293E6A /* Delegate */,
-				B2DE494C29118ADD00293E6A /* OnboardingView.swift */,
+				B2DE49542911AF9F00293E6A /* DataSource */,
+				B2D1A8BF291D682A00C8B66A /* Views */,
 				B2DE494E29118F7000293E6A /* OnboardingViewController.swift */,
-				B2DE4950291192E700293E6A /* OnboardingCell.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";

@@ -3,6 +3,8 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
+
+/// Elementos de UI das c;elulas de onboarding
 class OnboardingCell: UICollectionViewCell {
     
     /* MARK: - Atributos */
@@ -16,8 +18,7 @@ class OnboardingCell: UICollectionViewCell {
     private var firstScreenTitle: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.backgroundColor = .clear
-        lbl.textColor = .white
+        lbl.textColor = UIColor(originalColor: .white)
         
         return lbl
     }()
@@ -26,8 +27,7 @@ class OnboardingCell: UICollectionViewCell {
     private var secondScreenTitle: UILabel = {
         let lbl = CustomViews.newLabel()
         //lbl.adjustsFontSizeToFitWidth = true
-        lbl.backgroundColor = .clear
-        lbl.textColor = .white
+        lbl.textColor = UIColor(originalColor: .white)
         
         return lbl
     }()
@@ -36,8 +36,7 @@ class OnboardingCell: UICollectionViewCell {
     private var firstScreenText: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.backgroundColor = .clear
-        lbl.textColor = .white
+        lbl.textColor = UIColor(originalColor: .white)
         
         return lbl
     }()
@@ -46,19 +45,14 @@ class OnboardingCell: UICollectionViewCell {
     private var secondScreenText: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.backgroundColor = .clear
-        lbl.textColor = .white
+        lbl.textColor = UIColor(originalColor: .white)
         lbl.numberOfLines = 0
         
         return lbl
     }()
     
     /// Imagem usada nas telas de onboarding
-    private let screenImage: UIImageView = {
-        let img = CustomViews.newImage()
-        
-        return img
-    }()
+    private let screenImage = CustomViews.newImage()
     
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
@@ -86,7 +80,6 @@ class OnboardingCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        
         self.setupDynamicConstraints()
         self.setupUI()
         self.setupStaticTexts()
@@ -111,7 +104,7 @@ class OnboardingCell: UICollectionViewCell {
     /// Personalização da UI
     private func setupUI() {
         self.backgroundColor = UIColor(.gardenBack)
-        self.screenImage.backgroundColor = .white
+        self.screenImage.backgroundColor = UIColor(originalColor: .white)
         self.screenImage.layer.cornerRadius = self.getEquivalent(30)
     }
     
@@ -132,30 +125,26 @@ class OnboardingCell: UICollectionViewCell {
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
-        
         let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
-        
         let between: CGFloat = self.getEquivalent(25, screenReference: screenReferenceSize)
-                
         let lateral: CGFloat = self.getEquivalent(15, screenReference: screenReferenceSize)
-        
         let labelHeight: CGFloat = self.getEquivalent(40, screenReference: screenReferenceSize)
-        
+        let minHeight: CGFloat = self.getEquivalent(5, screenReference: screenReferenceSize)
         let labelBetween: CGFloat = self.getEquivalent(10, screenReference: screenReferenceSize)
-        
         let imageHeight: CGFloat = self.getEquivalent(220, screenReference: screenReferenceSize)
-        
         let imageWidth: CGFloat = self.getEquivalent(self.contentView.frame.width / 3 , screenReference: screenReferenceSize)
+        
+        
+        NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
             self.firstScreenTitle.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: between),
             self.firstScreenTitle.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
             self.firstScreenTitle.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
-            self.firstScreenTitle.heightAnchor.constraint(equalToConstant: labelHeight/2),
+            self.firstScreenTitle.heightAnchor.constraint(equalToConstant: between),
             
             
-            self.secondScreenTitle.topAnchor.constraint(equalTo: self.firstScreenTitle.bottomAnchor, constant: -getEquivalent(15)),
+            self.secondScreenTitle.topAnchor.constraint(equalTo: self.firstScreenTitle.bottomAnchor, constant: -lateral),
             self.secondScreenTitle.leadingAnchor.constraint(equalTo: self.firstScreenTitle.leadingAnchor),
             self.secondScreenTitle.trailingAnchor.constraint(equalTo: self.firstScreenTitle.trailingAnchor),
 
@@ -166,7 +155,7 @@ class OnboardingCell: UICollectionViewCell {
             self.screenImage.widthAnchor.constraint(equalToConstant: imageWidth),
             
             
-            self.firstScreenText.topAnchor.constraint(equalTo: self.screenImage.bottomAnchor, constant: (labelBetween / 2)),
+            self.firstScreenText.topAnchor.constraint(equalTo: self.screenImage.bottomAnchor, constant: minHeight),
             self.firstScreenText.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
             self.firstScreenText.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
             
@@ -175,7 +164,6 @@ class OnboardingCell: UICollectionViewCell {
             self.secondScreenText.leadingAnchor.constraint(equalTo: self.firstScreenText.leadingAnchor),
             self.secondScreenText.trailingAnchor.constraint(equalTo: self.firstScreenText.trailingAnchor),
             self.secondScreenText.heightAnchor.constraint(equalToConstant: labelHeight),
-            
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

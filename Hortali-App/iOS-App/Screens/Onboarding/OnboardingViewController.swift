@@ -16,8 +16,11 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     
     
     /* Delegate & Data Sources */
+    
+    /// Data Source da collection de onboarding
     private let onboardingDataSource = OnboardingDataSource()
     
+    /// Delegate da collection de onboarding
     private let onboardingDelegate = OnboardingDelegate()
     
 
