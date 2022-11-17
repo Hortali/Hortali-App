@@ -43,6 +43,22 @@ enum AppIcons: CustomStringConvertible {
     case favoriteTab
     
     
+
+    /* Configurações */
+    
+    /// Símbolo - 􀿨
+    case help
+    
+    /// Símbolo - 􀎞
+    case suggestion
+    
+    /// Símbolo - 􀍕
+    case contactUs
+    
+    /// Símbolo - 􀈎
+    case report
+    
+    
     
     /* MARK: - Nome dos Botões */
     
@@ -60,6 +76,12 @@ enum AppIcons: CustomStringConvertible {
         case .gardenTab: return "leaf.fill"
         case .foodTab: return "fork.knife"
         case .favoriteTab: return "heart.fill"
+            
+            
+        case .help: return "questionmark.app"
+        case .suggestion: return "house"
+        case .contactUs: return "envelope"
+        case .report: return "square.and.pencil"
         }
     }
 }
