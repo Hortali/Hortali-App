@@ -103,6 +103,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
             let todayData = data[todayWeek]
             self.todayTimeGroup.setupInfos(for: todayData)
             self.todayWeekLabel.text = todayData.week
+
             
             // Dia seguinte 1
             let nextDay1 = self.getNextDay(by: todayWeek)
@@ -114,6 +115,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
             let nextDay2 = self.getNextDay(by: nextDay1)
             let nextDay2Data = data[nextDay2]
             self.daysAfter[1].setupInfos(for: nextDay2Data)
+            
             
             // Feriado
             let holiday = 7
@@ -165,8 +167,11 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         
         
         self.todayWeekLabel.setupText(with: FontInfo(
-            fontSize: self.getConstant(for: 20), weight: .regular
+            fontSize: self.getConstant(for: 20),
+            weight: .regular
         ))
+        self.todayWeekLabel.font = UIFont(name: "AmsterdamGraffiti",
+                                          size: getConstant(for: 25))
     }
     
     

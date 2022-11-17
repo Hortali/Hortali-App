@@ -14,21 +14,21 @@ class TimeGroup: UIView {
     /// Mostra qual dia da semana
     private let weekLabel: UILabel = {
         let lbl = CustomViews.newLabel()
-        lbl.textColor = UIColor(.paragraph)
+        lbl.textColor = UIColor(originalColor: .greenUltra)
         return lbl
     }()
     
     /// Mostra o horário
     private let hourLabel: UILabel = {
         let lbl = CustomViews.newLabel()
-        lbl.textColor = UIColor(.paragraph)
+        lbl.textColor = UIColor(originalColor: .greenUltra)
         return lbl
     }()
     
     /// Barra lateral
     private let barView: UIView = {
         let view = CustomViews.newView()
-        view.backgroundColor = UIColor(.barHourInfo)
+        view.backgroundColor = UIColor(originalColor: .greenUltra)
         view.tintColor = UIColor(.paragraph)
         return view
     }()
@@ -37,6 +37,7 @@ class TimeGroup: UIView {
     private let closeLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.tintColor = UIColor(.subTitle)
+        lbl.textColor = UIColor(.closeStatus)
         lbl.isHidden = true
         return lbl
     }()
