@@ -40,6 +40,14 @@ class HourInfoCell: UICollectionViewCell {
         return lbl
     }()
     
+    /// Barra lateral
+    private let barView: UIView = {
+        let view = CustomViews.newView()
+        view.backgroundColor = UIColor(originalColor: .greenUltra)
+        view.tintColor = UIColor(.paragraph)
+        return view
+    }()
+    
     
     // Outros
     
@@ -72,11 +80,13 @@ class HourInfoCell: UICollectionViewCell {
             self.statusLabel.textColor = UIColor(.openStatus)
             self.hourLabel.text = "\(data.startTime) - \(data.endTime)"
             self.dayLabel.textColor = UIColor(originalColor: .greenUltra)
+            self.barView.backgroundColor = UIColor(originalColor: .greenUltra)
             
         case false:
             self.statusLabel.text = "Fechado"
             self.dayLabel.textColor = UIColor(.closeStatus)
             self.statusLabel.textColor = UIColor(.closeStatus)
+            self.barView.backgroundColor = UIColor(.closeStatus)
         }
         
         if InfoGardenView.todayWeek == data.week {
@@ -105,6 +115,7 @@ class HourInfoCell: UICollectionViewCell {
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.contentView.addSubview(self.dayLabel)
+        self.contentView.addSubview(self.barView)
         self.contentView.addSubview(self.statusLabel)
         self.contentView.addSubview(self.hourLabel)
     }
@@ -122,7 +133,7 @@ class HourInfoCell: UICollectionViewCell {
         let titleInfo = FontInfo(fontSize: 34, weight: .regular)
 
         self.dayLabel.setupText(with: titleInfo)
-        self.dayLabel.font = UIFont(name: "AmsterdamGraffiti", size: 34)
+        self.dayLabel.font = UIFont(name: "AmsterdamGraffiti", size: getEquivalent(34))
 
         self.statusLabel.setupText(with: fontInfo)
         self.hourLabel.setupText(with: fontInfo)
@@ -132,6 +143,7 @@ class HourInfoCell: UICollectionViewCell {
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
         let lateral = getEquivalent(15)
+        let barLine: CGFloat = self.getEquivalent(3)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
@@ -140,6 +152,12 @@ class HourInfoCell: UICollectionViewCell {
             self.dayLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
             self.dayLabel.trailingAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             self.dayLabel.bottomAnchor.constraint(equalTo:self.contentView.centerYAnchor),
+            
+            
+            self.barView.topAnchor.constraint(equalTo: self.topAnchor),
+            self.barView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.barView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.barView.widthAnchor.constraint(equalToConstant: barLine),
             
             
             self.statusLabel.topAnchor.constraint(equalTo: self.dayLabel.bottomAnchor),
