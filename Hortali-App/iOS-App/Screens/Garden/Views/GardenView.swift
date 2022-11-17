@@ -62,6 +62,9 @@ class GardenView: MainView {
     /* MARK: - Encapsulamento */
     
     /// Muda a visualização
+    /// - Parameter visu: visualização desejada
+    ///
+    /// Caso não passe um valor por parâmetro ele vai fazer a troca para a outra visualização.
     public func changeVisualization(to visu: GardenVisualization? = nil) {
         if let visu {
             self.visualizationType = visu
@@ -172,7 +175,7 @@ class GardenView: MainView {
     }
     
     
-    /// Define o tamanho das células da collection
+    /// Define o tamanho das células da collection a partir do tipo de visualização
     private func setupCollectionVisualization() {
         self.setupDynamicConstraints()
         
@@ -246,6 +249,7 @@ class GardenView: MainView {
         switch self.visualizationType {
         case .grid:
             self.gardenGroup.setPadding(for: 0)
+            
             self.dynamicConstraints += [
                 self.gardenGroup.topAnchor.constraint(equalTo: self.search.bottomAnchor, constant: lateral),
                 self.gardenGroup.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
