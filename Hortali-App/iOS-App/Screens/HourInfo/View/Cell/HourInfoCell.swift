@@ -35,7 +35,7 @@ class HourInfoCell: UICollectionViewCell {
     private let hourLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.textColor = UIColor(originalColor: .greenDark)
+        lbl.textColor = UIColor(originalColor: .greenUltra)
         
         return lbl
     }()
@@ -71,11 +71,11 @@ class HourInfoCell: UICollectionViewCell {
         case true:
             self.statusLabel.textColor = UIColor(.openStatus)
             self.hourLabel.text = "\(data.startTime) - \(data.endTime)"
-            self.dayLabel.textColor = UIColor(originalColor: .greenDark)
-            
+            self.dayLabel.textColor = UIColor(originalColor: .greenUltra)
             
         case false:
             self.statusLabel.text = "Fechado"
+            self.dayLabel.textColor = UIColor(.closeStatus)
             self.statusLabel.textColor = UIColor(.closeStatus)
         }
         

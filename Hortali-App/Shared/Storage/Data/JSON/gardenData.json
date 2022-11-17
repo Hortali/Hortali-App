@@ -69,37 +69,37 @@
             "hourInfo": [
                 {
                     "status" : true,
-                    "week" : "Segunda",
+                    "week" : "SEGUNDA-FEIRA",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Terça",
+                    "week" : "TERCA-FEIRA",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Quarta",
+                    "week" : "QUARTA-FEIRA",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Quinta",
+                    "week" : "QUINTA-FEIRA",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Sexta",
+                    "week" : "SEXTA-FEIRA",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Sábado",
+                    "week" : "SABADO",
                     "startTime" : "09:00",
                     "endTime" : "13:00"
                 },
