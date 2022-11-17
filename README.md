@@ -1,30 +1,29 @@
 # Hortali - App
-[![Versão](https://img.shields.io/badge/versão-1.0-3-orange)](https://github.com/Super-Macro/Hortali-App/releases/tag/mvp-01-3)
-![Tamanho](https://img.shields.io/badge/tamanho-100%20MB-blue)
+[![Versão](https://img.shields.io/badge/versão-1.0-orange)](https://github.com/Hortali/Hortali-App/releases/tag/appStore-1.0)
+![Tamanho](https://img.shields.io/badge/tamanho-98,5%20MB-blue)
 ![Plataforma](https://img.shields.io/badge/plataforma-IOS-lightgrey?logo=ios)
 ![Framework](https://img.shields.io/badge/framework-UIKit-red?logo=uikit)
-[![Swift Versão](https://img.shields.io/badge/swift-v5.7+-blue?logo=swift)](https://swift.org/download/#releases)
-[![Licença](https://img.shields.io/badge/licença-GNU%20v3.0-brightgreen?)](https://github.com/Super-Macro/Hortali-App/blob/main/LICENSE)
+[![Swift Versão](https://img.shields.io/badge/swift-v5.4+-blue?logo=swift)](https://swift.org/download/#releases)
+[![Licença](https://img.shields.io/badge/licença-GNU%20v3.0-brightgreen?)](https://github.com/Hortali/Hortali-App/blob/main/LICENSE)
 
-![Capa](https://github.com/Super-Macro/Hortali-App/blob/main/Files/Images/Git-Capa.png)
+![Capa](https://github.com/Hortali/Hortali-App/blob/main/Files/Images/Git-Capa.png)
 
 <p align="center">
-    <a href="https://testflight.apple.com/join/2WlMRoRZ">
-        <img src="https://github.com/Gui25Reis/Gui25Reis/blob/main/images/Testflight-Pt.png"/>
+    <a href="https://apps.apple.com/br/app/hortali/id6443548466">
+        <img src="https://github.com/Gui25Reis/Gui25Reis/blob/main/images/AppStore-Pt.png"/>
     </a>
 </p>
 
-Hortali é um app que mapeia hortas comunitárias que produzem alimentos orgânicos, mostrando o local, contato e horários de funcionamento dessas hortas. Além das hortas, há informações nutricionais e benefícios de alguns alimentos (frutas, verduras, legumes, ervas..), mostrando um passo a passo de como plantar na sua casa.
+Hortali é um app mobile com o objetivo de mapear hortas comunitárias e urbanas que produzem alimentos orgânicos na região de São Paulo, mostrando o local, contato e horários de funcionamento dessas hortas. Além das hortas, há informações nutricionais e benefícios de alguns alimentos (frutas, verduras, legumes, ervas..).
 
-A versão MVP já está disponível, [baixe já](https://github.com/Gui25Reis/Gui25Reis/blob/main/images/Testflight-Pt.png)!
+A aplicativo já está disponível na app store, [baixe já](https://apps.apple.com/br/app/hortali/id6443548466)!
 
 1. [Plataforma e Requerimentos](#plataforma-e-requerimentos)
 2. [Frameworks Usados](#frameworks-usados)
 3. [Demonstração](#demonstração)
 4. [Idiomas](#idiomas-disponíveis)
-5. [Documentação](#documentação)
-6. [Licença](#licença)
-7. [Time](#time)
+5. [Licença](#licença)
+6. [Time](#time)
 
 
 ## Plataforma e requerimentos
@@ -34,7 +33,7 @@ iPhone           | iOS 14.5+   | Geração 7+
 
 
 ## Frameworks Usados
-A aplicação foi feito com swift 5.7 e todo código criado e utilizado está nesse repositório na pasta [Hortali-App](https://github.com/Super-Macro/Hortali-App/tree/main/Hortali-App).
+A aplicação foi feito com a linguagem swift e todo código criado e utilizado está nesse repositório na pasta [Hortali-App](https://github.com/Hortali/Hortali-App/tree/main/Hortali-App). A aplicação não possuei dependências externas (PODs).
 
 
 | **Framework** |   **Uso**  
@@ -46,9 +45,9 @@ A aplicação foi feito com swift 5.7 e todo código criado e utilizado está ne
 
 ## Demonstração
 <p align="center">
-    <img width=32% src="https://github.com/Super-Macro/Hortali-App/blob/main/Files/Images/tela_01.png"/>
-    <img width=32% src="https://github.com/Super-Macro/Hortali-App/blob/main/Files/Images/tela_02.png"/>
-    <img width=32% src="https://github.com/Super-Macro/Hortali-App/blob/main/Files/Images/tela_03.png"/>
+    <img width=32% src="https://github.com/Hortali/Hortali-App/blob/main/Files/Images/tela_01.png"/>
+    <img width=32% src="https://github.com/Hortali/Hortali-App/blob/main/Files/Images/tela_02.png"/>
+    <img width=32% src="https://github.com/Hortali/Hortali-App/blob/main/Files/Images/tela_03.png"/>
 </p>
 
 
@@ -58,12 +57,8 @@ A aplicação foi feito com swift 5.7 e todo código criado e utilizado está ne
 | Português - Brasil  |
 
 
-## Documentação
-A documentação está na [wiki](https://github.com/Super-Macro/Hortali-App/wiki) do projeto.
-
-
 ## Licença
-Esse projeto é open source e licenciado pela [GNU General Public License v3.0](https://github.com/Super-Macro/Hortali-App/blob/main/LICENSE).
+Esse projeto é open source e licenciado pela [GNU General Public License v3.0](https://github.com/Hortali/Hortali-App/blob/main/LICENSE).
 
 
 ## Time
