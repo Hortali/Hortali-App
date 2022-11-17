@@ -15,7 +15,7 @@ import UIKit
     private let container = ContainerView()
     
     /// Espaço para colocar os componentes da tela
-    var contentView: UIView
+    public var contentView: UIView
         
     
     // Outros
@@ -42,8 +42,13 @@ import UIKit
     
     /// Define o título da tela
     /// - Parameter text: título da tela
-    func setTitleText(with text: String) {
+    public func setTitleText(with text: String) {
         self.container.setTitleText(with: text)
+    }
+    
+    /// Label de título
+    public var titleLabel: UILabel {
+        return self.container.titleLabel
     }
     
     
