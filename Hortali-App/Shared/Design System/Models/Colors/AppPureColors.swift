@@ -9,6 +9,7 @@ enum AppPureColors: CustomStringConvertible {
     case orange
     case greenDark
     case greenLight
+    case greenUltra
     case brownDark
     case brownLight
     case greyButton
@@ -28,6 +29,7 @@ enum AppPureColors: CustomStringConvertible {
         case .orange: return "Orange_E1652B"
         case .greenDark: return "Green_68802C"
         case .greenLight: return "Green_CCD897"
+        case .greenUltra: return "Green_354116"
         case .brownDark: return "Brown_3F1D0D"
         case .brownLight: return "Brown_843D1A"
         case .greyButton: return "Grey_A1A1A1"
