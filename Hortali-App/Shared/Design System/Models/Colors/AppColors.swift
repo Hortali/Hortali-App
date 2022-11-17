@@ -98,6 +98,9 @@ enum AppColors {
     /// Botão: fundo padrão
     case backgroundButton
     
+    /// Botão: mudar a visualização das hortas
+    case visualizationButton
+    
     
     
     /* Horário de Funcionamento */
@@ -172,6 +175,7 @@ enum AppColors {
         case .favoriteSelected: return .pinkButton
         case .favoriteNotSelected: return .greyButton
         case .backgroundButton: return .greyButton
+        case .visualizationButton: return .greenDark
             
         
         /* Horários de funcionamentos */
