@@ -95,6 +95,11 @@ class HourInfoView: ContainerView {
     
     /// Personalização da UI
     private func setupUI() {
+       // Define a cor do background
+        self.hourInfoGp.collection.backgroundColor = UIColor(originalColor: .greenLight)
+        self.contentView.backgroundColor = UIColor(originalColor: .greenLight)
+        self.backgroundColor = UIColor(originalColor: .greenLight)
+        
         // Define o tamanho que a célula vai ter
         self.collectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
         self.collectionFlow.itemSize = CGSize(width: self.hourInfoGp.frame.width, height: 60)
