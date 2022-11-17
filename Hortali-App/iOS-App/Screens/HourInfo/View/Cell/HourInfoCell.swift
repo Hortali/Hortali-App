@@ -130,7 +130,7 @@ class HourInfoCell: UICollectionViewCell {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
         let fontInfo = FontInfo(fontSize: 20, weight: .semibold)
-        let titleInfo = FontInfo(fontSize: 34, weight: .regular)
+        let titleInfo = FontInfo(fontSize: 10, weight: .regular)
 
         self.dayLabel.setupText(with: titleInfo)
         self.dayLabel.font = UIFont(name: "AmsterdamGraffiti", size: getEquivalent(34))
@@ -143,15 +143,16 @@ class HourInfoCell: UICollectionViewCell {
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
         let lateral = getEquivalent(15)
+        let width = getEquivalent(45)
         let barLine: CGFloat = self.getEquivalent(3)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
-            self.dayLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             self.dayLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
             self.dayLabel.trailingAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             self.dayLabel.bottomAnchor.constraint(equalTo:self.contentView.centerYAnchor),
+            self.dayLabel.widthAnchor.constraint(equalToConstant: width),
             
             
             self.barView.topAnchor.constraint(equalTo: self.topAnchor),
