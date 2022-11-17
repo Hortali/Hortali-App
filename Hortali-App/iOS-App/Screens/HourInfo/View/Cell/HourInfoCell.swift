@@ -28,7 +28,6 @@ class HourInfoCell: UICollectionViewCell {
     private let statusLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.backgroundColor = .clear
         return lbl
     }()
     
@@ -36,8 +35,7 @@ class HourInfoCell: UICollectionViewCell {
     private let hourLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.backgroundColor = .clear
-        lbl.textAlignment = .right
+        lbl.textColor = UIColor(originalColor: .greenDark)
         
         return lbl
     }()
@@ -71,22 +69,18 @@ class HourInfoCell: UICollectionViewCell {
         
         switch data.status {
         case true:
-            self.statusLabel.text = "Aberto"
             self.statusLabel.textColor = UIColor(.openStatus)
             self.hourLabel.text = "\(data.startTime) - \(data.endTime)"
+            self.dayLabel.textColor = UIColor(originalColor: .greenDark)
             
-            self.backgroundColor = UIColor(.openBackgroundStatus)?.withAlphaComponent(0.4)
             
         case false:
             self.statusLabel.text = "Fechado"
             self.statusLabel.textColor = UIColor(.closeStatus)
-            self.backgroundColor = UIColor(.closeBackgroundStatus)?.withAlphaComponent(0.4)
         }
         
         if InfoGardenView.todayWeek == data.week {
             self.layer.masksToBounds = true
-            self.layer.borderWidth = 5
-            self.layer.borderColor = self.backgroundColor?.withAlphaComponent(1).cgColor
         }
     }
     
@@ -124,9 +118,12 @@ class HourInfoCell: UICollectionViewCell {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        let fontInfo = FontInfo(fontSize: 20, weight: .regular)
-        
-        self.dayLabel.setupText(with: fontInfo)
+        let fontInfo = FontInfo(fontSize: 20, weight: .semibold)
+        let titleInfo = FontInfo(fontSize: 34, weight: .regular)
+
+        self.dayLabel.setupText(with: titleInfo)
+        self.dayLabel.font = UIFont(name: "AmsterdamGraffiti", size: 34)
+
         self.statusLabel.setupText(with: fontInfo)
         self.hourLabel.setupText(with: fontInfo)
     }
@@ -151,10 +148,10 @@ class HourInfoCell: UICollectionViewCell {
             self.statusLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
             
             
-            self.hourLabel.topAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.hourLabel.leadingAnchor.constraint(equalTo: self.statusLabel.trailingAnchor),
-            self.hourLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
-            self.hourLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            self.hourLabel.topAnchor.constraint(equalTo: self.dayLabel.bottomAnchor),
+            self.hourLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
+            self.hourLabel.trailingAnchor.constraint(equalTo: self.statusLabel.trailingAnchor),
+            self.hourLabel.bottomAnchor.constraint(equalTo: self.statusLabel.bottomAnchor),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
