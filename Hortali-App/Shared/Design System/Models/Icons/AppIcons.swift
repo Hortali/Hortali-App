@@ -33,14 +33,17 @@ enum AppIcons: CustomStringConvertible {
     
     /* Tab */
     
-    /// Símbolo - 􀥳
+    /// Símbolo - 􀎟
     case gardenTab
     
-    /// Símbolo - 􀸩
+    /// Símbolo - 􀥳
     case foodTab
     
     /// Símbolo - 􀊵
     case favoriteTab
+    
+    /// Símbolo - 􀐛
+    case settingsTab
     
     
 
@@ -73,10 +76,10 @@ enum AppIcons: CustomStringConvertible {
         case .grid: return "square.grid.2x2"
         case .carousel: return "rectangle.split.3x1"
             
-        case .gardenTab: return "leaf.fill"
-        case .foodTab: return "fork.knife"
+        case .gardenTab: return "house.fill"
+        case .foodTab: return "leaf.fill"
         case .favoriteTab: return "heart.fill"
-            
+        case .settingsTab: return "shippingbox.fill"
             
         case .help: return "questionmark.app"
         case .suggestion: return "house"

@@ -11,6 +11,7 @@ class SettingsView: MainView {
 
     // Views
     
+    /// Collection principal da tela
     private let settingsCollection = CollectionGroup(style: .justCollection)
     
     
@@ -58,7 +59,7 @@ class SettingsView: MainView {
     
     /// Define o data source da collection de configurações
     /// - Parameter dataSource: data source da collection
-    public func setCollectionDataSource(for dataSource: InfoGardenInfosDataSource) {
+    public func setCollectionDataSource(for dataSource: SettingsDataSource) {
         self.settingsCollection.collection.dataSource = dataSource
     }
     
@@ -108,6 +109,8 @@ class SettingsView: MainView {
     
     /// Personalização da UI
     private func setupUI() {
+        self.backgroundColor = UIColor(.settingsBack)
+        self.collectionFlow.minimumLineSpacing = self.getEquivalent(15)
         self.collectionFlow.itemSize = CGSize(
             width: self.settingsCollection.bounds.width,
             height: 165
@@ -124,7 +127,12 @@ class SettingsView: MainView {
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() { 
         let lateral: CGFloat = self.getEquivalent(15)
-       
+        let between: CGFloat = self.getEquivalent(10)
+        
+        self.settingsCollection.collection.contentInset = UIEdgeInsets(
+            top: 0, left: 0, bottom: between, right: 0
+        )
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [

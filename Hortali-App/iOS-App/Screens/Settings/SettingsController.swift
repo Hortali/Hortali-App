@@ -16,6 +16,9 @@ class SettingsController: UIViewController {
     
     
     /* Delegate & Data Sources */
+    
+    /// Data source da colelction principal
+    private let settingsDataSource = SettingsDataSource()
 
 
 		
@@ -32,6 +35,8 @@ class SettingsController: UIViewController {
         self.setupNavigation()
         self.setupDelegates()
         self.setupButtonsAction()
+        
+        self.myView.reloadCollectionsData()
     }
     
 
@@ -54,12 +59,12 @@ class SettingsController: UIViewController {
     
     /// Definindo as ações dos botões
     private func setupButtonsAction() {
-	  
+    
     }
     
     
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-    
+        self.myView.setCollectionDataSource(for: self.settingsDataSource)
     }
 }

@@ -4,15 +4,7 @@
 import UIKit
 
 
-struct SettingsData {
-    let icon: AppIcons
-    let title: String
-    let subTitle: String
-    let description: String
-    let color: AppColors
-}
-
-/// Data source da collection de imagens de uma horta da tela de info garden
+/// Data source da collection da tela dde configurações
 class SettingsDataSource: NSObject, UICollectionViewDataSource {
         
     /* MARK: - Atributos */
@@ -25,7 +17,7 @@ class SettingsDataSource: NSObject, UICollectionViewDataSource {
     /* MARK: - Construtor */
     
     override init() {
-        super .init()
+        super.init()
         
         self.setupStaticData()
     }
@@ -63,10 +55,44 @@ class SettingsDataSource: NSObject, UICollectionViewDataSource {
     }
     
     
+    
+    /* MARK: - Configurações */
+    
     /// Configura os dados da collection
     private func setupStaticData() {
         self.mainData = [
-            
+            SettingsData(
+                icon: .help,
+                title: "Como usar o aplicativo?",
+                subTitle: "Esqueceu como usa o aplicativo?",
+                description: "Aqui tem um tutorial completo pra você!",
+                color: .settingsHelp,
+                link: nil
+            ),
+            SettingsData(
+                icon: .suggestion,
+                title: "Sugerir",
+                subTitle: "Tem uma horta pertinho de você?",
+                description: "Aqui você pode mandar pra gente adicionar!",
+                color: .settingsSuggestions,
+                link: "https://forms.gle/aurYnGF5RX86NcsL9"
+            ),
+            SettingsData(
+                icon: .contactUs,
+                title: "Fale com a gente",
+                subTitle: "Tem alguma dúvida?",
+                description: "Sempre estamos a uma mensagem de você!",
+                color: .settingsContactUs,
+                link: "https://instagram.com/hortaliapp?igshid=Zjc2ZTc4Nzk="
+            ),
+            SettingsData(
+                icon: .report,
+                title: "Reportar",
+                subTitle: "Descobriu alguma informação incorreta?",
+                description: "Conta pra gente poder arrumar!",
+                color: .settingsReport,
+                link: "https://forms.gle/KtfLT9se4e44UcU28"
+            ),
         ]
     }
 }

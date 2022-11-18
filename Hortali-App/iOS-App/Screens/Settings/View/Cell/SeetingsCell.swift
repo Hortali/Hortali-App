@@ -21,14 +21,30 @@ class SettingsCell: UICollectionViewCell {
         return view
     }()
     
-    ///
-    private var iconImage = CustomViews.newImage()
+    /// Ícone da célula
+    private var iconImage: UIImageView = {
+        let imgV = CustomViews.newImage()
+        imgV.tintColor = UIColor(.secondaryTitle)
+        imgV.contentMode = .scaleAspectFit
+        return imgV
+    }()
     
-    ///
-    private var subTitleLabel = CustomViews.newLabel()
+    /// Título do texto
+    private var subTitleLabel: UILabel = {
+        let lbl = CustomViews.newLabel()
+        lbl.textColor = UIColor(.secondaryTitle)
+        return lbl
+    }()
     
-    ///
-    private var descriptionLabel = CustomViews.newLabel()
+    /// Frase de descrição
+    private var descriptionLabel: UILabel = {
+        let lbl = CustomViews.newLabel()
+        lbl.textColor = UIColor(.secondaryTitle)
+        return lbl
+    }()
+    
+    /// View usada para referência de espaço para o ícone
+    private let referenceView = CustomViews.newView()
         
     
     // Outros
@@ -56,6 +72,7 @@ class SettingsCell: UICollectionViewCell {
     /* MARK: - Encapsulamento */
     
     /// Define o tipo da célula
+    /// - Parameter data: dados das configurações
     public func setupCell(with data: SettingsData) {
         self.titleLabel.text = data.title
         self.subTitleLabel.text = data.subTitle
@@ -86,6 +103,7 @@ class SettingsCell: UICollectionViewCell {
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.container)
         
+        self.container.addSubview(self.referenceView)
         self.container.addSubview(self.iconImage)
         self.container.addSubview(self.subTitleLabel)
         self.container.addSubview(self.descriptionLabel)
@@ -101,7 +119,7 @@ class SettingsCell: UICollectionViewCell {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
         self.titleLabel.setupText(with: FontInfo(
-            fontSize: self.getConstant(for: 25), weight: .medium
+            fontSize: self.getConstant(for: 25), weight: .semibold
         ))
         
         let labelFont: CGFloat = self.getConstant(for: 15)
@@ -119,14 +137,9 @@ class SettingsCell: UICollectionViewCell {
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
         let lateral: CGFloat = self.getConstant(for: 15)
-        let between: CGFloat = self.getConstant(for: 12)
+        let between: CGFloat = self.getConstant(for: 5)
         
-        let labelHeight: CGFloat = self.getConstant(for: 25)
-        let betweenLabels: CGFloat = self.getConstant(for: 8)
-        
-        let spaceLeft = (self.subTitleLabel.frame.origin.y - self.container.frame.origin.y)/2
-        
-        // 40 x 40
+        let iconHeight: CGFloat = self.getConstant(for: 50)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
@@ -134,7 +147,6 @@ class SettingsCell: UICollectionViewCell {
             self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.titleLabel.heightAnchor.constraint(equalToConstant: labelHeight),
             
             
             self.container.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: between),
@@ -143,14 +155,25 @@ class SettingsCell: UICollectionViewCell {
             self.container.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
             
             
-            self.descriptionLabel.bottomAnchor.constraint(equalTo: self.container.bottomAnchor, constant: -lateral),
+            self.descriptionLabel.bottomAnchor.constraint(equalTo: self.container.bottomAnchor, constant: -between),
             self.descriptionLabel.leadingAnchor.constraint(equalTo: self.container.leadingAnchor, constant: lateral),
             self.descriptionLabel.trailingAnchor.constraint(equalTo: self.container.trailingAnchor, constant: -lateral),
             
             
-            self.subTitleLabel.bottomAnchor.constraint(equalTo: self.descriptionLabel.topAnchor, constant: -betweenLabels),
+            self.subTitleLabel.bottomAnchor.constraint(equalTo: self.descriptionLabel.topAnchor),
             self.subTitleLabel.leadingAnchor.constraint(equalTo: self.descriptionLabel.leadingAnchor),
             self.subTitleLabel.trailingAnchor.constraint(equalTo: self.descriptionLabel.trailingAnchor),
+            
+            
+            self.referenceView.topAnchor.constraint(equalTo: self.container.topAnchor),
+            self.referenceView.bottomAnchor.constraint(equalTo: self.subTitleLabel.topAnchor),
+            self.referenceView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            
+            
+            self.iconImage.heightAnchor.constraint(equalToConstant: iconHeight),
+            self.iconImage.widthAnchor.constraint(equalToConstant: iconHeight),
+            self.iconImage.centerYAnchor.constraint(equalTo: self.referenceView.centerYAnchor),
+            self.iconImage.centerXAnchor.constraint(equalTo: self.referenceView.centerXAnchor),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
@@ -165,7 +188,6 @@ class SettingsCell: UICollectionViewCell {
             screenSize: CGSize(width: 360, height: 165),
             dimension: .width
         )
-        
         return self.getEquivalent(space, screenReference: screenReference)
     }
 }
