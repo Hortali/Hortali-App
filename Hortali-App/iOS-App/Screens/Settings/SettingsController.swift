@@ -4,8 +4,8 @@
 import UIKit
 
 
-/// Controller responsável POR
-class SettingsController: UIViewController {
+/// Controller responsável pela tela de configurações
+class SettingsController: UIViewController, SettingsProtocol {
     
     /* MARK: - Atributos */
 
@@ -17,8 +17,11 @@ class SettingsController: UIViewController {
     
     /* Delegate & Data Sources */
     
-    /// Data source da colelction principal
+    /// Data source da collection principal
     private let settingsDataSource = SettingsDataSource()
+    
+    /// Delegate da collection principal
+    private let settingsDelegate = SettingsDelegate()
 
 
 		
@@ -32,39 +35,51 @@ class SettingsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setupNavigation()
         self.setupDelegates()
-        self.setupButtonsAction()
-        
-        self.myView.reloadCollectionsData()
     }
     
 
 
     /* MARK: - Protocolo */
-
-	
-
-    /* MARK: - Ações de botões */
     
+    internal func openPage(for index: Int) {
+        if index == 0 {
+            self.showOnBoarding()
+        } else {
+            self.openLink(for: index)
+        }
+    }
+
     
     
     /* MARK: - Configurações */
 
-    /// Configurções da navigation controller
-    private func setupNavigation() {
-    
-    }
-
-    
-    /// Definindo as ações dos botões
-    private func setupButtonsAction() {
-    
-    }
-    
-    
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
+        self.settingsDelegate.setProtocol(with: self)
+        
         self.myView.setCollectionDataSource(for: self.settingsDataSource)
+        self.myView.setCollectionDelegate(for: self.settingsDelegate)
+    }
+    
+    
+    /// Abre no navegador principal
+    /// - Parameter index: index da célula
+    private func openLink(for index: Int) {
+        let data = self.settingsDataSource.collectionData[index]
+        let link = data.link ?? ""
+        
+        if let url = URL(string: link) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
+    
+    /// Função para exibir tela de onboarding
+    private func showOnBoarding() {
+        let controller = OnboardingViewController()
+        controller.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.present(controller, animated: true)
     }
 }

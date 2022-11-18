@@ -66,7 +66,7 @@ class SettingsView: MainView {
     
     /// Define o delegate da collection de configurações
     /// - Parameter delegate: delegate da collection
-    public func setCollectionDelegate(for delegate: InfoGardenInfosDelegate) {
+    public func setCollectionDelegate(for delegate: SettingsDelegate) {
         self.settingsCollection.collection.delegate = delegate
     }
     

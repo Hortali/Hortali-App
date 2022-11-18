@@ -33,6 +33,12 @@ class SettingsDataSource: NSObject, UICollectionViewDataSource {
     }
     
     
+    /// Dados da collection
+    public var collectionData: [SettingsData] {
+        return self.mainData
+    }
+    
+    
     
     /* MARK: - Data Source */
     
