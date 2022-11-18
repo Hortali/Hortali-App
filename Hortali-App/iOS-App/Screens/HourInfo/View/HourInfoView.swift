@@ -14,6 +14,13 @@ class HourInfoView: ContainerView {
     /// Collection principal da tela
     private let hourInfoGp = CollectionGroup(style: .justCollection)
     
+    /// Barra superior
+    private let homeIndicatorView: UIView = {
+        let view = CustomViews.newView()
+        view.backgroundColor = UIColor(originalColor: .white)
+        view.layer.cornerRadius = 3
+        return view
+    }()
     
     // Outros
     
@@ -90,6 +97,7 @@ class HourInfoView: ContainerView {
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.contentView.addSubview(self.hourInfoGp)
+        self.contentView.addSubview(self.homeIndicatorView)
     }
     
     
@@ -115,7 +123,8 @@ class HourInfoView: ContainerView {
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let lateral: CGFloat = self.getEquivalent(15)
+        let lateral = self.getEquivalent(15)
+        let width = self.getEquivalent(70)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
@@ -124,6 +133,11 @@ class HourInfoView: ContainerView {
             self.hourInfoGp.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
             self.hourInfoGp.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
             self.hourInfoGp.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            
+            self.homeIndicatorView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+            self.homeIndicatorView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.homeIndicatorView.heightAnchor.constraint(equalToConstant: lateral / 3),
+            self.homeIndicatorView.widthAnchor.constraint(equalToConstant: width)
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

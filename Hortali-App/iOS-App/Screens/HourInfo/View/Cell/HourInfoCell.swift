@@ -44,7 +44,6 @@ class HourInfoCell: UICollectionViewCell {
     private let barView: UIView = {
         let view = CustomViews.newView()
         view.backgroundColor = UIColor(originalColor: .greenUltra)
-        view.tintColor = UIColor(.paragraph)
         return view
     }()
     
@@ -144,7 +143,7 @@ class HourInfoCell: UICollectionViewCell {
     private func setupDynamicConstraints() {
         let lateral = getEquivalent(15)
         let width = getEquivalent(45)
-        let barLine: CGFloat = self.getEquivalent(3)
+        let barLine = getEquivalent(3)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
