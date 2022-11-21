@@ -32,6 +32,7 @@ public class CollectionGroup: UIView {
         
         col.showsHorizontalScrollIndicator = false
         col.showsVerticalScrollIndicator = false
+        col.backgroundView = EmptyView()
         
         return col
     }()
@@ -72,7 +73,7 @@ public class CollectionGroup: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
     
         self.style = style
-        
+
         self.setupViews()
     }
     
@@ -135,6 +136,12 @@ public class CollectionGroup: UIView {
                 self.collection.bottomAnchor.constraint(equalTo: self.bottomAnchor),
                 self.collection.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                 self.collection.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                
+                
+//                self.emptyView.topAnchor.constraint(equalTo: self.collection.topAnchor),
+//                self.emptyView.bottomAnchor.constraint(equalTo: self.collection.bottomAnchor),
+//                self.emptyView.leadingAnchor.constraint(equalTo: self.collection.leadingAnchor),
+//                self.emptyView.trailingAnchor.constraint(equalTo: self.collection.trailingAnchor),
             ]
             
         case .justCollection:
@@ -143,6 +150,12 @@ public class CollectionGroup: UIView {
                 self.collection.bottomAnchor.constraint(equalTo: self.bottomAnchor),
                 self.collection.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                 self.collection.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                
+                
+//                self.emptyView.topAnchor.constraint(equalTo: self.collection.topAnchor),
+//                self.emptyView.bottomAnchor.constraint(equalTo: self.collection.bottomAnchor),
+//                self.emptyView.leadingAnchor.constraint(equalTo: self.collection.leadingAnchor),
+//                self.emptyView.trailingAnchor.constraint(equalTo: self.collection.trailingAnchor),
             ]
         }
         

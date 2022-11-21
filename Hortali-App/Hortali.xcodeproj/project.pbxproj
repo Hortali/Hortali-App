@@ -105,6 +105,7 @@
 		22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4B828DA313B001CE093 /* HourInfoView.swift */; };
 		22EDD4BE28DA4A6A001CE093 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4BD28DA4A6A001CE093 /* AppImages.swift */; };
 		22EDD4C128DA4B33001CE093 /* UIImage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4C028DA4B33001CE093 /* UIImage+AppImages.swift */; };
+		B20C63FB2926AD030036183E /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20C63FA2926AD030036183E /* EmptyView.swift */; };
 		B214C3E8291AF4E30033CFAE /* OnboardingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B214C3E7291AF4E30033CFAE /* OnboardingProtocol.swift */; };
 		B214C3EA291AF5180033CFAE /* OnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B214C3E9291AF5180033CFAE /* OnboardingDelegate.swift */; };
 		B227C5CB290B032C00B07918 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227C5CA290B032C00B07918 /* CustomNavigationController.swift */; };
@@ -219,6 +220,7 @@
 		22EDD4B828DA313B001CE093 /* HourInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInfoView.swift; sourceTree = "<group>"; };
 		22EDD4BD28DA4A6A001CE093 /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
 		22EDD4C028DA4B33001CE093 /* UIImage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AppImages.swift"; sourceTree = "<group>"; };
+		B20C63FA2926AD030036183E /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		B214C3E7291AF4E30033CFAE /* OnboardingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingProtocol.swift; sourceTree = "<group>"; };
 		B214C3E9291AF5180033CFAE /* OnboardingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDelegate.swift; sourceTree = "<group>"; };
 		B227C5CA290B032C00B07918 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 				220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */,
 				2229384E28C8964200515095 /* MainView.swift */,
 				22A3DB29290CED4700B34CEC /* ViewLabel.swift */,
+				B20C63FA2926AD030036183E /* EmptyView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1164,6 +1167,7 @@
 				2229386328C9D5CE00515095 /* AdaptiveLayout.swift in Sources */,
 				22A3918628F7AE3000A42DC1 /* SearchDelegate.swift in Sources */,
 				2229385D28C9D55700515095 /* Dimension.swift in Sources */,
+				B20C63FB2926AD030036183E /* EmptyView.swift in Sources */,
 				2229383A28C8829000515095 /* UIFont+setupFont.swift in Sources */,
 				22EDD4C128DA4B33001CE093 /* UIImage+AppImages.swift in Sources */,
 				22A3917D28F785C300A42DC1 /* ManagedFoodData.swift in Sources */,
