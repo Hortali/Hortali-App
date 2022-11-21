@@ -89,6 +89,7 @@ class TimeGroup: UIView {
         } else {
             self.hourLabel.text = "Fechado"
             self.hourLabel.textColor = UIColor(.closeStatus)
+            self.weekLabel.textColor = UIColor(.closeStatus)
         }
     }
     
