@@ -8,7 +8,7 @@ import UIKit
 class TimeGroup: UIView {
     
     /* MARK: - Atributos */
-
+    
     // Views
     
     /// Mostra qual dia da semana
@@ -47,9 +47,9 @@ class TimeGroup: UIView {
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
-
     
-
+    
+    
     /* MARK: - Construtor */
     
     init() {
@@ -64,7 +64,7 @@ class TimeGroup: UIView {
     
     
     /* MARK: - Encapsulamento */
-
+    
     /// Define as informações que vão ser mostradas
     /// - Parameter infos: texto que vai ser definido
     public func setupInfos(for info: ManagedHourInfo) {
@@ -88,8 +88,8 @@ class TimeGroup: UIView {
             self.hourLabel.text = "\(info.startTime) - \(info.endTime)"
         } else {
             self.hourLabel.text = "Fechado"
+            self.hourLabel.textColor = UIColor(.closeStatus)
         }
-        
     }
     
     
@@ -103,23 +103,17 @@ class TimeGroup: UIView {
                 self.hourLabel.textColor = color
                 self.closeLabel.textColor = color
                 self.barView.backgroundColor = color
-            } else {
-                let color = UIColor(.closeStatus)
-                self.weekLabel.textColor = color
-                self.hourLabel.textColor = color
-                self.closeLabel.textColor = color
-                self.barView.backgroundColor = color
             }
         }
     }
     
     
-
+    
     /* MARK: - Ciclo de Vida */
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-	      
+        
         self.setupUI()
         self.setupStaticTexts()
         self.setupDynamicConstraints()
@@ -161,19 +155,19 @@ class TimeGroup: UIView {
             fontSize: self.getConstant(for: 12), weight: .medium
         ))
     }
-	  
+    
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
         let between: CGFloat = self.getConstant(for: 4)
-       
+        
         let weekLabelHeight: CGFloat = self.getConstant(for: 20)
         
         let barLine: CGFloat = self.getConstant(for: 2)
         
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
-    
+        
         self.dynamicConstraints = [
             self.barView.topAnchor.constraint(equalTo: self.topAnchor),
             self.barView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
