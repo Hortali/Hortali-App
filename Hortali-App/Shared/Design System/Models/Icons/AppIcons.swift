@@ -21,6 +21,15 @@ enum AppIcons: CustomStringConvertible {
     case showLess
     
     
+    // Collection
+    
+    /// Símbolo - 􀇷
+    case grid
+    
+    /// Símbolo - 􀏟
+    case carousel
+    
+    
     
     /* Tab */
     
@@ -44,6 +53,9 @@ enum AppIcons: CustomStringConvertible {
         case .favorite: return "heart"
         case .showMore: return "chevron.down"
         case .showLess: return "chevron.up"
+            
+        case .grid: return "square.grid.2x2"
+        case .carousel: return "rectangle.split.3x1"
             
         case .gardenTab: return "leaf.fill"
         case .foodTab: return "fork.knife"

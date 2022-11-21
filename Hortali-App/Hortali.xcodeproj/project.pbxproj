@@ -96,6 +96,7 @@
 		22A3DB2A290CED4700B34CEC /* ViewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3DB29290CED4700B34CEC /* ViewLabel.swift */; };
 		22A75A8C290CC681001CEA7E /* PopGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A75A8B290CC681001CEA7E /* PopGestureDelegate.swift */; };
 		22A75A8E290CC6DC001CEA7E /* CustomNavigationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A75A8D290CC6DC001CEA7E /* CustomNavigationProtocol.swift */; };
+		22D59A2E2926C3CF00C98630 /* GardenVisualization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D59A2D2926C3CF00C98630 /* GardenVisualization.swift */; };
 		22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */; };
 		22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8C4E328D918B500CE6061 /* TimeGroup.swift */; };
 		22EDD4AB28D95812001CE093 /* CustomStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDD4AA28D95812001CE093 /* CustomStack.swift */; };
@@ -210,6 +211,7 @@
 		22A3DB29290CED4700B34CEC /* ViewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLabel.swift; sourceTree = "<group>"; };
 		22A75A8B290CC681001CEA7E /* PopGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopGestureDelegate.swift; sourceTree = "<group>"; };
 		22A75A8D290CC6DC001CEA7E /* CustomNavigationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationProtocol.swift; sourceTree = "<group>"; };
+		22D59A2D2926C3CF00C98630 /* GardenVisualization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenVisualization.swift; sourceTree = "<group>"; };
 		22E8C4DF28D9188400CE6061 /* InfoGardenTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenTime.swift; sourceTree = "<group>"; };
 		22E8C4E328D918B500CE6061 /* TimeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeGroup.swift; sourceTree = "<group>"; };
 		22EDD4AA28D95812001CE093 /* CustomStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStack.swift; sourceTree = "<group>"; };
@@ -671,6 +673,7 @@
 		2229383B28C8922000515095 /* Garden */ = {
 			isa = PBXGroup;
 			children = (
+				22D59A2C2926C3AC00C98630 /* Model */,
 				2212E82F28DB87FE004CCBAA /* Protocol */,
 				2212E82E28DB87F2004CCBAA /* Delegate */,
 				065ECFC028D26A2F00F024E7 /* DataSource */,
@@ -869,6 +872,14 @@
 				22A75A8D290CC6DC001CEA7E /* CustomNavigationProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		22D59A2C2926C3AC00C98630 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				22D59A2D2926C3CF00C98630 /* GardenVisualization.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		22EDD4AC28DA2D08001CE093 /* HourInfo */ = {
@@ -1178,6 +1189,7 @@
 				2229382228C7C5DE00515095 /* UIImage+AppIcons.swift in Sources */,
 				22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */,
 				223B75E828F16D670034B2C4 /* FavoriteUpdate.swift in Sources */,
+				22D59A2E2926C3CF00C98630 /* GardenVisualization.swift in Sources */,
 				22EDD4B528DA2DC7001CE093 /* HourInfoDataSource.swift in Sources */,
 				22A3918128F7862800A42DC1 /* ManagedVitamins.swift in Sources */,
 				222937E328C66F7F00515095 /* AppColors.swift in Sources */,
