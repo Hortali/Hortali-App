@@ -24,13 +24,6 @@ class HourInfoCell: UICollectionViewCell {
         return lbl
     }()
     
-    /// Label responsável por exibir o status do estabelecimento (aberto ou fechado)
-    private let statusLabel: UILabel = {
-        let lbl = CustomViews.newLabel()
-        lbl.adjustsFontSizeToFitWidth = true
-        return lbl
-    }()
-    
     /// Label responsável por exibir o horário de funcionamento do estabelecimento
     private let hourLabel: UILabel = {
         let lbl = CustomViews.newLabel()
@@ -79,15 +72,15 @@ class HourInfoCell: UICollectionViewCell {
         
         switch data.status {
         case true:
-            self.statusLabel.textColor = UIColor(.openStatus)
+            self.hourLabel.textColor = UIColor(.openStatus)
             self.hourLabel.text = "\(data.startTime) - \(data.endTime)"
             self.dayLabel.textColor = greenColor
             self.barView.backgroundColor = greenColor
             
         case false:
-            self.statusLabel.text = "Fechado"
+            self.hourLabel.text = "Fechado"
             self.dayLabel.textColor = closeStatus
-            self.statusLabel.textColor = closeStatus
+            self.hourLabel.textColor = closeStatus
             self.barView.backgroundColor = closeStatus
         }
         
@@ -96,7 +89,7 @@ class HourInfoCell: UICollectionViewCell {
         }
     }
     
-    
+   
     
     /* MARK: - Ciclo de Vida */
     
@@ -118,7 +111,6 @@ class HourInfoCell: UICollectionViewCell {
     private func setupViews() {
         self.contentView.addSubview(self.dayLabel)
         self.contentView.addSubview(self.barView)
-        self.contentView.addSubview(self.statusLabel)
         self.contentView.addSubview(self.hourLabel)
     }
     
@@ -137,7 +129,6 @@ class HourInfoCell: UICollectionViewCell {
         self.dayLabel.setupText(with: titleInfo)
         self.dayLabel.font = UIFont(name: "AmsterdamGraffiti", size: getEquivalent(34))
 
-        self.statusLabel.setupText(with: fontInfo)
         self.hourLabel.setupText(with: fontInfo)
     }
       
@@ -163,16 +154,10 @@ class HourInfoCell: UICollectionViewCell {
             self.barView.widthAnchor.constraint(equalToConstant: barLine),
             
             
-            self.statusLabel.topAnchor.constraint(equalTo: self.dayLabel.bottomAnchor),
-            self.statusLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
-            self.statusLabel.trailingAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.statusLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            
-            
             self.hourLabel.topAnchor.constraint(equalTo: self.dayLabel.bottomAnchor),
             self.hourLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
-            self.hourLabel.trailingAnchor.constraint(equalTo: self.statusLabel.trailingAnchor),
-            self.hourLabel.bottomAnchor.constraint(equalTo: self.statusLabel.bottomAnchor),
+            self.hourLabel.trailingAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.hourLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
