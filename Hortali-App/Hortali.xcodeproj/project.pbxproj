@@ -500,6 +500,7 @@
 		222937D928C66B9200515095 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				B241564B28D2722B009F011C /* FoodDataSource.swift */,
 				2229381E28C7C3DD00515095 /* Main */,
 				B2DE49522911AA7400293E6A /* Onboarding */,
 				2229383B28C8922000515095 /* Garden */,
@@ -953,7 +954,6 @@
 		B241564A28D271AA009F011C /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				B241564B28D2722B009F011C /* FoodDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";

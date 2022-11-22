@@ -32,7 +32,6 @@ public class CollectionGroup: UIView {
         
         col.showsHorizontalScrollIndicator = false
         col.showsVerticalScrollIndicator = false
-        col.backgroundView = EmptyView()
         
         return col
     }()
