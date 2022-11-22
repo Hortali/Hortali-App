@@ -26,11 +26,15 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     /// Delegate da barra de busca
     private let searchDelegate = SearchDelegate()
     
+    /// Último tipo de visualização das hortas antes de entrar na search bar
+    private var lastGardenVisualization: GardenVisualization?
+    
     
     /* Dados das Hortas */
     
     /// Dados das hortas
     private lazy var gardenData: [ManagedGarden] = []
+    
     
     
     /* MARK: - Ciclo de Vida */
@@ -68,6 +72,10 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     /* Search Protocol */
     
     internal func updateCollection(with textSearch: String) {
+        if self.lastGardenVisualization == nil {
+            self.lastGardenVisualization = self.myView.actualGardenVisualization
+        }
+         
         if textSearch.isEmpty {
             self.setupDataSourceData()
             return
@@ -88,6 +96,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         }
         
         self.setupDataSourceData(with: dataFiltered)
+        self.myView.actualGardenVisualization = .grid
     }
     
     
@@ -110,6 +119,14 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     }
     
     
+    /// Ação do botão de mudar a visualização da collection
+    @objc
+    private func visualizationAction() {
+        self.myView.changeVisualization()
+    }
+    
+    
+    
     /* MARK: - Configurações */
     
     /// Lida com o toque na tela para retirar o teclado
@@ -122,7 +139,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     /// Definindo as ações dos botões
     private func setupButtonsAction() {
-        self.myView.setOnboardingButtonAction(target: self, action: #selector(self.onboardingAction))
+        self.myView.setVisualizationButtonAction(target: self, action: #selector(self.visualizationAction))
     }
     
     
@@ -157,6 +174,11 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         
         if self.gardenData.isEmpty {
             self.gardenData = gardenData
+        }
+        
+        if let visu = self.lastGardenVisualization {
+            self.myView.actualGardenVisualization = visu
+            self.lastGardenVisualization = nil
         }
     }
 }
