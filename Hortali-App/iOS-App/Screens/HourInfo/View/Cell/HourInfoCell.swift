@@ -24,13 +24,6 @@ class HourInfoCell: UICollectionViewCell {
         return lbl
     }()
     
-    /// Label responsável por exibir o status do estabelecimento (aberto ou fechado)
-    private let statusLabel: UILabel = {
-        let lbl = CustomViews.newLabel()
-        lbl.adjustsFontSizeToFitWidth = true
-        return lbl
-    }()
-    
     /// Label responsável por exibir o horário de funcionamento do estabelecimento
     private let hourLabel: UILabel = {
         let lbl = CustomViews.newLabel()
@@ -54,7 +47,7 @@ class HourInfoCell: UICollectionViewCell {
     private var dynamicConstraints: [NSLayoutConstraint] = []
     
     
-      
+    
     /* MARK: - Construtor */
     
     override init(frame: CGRect) {
@@ -74,18 +67,21 @@ class HourInfoCell: UICollectionViewCell {
     public func setupCell(for data: ManagedHourInfo) {
         self.dayLabel.text = data.week
         
+        let openColor = UIColor(originalColor: .greenUltra)
+        let closeStatus = UIColor(.closeStatus)
+        
         switch data.status {
         case true:
             self.statusLabel.textColor = UIColor(.openStatus)
             self.hourLabel.text = "\(data.startTime) - \(data.endTime)"
-            self.dayLabel.textColor = UIColor(originalColor: .greenUltra)
-            self.barView.backgroundColor = UIColor(originalColor: .greenUltra)
+            self.dayLabel.textColor = openColor
+            self.barView.backgroundColor = openColor
             
         case false:
             self.statusLabel.text = "Fechado"
-            self.dayLabel.textColor = UIColor(.closeStatus)
-            self.statusLabel.textColor = UIColor(.closeStatus)
-            self.barView.backgroundColor = UIColor(.closeStatus)
+            self.dayLabel.textColor = closeStatus
+            self.statusLabel.textColor = closeStatus
+            self.barView.backgroundColor = closeStatus
         }
         
         if InfoGardenView.todayWeek == data.week {
@@ -130,14 +126,13 @@ class HourInfoCell: UICollectionViewCell {
     private func setupStaticTexts() {
         let fontInfo = FontInfo(fontSize: 20, weight: .semibold)
         let titleInfo = FontInfo(fontSize: 10, weight: .regular)
-
+        
         self.dayLabel.setupText(with: titleInfo)
         self.dayLabel.font = UIFont(name: "AmsterdamGraffiti", size: getEquivalent(34))
-
-        self.statusLabel.setupText(with: fontInfo)
+        
         self.hourLabel.setupText(with: fontInfo)
     }
-      
+    
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
@@ -146,7 +141,7 @@ class HourInfoCell: UICollectionViewCell {
         let barLine = getEquivalent(3)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
-    
+        
         self.dynamicConstraints = [
             self.dayLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
             self.dayLabel.trailingAnchor.constraint(equalTo: self.contentView.centerXAnchor),

@@ -18,7 +18,7 @@ class HourInfoView: ContainerView {
     private let homeIndicatorView: UIView = {
         let view = CustomViews.newView()
         view.backgroundColor = UIColor(originalColor: .white)
-        view.layer.cornerRadius = 3
+
         return view
     }()
     
@@ -111,6 +111,9 @@ class HourInfoView: ContainerView {
         // Define o tamanho que a célula vai ter
         self.collectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
         self.collectionFlow.itemSize = CGSize(width: self.hourInfoGp.frame.width, height: 60)
+        
+        // Define o aredondamento do indicador de Scroll
+        homeIndicatorView.layer.cornerRadius = 3
     }
     
     
@@ -125,6 +128,7 @@ class HourInfoView: ContainerView {
     private func setupDynamicConstraints() {
         let lateral = self.getEquivalent(15)
         let width = self.getEquivalent(70)
+        let space = self.getEquivalent(5)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
@@ -134,9 +138,9 @@ class HourInfoView: ContainerView {
             self.hourInfoGp.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
             self.hourInfoGp.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
             
-            self.homeIndicatorView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+            self.homeIndicatorView.topAnchor.constraint(equalTo: self.topAnchor, constant: space),
             self.homeIndicatorView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.homeIndicatorView.heightAnchor.constraint(equalToConstant: lateral / 3),
+            self.homeIndicatorView.heightAnchor.constraint(equalToConstant: space),
             self.homeIndicatorView.widthAnchor.constraint(equalToConstant: width)
         ]
         

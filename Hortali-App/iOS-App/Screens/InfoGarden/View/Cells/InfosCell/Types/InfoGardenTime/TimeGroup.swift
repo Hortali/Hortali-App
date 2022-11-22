@@ -68,6 +68,8 @@ class TimeGroup: UIView {
     /// Define as informações que vão ser mostradas
     /// - Parameter infos: texto que vai ser definido
     public func setupInfos(for info: ManagedHourInfo) {
+        let color = UIColor(.closeStatus)
+        
         if self.isTodayComponent {
             if info.status {
                 self.weekLabel.text = "Aberto"
@@ -88,8 +90,8 @@ class TimeGroup: UIView {
             self.hourLabel.text = "\(info.startTime) - \(info.endTime)"
         } else {
             self.hourLabel.text = "Fechado"
-            self.hourLabel.textColor = UIColor(.closeStatus)
-            self.weekLabel.textColor = UIColor(.closeStatus)
+            self.hourLabel.textColor = color
+            self.weekLabel.textColor = color
         }
     }
     
