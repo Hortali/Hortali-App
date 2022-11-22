@@ -18,6 +18,9 @@ class MainController: UITabBarController {
     /// Controller da tela 03: Ver os favoritos
     private let favoriteController = FavoriteViewController()
     
+    /// Controller da tela 04: Configurações
+    private let settingsController = SettingsController()
+    
     
     
     /* MARK: - Ciclo de Vida */
@@ -57,6 +60,7 @@ class MainController: UITabBarController {
             self.getNavigation(for: self.gardenController),
             self.getNavigation(for: self.foodController),
             self.getNavigation(for: self.favoriteController),
+            self.getNavigation(for: self.settingsController),
         ]
     }
     
@@ -66,5 +70,6 @@ class MainController: UITabBarController {
         self.gardenController.setupTab(text: "Hortas", icon: .gardenTab)
         self.foodController.setupTab(text: "Alimentos", icon: .foodTab)
         self.favoriteController.setupTab(text: "Favoritos", icon: .favoriteTab)
+        self.settingsController.setupTab(text: "Configurações", icon: .settingsTab)
     }
 }
