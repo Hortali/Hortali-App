@@ -13,6 +13,7 @@ class EmptyView: UIView {
         let lbl = CustomViews.newLabel()
         lbl.textAlignment = .center
         lbl.adjustsFontSizeToFitWidth = true
+        lbl.textColor = UIColor(originalColor: .greyButton)
         return lbl
     }()
     
@@ -21,6 +22,8 @@ class EmptyView: UIView {
         lbl.textAlignment = .center
         lbl.numberOfLines = 2
         lbl.adjustsFontSizeToFitWidth = true
+        lbl.textColor = UIColor(originalColor: .greyButton)
+
         return lbl
     }()
     
@@ -37,8 +40,6 @@ class EmptyView: UIView {
         super.init(frame: .zero)
         
         self.setupViews()
-        self.registerCell()
-        self.setupCollectionFlow()
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -48,12 +49,7 @@ class EmptyView: UIView {
     /* MARK: - Encapsulamento */
     
     /* Ações dos Botões */
-    
-    /// Define a ação do botão
-    public func setAction(target: Any?, action: Selector) -> Void {
-        // self. .addTarget(target, action: action, for: .touchDown)
-    }
-    
+
     
     
     /* MARK: - Ciclo de Vida */
@@ -70,20 +66,6 @@ class EmptyView: UIView {
     
     /* MARK: - Configurações */
     
-    /* Collection */
-    
-    /// Registra as células nas collections/table
-    private func registerCell() {
-        self.backgroundColor = .red
-    }
-    
-    
-    /// Define o layout da collection
-    private func setupCollectionFlow() {
-        // self.collection.collectionViewLayout = self.collectionFlow
-    }
-    
-    
     /* Geral */
     
     /// Adiciona os elementos (Views) na tela
@@ -95,12 +77,7 @@ class EmptyView: UIView {
     
     /// Personalização da UI
     private func setupUI() {
-        /*
-         Aqui vão definidos as bordas, cor de fundo da view
-         */
-        
-        // Define o tamanho que a célula vai ter
-        // self.collectionFlow.itemSize = CGSize(width: 100, height: 100)
+        self.backgroundColor = .clear
     }
     
     
@@ -115,9 +92,6 @@ class EmptyView: UIView {
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        //let lateral: CGFloat = self.getEquivalent(15)
-        // let between: CGFloat =
-        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
