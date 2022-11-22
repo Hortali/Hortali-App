@@ -1,8 +1,9 @@
 /* Macro - Grupo 05 */
 
 
-/// Dados usados na tela de confugrações
+/// Dados usados na tela de configurações
 struct SettingsData {
+    
     /// Ícone da célula
     let icon: AppIcons
     

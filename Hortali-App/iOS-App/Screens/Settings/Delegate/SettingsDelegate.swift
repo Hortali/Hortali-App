@@ -9,7 +9,7 @@ class SettingsDelegate: NSObject, UICollectionViewDelegate {
     
     /* MARK: - Atributos */
     
-    /// Comunicação entre o delegate com ...
+    /// Comunicação entre o delegate com a controller da tela de configurações
     private weak var settingsProtocol: SettingsProtocol?
         
 

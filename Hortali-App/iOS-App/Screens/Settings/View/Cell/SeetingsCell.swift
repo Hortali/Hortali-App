@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// Célula que mostra as informações da tela de ver as inforações das hortas
+/// Célula que mostra as configurações disponíveis na tela de configurações
 class SettingsCell: UICollectionViewCell {
     
     /* MARK: - Atributos */
@@ -26,6 +26,7 @@ class SettingsCell: UICollectionViewCell {
         let imgV = CustomViews.newImage()
         imgV.tintColor = UIColor(.secondaryTitle)
         imgV.contentMode = .scaleAspectFit
+        
         return imgV
     }()
     

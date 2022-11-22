@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// Os tipos que estão de acrodo com esse protocolo pertecem a tela de configuração
+/// Os tipos que estão de acordo com esse protocolo pertecem a tela de configuração
 protocol SettingsProtocol: NSObject {
     
     /// Abre uma página de acordo com o index passado

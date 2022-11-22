@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// UI da tela de ver todas os alimentos
+/// UI da tela de configurações
 class SettingsView: MainView {
     
     /* MARK: - Atributos */
@@ -19,7 +19,6 @@ class SettingsView: MainView {
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
-		
 		
     /// Configurações do layout da collection
     private let collectionFlow: UICollectionViewFlowLayout = {

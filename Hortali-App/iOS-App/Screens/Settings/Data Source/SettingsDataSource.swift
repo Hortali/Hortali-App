@@ -4,12 +4,12 @@
 import UIKit
 
 
-/// Data source da collection da tela dde configurações
+/// Data source da collection da tela de configurações
 class SettingsDataSource: NSObject, UICollectionViewDataSource {
         
     /* MARK: - Atributos */
     
-    /// Dados usados no data source (nome das imagens)
+    /// Dados usados no data source
     private var mainData: [SettingsData] = []
         
     
@@ -25,14 +25,7 @@ class SettingsDataSource: NSObject, UICollectionViewDataSource {
     
     
     /* MARK: - Encapsulamento */
-    
-    /// Pega a quantidade de células que vão ser mostradas
-    /// - Returns: quantidade de dados
-    public func getDataCount() -> Int {
-        return self.mainData.count
-    }
-    
-    
+
     /// Dados da collection
     public var collectionData: [SettingsData] {
         return self.mainData
@@ -44,7 +37,7 @@ class SettingsDataSource: NSObject, UICollectionViewDataSource {
     
     /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.getDataCount()
+        return self.mainData.count
     }
     
     
