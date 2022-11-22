@@ -13,7 +13,6 @@ class EmptyView: UIView {
         let lbl = CustomViews.newLabel()
         lbl.textAlignment = .center
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.textColor = UIColor(originalColor: .greyButton)
         return lbl
     }()
     
@@ -22,7 +21,6 @@ class EmptyView: UIView {
         lbl.textAlignment = .center
         lbl.numberOfLines = 2
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.textColor = UIColor(originalColor: .greyButton)
         return lbl
     }()
     
@@ -76,6 +74,7 @@ class EmptyView: UIView {
     
     /// Registra as células nas collections/table
     private func registerCell() {
+        self.backgroundColor = .red
     }
     
     
@@ -96,8 +95,12 @@ class EmptyView: UIView {
     
     /// Personalização da UI
     private func setupUI() {
-        self.backgroundColor = .clear
+        /*
+         Aqui vão definidos as bordas, cor de fundo da view
+         */
         
+        // Define o tamanho que a célula vai ter
+        // self.collectionFlow.itemSize = CGSize(width: 100, height: 100)
     }
     
     

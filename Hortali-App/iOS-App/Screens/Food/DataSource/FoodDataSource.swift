@@ -24,14 +24,12 @@ class FoodDataSource: NSObject, UICollectionViewDataSource {
     
     /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let data = mainData.count
-        
-        if (data > 0){
+        if (mainData.count > 0){
             collectionView.backgroundView = nil
         } else{
             collectionView.backgroundView = EmptyView()
         }
-        return data
+        return self.mainData.count
     }
     
     

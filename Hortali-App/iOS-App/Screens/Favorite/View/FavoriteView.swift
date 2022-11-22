@@ -162,8 +162,6 @@ class FavoriteView: MainView {
             )
             self.foodCollectionFlow.minimumInteritemSpacing = minimumSpace
         }
-        
-        self.foodGroup.collection.numberOfItems(inSection: 0)
     }
     
     
