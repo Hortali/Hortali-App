@@ -12,6 +12,7 @@ extension UIButton {
         if let text = config.text {
             self.setTitle(text, for: .normal)
         }
+        
         var newConfig = config
         newConfig.fontFamily = .graffiti
         

@@ -207,7 +207,7 @@ class InfoFoodView: UIView {
     /// Cria e adiciona as views que vão ser colocadas na stack
     private func setupVitaminsStackViews(for vitamins: [ManagedVitamins]) {
         for ind in 0..<vitamins.count {
-            let vitBut = self.getVitaminLabel(for: vitamins[ind])
+            let vitBut = self.getVitaminButton(for: vitamins[ind])
             vitBut.tag = ind
             
             self.vitaminsTypesButtons.append(vitBut)
@@ -408,15 +408,14 @@ class InfoFoodView: UIView {
     }
     
     
-    /// Cria as labels da stack view
-    private func getVitaminLabel(for vitamins: ManagedVitamins) -> CustomButton {
+    /// Cria os botões da stack view
+    private func getVitaminButton(for vitamins: ManagedVitamins) -> CustomButton {
         let but = CustomViews.newButton()
         but.backgroundColor = UIColor(originalColor: .orange)
-        but.titleLabel?.textColor = UIColor(originalColor: .white)
+        but.setTitleColor(UIColor(originalColor: .white), for: .normal)
         
         but.isCircular = true
-        
-        but.setupText(with: FontInfo(text: vitamins.name, fontSize: 50, weight: .medium))
+        but.setTitle(vitamins.name, for: .normal)
         return but
     }
     
