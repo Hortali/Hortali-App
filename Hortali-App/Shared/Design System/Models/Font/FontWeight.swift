@@ -7,7 +7,7 @@ import class UIKit.UIFont
 /// Tipos de peso de fonte dispoíveis
 enum FontWeight {
     
-    /* MARK: - Casos*/
+    /* MARK: - Casos */
     
     case regular
     case ultralight
@@ -23,7 +23,7 @@ enum FontWeight {
     
     /* MARK: - Atributos */
     
-    /// Tipo da fonte ()usado na familia
+    /// Tipo da fonte usado na familia
     var type: String {
         switch self {
         case .regular: return "Regular"
@@ -38,7 +38,7 @@ enum FontWeight {
         }
     }
     
-    /// Pega a fonte equivalente à fonte do sistema
+    /// Pega o peso da fonte equivalente ào peso da fonte do sistema
     var systemFont: UIFont.Weight {
         switch self {
         case .regular: return .regular
@@ -57,7 +57,7 @@ enum FontWeight {
     
     /* MARK: - Métodos */
     
-    /// Transforma o peso padrão do sistema para o pesoa padrão costumizado
+    /// Transforma o peso padrão do sistema para o peso costumizado
     /// - Parameter weight: peso padrão do sistema
     /// - Returns: peso costumizado
     func getAppWeight(by weight: UIFont.Weight) -> FontWeight {
@@ -73,5 +73,4 @@ enum FontWeight {
         default: return .regular
         }
     }
-    
 }

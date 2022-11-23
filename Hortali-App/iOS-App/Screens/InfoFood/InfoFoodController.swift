@@ -17,7 +17,7 @@ class InfoFoodController: UIViewController {
     
     /* Outros */
     
-    /// Configuraçòes para atualizar o estado de favoritos
+    /// Configurações para atualizar o estado de favoritos
     private var favUpdate: FavoriteUpdate
     
     /// Dados das vitaminas
@@ -92,6 +92,7 @@ class InfoFoodController: UIViewController {
     
     
     /// Ação de voltar para a tela anterior
+    /// - Parameter sender: botão que vai receber a ação
     @objc
     private func vitaminsAction(sender: UIButton) {
         let vitaminName = self.vitaminsData[sender.tag].name

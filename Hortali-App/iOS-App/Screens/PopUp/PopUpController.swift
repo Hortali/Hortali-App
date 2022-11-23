@@ -14,7 +14,7 @@ class PopUpController: UIViewController {
 
     
     
-    /* MARK: - Atributos */
+    /* MARK: - Construtor */
     
     init(infos: PopUpInfo) {
         self.myView = PopUpView(info: infos)

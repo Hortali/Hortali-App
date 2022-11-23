@@ -64,7 +64,7 @@ class PopUpView: UIView {
     /* MARK: - Encapsulamento */
     
     /// Configura o pop up a partir das informações passadas
-    /// - Parameter infos: cpnjunto de informações
+    /// - Parameter infos: conjunto de informações
     public func setupPopup(for infos: PopUpInfo) {
         self.titleLabel.text = infos.title
         self.descriptionLabel.text = infos.description
@@ -129,7 +129,6 @@ class PopUpView: UIView {
         
 
         /* Botões */
-        
         self.closeButton.setupText(with: FontInfo(
             text:"Fechar" , fontSize: self.getEquivalent(25), weight: .semibold, fontFamily: .graffiti
         ))
