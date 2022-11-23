@@ -94,12 +94,15 @@ class InfoFoodController: UIViewController {
     /// Ação de voltar para a tela anterior
     @objc
     private func vitaminsAction(sender: UIButton) {
-        let vitamin = self.vitaminsData[sender.tag].name
+        let vitaminName = self.vitaminsData[sender.tag].name
         
+        let vitaminInfo = DataManager.shared.getVitamin(for: vitaminName)
+    
         let popupInfos = PopUpInfo(
-            title: "Vitamina \(vitamin)",
-            description: "É um micronutriente que pertence ao grupo das vitaminas lipossolúveis. Possui ação antioxidante, combatendo os radicais livres."
+            title: "Vitamina \(vitaminInfo?.name ?? "")",
+            description: vitaminInfo?.description ?? ""
         )
+        
         let controller = PopUpController(infos: popupInfos)
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle = .crossDissolve
