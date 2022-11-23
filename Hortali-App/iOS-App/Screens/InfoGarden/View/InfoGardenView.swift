@@ -275,8 +275,8 @@ class InfoGardenView: UIView {
         // Collections
         
         self.infosCollectionFlow.itemSize = CGSize(
-            width: self.getEquivalent(163),
-            height: self.getEquivalent(163)
+            width: 163,
+            height: 163 //self.getEquivalent(163)
         )
         self.infosCollectionFlow.minimumLineSpacing = self.getEquivalent(10)
         
