@@ -24,22 +24,20 @@ class HourInfoCell: UICollectionViewCell {
         return lbl
     }()
     
-    /// Label responsável por exibir o status do estabelecimento (aberto ou fechado)
-    private let statusLabel: UILabel = {
-        let lbl = CustomViews.newLabel()
-        lbl.adjustsFontSizeToFitWidth = true
-        lbl.backgroundColor = .clear
-        return lbl
-    }()
-    
     /// Label responsável por exibir o horário de funcionamento do estabelecimento
     private let hourLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.backgroundColor = .clear
-        lbl.textAlignment = .right
+        lbl.textColor = UIColor(originalColor: .greenDark)
         
         return lbl
+    }()
+    
+    /// Barra lateral
+    private let barView: UIView = {
+        let view = CustomViews.newView()
+        view.backgroundColor = UIColor(originalColor: .greenDark)
+        return view
     }()
     
     
@@ -69,28 +67,29 @@ class HourInfoCell: UICollectionViewCell {
     public func setupCell(for data: ManagedHourInfo) {
         self.dayLabel.text = data.week
         
+        let greenColor = UIColor(originalColor: .greenDark)
+        let closeStatus = UIColor(.closeStatus)
+        
         switch data.status {
         case true:
-            self.statusLabel.text = "Aberto"
-            self.statusLabel.textColor = UIColor(.openStatus)
+            self.hourLabel.textColor = UIColor(.openStatus)
             self.hourLabel.text = "\(data.startTime) - \(data.endTime)"
-            
-            self.backgroundColor = UIColor(.openBackgroundStatus)?.withAlphaComponent(0.4)
+            self.dayLabel.textColor = greenColor
+            self.barView.backgroundColor = greenColor
             
         case false:
-            self.statusLabel.text = "Fechado"
-            self.statusLabel.textColor = UIColor(.closeStatus)
-            self.backgroundColor = UIColor(.closeBackgroundStatus)?.withAlphaComponent(0.4)
+            self.hourLabel.text = "Fechado"
+            self.dayLabel.textColor = closeStatus
+            self.hourLabel.textColor = closeStatus
+            self.barView.backgroundColor = closeStatus
         }
         
         if InfoGardenView.todayWeek == data.week {
             self.layer.masksToBounds = true
-            self.layer.borderWidth = 5
-            self.layer.borderColor = self.backgroundColor?.withAlphaComponent(1).cgColor
         }
     }
     
-    
+   
     
     /* MARK: - Ciclo de Vida */
     
@@ -111,7 +110,7 @@ class HourInfoCell: UICollectionViewCell {
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.contentView.addSubview(self.dayLabel)
-        self.contentView.addSubview(self.statusLabel)
+        self.contentView.addSubview(self.barView)
         self.contentView.addSubview(self.hourLabel)
     }
     
@@ -124,36 +123,38 @@ class HourInfoCell: UICollectionViewCell {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        let fontInfo = FontInfo(fontSize: 20, weight: .regular)
+        self.dayLabel.setupText(with: FontInfo(
+            fontSize: self.getEquivalent(35), weight: .regular, fontFamily: .graffiti
+        ))
         
-        self.dayLabel.setupText(with: fontInfo)
-        self.statusLabel.setupText(with: fontInfo)
-        self.hourLabel.setupText(with: fontInfo)
+        self.hourLabel.setupText(with: FontInfo(fontSize: 20, weight: .semibold))
     }
       
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
         let lateral = getEquivalent(15)
+        let width = getEquivalent(45)
+        let barLine = getEquivalent(3)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
         self.dynamicConstraints = [
-            self.dayLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             self.dayLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
             self.dayLabel.trailingAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             self.dayLabel.bottomAnchor.constraint(equalTo:self.contentView.centerYAnchor),
+            self.dayLabel.widthAnchor.constraint(equalToConstant: width),
             
             
-            self.statusLabel.topAnchor.constraint(equalTo: self.dayLabel.bottomAnchor),
-            self.statusLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
-            self.statusLabel.trailingAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.statusLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            self.barView.topAnchor.constraint(equalTo: self.topAnchor),
+            self.barView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.barView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.barView.widthAnchor.constraint(equalToConstant: barLine),
             
             
-            self.hourLabel.topAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.hourLabel.leadingAnchor.constraint(equalTo: self.statusLabel.trailingAnchor),
-            self.hourLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
+            self.hourLabel.topAnchor.constraint(equalTo: self.dayLabel.bottomAnchor),
+            self.hourLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
+            self.hourLabel.trailingAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             self.hourLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
         ]
         

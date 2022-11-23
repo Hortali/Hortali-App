@@ -103,6 +103,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
             let todayData = data[todayWeek]
             self.todayTimeGroup.setupInfos(for: todayData)
             self.todayWeekLabel.text = todayData.week
+
             
             // Dia seguinte 1
             let nextDay1 = self.getNextDay(by: todayWeek)
@@ -114,6 +115,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
             let nextDay2 = self.getNextDay(by: nextDay1)
             let nextDay2Data = data[nextDay2]
             self.daysAfter[1].setupInfos(for: nextDay2Data)
+            
             
             // Feriado
             let holiday = 7
@@ -165,14 +167,14 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         
         
         self.todayWeekLabel.setupText(with: FontInfo(
-            fontSize: self.getConstant(for: 20), weight: .regular
+            fontSize: self.getConstant(for: 25), weight: .regular, fontFamily: .graffiti
         ))
     }
     
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        // Espçamentos
+        // Espaçamentos
         let lateral: CGFloat = self.getConstant(for: 15)
         
         let timeGroupHeight: CGFloat = self.getConstant(for: 35)
