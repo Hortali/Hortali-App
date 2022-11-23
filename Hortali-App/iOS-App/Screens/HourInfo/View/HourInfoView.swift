@@ -120,7 +120,7 @@ class HourInfoView: ContainerView {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
         self.setTitleText(with: "Horário de funcionamento")
-        titleLabel.textColor = UIColor(originalColor: .greenUltra)
+        self.titleLabel.textColor = UIColor(originalColor: .greenDark)
     }
     
     

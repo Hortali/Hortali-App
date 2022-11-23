@@ -28,7 +28,7 @@ class HourInfoCell: UICollectionViewCell {
     private let hourLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.textColor = UIColor(originalColor: .greenUltra)
+        lbl.textColor = UIColor(originalColor: .greenDark)
         
         return lbl
     }()
@@ -36,7 +36,7 @@ class HourInfoCell: UICollectionViewCell {
     /// Barra lateral
     private let barView: UIView = {
         let view = CustomViews.newView()
-        view.backgroundColor = UIColor(originalColor: .greenUltra)
+        view.backgroundColor = UIColor(originalColor: .greenDark)
         return view
     }()
     
@@ -67,7 +67,7 @@ class HourInfoCell: UICollectionViewCell {
     public func setupCell(for data: ManagedHourInfo) {
         self.dayLabel.text = data.week
         
-        let greenColor = UIColor(originalColor: .greenUltra)
+        let greenColor = UIColor(originalColor: .greenDark)
         let closeStatus = UIColor(.closeStatus)
         
         switch data.status {
@@ -123,13 +123,11 @@ class HourInfoCell: UICollectionViewCell {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        let fontInfo = FontInfo(fontSize: 20, weight: .semibold)
-        let titleInfo = FontInfo(fontSize: 10, weight: .regular)
-
-        self.dayLabel.setupText(with: titleInfo)
-        self.dayLabel.font = UIFont(name: "AmsterdamGraffiti", size: getEquivalent(34))
-
-        self.hourLabel.setupText(with: fontInfo)
+        self.dayLabel.setupText(with: FontInfo(
+            fontSize: self.getEquivalent(35), weight: .regular, fontFamily: .graffiti
+        ))
+        
+        self.hourLabel.setupText(with: FontInfo(fontSize: 20, weight: .semibold))
     }
       
     

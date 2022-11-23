@@ -167,17 +167,14 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         
         
         self.todayWeekLabel.setupText(with: FontInfo(
-            fontSize: self.getConstant(for: 20),
-            weight: .regular
+            fontSize: self.getConstant(for: 25), weight: .regular, fontFamily: .graffiti
         ))
-        self.todayWeekLabel.font = UIFont(name: "AmsterdamGraffiti",
-                                          size: getConstant(for: 25))
     }
     
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        // Espçamentos
+        // Espaçamentos
         let lateral: CGFloat = self.getConstant(for: 15)
         
         let timeGroupHeight: CGFloat = self.getConstant(for: 35)
