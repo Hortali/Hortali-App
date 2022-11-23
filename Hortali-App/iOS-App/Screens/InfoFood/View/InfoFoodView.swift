@@ -44,7 +44,7 @@ class InfoFoodView: UIView {
     }()
     
     /// Label dos tipos de vitaminas (views para a Stack)
-    private var vitaminsTypesLabels: [CustomLabel] = []
+    private var vitaminsTypesLabels: [CustomButton] = []
     
     /// Label de informações das vitaminas
     private let vitaminsInfoLabel = {
@@ -198,11 +198,12 @@ class InfoFoodView: UIView {
         
     /// Cria e adiciona as views que vão ser colocadas na stack
     private func setupVitaminsStackViews(for vitamins: [ManagedVitamins]) {
-        for vitamin in vitamins {
-            let vitLabel = self.getVitaminLabel(for: vitamin)
+        for ind in 0..<vitamins.count {
+            let vitBut = self.getVitaminLabel(for: vitamins[ind])
+            vitBut.tag = ind
             
-            self.vitaminsTypesLabels.append(vitLabel)
-            self.vitaminsStack.addArrangedSubview(vitLabel)
+            self.vitaminsTypesLabels.append(vitBut)
+            self.vitaminsStack.addArrangedSubview(vitBut)
         }
     }
     
@@ -399,16 +400,15 @@ class InfoFoodView: UIView {
     
     
     /// Cria as labels da stack view
-    private func getVitaminLabel(for vitamins: ManagedVitamins) -> CustomLabel {
-        let lbl = CustomViews.newLabel()
-        lbl.backgroundColor = UIColor(originalColor: .orange)
-        lbl.textColor = UIColor(originalColor: .white)
-        lbl.textAlignment = .center
+    private func getVitaminLabel(for vitamins: ManagedVitamins) -> CustomButton {
+        let but = CustomViews.newButton()
+        but.backgroundColor = UIColor(originalColor: .orange)
+        but.titleLabel?.textColor = UIColor(originalColor: .white)
         
-        lbl.isCircular = true
+        but.isCircular = true
         
-        lbl.text = vitamins.name
-        return lbl
+        but.setTitle(vitamins.name, for: .normal)
+        return but
     }
     
     

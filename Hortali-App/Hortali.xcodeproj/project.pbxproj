@@ -84,6 +84,9 @@
 		224F057229281A9300B20447 /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057129281A9300B20447 /* SettingsDelegate.swift */; };
 		224F057529281B5300B20447 /* SettingsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057429281B5300B20447 /* SettingsProtocol.swift */; };
 		224F057829281D2800B20447 /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057729281D2800B20447 /* SettingsData.swift */; };
+		225FA1EB292D5C0F0004D131 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225FA1EA292D5C0F0004D131 /* PopUpView.swift */; };
+		225FA1EE292D5C230004D131 /* PopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225FA1ED292D5C230004D131 /* PopUpController.swift */; };
+		225FA1F1292D65E50004D131 /* PopUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225FA1F0292D65E50004D131 /* PopUpInfo.swift */; };
 		22A3916E28F6E62700A42DC1 /* InfoGardenCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3916D28F6E62700A42DC1 /* InfoGardenCellProtocol.swift */; };
 		22A3917428F784B200A42DC1 /* ManagedGardenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3917328F784B200A42DC1 /* ManagedGardenData.swift */; };
 		22A3917628F784FB00A42DC1 /* ManagedGarden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3917528F784FB00A42DC1 /* ManagedGarden.swift */; };
@@ -204,6 +207,9 @@
 		224F057129281A9300B20447 /* SettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
 		224F057429281B5300B20447 /* SettingsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProtocol.swift; sourceTree = "<group>"; };
 		224F057729281D2800B20447 /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
+		225FA1EA292D5C0F0004D131 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		225FA1ED292D5C230004D131 /* PopUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpController.swift; sourceTree = "<group>"; };
+		225FA1F0292D65E50004D131 /* PopUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpInfo.swift; sourceTree = "<group>"; };
 		22A3916D28F6E62700A42DC1 /* InfoGardenCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenCellProtocol.swift; sourceTree = "<group>"; };
 		22A3917328F784B200A42DC1 /* ManagedGardenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedGardenData.swift; sourceTree = "<group>"; };
 		22A3917528F784FB00A42DC1 /* ManagedGarden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedGarden.swift; sourceTree = "<group>"; };
@@ -510,6 +516,7 @@
 		222937D928C66B9200515095 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				225FA1E9292D5BF80004D131 /* PopUp */,
 				2229381E28C7C3DD00515095 /* Main */,
 				B2DE49522911AA7400293E6A /* Onboarding */,
 				2229383B28C8922000515095 /* Garden */,
@@ -853,6 +860,32 @@
 			isa = PBXGroup;
 			children = (
 				224F057729281D2800B20447 /* SettingsData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		225FA1E9292D5BF80004D131 /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				225FA1EF292D65D60004D131 /* Model */,
+				225FA1EC292D5C150004D131 /* View */,
+				225FA1ED292D5C230004D131 /* PopUpController.swift */,
+			);
+			path = PopUp;
+			sourceTree = "<group>";
+		};
+		225FA1EC292D5C150004D131 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				225FA1EA292D5C0F0004D131 /* PopUpView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		225FA1EF292D65D60004D131 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				225FA1F0292D65E50004D131 /* PopUpInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1214,6 +1247,7 @@
 				223B75D928F0DBA60034B2C4 /* DataType.swift in Sources */,
 				22A75A8E290CC6DC001CEA7E /* CustomNavigationProtocol.swift in Sources */,
 				2210246228D84C6800F412A5 /* InfoGardenProtocol.swift in Sources */,
+				225FA1F1292D65E50004D131 /* PopUpInfo.swift in Sources */,
 				22A3917A28F7858100A42DC1 /* ManagedHourInfo.swift in Sources */,
 				2229385B28C9D3AC00515095 /* ScreenInfo.swift in Sources */,
 				B241564E28D27284009F011C /* FoodDelegate.swift in Sources */,
@@ -1225,6 +1259,7 @@
 				220A63E428D24C3800D9E2A9 /* InfoGardenView.swift in Sources */,
 				2210246828D8F9BC00F412A5 /* ContactGroup.swift in Sources */,
 				222937C828C66B5600515095 /* DataBase.xcdatamodeld in Sources */,
+				225FA1EE292D5C230004D131 /* PopUpController.swift in Sources */,
 				22A3DB2A290CED4700B34CEC /* ViewLabel.swift in Sources */,
 				22A3916E28F6E62700A42DC1 /* InfoGardenCellProtocol.swift in Sources */,
 				22EDD4BE28DA4A6A001CE093 /* AppImages.swift in Sources */,
@@ -1251,6 +1286,7 @@
 				2229383A28C8829000515095 /* UIFont+setupFont.swift in Sources */,
 				22EDD4C128DA4B33001CE093 /* UIImage+AppImages.swift in Sources */,
 				22A3917D28F785C300A42DC1 /* ManagedFoodData.swift in Sources */,
+				225FA1EB292D5C0F0004D131 /* PopUpView.swift in Sources */,
 				2229384128C8927500515095 /* GardenController.swift in Sources */,
 				B214C3EA291AF5180033CFAE /* OnboardingDelegate.swift in Sources */,
 				22A3917F28F7860100A42DC1 /* ManagedFood.swift in Sources */,
