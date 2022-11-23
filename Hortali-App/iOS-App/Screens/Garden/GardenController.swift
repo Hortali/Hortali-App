@@ -61,7 +61,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     internal func openGardenInfo(for index: Int) {
         let selectedCell = self.gardenDataSource.data[index]
-                
+        
         let controller = InfoGardenController(with: selectedCell)
         controller.hidesBottomBarWhenPushed = true
         
