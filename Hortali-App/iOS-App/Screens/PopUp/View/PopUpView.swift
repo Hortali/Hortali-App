@@ -11,8 +11,10 @@ class PopUpView: UIView {
 
     // Views
     
+    /// View onde mostra as infos
     private let container = CustomViews.newView()
     
+    /// Botão de fechar a página
     private let closeButton: UIButton = {
         let but = CustomViews.newButton()
         but.backgroundColor = .clear
@@ -21,12 +23,14 @@ class PopUpView: UIView {
         return but
     }()
     
+    /// Título do pop up
     private let titleLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textColor = UIColor(.secondaryTitle)
         return lbl
     }()
     
+    /// Descrição do pop up
     private let descriptionLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textColor = UIColor(.secondaryTitle)
@@ -35,7 +39,6 @@ class PopUpView: UIView {
         lbl.sizeToFit()
         return lbl
     }()
-    
     
     
     // Outros
@@ -59,16 +62,8 @@ class PopUpView: UIView {
     
     
     /* MARK: - Encapsulamento */
-
-    /* Ações de botões */
-
-    /// Ação do botão de fechar a tela
-    public func setCloseButtonAction(target: Any?, action: Selector) -> Void {
-        self.closeButton.addTarget(target, action: action, for: .touchDown)
-    }
     
-    
-    /// Configura o popUp a aprtir das informações passadas
+    /// Configura o pop up a partir das informações passadas
     /// - Parameter infos: cpnjunto de informações
     public func setupPopup(for infos: PopUpInfo) {
         self.titleLabel.text = infos.title
@@ -76,6 +71,14 @@ class PopUpView: UIView {
         
         self.container.backgroundColor = UIColor(infos.backgroundColor)
         self.closeButton.setTitleColor(UIColor(infos.buttonColor), for: .normal)
+    }
+
+    
+    /* Ações de botões */
+
+    /// Ação do botão de fechar a tela
+    public func setCloseButtonAction(target: Any?, action: Selector) -> Void {
+        self.closeButton.addTarget(target, action: action, for: .touchDown)
     }
     
     
@@ -106,8 +109,9 @@ class PopUpView: UIView {
     /// Personalização da UI
     private func setupUI() {
         self.backgroundColor = UIColor(.popupBackBlur)?.withAlphaComponent(0.8)
-        self.container.layer.borderWidth = self.getEquivalent(5)
         self.container.layer.borderColor = UIColor(.popupBorder)?.cgColor
+        
+        self.container.layer.borderWidth = self.getEquivalent(5)
         self.container.layer.cornerRadius = self.getEquivalent(20)
     }
     

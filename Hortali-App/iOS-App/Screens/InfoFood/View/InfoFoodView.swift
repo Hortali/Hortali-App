@@ -43,11 +43,11 @@ class InfoFoodView: UIView {
         return stack
     }()
     
-    /// Label dos tipos de vitaminas (views para a Stack)
-    private var vitaminsTypesLabels: [CustomButton] = []
+    /// Tipos de vitaminas (views para a Stack)
+    private var vitaminsTypesButtons: [CustomButton] = []
     
     /// Label de informações das vitaminas
-    private let vitaminsInfoLabel = {
+    private let mineralsLabel = {
         let lbl = CustomViews.newLabel()
         lbl.numberOfLines = 3
         lbl.adjustsFontSizeToFitWidth = true
@@ -153,7 +153,7 @@ class InfoFoodView: UIView {
     
     /// Define a ação do botão das vitaminas
     public func setVitaminsButtonAction(target: Any?, action: Selector) -> Void {
-        for but in self.vitaminsTypesLabels {
+        for but in self.vitaminsTypesButtons {
             but.addTarget(target, action: action, for: .touchDown)
         }
     }
@@ -200,7 +200,7 @@ class InfoFoodView: UIView {
         self.expansiveLabel.setInfoText(for: data.benefits)
         
         self.setupVitaminsStackViews(for: data.vitamins)
-        self.vitaminsInfoLabel.text = data.minerals
+        self.mineralsLabel.text = data.minerals
     }
 
         
@@ -210,7 +210,7 @@ class InfoFoodView: UIView {
             let vitBut = self.getVitaminLabel(for: vitamins[ind])
             vitBut.tag = ind
             
-            self.vitaminsTypesLabels.append(vitBut)
+            self.vitaminsTypesButtons.append(vitBut)
             self.vitaminsStack.addArrangedSubview(vitBut)
         }
     }
@@ -247,9 +247,9 @@ class InfoFoodView: UIView {
         self.container.contentView.addSubview(self.expansiveLabel)
         self.container.contentView.addSubview(self.vitaminsLabel)
         self.container.contentView.addSubview(self.vitaminsStack)
-        self.container.contentView.addSubview(self.vitaminsInfoLabel)
+        self.container.contentView.addSubview(self.mineralsLabel)
         
-        self.scrollView.addViewInScroll(self.vitaminsInfoLabel)
+        self.scrollView.addViewInScroll(self.mineralsLabel)
         self.container.contentView.addSubview(self.howToCollection)
     }
     
@@ -285,7 +285,7 @@ class InfoFoodView: UIView {
             text: "Como Plantar", fontSize: titleFontSize, weight: .medium
         ))
         
-        self.vitaminsInfoLabel.setupText(with: FontInfo(fontSize: 20, weight: .regular))
+        self.mineralsLabel.setupText(with: FontInfo(fontSize: 20, weight: .regular))
         
         
         /* Botões */
@@ -323,7 +323,7 @@ class InfoFoodView: UIView {
         let stackSpace = self.vitaminsStack.getEqualSpace(for: stackHeight)
         
         // Botões circulares (stack)
-        for but in self.vitaminsTypesLabels {
+        for but in self.vitaminsTypesButtons {
             but.circleSize = stackHeight
             but.setupText(with: FontInfo(fontSize: stackHeight, weight: .medium))
         }
@@ -383,12 +383,12 @@ class InfoFoodView: UIView {
             self.vitaminsStack.heightAnchor.constraint(equalToConstant: stackHeight),
             
             
-            self.vitaminsInfoLabel.topAnchor.constraint(equalTo: self.vitaminsStack.bottomAnchor, constant: lateral),
-            self.vitaminsInfoLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
-            self.vitaminsInfoLabel.trailingAnchor.constraint(equalTo: self.benefitsLabel.trailingAnchor),
+            self.mineralsLabel.topAnchor.constraint(equalTo: self.vitaminsStack.bottomAnchor, constant: lateral),
+            self.mineralsLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
+            self.mineralsLabel.trailingAnchor.constraint(equalTo: self.benefitsLabel.trailingAnchor),
             
             
-            self.howToCollection.topAnchor.constraint(equalTo: self.vitaminsInfoLabel.bottomAnchor, constant: between),
+            self.howToCollection.topAnchor.constraint(equalTo: self.mineralsLabel.bottomAnchor, constant: between),
             self.howToCollection.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
             self.howToCollection.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
             self.howToCollection.heightAnchor.constraint(equalToConstant: collectionHeight),
