@@ -61,17 +61,11 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     internal func openGardenInfo(for index: Int) {
         let selectedCell = self.gardenDataSource.data[index]
-                
-//        let controller = InfoGardenController(with: selectedCell)
-//        controller.hidesBottomBarWhenPushed = true
-        let popupInfos = PopUpInfo(
-            title: "Vitamina A",
-            description: "A vitamina A é um micronutriente pertencente ao grupo das vitaminas lipossolúveis, podendo ser encontrada."
-        )
-        let controller = PopUpController(infos: popupInfos)
-        controller.modalPresentationStyle = .overFullScreen
         
-        self.navigationController?.present(controller, animated: true)
+        let controller = InfoGardenController(with: selectedCell)
+        controller.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     

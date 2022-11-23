@@ -92,7 +92,7 @@ class ContainerView: UIView {
         let titleSize: CGFloat = self.getEquivalent(35)
         
         self.titleLabel.setupText(with: FontInfo(
-            fontSize: titleSize, weight: .heavy
+            fontSize: titleSize, weight: .bold
         ))
     }
 	  

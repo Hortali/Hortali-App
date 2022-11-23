@@ -151,6 +151,14 @@ class InfoFoodView: UIView {
     }
     
     
+    /// Define a ação do botão das vitaminas
+    public func setVitaminsButtonAction(target: Any?, action: Selector) -> Void {
+        for but in self.vitaminsTypesLabels {
+            but.addTarget(target, action: action, for: .touchDown)
+        }
+    }
+    
+    
     /* Collection */
     
     /// Define o data source da collection de como plantar
@@ -314,9 +322,10 @@ class InfoFoodView: UIView {
         let stackHeight = self.getEquivalent(35)
         let stackSpace = self.vitaminsStack.getEqualSpace(for: stackHeight)
         
-        // Labels circulares (stack)
-        for label in self.vitaminsTypesLabels {
-            label.circleSize = stackHeight
+        // Botões circulares (stack)
+        for but in self.vitaminsTypesLabels {
+            but.circleSize = stackHeight
+            but.setupText(with: FontInfo(fontSize: stackHeight, weight: .medium))
         }
         
         
@@ -407,7 +416,7 @@ class InfoFoodView: UIView {
         
         but.isCircular = true
         
-        but.setTitle(vitamins.name, for: .normal)
+        but.setupText(with: FontInfo(text: vitamins.name, fontSize: 50, weight: .medium))
         return but
     }
     

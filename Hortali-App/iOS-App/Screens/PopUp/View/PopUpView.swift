@@ -4,7 +4,7 @@
 import UIKit
 
 
-/// UI do pop up de infirmação
+/// UI do pop up de informação
 class PopUpView: UIView {
     
     /* MARK: - Atributos */
@@ -13,20 +13,25 @@ class PopUpView: UIView {
     
     private let container = CustomViews.newView()
     
-    private let closeButton = CustomViews.newButton()
+    private let closeButton: UIButton = {
+        let but = CustomViews.newButton()
+        but.backgroundColor = .clear
+        but.isCircular = false
+        but.sizeToFit()
+        return but
+    }()
     
     private let titleLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textColor = UIColor(.secondaryTitle)
-        lbl.backgroundColor = .yellow
         return lbl
     }()
     
     private let descriptionLabel: UILabel = {
         let lbl = CustomViews.newLabel()
-        lbl.numberOfLines = 6
         lbl.textColor = UIColor(.secondaryTitle)
-        lbl.backgroundColor = .orange
+        lbl.numberOfLines = 6
+        lbl.adjustsFontSizeToFitWidth = true
         lbl.sizeToFit()
         return lbl
     }()
@@ -70,7 +75,7 @@ class PopUpView: UIView {
         self.descriptionLabel.text = infos.description
         
         self.container.backgroundColor = UIColor(infos.backgroundColor)
-        self.closeButton.backgroundColor = UIColor(infos.buttonColor)
+        self.closeButton.setTitleColor(UIColor(infos.buttonColor), for: .normal)
     }
     
     
@@ -100,7 +105,7 @@ class PopUpView: UIView {
     
     /// Personalização da UI
     private func setupUI() {
-        self.backgroundColor = UIColor(.popupBackBlur)?.withAlphaComponent(0.7)
+        self.backgroundColor = UIColor(.popupBackBlur)?.withAlphaComponent(0.8)
         self.container.layer.borderWidth = self.getEquivalent(5)
         self.container.layer.borderColor = UIColor(.popupBorder)?.cgColor
         self.container.layer.cornerRadius = self.getEquivalent(20)
@@ -111,10 +116,10 @@ class PopUpView: UIView {
     private func setupStaticTexts() {		
         /* Labels */
         self.titleLabel.setupText(with: FontInfo(
-            fontSize: self.getEquivalent(45), weight: .bold
+            fontSize: self.getEquivalent(45), weight: .bold, fontFamily: .graffiti
         ))
         
-        self.titleLabel.setupText(with: FontInfo(
+        self.descriptionLabel.setupText(with: FontInfo(
             fontSize: self.getEquivalent(20), weight: .regular
         ))
         
@@ -122,17 +127,16 @@ class PopUpView: UIView {
         /* Botões */
         
         self.closeButton.setupText(with: FontInfo(
-            text: "fechar", fontSize: self.getEquivalent(25), weight: .semibold
+            text:"Fechar" , fontSize: self.getEquivalent(25), weight: .semibold, fontFamily: .graffiti
         ))
     }
 	  
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() { 
-        let lateral: CGFloat = self.getEquivalent(10)
-        let between: CGFloat = self.getEquivalent(15)
+        let lateral: CGFloat = self.getEquivalent(15)
+        let between: CGFloat = self.getEquivalent(5)
         
-        let btHeight: CGFloat = self.getEquivalent(25)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
@@ -143,18 +147,16 @@ class PopUpView: UIView {
             self.container.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.3),
             
             
-            self.closeButton.topAnchor.constraint(equalTo: self.container.topAnchor, constant: lateral),
+            self.closeButton.topAnchor.constraint(equalTo: self.container.topAnchor, constant: between),
             self.closeButton.trailingAnchor.constraint(equalTo: self.container.trailingAnchor, constant: -lateral),
-            self.closeButton.heightAnchor.constraint(equalToConstant: btHeight),
             
             
-            self.titleLabel.topAnchor.constraint(equalTo: self.closeButton.bottomAnchor, constant: between),
+            self.titleLabel.topAnchor.constraint(equalTo: self.closeButton.bottomAnchor, constant: -lateral),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.container.trailingAnchor, constant: -lateral),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.container.leadingAnchor, constant: lateral),
-            self.titleLabel.heightAnchor.constraint(equalToConstant: 40),
             
             
-            self.descriptionLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
+            self.descriptionLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: between),
             self.descriptionLabel.trailingAnchor.constraint(equalTo: self.container.trailingAnchor, constant: -lateral),
             self.descriptionLabel.leadingAnchor.constraint(equalTo: self.container.leadingAnchor, constant: lateral),
         ]

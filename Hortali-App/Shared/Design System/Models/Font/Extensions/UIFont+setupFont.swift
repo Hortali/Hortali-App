@@ -12,11 +12,14 @@ extension UIFont {
     ///
     /// Existe uma fonte que está sendo usada para o projeto: `SF Pro Rounded`
     static func setupFont(with config: FontInfo) -> UIFont {
-        let systemFont: UIFont = .systemFont(ofSize: config.fontSize, weight: config.weight)
+        let family = config.fontFamily.fontName(weight: config.weight)
+        let customFont = UIFont(name: family, size: config.fontSize)
         
-        if let descriptor = systemFont.fontDescriptor.withDesign(.rounded) {
-            return UIFont(descriptor: descriptor, size: config.fontSize)
+        if let customFont {
+            return customFont
         }
-        return systemFont
+        
+        // fonte padrão do XCode (caso não exista o asset)
+        return .systemFont(ofSize: config.fontSize, weight: config.weight.systemFont)
     }
 }
