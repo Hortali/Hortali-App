@@ -41,6 +41,22 @@ enum AppColors {
     
     
     
+    /* Pop Up */
+    
+    /// Pop Up: fundo blur
+    case popupBackBlur
+    
+    /// Pop Up: borda
+    case popupBorder
+    
+    /// Pop Up: fundo padrão
+    case popupDefaultBack
+    
+    /// Pop Up: botão padrão
+    case popupDefaultButton
+    
+    
+    
     /* Segmented */
     
     /// Segmented: fundo do item selecionado
@@ -165,6 +181,13 @@ enum AppColors {
         case .foodBack: return .brownLight
         case .favoriteBack: return .orange
         case .settingsBack: return .yellow
+        
+            
+        /* Pop Up */
+        case .popupDefaultBack: return .greenMedium
+        case .popupDefaultButton: return .greenLight
+        case .popupBackBlur: return .greyDark
+        case .popupBorder: return .white
             
         
         /* Segmented */
