@@ -19,7 +19,7 @@ class ViewLabel: UIView {
 
     // Views
     
-    private lazy var label: UILabel = {
+    public lazy var label: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textAlignment = .center
         lbl.adjustsFontSizeToFitWidth = true
