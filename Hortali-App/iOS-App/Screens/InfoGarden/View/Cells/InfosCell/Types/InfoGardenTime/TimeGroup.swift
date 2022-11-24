@@ -96,7 +96,7 @@ class TimeGroup: UIView {
     public var isTodayComponent: Bool = false {
         didSet {
             if self.isTodayComponent {
-                let color = UIColor(.subTitle)
+                let color = UIColor(originalColor: .greenDark)
                 self.weekLabel.textColor = color
                 self.hourLabel.textColor = color
                 self.closeLabel.textColor = color
