@@ -104,14 +104,14 @@ class ExpansiveLabel: UIView {
         }
         
         if !self.expansiveButton.isHidden && !self.isExtended {
-            let minimunLabelSize: CGFloat = self.superview?.getEquivalent(110) ?? 00
+            let minimunLabelSize: CGFloat = self.superview?.getEquivalent(100) ?? 00
             
             self.heightConstraints = [
                 self.heightAnchor.constraint(equalToConstant: minimunLabelSize),
             ]
-            
-            NSLayoutConstraint.activate(self.heightConstraints)
         }
+        
+        NSLayoutConstraint.activate(self.heightConstraints)
     }
     
     
@@ -145,6 +145,7 @@ class ExpansiveLabel: UIView {
 	      
         self.setupStaticTexts()
         self.setupDynamicConstraints()
+        self.setupGradient()
     }
     
     
@@ -186,6 +187,12 @@ class ExpansiveLabel: UIView {
         let btSize: CGFloat = self.getEquivalent(30)
         self.expansiveButton.circleSize = btSize
         
+        var between: CGFloat = self.getEquivalent(20)
+        if self.isExtended || self.expansiveButton.isHidden {
+            between = 0
+        }
+        
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
@@ -194,11 +201,51 @@ class ExpansiveLabel: UIView {
             self.paragraphLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
             
-            self.expansiveButton.topAnchor.constraint(equalTo: self.paragraphLabel.bottomAnchor),
-            self.expansiveButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.expansiveButton.topAnchor.constraint(equalTo: self.paragraphLabel.bottomAnchor, constant: -between),
             self.expansiveButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ]
         
+        
+        if self.isExtended {
+            self.dynamicConstraints += [
+                self.expansiveButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            ]
+        }
+        
+        if self.expansiveButton.isHidden {
+            self.dynamicConstraints += [
+                self.expansiveButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: btSize),
+            ]
+        }
+        
         NSLayoutConstraint.activate(self.dynamicConstraints)
     }
+    
+    
+    /// Cria o gradiente transparente
+    private func setupGradient() {
+        if self.isExtended {
+            self.paragraphLabel.layer.mask = nil
+            return
+        }
+        
+        if !self.expansiveButton.isHidden {
+            let color = UIColor(originalColor: .white) ?? .white
+            
+            let layer = CAGradientLayer()
+            layer.startPoint = CGPoint(x: 0, y: 0.3)
+            layer.endPoint = CGPoint(x: 0, y: 1)
+            layer.locations = [0, 0.3, 0.6, 1]
+            layer.colors = [
+                color.withAlphaComponent(0.9).cgColor,
+                color.withAlphaComponent(0.6).cgColor,
+                color.withAlphaComponent(0.3).cgColor
+            ]
+            
+            layer.frame = self.paragraphLabel.frame
+            
+            self.paragraphLabel.layer.mask = layer
+        }
+    }
 }
+
