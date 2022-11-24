@@ -151,7 +151,6 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         
         let timeGroupHeight: CGFloat = self.getConstant(for: 35)
         let todayWeekHeight: CGFloat = self.getConstant(for: 25)
-        let todayLabelHeight: CGFloat = self.getConstant(for: 30)
         
         let widthStack: CGFloat = self.getConstant(for: 120)
         
@@ -161,14 +160,14 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         self.dynamicConstraints = [
             self.todayWeekLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
             self.todayWeekLabel.trailingAnchor.constraint(equalTo: self.centerXAnchor),
-            self.todayWeekLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.todayWeekLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: todayWeekHeight*2),
             self.todayWeekLabel.heightAnchor.constraint(equalToConstant: todayWeekHeight),
             
             
             self.todayLabel.bottomAnchor.constraint(equalTo: self.todayWeekLabel.topAnchor),
             self.todayLabel.leadingAnchor.constraint(equalTo: self.todayWeekLabel.leadingAnchor),
             self.todayLabel.trailingAnchor.constraint(equalTo: self.todayWeekLabel.trailingAnchor),
-            self.todayLabel.heightAnchor.constraint(equalToConstant: todayLabelHeight),
+            self.todayLabel.heightAnchor.constraint(equalToConstant: todayWeekHeight),
             
             
             self.todayTimeGroup.topAnchor.constraint(equalTo: self.todayWeekLabel.bottomAnchor),

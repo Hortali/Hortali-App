@@ -157,7 +157,7 @@ class TimeGroup: UIView {
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let between: CGFloat = self.getConstant(for: 4)
+        let between: CGFloat = self.getConstant(for: 7)
        
         let weekLabelHeight: CGFloat = self.getConstant(for: 20)
         
@@ -205,11 +205,5 @@ class TimeGroup: UIView {
         )
         
         return self.getEquivalent(space, screenReference: screenReference)
-    }
-    
-    
-    private func DADOS_TESTE() {
-        self.weekLabel.text = "Segunda Feira"
-        self.hourLabel.text = "10:00 - 18:00"
     }
 }
