@@ -1,37 +1,5 @@
 {
     "count": 31,
-    "vitamins": [
-        {
-            "id": 0,
-            "name": "A",
-            "description": "É um micronutriente que pertence ao grupo das vitaminas lipossolúveis. Possui ação antioxidante, combatendo os radicais livres."
-        },
-        {
-            "id": 1,
-            "name": "B",
-            "description": "As vitaminas do complexo B regulam a produção de energia no organismo, fortalecem o sistema imunológico e mantêm a saúde do sistema nervoso, da pele, dos cabelos e do intestino"
-        },
-        {
-            "id": 2,
-            "name": "C",
-            "description": "Atua como antioxidante no organismo, fortalecendo o sistema imunológico, além de estimular a absorção de ferro dos alimentos."
-        },
-        {
-            "id": 3,
-            "name": "K",
-            "description": "Um nutriente essencial para o corpo que participa do processo de coagulação sanguínea, e estimula a fixação de cálcio nos ossos, fortalecendo-os."
-        },
-        {
-            "id": 4,
-            "name": "E",
-            "description": "Importante para fortalecer o sistema imunológico, já que tem forte ação antioxidante, evitando o dano causado pelos radicais livres nas células. É uma vitamina essencial para aumentar a imunidade."
-        },
-        {
-            "id": 5,
-            "name": "D",
-            "description": "Ajuda a fortalecer os ossos e dentes, além de melhorar o sistema imunológico e ajudar na prevenção de doenças crônicas."
-        }
-    ],
     "foods": [
         {   
             "id": 0,

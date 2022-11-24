@@ -17,11 +17,8 @@ class InfoFoodController: UIViewController {
     
     /* Outros */
     
-    /// Configurações para atualizar o estado de favoritos
+    /// Configuraçòes para atualizar o estado de favoritos
     private var favUpdate: FavoriteUpdate
-    
-    /// Dados das vitaminas
-    private var vitaminsData: [ManagedVitamins] = []
     
     
     
@@ -39,7 +36,6 @@ class InfoFoodController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         self.setupFavoriteStatus(for: data)
-        self.vitaminsData = data.vitamins
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -91,27 +87,6 @@ class InfoFoodController: UIViewController {
     }
     
     
-    /// Ação de voltar para a tela anterior
-    /// - Parameter sender: botão que vai receber a ação
-    @objc
-    private func vitaminsAction(sender: UIButton) {
-        let vitaminName = self.vitaminsData[sender.tag].name
-        
-        let vitaminInfo = DataManager.shared.getVitamin(for: vitaminName)
-    
-        let popupInfos = PopUpInfo(
-            title: "Vitamina \(vitaminInfo?.name ?? "")",
-            description: vitaminInfo?.description ?? ""
-        )
-        
-        let controller = PopUpController(infos: popupInfos)
-        controller.modalPresentationStyle = .overFullScreen
-        controller.modalTransitionStyle = .crossDissolve
-        
-        self.present(controller, animated: true)
-    }
-    
-    
     
     /* MARK: - Configurações */
 
@@ -120,7 +95,6 @@ class InfoFoodController: UIViewController {
         self.myView.setBackButtonAction(target: self, action: #selector(self.backAction))
         self.myView.setFavoriteButtonAction(target: self, action: #selector(self.favoriteAction))
         self.myView.setExpLabelButtonAction(target: self, action: #selector(self.expandLabelAction))
-        self.myView.setVitaminsButtonAction(target: self, action: #selector(self.vitaminsAction(sender:)))
     }
     
     

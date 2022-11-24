@@ -5,5 +5,4 @@
 struct ManagedVitamins: Codable {
     let id: Int?
     let name: String
-    let description: String?
 }

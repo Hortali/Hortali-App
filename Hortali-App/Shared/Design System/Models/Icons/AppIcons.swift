@@ -33,33 +33,14 @@ enum AppIcons: CustomStringConvertible {
     
     /* Tab */
     
-    /// Símbolo - 􀎟
+    /// Símbolo - 􀥳
     case gardenTab
     
-    /// Símbolo - 􀥳
+    /// Símbolo - 􀸩
     case foodTab
     
     /// Símbolo - 􀊵
     case favoriteTab
-    
-    /// Símbolo - 􀐛
-    case settingsTab
-    
-    
-
-    /* Configurações */
-    
-    /// Símbolo - 􀿨
-    case help
-    
-    /// Símbolo - 􀎞
-    case suggestion
-    
-    /// Símbolo - 􀍕
-    case contactUs
-    
-    /// Símbolo - 􀈎
-    case report
     
     
     
@@ -76,15 +57,9 @@ enum AppIcons: CustomStringConvertible {
         case .grid: return "square.grid.2x2"
         case .carousel: return "rectangle.split.3x1"
             
-        case .gardenTab: return "house.fill"
-        case .foodTab: return "leaf.fill"
+        case .gardenTab: return "leaf.fill"
+        case .foodTab: return "fork.knife"
         case .favoriteTab: return "heart.fill"
-        case .settingsTab: return "shippingbox.fill"
-            
-        case .help: return "questionmark.app"
-        case .suggestion: return "house"
-        case .contactUs: return "envelope"
-        case .report: return "square.and.pencil"
         }
     }
 }

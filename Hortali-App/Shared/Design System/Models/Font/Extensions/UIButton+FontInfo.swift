@@ -12,10 +12,6 @@ extension UIButton {
         if let text = config.text {
             self.setTitle(text, for: .normal)
         }
-        
-        var newConfig = config
-        newConfig.fontFamily = .graffiti
-        
-        self.titleLabel?.font = UIFont.setupFont(with: newConfig)
+        self.titleLabel?.font = UIFont.setupFont(with: config)
     }
 }

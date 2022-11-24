@@ -8,27 +8,27 @@ import UIKit
 class TimeGroup: UIView {
     
     /* MARK: - Atributos */
-    
+
     // Views
     
     /// Mostra qual dia da semana
     private let weekLabel: UILabel = {
         let lbl = CustomViews.newLabel()
-        lbl.textColor = UIColor(originalColor: .greenDark)
+        lbl.textColor = UIColor(.paragraph)
         return lbl
     }()
     
     /// Mostra o horário
     private let hourLabel: UILabel = {
         let lbl = CustomViews.newLabel()
-        lbl.textColor = UIColor(originalColor: .greenDark)
+        lbl.textColor = UIColor(.paragraph)
         return lbl
     }()
     
     /// Barra lateral
     private let barView: UIView = {
         let view = CustomViews.newView()
-        view.backgroundColor = UIColor(originalColor: .greenDark)
+        view.backgroundColor = UIColor(.barHourInfo)
         view.tintColor = UIColor(.paragraph)
         return view
     }()
@@ -37,7 +37,6 @@ class TimeGroup: UIView {
     private let closeLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.tintColor = UIColor(.subTitle)
-        lbl.textColor = UIColor(.closeStatus)
         lbl.isHidden = true
         return lbl
     }()
@@ -47,9 +46,9 @@ class TimeGroup: UIView {
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
+
     
-    
-    
+
     /* MARK: - Construtor */
     
     init() {
@@ -64,12 +63,10 @@ class TimeGroup: UIView {
     
     
     /* MARK: - Encapsulamento */
-    
+
     /// Define as informações que vão ser mostradas
     /// - Parameter infos: texto que vai ser definido
     public func setupInfos(for info: ManagedHourInfo) {
-        let color = UIColor(.closeStatus)
-        
         if self.isTodayComponent {
             if info.status {
                 self.weekLabel.text = "Aberto"
@@ -90,18 +87,16 @@ class TimeGroup: UIView {
             self.hourLabel.text = "\(info.startTime) - \(info.endTime)"
         } else {
             self.hourLabel.text = "Fechado"
-            self.hourLabel.textColor = color
-            self.weekLabel.textColor = color
         }
+        
     }
     
     
     /// Define se o componente mostra os dados do dia
     public var isTodayComponent: Bool = false {
         didSet {
-            if self.isTodayComponent == true {
-                let color = UIColor(originalColor: .greenDark)
-                self.weekLabel.textColor = color
+            if self.isTodayComponent {
+                let color = UIColor(.subTitle)
                 self.weekLabel.textColor = color
                 self.hourLabel.textColor = color
                 self.closeLabel.textColor = color
@@ -111,12 +106,12 @@ class TimeGroup: UIView {
     }
     
     
-    
+
     /* MARK: - Ciclo de Vida */
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-        
+	      
         self.setupUI()
         self.setupStaticTexts()
         self.setupDynamicConstraints()
@@ -158,19 +153,19 @@ class TimeGroup: UIView {
             fontSize: self.getConstant(for: 12), weight: .medium
         ))
     }
-    
+	  
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
         let between: CGFloat = self.getConstant(for: 4)
-        
+       
         let weekLabelHeight: CGFloat = self.getConstant(for: 20)
         
         let barLine: CGFloat = self.getConstant(for: 2)
         
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
-        
+    
         self.dynamicConstraints = [
             self.barView.topAnchor.constraint(equalTo: self.topAnchor),
             self.barView.bottomAnchor.constraint(equalTo: self.bottomAnchor),

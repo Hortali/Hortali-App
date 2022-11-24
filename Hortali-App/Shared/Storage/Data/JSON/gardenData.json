@@ -69,37 +69,37 @@
             "hourInfo": [
                 {
                     "status" : true,
-                    "week" : "Segunda - feira",
+                    "week" : "Segunda",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Terca - feira",
+                    "week" : "Terça",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Quarta - feira",
+                    "week" : "Quarta",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Quinta - feira",
+                    "week" : "Quinta",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Sexta - feira",
+                    "week" : "Sexta",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Sabado",
+                    "week" : "Sábado",
                     "startTime" : "09:00",
                     "endTime" : "13:00"
                 },
@@ -155,37 +155,37 @@
             "hourInfo": [
                 {
                     "status" : true,
-                    "week" : "Segunda - feira",
+                    "week" : "Segunda",
                     "startTime" : "06:00",
                     "endTime" : "22:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Terca - feira",
+                    "week" : "Terça",
                     "startTime" : "06:00",
                     "endTime" : "22:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Quarta - feira",
+                    "week" : "Quarta",
                     "startTime" : "06:00",
                     "endTime" : "22:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Quinta - feira",
+                    "week" : "Quinta",
                     "startTime" : "06:00",
                     "endTime" : "22:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Sexta - feira",
+                    "week" : "Sexta",
                     "startTime" : "06:00",
                     "endTime" : "22:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Sabado",
+                    "week" : "Sábado",
                     "startTime" : "06:00",
                     "endTime" : "22:00"
                 },
@@ -247,37 +247,37 @@
             "hourInfo": [
                 {
                     "status" : true,
-                    "week" : "Segunda - feira",
+                    "week" : "Segunda",
                     "startTime" : "12:00",
                     "endTime" : "13:30"
                 },
                 {
                     "status" : false,
-                    "week" : "Terca - feira",
+                    "week" : "Terça",
                     "startTime" : "",
                     "endTime" : ""
                 },
                 {
                     "status" : true,
-                    "week" : "Quarta - feira",
+                    "week" : "Quarta",
                     "startTime" : "12:00",
                     "endTime" : "13:30"
                 },
                 {
                     "status" : false,
-                    "week" : "Quinta - feira",
+                    "week" : "Quinta",
                     "startTime" : "",
                     "endTime" : ""
                 },
                 {
                     "status" : true,
-                    "week" : "Sexta - feira",
+                    "week" : "Sexta",
                     "startTime" : "12:00",
                     "endTime" : "13:30"
                 },
                 {
                     "status" : false,
-                    "week" : "Sabado",
+                    "week" : "Sábado",
                     "startTime" : "",
                     "endTime" : ""
                 },

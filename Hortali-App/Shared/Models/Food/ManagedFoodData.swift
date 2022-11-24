@@ -7,8 +7,5 @@ struct ManagedFoodData: Codable {
     let count: Int
     
     /// Dados
-    let vitamins: [ManagedVitamins]
-    
-    /// Dados
     let foods: [ManagedFood]
 }

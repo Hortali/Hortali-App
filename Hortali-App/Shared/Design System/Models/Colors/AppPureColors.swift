@@ -8,7 +8,6 @@ enum AppPureColors: CustomStringConvertible {
     
     case orange
     case greenDark
-    case greenMedium
     case greenLight
     case brownDark
     case brownLight
@@ -27,8 +26,7 @@ enum AppPureColors: CustomStringConvertible {
     var description: String {
         switch self {
         case .orange: return "Orange_E1652B"
-        case .greenDark: return "Green_354116"
-        case .greenMedium: return "Green_68802C"
+        case .greenDark: return "Green_68802C"
         case .greenLight: return "Green_CCD897"
         case .brownDark: return "Brown_3F1D0D"
         case .brownLight: return "Brown_843D1A"

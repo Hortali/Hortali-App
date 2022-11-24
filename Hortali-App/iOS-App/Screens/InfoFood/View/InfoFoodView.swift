@@ -43,11 +43,11 @@ class InfoFoodView: UIView {
         return stack
     }()
     
-    /// Tipos de vitaminas (views para a Stack)
-    private var vitaminsTypesButtons: [CustomButton] = []
+    /// Label dos tipos de vitaminas (views para a Stack)
+    private var vitaminsTypesLabels: [CustomLabel] = []
     
     /// Label de informações das vitaminas
-    private let mineralsLabel = {
+    private let vitaminsInfoLabel = {
         let lbl = CustomViews.newLabel()
         lbl.numberOfLines = 3
         lbl.adjustsFontSizeToFitWidth = true
@@ -151,14 +151,6 @@ class InfoFoodView: UIView {
     }
     
     
-    /// Define a ação do botão das vitaminas
-    public func setVitaminsButtonAction(target: Any?, action: Selector) -> Void {
-        for but in self.vitaminsTypesButtons {
-            but.addTarget(target, action: action, for: .touchDown)
-        }
-    }
-    
-    
     /* Collection */
     
     /// Define o data source da collection de como plantar
@@ -200,18 +192,17 @@ class InfoFoodView: UIView {
         self.expansiveLabel.setInfoText(for: data.benefits)
         
         self.setupVitaminsStackViews(for: data.vitamins)
-        self.mineralsLabel.text = data.minerals
+        self.vitaminsInfoLabel.text = data.minerals
     }
 
         
     /// Cria e adiciona as views que vão ser colocadas na stack
     private func setupVitaminsStackViews(for vitamins: [ManagedVitamins]) {
-        for ind in 0..<vitamins.count {
-            let vitBut = self.getVitaminButton(for: vitamins[ind])
-            vitBut.tag = ind
+        for vitamin in vitamins {
+            let vitLabel = self.getVitaminLabel(for: vitamin)
             
-            self.vitaminsTypesButtons.append(vitBut)
-            self.vitaminsStack.addArrangedSubview(vitBut)
+            self.vitaminsTypesLabels.append(vitLabel)
+            self.vitaminsStack.addArrangedSubview(vitLabel)
         }
     }
     
@@ -247,9 +238,9 @@ class InfoFoodView: UIView {
         self.container.contentView.addSubview(self.expansiveLabel)
         self.container.contentView.addSubview(self.vitaminsLabel)
         self.container.contentView.addSubview(self.vitaminsStack)
-        self.container.contentView.addSubview(self.mineralsLabel)
+        self.container.contentView.addSubview(self.vitaminsInfoLabel)
         
-        self.scrollView.addViewInScroll(self.mineralsLabel)
+        self.scrollView.addViewInScroll(self.vitaminsInfoLabel)
         self.container.contentView.addSubview(self.howToCollection)
     }
     
@@ -285,7 +276,7 @@ class InfoFoodView: UIView {
             text: "Como Plantar", fontSize: titleFontSize, weight: .medium
         ))
         
-        self.mineralsLabel.setupText(with: FontInfo(fontSize: 20, weight: .regular))
+        self.vitaminsInfoLabel.setupText(with: FontInfo(fontSize: 20, weight: .regular))
         
         
         /* Botões */
@@ -322,10 +313,9 @@ class InfoFoodView: UIView {
         let stackHeight = self.getEquivalent(35)
         let stackSpace = self.vitaminsStack.getEqualSpace(for: stackHeight)
         
-        // Botões circulares (stack)
-        for but in self.vitaminsTypesButtons {
-            but.circleSize = stackHeight
-            but.setupText(with: FontInfo(fontSize: stackHeight, weight: .medium))
+        // Labels circulares (stack)
+        for label in self.vitaminsTypesLabels {
+            label.circleSize = stackHeight
         }
         
         
@@ -383,12 +373,12 @@ class InfoFoodView: UIView {
             self.vitaminsStack.heightAnchor.constraint(equalToConstant: stackHeight),
             
             
-            self.mineralsLabel.topAnchor.constraint(equalTo: self.vitaminsStack.bottomAnchor, constant: lateral),
-            self.mineralsLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
-            self.mineralsLabel.trailingAnchor.constraint(equalTo: self.benefitsLabel.trailingAnchor),
+            self.vitaminsInfoLabel.topAnchor.constraint(equalTo: self.vitaminsStack.bottomAnchor, constant: lateral),
+            self.vitaminsInfoLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
+            self.vitaminsInfoLabel.trailingAnchor.constraint(equalTo: self.benefitsLabel.trailingAnchor),
             
             
-            self.howToCollection.topAnchor.constraint(equalTo: self.mineralsLabel.bottomAnchor, constant: between),
+            self.howToCollection.topAnchor.constraint(equalTo: self.vitaminsInfoLabel.bottomAnchor, constant: between),
             self.howToCollection.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
             self.howToCollection.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
             self.howToCollection.heightAnchor.constraint(equalToConstant: collectionHeight),
@@ -408,15 +398,17 @@ class InfoFoodView: UIView {
     }
     
     
-    /// Cria os botões da stack view
-    private func getVitaminButton(for vitamins: ManagedVitamins) -> CustomButton {
-        let but = CustomViews.newButton()
-        but.backgroundColor = UIColor(originalColor: .orange)
-        but.setTitleColor(UIColor(originalColor: .white), for: .normal)
+    /// Cria as labels da stack view
+    private func getVitaminLabel(for vitamins: ManagedVitamins) -> CustomLabel {
+        let lbl = CustomViews.newLabel()
+        lbl.backgroundColor = UIColor(originalColor: .orange)
+        lbl.textColor = UIColor(originalColor: .white)
+        lbl.textAlignment = .center
         
-        but.isCircular = true
-        but.setTitle(vitamins.name, for: .normal)
-        return but
+        lbl.isCircular = true
+        
+        lbl.text = vitamins.name
+        return lbl
     }
     
     

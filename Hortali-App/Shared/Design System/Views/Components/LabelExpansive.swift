@@ -23,7 +23,7 @@ class ExpansiveLabel: UIView {
     private let expansiveButton: CustomButton = {
         let but: CustomButton = CustomViews.newButton()
         but.backgroundColor = UIColor(originalColor: .greenLight)
-        but.tintColor = UIColor(originalColor: .greenMedium)
+        but.tintColor = UIColor(originalColor: .greenDark)
         return but
     }()
     
