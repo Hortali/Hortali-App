@@ -78,6 +78,21 @@ class DataManager {
     }
     
     
+    /// Pega os dados de uma vitamina
+    /// - Parameter vitaminName: nome da vitamina
+    /// - Returns: dados de uma vitamina
+    public func getVitamin(for vitaminName: String) -> ManagedVitamins? {
+        if let vitamins = self.cache[.vitamins] as? [ManagedVitamins] {
+            for item in vitamins {
+                if item.name == vitaminName {
+                    return item
+                }
+            }
+        }
+        return nil
+    }
+    
+    
     
     /* MARK: Favoritos */
     
@@ -117,6 +132,7 @@ class DataManager {
             return self.gardenManager.getGardensBy(ids: favoriteIds, with: self.getGardenData())
         case .food:
             return self.foodManager.getFoodsBy(ids: favoriteIds, with: self.getFoodData())
+        default: return []
         }
     }
     
@@ -189,8 +205,10 @@ class DataManager {
                     }
                 case .food:
                     if let jsonData = try? decoder.decode(ManagedFoodData.self, from: data) {
+                        self.cache[.vitamins] = jsonData.vitamins
                         return jsonData.foods
                     }
+                default: return nil
                 }
             }
         }
