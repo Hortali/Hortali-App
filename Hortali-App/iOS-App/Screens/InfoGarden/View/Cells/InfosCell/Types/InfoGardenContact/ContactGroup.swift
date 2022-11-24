@@ -54,7 +54,7 @@ class ContactGroup: UIView {
         }
         
         self.imageView.image = image
-        self.contactLabel.text = info.type
+        self.contactLabel.text = info.contact
         self.descriptionLabel.text = info.description
     }
 
@@ -84,10 +84,10 @@ class ContactGroup: UIView {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
         let fontSize: CGFloat = self.getConstant(for: 15)
-        let titleSize: CGFloat = self.getConstant(for: 20)
         
-        self.contactLabel.font = UIFont(name: "AmsterdamGraffiti",
-                                        size: titleSize)
+        self.contactLabel.setupText(with: FontInfo(
+            fontSize: fontSize, weight: .semibold
+        ))
         
         self.descriptionLabel.setupText(with: FontInfo(
             fontSize: fontSize, weight: .regular
@@ -133,7 +133,7 @@ class ContactGroup: UIView {
     /// - Returns: valor em relação à tela
     private func getConstant(for space: CGFloat) -> CGFloat {
         let screenReference = SizeInfo(
-            screenSize: CGSize(width: 163, height: 163),
+            screenSize: CGSize(width: 350, height: 160),
             dimension: .width
         )
         

@@ -35,10 +35,9 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
     /// Stack para colocar as informações dos próximos dias
     private let daysAfterStack: CustomStack = CustomViews.newStackView()
     
-    
     /// Grupos de informações dos próximos dias
     private let daysAfter: [TimeGroup] = [TimeGroup(), TimeGroup(), TimeGroup()]
-    
+
     
     // Outros
     
@@ -104,14 +103,36 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
             let todayData = data[todayWeek]
             self.todayTimeGroup.setupInfos(for: todayData)
             self.todayWeekLabel.text = todayData.week
-            self.todayWeekLabel.font = UIFont(name: "AmsterdamGraffiti", size: 10)
             
+            // Dia seguinte 1
+            let nextDay1 = self.getNextDay(by: todayWeek)
+            let nextDay1Data = data[nextDay1]
+            self.daysAfter[0].setupInfos(for: nextDay1Data)
+            
+            
+            // Dia seguinte 2
+            let nextDay2 = self.getNextDay(by: nextDay1)
+            let nextDay2Data = data[nextDay2]
+            self.daysAfter[1].setupInfos(for: nextDay2Data)
             
             // Feriado
             let holiday = 7
             let holidayData = data[holiday]
             self.self.daysAfter[2].setupInfos(for: holidayData)
         }
+    }
+    
+    
+    /// Pega o index referente ao dia seguinte
+    /// - Parameter day: dia atual
+    /// - Returns: index do dia seguinte
+    private func getNextDay(by day: Int) -> Int {
+        var nextDay = day
+        nextDay += 1
+        if nextDay == 7 {
+            return 0
+        }
+        return nextDay
     }
     
     
@@ -124,6 +145,9 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         self.addSubview(self.todayTimeGroup)
         
         self.addSubview(self.daysAfterStack)
+        self.daysAfterStack.addArrangedSubview(self.daysAfter[0])
+        self.daysAfterStack.addArrangedSubview(self.daysAfter[1])
+        self.daysAfterStack.addArrangedSubview(self.daysAfter[2])
     }
     
     
@@ -138,15 +162,17 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         self.todayLabel.setupText(with: FontInfo(
             text: "Hoje", fontSize: self.getConstant(for: 25), weight: .medium
         ))
-    
         
-        self.todayWeekLabel.font = UIFont(name: "AmsterdamGraffiti", size: self.getConstant(for: 20))
+        
+        self.todayWeekLabel.setupText(with: FontInfo(
+            fontSize: self.getConstant(for: 20), weight: .regular
+        ))
     }
     
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        // Espaçamentos
+        // Espçamentos
         let lateral: CGFloat = self.getConstant(for: 15)
         
         let timeGroupHeight: CGFloat = self.getConstant(for: 35)
@@ -154,6 +180,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         let todayLabelHeight: CGFloat = self.getConstant(for: 30)
         
         let widthStack: CGFloat = self.getConstant(for: 120)
+        let spaceStack = self.daysAfterStack.getEqualSpace(for: timeGroupHeight)
         
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
@@ -175,6 +202,19 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
             self.todayTimeGroup.leadingAnchor.constraint(equalTo: self.todayWeekLabel.leadingAnchor),
             self.todayTimeGroup.heightAnchor.constraint(equalToConstant: timeGroupHeight),
             self.todayTimeGroup.widthAnchor.constraint(equalToConstant: widthStack),
+            
+            
+            // Stack
+            
+            self.daysAfterStack.topAnchor.constraint(equalTo: self.topAnchor, constant: spaceStack),
+            self.daysAfterStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -spaceStack),
+            self.daysAfterStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.daysAfterStack.widthAnchor.constraint(equalToConstant: widthStack),
+            
+            
+            self.daysAfter[0].heightAnchor.constraint(equalToConstant: timeGroupHeight),
+            self.daysAfter[1].heightAnchor.constraint(equalToConstant: timeGroupHeight),
+            self.daysAfter[2].heightAnchor.constraint(equalToConstant: timeGroupHeight),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
@@ -186,7 +226,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
     /// - Returns: valor em relação à tela
     private func getConstant(for space: CGFloat) -> CGFloat {
         let screenReference = SizeInfo(
-            screenSize: CGSize(width: 163, height: 163),
+            screenSize: CGSize(width: 350, height: 160),
             dimension: .width
         )
         

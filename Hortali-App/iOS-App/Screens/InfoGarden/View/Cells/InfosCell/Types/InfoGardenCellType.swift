@@ -18,6 +18,9 @@ enum InfoGardenCellType {
     /// Célula que mostra os contatos disponíveis da horta
     case contact
     
+    /// Célula para reportar algum problema
+    case report
+    
     
     
     /* MARK: - Atributos */
@@ -28,6 +31,7 @@ enum InfoGardenCellType {
         case .map: return InfoGardenMap()
         case .time: return InfoGardenTime()
         case .contact: return InfoGardenContact()
+        case .report: return InfoGardenReport()
         }
     }
     
@@ -36,8 +40,9 @@ enum InfoGardenCellType {
     var title: String {
         switch self {
         case .map: return "Endereço"
-        case .time: return "Horários"
+        case .time: return "Horário de Funcionamento"
         case .contact: return "Contatos"
+        case .report: return "Reportar"
         }
     }
 }
