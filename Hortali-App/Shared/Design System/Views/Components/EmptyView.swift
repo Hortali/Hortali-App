@@ -9,15 +9,16 @@ class EmptyView: UIView {
     /* MARK: - Atributos */
     
     // Views
-    internal var titleLabel: UILabel = {
+    private var titleLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textAlignment = .center
         lbl.adjustsFontSizeToFitWidth = true
         lbl.textColor = UIColor(originalColor: .greyButton)
+        
         return lbl
     }()
     
-    internal var dynamicLabel: UILabel = {
+    private var dynamicLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textAlignment = .center
         lbl.numberOfLines = 2
@@ -27,8 +28,30 @@ class EmptyView: UIView {
         return lbl
     }()
     
+    private var contentView = CustomViews.newView()
+    
     // Outros
     
+    public var style: EmptyTexts = .complete {
+        didSet {
+            switch self.style {
+            case .complete:
+                self.dynamicLabel.text = "Você ainda não tem \nnenhum favorito"
+                
+            case .food:
+                self.dynamicLabel.text = "kjdbkbsdvkusavo"
+                
+            case .garden:
+                self.dynamicLabel.text = "CCCCCCCCCCCCCCCC"
+                
+            case .search:
+                self.dynamicLabel.text = "DDDDDDDDDDDDDDDD"
+                
+            }
+        }
+    }
+    
+        
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
     
@@ -70,8 +93,9 @@ class EmptyView: UIView {
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-        self.addSubview(titleLabel)
-        self.addSubview(dynamicLabel)
+        self.addSubview(contentView)
+        self.contentView.addSubview(titleLabel)
+        self.contentView.addSubview(dynamicLabel)
     }
     
     
@@ -83,10 +107,8 @@ class EmptyView: UIView {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        self.titleLabel.setupText(with: FontInfo(text: "OPS !", fontSize: 32, weight: .bold))
+        self.titleLabel.setupText(with: FontInfo(text: "OPS", fontSize: 32, weight: .bold))
         self.titleLabel.font = UIFont(name: "AmsterdamGraffiti", size: 52)
-        
-        self.dynamicLabel.setupText(with: FontInfo(text: "Uma mensagem bacana \n e personalizada aqui", fontSize: 17, weight: .regular))
     }
     
     
@@ -95,11 +117,16 @@ class EmptyView: UIView {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
-            self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.titleLabel.bottomAnchor.constraint(equalTo: self.centerYAnchor),
+            self.contentView.topAnchor.constraint(equalTo: self.topAnchor),
+            self.contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            
+            self.titleLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.titleLabel.bottomAnchor.constraint(equalTo: self.contentView.centerYAnchor),
             
             self.dynamicLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
-            self.dynamicLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.dynamicLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

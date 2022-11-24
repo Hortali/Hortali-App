@@ -17,6 +17,14 @@ class FavoriteView: MainView {
     /// Collection das hortas
     private let gardenGroup = CollectionGroup()
     
+    /// instancia da tela de empty view
+    private let emptyView = {
+        let view = EmptyView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     
     // Outros
     
@@ -38,8 +46,8 @@ class FavoriteView: MainView {
         
         return cvFlow
     }()
-    
-    
+        
+
     
     /* MARK: - Construtor */
     
@@ -132,7 +140,22 @@ class FavoriteView: MainView {
     private func setupViews() {
         self.contentView.addSubview(self.foodGroup)
         self.contentView.addSubview(self.gardenGroup)
+        self.contentView.addSubview(self.emptyView)
     }
+    
+    
+    public func setCollectionView(with value: Bool) {
+        if(value){
+            self.foodGroup.isHidden = true
+            self.gardenGroup.isHidden = true
+            self.emptyView.isHidden = false
+        }else{
+            self.emptyView.isHidden = true
+            self.foodGroup.isHidden = false
+            self.gardenGroup.isHidden = false
+        }
+    }
+    
     
     
     /// Personalização da UI
@@ -208,6 +231,12 @@ class FavoriteView: MainView {
             self.gardenGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.gardenGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.gardenGroup.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -lateral),
+            
+            
+            self.emptyView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            self.emptyView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.emptyView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            self.emptyView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

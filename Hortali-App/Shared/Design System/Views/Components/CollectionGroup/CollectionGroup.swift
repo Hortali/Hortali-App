@@ -36,6 +36,13 @@ public class CollectionGroup: UIView {
         return col
     }()
     
+    internal var emptyView = {
+        let view = EmptyView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     
     // Outros
     
@@ -51,7 +58,7 @@ public class CollectionGroup: UIView {
             }
         }
     }
-    
+        
     
     // Constraints
     
@@ -60,19 +67,19 @@ public class CollectionGroup: UIView {
     
     /// Espaço de diferença que a label vai ter
     private var labelSpace: CGFloat = 0
-		
-
-
+    
+    
+    
     /* MARK: - Construtor */
     
     /// Inicializador podendo definir o estilo do grupo
     /// - Parameter style: estilo do grupo (padrão: .complete)
-    init(style: CollectionGroupStyle = .complete) {
+    init(style: CollectionGroupStyle = .complete, emptyViewType: EmptyTexts? = nil) {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
-    
+        
         self.style = style
-
+        
         self.setupViews()
     }
     
@@ -95,12 +102,12 @@ public class CollectionGroup: UIView {
     }
     
     
-
+    
     /* MARK: - Ciclo de Vida */
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-	      
+        
         self.setupDynamicConstraints()
     }
     
@@ -109,9 +116,21 @@ public class CollectionGroup: UIView {
     /* MARK: - Configurações */
     
     /// Adiciona os elementos (Views) na tela
-    private func setupViews() {    
+    private func setupViews() {
         self.addSubview(self.titleLabel)
         self.addSubview(self.collection)
+        self.addSubview(self.emptyView)
+    }
+    
+    /// Adiciona os elementos (Views) na tela
+    public func isCollectionEmpty(with value: Bool) {
+        if(value){
+            self.collection.isHidden = true
+            self.emptyView.isHidden = false
+        }else{
+            self.emptyView.isHidden = true
+            self.collection.isHidden = false
+        }
     }
     
     
@@ -119,7 +138,7 @@ public class CollectionGroup: UIView {
     private func setupDynamicConstraints() {
         let between: CGFloat = self.getEquivalent(12)
         let titleLabelHeight: CGFloat = self.superview?.getEquivalent(25) ?? 0
-
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         switch self.style {
@@ -135,12 +154,6 @@ public class CollectionGroup: UIView {
                 self.collection.bottomAnchor.constraint(equalTo: self.bottomAnchor),
                 self.collection.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                 self.collection.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                
-                
-//                self.emptyView.topAnchor.constraint(equalTo: self.collection.topAnchor),
-//                self.emptyView.bottomAnchor.constraint(equalTo: self.collection.bottomAnchor),
-//                self.emptyView.leadingAnchor.constraint(equalTo: self.collection.leadingAnchor),
-//                self.emptyView.trailingAnchor.constraint(equalTo: self.collection.trailingAnchor),
             ]
             
         case .justCollection:
@@ -149,14 +162,15 @@ public class CollectionGroup: UIView {
                 self.collection.bottomAnchor.constraint(equalTo: self.bottomAnchor),
                 self.collection.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                 self.collection.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                
-                
-//                self.emptyView.topAnchor.constraint(equalTo: self.collection.topAnchor),
-//                self.emptyView.bottomAnchor.constraint(equalTo: self.collection.bottomAnchor),
-//                self.emptyView.leadingAnchor.constraint(equalTo: self.collection.leadingAnchor),
-//                self.emptyView.trailingAnchor.constraint(equalTo: self.collection.trailingAnchor),
             ]
         }
+        
+        self.dynamicConstraints += [
+            self.emptyView.topAnchor.constraint(equalTo: self.collection.topAnchor),
+            self.emptyView.bottomAnchor.constraint(equalTo: self.collection.bottomAnchor),
+            self.emptyView.leadingAnchor.constraint(equalTo: self.collection.leadingAnchor),
+            self.emptyView.trailingAnchor.constraint(equalTo: self.collection.trailingAnchor),
+        ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
     }

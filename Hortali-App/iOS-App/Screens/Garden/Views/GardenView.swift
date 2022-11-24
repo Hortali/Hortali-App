@@ -38,11 +38,11 @@ class GardenView: MainView {
     
     /// Configurações do layout da collection
     private let collectionFlow = UICollectionViewFlowLayout()
-        
+    
     /// Tipo de visualização
     private var visualizationType: GardenVisualization = .carousel
     
-   
+    
     
     /* MARK: - Construtor */
     
@@ -154,6 +154,11 @@ class GardenView: MainView {
     }
     
     
+    func checkData(with dataCount: Int) {
+        self.gardenGroup.isCollectionEmpty(with: dataCount == 0)
+    }   
+    
+    
     /* Geral */
     
     /// Espaço entre a collection das hortas
@@ -168,9 +173,9 @@ class GardenView: MainView {
         let top = search.frame.origin.y + search.frame.height
         let collectionHeight = self.getEquivalent(400)
         let bottom = self.safeAreaInsets.bottom
-         
+        
         let totalEmptySpace = (self.frame.height - top - collectionHeight - bottom) / 2
-         
+        
         return totalEmptySpace
     }
     
@@ -217,10 +222,11 @@ class GardenView: MainView {
     /// Personalização da UI
     private func setupUI() {
         self.backgroundColor = UIColor(.gardenBack)
+        self.gardenGroup.backgroundColor = .yellow
         self.setupCollectionVisualization()
     }
     
-        
+    
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
         self.setTitleText(with: "Descubra novas \nhortas")
@@ -256,7 +262,7 @@ class GardenView: MainView {
                 self.gardenGroup.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
                 self.gardenGroup.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
             ]
-                
+            
         case .carousel:
             let emptySpace = self.getEmptySpace()
             self.gardenGroup.setPadding(for: lateral)

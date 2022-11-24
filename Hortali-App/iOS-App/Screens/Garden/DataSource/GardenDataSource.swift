@@ -25,11 +25,6 @@ class GardenDataSource: NSObject, UICollectionViewDataSource {
     /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let data = mainData.count
-        if (data > 0){
-            collectionView.backgroundView = nil
-        } else{
-            collectionView.backgroundView = EmptyView()
-        }
         return data
     }
     

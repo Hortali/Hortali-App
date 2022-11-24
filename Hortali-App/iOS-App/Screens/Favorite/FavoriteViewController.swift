@@ -98,6 +98,11 @@ class FavoriteViewController: UIViewController, GardenProtocol, FoodProtocol {
         if let foodFav = foodFavorite as? [ManagedFood] {
             self.foodDataSource.data = foodFav
         }
+        if (foodDataSource.data.count > 0){
+            self.myView.setCollectionView(with: false)
+        }else{
+            self.myView.setCollectionView(with: true)
+        }
         
         
         // Hortas

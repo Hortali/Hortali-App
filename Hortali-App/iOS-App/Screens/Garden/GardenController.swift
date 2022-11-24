@@ -94,7 +94,6 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
                 continue
             }
         }
-        
         self.setupDataSourceData(with: dataFiltered)
         self.myView.actualGardenVisualization = .grid
     }
@@ -164,18 +163,18 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         if let data {
             self.gardenDataSource.data = data
             self.myView.reloadCollectionData()
+
             return
         }
-        
         let gardenData = DataManager.shared.getGardenData()
         
-        self.gardenDataSource.data = gardenData
+        self.gardenDataSource.data = gardenData 
         self.myView.reloadCollectionData()
         
         if self.gardenData.isEmpty {
             self.gardenData = gardenData
         }
-        
+
         if let visu = self.lastGardenVisualization {
             self.myView.actualGardenVisualization = visu
             self.lastGardenVisualization = nil
