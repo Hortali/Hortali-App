@@ -105,6 +105,8 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
             self.todayTimeGroup.setupInfos(for: todayData)
             self.todayWeekLabel.text = todayData.week
             self.todayWeekLabel.font = UIFont(name: "AmsterdamGraffiti", size: 10)
+
+            
             
             
             // Feriado
@@ -139,7 +141,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
             text: "Hoje", fontSize: self.getConstant(for: 25), weight: .medium
         ))
     
-        
+    
         self.todayWeekLabel.font = UIFont(name: "AmsterdamGraffiti", size: self.getConstant(for: 20))
     }
     
