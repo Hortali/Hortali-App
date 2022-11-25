@@ -25,6 +25,7 @@ class GardenDataSource: NSObject, UICollectionViewDataSource {
     /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let data = mainData.count
+        
         return data
     }
     

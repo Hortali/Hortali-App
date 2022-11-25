@@ -26,9 +26,6 @@ class FavoriteView: MainView {
         return view
     }()
     
-    
-    // Outros
-    
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
     

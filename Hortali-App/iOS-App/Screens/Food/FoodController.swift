@@ -51,11 +51,6 @@ class FoodController: UIViewController, FoodProtocol {
         
         self.navigationController?.pushViewController(controller, animated: true)
     }
-    
-    
-    internal func getFoodData(data: Int) {
-      //  self.myView.cellData = data
-    }
 
     
     
@@ -97,7 +92,6 @@ class FoodController: UIViewController, FoodProtocol {
         self.foodDelegate.setProtocol(with: self)
         
         self.myView.setDataSource(with: self.foodDataSource)
-     //   self.myView.cellData = self.foodDataSource.data.count
         self.myView.setDelegate(with: self.foodDelegate)
     }
     

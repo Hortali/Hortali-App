@@ -154,7 +154,8 @@ class GardenView: MainView {
     }
     
     
-    func checkData(with dataCount: Int) {
+    /// Verifica a existencia de dados na collection
+    public func checkData(with dataCount: Int) {
         self.gardenGroup.isCollectionEmpty(with: dataCount == 0)
     }   
     

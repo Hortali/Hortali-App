@@ -32,6 +32,7 @@ class EmptyView: UIView {
     
     // Outros
     
+    /// Textos das labels que mudam de acordo com a tela.
     public var style: EmptyTexts = .search {
         didSet {
             switch self.style {

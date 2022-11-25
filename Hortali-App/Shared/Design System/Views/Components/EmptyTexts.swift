@@ -1,15 +1,14 @@
 /* Macro - Grupo 05 */
 
-
-/// Estilos do grupo de collection
+/// Textos das empty views
 public enum EmptyTexts {
     
-    /// Mostra apenas a collection
+    /// Exibe o texto da empty view da collection de alimentos
     case food
     
-    /// Mostra a collection com o título
+    /// Exibe o texto da empty view da collection de hortas
     case garden
     
-    case search
-    
+    /// Exibe o texto da empty view da collection de busca de hortas
+    case search    
 }
