@@ -121,6 +121,7 @@ class FoodView: MainView {
     /// Define o layout da collection
     private func setupCollectionFlow() {
          self.foodGroup.collection.collectionViewLayout = self.collectionFlow
+         self.foodGroup.isCollectionEmpty(with: false)
     }
 
     

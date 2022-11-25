@@ -222,7 +222,6 @@ class GardenView: MainView {
     /// Personalização da UI
     private func setupUI() {
         self.backgroundColor = UIColor(.gardenBack)
-        self.gardenGroup.backgroundColor = .yellow
         self.setupCollectionVisualization()
     }
     

@@ -162,13 +162,15 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     private func setupDataSourceData(with data: [ManagedGarden]? = nil) {
         if let data {
             self.gardenDataSource.data = data
+            self.myView.checkData(with: data.count)
             self.myView.reloadCollectionData()
 
             return
         }
         let gardenData = DataManager.shared.getGardenData()
         
-        self.gardenDataSource.data = gardenData 
+        self.gardenDataSource.data = gardenData
+        self.myView.checkData(with: gardenData.count)
         self.myView.reloadCollectionData()
         
         if self.gardenData.isEmpty {

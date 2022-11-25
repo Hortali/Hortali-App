@@ -134,6 +134,13 @@ class FavoriteView: MainView {
     }
     
     
+    func checkData(with foodDataCount: Int, with gardenDataCount: Int) {
+        self.gardenGroup.isCollectionEmpty(with: gardenDataCount == 0)
+        self.foodGroup.isCollectionEmpty(with: foodDataCount == 0)
+    }
+    
+    
+    
     // Views
     
     /// Adiciona os elementos (Views) na tela
