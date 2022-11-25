@@ -247,6 +247,9 @@ class InfoGardenView: UIView {
     private func setupCollectionFlow() {
         self.infosCollectionGp.collection.collectionViewLayout = self.infosCollectionFlow
         self.imagesCollectionGp.collection.collectionViewLayout = self.imagesCollectionFlow
+        
+        self.infosCollectionGp.isCollectionEmpty(with: false)
+        self.imagesCollectionGp.isCollectionEmpty(with: false)
     }
     
     
