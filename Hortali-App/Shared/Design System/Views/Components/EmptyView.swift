@@ -18,7 +18,7 @@ class EmptyView: UIView {
         return lbl
     }()
     
-    private var dynamicLabel: UILabel = {
+    public var dynamicLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textAlignment = .center
         lbl.numberOfLines = 2
@@ -32,20 +32,18 @@ class EmptyView: UIView {
     
     // Outros
     
-    public var style: EmptyTexts = .complete {
+    public var style: EmptyTexts = .search {
         didSet {
             switch self.style {
-            case .complete:
-                self.dynamicLabel.text = "Você ainda não tem \nnenhum favorito"
                 
             case .food:
-                self.dynamicLabel.text = "kjdbkbsdvkusavo"
+                self.dynamicLabel.text = "Você ainda não tem\n alimento favorito."
                 
             case .garden:
-                self.dynamicLabel.text = "CCCCCCCCCCCCCCCC"
+                self.dynamicLabel.text = "Você ainda não tem\n horta favorita."
                 
             case .search:
-                self.dynamicLabel.text = "DDDDDDDDDDDDDDDD"
+                self.dynamicLabel.text = "Não temos nenhuma\n horta com esse nome."
                 
             }
         }

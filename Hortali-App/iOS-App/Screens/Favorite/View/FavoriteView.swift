@@ -12,14 +12,15 @@ class FavoriteView: MainView {
     // Views
     
     /// Collection de alimentos
-    private let foodGroup = CollectionGroup()
+    private let foodGroup = CollectionGroup(emptyViewType: .food)
     
     /// Collection das hortas
-    private let gardenGroup = CollectionGroup()
+    private let gardenGroup = CollectionGroup(emptyViewType: .garden)
     
     /// instancia da tela de empty view
     private let emptyView = {
         let view = EmptyView()
+        view.dynamicLabel.text = "Você ainda não tem\n nenhum favorito."
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view

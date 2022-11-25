@@ -12,5 +12,4 @@ public enum EmptyTexts {
     
     case search
     
-    case complete
 }

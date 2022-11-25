@@ -79,6 +79,7 @@ public class CollectionGroup: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.style = style
+        self.emptyView.style = emptyViewType ?? .search
         
         self.setupViews()
     }
