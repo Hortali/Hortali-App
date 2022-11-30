@@ -99,12 +99,18 @@ class FavoriteViewController: UIViewController, GardenProtocol, FoodProtocol {
             self.foodDataSource.data = foodFav
         }
         
-        
         // Hortas
         let gardenFavorite = DataManager.shared.getFavoriteItens(for: .garden)
         if let gardenFav = gardenFavorite as? [ManagedGarden] {
             self.gardenDataSource.data = gardenFav
         }
+        
+        if (foodDataSource.data.count == 0 && gardenDataSource.data.count == 0 ){
+            self.myView.setCollectionView(with: true)
+        }else{
+            self.myView.setCollectionView(with: false)
+        }
+        self.myView.checkData(with: foodDataSource.data.count, with: gardenDataSource.data.count)
         
         self.myView.reloadCollectionsData()
     }

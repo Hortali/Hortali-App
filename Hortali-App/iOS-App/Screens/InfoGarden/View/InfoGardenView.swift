@@ -84,6 +84,7 @@ class InfoGardenView: UIView {
         self.setupViews()
         self.registerCell()
         self.setupCollectionFlow()
+        self.checkCollectionData()
         
         self.setupViewFor(data: data)
     }
@@ -247,6 +248,13 @@ class InfoGardenView: UIView {
     private func setupCollectionFlow() {
         self.infosCollectionGp.collection.collectionViewLayout = self.infosCollectionFlow
         self.imagesCollectionGp.collection.collectionViewLayout = self.imagesCollectionFlow
+    }
+    
+    
+    /// Verifica se as collections possuem dados 
+    private func checkCollectionData() {
+        self.infosCollectionGp.isCollectionEmpty(with: false)
+        self.imagesCollectionGp.isCollectionEmpty(with: false)
     }
     
     
