@@ -17,7 +17,6 @@
 		2210244628D5201500F412A5 /* InfoGardenInfosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244528D5201500F412A5 /* InfoGardenInfosCell.swift */; };
 		2210244828D5230C00F412A5 /* InfoGardenCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244728D5230C00F412A5 /* InfoGardenCellType.swift */; };
 		2210244B28D5272C00F412A5 /* InfoGardenMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244A28D5272C00F412A5 /* InfoGardenMap.swift */; };
-		2210245128D529FA00F412A5 /* InfoGardenReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210245028D529FA00F412A5 /* InfoGardenReport.swift */; };
 		2210245428D52B2B00F412A5 /* InfoGardenInfosDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210245328D52B2B00F412A5 /* InfoGardenInfosDataSource.swift */; };
 		2210245728D53F3300F412A5 /* InfoGardenInfosDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210245628D53F3300F412A5 /* InfoGardenInfosDelegate.swift */; };
 		2210245928D845D800F412A5 /* InfoGardenImagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210245828D845D800F412A5 /* InfoGardenImagesDataSource.swift */; };
@@ -149,7 +148,6 @@
 		2210244528D5201500F412A5 /* InfoGardenInfosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenInfosCell.swift; sourceTree = "<group>"; };
 		2210244728D5230C00F412A5 /* InfoGardenCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenCellType.swift; sourceTree = "<group>"; };
 		2210244A28D5272C00F412A5 /* InfoGardenMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenMap.swift; sourceTree = "<group>"; };
-		2210245028D529FA00F412A5 /* InfoGardenReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenReport.swift; sourceTree = "<group>"; };
 		2210245328D52B2B00F412A5 /* InfoGardenInfosDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenInfosDataSource.swift; sourceTree = "<group>"; };
 		2210245628D53F3300F412A5 /* InfoGardenInfosDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenInfosDelegate.swift; sourceTree = "<group>"; };
 		2210245828D845D800F412A5 /* InfoGardenImagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenImagesDataSource.swift; sourceTree = "<group>"; };
@@ -333,7 +331,6 @@
 			isa = PBXGroup;
 			children = (
 				2210244728D5230C00F412A5 /* InfoGardenCellType.swift */,
-				2210244F28D529D800F412A5 /* InfoGardenReport */,
 				2210244E28D529AC00F412A5 /* InfoGardenContact */,
 				2210244D28D5299600F412A5 /* InfoGardenTime */,
 				2210244C28D5298A00F412A5 /* InfoGardenMap */,
@@ -365,14 +362,6 @@
 				2210246528D8DC0800F412A5 /* InfoGardenContact.swift */,
 			);
 			path = InfoGardenContact;
-			sourceTree = "<group>";
-		};
-		2210244F28D529D800F412A5 /* InfoGardenReport */ = {
-			isa = PBXGroup;
-			children = (
-				2210245028D529FA00F412A5 /* InfoGardenReport.swift */,
-			);
-			path = InfoGardenReport;
 			sourceTree = "<group>";
 		};
 		2210245228D52B0500F412A5 /* DataSource */ = {
@@ -1322,7 +1311,6 @@
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
 				B2DE4951291192E700293E6A /* OnboardingCell.swift in Sources */,
 				22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */,
-				2210245128D529FA00F412A5 /* InfoGardenReport.swift in Sources */,
 				22A3918428F7AD5D00A42DC1 /* SearchProtocol.swift in Sources */,
 				2212E83B28DB9F60004CCBAA /* InfoFoodController.swift in Sources */,
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,
