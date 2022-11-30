@@ -32,12 +32,6 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         return group
     }()
     
-    /// Stack para colocar as informações dos próximos dias
-    private let daysAfterStack: CustomStack = CustomViews.newStackView()
-    
-    
-    /// Grupos de informações dos próximos dias
-    private let daysAfter: [TimeGroup] = [TimeGroup(), TimeGroup(), TimeGroup()]
     
     
     // Outros
@@ -110,7 +104,6 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
             // Feriado
             let holiday = 7
             let holidayData = data[holiday]
-            self.self.daysAfter[2].setupInfos(for: holidayData)
         }
     }
     
@@ -123,7 +116,6 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         self.addSubview(self.todayWeekLabel)
         self.addSubview(self.todayTimeGroup)
         
-        self.addSubview(self.daysAfterStack)
     }
     
     
@@ -139,7 +131,10 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
             text: "Hoje", fontSize: self.getConstant(for: 25), weight: .medium
         ))
         
-        self.todayWeekLabel.font = UIFont(name: "AmsterdamGraffiti", size: self.getConstant(for: 20))
+        self.todayWeekLabel.setupText(with: FontInfo(fontSize: self.getConstant(for: 20),
+                                                     weight: .regular,
+                                                     fontFamily: .graffiti
+                                                    ))
     }
     
     
@@ -150,6 +145,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         
         let timeGroupHeight: CGFloat = self.getConstant(for: 35)
         let todayWeekHeight: CGFloat = self.getConstant(for: 25)
+        let todayWeekLabelHeight = todayWeekHeight*2
         
         let widthStack: CGFloat = self.getConstant(for: 120)
         
@@ -159,7 +155,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         self.dynamicConstraints = [
             self.todayWeekLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
             self.todayWeekLabel.trailingAnchor.constraint(equalTo: self.centerXAnchor),
-            self.todayWeekLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: todayWeekHeight*2),
+            self.todayWeekLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: todayWeekLabelHeight),
             self.todayWeekLabel.heightAnchor.constraint(equalToConstant: todayWeekHeight),
             
             
