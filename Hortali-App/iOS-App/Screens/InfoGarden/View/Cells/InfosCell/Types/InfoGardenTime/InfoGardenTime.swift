@@ -98,12 +98,6 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
             let todayData = data[todayWeek]
             self.todayTimeGroup.setupInfos(for: todayData)
             self.todayWeekLabel.text = todayData.week
-            self.todayWeekLabel.font = UIFont(name: "AmsterdamGraffiti", size: 10)
-
-            
-            // Feriado
-            let holiday = 7
-            let holidayData = data[holiday]
         }
     }
     
@@ -131,10 +125,9 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
             text: "Hoje", fontSize: self.getConstant(for: 25), weight: .medium
         ))
         
-        self.todayWeekLabel.setupText(with: FontInfo(fontSize: self.getConstant(for: 20),
-                                                     weight: .regular,
-                                                     fontFamily: .graffiti
-                                                    ))
+        self.todayWeekLabel.setupText(with: FontInfo(
+            fontSize: self.getConstant(for: 20), weight: .regular, fontFamily: .graffiti
+        ))
     }
     
     
@@ -145,7 +138,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         
         let timeGroupHeight: CGFloat = self.getConstant(for: 35)
         let todayWeekHeight: CGFloat = self.getConstant(for: 25)
-        let todayWeekLabelHeight = todayWeekHeight*2
+        let space = todayWeekHeight*2
         
         let widthStack: CGFloat = self.getConstant(for: 120)
         
@@ -155,7 +148,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         self.dynamicConstraints = [
             self.todayWeekLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
             self.todayWeekLabel.trailingAnchor.constraint(equalTo: self.centerXAnchor),
-            self.todayWeekLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: todayWeekLabelHeight),
+            self.todayWeekLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: space),
             self.todayWeekLabel.heightAnchor.constraint(equalToConstant: todayWeekHeight),
             
             
