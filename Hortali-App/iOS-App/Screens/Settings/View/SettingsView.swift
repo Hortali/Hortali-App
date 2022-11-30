@@ -39,6 +39,7 @@ class SettingsView: MainView {
         self.registerCells()
         self.setupCollectionFlow()
         self.setupStaticTexts()
+        self.checkData()
     }
     
     required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
@@ -95,6 +96,12 @@ class SettingsView: MainView {
     /// Define o layout da collection
     private func setupCollectionFlow() {
         self.settingsCollection.collection.collectionViewLayout = self.collectionFlow
+    }
+    
+    
+    /// Verifica a existencia de dados na collection
+    private func checkData() {
+        self.settingsCollection.isCollectionEmpty(with: false)
     }
 
 

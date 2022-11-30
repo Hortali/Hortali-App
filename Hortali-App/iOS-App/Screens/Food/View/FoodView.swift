@@ -48,6 +48,7 @@ class FoodView: MainView {
         self.setupViews()
         self.registerCells()
         self.setupCollectionFlow()
+        self.checkData()
     }
     
     
@@ -120,6 +121,12 @@ class FoodView: MainView {
     /// Define o layout da collection
     private func setupCollectionFlow() {
          self.foodGroup.collection.collectionViewLayout = self.collectionFlow
+    }
+    
+    
+    /// Verifica a existencia de dados na collection
+    private func checkData() {
+        self.foodGroup.isCollectionEmpty(with: false)
     }
 
     
