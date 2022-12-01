@@ -12,16 +12,22 @@ class FavoriteView: MainView {
     // Views
     
     /// Collection de alimentos
-    private let foodGroup = CollectionGroup()
+    private let foodGroup = CollectionGroup(emptyViewType: .food)
     
     /// Collection das hortas
-    private let gardenGroup = CollectionGroup()
+    private let gardenGroup = CollectionGroup(emptyViewType: .garden)
+    
+    /// Empty view da tela
+    private let emptyView = EmptyView(emptyViewType: .favorite)
     
     
-    // Outros
+    // Constraints
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
+    
+    
+    // Collection
     
     /// Configurações do layout da collection de Alimentos
     private let foodCollectionFlow: UICollectionViewFlowLayout = {
@@ -38,8 +44,8 @@ class FavoriteView: MainView {
         
         return cvFlow
     }()
-    
-    
+        
+
     
     /* MARK: - Construtor */
     
@@ -56,6 +62,33 @@ class FavoriteView: MainView {
     
     
     /* MARK: - Encapsulamento */
+    
+    // Empty View
+    
+    /// Verifica a quantidade de dados das hortas
+    /// - Parameter gardenDataCount: quantidade de dados das hortas
+    public func checkGardenData(with gardenDataCount: Int) {
+        self.gardenGroup.isCollectionEmpty(with: gardenDataCount == 0)
+    }
+    
+    
+    /// Verifica a quantidade de dados das hortas
+    /// - Parameter foodDataCount: quantidade de dados dos alimentos
+    public func checkFoodData(with foodDataCount: Int) {
+        self.foodGroup.isCollectionEmpty(with: foodDataCount == 0)
+    }
+    
+    
+    /// Configura a empty view caso precise
+    /// - Parameter value: estado que define a visualização da empty view
+    public func setCollectionView(with value: Bool) {
+        self.foodGroup.isHidden = value
+        self.gardenGroup.isHidden = value
+        self.emptyView.isHidden = !value
+    }
+    
+    
+    // Collection
     
     /// Atualiza os dados da collection
     public func reloadCollectionsData() {
@@ -124,7 +157,7 @@ class FavoriteView: MainView {
         self.foodGroup.collection.collectionViewLayout = self.foodCollectionFlow
         self.gardenGroup.collection.collectionViewLayout = self.gardenCollectionFlow
     }
-    
+        
     
     // Views
     
@@ -132,6 +165,7 @@ class FavoriteView: MainView {
     private func setupViews() {
         self.contentView.addSubview(self.foodGroup)
         self.contentView.addSubview(self.gardenGroup)
+        self.contentView.addSubview(self.emptyView)
     }
     
     
@@ -189,6 +223,12 @@ class FavoriteView: MainView {
         
         let foodGpHeight = self.getEquivalent(187, dimension: .height)   // 150+12+25
         
+        self.foodGroup.setPadding(for: lateral)
+        self.gardenGroup.setPadding(for: lateral)
+        
+        self.foodGroup.setLabelSpace(for: lateral)
+        self.gardenGroup.setLabelSpace(for: lateral)
+        
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
@@ -202,6 +242,12 @@ class FavoriteView: MainView {
             self.gardenGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.gardenGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.gardenGroup.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -lateral),
+            
+            
+            self.emptyView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            self.emptyView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.emptyView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            self.emptyView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

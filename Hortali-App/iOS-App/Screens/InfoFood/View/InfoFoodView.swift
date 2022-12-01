@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Elemento de UI da tela de ver informações dos aliementos
-class InfoFoodView: UIView {
+class InfoFoodView: UIView, FavoriteHandler {
     
     /* MARK: - Atributos */
     
@@ -15,10 +15,11 @@ class InfoFoodView: UIView {
     private let scrollView = CustomScroll()
     
     /// Botão de voltar para a página anterior
-    private let backButton = CustomViews.newButton()
-    
-    /// Botão de favoritar o alimento
-    private let favoriteButton = CustomViews.newButton()
+    private let backButton: CustomButton = {
+        let but = CustomViews.newButton()
+        but.tintColor = UIColor(.favoriteNotSelectedIcon)
+        return but
+    }()
     
     /// Capa do alimento
     private let coverImage = CustomViews.newImage()
@@ -43,11 +44,11 @@ class InfoFoodView: UIView {
         return stack
     }()
     
-    /// Label dos tipos de vitaminas (views para a Stack)
-    private var vitaminsTypesLabels: [CustomLabel] = []
+    /// Tipos de vitaminas (views para a Stack)
+    private var vitaminsTypesButtons: [CustomButton] = []
     
     /// Label de informações das vitaminas
-    private let vitaminsInfoLabel = {
+    private let mineralsLabel = {
         let lbl = CustomViews.newLabel()
         lbl.numberOfLines = 3
         lbl.adjustsFontSizeToFitWidth = true
@@ -59,13 +60,6 @@ class InfoFoodView: UIView {
     
     /// Collection  "Como plantar"
     private let howToCollection = CollectionGroup()
-    
-    
-    // Views
-    
-    /// Estado de favorito da view
-    private var ifFavorite: Bool = false
-    
     
     
     // Outros
@@ -80,6 +74,31 @@ class InfoFoodView: UIView {
         
         return cvFlow
     }()
+    
+    
+    
+    /* MARK: - Protocol */
+    
+    internal var isFavorite = false
+    
+    internal var favoriteButton: CustomButton = CustomViews.newButton()
+    
+    
+    internal func favoriteHandler(for fav: Bool? = nil) -> Bool {
+        if let fav {
+            self.isFavorite = fav
+        } else {
+            self.isFavorite.toggle()
+        }
+        
+        let infos = self.favoriteInfos
+        
+        self.favoriteButton.backgroundColor = infos.backColor
+        self.favoriteButton.tintColor = infos.iconColor
+        self.setupStaticTexts()
+        
+        return self.isFavorite
+    }
     
     
     
@@ -103,27 +122,6 @@ class InfoFoodView: UIView {
     
     /* MARK: - Encapsulamento */
     
-    /// Configura a view para quando for favoritado ou desfavoritado
-    /// - Parameter fav: estado do favorito
-    /// - Returns: se está ou não favoritado
-    public func isFavorited(is fav: Bool? = nil) -> Bool {
-        if let fav {
-            self.ifFavorite = fav
-        } else {
-            self.ifFavorite.toggle()
-        }
-        
-        var favColor: AppColors = .favoriteNotSelected
-        if self.ifFavorite {
-            favColor = .favoriteSelected
-        }
-        
-        self.favoriteButton.backgroundColor = UIColor(favColor)
-        
-        return self.ifFavorite
-    }
-    
-        
     /// Configurações para expandir a label
     public func expandLabel() {
         self.expansiveLabel.setupExtension()
@@ -139,15 +137,17 @@ class InfoFoodView: UIView {
     }
     
     
-    /// Define a ação do botão de favorito
-    public func setFavoriteButtonAction(target: Any?, action: Selector) -> Void {
-        self.favoriteButton.addTarget(target, action: action, for: .touchDown)
-    }
-    
-    
     /// Define a ação do botão de expandir a label
     public func setExpLabelButtonAction(target: Any?, action: Selector) -> Void {
         self.expansiveLabel.setExpansiveButtonAction(target: target, action: action)
+    }
+    
+    
+    /// Define a ação do botão das vitaminas
+    public func setVitaminsButtonAction(target: Any?, action: Selector) -> Void {
+        for but in self.vitaminsTypesButtons {
+            but.addTarget(target, action: action, for: .touchDown)
+        }
     }
     
     
@@ -188,22 +188,22 @@ class InfoFoodView: UIView {
     /// - Parameter data: dados recebidos
     private func setupViewFor(data: ManagedFood) {
         self.coverImage.image = UIImage(named: data.pageImage.name)
-        
         self.container.setTitleText(with: data.name)
         self.expansiveLabel.setInfoText(for: data.benefits)
         
         self.setupVitaminsStackViews(for: data.vitamins)
-        self.vitaminsInfoLabel.text = data.minerals
+        self.mineralsLabel.text = data.minerals
     }
 
         
     /// Cria e adiciona as views que vão ser colocadas na stack
     private func setupVitaminsStackViews(for vitamins: [ManagedVitamins]) {
-        for vitamin in vitamins {
-            let vitLabel = self.getVitaminLabel(for: vitamin)
+        for ind in 0..<vitamins.count {
+            let vitBut = self.getVitaminButton(for: vitamins[ind])
+            vitBut.tag = ind
             
-            self.vitaminsTypesLabels.append(vitLabel)
-            self.vitaminsStack.addArrangedSubview(vitLabel)
+            self.vitaminsTypesButtons.append(vitBut)
+            self.vitaminsStack.addArrangedSubview(vitBut)
         }
     }
     
@@ -239,9 +239,9 @@ class InfoFoodView: UIView {
         self.container.contentView.addSubview(self.expansiveLabel)
         self.container.contentView.addSubview(self.vitaminsLabel)
         self.container.contentView.addSubview(self.vitaminsStack)
-        self.container.contentView.addSubview(self.vitaminsInfoLabel)
+        self.container.contentView.addSubview(self.mineralsLabel)
         
-        self.scrollView.addViewInScroll(self.vitaminsInfoLabel)
+        self.scrollView.addViewInScroll(self.mineralsLabel)
         self.container.contentView.addSubview(self.howToCollection)
     }
     
@@ -277,7 +277,7 @@ class InfoFoodView: UIView {
             text: "Como Plantar", fontSize: titleFontSize, weight: .medium
         ))
         
-        self.vitaminsInfoLabel.setupText(with: FontInfo(fontSize: 20, weight: .regular))
+        self.mineralsLabel.setupText(with: FontInfo(fontSize: 20, weight: .regular))
         
         
         /* Botões */
@@ -288,7 +288,7 @@ class InfoFoodView: UIView {
         ))
         
         self.favoriteButton.setupIcon(with: IconInfo(
-            icon: .favorite, size: btSize, weight: .regular, scale: .default
+            icon: self.favoriteIcon, size: btSize, weight: .regular, scale: .default
         ))
     }
     
@@ -314,9 +314,10 @@ class InfoFoodView: UIView {
         let stackHeight = self.getEquivalent(35)
         let stackSpace = self.vitaminsStack.getEqualSpace(for: stackHeight)
         
-        // Labels circulares (stack)
-        for label in self.vitaminsTypesLabels {
-            label.circleSize = stackHeight
+        // Botões circulares (stack)
+        for but in self.vitaminsTypesButtons {
+            but.circleSize = stackHeight
+            but.setupText(with: FontInfo(fontSize: stackHeight, weight: .medium))
         }
         
         
@@ -352,18 +353,18 @@ class InfoFoodView: UIView {
             self.container.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
             
             self.benefitsLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),
-            self.benefitsLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.benefitsLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor, constant: lateral),
             self.benefitsLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
             self.benefitsLabel.heightAnchor.constraint(equalToConstant: titlesLabelHeight),
             
             
             self.expansiveLabel.topAnchor.constraint(equalTo: self.benefitsLabel.bottomAnchor, constant: lateral),
-            self.expansiveLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
-            self.expansiveLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
+            self.expansiveLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
+            self.expansiveLabel.trailingAnchor.constraint(equalTo: self.benefitsLabel.trailingAnchor),
             
             
             self.vitaminsLabel.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
-            self.vitaminsLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.vitaminsLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
             self.vitaminsLabel.trailingAnchor.constraint(equalTo: self.container.trailingAnchor),
             self.vitaminsLabel.heightAnchor.constraint(equalToConstant: titlesLabelHeight),
             
@@ -374,12 +375,12 @@ class InfoFoodView: UIView {
             self.vitaminsStack.heightAnchor.constraint(equalToConstant: stackHeight),
             
             
-            self.vitaminsInfoLabel.topAnchor.constraint(equalTo: self.vitaminsStack.bottomAnchor, constant: lateral),
-            self.vitaminsInfoLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
-            self.vitaminsInfoLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
+            self.mineralsLabel.topAnchor.constraint(equalTo: self.vitaminsStack.bottomAnchor, constant: lateral),
+            self.mineralsLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
+            self.mineralsLabel.trailingAnchor.constraint(equalTo: self.benefitsLabel.trailingAnchor),
             
             
-            self.howToCollection.topAnchor.constraint(equalTo: self.vitaminsInfoLabel.bottomAnchor, constant: between),
+            self.howToCollection.topAnchor.constraint(equalTo: self.mineralsLabel.bottomAnchor, constant: between),
             self.howToCollection.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
             self.howToCollection.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
             self.howToCollection.heightAnchor.constraint(equalToConstant: collectionHeight),
@@ -399,17 +400,15 @@ class InfoFoodView: UIView {
     }
     
     
-    /// Cria as labels da stack view
-    private func getVitaminLabel(for vitamins: ManagedVitamins) -> CustomLabel {
-        let lbl = CustomViews.newLabel()
-        lbl.backgroundColor = UIColor(originalColor: .orange)
-        lbl.textColor = UIColor(originalColor: .white)
-        lbl.textAlignment = .center
+    /// Cria os botões da stack view
+    private func getVitaminButton(for vitamins: ManagedVitamins) -> CustomButton {
+        let but = CustomViews.newButton()
+        but.backgroundColor = UIColor(originalColor: .orange)
+        but.setTitleColor(UIColor(originalColor: .white), for: .normal)
         
-        lbl.isCircular = true
-        
-        lbl.text = vitamins.name
-        return lbl
+        but.isCircular = true
+        but.setTitle(vitamins.name, for: .normal)
+        return but
     }
     
     

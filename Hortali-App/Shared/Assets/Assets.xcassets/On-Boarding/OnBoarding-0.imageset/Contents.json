@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "ReportIcon 1.png",
+      "filename" : "OnBoarding-01.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -10,7 +10,6 @@
       "scale" : "2x"
     },
     {
-      "filename" : "ReportIcon.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

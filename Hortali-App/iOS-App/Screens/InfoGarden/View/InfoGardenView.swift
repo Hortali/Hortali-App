@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Tela com os elementos de UI da tela de ver informações de uma horta
-class InfoGardenView: UIView {
+class InfoGardenView: UIView, FavoriteHandler {
     
     /* MARK: - Atributos */
     
@@ -15,10 +15,11 @@ class InfoGardenView: UIView {
     private let scrollView = CustomScroll()
     
     /// Botão de voltar para a página anterior
-    private let backButton = CustomViews.newButton()
-    
-    /// Botão de favoritar a hora
-    private let favoriteButton = CustomViews.newButton()
+    private let backButton: CustomButton = {
+        let but = CustomViews.newButton()
+        but.tintColor = UIColor(.favoriteNotSelectedIcon)
+        return but
+    }()
     
     /// Conjunto de imagens da horta
     private let imagesCollectionGp: CollectionGroup = {
@@ -51,9 +52,6 @@ class InfoGardenView: UIView {
     
     // Outros
     
-    /// Estado de favorito da view
-    private var isFavorited: Bool = false
-    
     /// Fala qual é o dia da semana de hoje
     static var todayWeek: String = ""
     
@@ -82,6 +80,31 @@ class InfoGardenView: UIView {
         
         return cvFlow
     }()
+    
+    
+    
+    /* MARK: - Protocol */
+    
+    internal var isFavorite = false
+    
+    internal var favoriteButton: CustomButton = CustomViews.newButton()
+    
+    
+    internal func favoriteHandler(for fav: Bool? = nil) -> Bool {
+        if let fav {
+            self.isFavorite = fav
+        } else {
+            self.isFavorite.toggle()
+        }
+        
+        let infos = self.favoriteInfos
+        
+        self.favoriteButton.backgroundColor = infos.backColor
+        self.favoriteButton.tintColor = infos.iconColor
+        self.setupStaticTexts()
+        
+        return self.isFavorite
+    }
 
 
 
@@ -278,6 +301,7 @@ class InfoGardenView: UIView {
     }
     
     
+    
     /* View */
     
     /// Adiciona os elementos (Views) na tela
@@ -306,8 +330,8 @@ class InfoGardenView: UIView {
         // Collections
         
         self.infosCollectionFlow.itemSize = CGSize(
-            width: self.getEquivalent(350),
-            height: self.getEquivalent(200)
+            width: self.getEquivalent(163),
+            height: self.getEquivalent(163)
         )
         self.infosCollectionFlow.minimumLineSpacing = self.getEquivalent(10)
         
@@ -330,7 +354,7 @@ class InfoGardenView: UIView {
         ))
         
         self.favoriteButton.setupIcon(with: IconInfo(
-            icon: .favorite, size: btSize, weight: .regular, scale: .default
+            icon: self.favoriteIcon, size: btSize, weight: .regular, scale: .default
         ))
                 
         /* Labels */
@@ -356,6 +380,9 @@ class InfoGardenView: UIView {
         // Altura dos elementos
         let segHeight = self.getEquivalent(510)
         let collectionHeight = self.getEquivalent(200)
+        
+        
+        self.infosCollectionGp.setPadding(for: lateral)
         
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
@@ -395,7 +422,7 @@ class InfoGardenView: UIView {
             
 
             self.expansiveLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),
-            self.expansiveLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.expansiveLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor, constant: lateral),
             self.expansiveLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
             
             

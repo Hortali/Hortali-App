@@ -51,7 +51,7 @@
                     "type": "Instagram",
                     "contact": "@urbanfarmipiranga",
                     "link": "https://www.instagram.com/urbanfarmipiranga/",
-                    "description": "Perfil do instagram"
+                    "description": "Perfil"
                 },
                 {
                     "type": "Whatsapp",
@@ -69,37 +69,37 @@
             "hourInfo": [
                 {
                     "status" : true,
-                    "week" : "Segunda",
+                    "week" : "Segunda - feira",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Terça",
+                    "week" : "Terca - feira",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Quarta",
+                    "week" : "Quarta - feira",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Quinta",
+                    "week" : "Quinta - feira",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Sexta",
+                    "week" : "Sexta - feira",
                     "startTime" : "09:00",
                     "endTime" : "17:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Sábado",
+                    "week" : "Sabado",
                     "startTime" : "09:00",
                     "endTime" : "13:00"
                 },
@@ -149,43 +149,43 @@
                     "type": "Instagram",
                     "contact": "@hortadascorujas",
                     "link": "https://www.instagram.com/hortadascorujas/",
-                    "description": "Perfil do instagram"
+                    "description": "Perfil"
                 }
             ],
             "hourInfo": [
                 {
                     "status" : true,
-                    "week" : "Segunda",
+                    "week" : "Segunda - feira",
                     "startTime" : "06:00",
                     "endTime" : "22:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Terça",
+                    "week" : "Terca - feira",
                     "startTime" : "06:00",
                     "endTime" : "22:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Quarta",
+                    "week" : "Quarta - feira",
                     "startTime" : "06:00",
                     "endTime" : "22:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Quinta",
+                    "week" : "Quinta - feira",
                     "startTime" : "06:00",
                     "endTime" : "22:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Sexta",
+                    "week" : "Sexta - feira",
                     "startTime" : "06:00",
                     "endTime" : "22:00"
                 },
                 {
                     "status" : true,
-                    "week" : "Sábado",
+                    "week" : "Sabado",
                     "startTime" : "06:00",
                     "endTime" : "22:00"
                 },
@@ -235,7 +235,7 @@
                     "type": "Instagram",
                     "contact": "@hortadafmusp",
                     "link": "https://www.instagram.com/hortadafmusp/",
-                    "description": "Perfil do instagram"
+                    "description": "Perfil"
                 },
                 {
                     "type": "Ligar",
@@ -247,37 +247,37 @@
             "hourInfo": [
                 {
                     "status" : true,
-                    "week" : "Segunda",
+                    "week" : "Segunda - feira",
                     "startTime" : "12:00",
                     "endTime" : "13:30"
                 },
                 {
                     "status" : false,
-                    "week" : "Terça",
+                    "week" : "Terca - feira",
                     "startTime" : "",
                     "endTime" : ""
                 },
                 {
                     "status" : true,
-                    "week" : "Quarta",
+                    "week" : "Quarta - feira",
                     "startTime" : "12:00",
                     "endTime" : "13:30"
                 },
                 {
                     "status" : false,
-                    "week" : "Quinta",
+                    "week" : "Quinta - feira",
                     "startTime" : "",
                     "endTime" : ""
                 },
                 {
                     "status" : true,
-                    "week" : "Sexta",
+                    "week" : "Sexta - feira",
                     "startTime" : "12:00",
                     "endTime" : "13:30"
                 },
                 {
                     "status" : false,
-                    "week" : "Sábado",
+                    "week" : "Sabado",
                     "startTime" : "",
                     "endTime" : ""
                 },
