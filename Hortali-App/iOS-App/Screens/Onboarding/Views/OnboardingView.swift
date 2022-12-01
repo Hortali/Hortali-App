@@ -15,6 +15,7 @@ class OnboardingView: UIView {
     private let onboardingGroup = {
         let col = CollectionGroup(style: .justCollection)
         col.collection.isPagingEnabled = true
+        col.backgroundColor = .clear
         
         return col
     }()
@@ -24,7 +25,8 @@ class OnboardingView: UIView {
         let btn = CustomViews.newButton()
         btn.isCircular = false
         btn.backgroundColor = .clear
-        btn.setTitleColor(UIColor(originalColor: .white), for:.normal)
+        btn.setTitleColor(UIColor(.secondaryTitle), for:.normal)
+        btn.setTitle("Fechar", for: .normal)
         
         return btn
     }()
@@ -34,7 +36,8 @@ class OnboardingView: UIView {
         let btn = CustomViews.newButton()
         btn.isCircular = false
         btn.backgroundColor = .clear
-        btn.setTitleColor(UIColor(originalColor: .white), for: .normal)
+        btn.setTitleColor(UIColor(.secondaryTitle), for: .normal)
+        btn.setTitle("Proximo", for: .normal)
         
         return btn
     }()
@@ -44,25 +47,28 @@ class OnboardingView: UIView {
         let btn = CustomViews.newButton()
         btn.isCircular = false
         btn.backgroundColor = .clear
-        btn.setTitleColor(UIColor(originalColor: .white), for:.normal)
+        btn.setTitleColor(UIColor(.secondaryTitle), for:.normal)
+        btn.setTitle("Voltar", for: .normal)
         
         return btn
     }()
     
     /// Controle de páginas
-    private let screensPageControl = {
+    private let pageControl = {
         let page = CustomViews.newPageControl()
-        page.numberOfPages = 4
+        page.numberOfPages = 3
         page.backgroundStyle = .minimal
         page.backgroundColor = .clear
-        page.currentPageIndicatorTintColor = UIColor(originalColor: .white)
+        
+        let color = UIColor(originalColor: .white)
+        page.currentPageIndicatorTintColor = color
+        page.pageIndicatorTintColor = color?.withAlphaComponent(0.6)
         
         return page
     }()
     
     
     // Outros
-    
     
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
@@ -95,6 +101,59 @@ class OnboardingView: UIView {
     
     /* MARK: - Encapsulamento */
     
+    /// Atualiza a página no Page Control
+    /// - Parameter index: index (número) da página
+    public func updateCurrentPage(for index: Int) {
+        self.pageControl.currentPage = index
+        self.setupButton(for: index)
+    }
+    
+    
+    /// Atualiza  a célula que é mostrada a partir do item do page control selecionado
+    /// - Parameter index: index selecionado
+    public func updateCurrentCell(for index: Int) {
+        self.onboardingGroup.collection.scrollToItem(
+            at: IndexPath(row: index, section: 0),
+            at: .centeredHorizontally,
+            animated: true
+        )
+        self.setupButton(for: index)
+    }
+    
+    
+    public var currentPage: Int {
+        return self.pageControl.currentPage
+    }
+    
+    public func setupToInitialState() {
+        self.updateCurrentPage(for: 0)
+        
+        if !UserDefaults.standard.bool(forKey: "onBoardingOpened") {
+            self.closeButton.isHidden = true
+            self.backgroundColor = UIColor(originalColor: .white)
+        } else {
+            self.backgroundColor = .clear
+        }
+    }
+    
+    
+    private func setupButton(for index: Int) {
+        self.nextButton.setTitle("Proximo", for: .normal)
+        
+        switch index {
+        case 0:
+            self.backButton.isHidden = true
+            
+        case 1:
+            self.backButton.isHidden = false
+            
+        default:
+            self.nextButton.setTitle("Finalizar", for: .normal)
+            self.closeButton.isHidden = false
+        }
+    }
+    
+    
     /* Ações de botões */
     
     /// Define a ação do botão de voltar
@@ -102,11 +161,25 @@ class OnboardingView: UIView {
         self.closeButton.addTarget(target, action: action, for: .touchDown)
     }
     
-    /// Atualiza a página no Page Control
-    /// - Parameter index: index (número) da página
-    public func updateCurrentPage(for index: Int) {
-        self.screensPageControl.currentPage = index
+    
+    /// Define a ação do botão de voltar
+    public func setBackButtonAction(target: Any?, action: Selector) -> Void {
+        self.backButton.addTarget(target, action: action, for: .touchDown)
     }
+    
+    
+    /// Define a ação do botão de voltar
+    public func setNextButtonAction(target: Any?, action: Selector) -> Void {
+        self.nextButton.addTarget(target, action: action, for: .touchDown)
+    }
+    
+    
+    /// Define a ação do botão de expandir a label
+    public func setPageControlAction(target: Any?, action: Selector) -> Void {
+        self.pageControl.addTarget(target, action: action, for: .valueChanged)
+    }
+    
+    
     
     /* MARK: - Ciclo de Vida */
     
@@ -133,8 +206,6 @@ class OnboardingView: UIView {
     /// Define o layout da collection
     private func setupCollectionFlow() {
         self.onboardingGroup.collection.collectionViewLayout = self.collectionFlow
-        onboardingGroup.collection.backgroundColor = UIColor(originalColor: .white)
-        
     }
     
     
@@ -156,7 +227,7 @@ class OnboardingView: UIView {
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.addSubview(self.onboardingGroup)
-        self.addSubview(self.screensPageControl)
+        self.addSubview(self.pageControl)
         self.addSubview(self.closeButton)
         self.addSubview(self.nextButton)
         self.addSubview(self.backButton)
@@ -165,8 +236,6 @@ class OnboardingView: UIView {
     
     /// Personalização da UI
     private func setupUI() {
-        self.backgroundColor = UIColor(originalColor: .greyButton)
-        
         self.onboardingGroup.collection.layer.cornerRadius = self.getEquivalent(30)
         self.onboardingGroup.collection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
@@ -179,14 +248,11 @@ class OnboardingView: UIView {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        self.closeButton.setupText(with: FontInfo(text: "Fechar",fontSize: 24, weight: .regular))
-        self.closeButton.titleLabel?.font = UIFont(name: "AmsterdamGraffiti", size: 24)
+        let fontInfo = FontInfo(fontSize: self.getEquivalent(25), weight: .regular, fontFamily: .graffiti)
         
-        self.nextButton.setupText(with: FontInfo(text: "Proximo",fontSize: 24, weight: .regular))
-        self.nextButton.titleLabel?.font = UIFont(name: "AmsterdamGraffiti", size: 24)
-        
-        self.backButton.setupText(with: FontInfo(text: "Voltar",fontSize: 24, weight: .regular))
-        self.backButton.titleLabel?.font = UIFont(name: "AmsterdamGraffiti", size: 24)
+        self.closeButton.setupText(with: fontInfo)
+        self.nextButton.setupText(with: fontInfo)
+        self.backButton.setupText(with: fontInfo)
     }
     
     
@@ -204,19 +270,19 @@ class OnboardingView: UIView {
             self.onboardingGroup.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             
-            self.screensPageControl.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.screensPageControl.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -between),
+            self.pageControl.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.pageControl.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -between),
             
             
             self.closeButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: lateral),
             self.closeButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
             
             
-            self.nextButton.centerYAnchor.constraint(equalTo: self.screensPageControl.centerYAnchor),
+            self.nextButton.centerYAnchor.constraint(equalTo: self.pageControl.centerYAnchor),
             self.nextButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
             
             
-            self.backButton.centerYAnchor.constraint(equalTo: self.screensPageControl.centerYAnchor),
+            self.backButton.centerYAnchor.constraint(equalTo: self.pageControl.centerYAnchor),
             self.backButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
         ]
         
