@@ -42,24 +42,6 @@ class ViewLabel: UIView {
     
     
     
-    /* MARK: - Encapsulamento */
-    
-    /// Texto da label
-    public var text: String = "" {
-        didSet {
-            self.label.text = text
-        }
-    }
-    
-    
-    /// Configrua a fonte da label
-    /// - Parameter font: informações da fonte
-    public func setupText(with font: FontInfo) {
-        self.label.setupText(with: font)
-    }
-    
-    
-    
     /* MARK: - Configurações */
 
     /// Adiciona os elementos (Views) na tela

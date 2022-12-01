@@ -52,7 +52,7 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     /* MARK: - Protocol */
     
     internal func setupView(for data: ManagedGarden) {
-        self.addressLabel.text = data.address
+        self.addressLabel.label.text = data.address
         
         let pin = MKPointAnnotation()
         pin.coordinate = data.coords!
@@ -162,7 +162,7 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        self.addressLabel.setupText(with: FontInfo(
+        self.addressLabel.label.setupText(with: FontInfo(
             fontSize: self.getConstant(for: 15), weight: .regular
         ))
     }
