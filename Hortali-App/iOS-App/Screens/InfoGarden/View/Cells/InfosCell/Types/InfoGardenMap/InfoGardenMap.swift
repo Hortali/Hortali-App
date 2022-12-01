@@ -18,6 +18,8 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     private let addressLabel: ViewLabel = {
         let lbl = ViewLabel()
         lbl.backgroundColor = UIColor(.viewBack)?.withAlphaComponent(0.6)
+        lbl.label.numberOfLines = 3
+        
         return lbl
     }()
     
@@ -100,7 +102,10 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
         
         // Tamanho do mapa
         let gap: CGFloat = 50
-        option.size = CGSize(width: self.mapView.bounds.width+gap, height: self.mapView.bounds.height+gap)
+        option.size = CGSize(
+            width: self.mapView.bounds.width + gap,
+            height: self.mapView.bounds.height + gap
+        )
         
         // Print do mapa
         let snapshot = MKMapSnapshotter(options: option)
@@ -118,7 +123,7 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
                 // Desenhando o pin na imagem
                 let annotationView = MKMarkerAnnotationView(annotation: pin, reuseIdentifier: "")
     
-                let pinSize: CGFloat = 35   // Tamanho padrão do pin: 40
+                let pinSize: CGFloat = 35
                 annotationView.bounds = CGRect(x: 0, y: 0, width: pinSize, height: pinSize)
                 annotationView.contentMode = .scaleAspectFit
                 
@@ -158,7 +163,7 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
         self.addressLabel.setupText(with: FontInfo(
-            fontSize: self.getConstant(for: 20), weight: .regular
+            fontSize: self.getConstant(for: 15), weight: .regular
         ))
     }
 	  
@@ -167,7 +172,8 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     private func setupDynamicConstraints() { 
         let lateral: CGFloat = self.getConstant(for: 10)
         
-        let labelHeight: CGFloat = self.getConstant(for: 35)
+        let labelHeight: CGFloat = self.getConstant(for: 50)
+
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
@@ -193,47 +199,10 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     /// - Returns: valor em relação à tela
     private func getConstant(for space: CGFloat) -> CGFloat {
         let screenReference = SizeInfo(
-            screenSize: CGSize(width: 350, height: 160),
+            screenSize: CGSize(width: 163, height: 163),
             dimension: .width
         )
         
         return self.getEquivalent(space, screenReference: screenReference)
     }
 }
-
-
-
-
-/*
- 
-private let mapView: MKMapView = CustomViews.newMap()
- 
-private func setupMap(with data: ManagedGarden) {
-    self.addressLabel.text = data.address
-    
-    if let coord = data.coords {
-        self.setZoom(for: coord)
-        self.addPin(for: coord, name: data.name)
-    }
-}
-
-
-private func setZoom(for coord: CLLocationCoordinate2D) {
-    let radius: CLLocationDistance = 400
-    
-    let region = MKCoordinateRegion(
-        center: coord,
-        latitudinalMeters: radius,
-        longitudinalMeters: radius
-    )
-    self.mapView.setRegion(region, animated: true)
-}
-
-
-private func addPin(for coord: CLLocationCoordinate2D, name: String) {
-    let pin = MKPointAnnotation()
-    pin.coordinate = coord
-    pin.title = name
-    self.mapView.addAnnotation(pin)
-}
-*/

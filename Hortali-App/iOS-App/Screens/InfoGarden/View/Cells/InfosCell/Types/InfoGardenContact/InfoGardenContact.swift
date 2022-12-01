@@ -98,7 +98,7 @@ class InfoGardenContact: UIView, InfoGardenCellProtocol {
     private func setupDynamicConstraints() {
         let lateral: CGFloat = self.getConstant(for: 15)
         
-        let groupHeight: CGFloat = self.getConstant(for: 50)
+        let groupHeight: CGFloat = self.getConstant(for: 75)
         
         let spaceStack = self.contactStack.getEqualSpace(for: groupHeight)
        
