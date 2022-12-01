@@ -7,11 +7,20 @@ import UIKit
 /// Data source da collection do on boarding
 class OnboardingDataSource: NSObject, UICollectionViewDataSource {
     
+    /* MARK: - Encapsulamento */
+    
+    /// Total de células que a colelction vai mostrar
+    public var totalPages: Int {
+        return 3
+    }
+    
+    
+    
     /* MARK: - Data Sources */
     
     /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return self.totalPages
     }
     
     
@@ -21,6 +30,52 @@ class OnboardingDataSource: NSObject, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
+        let data = self.getInfos(for: indexPath.row)
+        cell.setupCell(for: data)
+        
         return cell
+    }
+    
+    
+    
+    /* MARK: - Configurações */
+    
+    /// Pega os dados da célula a partir da linha
+    /// - Parameter row: linha
+    /// - Returns: dados da célula
+    private func getInfos(for row: Int) -> OnBoardingInfos {
+        let image = UIImage(named: "OnBoarding-\(row)")
+        
+        switch row {
+        case 0:
+            return OnBoardingInfos(
+                primaryTitleText: "Veja as hortas de",
+                secondaryTitleText: "Sao Paulo",
+                primaryDescriptionText: "Você conhece as hortas da cidade?",
+                secondaryDescriptionText: "Aqui você pode encontrar as hortas mais próximas ou até buscar por hortas específicas.",
+                image: image,
+                color: UIColor(.gardenBack)
+            )
+            
+        case 1:
+            return OnBoardingInfos(
+                primaryTitleText: "Conheça os verdadeiros",
+                secondaryTitleText: "alimentos",
+                primaryDescriptionText: "Aprender nunca é demais né?",
+                secondaryDescriptionText: "Aqui da pra conhecer com os alimentos organicos e ver muitas informações sobre eles.",
+                image: image,
+                color: UIColor(.foodBack)
+            )
+        
+        default:
+            return OnBoardingInfos(
+                primaryTitleText: "Selecione todos os seus",
+                secondaryTitleText: "favoritos",
+                primaryDescriptionText: "Gostou? Favoritou!",
+                secondaryDescriptionText: "Pra você encontrar suas hortas e alimentos favoritos, uma área só sua.",
+                image: image,
+                color: UIColor(.favoriteBack)
+            )
+        }
     }
 }

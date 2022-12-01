@@ -252,8 +252,8 @@ enum AppColors {
             
         // Configurações
         case .settingsHelp: return .greenDark
-        case .settingsSuggestions: return .yellow
-        case .settingsContactUs: return .greenMedium
+        case .settingsSuggestions: return .greenMedium
+        case .settingsContactUs: return .yellow
         case .settingsReport: return .orange
         }
     }

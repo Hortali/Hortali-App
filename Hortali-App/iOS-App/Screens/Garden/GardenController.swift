@@ -51,6 +51,14 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         self.setupDelegates()
         self.setupKeyboardHandler()
         self.setupButtonsAction()
+        
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.showOnBoarding()
     }
     
     
@@ -127,6 +135,18 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     
     /* MARK: - Configurações */
+    
+    /// Função para exibir tela de onboarding
+    private func showOnBoarding() {
+        if !UserDefaults.getValue(for: .onBoardingPresented) {
+            let controller = OnboardingViewController()
+            controller.hidesBottomBarWhenPushed = true
+            controller.modalPresentationStyle = .fullScreen
+            
+            self.navigationController?.present(controller, animated: true)
+        }
+    }
+    
     
     /// Lida com o toque na tela para retirar o teclado
     private func setupKeyboardHandler() {

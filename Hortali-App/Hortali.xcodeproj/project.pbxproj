@@ -71,6 +71,8 @@
 		223B75E328F1473D0034B2C4 /* FoodDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E228F1473D0034B2C4 /* FoodDataManager.swift */; };
 		223B75E628F16D280034B2C4 /* FavoriteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E528F16D280034B2C4 /* FavoriteAction.swift */; };
 		223B75E828F16D670034B2C4 /* FavoriteUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */; };
+		224BC12629391D02009D92FE /* UDKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BC12529391D02009D92FE /* UDKeys.swift */; };
+		224BC12929393735009D92FE /* OnBoardingInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BC12829393735009D92FE /* OnBoardingInfos.swift */; };
 		224F057229281A9300B20447 /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057129281A9300B20447 /* SettingsDelegate.swift */; };
 		224F057529281B5300B20447 /* SettingsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057429281B5300B20447 /* SettingsProtocol.swift */; };
 		224F057829281D2800B20447 /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057729281D2800B20447 /* SettingsData.swift */; };
@@ -207,6 +209,8 @@
 		223B75E228F1473D0034B2C4 /* FoodDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataManager.swift; sourceTree = "<group>"; };
 		223B75E528F16D280034B2C4 /* FavoriteAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAction.swift; sourceTree = "<group>"; };
 		223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUpdate.swift; sourceTree = "<group>"; };
+		224BC12529391D02009D92FE /* UDKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDKeys.swift; sourceTree = "<group>"; };
+		224BC12829393735009D92FE /* OnBoardingInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingInfos.swift; sourceTree = "<group>"; };
 		224F057129281A9300B20447 /* SettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
 		224F057429281B5300B20447 /* SettingsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProtocol.swift; sourceTree = "<group>"; };
 		224F057729281D2800B20447 /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
@@ -485,6 +489,7 @@
 		222937D428C66B6200515095 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				224BC12429391CD1009D92FE /* New Group */,
 				227FAFCE292FAC950080FB9C /* FavoriteHandler */,
 				22A3918228F7AD2000A42DC1 /* Protocol */,
 				222937DE28C66F4D00515095 /* Extensions */,
@@ -534,8 +539,8 @@
 		222937D928C66B9200515095 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				225FA1E9292D5BF80004D131 /* PopUp */,
 				2229381E28C7C3DD00515095 /* Main */,
+				225FA1E9292D5BF80004D131 /* PopUp */,
 				B2DE49522911AA7400293E6A /* Onboarding */,
 				2229383B28C8922000515095 /* Garden */,
 				2229384428C892E900515095 /* Food */,
@@ -815,6 +820,7 @@
 		223B75C828F0D97F0034B2C4 /* User Defaults */ = {
 			isa = PBXGroup;
 			children = (
+				224BC12529391D02009D92FE /* UDKeys.swift */,
 				223B75CA28F0D99B0034B2C4 /* UDHandler+DataType.swift */,
 			);
 			path = "User Defaults";
@@ -858,6 +864,14 @@
 				223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		224BC1272939371C009D92FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				224BC12829393735009D92FE /* OnBoardingInfos.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		224BC12A2939472F009D92FE /* EmptyView */ = {
@@ -1153,6 +1167,7 @@
 		B2DE49522911AA7400293E6A /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				224BC1272939371C009D92FE /* Model */,
 				B214C3E6291AF4B70033CFAE /* Protocol */,
 				B2DE49532911AF9300293E6A /* Delegate */,
 				B2DE49542911AF9F00293E6A /* DataSource */,
@@ -1296,6 +1311,7 @@
 				220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */,
 				222937EF28C6831300515095 /* UITextField+FontInfo.swift in Sources */,
 				2210245D28D8494A00F412A5 /* InfoGardenImagesCell.swift in Sources */,
+				224BC12929393735009D92FE /* OnBoardingInfos.swift in Sources */,
 				B241564728D26E4C009F011C /* FoodCell.swift in Sources */,
 				2229382628C852D200515095 /* CustomButton.swift in Sources */,
 				222937BE28C66B5600515095 /* AppDelegate.swift in Sources */,
@@ -1311,6 +1327,7 @@
 				223B75DB28F0DC840034B2C4 /* ManagedImage.swift in Sources */,
 				223B75D928F0DBA60034B2C4 /* DataType.swift in Sources */,
 				22A75A8E290CC6DC001CEA7E /* CustomNavigationProtocol.swift in Sources */,
+				224BC12629391D02009D92FE /* UDKeys.swift in Sources */,
 				2210246228D84C6800F412A5 /* InfoGardenProtocol.swift in Sources */,
 				225FA1F1292D65E50004D131 /* PopUpInfo.swift in Sources */,
 				22A3917A28F7858100A42DC1 /* ManagedHourInfo.swift in Sources */,

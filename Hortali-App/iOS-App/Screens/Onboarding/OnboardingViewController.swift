@@ -9,10 +9,19 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     
     /* MARK: - Atributos */
     
+    /// Muda a cor da status bar
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if UserDefaults.getValue(for: .onBoardingPresented) {
+            return .lightContent
+        }
+        return .darkContent
+    }
+    
+    
     /* View */
 
     /// View principal que a classe vai controlar
-     private let myView = OnboardingView()
+    private let myView = OnboardingView()
     
     
     /* Delegate & Data Sources */
@@ -39,6 +48,13 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
         self.setupButtonsAction()
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.myView.setupToInitialState()
+    }
+    
 
 
     /* MARK: - Protocolo */
@@ -48,12 +64,49 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     }
     
 
+    
     /* MARK: - Ações de botões */
     
     /// Ação de fechar a tela de onboarding
     @objc
     private func closeAction() {
+        UserDefaults.setValue(true, forKey: .onBoardingPresented)
+        
         self.navigationController?.popViewController(animated: true)
+        self.navigationController?.dismiss(animated: true)
+        self.dismiss(animated: true)
+    }
+    
+    
+    /// Ação de voltar uma célula
+    @objc
+    private func backAction() {
+        let currentPage = self.myView.currentPage - 1
+        
+        self.myView.updateCurrentCell(for: currentPage)
+        self.myView.updateCurrentPage(for: currentPage)
+    }
+    
+    
+    /// Ação de ir para a próxima célula
+    @objc
+    private func nextAction() {
+        let currentPage = self.myView.currentPage + 1
+        
+        if currentPage == self.onboardingDataSource.totalPages {
+            self.closeAction()
+        } else {
+            self.myView.updateCurrentCell(for: currentPage)
+            self.myView.updateCurrentPage(for: currentPage)
+        }
+    }
+    
+    
+    /// Ação de quando muda a célula pela page control
+    /// - Parameter sender: page control que foi alterada
+    @objc
+    private func pageControlAction(sender: UIPageControl) {
+        self.myView.updateCurrentCell(for: sender.currentPage)
     }
     
     
@@ -63,6 +116,9 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     /// Definindo as ações dos botões
     private func setupButtonsAction() {
         self.myView.setCloseButtonAction(target: self, action: #selector(self.closeAction))
+        self.myView.setPageControlAction(target: self, action: #selector(self.pageControlAction(sender:)))
+        self.myView.setBackButtonAction(target: self, action: #selector(self.backAction))
+        self.myView.setNextButtonAction(target: self, action: #selector(self.nextAction))
     }
     
     

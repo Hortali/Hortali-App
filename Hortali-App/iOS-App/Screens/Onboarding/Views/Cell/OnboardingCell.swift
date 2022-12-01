@@ -10,49 +10,55 @@ class OnboardingCell: UICollectionViewCell {
     /* MARK: - Atributos */
     
     /// Identificador da célula
-    static let identifier = "OnboardingCell"
+    static let identifier = "IdOnboardingCell"
+    
     
     // Views
     
     /// Título da celula da tela de onboarding
-    private var firstScreenTitle: UILabel = {
+    private var primaryTitle: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.textColor = UIColor(originalColor: .white)
+        lbl.textColor = UIColor(.secondaryTitle)
         
         return lbl
     }()
     
-    /// Título da celula da tela de onboarding com fonte autoral
-    private var secondScreenTitle: UILabel = {
+    /// Título da celula da tela de onboarding com fonte diferente
+    private var secondaryTitle: UILabel = {
         let lbl = CustomViews.newLabel()
-        //lbl.adjustsFontSizeToFitWidth = true
-        lbl.textColor = UIColor(originalColor: .white)
+        lbl.textColor = UIColor(.secondaryTitle)
         
         return lbl
     }()
     
     /// Texto explicativo da tela de onboarding
-    private var firstScreenText: UILabel = {
+    private var primaryDescription: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.textColor = UIColor(originalColor: .white)
+        lbl.textColor = UIColor(.secondaryTitle)
         
         return lbl
     }()
     
-    /// Texto explicativo da tela de onboarding com fonte autoral
-    private var secondScreenText: UILabel = {
+    /// Texto explicativo da tela de onboarding com fonte diferente
+    private var secondaryDescription: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
-        lbl.textColor = UIColor(originalColor: .white)
-        lbl.numberOfLines = 0
+        lbl.textColor = UIColor(.secondaryTitle)
+        lbl.numberOfLines = 2
         
         return lbl
     }()
     
     /// Imagem usada nas telas de onboarding
-    private let screenImage = CustomViews.newImage()
+    private let mainImage = CustomViews.newImage()
+    
+    /// View usada para referencia para posicionamento
+    private let referenceView = CustomViews.newView()
+    
+    
+    // Outros
     
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
@@ -73,6 +79,21 @@ class OnboardingCell: UICollectionViewCell {
     
     /* MARK: - Encapsulamento */
     
+    /// Configura a célula a partir das informações passadas
+    /// - Parameter infos: informações do on boarding
+    public func setupCell(for infos: OnBoardingInfos) {
+        self.primaryTitle.text = infos.primaryTitleText
+        self.secondaryTitle.text = infos.secondaryTitleText
+        
+        self.primaryDescription.text = infos.primaryDescriptionText
+        self.secondaryDescription.text = infos.secondaryDescriptionText
+        
+        self.mainImage.image = infos.image
+        self.backgroundColor = infos.color
+        
+        self.layoutSubviews()
+    }
+    
     
     
     /* MARK: - Ciclo de Vida */
@@ -81,10 +102,7 @@ class OnboardingCell: UICollectionViewCell {
         super.layoutSubviews()
         
         self.setupDynamicConstraints()
-        self.setupUI()
         self.setupStaticTexts()
-        
-        self.reloadInputViews()
     }
     
     
@@ -93,81 +111,84 @@ class OnboardingCell: UICollectionViewCell {
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-        self.contentView.addSubview(firstScreenTitle)
-        self.contentView.addSubview(secondScreenTitle)
-        self.contentView.addSubview(screenImage)
-        self.contentView.addSubview(firstScreenText)
-        self.contentView.addSubview(secondScreenText)
-    }
-    
-    
-    /// Personalização da UI
-    private func setupUI() {
-        self.backgroundColor = UIColor(.gardenBack)
-        self.screenImage.backgroundColor = UIColor(originalColor: .white)
-        self.screenImage.layer.cornerRadius = self.getEquivalent(30)
+        self.contentView.addSubview(self.primaryTitle)
+        self.contentView.addSubview(self.secondaryTitle)
+        self.contentView.addSubview(self.mainImage)
+        self.contentView.addSubview(self.primaryDescription)
+        self.contentView.addSubview(self.secondaryDescription)
+        self.contentView.addSubview(self.referenceView)
     }
     
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        self.firstScreenTitle.setupText(with: FontInfo(text: "Veja as hortas de", fontSize: 32, weight: .bold))
-        self.secondScreenTitle.setupText(with: FontInfo(text: "Sao Paulo", fontSize: 52, weight: .bold, fontFamily: .graffiti))
-        self.firstScreenText.setupText(with: FontInfo(
-            text: "Aqui é o nosso espaço de descoberta,",
-            fontSize: 20, weight: .semibold
-        ))
+        self.primaryTitle.setupText(with: FontInfo(fontSize: 32, weight: .semibold))
+        self.secondaryTitle.setupText(with: FontInfo(fontSize: 52, weight: .bold, fontFamily: .graffiti))
         
-        self.secondScreenText.setupText(with: FontInfo(
-            text: "onde você pode encontrar as hortas mais próximas ou até buscar por hortas específicas.",
-            fontSize: 20, weight: .regular
-        ))
+        self.primaryDescription.setupText(with: FontInfo(fontSize: 20, weight: .semibold))
+        self.secondaryDescription.setupText(with: FontInfo(fontSize: 20, weight: .regular))
     }
     
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
-        let between: CGFloat = self.getEquivalent(25, screenReference: screenReferenceSize)
-        let lateral: CGFloat = self.getEquivalent(15, screenReference: screenReferenceSize)
-        let labelHeight: CGFloat = self.getEquivalent(40, screenReference: screenReferenceSize)
-        let minHeight: CGFloat = self.getEquivalent(5, screenReference: screenReferenceSize)
-        let labelBetween: CGFloat = self.getEquivalent(10, screenReference: screenReferenceSize)
-        let imageHeight: CGFloat = self.getEquivalent(220, screenReference: screenReferenceSize)
-        let imageWidth: CGFloat = self.getEquivalent(self.contentView.frame.width / 3 , screenReference: screenReferenceSize)
+        let lateral: CGFloat = self.getConstant(for: 15)
+        
+        let safeAreaTop: CGFloat = self.getConstant(for: 25)
+        let safeAreaBottom: CGFloat = self.getConstant(for: 40)
+        let gap = self.getConstant(for: 10)
+        
+        let imageHeight: CGFloat = self.contentView.bounds.width * 0.9
         
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
-            self.firstScreenTitle.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: between),
-            self.firstScreenTitle.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
-            self.firstScreenTitle.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
-            self.firstScreenTitle.heightAnchor.constraint(equalToConstant: between),
+            self.primaryTitle.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: safeAreaTop),
+            self.primaryTitle.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
+            self.primaryTitle.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
             
             
-            self.secondScreenTitle.topAnchor.constraint(equalTo: self.firstScreenTitle.bottomAnchor, constant: -lateral),
-            self.secondScreenTitle.leadingAnchor.constraint(equalTo: self.firstScreenTitle.leadingAnchor),
-            self.secondScreenTitle.trailingAnchor.constraint(equalTo: self.firstScreenTitle.trailingAnchor),
+            self.secondaryTitle.topAnchor.constraint(equalTo: self.primaryTitle.bottomAnchor, constant: -gap),
+            self.secondaryTitle.leadingAnchor.constraint(equalTo: self.primaryTitle.leadingAnchor),
+            self.secondaryTitle.trailingAnchor.constraint(equalTo: self.primaryTitle.trailingAnchor),
 
             
-            self.screenImage.topAnchor.constraint(equalTo: self.secondScreenTitle.bottomAnchor, constant: labelBetween),
-            self.screenImage.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.screenImage.heightAnchor.constraint(equalToConstant: imageHeight),
-            self.screenImage.widthAnchor.constraint(equalToConstant: imageWidth),
+            self.secondaryDescription.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -safeAreaBottom),
+            self.secondaryDescription.leadingAnchor.constraint(equalTo: self.primaryTitle.leadingAnchor),
+            self.secondaryDescription.trailingAnchor.constraint(equalTo: self.primaryTitle.trailingAnchor),
             
             
-            self.firstScreenText.topAnchor.constraint(equalTo: self.screenImage.bottomAnchor, constant: minHeight),
-            self.firstScreenText.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
-            self.firstScreenText.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
+            self.primaryDescription.bottomAnchor.constraint(equalTo: self.secondaryDescription.topAnchor),
+            self.primaryDescription.leadingAnchor.constraint(equalTo: self.primaryTitle.leadingAnchor),
+            self.primaryDescription.trailingAnchor.constraint(equalTo: self.primaryTitle.trailingAnchor),
             
             
-            self.secondScreenText.topAnchor.constraint(equalTo: self.firstScreenText.bottomAnchor),
-            self.secondScreenText.leadingAnchor.constraint(equalTo: self.firstScreenText.leadingAnchor),
-            self.secondScreenText.trailingAnchor.constraint(equalTo: self.firstScreenText.trailingAnchor),
-            self.secondScreenText.heightAnchor.constraint(equalToConstant: labelHeight),
+            self.referenceView.topAnchor.constraint(equalTo: self.secondaryTitle.bottomAnchor),
+            self.referenceView.bottomAnchor.constraint(equalTo: self.primaryDescription.topAnchor),
+            self.referenceView.leadingAnchor.constraint(equalTo: self.primaryTitle.leadingAnchor),
+            self.referenceView.trailingAnchor.constraint(equalTo: self.primaryTitle.trailingAnchor),
+            
+            
+            self.mainImage.centerYAnchor.constraint(equalTo: self.referenceView.centerYAnchor),
+            self.mainImage.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.mainImage.widthAnchor.constraint(equalToConstant: imageHeight),
+            self.mainImage.heightAnchor.constraint(equalToConstant: imageHeight),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
+    }
+    
+    
+    /// Responsável por pegar o valor referente à célula
+    /// - Parameter space: valor para ser convertido
+    /// - Returns: valor em relação à tela
+    private func getConstant(for space: CGFloat) -> CGFloat {
+        let screenReference = SizeInfo(
+            screenSize: CGSize(width: 240, height: 400),
+            dimension: .height
+        )
+        
+        return self.getEquivalent(space, screenReference: screenReference)
     }
 }
