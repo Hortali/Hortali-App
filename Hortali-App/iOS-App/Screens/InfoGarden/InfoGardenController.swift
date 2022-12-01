@@ -124,7 +124,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     /// Ação de favoritar um card
     @objc
     private func favoriteAction() {
-        switch self.myView.isFavorited() {
+        switch self.myView.favoriteHandler() {
         case true:
             self.favUpdate.action = .add
         case false:
@@ -284,11 +284,13 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     /// Configura a view pra caso for favorito
     /// - Parameter data: dado
     private func setupFavoriteStatus(for data: ManagedGarden) {
+        var status = false
         for id in DataManager.shared.getFavoriteIds(for: .garden) {
             if data.id == id {
-                let _ = self.myView.isFavorited(is: true)
+                status = true
                 break
             }
         }
+        let _ = self.myView.favoriteHandler(for: status)
     }
 }

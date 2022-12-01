@@ -57,7 +57,7 @@ class PopUpView: UIView {
         self.setupPopup(for: info)
     }
     
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     
     
@@ -85,7 +85,7 @@ class PopUpView: UIView {
 
     /* MARK: - Ciclo de Vida */
     
-    public override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
 	      
         self.setupUI()
