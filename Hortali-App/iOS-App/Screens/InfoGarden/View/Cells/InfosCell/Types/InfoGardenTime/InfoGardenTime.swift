@@ -90,7 +90,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
                 todayWeek = 6
             }
             
-            if InfoGardenView.todayWeek == "" {
+            if InfoGardenView.todayWeek.isEmpty {
                 InfoGardenView.todayWeek = data[todayWeek].week
             }
             
@@ -138,7 +138,7 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
         
         let timeGroupHeight: CGFloat = self.getConstant(for: 35)
         let todayWeekHeight: CGFloat = self.getConstant(for: 25)
-        let space = todayWeekHeight*2
+        let space = todayWeekHeight * 2
         
         let widthStack: CGFloat = self.getConstant(for: 120)
         

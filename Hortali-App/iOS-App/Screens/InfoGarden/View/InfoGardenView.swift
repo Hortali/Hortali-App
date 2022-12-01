@@ -43,7 +43,7 @@ class InfoGardenView: UIView {
     // Outros
     
     /// Estado de favorito da view
-    private var isFavorited: Bool = false
+    private var isFavorited = false
     
     /// Fala qual é o dia da semana de hoje
     static var todayWeek: String = ""

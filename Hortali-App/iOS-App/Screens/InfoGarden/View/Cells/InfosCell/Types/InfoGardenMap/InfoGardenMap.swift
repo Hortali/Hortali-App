@@ -102,7 +102,10 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
         
         // Tamanho do mapa
         let gap: CGFloat = 50
-        option.size = CGSize(width: self.mapView.bounds.width+gap, height: self.mapView.bounds.height+gap)
+        option.size = CGSize(
+            width: self.mapView.bounds.width + gap,
+            height: self.mapView.bounds.height + gap
+        )
         
         // Print do mapa
         let snapshot = MKMapSnapshotter(options: option)

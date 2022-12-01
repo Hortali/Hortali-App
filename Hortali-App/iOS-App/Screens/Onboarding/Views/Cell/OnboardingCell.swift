@@ -67,7 +67,7 @@ class OnboardingCell: UICollectionViewCell {
         self.setupViews()
     }
     
-    required init?(coder: NSCoder) {fatalError("init(coder:) has not been implemented")}
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     
     
@@ -112,14 +112,16 @@ class OnboardingCell: UICollectionViewCell {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
         self.firstScreenTitle.setupText(with: FontInfo(text: "Veja as hortas de", fontSize: 32, weight: .bold))
-        self.secondScreenTitle.setupText(with: FontInfo(text: "Sao Paulo", fontSize: 32, weight: .bold))
-        self.secondScreenTitle.font =  UIFont(name: "AmsterdamGraffiti", size: 52)
-        self.firstScreenText.setupText(with: FontInfo(text: "Aqui é o nosso espaço de descoberta,",
-                                                 fontSize: 20,
-                                                 weight: .semibold))
-        self.secondScreenText.setupText(with: FontInfo(text: "onde você pode encontrar as hortas mais próximas ou até buscar por hortas específicas.",
-                                                 fontSize: 20,
-                                                 weight: .regular))
+        self.secondScreenTitle.setupText(with: FontInfo(text: "Sao Paulo", fontSize: 52, weight: .bold, fontFamily: .graffiti))
+        self.firstScreenText.setupText(with: FontInfo(
+            text: "Aqui é o nosso espaço de descoberta,",
+            fontSize: 20, weight: .semibold
+        ))
+        
+        self.secondScreenText.setupText(with: FontInfo(
+            text: "onde você pode encontrar as hortas mais próximas ou até buscar por hortas específicas.",
+            fontSize: 20, weight: .regular
+        ))
     }
     
     
