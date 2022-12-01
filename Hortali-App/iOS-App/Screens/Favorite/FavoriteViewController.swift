@@ -110,7 +110,8 @@ class FavoriteViewController: UIViewController, GardenProtocol, FoodProtocol {
         }else{
             self.myView.setCollectionView(with: false)
         }
-        self.myView.checkData(with: foodDataSource.data.count, with: gardenDataSource.data.count)
+        self.myView.checkFoodData(with: foodDataSource.data.count)
+        self.myView.checkGardenData(with: gardenDataSource.data.count)
         
         self.myView.reloadCollectionsData()
     }

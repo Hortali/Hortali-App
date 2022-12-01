@@ -18,13 +18,7 @@ class FavoriteView: MainView {
     private let gardenGroup = CollectionGroup(emptyViewType: .garden)
     
     /// instancia da tela de empty view
-    private let emptyView = {
-        let view = EmptyView()
-        view.dynamicLabel.text = "Você ainda não tem\n nenhum favorito."
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
+    private let emptyView = EmptyView(emptyViewType: .favorite)
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
@@ -132,11 +126,14 @@ class FavoriteView: MainView {
     }
     
     
-    func checkData(with foodDataCount: Int, with gardenDataCount: Int) {
+    public func checkGardenData(with gardenDataCount: Int) {
         self.gardenGroup.isCollectionEmpty(with: gardenDataCount == 0)
-        self.foodGroup.isCollectionEmpty(with: foodDataCount == 0)
     }
     
+    
+    public func checkFoodData(with foodDataCount: Int) {
+        self.foodGroup.isCollectionEmpty(with: foodDataCount == 0)
+    }
     
     
     // Views
@@ -150,15 +147,9 @@ class FavoriteView: MainView {
     
     
     public func setCollectionView(with value: Bool) {
-        if(value){
-            self.foodGroup.isHidden = true
-            self.gardenGroup.isHidden = true
-            self.emptyView.isHidden = false
-        }else{
-            self.emptyView.isHidden = true
-            self.foodGroup.isHidden = false
-            self.gardenGroup.isHidden = false
-        }
+        self.foodGroup.isHidden = value
+        self.gardenGroup.isHidden = value
+        self.emptyView.isHidden = !value
     }
     
     

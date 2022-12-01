@@ -35,13 +35,9 @@ public class CollectionGroup: UIView {
         
         return col
     }()
-    
-    internal var emptyView = {
-        let view = EmptyView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
+
+    /// Instancia da classe de empty view
+    internal var emptyView: EmptyView
     
     
     // Outros
@@ -75,13 +71,15 @@ public class CollectionGroup: UIView {
     /// Inicializador podendo definir o estilo do grupo
     /// - Parameter style: estilo do grupo (padrão: .complete)
     init(style: CollectionGroupStyle = .complete, emptyViewType: EmptyTexts? = nil) {
+        self.emptyView = EmptyView(emptyViewType: emptyViewType ?? .search)
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         
         self.style = style
-        self.emptyView.style = emptyViewType ?? .search
+        self.checkData()
         
         self.setupViews()
+        
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -123,15 +121,16 @@ public class CollectionGroup: UIView {
         self.addSubview(self.emptyView)
     }
     
-    /// Adiciona os elementos (Views) na tela
+    /// Apresenta a empty view nas collections vazias
     public func isCollectionEmpty(with value: Bool) {
-        if(value){
-            self.collection.isHidden = true
-            self.emptyView.isHidden = false
-        }else{
-            self.emptyView.isHidden = true
-            self.collection.isHidden = false
-        }
+        self.collection.isHidden = value
+        self.emptyView.isHidden = !value
+    }
+    
+    
+    /// Verifica a existencia de dados na collection
+    private func checkData() {
+        self.isCollectionEmpty(with: false)
     }
     
     
