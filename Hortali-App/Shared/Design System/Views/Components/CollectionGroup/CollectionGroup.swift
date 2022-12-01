@@ -79,6 +79,7 @@ public class CollectionGroup: UIView {
         self.checkData()
         
         self.setupViews()
+        self.setupUI()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }

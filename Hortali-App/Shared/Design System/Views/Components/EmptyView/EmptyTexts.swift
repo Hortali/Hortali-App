@@ -1,7 +1,7 @@
 /* Macro - Grupo 05 */
 
 /// Textos das empty views
-enum EmptyTexts {
+public enum EmptyTexts {
     
     /* MARK: - Casos */
     

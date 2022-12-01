@@ -54,7 +54,7 @@ class EmptyView: UIView {
         self.setupUI()
     }
     
-    required init?(coder: NSCoder)  {fatalError("init(coder:) has not been implemented") }
+    required init?(coder: NSCoder)  { fatalError("init(coder:) has not been implemented") }
     
     
     
@@ -94,7 +94,7 @@ class EmptyView: UIView {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        self.titleLabel.setupText(with: FontInfo(text: "OPS", fontSize: 32, weight: .bold, fontFamily: .graffiti))
+        self.titleLabel.setupText(with: FontInfo(text: "OPS ", fontSize: 72, weight: .bold, fontFamily: .graffiti))
     }
     
     
