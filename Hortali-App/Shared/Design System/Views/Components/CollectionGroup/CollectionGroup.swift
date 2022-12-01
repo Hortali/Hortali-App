@@ -37,7 +37,7 @@ public class CollectionGroup: UIView {
     }()
 
     /// Instancia da classe de empty view
-    internal var emptyView: EmptyView
+    private var emptyView: EmptyView
     
     
     // Outros
@@ -72,17 +72,17 @@ public class CollectionGroup: UIView {
     /// - Parameter style: estilo do grupo (padrão: .complete)
     init(style: CollectionGroupStyle = .complete, emptyViewType: EmptyTexts? = nil) {
         self.emptyView = EmptyView(emptyViewType: emptyViewType ?? .search)
+        
         super.init(frame: .zero)
-        self.translatesAutoresizingMaskIntoConstraints = false
         
         self.style = style
         self.checkData()
         
         self.setupViews()
-        
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
     
     
     /* MARK: - Encapsulamento */
@@ -101,6 +101,13 @@ public class CollectionGroup: UIView {
     }
     
     
+    /// Apresenta a empty view nas collections vazias
+    public func isCollectionEmpty(with value: Bool) {
+        self.collection.isHidden = value
+        self.emptyView.isHidden = !value
+    }
+    
+    
     
     /* MARK: - Ciclo de Vida */
     
@@ -114,6 +121,12 @@ public class CollectionGroup: UIView {
     
     /* MARK: - Configurações */
     
+    /// Verifica a existencia de dados na collection
+    private func checkData() {
+        self.isCollectionEmpty(with: false)
+    }
+    
+    
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
         self.addSubview(self.titleLabel)
@@ -121,16 +134,10 @@ public class CollectionGroup: UIView {
         self.addSubview(self.emptyView)
     }
     
-    /// Apresenta a empty view nas collections vazias
-    public func isCollectionEmpty(with value: Bool) {
-        self.collection.isHidden = value
-        self.emptyView.isHidden = !value
-    }
     
-    
-    /// Verifica a existencia de dados na collection
-    private func checkData() {
-        self.isCollectionEmpty(with: false)
+    /// Personalização da UI
+    private func setupUI() {
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     

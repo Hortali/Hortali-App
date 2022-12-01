@@ -105,14 +105,17 @@ class FavoriteViewController: UIViewController, GardenProtocol, FoodProtocol {
             self.gardenDataSource.data = gardenFav
         }
         
-        if (foodDataSource.data.isEmpty && gardenDataSource.data.isEmpty ){
-            self.myView.setCollectionView(with: true)
-        }else{
-            self.myView.setCollectionView(with: false)
-        }
-        self.myView.checkFoodData(with: foodDataSource.data.count)
-        self.myView.checkGardenData(with: gardenDataSource.data.count)
-        
+        self.setupEmptyView()
         self.myView.reloadCollectionsData()
+    }
+    
+    
+    /// Configura a empty view caso precisa
+    private func setupEmptyView() {
+        let isEmpty = self.foodDataSource.data.isEmpty && self.gardenDataSource.data.isEmpty
+        self.myView.setCollectionView(with: isEmpty)
+        
+        self.myView.checkFoodData(with: self.foodDataSource.data.count)
+        self.myView.checkGardenData(with: self.gardenDataSource.data.count)
     }
 }

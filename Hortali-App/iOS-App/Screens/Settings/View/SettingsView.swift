@@ -97,12 +97,6 @@ class SettingsView: MainView {
         self.settingsCollection.collection.collectionViewLayout = self.collectionFlow
     }
     
-    
-//    /// Verifica a existencia de dados na collection
-//    private func checkData() {
-//        self.settingsCollection.isCollectionEmpty(with: false)
-//    }
-
 
     /* Geral */
     

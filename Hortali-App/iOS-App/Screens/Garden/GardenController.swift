@@ -167,6 +167,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
 
             return
         }
+        
         let gardenData = DataManager.shared.getGardenData()
         
         self.gardenDataSource.data = gardenData

@@ -17,11 +17,17 @@ class FavoriteView: MainView {
     /// Collection das hortas
     private let gardenGroup = CollectionGroup(emptyViewType: .garden)
     
-    /// instancia da tela de empty view
+    /// Empty view da tela
     private let emptyView = EmptyView(emptyViewType: .favorite)
+    
+    
+    // Constraints
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
+    
+    
+    // Collection
     
     /// Configurações do layout da collection de Alimentos
     private let foodCollectionFlow: UICollectionViewFlowLayout = {
@@ -56,6 +62,33 @@ class FavoriteView: MainView {
     
     
     /* MARK: - Encapsulamento */
+    
+    // Empty View
+    
+    /// Verifica a quantidade de dados das hortas
+    /// - Parameter gardenDataCount: quantidade de dados das hortas
+    public func checkGardenData(with gardenDataCount: Int) {
+        self.gardenGroup.isCollectionEmpty(with: gardenDataCount == 0)
+    }
+    
+    
+    /// Verifica a quantidade de dados das hortas
+    /// - Parameter foodDataCount: quantidade de dados dos alimentos
+    public func checkFoodData(with foodDataCount: Int) {
+        self.foodGroup.isCollectionEmpty(with: foodDataCount == 0)
+    }
+    
+    
+    /// Configura a empty view caso precise
+    /// - Parameter value: estado que define a visualização da empty view
+    public func setCollectionView(with value: Bool) {
+        self.foodGroup.isHidden = value
+        self.gardenGroup.isHidden = value
+        self.emptyView.isHidden = !value
+    }
+    
+    
+    // Collection
     
     /// Atualiza os dados da collection
     public func reloadCollectionsData() {
@@ -124,17 +157,7 @@ class FavoriteView: MainView {
         self.foodGroup.collection.collectionViewLayout = self.foodCollectionFlow
         self.gardenGroup.collection.collectionViewLayout = self.gardenCollectionFlow
     }
-    
-    
-    public func checkGardenData(with gardenDataCount: Int) {
-        self.gardenGroup.isCollectionEmpty(with: gardenDataCount == 0)
-    }
-    
-    
-    public func checkFoodData(with foodDataCount: Int) {
-        self.foodGroup.isCollectionEmpty(with: foodDataCount == 0)
-    }
-    
+        
     
     // Views
     
@@ -144,14 +167,6 @@ class FavoriteView: MainView {
         self.contentView.addSubview(self.gardenGroup)
         self.contentView.addSubview(self.emptyView)
     }
-    
-    
-    public func setCollectionView(with value: Bool) {
-        self.foodGroup.isHidden = value
-        self.gardenGroup.isHidden = value
-        self.emptyView.isHidden = !value
-    }
-    
     
     
     /// Personalização da UI

@@ -1,20 +1,25 @@
 /* Macro - Grupo 05 */
 
 /// Textos das empty views
-public enum EmptyTexts {
+enum EmptyTexts {
     
-    /// Exibe o texto da empty view da collection de alimentos favoritados
+    /* MARK: - Casos */
+    
+    /// Texto da collection de alimentos favoritados
     case food
     
-    /// Exibe o texto da empty view da collection de hortas favoritadas
+    /// Texto da collection de hortas favoritadas
     case garden
     
-    /// Exibe o texto da empty view da collection de busca de hortas
+    /// Texto da collection de busca de hortas
     case search
     
-    /// Exibe o texto da empty view da tela de favoritos vazia
+    /// Texto da tela de favoritos vazia
     case favorite
     
+    
+    
+    /* MARK: - Atributos */
     
     /// Textos que correspondem às empty views
     var text: String {

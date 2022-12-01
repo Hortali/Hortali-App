@@ -538,7 +538,6 @@
 				2229381E28C7C3DD00515095 /* Main */,
 				B2DE49522911AA7400293E6A /* Onboarding */,
 				2229383B28C8922000515095 /* Garden */,
-				B20D4363293795FC009A7028 /* GardenController.swift */,
 				2229384428C892E900515095 /* Food */,
 				222937FD28C68EC500515095 /* Favorite */,
 				220A63E228D24C1600D9E2A9 /* InfoGarden */,
@@ -680,13 +679,12 @@
 		2229383428C87DA300515095 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				224BC12A2939472F009D92FE /* EmptyView */,
 				2229383728C8815000515095 /* CollectionGroup */,
 				222937F428C6846700515095 /* ContainerView.swift */,
 				220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */,
 				2229384E28C8964200515095 /* MainView.swift */,
 				22A3DB29290CED4700B34CEC /* ViewLabel.swift */,
-				B20D435929379240009A7028 /* EmptyView.swift */,
-				B20D435B29379279009A7028 /* EmptyTexts.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -716,6 +714,7 @@
 				2212E82E28DB87F2004CCBAA /* Delegate */,
 				065ECFC028D26A2F00F024E7 /* DataSource */,
 				2229383D28C8923300515095 /* Views */,
+				B20D4363293795FC009A7028 /* GardenController.swift */,
 			);
 			path = Garden;
 			sourceTree = "<group>";
@@ -859,6 +858,15 @@
 				223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		224BC12A2939472F009D92FE /* EmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				B20D435929379240009A7028 /* EmptyView.swift */,
+				B20D435B29379279009A7028 /* EmptyTexts.swift */,
+			);
+			path = EmptyView;
 			sourceTree = "<group>";
 		};
 		224F056E29281A5200B20447 /* Delegate */ = {
@@ -1330,7 +1338,6 @@
 				B20D436C293798DF009A7028 /* InfoGardenView.swift in Sources */,
 				22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */,
 				227FAFD0292FACAE0080FB9C /* FavoriteHandler.swift in Sources */,
-				2210245128D529FA00F412A5 /* InfoGardenReport.swift in Sources */,
 				22A3918428F7AD5D00A42DC1 /* SearchProtocol.swift in Sources */,
 				2212E83B28DB9F60004CCBAA /* InfoFoodController.swift in Sources */,
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,
