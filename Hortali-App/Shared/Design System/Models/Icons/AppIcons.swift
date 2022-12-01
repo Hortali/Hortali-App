@@ -52,7 +52,7 @@ enum AppIcons: CustomStringConvertible {
 
     /* Configurações */
     
-    /// Símbolo - 􀿨
+    /// Símbolo - 􀟜
     case help
     
     /// Símbolo - 􀎞
@@ -85,7 +85,7 @@ enum AppIcons: CustomStringConvertible {
         case .favoriteTab: return "heart.fill"
         case .settingsTab: return "shippingbox.fill"
             
-        case .help: return "questionmark.app"
+        case .help: return "iphone"
         case .suggestion: return "house"
         case .contactUs: return "envelope"
         case .report: return "square.and.pencil"

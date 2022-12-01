@@ -16,11 +16,11 @@ struct FavoriteInfo {
     init(isFavorite: Bool) {
         switch isFavorite {
         case true:
-            self.iconColor = UIColor(.favoriteSelectedIcon) ?? nil
-            self.backColor = UIColor(.favoriteSelectedBack) ?? nil
+            self.iconColor = UIColor(.favoriteSelectedIcon)
+            self.backColor = UIColor(.favoriteSelectedBack)
         case false:
-            self.iconColor = UIColor(.favoriteNotSelectedIcon) ?? nil
-            self.backColor = UIColor(.favoriteNotSelectedBack) ?? nil
+            self.iconColor = UIColor(.favoriteNotSelectedIcon)
+            self.backColor = UIColor(.favoriteNotSelectedBack)
         }
     }
 }

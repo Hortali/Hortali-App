@@ -76,7 +76,7 @@ class InfoGardenView: UIView, FavoriteHandler {
     
     /* MARK: - Protocol */
     
-    internal var isFavorite: Bool = false
+    internal var isFavorite = false
     
     internal var favoriteButton: CustomButton = CustomViews.newButton()
     
@@ -301,7 +301,7 @@ class InfoGardenView: UIView, FavoriteHandler {
         ))
         
         self.favoriteButton.setupIcon(with: IconInfo(
-            icon: .favoriteNotSelected, size: btSize, weight: .regular, scale: .default
+            icon: self.favoriteIcon, size: btSize, weight: .regular, scale: .default
         ))
     }
     

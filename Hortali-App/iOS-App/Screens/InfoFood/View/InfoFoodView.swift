@@ -79,7 +79,7 @@ class InfoFoodView: UIView, FavoriteHandler {
     
     /* MARK: - Protocol */
     
-    internal var isFavorite: Bool = false
+    internal var isFavorite = false
     
     internal var favoriteButton: CustomButton = CustomViews.newButton()
     
