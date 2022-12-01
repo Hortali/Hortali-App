@@ -97,7 +97,7 @@ class TimeGroup: UIView {
     
     
     /// Define se o componente mostra os dados do dia
-    public var isTodayComponent: Bool = false {
+    public var isTodayComponent = false {
         didSet {
             if self.isTodayComponent == true {
                 let color = UIColor(originalColor: .greenDark)

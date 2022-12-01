@@ -38,9 +38,9 @@ class MainController: UITabBarController {
     /* MARK: - Configurações */
     
     /// Configurações iniciais da Navigation Controller
-    private func getNavigation(for vc: UIViewController) -> CustomNavigationController {
+    private func getNavigation(for controller: UIViewController) -> CustomNavigationController {
         let nav = CustomNavigationController()
-        nav.pushViewController(vc, animated: true)
+        nav.pushViewController(controller, animated: true)
         nav.isNavigationBarHidden = true
         
         return nav

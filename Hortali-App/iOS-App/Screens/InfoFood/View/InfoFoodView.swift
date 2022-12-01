@@ -64,7 +64,7 @@ class InfoFoodView: UIView {
     // Views
     
     /// Estado de favorito da view
-    private var ifFavorite: Bool = false
+    private var ifFavorite = false
     
     
     
