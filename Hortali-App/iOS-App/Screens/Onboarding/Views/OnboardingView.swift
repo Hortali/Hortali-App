@@ -12,7 +12,7 @@ class OnboardingView: UIView {
     // Views
     
     /// Collection das telas de onboarding
-    private let onboardingGroup = {
+    private let onBoardingGroup = {
         let col = CollectionGroup(style: .justCollection)
         col.collection.isPagingEnabled = true
         col.backgroundColor = .clear
@@ -37,7 +37,6 @@ class OnboardingView: UIView {
         btn.isCircular = false
         btn.backgroundColor = .clear
         btn.setTitleColor(UIColor(.secondaryTitle), for: .normal)
-        btn.setTitle("Proximo", for: .normal)
         
         return btn
     }()
@@ -93,6 +92,7 @@ class OnboardingView: UIView {
         self.setupViews()
         self.registerCells()
         self.setupCollectionFlow()
+        self.setupToInitialState()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -100,6 +100,12 @@ class OnboardingView: UIView {
     
     
     /* MARK: - Encapsulamento */
+    
+    /// Mostra em qual página o page control está
+    public var currentPage: Int {
+        return self.pageControl.currentPage
+    }
+    
     
     /// Atualiza a página no Page Control
     /// - Parameter index: index (número) da página
@@ -112,7 +118,7 @@ class OnboardingView: UIView {
     /// Atualiza  a célula que é mostrada a partir do item do page control selecionado
     /// - Parameter index: index selecionado
     public func updateCurrentCell(for index: Int) {
-        self.onboardingGroup.collection.scrollToItem(
+        self.onBoardingGroup.collection.scrollToItem(
             at: IndexPath(row: index, section: 0),
             at: .centeredHorizontally,
             animated: true
@@ -121,35 +127,15 @@ class OnboardingView: UIView {
     }
     
     
-    public var currentPage: Int {
-        return self.pageControl.currentPage
-    }
-    
+    /// Configura a view para o estado inicial
     public func setupToInitialState() {
         self.updateCurrentPage(for: 0)
         
-        if !UserDefaults.standard.bool(forKey: "onBoardingOpened") {
+        if !UserDefaults.getValue(for: .onBoardingPresented) {
             self.closeButton.isHidden = true
             self.backgroundColor = UIColor(originalColor: .white)
         } else {
             self.backgroundColor = .clear
-        }
-    }
-    
-    
-    private func setupButton(for index: Int) {
-        self.nextButton.setTitle("Proximo", for: .normal)
-        
-        switch index {
-        case 0:
-            self.backButton.isHidden = true
-            
-        case 1:
-            self.backButton.isHidden = false
-            
-        default:
-            self.nextButton.setTitle("Finalizar", for: .normal)
-            self.closeButton.isHidden = false
         }
     }
     
@@ -195,30 +181,49 @@ class OnboardingView: UIView {
     
     /* MARK: - Configurações */
     
+    /// Configura os botões a partir da página do page control
+    /// - Parameter index: página usada para configuração
+    private func setupButton(for index: Int) {
+        self.nextButton.setTitle("Proximo", for: .normal)
+        
+        switch index {
+        case 0:
+            self.backButton.isHidden = true
+            
+        case 1:
+            self.backButton.isHidden = false
+            
+        default:
+            self.nextButton.setTitle("Finalizar", for: .normal)
+            self.closeButton.isHidden = false
+        }
+    }
+    
+    
     /* Collection */
     
     /// Registra as células nas collections/table
     private func registerCells() {
-        self.onboardingGroup.collection.register(OnboardingCell.self, forCellWithReuseIdentifier: OnboardingCell.identifier)
+        self.onBoardingGroup.collection.register(OnboardingCell.self, forCellWithReuseIdentifier: OnboardingCell.identifier)
     }
     
     
     /// Define o layout da collection
     private func setupCollectionFlow() {
-        self.onboardingGroup.collection.collectionViewLayout = self.collectionFlow
+        self.onBoardingGroup.collection.collectionViewLayout = self.collectionFlow
     }
     
     
     /// Define o data source da collection de onboarding
     /// - Parameter dataSource: data source da collection de onboarding
     public func setDataSource(with dataSource: OnboardingDataSource) {
-        self.onboardingGroup.collection.dataSource = dataSource
+        self.onBoardingGroup.collection.dataSource = dataSource
     }
     
     /// Define o delegate da collection de onboarding
     /// - Parameter delegate: delegate da collection de onboarding
     public func setDelegate(with delegate: OnboardingDelegate) {
-        self.onboardingGroup.collection.delegate = delegate
+        self.onBoardingGroup.collection.delegate = delegate
     }
     
     
@@ -226,7 +231,7 @@ class OnboardingView: UIView {
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {
-        self.addSubview(self.onboardingGroup)
+        self.addSubview(self.onBoardingGroup)
         self.addSubview(self.pageControl)
         self.addSubview(self.closeButton)
         self.addSubview(self.nextButton)
@@ -236,11 +241,11 @@ class OnboardingView: UIView {
     
     /// Personalização da UI
     private func setupUI() {
-        self.onboardingGroup.collection.layer.cornerRadius = self.getEquivalent(30)
-        self.onboardingGroup.collection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        self.onBoardingGroup.collection.layer.cornerRadius = self.getEquivalent(30)
+        self.onBoardingGroup.collection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         // Define o tamanho que a célula vai ter
-        let cellHeight = self.onboardingGroup.collection.frame.height
+        let cellHeight = self.onBoardingGroup.collection.frame.height
         let cellWidth = self.frame.width
         self.collectionFlow.itemSize = CGSize(width: cellWidth, height: cellHeight)
     }
@@ -264,10 +269,10 @@ class OnboardingView: UIView {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
         self.dynamicConstraints = [
-            self.onboardingGroup.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            self.onboardingGroup.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.onboardingGroup.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.onboardingGroup.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.onBoardingGroup.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            self.onBoardingGroup.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.onBoardingGroup.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.onBoardingGroup.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             
             self.pageControl.centerXAnchor.constraint(equalTo: self.centerXAnchor),

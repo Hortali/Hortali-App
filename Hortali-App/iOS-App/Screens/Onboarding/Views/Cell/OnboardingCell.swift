@@ -4,18 +4,6 @@
 import UIKit
 
 
-struct OnBoardingInfos {
-    let primaryTitleText: String
-    let secondaryTitleText: String
-    
-    let primaryDescriptionText: String
-    let secondaryDescriptionText: String
-    
-    let image: UIImage?
-    let color: UIColor?
-}
-
-
 /// Elementos de UI das c;elulas de onboarding
 class OnboardingCell: UICollectionViewCell {
     
@@ -58,13 +46,19 @@ class OnboardingCell: UICollectionViewCell {
         let lbl = CustomViews.newLabel()
         lbl.adjustsFontSizeToFitWidth = true
         lbl.textColor = UIColor(.secondaryTitle)
-        lbl.numberOfLines = 0
+        lbl.numberOfLines = 2
         
         return lbl
     }()
     
     /// Imagem usada nas telas de onboarding
     private let mainImage = CustomViews.newImage()
+    
+    /// View usada para referencia para posicionamento
+    private let referenceView = CustomViews.newView()
+    
+    
+    // Outros
     
     /// Constraints que vão mudar de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
@@ -85,6 +79,8 @@ class OnboardingCell: UICollectionViewCell {
     
     /* MARK: - Encapsulamento */
     
+    /// Configura a célula a partir das informações passadas
+    /// - Parameter infos: informações do on boarding
     public func setupCell(for infos: OnBoardingInfos) {
         self.primaryTitle.text = infos.primaryTitleText
         self.secondaryTitle.text = infos.secondaryTitleText
@@ -94,6 +90,8 @@ class OnboardingCell: UICollectionViewCell {
         
         self.mainImage.image = infos.image
         self.backgroundColor = infos.color
+        
+        self.layoutSubviews()
     }
     
     
@@ -118,12 +116,7 @@ class OnboardingCell: UICollectionViewCell {
         self.contentView.addSubview(self.mainImage)
         self.contentView.addSubview(self.primaryDescription)
         self.contentView.addSubview(self.secondaryDescription)
-    }
-    
-    
-    /// Personalização da UI
-    private func setupUI() {
-        
+        self.contentView.addSubview(self.referenceView)
     }
     
     
@@ -161,12 +154,6 @@ class OnboardingCell: UICollectionViewCell {
             self.secondaryTitle.trailingAnchor.constraint(equalTo: self.primaryTitle.trailingAnchor),
 
             
-            self.mainImage.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.mainImage.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.mainImage.widthAnchor.constraint(equalToConstant: imageHeight),
-            self.mainImage.heightAnchor.constraint(equalToConstant: imageHeight),
-            
-            
             self.secondaryDescription.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -safeAreaBottom),
             self.secondaryDescription.leadingAnchor.constraint(equalTo: self.primaryTitle.leadingAnchor),
             self.secondaryDescription.trailingAnchor.constraint(equalTo: self.primaryTitle.trailingAnchor),
@@ -175,6 +162,18 @@ class OnboardingCell: UICollectionViewCell {
             self.primaryDescription.bottomAnchor.constraint(equalTo: self.secondaryDescription.topAnchor),
             self.primaryDescription.leadingAnchor.constraint(equalTo: self.primaryTitle.leadingAnchor),
             self.primaryDescription.trailingAnchor.constraint(equalTo: self.primaryTitle.trailingAnchor),
+            
+            
+            self.referenceView.topAnchor.constraint(equalTo: self.secondaryTitle.bottomAnchor),
+            self.referenceView.bottomAnchor.constraint(equalTo: self.primaryDescription.topAnchor),
+            self.referenceView.leadingAnchor.constraint(equalTo: self.primaryTitle.leadingAnchor),
+            self.referenceView.trailingAnchor.constraint(equalTo: self.primaryTitle.trailingAnchor),
+            
+            
+            self.mainImage.centerYAnchor.constraint(equalTo: self.referenceView.centerYAnchor),
+            self.mainImage.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.mainImage.widthAnchor.constraint(equalToConstant: imageHeight),
+            self.mainImage.heightAnchor.constraint(equalToConstant: imageHeight),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

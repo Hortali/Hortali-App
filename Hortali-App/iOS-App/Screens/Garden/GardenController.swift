@@ -139,7 +139,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     /// Função para exibir tela de onboarding
     private func showOnBoarding() {
-        if !UserDefaults.standard.bool(forKey: "onBoardingOpened") {
+        if !UserDefaults.getValue(for: .onBoardingPresented) {
             let controller = OnboardingViewController()
             controller.hidesBottomBarWhenPushed = true
             controller.modalPresentationStyle = .fullScreen

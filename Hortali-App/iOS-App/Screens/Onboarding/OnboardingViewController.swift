@@ -9,6 +9,15 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     
     /* MARK: - Atributos */
     
+    /// Muda a cor da status bar
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if UserDefaults.getValue(for: .onBoardingPresented) {
+            return .lightContent
+        }
+        return .darkContent
+    }
+    
+    
     /* View */
 
     /// View principal que a classe vai controlar
@@ -22,11 +31,6 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     
     /// Delegate da collection de onboarding
     private let onboardingDelegate = OnboardingDelegate()
-    
-    
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .lightContent
-//    }
     
 
         
@@ -66,7 +70,7 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     /// Ação de fechar a tela de onboarding
     @objc
     private func closeAction() {
-        UserDefaults.standard.set(true, forKey: "onBoardingOpened")
+        UserDefaults.setValue(true, forKey: .onBoardingPresented)
         
         self.navigationController?.popViewController(animated: true)
         self.navigationController?.dismiss(animated: true)
@@ -98,7 +102,7 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     }
     
     
-    /// Ação de quando altera a page control
+    /// Ação de quando muda a célula pela page control
     /// - Parameter sender: page control que foi alterada
     @objc
     private func pageControlAction(sender: UIPageControl) {

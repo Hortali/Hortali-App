@@ -16,7 +16,6 @@ class OnboardingDelegate: NSObject, UICollectionViewDelegate {
     
     /* MARK: - Encapsulamento */
     
-    
     /// Define qual vai ser o protocolo do delegate
     /// - Parameter protocol: protocolo de comunicação
     public func setProtocol(with delegate: OnboardingProtocol) {

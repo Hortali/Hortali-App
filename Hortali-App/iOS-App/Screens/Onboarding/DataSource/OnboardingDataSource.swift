@@ -44,6 +44,8 @@ class OnboardingDataSource: NSObject, UICollectionViewDataSource {
     /// - Parameter row: linha
     /// - Returns: dados da célula
     private func getInfos(for row: Int) -> OnBoardingInfos {
+        let image = UIImage(named: "OnBoarding-\(row)")
+        
         switch row {
         case 0:
             return OnBoardingInfos(
@@ -51,7 +53,7 @@ class OnboardingDataSource: NSObject, UICollectionViewDataSource {
                 secondaryTitleText: "Sao Paulo",
                 primaryDescriptionText: "Você conhece as hortas da cidade?",
                 secondaryDescriptionText: "Aqui você pode encontrar as hortas mais próximas ou até buscar por hortas específicas.",
-                image: UIImage(named: "OnBoarding-\(row)"),
+                image: image,
                 color: UIColor(.gardenBack)
             )
             
@@ -61,7 +63,7 @@ class OnboardingDataSource: NSObject, UICollectionViewDataSource {
                 secondaryTitleText: "alimentos",
                 primaryDescriptionText: "Aprender nunca é demais né?",
                 secondaryDescriptionText: "Aqui da pra conhecer com os alimentos organicos e ver muitas informações sobre eles.",
-                image: UIImage(named: "OnBoarding-\(row)"),
+                image: image,
                 color: UIColor(.foodBack)
             )
         
@@ -71,7 +73,7 @@ class OnboardingDataSource: NSObject, UICollectionViewDataSource {
                 secondaryTitleText: "favoritos",
                 primaryDescriptionText: "Gostou? Favoritou!",
                 secondaryDescriptionText: "Pra você encontrar suas hortas e alimentos favoritos, uma área só sua.",
-                image: UIImage(named: "OnBoarding-\(row)"),
+                image: image,
                 color: UIColor(.favoriteBack)
             )
         }
