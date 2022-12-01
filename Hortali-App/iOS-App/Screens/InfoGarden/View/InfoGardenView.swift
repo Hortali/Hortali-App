@@ -252,6 +252,7 @@ class InfoGardenView: UIView, FavoriteHandler {
     }
     
     
+    
     /* View */
     
     /// Adiciona os elementos (Views) na tela

@@ -99,13 +99,23 @@ class FavoriteViewController: UIViewController, GardenProtocol, FoodProtocol {
             self.foodDataSource.data = foodFav
         }
         
-        
         // Hortas
         let gardenFavorite = DataManager.shared.getFavoriteItens(for: .garden)
         if let gardenFav = gardenFavorite as? [ManagedGarden] {
             self.gardenDataSource.data = gardenFav
         }
         
+        self.setupEmptyView()
         self.myView.reloadCollectionsData()
+    }
+    
+    
+    /// Configura a empty view caso precisa
+    private func setupEmptyView() {
+        let isEmpty = self.foodDataSource.data.isEmpty && self.gardenDataSource.data.isEmpty
+        self.myView.setCollectionView(with: isEmpty)
+        
+        self.myView.checkFoodData(with: self.foodDataSource.data.count)
+        self.myView.checkGardenData(with: self.gardenDataSource.data.count)
     }
 }

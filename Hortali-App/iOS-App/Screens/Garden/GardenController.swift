@@ -69,7 +69,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     internal func openGardenInfo(for index: Int) {
         let selectedCell = self.gardenDataSource.data[index]
-        
+                
         let controller = InfoGardenController(with: selectedCell)
         controller.hidesBottomBarWhenPushed = true
         
@@ -102,7 +102,6 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
                 continue
             }
         }
-        
         self.setupDataSourceData(with: dataFiltered)
         self.myView.actualGardenVisualization = .grid
     }
@@ -183,19 +182,22 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     private func setupDataSourceData(with data: [ManagedGarden]? = nil) {
         if let data {
             self.gardenDataSource.data = data
+            self.myView.checkData(with: data.count)
             self.myView.reloadCollectionData()
+
             return
         }
         
         let gardenData = DataManager.shared.getGardenData()
         
         self.gardenDataSource.data = gardenData
+        self.myView.checkData(with: gardenData.count)
         self.myView.reloadCollectionData()
         
         if self.gardenData.isEmpty {
             self.gardenData = gardenData
         }
-        
+
         if let visu = self.lastGardenVisualization {
             self.myView.actualGardenVisualization = visu
             self.lastGardenVisualization = nil

@@ -154,6 +154,12 @@ class GardenView: MainView {
     }
     
     
+    /// Verifica a existencia de dados na collection
+    public func checkData(with dataCount: Int) {
+        self.gardenGroup.isCollectionEmpty(with: dataCount == 0)
+    }
+    
+    
     /* Geral */
     
     /// Espaço entre a collection das hortas
