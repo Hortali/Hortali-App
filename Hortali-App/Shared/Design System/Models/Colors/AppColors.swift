@@ -55,6 +55,12 @@ enum AppColors {
     /// Pop Up: botão padrão
     case popupDefaultButton
     
+    /// Pop Up: fundo da sazonalidade
+    case seasonalityBack
+    
+    /// Pop Up: botão da sazonalidade
+    case seasonalityButton
+    
     
     
     /* Segmented */
@@ -199,6 +205,9 @@ enum AppColors {
         case .popupDefaultButton: return .greenLight
         case .popupBackBlur: return .greyDark
         case .popupBorder: return .white
+            
+        case .seasonalityBack: return .orange
+        case .seasonalityButton: return .brownLight
             
         
         /* Segmented */

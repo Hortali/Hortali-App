@@ -103,17 +103,36 @@ class InfoFoodController: UIViewController {
             title: "Vitamina \(vitaminInfo?.name ?? "")",
             description: vitaminInfo?.description ?? ""
         )
-        
-        let controller = PopUpController(infos: popupInfos)
+        self.showPopUp(with: popupInfos)
+    }
+    
+    
+    /// Ação de mostrar informações sobre a sasonalidade
+    @objc
+    private func seasonalityAction() {
+        let popupInfos = PopUpInfo(
+            title: "ta na epoca!",
+            description: "A colheita do alho ocorre na primavera. Ele deve ser colhido quando dois terços das folhas estiverem secas e amareladas, em dias ensolarados e pela manhã.",
+            backgroundColor: .seasonalityBack,
+            buttonColor: .seasonalityButton
+        )
+        self.showPopUp(with: popupInfos)
+    }
+    
+    
+    
+    /* MARK: - Configurações */
+    
+    /// Mostra um popup a partir dos dados passados
+    /// - Parameter info: dados passados
+    private func showPopUp(with info: PopUpInfo) {
+        let controller = PopUpController(infos: info)
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle = .crossDissolve
         
         self.present(controller, animated: true)
     }
     
-    
-    
-    /* MARK: - Configurações */
 
     /// Definindo as ações dos botões
     private func setupButtonsAction() {
@@ -121,6 +140,7 @@ class InfoFoodController: UIViewController {
         self.myView.setFavoriteButtonAction(target: self, action: #selector(self.favoriteAction))
         self.myView.setExpLabelButtonAction(target: self, action: #selector(self.expandLabelAction))
         self.myView.setVitaminsButtonAction(target: self, action: #selector(self.vitaminsAction(sender:)))
+        self.myView.setSeasonalityButtonAction(target: self, action: #selector(self.seasonalityAction))
     }
     
     

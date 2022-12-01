@@ -61,6 +61,9 @@ class InfoFoodView: UIView, FavoriteHandler {
     /// Collection  "Como plantar"
     private let howToCollection = CollectionGroup()
     
+    /// Botão de sasonaliade
+    private var seasonalityButton: CustomButton?
+    
     
     // Outros
     
@@ -107,13 +110,13 @@ class InfoFoodView: UIView, FavoriteHandler {
     init(data: ManagedFood) {
         super.init(frame: .zero)
         
-        self.setupViews()
         self.registerCells()
         self.setupCollectionFlow()
         
         self.hideCollection()
         
         self.setupViewFor(data: data)
+        self.setupViews()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -140,6 +143,12 @@ class InfoFoodView: UIView, FavoriteHandler {
     /// Define a ação do botão de expandir a label
     public func setExpLabelButtonAction(target: Any?, action: Selector) -> Void {
         self.expansiveLabel.setExpansiveButtonAction(target: target, action: action)
+    }
+    
+    
+    /// Define a ação do botão de sasonalidade
+    public func setSeasonalityButtonAction(target: Any?, action: Selector) -> Void {
+        self.seasonalityButton?.addTarget(target, action: action, for: .touchDown)
     }
     
     
@@ -193,13 +202,16 @@ class InfoFoodView: UIView, FavoriteHandler {
         
         self.setupVitaminsStackViews(for: data.vitamins)
         self.mineralsLabel.text = data.minerals
+        
+        self.seasonalityButton = self.getVitaminButton(for: "S")
     }
 
         
     /// Cria e adiciona as views que vão ser colocadas na stack
     private func setupVitaminsStackViews(for vitamins: [ManagedVitamins]) {
         for ind in 0..<vitamins.count {
-            let vitBut = self.getVitaminButton(for: vitamins[ind])
+            let vitName = vitamins[ind].name
+            let vitBut = self.getVitaminButton(for: vitName)
             vitBut.tag = ind
             
             self.vitaminsTypesButtons.append(vitBut)
@@ -243,6 +255,10 @@ class InfoFoodView: UIView, FavoriteHandler {
         
         self.scrollView.addViewInScroll(self.mineralsLabel)
         self.container.contentView.addSubview(self.howToCollection)
+        
+        if let seasonalityButton = self.seasonalityButton {
+            self.addSubview(seasonalityButton)
+        }
     }
     
     
@@ -263,6 +279,7 @@ class InfoFoodView: UIView, FavoriteHandler {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
         /* Labels */
+        
         let titleFontSize = self.getEquivalent(25)
         
         self.benefitsLabel.setupText(with: FontInfo(
@@ -281,6 +298,7 @@ class InfoFoodView: UIView, FavoriteHandler {
         
         
         /* Botões */
+        
         let btSize: CGFloat = self.getEquivalent(22)
         
         self.backButton.setupIcon(with: IconInfo(
@@ -289,6 +307,10 @@ class InfoFoodView: UIView, FavoriteHandler {
         
         self.favoriteButton.setupIcon(with: IconInfo(
             icon: self.favoriteIcon, size: btSize, weight: .regular, scale: .default
+        ))
+        
+        self.seasonalityButton?.setupText(with: FontInfo(
+            fontSize: self.getEquivalent(45), weight: .regular, fontFamily: .graffiti
         ))
     }
     
@@ -386,6 +408,17 @@ class InfoFoodView: UIView, FavoriteHandler {
             self.howToCollection.heightAnchor.constraint(equalToConstant: collectionHeight),
         ]
         
+        
+        if let seasonalityButton = self.seasonalityButton {
+            seasonalityButton.circleSize = self.getEquivalent(40)
+            
+            self.dynamicConstraints += [
+                seasonalityButton.centerYAnchor.constraint(equalTo: self.container.titleLabel.centerYAnchor),
+                seasonalityButton.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
+            ]
+        }
+        
+        
         NSLayoutConstraint.activate(self.dynamicConstraints)
         
         self.setupExpansiveLabelHeight()
@@ -401,13 +434,13 @@ class InfoFoodView: UIView, FavoriteHandler {
     
     
     /// Cria os botões da stack view
-    private func getVitaminButton(for vitamins: ManagedVitamins) -> CustomButton {
+    private func getVitaminButton(for letter: String) -> CustomButton {
         let but = CustomViews.newButton()
         but.backgroundColor = UIColor(originalColor: .orange)
         but.setTitleColor(UIColor(originalColor: .white), for: .normal)
         
         but.isCircular = true
-        but.setTitle(vitamins.name, for: .normal)
+        but.setTitle(" \(letter) ", for: .normal)
         return but
     }
     
