@@ -143,29 +143,8 @@ class InfoGardenView: UIView, FavoriteHandler {
             self.copyWarning.isHidden = true
         }
     }
-    
-    
-    /// Configura a view para quando for favoritado ou desfavoritado
-    /// - Parameter fav: estado do favorito
-    /// - Returns: se está ou não favoritado
-    public func isFavorited(is fav: Bool? = nil) -> Bool {
-        if let fav {
-            self.isFavorited = fav
-        } else {
-            self.isFavorited.toggle()
-        }
+
         
-        var favColor: AppColors = .favoriteNotSelected
-        if self.isFavorited {
-            favColor = .favoriteSelected
-        }
-        
-        self.favoriteButton.backgroundColor = UIColor(favColor)
-        
-        return self.isFavorited
-    }
-    
-    
     /// Atualiza a página no Page Control
     /// - Parameter index: index (número) da página
     public func updateCurrentPage(for index: Int) {
