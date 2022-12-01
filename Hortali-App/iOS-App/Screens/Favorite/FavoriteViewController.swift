@@ -105,7 +105,7 @@ class FavoriteViewController: UIViewController, GardenProtocol, FoodProtocol {
             self.gardenDataSource.data = gardenFav
         }
         
-        if (foodDataSource.data.count == 0 && gardenDataSource.data.count == 0 ){
+        if (foodDataSource.data.isEmpty && gardenDataSource.data.isEmpty ){
             self.myView.setCollectionView(with: true)
         }else{
             self.myView.setCollectionView(with: false)
