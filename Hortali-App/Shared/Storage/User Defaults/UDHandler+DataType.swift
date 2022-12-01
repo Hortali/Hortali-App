@@ -18,7 +18,7 @@ extension UserDefaults {
     }
     
     
-    /// Pega o valor a aprtir das chaves do user default
+    /// Pega o valor a partir das chaves do user default
     /// - Parameter key: chave
     /// - Returns: valor boleano
     internal static func getValue(for key: UDKeys) -> Bool {

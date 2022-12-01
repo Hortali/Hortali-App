@@ -7,6 +7,7 @@ import class UIKit.UIColor
 
 /// Modelo de informações usados no on boarding
 struct OnBoardingInfos {
+    
     /// Primeiro texto que aparece
     let primaryTitleText: String
     

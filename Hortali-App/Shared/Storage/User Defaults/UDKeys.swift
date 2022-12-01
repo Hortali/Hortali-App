@@ -6,7 +6,7 @@ enum UDKeys {
     
     /* MARK: - Casos */
     
-    /// Estado dizendon se o on boarding já foi mostrado ou não.
+    /// Estado dizendo se o on boarding já foi mostrado ou não.
     case onBoardingPresented
     
     
