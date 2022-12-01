@@ -96,6 +96,8 @@
 		225FA205292DF37E0004D131 /* SF-Pro-Rounded-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 225FA1FC292DF37E0004D131 /* SF-Pro-Rounded-Heavy.otf */; };
 		225FA206292DF37E0004D131 /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 225FA1FD292DF37E0004D131 /* SF-Pro-Rounded-Bold.otf */; };
 		225FA208292E01150004D131 /* FontWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225FA207292E01150004D131 /* FontWeight.swift */; };
+		227FAFD0292FACAE0080FB9C /* FavoriteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FAFCF292FACAE0080FB9C /* FavoriteHandler.swift */; };
+		227FAFD2292FADB10080FB9C /* FavoriteInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FAFD1292FADB10080FB9C /* FavoriteInfos.swift */; };
 		22A3916E28F6E62700A42DC1 /* InfoGardenCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3916D28F6E62700A42DC1 /* InfoGardenCellProtocol.swift */; };
 		22A3917428F784B200A42DC1 /* ManagedGardenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3917328F784B200A42DC1 /* ManagedGardenData.swift */; };
 		22A3917628F784FB00A42DC1 /* ManagedGarden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3917528F784FB00A42DC1 /* ManagedGarden.swift */; };
@@ -228,6 +230,8 @@
 		225FA1FC292DF37E0004D131 /* SF-Pro-Rounded-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Heavy.otf"; sourceTree = "<group>"; };
 		225FA1FD292DF37E0004D131 /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
 		225FA207292E01150004D131 /* FontWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontWeight.swift; sourceTree = "<group>"; };
+		227FAFCF292FACAE0080FB9C /* FavoriteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHandler.swift; sourceTree = "<group>"; };
+		227FAFD1292FADB10080FB9C /* FavoriteInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteInfos.swift; sourceTree = "<group>"; };
 		22A3916D28F6E62700A42DC1 /* InfoGardenCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenCellProtocol.swift; sourceTree = "<group>"; };
 		22A3917328F784B200A42DC1 /* ManagedGardenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedGardenData.swift; sourceTree = "<group>"; };
 		22A3917528F784FB00A42DC1 /* ManagedGarden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedGarden.swift; sourceTree = "<group>"; };
@@ -477,6 +481,7 @@
 		222937D428C66B6200515095 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				227FAFCE292FAC950080FB9C /* FavoriteHandler */,
 				22A3918228F7AD2000A42DC1 /* Protocol */,
 				222937DE28C66F4D00515095 /* Extensions */,
 				222937DA28C66B9800515095 /* Delegates */,
@@ -916,6 +921,15 @@
 			path = "SF-Pro";
 			sourceTree = "<group>";
 		};
+		227FAFCE292FAC950080FB9C /* FavoriteHandler */ = {
+			isa = PBXGroup;
+			children = (
+				227FAFCF292FACAE0080FB9C /* FavoriteHandler.swift */,
+				227FAFD1292FADB10080FB9C /* FavoriteInfos.swift */,
+			);
+			path = FavoriteHandler;
+			sourceTree = "<group>";
+		};
 		22A3916F28F780ED00A42DC1 /* Conponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -1262,6 +1276,7 @@
 				065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */,
 				222937ED28C682C900515095 /* UIButton+FontInfo.swift in Sources */,
 				2229382C28C87BC400515095 /* AppPureColors.swift in Sources */,
+				227FAFD2292FADB10080FB9C /* FavoriteInfos.swift in Sources */,
 				220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */,
 				222937EF28C6831300515095 /* UITextField+FontInfo.swift in Sources */,
 				2210245D28D8494A00F412A5 /* InfoGardenImagesCell.swift in Sources */,
@@ -1307,6 +1322,8 @@
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
 				B2DE4951291192E700293E6A /* OnboardingCell.swift in Sources */,
 				22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */,
+				227FAFD0292FACAE0080FB9C /* FavoriteHandler.swift in Sources */,
+				2210245128D529FA00F412A5 /* InfoGardenReport.swift in Sources */,
 				22A3918428F7AD5D00A42DC1 /* SearchProtocol.swift in Sources */,
 				2212E83B28DB9F60004CCBAA /* InfoFoodController.swift in Sources */,
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,

@@ -106,13 +106,23 @@ enum AppColors {
     
     
     
+    /* Favorito */
+    
+    /// Botão favorito: fundo de quando de quando está selecionado
+    case favoriteSelectedBack
+    
+    /// Botão favorito: fundo de quando não está selecionado
+    case favoriteNotSelectedBack
+    
+    /// Botão favorito: ícone de quando está selecionado
+    case favoriteSelectedIcon
+    
+    /// Botão favorito: ícone de quando não está selecionado
+    case favoriteNotSelectedIcon
+    
+    
+    
     /* Botões */
-    
-    /// Botão favorito: estado de quando está selecionado
-    case favoriteSelected
-    
-    /// Botão favorito: estado de quando não está selecionado
-    case favoriteNotSelected
     
     /// Botão: fundo padrão
     case backgroundButton
@@ -146,7 +156,8 @@ enum AppColors {
     case contactCellBack
     
     
-    // Configuração
+    
+    /* Configuração */
     
     /// (Configurações) Célula de ajuda
     case settingsHelp
@@ -213,10 +224,16 @@ enum AppColors {
         case .searchIcons: return .greenMedium
           
         
+        /* Favorito */
+        case .favoriteSelectedBack: return .greenDark
+        case .favoriteSelectedIcon: return .white
+            
+        case .favoriteNotSelectedBack: return .white
+        case .favoriteNotSelectedIcon: return .greenDark
+        
+            
         /* Botões */
-        case .favoriteSelected: return .pinkButton
-        case .favoriteNotSelected: return .greyButton
-        case .backgroundButton: return .greyButton
+        case .backgroundButton: return .white
         case .visualizationButton: return .greenMedium
             
         

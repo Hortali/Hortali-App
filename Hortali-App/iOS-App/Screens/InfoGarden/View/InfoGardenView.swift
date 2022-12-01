@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Tela com os elementos de UI da tela de ver informações de uma horta
-class InfoGardenView: UIView {
+class InfoGardenView: UIView, FavoriteHandler {
     
     /* MARK: - Atributos */
     
@@ -15,10 +15,11 @@ class InfoGardenView: UIView {
     private let scrollView = CustomScroll()
     
     /// Botão de voltar para a página anterior
-    private let backButton = CustomViews.newButton()
-    
-    /// Botão de favoritar a hora
-    private let favoriteButton = CustomViews.newButton()
+    private let backButton: CustomButton = {
+        let but = CustomViews.newButton()
+        but.tintColor = UIColor(.favoriteNotSelectedIcon)
+        return but
+    }()
     
     /// Conjunto de imagens da horta
     private let imagesCollectionGp: CollectionGroup = {
@@ -41,9 +42,6 @@ class InfoGardenView: UIView {
         
     
     // Outros
-    
-    /// Estado de favorito da view
-    private var isFavorited = false
     
     /// Fala qual é o dia da semana de hoje
     static var todayWeek: String = ""
@@ -73,6 +71,31 @@ class InfoGardenView: UIView {
         
         return cvFlow
     }()
+    
+    
+    
+    /* MARK: - Protocol */
+    
+    internal var isFavorite = false
+    
+    internal var favoriteButton: CustomButton = CustomViews.newButton()
+    
+    
+    internal func favoriteHandler(for fav: Bool? = nil) -> Bool {
+        if let fav {
+            self.isFavorite = fav
+        } else {
+            self.isFavorite.toggle()
+        }
+        
+        let infos = self.favoriteInfos
+        
+        self.favoriteButton.backgroundColor = infos.backColor
+        self.favoriteButton.tintColor = infos.iconColor
+        self.setupStaticTexts()
+        
+        return self.isFavorite
+    }
 
 
 
@@ -93,27 +116,6 @@ class InfoGardenView: UIView {
     
     
     /* MARK: - Encapsulamento */
-    
-    /// Configura a view para quando for favoritado ou desfavoritado
-    /// - Parameter fav: estado do favorito
-    /// - Returns: se está ou não favoritado
-    public func isFavorited(is fav: Bool? = nil) -> Bool {
-        if let fav {
-            self.isFavorited = fav
-        } else {
-            self.isFavorited.toggle()
-        }
-        
-        var favColor: AppColors = .favoriteNotSelected
-        if self.isFavorited {
-            favColor = .favoriteSelected
-        }
-        
-        self.favoriteButton.backgroundColor = UIColor(favColor)
-        
-        return self.isFavorited
-    }
-    
     
     /// Atualiza a página no Page Control
     /// - Parameter index: index (número) da página
@@ -299,7 +301,7 @@ class InfoGardenView: UIView {
         ))
         
         self.favoriteButton.setupIcon(with: IconInfo(
-            icon: .favorite, size: btSize, weight: .regular, scale: .default
+            icon: self.favoriteIcon, size: btSize, weight: .regular, scale: .default
         ))
     }
     

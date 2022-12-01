@@ -12,7 +12,10 @@ enum AppIcons: CustomStringConvertible {
     case back
     
     /// Símbolo - 􀊴
-    case favorite
+    case favoriteNotSelected
+    
+    /// Símbolo - 􀊵
+    case favoriteSelected
     
     /// Símbolo - 􀆈
     case showMore
@@ -49,7 +52,7 @@ enum AppIcons: CustomStringConvertible {
 
     /* Configurações */
     
-    /// Símbolo - 􀿨
+    /// Símbolo - 􀟜
     case help
     
     /// Símbolo - 􀎞
@@ -69,7 +72,8 @@ enum AppIcons: CustomStringConvertible {
     var description: String {
         switch self {
         case .back: return "chevron.backward"
-        case .favorite: return "heart"
+        case .favoriteNotSelected: return "heart"
+        case .favoriteSelected: return "heart.fill"
         case .showMore: return "chevron.down"
         case .showLess: return "chevron.up"
             
@@ -81,7 +85,7 @@ enum AppIcons: CustomStringConvertible {
         case .favoriteTab: return "heart.fill"
         case .settingsTab: return "shippingbox.fill"
             
-        case .help: return "questionmark.app"
+        case .help: return "iphone"
         case .suggestion: return "house"
         case .contactUs: return "envelope"
         case .report: return "square.and.pencil"
