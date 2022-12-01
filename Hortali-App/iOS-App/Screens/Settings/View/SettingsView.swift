@@ -96,7 +96,7 @@ class SettingsView: MainView {
     private func setupCollectionFlow() {
         self.settingsCollection.collection.collectionViewLayout = self.collectionFlow
     }
-
+    
 
     /* Geral */
     
