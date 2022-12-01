@@ -4,10 +4,10 @@
 import struct UIKit.Selector
 
 
-/// Os tipos que estão de acordo com esse protocolo lidam com favoritos
+/// Os tipos que estão de acordo com esse protocolo lidam com itens que podem ser favoritados
 protocol FavoriteHandler {
     
-    /// Valor que define se está ou não favoritado
+    /// Estado que define se está ou não favoritado
     var isFavorite: Bool { get set }
     
     /// Botão de favoritar
@@ -15,7 +15,7 @@ protocol FavoriteHandler {
     
     
     /// Lida com a mudança de estado
-    /// - Parameter fav: valor para definir o favorito
+    /// - Parameter fav: valor para definir estado de favorito
     /// - Returns: estado pós mudança
     func favoriteHandler(for fav: Bool?) -> Bool
 }
@@ -28,7 +28,7 @@ extension FavoriteHandler {
         return FavoriteInfo(isFavorite: self.isFavorite)
     }
     
-    /// Ícone do botão a partir do estado
+    /// Ícone do botão a partir do estado de favorito
     var favoriteIcon: AppIcons {
         return self.isFavorite ? .favoriteSelected : .favoriteNotSelected
     }

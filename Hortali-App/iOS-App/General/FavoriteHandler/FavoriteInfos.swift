@@ -4,7 +4,7 @@
 import class UIKit.UIColor
 
 
-/// informações sobre o tipo de favorito
+/// Informações sobre o tipo de favorito
 struct FavoriteInfo {
     
     /// Cor do ícone
