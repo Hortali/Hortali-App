@@ -125,6 +125,7 @@
             "name": "Alface",
             "category": "Vegetal",
             "benefits": "A alface é uma grande aliada dos nossos olhos. Por ter vitamina A, luteína e zeaxantina, o consumo de alface pode trazer benefícios para a saúde ocular por meio dos carotenóides, reduzindo nossos riscos de doenças como catarata e a degeneração ocular quando em conjunto a uma alimentação equilibrada.",
+            "minerals": "E minerais como cálcio e fósforo",
             "vitamins": [
                 {
                     "name": "A"
