@@ -146,7 +146,7 @@ class InfoFoodView: UIView, FavoriteHandler {
     }
     
     
-    /// Define a ação do botão de sasonalidade
+    /// Define a ação do botão de sazonalidade
     public func setSeasonalityButtonAction(target: Any?, action: Selector) -> Void {
         self.seasonalityButton?.addTarget(target, action: action, for: .touchDown)
     }

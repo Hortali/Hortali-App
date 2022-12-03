@@ -23,7 +23,7 @@ class InfoFoodController: UIViewController {
     /// Dados das vitaminas
     private var vitaminsData: [ManagedVitamins] = []
     
-    /// Dados de sasonalidade
+    /// Dados de sazonalidade
     private var seasonalityData: ManagedSeasonality!
     
     
@@ -112,12 +112,12 @@ class InfoFoodController: UIViewController {
     }
     
     
-    /// Ação de mostrar informações sobre a sasonalidade
+    /// Ação de mostrar informações sobre a sazonalidade
     @objc
     private func seasonalityAction() {
         let isSeason = Self.checkSeasonality(for: self.seasonalityData)
         
-        var title = "sasonalidade"
+        var title = "sazonalidade"
         if isSeason {
             title = "ta na epoca!"
         }
@@ -136,7 +136,7 @@ class InfoFoodController: UIViewController {
     /* MARK: - Configurações */
     
     /// Mostra um popup a partir dos dados passados
-    /// - Parameter info: dados passados
+    /// - Parameter info: informações que vão ser passadas
     private func showPopUp(with info: PopUpInfo) {
         let controller = PopUpController(infos: info)
         controller.modalPresentationStyle = .overFullScreen
@@ -171,9 +171,11 @@ class InfoFoodController: UIViewController {
     
     
     
-    /// Verifica se está na época de sasonalidade
-    /// - Parameter data: dados de sasonalidade
-    /// - Returns: boleano que diz se está ou não
+    /* MARK: - Singleton */
+    
+    /// Verifica se está na época de sazonalidade
+    /// - Parameter data: dados de sazonalidade
+    /// - Returns: estado que diz se está na época ou não
     static func checkSeasonality(for data: ManagedSeasonality) -> Bool {
         if data.allYear {
             return true

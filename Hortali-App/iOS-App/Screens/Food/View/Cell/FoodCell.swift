@@ -25,7 +25,7 @@ class FoodCell: UICollectionViewCell {
     /// ImageView da célula de cada alimento
     private let foodImage: UIImageView = CustomViews.newImage()
     
-    /// Selo de sasonalidade
+    /// Selo de sazonalidade
     private let seasonalityLabel: CustomLabel = {
         let lbl = CustomViews.newLabel()
         lbl.isCircular = true
