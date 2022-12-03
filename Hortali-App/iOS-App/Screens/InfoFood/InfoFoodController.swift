@@ -23,6 +23,9 @@ class InfoFoodController: UIViewController {
     /// Dados das vitaminas
     private var vitaminsData: [ManagedVitamins] = []
     
+    /// Dados de sasonalidade
+    private var seasonalityData: ManagedSeasonality!
+    
     
     
     /* MARK: - Construtor */
@@ -40,6 +43,8 @@ class InfoFoodController: UIViewController {
         
         self.setupFavoriteStatus(for: data)
         self.vitaminsData = data.vitamins
+        
+        self.seasonalityData = data.seasonality
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -110,9 +115,16 @@ class InfoFoodController: UIViewController {
     /// Ação de mostrar informações sobre a sasonalidade
     @objc
     private func seasonalityAction() {
+        let isSeason = Self.checkSeasonality(for: self.seasonalityData)
+        
+        var title = "sasonalidade"
+        if isSeason {
+            title = "ta na epoca!"
+        }
+        
         let popupInfos = PopUpInfo(
-            title: "ta na epoca!",
-            description: "A colheita do alho ocorre na primavera. Ele deve ser colhido quando dois terços das folhas estiverem secas e amareladas, em dias ensolarados e pela manhã.",
+            title: title,
+            description: self.seasonalityData.description,
             backgroundColor: .seasonalityBack,
             buttonColor: .seasonalityButton
         )
@@ -155,6 +167,22 @@ class InfoFoodController: UIViewController {
             }
         }
         let _ = self.myView.favoriteHandler(for: status)
+    }
+    
+    
+    
+    /// Verifica se está na época de sasonalidade
+    /// - Parameter data: dados de sasonalidade
+    /// - Returns: boleano que diz se está ou não
+    static func checkSeasonality(for data: ManagedSeasonality) -> Bool {
+        if data.allYear {
+            return true
+        }
+        
+        let today = Date()
+        let currentMonth = Calendar.current.dateComponents([.month], from: today).month ?? 0
+        
+        return data.period.contains(currentMonth)
     }
 }
 

@@ -34,7 +34,7 @@ class PopUpView: UIView {
     private let descriptionLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textColor = UIColor(.secondaryTitle)
-        lbl.numberOfLines = 6
+        lbl.numberOfLines = 7
         lbl.adjustsFontSizeToFitWidth = true
         lbl.sizeToFit()
         return lbl

@@ -71,6 +71,7 @@
 		223B75E328F1473D0034B2C4 /* FoodDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E228F1473D0034B2C4 /* FoodDataManager.swift */; };
 		223B75E628F16D280034B2C4 /* FavoriteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E528F16D280034B2C4 /* FavoriteAction.swift */; };
 		223B75E828F16D670034B2C4 /* FavoriteUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */; };
+		2244432C293BF109002E6C29 /* ManagedSeasonality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244432B293BF109002E6C29 /* ManagedSeasonality.swift */; };
 		224BC12629391D02009D92FE /* UDKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BC12529391D02009D92FE /* UDKeys.swift */; };
 		224BC12929393735009D92FE /* OnBoardingInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BC12829393735009D92FE /* OnBoardingInfos.swift */; };
 		224F057229281A9300B20447 /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057129281A9300B20447 /* SettingsDelegate.swift */; };
@@ -209,6 +210,7 @@
 		223B75E228F1473D0034B2C4 /* FoodDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataManager.swift; sourceTree = "<group>"; };
 		223B75E528F16D280034B2C4 /* FavoriteAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAction.swift; sourceTree = "<group>"; };
 		223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUpdate.swift; sourceTree = "<group>"; };
+		2244432B293BF109002E6C29 /* ManagedSeasonality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSeasonality.swift; sourceTree = "<group>"; };
 		224BC12529391D02009D92FE /* UDKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDKeys.swift; sourceTree = "<group>"; };
 		224BC12829393735009D92FE /* OnBoardingInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingInfos.swift; sourceTree = "<group>"; };
 		224F057129281A9300B20447 /* SettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
@@ -489,7 +491,6 @@
 		222937D428C66B6200515095 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				224BC12429391CD1009D92FE /* New Group */,
 				227FAFCE292FAC950080FB9C /* FavoriteHandler */,
 				22A3918228F7AD2000A42DC1 /* Protocol */,
 				222937DE28C66F4D00515095 /* Extensions */,
@@ -995,6 +996,7 @@
 				22A3917C28F785C300A42DC1 /* ManagedFoodData.swift */,
 				22A3917E28F7860100A42DC1 /* ManagedFood.swift */,
 				22A3918028F7862800A42DC1 /* ManagedVitamins.swift */,
+				2244432B293BF109002E6C29 /* ManagedSeasonality.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -1373,6 +1375,7 @@
 				B214C3EA291AF5180033CFAE /* OnboardingDelegate.swift in Sources */,
 				22A3917F28F7860100A42DC1 /* ManagedFood.swift in Sources */,
 				222937F128C6837500515095 /* UIButton+IconInfo.swift in Sources */,
+				2244432C293BF109002E6C29 /* ManagedSeasonality.swift in Sources */,
 				223B75E628F16D280034B2C4 /* FavoriteAction.swift in Sources */,
 				2229382928C85EF700515095 /* UITextField+setupPlaceHolder.swift in Sources */,
 				B214C3E8291AF4E30033CFAE /* OnboardingProtocol.swift in Sources */,
