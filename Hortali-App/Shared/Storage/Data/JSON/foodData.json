@@ -33,12 +33,12 @@
         }
     ],
     "foods": [
-        {   
+        {
             "id": 0,
             "name": "Abacate",
             "category": "Fruta",
-            "benefits": "Ajuda a reduzir a pressão arterial. Isso acontece devido à presença de potássio no alimento. O abacate é um alimento com alto teor de gordura do tipo monoinsaturado, o que o torna um aliado do coração.",
-            "minerals": "E minerais como cobre, manganês, magnésio, fósforo, potássio e zinco",
+            "benefits": "Um dos melhores aliados do nosso coração, o abacate contribui com a redução da pressão arterial graças a sua riqueza em potássio. Além disso seu alto teor de gorduras monoinsaturadas, quando aliado á uma alimentação equilibrada promove saúde e força ao nosso sistema cardiovascular.",
+            "minerals": "E minerais como cobre, manganês, magnésio, fósforo, potássio e zinco.",
             "vitamins": [
                 {
                     "name": "C"
@@ -53,16 +53,21 @@
             "coverImage": {
                 "name": "Abacate_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Abacate_Page"
+            },
+            "seasonality" : {
+                "allYear" : true,
+                "period" : [],
+                "description": "Por haver muitos tipos de abacate como: Geada, Fortuna e Breda, o abacate tem boa disponibilidade durante o ano todo. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 1,
             "name": "Abobrinha",
             "category": "Legume",
-            "benefits": "Seu consumo auxilia na visão, na digestão e ainda nos ossos.",
-            "minerals": "E minerais como fósforo, potássio, cálcio e magnésio",
+            "benefits": "Ajudando na digestão, visão e fortalecimentos de ossos, a abobrinha ainda contribui com o sistema cardiovascular devido a sua riqueza em fibras solúveis que se mostram eficazes até mesmo na redução dos níveis de colesterol ruim (LDL).",
+            "minerals": "E minerais como fósforo, potássio, cálcio e magnésio.",
             "vitamins": [
                 {
                     "name": "A"
@@ -77,16 +82,21 @@
             "coverImage": {
                 "name": "Abobrinha_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Abobrinha_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [1,2,3,4,5,6,7,8,9,10],
+                "description": "De janeiro a outubro, você sempre encontrara abobrinha nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 2,
             "name": "Abóbora",
             "category": "Legume",
-            "benefits": "Rica em betacaroteno, composto que nosso organismo transforma em vitamina A, que protege contra a degeneração da visão por idade.",
-            "minerals": "E minerais como cálcio, ferro, fósforo e potássio",
+            "benefits": "A abóbora é rica em betacaroteno, um composto que quando em contado com nosso organismo, se converte em vitamina A, a melhor amiga da visão. Esse legume combate de frente até mesmo a degeneração da nossa visão conforme envelhecemos.",
+            "minerals": "E minerais como cálcio, ferro, fósforo e potássio.",
             "vitamins": [
                 {
                     "name": "A"
@@ -101,15 +111,20 @@
             "coverImage": {
                 "name": "Abobora_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Abobora_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [1,2,3,4,5,6,7,8,9,10],
+                "description": "De janeiro a outubro, você sempre encontrara abobrinha nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 3,
             "name": "Alface",
             "category": "Vegetal",
-            "benefits": "Por ter vitamina A, luteína e zeaxantina, o consumo de alface pode trazer benefícios para a saúde ocular. As substâncias são carotenoides que atuam na redução de doenças oftalmológicas como a catarata e a degeneração macular, ambos problemas de saúde que são relacionados à idade e que podem levar à cegueira",
+            "benefits": "A alface é uma grande aliada dos nossos olhos. Por ter vitamina A, luteína e zeaxantina, o consumo de alface pode trazer benefícios para a saúde ocular por meio dos carotenóides, reduzindo nossos riscos de doenças como catarata e a degeneração ocular quando em conjunto a uma alimentação equilibrada.",
             "minerals": "E minerais como cálcio e fósforo",
             "vitamins": [
                 {
@@ -125,16 +140,21 @@
             "coverImage": {
                 "name": "Alface_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Alface_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [12,1,2,3,4,5],
+                "description": "De dezembro a maio, você sempre encontrara alface nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 4,
             "name": "Alho",
             "category": "Vegetal",
-            "benefits": "O consumo frequente de alho pode ajudar a diminuir o colesterol, regular a pressão sanguínea, combater fungos e bactérias no organismo e proteger o coração. Uma alimentação balanceada potencializa esses resultados, fazendo todos os alimentos trabalharem em conjunto para o bem do nosso metabolismo.",
-            "minerals": "E minerais como cálcio, cobre, potássio, fósforo, ferro",
+            "benefits": "Quando o consumimos frequentemente, o alho pode contribuir com a redução do colesterol ruim(LDL) , regular nossa pressão sanguínea, sendo um grande protetor da saúde cardiovascular. Além disso, suas propriedades anti-fúngicas e anti-bacterianas quando aliadas a uma alimentação equilibrada potencializa nosso a saúde do nosso metabolismo.",
+            "minerals": "E minerais como cálcio, cobre, potássio, fósforo, ferro.",
             "vitamins": [
                 {
                     "name": "A"
@@ -149,16 +169,21 @@
             "coverImage": {
                 "name": "Alho_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Alho_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [7,8,9,10,11],
+                "description": "De julho a novembro, você sempre encontrara alho nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 30,
             "name": "Alho-poró",
             "category": "Vegetal",
-            "benefits": "Rico em fibras, que ajudam a manter o funcionamento do sistema digestivo e prolongam a sensação de saciedade. Assim, elas conseguem controlar melhor a fome e a absorção de nutrientes.",
-            "minerals": "E minerais como cálcio, ferro, potássio, magnésio, zinco e cobre",
+            "benefits": "Por ser rico em fibras, o alho-poró ajuda o funcionamento do nosso sistema digestivo e regulariza nossos hormônios de saciedade contribuindo com o controle da fome e até mesmo, a absorção de nutrientes.",
+            "minerals": "E minerais como cálcio, ferro, potássio, magnésio, zinco e cobre.",
             "vitamins": [
                 {
                     "name": "B"
@@ -170,16 +195,21 @@
             "coverImage": {
                 "name": "AlhoPoro_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "AlhoPoro_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [8,9,10,11,12],
+                "description": "De agosto a dezembro, você sempre encontrara alho-poró nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 5,
             "name": "Batata Doce",
             "category": "Legume",
-            "benefits": "Contém também vitamina C, um antioxidante que protege as células do corpo contra as informações e os radicais livres.",
-            "minerals": "E minerais como ferro, cálcio, potássio, enxofre e magnésio",
+            "benefits": "Por conter vitamina C, a batata doce age como um ótimo antioxidante, protegendo células do nosso corpo contra os radicais livres e o enfraquecimento de nosso sistema imunológico que contribuem com a nossa exposição a bactérias, vírus e até mesmo fungos.",
+            "minerals": "E minerais como ferro, cálcio, potássio, enxofre e magnésio.",
             "vitamins": [
                 {
                     "name": "A"
@@ -194,16 +224,21 @@
             "coverImage": {
                 "name": "BatataDoce_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "BatataDoce_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [3,4,5,6,7,8,9],
+                "description": "De março a setembro, você sempre encontrara batata-doce nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 6,
             "name": "Batata",
             "category": "Legume",
-            "benefits": "É um alimento com propriedades antioxidantes, que colaboram com o retardo do envelhecimento, além de prevenir doenças degenerativas.",
-            "minerals": "E minerais como cálcio e fósforo",
+            "benefits": "Suas propriedades antioxidantes fazem com que a batata-inglesa colabore com o retardo do nosso envelhecimento e na prevenção doenças degenerativas",
+            "minerals": "E minerais como cálcio e fósforo.",
             "vitamins": [
                 {
                     "name": "A"
@@ -218,16 +253,21 @@
             "coverImage": {
                 "name": "Batata_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Batata_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [],
+                "description": ""
             }
         },
-        {   
+        {
             "id": 7,
             "name": "Beterraba",
             "category": "Legume",
-            "benefits": "Ajuda a limpar o fígado, reduz o colesterol ruim, fortalece os ossos e ajuda no combate a anemia.",
-            "minerals": "E minerais como manganês, potássio e zinco",
+            "benefits": "Grande amiga do nosso fígado, a beterraba ajuda a limpa-lo e na redução do colesterol ruim(LDL). Além de fortalecer nossos ossos e no combate da tão temida anemia.",
+            "minerals": "E minerais como manganês, potássio e zinco.",
             "vitamins": [
                 {
                     "name": "A"
@@ -242,16 +282,21 @@
             "coverImage": {
                 "name": "Beterraba_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Beterraba_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [1,2,3],
+                "description": "De janeiro a março, você sempre encontrara beterraba nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 8,
             "name": "Cebola",
             "category": "Vegetal",
-            "benefits": "A cebola é uma grande aliada de quem sofre com pressão alta.",
-            "minerals": "E minerais como ferro, potássio, sódio, fósforo e cálcio",
+            "benefits": "Uma grande aliada de pessoas que sofrem com hipertensão, a cebola tem a capacidade de regularizar nossa pressão arterial quando aliada a uma alimentação equilibrada. Além disso, graças a sua alta concentração de enxofre, também nos ajuda a regularizar a presença de açucares em nosso sangue.",
+            "minerals": "E minerais como ferro, potássio, sódio, fósforo e cálcio.",
             "vitamins": [
                 {
                     "name": "A"
@@ -266,16 +311,21 @@
             "coverImage": {
                 "name": "Cebola_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Cebola_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [8,9,10,11],
+                "description": "De agosto a novembro, você sempre encontrara cebola nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 9,
             "name": "Cebolinha",
             "category": "Erva",
-            "benefits": "Auxilia contra problemas digestivos, possui ação anti-hipertensiva, detoxificante, além de equilibrar a imunidade",
-            "minerals": "E minerais como potássio, folato, cálcio, fósforo",
+            "benefits": "Contra problemas digestivos a cebolinha é uma grande amiga. Com sua ação anti-hipertensiva e desintoxicante, equilibra nosso sistema cardiovascular e imunológico.",
+            "minerals": "E minerais como potássio, folato, cálcio, fósforo.",
             "vitamins": [
                 {
                     "name": "A"
@@ -290,16 +340,21 @@
             "coverImage": {
                 "name": "Cebolinha_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Cebolinha_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [12],
+                "description": "Em dezembro, você sempre encontrara cebolinha nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 10,
             "name": "Cenoura",
             "category": "Legume",
-            "benefits": "Auxilia a visão e a pressão arterial. Por ser fonte de um poderoso antioxidante chamado betacaroteno, a cenoura também beneficiar a saúde da pele, ajudando na prevenção dos danos causados pela ação dos raios UV.",
-            "minerals": "E minerais como potássio, carotenóides, fibras e antioxidantes",
+            "benefits": "Grande auxiliadora da visão. a cenoura ainda contribui com a regularização da nossa pressão arterial. Além de  ser fonte de um poderoso antioxidante chamado betacaroteno, que também beneficia a saúde da pele, ajudando na prevenção dos danos causados pela ação dos raios UV.",
+            "minerals": "E minerais como potássio, carotenóides, fibras e antioxidantes.",
             "vitamins": [
                 {
                     "name": "A"
@@ -314,16 +369,21 @@
             "coverImage": {
                 "name": "Cenoura_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Cenoura_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [12],
+                "description": "Em dezembro, você sempre encontrara cenoura nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 11,
             "name": "Coentro",
             "category": "Erva",
-            "benefits": "Graças aos carotenóides, que protegem contra o envelhecimento e reduzem os danos causados pelos raios UVB. Por conta das gorduras insaturadas e vitamina C, que ajudam a reduzir o colesterol ruim (LDL) e aumentar o bom (HDL).",
-            "minerals": "E minerais como cálcio, fósforo e ferro",
+            "benefits": "Graças aos carotenóides que protegem contra o envelhecimento, o coentro reduz os danos causados pelos raios UVB em nossa pele. Além de conter gorduras insaturadas e vitamina C, que ajudam a reduzir o colesterol ruim(LDL) e aumentar o bom colesterol(HDL).",
+            "minerals": "E minerais como cálcio, fósforo e ferro.",
             "vitamins": [
                 {
                     "name": "A"
@@ -338,16 +398,21 @@
             "coverImage": {
                 "name": "Coentro_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Coentro_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [8,9,10,11,12],
+                "description": "De agosto a dezembro, você sempre encontrara coentro nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 12,
             "name": "Couve",
             "category": "Vegetal",
-            "benefits": "Controla a pressão arterial e a ação dos hormônios.",
-            "minerals": "E minerais como cálcio, ferro, magnésio e zinco",
+            "benefits": "Combatendo a desregularização da nossa pressão arterial, a couve também contribui com o equilíbrio da ação dos hormônios em nosso corpo.",
+            "minerals": "E minerais como cálcio, ferro, magnésio e zinco.",
             "vitamins": [
                 {
                     "name": "A"
@@ -362,16 +427,21 @@
             "coverImage": {
                 "name": "Couve_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Couve_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [7,8,9],
+                "description": "De julho a setembro, você sempre encontrara couve nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 13,
             "name": "Espinafre",
             "category": "Vegetal",
-            "benefits": "Combate a anemia, a desnutrição, o cansaço, aumenta a energia e melhora a qualidade do sangue.",
-            "minerals": "E minerais como cálcio, magnésio e fósforo",
+            "benefits": "Combatendo a anemia e a desnutrição, o espinafre combate o cansaço aumentando nossa energia e disposição. Além de melhorar a qualidade do nosso sangue.",
+            "minerals": "E minerais como cálcio, magnésio e fósforo.",
             "vitamins": [
                 {
                     "name": "A"
@@ -386,16 +456,21 @@
             "coverImage": {
                 "name": "Espinafre_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Espinafre_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [3,4,5,6,7,8,9,10,11],
+                "description": "De março a novembro, você sempre encontrara espinafre nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 14,
             "name": "Gengibre",
             "category": "Legume",
-            "benefits": "Pode ajudar na prevenção da catarata e evitar doenças degenerativas do cérebro, como é o caso do Alzheimer.",
-            "minerals": "E minerais como magnésio, cálcio e potássio",
+            "benefits": "O gengibre pode te ajudar na prevenção da catarata e evitar doenças cerebrais, como a Alzheimer. Além disso, essa raiz fortalece nosso sistema respiratório e age em nosso corpo como um grande anti-inflamatório.",
+            "minerals": "E minerais como magnésio, cálcio e potássio.",
             "vitamins": [
                 {
                     "name": "B"
@@ -407,16 +482,21 @@
             "coverImage": {
                 "name": "Gengibre_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Gengibre_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [6],
+                "description": "Em junho, você sempre encontrara gengibre nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 15,
             "name": "Hortelã",
             "category": "Erva",
-            "benefits": "Indicada para distúrbios gastrointestinais como diarreia, náuseas e vômitos. Também possui ação vermífuga, antigases, analgésicos, antisséptico e anti-inflamatória.",
-            "minerals": "E minerais como sódio, ferro, magnésio e potássio",
+            "benefits": "Indicada para distúrbios gastrointestinais como diarreia, náuseas e vômitos, a hortelã também possui ação vermífuga, antigases, analgésica, antisséptico e anti-inflamatória, podendo ser utilizada até mesmo no combate a cefaleias e enxaquecas.",
+            "minerals": "E minerais como sódio, ferro, magnésio e potássio.",
             "vitamins": [
                 {
                     "name": "A"
@@ -431,16 +511,21 @@
             "coverImage": {
                 "name": "Hortela_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Hortela_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [7,8,9],
+                "description": "De julho a setembro, você sempre encontrara hortelã nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 16,
             "name": "Jabuticaba",
             "category": "Fruta",
-            "benefits": "Rica em fibras, que ajudam na regulação do intestino.",
-            "minerals": "E minerais como cálcio, potássio, magnésio",
+            "benefits": "Rica em fibras, a Jabuticaba é uma ótima aliada na regulação do intestino. Além disso, esta fruta também é uma ótima forma de consumir anti-oxidantes.",
+            "minerals": "E minerais como cálcio, potássio, magnésio.",
             "vitamins": [
                 {
                     "name": "C"
@@ -455,16 +540,21 @@
             "coverImage": {
                 "name": "Jabuticaba_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Jabuticaba_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [7,8],
+                "description": "Em setembro e outubro, você sempre encontrara jabuticaba nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 17,
             "name": "Laranja",
             "category": "Fruta",
-            "benefits": "Diminui os níveis de colesterol ruim no organismo.",
-            "minerals": "E minerais como ferro, potássio, cálcio",
+            "benefits": "A laranja é o reforço imunológico que todos nós precisamos. Riquíssima em vitamina C, também ajuda a diminuir nossos níveis de colesterol ruim(LDL) no organismo.",
+            "minerals": "E minerais como ferro, potássio, cálcio.",
             "vitamins": [
                 {
                     "name": "A"
@@ -479,16 +569,21 @@
             "coverImage": {
                 "name": "Laranja_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Laranja_Page"
+            },
+            "seasonality" : {
+                "allYear" : true,
+                "period" : [],
+                "description": "Por haver muitos tipos de laranja como: Lima, Pera e Baia, a laranja tem boa disponibilidade durante o ano todo. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 18,
             "name": "Limão",
             "category": "Fruta",
-            "benefits": "Consumir limão com regularidade ajuda a retardar a digestão de açúcares e amidos e também no funcionamento intestinal.",
-            "minerals": "E minerais como potássio, fósforo, magnésio, cálcio",
+            "benefits": "O limão quando consumido com regularidade pode nos ajudar retardando a digestão de açúcares e amidos, colaborando diretamente com nosso funcionamento intestinal.",
+            "minerals": "E minerais como potássio, fósforo, magnésio, cálcio.",
             "vitamins": [
                 {
                     "name": "A"
@@ -503,15 +598,20 @@
             "coverImage": {
                 "name": "Limao_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Limao_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [1,2,3,4],
+                "description": "De janeiro a abril, você sempre encontrara limão nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 19,
             "name": "Manjericão",
             "category": "Erva",
-            "benefits": "Com uma potente ação antioxidante, o manjericão tem como principal função proteger o corpo de ataques bacterianos, estimular a memória, atua também no manejo do estresse, além de possuir ação detoxificante, antisséptica, antiespasmódica ajudando o corpo a se proteger de todo tipo de infecção.",
+            "benefits": "Com uma potente ação antioxidante, o manjericão tem como principal função proteger o corpo de ataques bacterianos, ação desintoxicante, antisséptica, antiespasmódica ajudando o corpo a se proteger de todo tipo de infecção. Além disso, essa erva é uma grande aliada na estimulação da memória e no manejo do estresse.",
             "minerals": "E minerais como cálcio, fósforo e ferro.",
             "vitamins": [
                 {
@@ -527,16 +627,21 @@
             "coverImage": {
                 "name": "Manjericao_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Manjericao_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [7,12],
+                "description": "Em setembro e dezembro, você sempre encontrara manjericão nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 20,
             "name": "Morango",
             "category": "Fruta",
-            "benefits": "Ajuda a reduzir o colesterol por ser rico em antocianina, um tipo de antioxidante que impede a oxidação do colesterol ruim (LDL) e eleva as taxas do colesterol bom (HDL).",
-            "minerals": "E minerais como magnésio, manganês, potássio e silício",
+            "benefits": "Ajudando a reduzir o colesterol por ser rico em antocianina, o morango possui um tipo de antioxidante que impede a oxidação do colesterol ruim (LDL) e eleva as taxas do colesterol bom (HDL), sendo um grande aliado da nossa saúde cardiovascular.",
+            "minerals": "E minerais como magnésio, manganês, potássio e silício.",
             "vitamins": [
                 {
                     "name": "C"
@@ -551,16 +656,21 @@
             "coverImage": {
                 "name": "Morango_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Morango_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [7,8,9],
+                "description": "De junho a setembro, você sempre encontrara morango nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
         {
             "id": 21,
             "name": "Orégano",
             "category": "Erva",
-            "benefits": "Seu consumo ajuda a controlar a pressão arterial, estimula a produção de enzimas digestivas.",
-            "minerals": "E minerais como zinco, magnésio, cálcio",
+            "benefits": "Ajudante do controle de pressão arterial, o orégano também é um ótimo aliado ao nosso sistema digestivo, produzindo enzimas importantes para o nosso corpo.",
+            "minerals": "E minerais como zinco, magnésio, cálcio.",
             "vitamins": [
                 {
                     "name": "A"
@@ -577,14 +687,19 @@
             },
             "pageImage": {
                 "name": "Oregano_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [3,8],
+                "description": "Em março e agosto, você sempre encontrara orégano nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 22,
             "name": "Pepino",
             "category": "Legume",
-            "benefits": "Graças à grande quantidade de água em sua composição, ajuda a manter o organismo hidratado, e contribui para o bom funcionamento do trânsito intestinal.",
-            "minerals": "E minerais como magnésio, potássio, fósforo, cálcio e manganês",
+            "benefits": "Graças à grande quantidade de água em sua composição, o pepina nos ajuda a manter a hidratação do nosso corpo, além de contribuir para o bom funcionamento do trânsito intestinal.",
+            "minerals": "E minerais como magnésio, potássio, fósforo, cálcio e manganês.",
             "vitamins": [
                 {
                     "name": "A"
@@ -599,16 +714,21 @@
             "coverImage": {
                 "name": "Pepino_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Pepino_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [3,4],
+                "description": "Em março e abril, você sempre encontrara pepino nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 23,
             "name": "Pimentão",
             "category": "Legume",
-            "benefits": "A cor está diretamente ligada ao grau de maturação e determina os benefícios à saúde. O pimentão vermelho é rico em licopeno, atuando na redução de problemas cardiovasculares. Já o verde é fonte de vitaminas B, e o amarelo contém maior quantidade de vitamina C.",
-            "minerals": "E minerais como potássio, fósforo, magnésio e cálcio",
+            "benefits": "A cor do pimentão está diretamente ligada ao grau de maturação e determina os benefícios à saúde. O pimentão vermelho é rico em licopeno, atuando na redução de problemas que podem afetar nosso sistema cardiovascular. Já o verde é fonte de vitaminas B, enquanto o amarelo contém maior quantidade de vitamina C, um poderoso antioxidante aliado de nossa imunidade.",
+            "minerals": "E minerais como potássio, fósforo, magnésio e cálcio.",
             "vitamins": [
                 {
                     "name": "B"
@@ -620,16 +740,21 @@
             "coverImage": {
                 "name": "Pimentao_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Pimentao_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [1,2,3,4],
+                "description": "De janeiro a abril, você sempre encontrara pimentão nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 24,
             "name": "Rabanete",
             "category": "Legume",
-            "benefits": "Além de conter fibras que ajudam no funcionamento do intestino, o rabanete também estimula a produção de bile, o que é benéfico para a digestão e para o fígado.",
-            "minerals": "E minerais como potássio, cálcio, magnésio, fósforo, cobre e zinco",
+            "benefits": "Além de conter fibras que ajudam no funcionamento do intestino, o rabanete também estimula a produção de bile, o que é benéfico para nossa digestão e para o funcionamento regular do fígado.",
+            "minerals": "E minerais como potássio, cálcio, magnésio, fósforo, cobre e zinco.",
             "vitamins": [
                 {
                     "name": "B"
@@ -644,16 +769,21 @@
             "coverImage": {
                 "name": "Rabanete_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Rabanete_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [5,6,7,8,9,10,11,12],
+                "description": "De maio a dezembro, você sempre encontrara rabanete nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 25,
             "name": "Romã",
             "category": "Fruta",
-            "benefits": "Possui antioxidantes chamados punicalagins. Eles são encontrados na semente e na casca do fruto e são os responsáveis por sua ação anti-inflamatória no nosso organismo. Lembrando que infamações crônicas estão entre os principais sintomas das doenças que mais matam, incluindo câncer, diabetes tipo 2, mal de Alzheimer, doenças do coração e obesidade.",
-            "minerals": "E minerais como potássio e fósforo",
+            "benefits": "Rica em antioxidantes punicalagins encontrados na semente e na casca do fruto, a romã é uma ótima aliada  por sua ação anti-inflamatória no nosso organismo.",
+            "minerals": "E minerais como potássio e fósforo.",
             "vitamins": [
                 {
                     "name": "B"
@@ -668,16 +798,21 @@
             "coverImage": {
                 "name": "Roma_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Roma_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [12],
+                "description": "Em dezembro, você sempre encontrara romã nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 26,
             "name": "Rúcula",
             "category": "Vegetal",
-            "benefits": "Ajuda a diminuir os níveis de glicose no sangue e a melhorar a resistência à insulina, além de proteger os vasos sanguíneos.",
-            "minerals": "E minerais como cálcio, ferro, fósforo, magnésio e potássio",
+            "benefits": "Ajudando a diminuir os níveis de glicose no sangue e a melhorar a resistência à insulina, a rúcula também fortalece e protege nossos vasos sanguíneos.",
+            "minerals": "E minerais como cálcio, ferro, fósforo, magnésio e potássio.",
             "vitamins": [
                 {
                     "name": "A"
@@ -692,15 +827,20 @@
             "coverImage": {
                 "name": "Rucula_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Rucula_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [3,4],
+                "description": "Em março e abril, você sempre encontrara rúcula nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 27,
             "name": "Tomate",
             "category": "Legume",
-            "benefits": "Rico em licopeno, um pigmento carotenoide que exerce uma potente ação antioxidante no organismo, protegendo as células do efeito dos radicais livres, e inibindo a proliferação das células tumorais, prevenindo e atrasando o desenvolvimento de diferentes tipos de câncer, principalmente de próstata, mama e de ovário em mulheres na menopausa.",
+            "benefits": "Rico em licopeno, um pigmento que exerce uma potente ação antioxidante no organismo, o tomate protege nossas células do efeito dos radicais livres, inibindo a proliferação das células tumorais, prevenindo e atrasando o desenvolvimento de diferentes tipos de câncer.",
             "minerals": "E minerais como fósforo, potássio, cálcio e magnésio.",
             "vitamins": [
                 {
@@ -716,16 +856,21 @@
             "coverImage": {
                 "name": "Tomate_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Tomate_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [12,1,2],
+                "description": "Em dezembro a fevereiro, você sempre encontrara tomate nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         },
-        {   
+        {
             "id": 28,
             "name": "Tomilho",
             "category": "Erva",
-            "benefits": "Apresenta propriedades antissépticas, podendo ser usado em casos de afecções pulmonares e como estimulante digestivo.",
-            "minerals": "E minerais como cálcio e potássio",
+            "benefits": "O tomilho apresenta propriedades antissépticas, que podem ser usadas em casos de afecções pulmonares e como estimulante do nosso trato digestivo.",
+            "minerals": "E minerais como cálcio e potássio.",
             "vitamins": [
                 {
                     "name": "A"
@@ -740,16 +885,21 @@
             "coverImage": {
                 "name": "Tomilho_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Tomilho_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [],
+                "description": ""
             }
         },
-        {   
+        {
             "id": 29,
             "name": "Vagem",
             "category": "Legume",
-            "benefits": "Auxilia no funcionamento do intestino pois é rica em fibras, e contém nutrientes importantes que ajudam no humor. Entre eles, há magnésio, ácido fólico e vitaminas do complexo B, que ajudam na produção de serotonina. Este neurotransmissor é responsável pela sensação de bem-estar.",
-            "minerals": "E minerais como cálcio, magnésio, fósforo e potássio",
+            "benefits": "Auxiliando no funcionamento do intestino, a vagem é rica em fibras, e contém nutrientes importantes que ajudam no humor, agindo diretamente em nossa produção de serotonina, o hormônio do bem-estar.",
+            "minerals": "E minerais como cálcio, magnésio, fósforo e potássio.",
             "vitamins": [
                 {
                     "name": "A"
@@ -764,8 +914,13 @@
             "coverImage": {
                 "name": "Vagem_Cover"
             },
-            "pageImage": {   
+            "pageImage": {
                 "name": "Vagem_Page"
+            },
+            "seasonality" : {
+                "allYear" : false,
+                "period" : [12],
+                "description": "Em dezembro, você sempre encontrara vagem nos seus espaços de agricultura favoritos. Nessa época, este alimento esta em alta para participar das suas refeições e você pode encontra-los com preços mais interessantes."
             }
         }
     ]

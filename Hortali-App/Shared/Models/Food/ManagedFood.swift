@@ -15,4 +15,6 @@ struct ManagedFood: Codable {
     let vitamins: [ManagedVitamins]
     let coverImage: ManagedImage
     let pageImage: ManagedImage
+    
+    let seasonality: ManagedSeasonality
 }

@@ -23,6 +23,9 @@ class InfoFoodController: UIViewController {
     /// Dados das vitaminas
     private var vitaminsData: [ManagedVitamins] = []
     
+    /// Dados de sazonalidade
+    private var seasonalityData: ManagedSeasonality!
+    
     
     
     /* MARK: - Construtor */
@@ -40,6 +43,8 @@ class InfoFoodController: UIViewController {
         
         self.setupFavoriteStatus(for: data)
         self.vitaminsData = data.vitamins
+        
+        self.seasonalityData = data.seasonality
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -103,17 +108,43 @@ class InfoFoodController: UIViewController {
             title: "Vitamina \(vitaminInfo?.name ?? "")",
             description: vitaminInfo?.description ?? ""
         )
+        self.showPopUp(with: popupInfos)
+    }
+    
+    
+    /// Ação de mostrar informações sobre a sazonalidade
+    @objc
+    private func seasonalityAction() {
+        let isSeason = Self.checkSeasonality(for: self.seasonalityData)
         
-        let controller = PopUpController(infos: popupInfos)
+        var title = "sazonalidade"
+        if isSeason {
+            title = "ta na epoca!"
+        }
+        
+        let popupInfos = PopUpInfo(
+            title: title,
+            description: self.seasonalityData.description,
+            backgroundColor: .seasonalityBack,
+            buttonColor: .seasonalityButton
+        )
+        self.showPopUp(with: popupInfos)
+    }
+    
+    
+    
+    /* MARK: - Configurações */
+    
+    /// Mostra um popup a partir dos dados passados
+    /// - Parameter info: informações que vão ser passadas
+    private func showPopUp(with info: PopUpInfo) {
+        let controller = PopUpController(infos: info)
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle = .crossDissolve
         
         self.present(controller, animated: true)
     }
     
-    
-    
-    /* MARK: - Configurações */
 
     /// Definindo as ações dos botões
     private func setupButtonsAction() {
@@ -121,6 +152,7 @@ class InfoFoodController: UIViewController {
         self.myView.setFavoriteButtonAction(target: self, action: #selector(self.favoriteAction))
         self.myView.setExpLabelButtonAction(target: self, action: #selector(self.expandLabelAction))
         self.myView.setVitaminsButtonAction(target: self, action: #selector(self.vitaminsAction(sender:)))
+        self.myView.setSeasonalityButtonAction(target: self, action: #selector(self.seasonalityAction))
     }
     
     
@@ -135,6 +167,24 @@ class InfoFoodController: UIViewController {
             }
         }
         let _ = self.myView.favoriteHandler(for: status)
+    }
+    
+    
+    
+    /* MARK: - Singleton */
+    
+    /// Verifica se está na época de sazonalidade
+    /// - Parameter data: dados de sazonalidade
+    /// - Returns: estado que diz se está na época ou não
+    static func checkSeasonality(for data: ManagedSeasonality) -> Bool {
+        if data.allYear {
+            return true
+        }
+        
+        let today = Date()
+        let currentMonth = Calendar.current.dateComponents([.month], from: today).month ?? 0
+        
+        return data.period.contains(currentMonth)
     }
 }
 
