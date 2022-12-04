@@ -15,7 +15,7 @@ class InfoGardenContact: UIView, InfoGardenCellProtocol {
     private let contactStack: CustomStack = CustomViews.newStackView()
     
     /// Views de contatos
-    private let contactViews: [ContactGroup] = [ContactGroup(), ContactGroup()]
+    private let contactViews: [ContactGroup] = [ContactGroup(), ContactGroup(), ContactGroup()]
     
     
     // Outros
@@ -23,10 +23,11 @@ class InfoGardenContact: UIView, InfoGardenCellProtocol {
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
 	
-    /// Quantiade de contato que estão na stack view
+    /// Quantidade de contato que estão na stack view
     private var contactInStack: Int = 0
 
 
+    
     /* MARK: - Construtor */
     
     init() {
@@ -66,13 +67,21 @@ class InfoGardenContact: UIView, InfoGardenCellProtocol {
     /// Configura os contatos de acordo com a quantidade de contatos disponíveis
     /// - Parameter infos: contatos disponiveis
     private func setupContactInfos(with infos: [ManagedContact]) {
-        if infos.count == 1 {
-            self.contactViews[1].isHidden = true
+        switch infos.count {
+        case 1:
             self.contactViews[0].setupContactInfo(with: infos[0])
-        } else {
+            self.contactViews[1].isHidden = true
+            self.contactViews[2].isHidden = true
+        case 2:
             self.contactViews[0].setupContactInfo(with: infos[0])
             self.contactViews[1].setupContactInfo(with: infos[1])
+            self.contactViews[2].isHidden = true
+        default:
+            self.contactViews[0].setupContactInfo(with: infos[0])
+            self.contactViews[1].setupContactInfo(with: infos[1])
+            self.contactViews[2].setupContactInfo(with: infos[2])
         }
+        
         self.contactInStack = infos.count
     }
     
@@ -85,6 +94,7 @@ class InfoGardenContact: UIView, InfoGardenCellProtocol {
         
         self.contactStack.addArrangedSubview(self.contactViews[0])
         self.contactStack.addArrangedSubview(self.contactViews[1])
+        self.contactStack.addArrangedSubview(self.contactViews[2])
     }
     
     
@@ -100,7 +110,10 @@ class InfoGardenContact: UIView, InfoGardenCellProtocol {
         
         let groupHeight: CGFloat = self.getConstant(for: 75)
         
-        let spaceStack = self.contactStack.getEqualSpace(for: groupHeight)
+        var spaceStack = self.contactStack.getEqualSpace(for: groupHeight)
+        if self.contactInStack == 2 {
+            spaceStack += groupHeight / 2
+        }
        
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
@@ -111,6 +124,7 @@ class InfoGardenContact: UIView, InfoGardenCellProtocol {
             
             self.contactViews[0].heightAnchor.constraint(equalToConstant: groupHeight),
             self.contactViews[1].heightAnchor.constraint(equalToConstant: groupHeight),
+            self.contactViews[2].heightAnchor.constraint(equalToConstant: groupHeight),
         ]
         
         

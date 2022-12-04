@@ -122,11 +122,11 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {		
         self.todayLabel.setupText(with: FontInfo(
-            text: "Hoje", fontSize: self.getConstant(for: 25), weight: .medium
+            text: "Hoje", fontSize: self.getConstant(for: 30), weight: .semibold
         ))
         
         self.todayWeekLabel.setupText(with: FontInfo(
-            fontSize: self.getConstant(for: 20), weight: .regular, fontFamily: .graffiti
+            fontSize: self.getConstant(for: 27), weight: .regular, fontFamily: .graffiti
         ))
     }
     
@@ -135,11 +135,9 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
     private func setupDynamicConstraints() {
         // Espaçamentos
         let lateral: CGFloat = self.getConstant(for: 15)
+        let between: CGFloat = self.getConstant(for: 5)
         
         let timeGroupHeight: CGFloat = self.getConstant(for: 35)
-        let todayWeekHeight: CGFloat = self.getConstant(for: 25)
-        let space = todayWeekHeight * 2
-        
         let widthStack: CGFloat = self.getConstant(for: 120)
         
         
@@ -147,18 +145,16 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
     
         self.dynamicConstraints = [
             self.todayWeekLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
-            self.todayWeekLabel.trailingAnchor.constraint(equalTo: self.centerXAnchor),
-            self.todayWeekLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: space),
-            self.todayWeekLabel.heightAnchor.constraint(equalToConstant: todayWeekHeight),
+            self.todayWeekLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
+            self.todayWeekLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
             
             self.todayLabel.bottomAnchor.constraint(equalTo: self.todayWeekLabel.topAnchor),
             self.todayLabel.leadingAnchor.constraint(equalTo: self.todayWeekLabel.leadingAnchor),
             self.todayLabel.trailingAnchor.constraint(equalTo: self.todayWeekLabel.trailingAnchor),
-            self.todayLabel.heightAnchor.constraint(equalToConstant: todayWeekHeight),
             
             
-            self.todayTimeGroup.topAnchor.constraint(equalTo: self.todayWeekLabel.bottomAnchor),
+            self.todayTimeGroup.topAnchor.constraint(equalTo: self.todayWeekLabel.bottomAnchor, constant: between),
             self.todayTimeGroup.leadingAnchor.constraint(equalTo: self.todayWeekLabel.leadingAnchor),
             self.todayTimeGroup.heightAnchor.constraint(equalToConstant: timeGroupHeight),
             self.todayTimeGroup.widthAnchor.constraint(equalToConstant: widthStack),
