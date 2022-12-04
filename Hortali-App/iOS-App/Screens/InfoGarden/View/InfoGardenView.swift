@@ -34,6 +34,9 @@ class InfoGardenView: UIView, FavoriteHandler {
     /// Grupo de UI para colocar os elementos de informação sobre a horta
     private let container = ContainerView()
     
+    /// Collection que mostra as tags
+    private let tagsCollection = CollectionGroup(style: .justCollection)
+    
     /// Label expandível
     private let expansiveLabel = ExpansiveLabel()
     
@@ -86,6 +89,14 @@ class InfoGardenView: UIView, FavoriteHandler {
         cvFlow.minimumLineSpacing = 0
         
         return cvFlow
+    }()
+    
+    /// Configurações do layout da collection das tags
+    private let tagsCollectionFlow: UICollectionViewFlowLayout = {
+        let flow = UICollectionViewFlowLayout()
+        flow.scrollDirection = .horizontal
+        flow.estimatedItemSize = .zero
+        return flow
     }()
     
     
@@ -205,6 +216,12 @@ class InfoGardenView: UIView, FavoriteHandler {
     
     /* Collection */
     
+    /// Collection das tags
+    public var tagCollection: UICollectionView {
+        return self.tagsCollection.collection
+    }
+    
+    
     /// Atualiza os dados das collections
     public func reloadCollectionsData() {
         self.imagesCollectionGp.collection.reloadData()
@@ -212,8 +229,11 @@ class InfoGardenView: UIView, FavoriteHandler {
         
         self.infosCollectionGp.collection.reloadData()
         self.infosCollectionGp.collection.reloadInputViews()
+        
+        self.tagsCollection.collection.reloadData()
+        self.tagsCollection.collection.reloadInputViews()
     }
-    
+        
     
     /// Define o data source da collection de informações da horta
     /// - Parameter dataSource: data source da collection
@@ -300,6 +320,8 @@ class InfoGardenView: UIView, FavoriteHandler {
         self.infosCollectionGp.collection.register(InfoGardenInfosCell.self, forCellWithReuseIdentifier: InfoGardenInfosCell.identifier)
         
         self.imagesCollectionGp.collection.register(InfoGardenImagesCell.self, forCellWithReuseIdentifier: InfoGardenImagesCell.identifier)
+        
+        self.tagsCollection.collection.register(TagCell.self, forCellWithReuseIdentifier: TagCell.identifier)
     }
 
 
@@ -307,6 +329,7 @@ class InfoGardenView: UIView, FavoriteHandler {
     private func setupCollectionFlow() {
         self.infosCollectionGp.collection.collectionViewLayout = self.infosCollectionFlow
         self.imagesCollectionGp.collection.collectionViewLayout = self.imagesCollectionFlow
+        self.tagsCollection.collection.collectionViewLayout = self.tagsCollectionFlow
     }
     
     
@@ -320,6 +343,7 @@ class InfoGardenView: UIView, FavoriteHandler {
         self.scrollView.addViewInScroll(self.imagesPageControl)
         self.scrollView.addViewInScroll(self.container)
         
+        self.container.contentView.addSubview(self.tagsCollection)
         self.container.contentView.addSubview(self.expansiveLabel)
         self.scrollView.addViewInScroll(self.infosCollectionGp)
         self.scrollView.addViewInScroll(self.lastUpdateLabel)
@@ -394,9 +418,11 @@ class InfoGardenView: UIView, FavoriteHandler {
         // Altura dos elementos
         let imagesHeight = self.getEquivalent(510)
         let collectionHeight = self.getEquivalent(200)
+        let tagCollectionHeight = self.getEquivalent(25)
         
         
         self.infosCollectionGp.setPadding(for: lateral)
+        self.tagsCollection.setPadding(for: lateral)
         
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
@@ -434,8 +460,14 @@ class InfoGardenView: UIView, FavoriteHandler {
             self.container.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
             self.container.bottomAnchor.constraint(equalTo: self.scrollView.contentView.bottomAnchor),
             
+            
+            self.tagsCollection.topAnchor.constraint(equalTo: self.container.titleLabel.bottomAnchor, constant: -betweenSmaller),
+            self.tagsCollection.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.tagsCollection.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
+            self.tagsCollection.heightAnchor.constraint(equalToConstant: tagCollectionHeight),
+            
 
-            self.expansiveLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),
+            self.expansiveLabel.topAnchor.constraint(equalTo: self.tagsCollection.bottomAnchor, constant: between),
             self.expansiveLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor, constant: lateral),
             self.expansiveLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
             

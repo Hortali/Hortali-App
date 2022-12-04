@@ -29,6 +29,9 @@ class TagCollectionHandler: NSObject, CollectionHandler, UICollectionViewDataSou
     
     /* MARK: - Encapsulamento */
     
+    /// Permissão para as células poderem ser clicadas
+    public var isSelectionAllowed = true
+    
     /// Verifica se existe alguma tag selecionada
     public var tagSelected: IndexPath? {
         return self.selectedCell
@@ -71,13 +74,12 @@ class TagCollectionHandler: NSObject, CollectionHandler, UICollectionViewDataSou
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.identifier, for: indexPath) as? TagCell else {
             return UICollectionViewCell()
         }
-        let row = indexPath.row
-        
-        let data = self.mainData[row]
+        let data = self.mainData[indexPath.row]
         cell.setupCell(with: data.name)
-        cell.tag = row
+        cell.isSelectionAllowed = self.isSelectionAllowed
         
-        collectionView.reloadInputViews()
+        cell.layer.cornerRadius = collectionView.superview?.getEquivalent(5) ?? 5
+        
         return cell
     }
     

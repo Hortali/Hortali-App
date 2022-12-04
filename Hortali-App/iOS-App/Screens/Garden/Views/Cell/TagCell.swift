@@ -41,11 +41,12 @@ class TagCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.setupUI()
         self.setupViews()
         self.setupConstraints()
         self.setupColors(when: false)
         
-        self.layer.masksToBounds = true
+        
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -57,13 +58,10 @@ class TagCell: UICollectionViewCell {
     /// Estado que define se é permitido que as células possam ser selecionadas ou não
     public var isSelectionAllowed = true {
         didSet {
-            self.setupColors(when: self.isSelectionAllowed)
+            self.setupColors(when: !self.isSelectionAllowed)
         }
     }
-    
-    /// Fonte usada na célula
-    static var fontCell: UIFont?
-    
+        
     
     /// Configura a célula a aprtir do texto que vai receber
     /// - Parameter text: texto
@@ -98,9 +96,9 @@ class TagCell: UICollectionViewCell {
         switch isSelected {
         case false:
             self.backgroundColor = UIColor(originalColor: .greenLight)
-            self.label.textColor = UIColor(originalColor: .greenDark)
+            self.label.textColor = UIColor(originalColor: .greenMedium)
         case true:
-            self.backgroundColor = UIColor(originalColor: .greenDark)
+            self.backgroundColor = UIColor(originalColor: .greenMedium)
             self.label.textColor = UIColor(originalColor: .greenLight)
         }
     }
@@ -114,7 +112,7 @@ class TagCell: UICollectionViewCell {
     
     /// Personalização da UI
     private func setupUI() {
-        self.layer.cornerRadius = self.getEquivalent(20)
+        self.layer.masksToBounds = true
     }
     
     
@@ -122,7 +120,6 @@ class TagCell: UICollectionViewCell {
     private func setupStaticTexts() {
         let fontSize = self.superview?.getEquivalent(20) ?? 20
         self.label.setupText(with: FontInfo(fontSize: fontSize, weight: .regular))
-        Self.fontCell = self.label.font
     }
 	  
     
