@@ -72,6 +72,7 @@
 		223B75E628F16D280034B2C4 /* FavoriteAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E528F16D280034B2C4 /* FavoriteAction.swift */; };
 		223B75E828F16D670034B2C4 /* FavoriteUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */; };
 		2244432C293BF109002E6C29 /* ManagedSeasonality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244432B293BF109002E6C29 /* ManagedSeasonality.swift */; };
+		2244432E293CA4A9002E6C29 /* ManagedTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244432D293CA4A9002E6C29 /* ManagedTags.swift */; };
 		224BC12629391D02009D92FE /* UDKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BC12529391D02009D92FE /* UDKeys.swift */; };
 		224BC12929393735009D92FE /* OnBoardingInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BC12829393735009D92FE /* OnBoardingInfos.swift */; };
 		224F057229281A9300B20447 /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057129281A9300B20447 /* SettingsDelegate.swift */; };
@@ -211,6 +212,7 @@
 		223B75E528F16D280034B2C4 /* FavoriteAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteAction.swift; sourceTree = "<group>"; };
 		223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUpdate.swift; sourceTree = "<group>"; };
 		2244432B293BF109002E6C29 /* ManagedSeasonality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSeasonality.swift; sourceTree = "<group>"; };
+		2244432D293CA4A9002E6C29 /* ManagedTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedTags.swift; sourceTree = "<group>"; };
 		224BC12529391D02009D92FE /* UDKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDKeys.swift; sourceTree = "<group>"; };
 		224BC12829393735009D92FE /* OnBoardingInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingInfos.swift; sourceTree = "<group>"; };
 		224F057129281A9300B20447 /* SettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
@@ -986,6 +988,7 @@
 				22A3917528F784FB00A42DC1 /* ManagedGarden.swift */,
 				22A3917728F7854000A42DC1 /* ManagedContact.swift */,
 				22A3917928F7858100A42DC1 /* ManagedHourInfo.swift */,
+				2244432D293CA4A9002E6C29 /* ManagedTags.swift */,
 			);
 			path = Garden;
 			sourceTree = "<group>";
@@ -1311,6 +1314,7 @@
 				2229382C28C87BC400515095 /* AppPureColors.swift in Sources */,
 				227FAFD2292FADB10080FB9C /* FavoriteInfos.swift in Sources */,
 				220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */,
+				2244432E293CA4A9002E6C29 /* ManagedTags.swift in Sources */,
 				222937EF28C6831300515095 /* UITextField+FontInfo.swift in Sources */,
 				2210245D28D8494A00F412A5 /* InfoGardenImagesCell.swift in Sources */,
 				224BC12929393735009D92FE /* OnBoardingInfos.swift in Sources */,
