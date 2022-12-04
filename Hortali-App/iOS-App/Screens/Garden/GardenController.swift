@@ -23,6 +23,9 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     /// Delegate da collection das hortas
     private let gardenDelegate = GardenDelegate()
     
+    /// Data source da collections das tags
+    private let tagDataSource = TagDataSource()
+    
     /// Delegate da barra de busca
     private let searchDelegate = SearchDelegate()
     
@@ -48,6 +51,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         super.viewDidLoad()
         
         self.setupDataSourceData()
+        self.setupTagData()
         self.setupDelegates()
         self.setupKeyboardHandler()
         self.setupButtonsAction()
@@ -59,6 +63,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         super.viewWillAppear(animated)
         
         self.showOnBoarding()
+        self.myView.reloadCollectionData()
     }
     
     
@@ -170,6 +175,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         self.myView.setDataSource(with: self.gardenDataSource)
         self.myView.setDelegate(with: self.gardenDelegate)
         
+        self.myView.setTagDataSource(with: self.tagDataSource)
         
         // Search
         self.searchDelegate.setProtocol(with: self)
@@ -183,8 +189,6 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         if let data {
             self.gardenDataSource.data = data
             self.myView.checkData(with: data.count)
-            self.myView.reloadCollectionData()
-
             return
         }
         
@@ -192,7 +196,6 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         
         self.gardenDataSource.data = gardenData
         self.myView.checkData(with: gardenData.count)
-        self.myView.reloadCollectionData()
         
         if self.gardenData.isEmpty {
             self.gardenData = gardenData
@@ -202,5 +205,12 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
             self.myView.actualGardenVisualization = visu
             self.lastGardenVisualization = nil
         }
+    }
+    
+    
+    /// Configura os dados das tags
+    private func setupTagData() {
+        let tags = DataManager.shared.getAllTags()
+        self.tagDataSource.data = tags ?? []
     }
 }
