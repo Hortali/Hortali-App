@@ -42,7 +42,7 @@ class TagCollectionHandler: NSObject, CollectionHandler, UICollectionViewDataSou
     
     
     /// Configura o protocolo de comunicação
-    /// - Parameter `protocol`: <#`protocol` description#>
+    /// - Parameter `protocol`: protocolo
     public func setProtocol(with `protocol`: SearchProtocol) {
         self.protocol = `protocol`
     }
@@ -106,15 +106,12 @@ class TagCollectionHandler: NSObject, CollectionHandler, UICollectionViewDataSou
     /* MARK: - Delegate (Flow) */
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.identifier, for: indexPath) as? TagCell else {
-            return .zero
-        }
+        let fontSize = collectionView.superview?.getEquivalent(20) ?? 20
+        guard let font = UIFont.setupFont(with: FontInfo(fontSize: fontSize, weight: .regular)) else { return .zero }
         
         let data = self.mainData[indexPath.row]
         let text = "    \(data.name)    "
         
-        let font = cell.fontCell ?? UIFont()
         let textWidth = text.size(withAttributes: [
             NSAttributedString.Key.font: font]
         ).width

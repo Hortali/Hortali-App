@@ -62,9 +62,7 @@ class TagCell: UICollectionViewCell {
     }
     
     /// Fonte usada na célula
-    public var fontCell: UIFont? {
-        return self.label.font
-    }
+    static var fontCell: UIFont?
     
     
     /// Configura a célula a aprtir do texto que vai receber
@@ -124,6 +122,7 @@ class TagCell: UICollectionViewCell {
     private func setupStaticTexts() {
         let fontSize = self.superview?.getEquivalent(20) ?? 20
         self.label.setupText(with: FontInfo(fontSize: fontSize, weight: .regular))
+        Self.fontCell = self.label.font
     }
 	  
     
