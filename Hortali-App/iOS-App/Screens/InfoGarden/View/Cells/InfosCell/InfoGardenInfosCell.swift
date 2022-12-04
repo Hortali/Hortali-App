@@ -103,17 +103,14 @@ class InfoGardenInfosCell: UICollectionViewCell {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {		
         self.titleLabel.setupText(with: FontInfo(
-            fontSize: self.getConstant(for: 20), weight: .medium
+            fontSize: self.getConstant(for: 22), weight: .medium
         ))
     }
 	  
     
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
-        let between: CGFloat = self.getConstant(for: 8)
-        
-        let labelHeight: CGFloat = self.getConstant(for: 20)
-       
+        let squareSize = self.bounds.width
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
@@ -121,13 +118,12 @@ class InfoGardenInfosCell: UICollectionViewCell {
             self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.titleLabel.heightAnchor.constraint(equalToConstant: labelHeight),
             
             
-            self.customContentView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: between),
             self.customContentView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.customContentView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.customContentView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            self.customContentView.heightAnchor.constraint(equalToConstant: squareSize),
             
             
             self.cellView.topAnchor.constraint(equalTo: self.customContentView.topAnchor),
@@ -145,7 +141,7 @@ class InfoGardenInfosCell: UICollectionViewCell {
     /// - Returns: valor em relação à tela
     private func getConstant(for space: CGFloat) -> CGFloat {
         let screenReference = SizeInfo(
-            screenSize: CGSize(width: 163, height: 163),
+            screenSize: CGSize(width: 163, height: 200),
             dimension: .width
         )
         

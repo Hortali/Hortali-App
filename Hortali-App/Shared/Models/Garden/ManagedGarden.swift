@@ -25,4 +25,7 @@ struct ManagedGarden: Codable {
     var coords: CLLocationCoordinate2D? {
         return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
     }
+    
+    let tags: [ManagedTags]
+    let lastUpdate: String
 }

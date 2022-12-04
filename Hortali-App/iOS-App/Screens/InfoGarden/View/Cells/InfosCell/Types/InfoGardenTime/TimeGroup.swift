@@ -70,26 +70,30 @@ class TimeGroup: UIView {
     public func setupInfos(for info: ManagedHourInfo) {
         let color = UIColor(.closeStatus)
         
+        self.hourLabel.text = "\(info.startTime) - \(info.endTime)"
+        
         if self.isTodayComponent {
             if info.status {
                 self.weekLabel.text = "Aberto"
-                self.hourLabel.text = "\(info.startTime) - \(info.endTime)"
-            } else {
-                self.closeLabel.text = "Fechado"
-                
-                self.weekLabel.isHidden = true
-                self.hourLabel.isHidden = true
-                self.closeLabel.isHidden = false
+                return
             }
+            self.closeLabel.text = "Fechado"
+            
+            self.closeLabel.textColor = color
+            self.barView.backgroundColor = color
+            
+            self.weekLabel.isHidden = self.isTodayComponent
+            self.hourLabel.isHidden = self.isTodayComponent
+            self.closeLabel.isHidden = !self.isTodayComponent
+            
             return
         }
         
         self.weekLabel.text = info.week
         
-        if info.status {
-            self.hourLabel.text = "\(info.startTime) - \(info.endTime)"
-        } else {
+        if !info.status {
             self.hourLabel.text = "Fechado"
+            
             self.hourLabel.textColor = color
             self.weekLabel.textColor = color
         }
@@ -99,14 +103,7 @@ class TimeGroup: UIView {
     /// Define se o componente mostra os dados do dia
     public var isTodayComponent = false {
         didSet {
-            if self.isTodayComponent == true {
-                let color = UIColor(originalColor: .greenDark)
-                self.weekLabel.textColor = color
-                self.weekLabel.textColor = color
-                self.hourLabel.textColor = color
-                self.closeLabel.textColor = color
-                self.barView.backgroundColor = color
-            }
+            self.setupColors()
         }
     }
     
@@ -125,6 +122,19 @@ class TimeGroup: UIView {
     
     
     /* MARK: - Configurações */
+    
+    /// Configura as cores do componente
+    private func setupColors() {
+        if self.isTodayComponent {
+            let color = UIColor(originalColor: .greenDark)
+            self.weekLabel.textColor = color
+            self.weekLabel.textColor = color
+            self.hourLabel.textColor = color
+            self.closeLabel.textColor = color
+            self.barView.backgroundColor = color
+        }
+    }
+    
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {

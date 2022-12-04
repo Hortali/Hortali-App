@@ -1,10 +1,36 @@
 {
     "count": 3,
+    "tags": [
+        {
+            "id": 0,
+            "name": "Pago"
+        },
+        {
+            "id": 1,
+            "name": "Gratuito"
+        },
+        {
+            "id": 2,
+            "name": "Acesso Livre"
+        },
+        {
+            "id": 3,
+            "name": "Acesso Agendado"
+        },
+        {
+            "id": 4,
+            "name": "Busca Voluntário"
+        },
+        {
+            "id": 5,
+            "name": "Tem Mutirão"
+        }
+    ],
     "gardens": [
-        {   
+        {
             "id": 0,
             "name": "UrbanFarm Ipiranga",
-            "biograph": "Um espaço de agricultura urbana orgânica que fomenta o consumo local, com mais de 35 canteiros de produção de hortaliças e temperos. A Urban disponibiliza produtos muito mais frescos tendo em vista que não há entrepostos entre a fazenda e a sua casa. \nO objetivo é aproximar as pessoas de seus alimentos por meio do plantio, cultivo e colheita",
+            "biograph": "Um espaço de agricultura urbana orgânica que estimula o consumo local, com mais de 35 canteiros de produção de hortaliças e temperos. A UrbanFarm disponibiliza produtos muito mais frescos tendo em vista que não há entrepostos entre a fazenda e a sua casa. \nO objetivo é aproximar as pessoas de seus alimentos por meio do plantio, cultivo e colheita",
             "address": "R. Cipriano Barata, 2441 - Ipiranga, São Paulo - SP",
             "latitude": -23.591322,
             "longitude": -46.604746,
@@ -12,37 +38,37 @@
                 "name": "UrbanFarmIpiranga_Cover"
             },
             "pageImages": [
-                {   
+                {
                     "name": "UrbanFarmIpiranga_Page0"
                 },
-                {   
+                {
                     "name": "UrbanFarmIpiranga_Page1"
                 },
-                {   
+                {
                     "name": "UrbanFarmIpiranga_Page2"
                 },
-                {   
+                {
                     "name": "UrbanFarmIpiranga_Page3"
                 },
-                {   
+                {
                     "name": "UrbanFarmIpiranga_Page4"
                 },
-                {   
+                {
                     "name": "UrbanFarmIpiranga_Page5"
                 },
-                {   
+                {
                     "name": "UrbanFarmIpiranga_Page6"
                 },
-                {   
+                {
                     "name": "UrbanFarmIpiranga_Page7"
                 },
-                {   
+                {
                     "name": "UrbanFarmIpiranga_Page8"
                 },
-                {   
+                {
                     "name": "UrbanFarmIpiranga_Page9"
                 },
-                {   
+                {
                     "name": "UrbanFarmIpiranga_Page10"
                 }
             ],
@@ -51,7 +77,7 @@
                     "type": "Instagram",
                     "contact": "@urbanfarmipiranga",
                     "link": "https://www.instagram.com/urbanfarmipiranga/",
-                    "description": "Perfil"
+                    "description": "Perfil do instagram"
                 },
                 {
                     "type": "Whatsapp",
@@ -115,12 +141,21 @@
                     "startTime" : "",
                     "endTime" : ""
                 }
-            ]
+            ],
+            "tags": [
+                {
+                    "name": "Pago"
+                },
+                {
+                    "name": "Acesso Livre"
+                }
+            ],
+            "lastUpdate": "2022-10-15"
         },
-        {   
+        {
             "id": 1,
             "name": "Horta das Corujas",
-            "biograph": "Camuflada entre os prédios da Vila Madalena, a A Horta das Corujas localiza-se na Praça das Corujas com mutirões abertos ao público.",
+            "biograph": "Camuflada entre os prédios da Vila Madalena, a Horta das Corujas localiza-se na Praça das Corujas com mutirões abertos ao público.",
             "address": "Av. das Corujas, 39 - Sumarezinho, São Paulo - SP",
             "latitude": -23.54932,
             "longitude": -46.69570,
@@ -128,19 +163,19 @@
                 "name": "HortaCorujas_Cover"
             },
             "pageImages": [
-                {   
+                {
                     "name": "HortaCorujas_Page0"
                 },
-                {   
+                {
                     "name": "HortaCorujas_Page1"
                 },
-                {   
+                {
                     "name": "HortaCorujas_Page2"
                 },
-                {   
+                {
                     "name": "HortaCorujas_Page3"
                 },
-                {   
+                {
                     "name": "HortaCorujas_Page4"
                 }
             ],
@@ -149,7 +184,7 @@
                     "type": "Instagram",
                     "contact": "@hortadascorujas",
                     "link": "https://www.instagram.com/hortadascorujas/",
-                    "description": "Perfil"
+                    "description": "Perfil do instagram"
                 }
             ],
             "hourInfo": [
@@ -201,9 +236,24 @@
                     "startTime" : "",
                     "endTime" : ""
                 }
-            ]
+            ],
+            "tags": [
+                {
+                    "name": "Gratuito"
+                },
+                {
+                    "name": "Acesso Livre"
+                },
+                {
+                    "name": "Busca Voluntário"
+                },
+                {
+                    "name": "Tem Mutirão"
+                }
+            ],
+            "lastUpdate": "2022-10-15"
         },
-        {   
+        {
             "id": 2,
             "name": "Horta da FMUSP",
             "biograph": "As atividades são desenvolvidas no terraço da Faculdade, e destinam-se à produção de alimentos saudáveis, agroecologia e cultivo de Plantas Alimentícias Não-Convencionais (PANCs). O objetivo é utilizar locais pouco aproveitados em prédios e terrenos para cultivar frutas e hortaliças sustentáveis, mostrando que é possível cultivar alimentos na cidade.",
@@ -214,19 +264,19 @@
                 "name": "HortaFMUSP_Cover"
             },
             "pageImages": [
-                {   
+                {
                     "name": "HortaFMUSP_Page0"
                 },
-                {   
+                {
                     "name": "HortaFMUSP_Page1"
                 },
-                {   
+                {
                     "name": "HortaFMUSP_Page2"
                 },
-                {   
+                {
                     "name": "HortaFMUSP_Page3"
                 },
-                {   
+                {
                     "name": "HortaFMUSP_Page4"
                 }
             ],
@@ -235,7 +285,7 @@
                     "type": "Instagram",
                     "contact": "@hortadafmusp",
                     "link": "https://www.instagram.com/hortadafmusp/",
-                    "description": "Perfil"
+                    "description": "Perfil do instagram"
                 },
                 {
                     "type": "Ligar",
@@ -293,7 +343,22 @@
                     "startTime" : "",
                     "endTime" : ""
                 }
-            ]
+            ],
+            "tags": [
+                {
+                    "name": "Gratuito"
+                },
+                {
+                    "name": "Acesso Livre"
+                },
+                {
+                    "name": "Busca Voluntário"
+                },
+                {
+                    "name": "Tem Mutirão"
+                }
+            ],
+            "lastUpdate": "2022-10-15"
         }
     ]
 }
