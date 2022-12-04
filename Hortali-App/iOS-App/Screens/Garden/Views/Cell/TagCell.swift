@@ -19,17 +19,20 @@ class TagCell: UICollectionViewCell {
     private let label: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textAlignment = .center
-        lbl.sizeToFit()
         lbl.numberOfLines = 0
+        lbl.sizeToFit()
         return lbl
     }()
    
     
-
-    // Outros
-
-    /// Constraints que vão mudar de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
+    // Override
+    
+    override var isSelected: Bool {
+        didSet {
+            guard self.isSelectionAllowed else { return }
+            self.setupColors(when: self.isSelected)
+        }
+    }
     
     
     
@@ -39,6 +42,10 @@ class TagCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.setupViews()
+        self.setupConstraints()
+        self.setupColors(when: false)
+        
+        self.layer.masksToBounds = true
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -47,16 +54,23 @@ class TagCell: UICollectionViewCell {
     
     /* MARK: - Encapsulamento */
     
+    /// Estado que define se é permitido que as células possam ser selecionadas ou não
+    public var isSelectionAllowed = true {
+        didSet {
+            self.setupColors(when: self.isSelectionAllowed)
+        }
+    }
+    
+    /// Fonte usada na célula
+    public var fontCell: UIFont? {
+        return self.label.font
+    }
+    
+    
     /// Configura a célula a aprtir do texto que vai receber
     /// - Parameter text: texto
     public func setupCell(with text: String) {
         self.label.text = text
-    }
-    
-    
-    /// Pega a fonte usada na célula
-    public var fontCell: UIFont? {
-        return self.label.font
     }
     
     
@@ -67,7 +81,6 @@ class TagCell: UICollectionViewCell {
         super.layoutSubviews()
         
         self.setupStaticTexts()
-        self.setupDynamicConstraints()
         self.setupUI()
     }
     
@@ -76,10 +89,24 @@ class TagCell: UICollectionViewCell {
         super.awakeFromNib()
         self.label.text = nil
     }
-    
+        
     
     
     /* MARK: - Configurações */
+    
+    /// Configura as cores da célula a partir do estado dela
+    /// - Parameter isSelected: estado de quando está selecionado ou não
+    private func setupColors(when isSelected: Bool) {
+        switch isSelected {
+        case false:
+            self.backgroundColor = UIColor(originalColor: .greenLight)
+            self.label.textColor = UIColor(originalColor: .greenDark)
+        case true:
+            self.backgroundColor = UIColor(originalColor: .greenDark)
+            self.label.textColor = UIColor(originalColor: .greenLight)
+        }
+    }
+    
     
     /// Adiciona os elementos (Views) na tela
     private func setupViews() {    
@@ -89,11 +116,7 @@ class TagCell: UICollectionViewCell {
     
     /// Personalização da UI
     private func setupUI() {
-        self.layer.masksToBounds = true
         self.layer.cornerRadius = self.getEquivalent(20)
-        
-        self.backgroundColor = UIColor(originalColor: .greenLight)
-        self.label.textColor = UIColor(originalColor: .greenDark)
     }
     
     
@@ -105,19 +128,12 @@ class TagCell: UICollectionViewCell {
 	  
     
     /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() { 
-//        let lateral: CGFloat =
-//        let between: CGFloat =
-       
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
-    
-        self.dynamicConstraints = [
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
             self.label.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             self.label.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.label.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.label.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-        ]
-        
-        NSLayoutConstraint.activate(self.dynamicConstraints)
+        ])
     }
 }

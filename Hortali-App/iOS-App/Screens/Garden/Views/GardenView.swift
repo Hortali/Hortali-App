@@ -118,9 +118,19 @@ class GardenView: MainView {
     public func reloadCollectionData() {
         self.gardenGroup.collection.reloadData()
         self.gardenGroup.collection.reloadInputViews()
-        
+    }
+    
+    
+    /// Atualiza os dados da collection de tags
+    public func reloadTagData() {
         self.tagGroup.collection.reloadData()
         self.tagGroup.collection.reloadInputViews()
+    }
+    
+    
+    /// 
+    public func deselectTag(at indexPath: IndexPath) {
+        self.tagGroup.collection.deselectItem(at: indexPath, animated: true)
     }
     
     
@@ -138,11 +148,9 @@ class GardenView: MainView {
     }
     
     
-    /// Define o data source da collection das hortas
-    /// - Parameter dataSource: data source da collection das hortas
-    public func setTagDataSource(with dataSource: TagDataSource) {
-        self.tagGroup.collection.dataSource = dataSource
-        self.tagGroup.collection.delegate = dataSource
+    /// Collection das tags
+    public var tagCollection: UICollectionView {
+        return self.tagGroup.collection
     }
     
     
