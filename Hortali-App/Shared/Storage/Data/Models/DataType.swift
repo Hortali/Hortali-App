@@ -9,6 +9,7 @@ enum DataType {
     case garden
     case food
     case vitamins
+    case tags
     
     
     /* MARK: - Variáveis */
@@ -18,7 +19,7 @@ enum DataType {
         switch self {
         case .garden: return "gardenData"
         case .food: return "foodData"
-        case .vitamins: return ""
+        case .vitamins, .tags: return ""
         }
     }
     
@@ -28,7 +29,7 @@ enum DataType {
         switch self {
         case .garden: return "gardenFavorites"
         case .food: return "foodFavorites"
-        case .vitamins: return ""
+        case .vitamins, .tags: return ""
         }
     }
 }

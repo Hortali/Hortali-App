@@ -93,6 +93,13 @@ class DataManager {
     }
     
     
+    /// Pega todas as tags disponíveis
+    /// - Returns: lista com as tags
+    public func getAllTags() -> [ManagedTags]? {
+        return self.cache[.tags] as? [ManagedTags]
+    }
+    
+    
     
     /* MARK: Favoritos */
     
@@ -201,6 +208,7 @@ class DataManager {
                 switch file {
                 case .garden:
                     if let jsonData = try? decoder.decode(ManagedGardenData.self, from: data) {
+                        self.cache[.tags] = jsonData.tags
                         return jsonData.gardens
                     }
                 case .food:

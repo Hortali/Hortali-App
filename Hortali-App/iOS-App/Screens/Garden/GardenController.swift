@@ -23,6 +23,9 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     /// Delegate da collection das hortas
     private let gardenDelegate = GardenDelegate()
     
+    /// Data source da collections das tags
+    private let tagCollectionHandler = TagCollectionHandler()
+    
     /// Delegate da barra de busca
     private let searchDelegate = SearchDelegate()
     
@@ -48,6 +51,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         super.viewDidLoad()
         
         self.setupDataSourceData()
+        self.setupTagData()
         self.setupDelegates()
         self.setupKeyboardHandler()
         self.setupButtonsAction()
@@ -59,6 +63,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         super.viewWillAppear(animated)
         
         self.showOnBoarding()
+        self.myView.reloadTagData()
     }
     
     
@@ -79,31 +84,17 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     /* Search Protocol */
     
-    internal func updateCollection(with textSearch: String) {
-        if self.lastGardenVisualization == nil {
-            self.lastGardenVisualization = self.myView.actualGardenVisualization
-        }
-         
-        if textSearch.isEmpty {
-            self.setupDataSourceData()
-            return
+    internal func updateCollection(textSearch: String) {
+        if let tagIndex = self.tagCollectionHandler.tagSelected {
+            self.myView.deselectTag(at: tagIndex)
         }
         
-        var dataFiltered: [ManagedGarden] = []
-        
-        for data in self.gardenData {
-            if data.name.lowercased().contains(textSearch) {
-                dataFiltered.append(data)
-                continue
-            }
-            
-            if data.address.lowercased().contains(textSearch) {
-                dataFiltered.append(data)
-                continue
-            }
-        }
-        self.setupDataSourceData(with: dataFiltered)
-        self.myView.actualGardenVisualization = .grid
+        self.filterData(by: textSearch, isTag: false)
+    }
+    
+    
+    internal func updateCollection(tag: String) {
+        self.filterData(by: tag, isTag: true)
     }
     
     
@@ -171,6 +162,11 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         self.myView.setDelegate(with: self.gardenDelegate)
         
         
+        self.tagCollectionHandler.setProtocol(with: self)
+        
+        let tagCollection = self.myView.tagCollection
+        self.tagCollectionHandler.link(with: tagCollection)
+        
         // Search
         self.searchDelegate.setProtocol(with: self)
         
@@ -184,7 +180,6 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
             self.gardenDataSource.data = data
             self.myView.checkData(with: data.count)
             self.myView.reloadCollectionData()
-
             return
         }
         
@@ -202,5 +197,55 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
             self.myView.actualGardenVisualization = visu
             self.lastGardenVisualization = nil
         }
+    }
+    
+    
+    /// Configura os dados das tags
+    private func setupTagData() {
+        let tags = DataManager.shared.getAllTags()
+        self.tagCollectionHandler.data = tags ?? []
+    }
+    
+    
+    /// Filtra os dados da collection de hortas
+    /// - Parameters:
+    ///   - text: dado que vai ser filtrado
+    ///   - isTag: caso o filtro seja uma tag
+    private func filterData(by text: String, isTag: Bool) {
+        if self.lastGardenVisualization == nil {
+            self.lastGardenVisualization = self.myView.actualGardenVisualization
+        }
+         
+        if text.isEmpty {
+            self.setupDataSourceData()
+            return
+        }
+        
+        var dataFiltered: [ManagedGarden] = []
+        
+        if isTag {
+            for data in self.gardenData {
+                for tag in data.tags {
+                    if tag.name == text {
+                        dataFiltered.append(data)
+                    }
+                }
+            }
+        } else {
+            for data in self.gardenData {
+                if data.name.lowercased().contains(text) {
+                    dataFiltered.append(data)
+                    continue
+                }
+                
+                if data.address.lowercased().contains(text) {
+                    dataFiltered.append(data)
+                }
+            }
+            
+        }
+        
+        self.setupDataSourceData(with: dataFiltered)
+        self.myView.actualGardenVisualization = .grid
     }
 }

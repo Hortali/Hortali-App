@@ -10,5 +10,10 @@ protocol SearchProtocol: NSObject {
     
     /// Atualiza a collection com o texto recebido da search
     /// - Parameter textSearch: texto da search
-    func updateCollection(with textSearch: String)
+    func updateCollection(textSearch: String)
+    
+    
+    /// Atualiza a collection com a tag selecionada
+    /// - Parameter tag: tag selecionada
+    func updateCollection(tag: String)
 }

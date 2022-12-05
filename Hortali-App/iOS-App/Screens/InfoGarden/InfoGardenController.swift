@@ -31,6 +31,14 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     private let imagesDelegate = InfoGardenImagesDelegate()
     
     
+    /// Data source da collections das tags
+    private let tagCollectionHandler: TagCollectionHandler = {
+        let handler = TagCollectionHandler()
+        handler.isSelectionAllowed = false
+        return handler
+    }()
+    
+    
     /* Outros */
     
     /// Configurações para atualizar o estado de favoritos
@@ -269,6 +277,9 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
         
         self.myView.setImagesDataSource(for: self.imagesDataSource)
         self.myView.setImagesDelegate(for: self.imagesDelegate)
+        
+        let tagCollection = self.myView.tagCollection
+        self.tagCollectionHandler.link(with: tagCollection)
     }
     
     
@@ -276,6 +287,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     private func setupDataSourcesData(for data: ManagedGarden) {
         self.infoDataSource.data = data
         self.imagesDataSource.data = data.pageImages
+        self.tagCollectionHandler.data = data.tags
         
         self.myView.reloadCollectionsData()
     }
