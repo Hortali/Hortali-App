@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Tela com os elementos de UI da tela de ver informações de uma horta
-class InfoGardenView: UIView {
+class InfoGardenView: UIView, FavoriteHandler {
     
     /* MARK: - Atributos */
     
@@ -15,10 +15,11 @@ class InfoGardenView: UIView {
     private let scrollView = CustomScroll()
     
     /// Botão de voltar para a página anterior
-    private let backButton = CustomViews.newButton()
-    
-    /// Botão de favoritar a hora
-    private let favoriteButton = CustomViews.newButton()
+    private let backButton: CustomButton = {
+        let but = CustomViews.newButton()
+        but.tintColor = UIColor(.favoriteNotSelectedIcon)
+        return but
+    }()
     
     /// Conjunto de imagens da horta
     private let imagesCollectionGp: CollectionGroup = {
@@ -33,17 +34,33 @@ class InfoGardenView: UIView {
     /// Grupo de UI para colocar os elementos de informação sobre a horta
     private let container = ContainerView()
     
+    /// Collection que mostra as tags
+    private let tagsCollection = CollectionGroup(style: .justCollection)
+    
     /// Label expandível
     private let expansiveLabel = ExpansiveLabel()
     
     /// Collection das informações sobre a horta
     private let infosCollectionGp = CollectionGroup(style: .justCollection)
+    
+    /// Mostra que um texto foi copiado
+    private let copyWarning: ViewLabel = {
+        let lbl = ViewLabel()
+        lbl.isHidden = true
+        lbl.backgroundColor = UIColor(originalColor: .greenLight)
+        lbl.label.textColor = UIColor(originalColor: .greenDark)
+        return lbl
+    }()
+    
+    /// Data da última atualização dos dados
+    private let lastUpdateLabel: UILabel = {
+        let lbl = CustomViews.newLabel()
+        lbl.textColor = UIColor(originalColor: .greenLight)
+        return lbl
+    }()
         
     
     // Outros
-    
-    /// Estado de favorito da view
-    private var isFavorited: Bool = false
     
     /// Fala qual é o dia da semana de hoje
     static var todayWeek: String = ""
@@ -73,6 +90,39 @@ class InfoGardenView: UIView {
         
         return cvFlow
     }()
+    
+    /// Configurações do layout da collection das tags
+    private let tagsCollectionFlow: UICollectionViewFlowLayout = {
+        let flow = UICollectionViewFlowLayout()
+        flow.scrollDirection = .horizontal
+        flow.estimatedItemSize = .zero
+        return flow
+    }()
+    
+    
+    
+    /* MARK: - Protocol */
+    
+    internal var isFavorite = false
+    
+    internal var favoriteButton: CustomButton = CustomViews.newButton()
+    
+    
+    internal func favoriteHandler(for fav: Bool? = nil) -> Bool {
+        if let fav {
+            self.isFavorite = fav
+        } else {
+            self.isFavorite.toggle()
+        }
+        
+        let infos = self.favoriteInfos
+        
+        self.favoriteButton.backgroundColor = infos.backColor
+        self.favoriteButton.tintColor = infos.iconColor
+        self.setupStaticTexts()
+        
+        return self.isFavorite
+    }
 
 
 
@@ -94,27 +144,25 @@ class InfoGardenView: UIView {
     
     /* MARK: - Encapsulamento */
     
-    /// Configura a view para quando for favoritado ou desfavoritado
-    /// - Parameter fav: estado do favorito
-    /// - Returns: se está ou não favoritado
-    public func isFavorited(is fav: Bool? = nil) -> Bool {
-        if let fav {
-            self.isFavorited = fav
-        } else {
-            self.isFavorited.toggle()
+    /// Mostra com animação o aviso de texto copiado
+    public func showCopyWarning() -> Void {
+        // Mostra a view
+        UIView.transition(
+            with: self.copyWarning, duration: 0.5, options: .transitionCrossDissolve,
+            animations: {
+                self.copyWarning.isHidden = false
+            }
+        )
+        
+        let delay: TimeInterval = 3
+        
+        // Executa a ação depois do delay
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            self.copyWarning.isHidden = true
         }
-        
-        var favColor: AppColors = .favoriteNotSelected
-        if self.isFavorited {
-            favColor = .favoriteSelected
-        }
-        
-        self.favoriteButton.backgroundColor = UIColor(favColor)
-        
-        return self.isFavorited
     }
-    
-    
+
+        
     /// Atualiza a página no Page Control
     /// - Parameter index: index (número) da página
     public func updateCurrentPage(for index: Int) {
@@ -168,6 +216,12 @@ class InfoGardenView: UIView {
     
     /* Collection */
     
+    /// Collection das tags
+    public var tagCollection: UICollectionView {
+        return self.tagsCollection.collection
+    }
+    
+    
     /// Atualiza os dados das collections
     public func reloadCollectionsData() {
         self.imagesCollectionGp.collection.reloadData()
@@ -175,8 +229,11 @@ class InfoGardenView: UIView {
         
         self.infosCollectionGp.collection.reloadData()
         self.infosCollectionGp.collection.reloadInputViews()
+        
+        self.tagsCollection.collection.reloadData()
+        self.tagsCollection.collection.reloadInputViews()
     }
-    
+        
     
     /// Define o data source da collection de informações da horta
     /// - Parameter dataSource: data source da collection
@@ -229,8 +286,31 @@ class InfoGardenView: UIView {
     private func setupViewFor(data: ManagedGarden) {
         self.container.setTitleText(with: data.name)
         self.expansiveLabel.setInfoText(for: data.biograph)
+        
+        let lastUpdateDate = self.getDate(for: data.lastUpdate)
+        self.lastUpdateLabel.text = "*Última atualização: \(lastUpdateDate)"
     }
     
+    
+    /// Pega o mês e ano de uma data em string
+    /// - Parameter strDate: data no formato: ano-mes-dia
+    /// - Returns: data no formato: 'mes' de 'ano'
+    private func getDate(for strDate: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "pt-br")
+        
+        if let date = dateFormatter.date(from: strDate) {
+            dateFormatter.dateFormat = "LLLL"
+            let monthName = dateFormatter.string(from: date)
+            
+            dateFormatter.dateFormat = "yyyy"
+            let year = dateFormatter.string(from: date)
+            
+            return "\(monthName) de \(year)"
+        }
+        return "sem informações"
+    }
 
     
     /* Collection */
@@ -247,6 +327,7 @@ class InfoGardenView: UIView {
     private func setupCollectionFlow() {
         self.infosCollectionGp.collection.collectionViewLayout = self.infosCollectionFlow
         self.imagesCollectionGp.collection.collectionViewLayout = self.imagesCollectionFlow
+        self.tagsCollection.collection.collectionViewLayout = self.tagsCollectionFlow
     }
     
     
@@ -260,23 +341,28 @@ class InfoGardenView: UIView {
         self.scrollView.addViewInScroll(self.imagesPageControl)
         self.scrollView.addViewInScroll(self.container)
         
+        self.container.contentView.addSubview(self.tagsCollection)
         self.container.contentView.addSubview(self.expansiveLabel)
         self.scrollView.addViewInScroll(self.infosCollectionGp)
+        self.scrollView.addViewInScroll(self.lastUpdateLabel)
         
         self.addSubview(self.backButton)
         self.addSubview(self.favoriteButton)
+
+        self.addSubview(self.copyWarning)
     }
     
     
     /// Personalização da UI
     private func setupUI() {
+        self.copyWarning.layer.cornerRadius = 5
         self.imagesPageControl.layer.cornerRadius = self.imagesPageControl.bounds.height / 2
         
         // Collections
         
         self.infosCollectionFlow.itemSize = CGSize(
-            width: self.getEquivalent(350),
-            height: self.getEquivalent(200)
+            width: self.getEquivalent(165),
+            height: self.infosCollectionGp.bounds.height
         )
         self.infosCollectionFlow.minimumLineSpacing = self.getEquivalent(10)
         
@@ -299,7 +385,17 @@ class InfoGardenView: UIView {
         ))
         
         self.favoriteButton.setupIcon(with: IconInfo(
-            icon: .favorite, size: btSize, weight: .regular, scale: .default
+            icon: self.favoriteIcon, size: btSize, weight: .regular, scale: .default
+        ))
+                
+        /* Labels */
+        
+        self.copyWarning.label.setupText(with: FontInfo(
+            text: "Texto copiado para área de tranferência", fontSize: self.getEquivalent(15), weight: .medium
+        ))
+        
+        self.lastUpdateLabel.setupText(with: FontInfo(
+            fontSize: self.getEquivalent(17), weight: .medium
         ))
     }
     
@@ -308,19 +404,23 @@ class InfoGardenView: UIView {
     private func setupDynamicConstraints() {
         // Espaçamentos
         let lateral = self.getEquivalent(15)
-        let between = self.getEquivalent(20)
+        let between = self.getEquivalent(12)
         let gap = self.getEquivalent(25)
+        let warning = self.getEquivalent(10)
+        let betweenSmaller = between / 1.5
         
         // Altura dos botões
         self.backButton.circleSize = self.getEquivalent(45)
         self.favoriteButton.circleSize = self.getEquivalent(45)
         
         // Altura dos elementos
-        let segHeight = self.getEquivalent(510)
+        let imagesHeight = self.getEquivalent(510)
         let collectionHeight = self.getEquivalent(200)
+        let tagCollectionHeight = self.getEquivalent(25)
         
         
         self.infosCollectionGp.setPadding(for: lateral)
+        self.tagsCollection.setPadding(for: lateral)
         
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
@@ -336,10 +436,10 @@ class InfoGardenView: UIView {
             self.imagesCollectionGp.topAnchor.constraint(equalTo: self.scrollView.contentView.topAnchor),
             self.imagesCollectionGp.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
             self.imagesCollectionGp.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
-            self.imagesCollectionGp.heightAnchor.constraint(equalToConstant: segHeight),
+            self.imagesCollectionGp.heightAnchor.constraint(equalToConstant: imagesHeight),
             
             
-            self.imagesPageControl.bottomAnchor.constraint(equalTo: self.container.topAnchor, constant: -between / 2),
+            self.imagesPageControl.bottomAnchor.constraint(equalTo: self.container.topAnchor, constant: -betweenSmaller),
             self.imagesPageControl.centerXAnchor.constraint(equalTo: self.imagesCollectionGp.centerXAnchor),
             
             
@@ -358,8 +458,14 @@ class InfoGardenView: UIView {
             self.container.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
             self.container.bottomAnchor.constraint(equalTo: self.scrollView.contentView.bottomAnchor),
             
+            
+            self.tagsCollection.topAnchor.constraint(equalTo: self.container.titleLabel.bottomAnchor, constant: -betweenSmaller),
+            self.tagsCollection.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.tagsCollection.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
+            self.tagsCollection.heightAnchor.constraint(equalToConstant: tagCollectionHeight),
+            
 
-            self.expansiveLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),
+            self.expansiveLabel.topAnchor.constraint(equalTo: self.tagsCollection.bottomAnchor, constant: between),
             self.expansiveLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor, constant: lateral),
             self.expansiveLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
             
@@ -367,7 +473,17 @@ class InfoGardenView: UIView {
             self.infosCollectionGp.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
             self.infosCollectionGp.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
             self.infosCollectionGp.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
-            self.infosCollectionGp.heightAnchor.constraint(equalToConstant: collectionHeight)
+            self.infosCollectionGp.heightAnchor.constraint(equalToConstant: collectionHeight),
+            
+            
+            self.lastUpdateLabel.topAnchor.constraint(equalTo: self.infosCollectionGp.bottomAnchor, constant: betweenSmaller),
+            self.lastUpdateLabel.leadingAnchor.constraint(equalTo: self.expansiveLabel.leadingAnchor),
+            self.lastUpdateLabel.trailingAnchor.constraint(equalTo: self.expansiveLabel.trailingAnchor),
+            
+            
+            self.copyWarning.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -warning),
+            self.copyWarning.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.copyWarning.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

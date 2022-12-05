@@ -23,7 +23,7 @@ class InfoGardenInfosDataSource: NSObject, UICollectionViewDataSource {
     
     /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
     
@@ -38,7 +38,6 @@ class InfoGardenInfosDataSource: NSObject, UICollectionViewDataSource {
             case 0: cell.setupCell(for: .map, with: data)
             case 1: cell.setupCell(for: .time, with: data)
             case 2: cell.setupCell(for: .contact, with: data)
-            case 3: cell.setupCell(for: .report, with: data)
             default: break
             }
         }

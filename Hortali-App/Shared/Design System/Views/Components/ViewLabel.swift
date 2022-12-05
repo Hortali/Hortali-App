@@ -19,7 +19,7 @@ class ViewLabel: UIView {
 
     // Views
     
-    private lazy var label: UILabel = {
+    public lazy var label: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textAlignment = .center
         lbl.adjustsFontSizeToFitWidth = true
@@ -39,24 +39,6 @@ class ViewLabel: UIView {
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
-    
-    
-    /* MARK: - Encapsulamento */
-    
-    /// Texto da label
-    public var text: String = "" {
-        didSet {
-            self.label.text = text
-        }
-    }
-    
-    
-    /// Configrua a fonte da label
-    /// - Parameter font: informações da fonte
-    public func setupText(with font: FontInfo) {
-        self.label.setupText(with: font)
-    }
     
     
     

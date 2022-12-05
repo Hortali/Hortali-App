@@ -36,6 +36,31 @@ enum AppColors {
     /// Tela de Favoritos: fundo
     case favoriteBack
     
+    /// Tela de Configurações: fundo
+    case settingsBack
+    
+    
+    
+    /* Pop Up */
+    
+    /// Pop Up: fundo blur
+    case popupBackBlur
+    
+    /// Pop Up: borda
+    case popupBorder
+    
+    /// Pop Up: fundo padrão
+    case popupDefaultBack
+    
+    /// Pop Up: botão padrão
+    case popupDefaultButton
+    
+    /// Pop Up: fundo da sazonalidade
+    case seasonalityBack
+    
+    /// Pop Up: botão da sazonalidade
+    case seasonalityButton
+    
     
     
     /* Segmented */
@@ -87,16 +112,29 @@ enum AppColors {
     
     
     
+    /* Favorito */
+    
+    /// Botão favorito: fundo de quando de quando está selecionado
+    case favoriteSelectedBack
+    
+    /// Botão favorito: fundo de quando não está selecionado
+    case favoriteNotSelectedBack
+    
+    /// Botão favorito: ícone de quando está selecionado
+    case favoriteSelectedIcon
+    
+    /// Botão favorito: ícone de quando não está selecionado
+    case favoriteNotSelectedIcon
+    
+    
+    
     /* Botões */
-    
-    /// Botão favorito: estado de quando está selecionado
-    case favoriteSelected
-    
-    /// Botão favorito: estado de quando não está selecionado
-    case favoriteNotSelected
     
     /// Botão: fundo padrão
     case backgroundButton
+    
+    /// Botão: mudar a visualização das hortas
+    case visualizationButton
     
     
     
@@ -125,6 +163,22 @@ enum AppColors {
     
     
     
+    /* Configuração */
+    
+    /// (Configurações) Célula de ajuda
+    case settingsHelp
+    
+    /// (Configurações) Célula de sugestão
+    case settingsSuggestions
+    
+    /// (Configurações) Célula de contato
+    case settingsContactUs
+    
+    /// (Configurações) Célula de reportar
+    case settingsReport
+    
+    
+    
     /* MARK: - Nome dos botões */
     
     /// Nome das cores
@@ -132,7 +186,7 @@ enum AppColors {
         switch self {
             
         /* Textos */
-        case .title: return .greenDark
+        case .title: return .greenMedium
         case .subTitle: return .brownDark
         case .paragraph: return .greyDark
         case .secondaryTitle: return .white
@@ -140,45 +194,63 @@ enum AppColors {
         
         /* Telas */
         case .viewBack: return .white
-        case .gardenBack: return .greenDark
+        case .gardenBack: return .greenMedium
         case .foodBack: return .brownLight
         case .favoriteBack: return .orange
+        case .settingsBack: return .yellow
+        
+            
+        /* Pop Up */
+        case .popupDefaultBack: return .greenMedium
+        case .popupDefaultButton: return .greenLight
+        case .popupBackBlur: return .greyDark
+        case .popupBorder: return .white
+            
+        case .seasonalityBack: return .orange
+        case .seasonalityButton: return .brownLight
             
         
         /* Segmented */
-        case .segBackSelected: return .greenDark
+        case .segBackSelected: return .greenMedium
         case .segBackNotSelected: return .greenLight
         case .segTextSelected: return .white
-        case .segTextNotSelected: return .greenDark
+        case .segTextNotSelected: return .greenMedium
             
             
         /* Tab */
-        case .tabSelected: return .greenDark
+        case .tabSelected: return .greenMedium
         case .tabNotSelected: return .greenLight
             
         
         /* Page Control */
-        case .pageSelected: return .greenDark
+        case .pageSelected: return .greenMedium
         case .pageNotSelected: return .greenLight
             
         
         /* Search */
         case .searchBack: return .greenLight
-        case .searchText: return .greenDark
-        case .searchIcons: return .greenDark
+        case .searchText: return .greenMedium
+        case .searchIcons: return .greenMedium
           
         
+        /* Favorito */
+        case .favoriteSelectedBack: return .greenDark
+        case .favoriteSelectedIcon: return .white
+            
+        case .favoriteNotSelectedBack: return .white
+        case .favoriteNotSelectedIcon: return .greenDark
+        
+            
         /* Botões */
-        case .favoriteSelected: return .pinkButton
-        case .favoriteNotSelected: return .greyButton
-        case .backgroundButton: return .greyButton
+        case .backgroundButton: return .white
+        case .visualizationButton: return .greenMedium
             
         
         /* Horários de funcionamentos */
         case .closeStatus: return .red
         case .closeBackgroundStatus: return .orange
             
-        case .openStatus: return .greenDark
+        case .openStatus: return .greenMedium
         case .openBackgroundStatus: return .greenLight
         
         case .barHourInfo: return .greyDark
@@ -186,6 +258,12 @@ enum AppColors {
             
         /* Outros */
         case .contactCellBack: return .yellow
+            
+        // Configurações
+        case .settingsHelp: return .greenDark
+        case .settingsSuggestions: return .greenMedium
+        case .settingsContactUs: return .yellow
+        case .settingsReport: return .orange
         }
     }
 }

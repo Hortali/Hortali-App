@@ -92,7 +92,7 @@ class ContainerView: UIView {
         let titleSize: CGFloat = self.getEquivalent(35)
         
         self.titleLabel.setupText(with: FontInfo(
-            fontSize: titleSize, weight: .heavy
+            fontSize: titleSize, weight: .bold
         ))
     }
 	  
@@ -100,7 +100,7 @@ class ContainerView: UIView {
     /// Define as constraints que dependem do tamanho da tela
     private func setupDynamicConstraints() {
         let lateral: CGFloat = self.getEquivalent(15)
-        let between: CGFloat = self.getEquivalent(30)
+        let between: CGFloat = self.getEquivalent(20)
         
         let titleLabelHeight = self.getEquivalent(75)
         

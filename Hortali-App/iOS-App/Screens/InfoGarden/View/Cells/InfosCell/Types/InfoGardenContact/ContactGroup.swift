@@ -18,7 +18,11 @@ class ContactGroup: UIView {
     private let contactLabel: UILabel = CustomViews.newLabel()
     
     /// Descrição do tipo do contato
-    private let descriptionLabel: UILabel = CustomViews.newLabel()
+    private let descriptionLabel: UILabel = {
+        let lbl = CustomViews.newLabel()
+        lbl.adjustsFontSizeToFitWidth = true
+        return lbl
+    }()
     
     
     // Outros
@@ -54,8 +58,8 @@ class ContactGroup: UIView {
         }
         
         self.imageView.image = image
-        self.contactLabel.text = info.contact
-        self.descriptionLabel.text = info.description
+        self.contactLabel.text = info.type
+        self.descriptionLabel.text = info.contact
     }
 
         
@@ -83,14 +87,12 @@ class ContactGroup: UIView {
     
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
-        let fontSize: CGFloat = self.getConstant(for: 15)
-        
         self.contactLabel.setupText(with: FontInfo(
-            fontSize: fontSize, weight: .semibold
+            fontSize: self.getConstant(for: 20), weight: .regular, fontFamily: .graffiti
         ))
         
         self.descriptionLabel.setupText(with: FontInfo(
-            fontSize: fontSize, weight: .regular
+            fontSize: self.getConstant(for: 15), weight: .regular
         ))
     }
 	  
@@ -133,7 +135,7 @@ class ContactGroup: UIView {
     /// - Returns: valor em relação à tela
     private func getConstant(for space: CGFloat) -> CGFloat {
         let screenReference = SizeInfo(
-            screenSize: CGSize(width: 350, height: 160),
+            screenSize: CGSize(width: 163, height: 163),
             dimension: .width
         )
         

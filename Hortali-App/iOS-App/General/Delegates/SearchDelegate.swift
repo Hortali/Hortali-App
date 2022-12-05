@@ -29,7 +29,6 @@ class SearchDelegate: NSObject, UISearchBarDelegate {
     /* MARK: - Delegate */
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchProtocol?.updateCollection(with: searchText.lowercased())
+        self.searchProtocol?.updateCollection(textSearch: searchText.lowercased())
     }
-
 }

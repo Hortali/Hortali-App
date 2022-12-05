@@ -12,7 +12,10 @@ enum AppIcons: CustomStringConvertible {
     case back
     
     /// Símbolo - 􀊴
-    case favorite
+    case favoriteNotSelected
+    
+    /// Símbolo - 􀊵
+    case favoriteSelected
     
     /// Símbolo - 􀆈
     case showMore
@@ -21,17 +24,45 @@ enum AppIcons: CustomStringConvertible {
     case showLess
     
     
+    // Collection
+    
+    /// Símbolo - 􀇷
+    case grid
+    
+    /// Símbolo - 􀏟
+    case carousel
+    
+    
     
     /* Tab */
     
-    /// Símbolo - 􀥳
+    /// Símbolo - 􀎟
     case gardenTab
     
-    /// Símbolo - 􀸩
+    /// Símbolo - 􀥳
     case foodTab
     
     /// Símbolo - 􀊵
     case favoriteTab
+    
+    /// Símbolo - 􀐛
+    case settingsTab
+    
+    
+
+    /* Configurações */
+    
+    /// Símbolo - 􀟜
+    case help
+    
+    /// Símbolo - 􀎞
+    case suggestion
+    
+    /// Símbolo - 􀍕
+    case contactUs
+    
+    /// Símbolo - 􀈎
+    case report
     
     
     
@@ -41,13 +72,23 @@ enum AppIcons: CustomStringConvertible {
     var description: String {
         switch self {
         case .back: return "chevron.backward"
-        case .favorite: return "heart"
+        case .favoriteNotSelected: return "heart"
+        case .favoriteSelected: return "heart.fill"
         case .showMore: return "chevron.down"
         case .showLess: return "chevron.up"
             
-        case .gardenTab: return "leaf.fill"
-        case .foodTab: return "fork.knife"
+        case .grid: return "square.grid.2x2"
+        case .carousel: return "rectangle.split.3x1"
+            
+        case .gardenTab: return "house.fill"
+        case .foodTab: return "leaf.fill"
         case .favoriteTab: return "heart.fill"
+        case .settingsTab: return "shippingbox.fill"
+            
+        case .help: return "iphone"
+        case .suggestion: return "house"
+        case .contactUs: return "envelope"
+        case .report: return "square.and.pencil"
         }
     }
 }

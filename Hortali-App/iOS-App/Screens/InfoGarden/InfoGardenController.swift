@@ -31,6 +31,14 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     private let imagesDelegate = InfoGardenImagesDelegate()
     
     
+    /// Data source da collections das tags
+    private let tagCollectionHandler: TagCollectionHandler = {
+        let handler = TagCollectionHandler()
+        handler.isSelectionAllowed = false
+        return handler
+    }()
+    
+    
     /* Outros */
     
     /// Configurações para atualizar o estado de favoritos
@@ -124,7 +132,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     /// Ação de favoritar um card
     @objc
     private func favoriteAction() {
-        switch self.myView.isFavorited() {
+        switch self.myView.favoriteHandler() {
         case true:
             self.favUpdate.action = .add
         case false:
@@ -227,7 +235,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
         
         // Copiar o endereço
         let address = UIAlertAction(title: "Copiar endereço", style: .default, handler: { _ in
-            UIPasteboard.general.string = data.address
+            self.copyHandler(textToCopy: data.address)
         })
         alert.addAction(address)
         
@@ -269,6 +277,9 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
         
         self.myView.setImagesDataSource(for: self.imagesDataSource)
         self.myView.setImagesDelegate(for: self.imagesDelegate)
+        
+        let tagCollection = self.myView.tagCollection
+        self.tagCollectionHandler.link(with: tagCollection)
     }
     
     
@@ -276,6 +287,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     private func setupDataSourcesData(for data: ManagedGarden) {
         self.infoDataSource.data = data
         self.imagesDataSource.data = data.pageImages
+        self.tagCollectionHandler.data = data.tags
         
         self.myView.reloadCollectionsData()
     }
@@ -284,11 +296,21 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     /// Configura a view pra caso for favorito
     /// - Parameter data: dado
     private func setupFavoriteStatus(for data: ManagedGarden) {
+        var status = false
         for id in DataManager.shared.getFavoriteIds(for: .garden) {
             if data.id == id {
-                let _ = self.myView.isFavorited(is: true)
+                status = true
                 break
             }
         }
+        let _ = self.myView.favoriteHandler(for: status)
+    }
+    
+    
+    /// Lida com o processo de copiar um texto na área de tranferência
+    /// - Parameter textToCopy: texto que vai ser copiado
+    private func copyHandler(textToCopy: String) {
+        UIPasteboard.general.string = textToCopy
+        self.myView.showCopyWarning()
     }
 }
