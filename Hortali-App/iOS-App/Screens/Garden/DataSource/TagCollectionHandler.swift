@@ -3,21 +3,14 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
-/// Os tipos que estão de acordo com esse protocolo são classes que lidam com o data source e delegate de uma collection
-protocol CollectionHandler {
-    
-    /// Linka o data source e delegate na collection
-    /// - Parameter collection: collection que vai ser linkada
-    func link(with collection: UICollectionView)
-}
 
-
-class TagCollectionHandler: NSObject, CollectionHandler, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+/// Lida com a collection de tag, tanto o delegate quanto o data source
+class TagCollectionHandler: NSObject, CollectionHandler {
     
     /* MARK: - Atributos */
     
     /// Dados usados no data source
-    private var mainData : [ManagedTags] = []
+    private var mainData: [ManagedTags] = []
     
     /// Protocolo de comunicação com a controller da collection
     private weak var `protocol`: SearchProtocol?
@@ -52,11 +45,10 @@ class TagCollectionHandler: NSObject, CollectionHandler, UICollectionViewDataSou
     
     
     
-    /* MARK: - Protocol */
+    /* MARK: - Protocolo */
     
-    internal func link(with collection: UICollectionView) {
-        collection.delegate = self
-        collection.dataSource = self
+    func registerCell(in collection: UICollectionView) {
+        collection.register(TagCell.self, forCellWithReuseIdentifier: TagCell.identifier)
     }
     
     

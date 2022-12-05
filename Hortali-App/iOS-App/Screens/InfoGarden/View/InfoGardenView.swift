@@ -320,8 +320,6 @@ class InfoGardenView: UIView, FavoriteHandler {
         self.infosCollectionGp.collection.register(InfoGardenInfosCell.self, forCellWithReuseIdentifier: InfoGardenInfosCell.identifier)
         
         self.imagesCollectionGp.collection.register(InfoGardenImagesCell.self, forCellWithReuseIdentifier: InfoGardenImagesCell.identifier)
-        
-        self.tagsCollection.collection.register(TagCell.self, forCellWithReuseIdentifier: TagCell.identifier)
     }
 
 

@@ -181,7 +181,6 @@ class GardenView: MainView {
     /// Registra as células nas collections/table
     private func registerCells() {
         self.gardenGroup.collection.register(GardenCell.self, forCellWithReuseIdentifier: GardenCell.identifier)
-        self.tagGroup.collection.register(TagCell.self, forCellWithReuseIdentifier: TagCell.identifier)
     }
     
     

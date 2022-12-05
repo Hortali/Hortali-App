@@ -96,6 +96,8 @@
 		227FAFD2292FADB10080FB9C /* FavoriteInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FAFD1292FADB10080FB9C /* FavoriteInfos.swift */; };
 		229AC9EC293CBD53005248E9 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229AC9EB293CBD53005248E9 /* TagCell.swift */; };
 		229AC9EE293CC0D5005248E9 /* TagCollectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229AC9ED293CC0D5005248E9 /* TagCollectionHandler.swift */; };
+		229AC9F0293D7735005248E9 /* CollectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229AC9EF293D7735005248E9 /* CollectionHandler.swift */; };
+		229AC9F2293D794E005248E9 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229AC9F1293D794E005248E9 /* CustomCell.swift */; };
 		22A3916E28F6E62700A42DC1 /* InfoGardenCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3916D28F6E62700A42DC1 /* InfoGardenCellProtocol.swift */; };
 		22A3917428F784B200A42DC1 /* ManagedGardenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3917328F784B200A42DC1 /* ManagedGardenData.swift */; };
 		22A3917628F784FB00A42DC1 /* ManagedGarden.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3917528F784FB00A42DC1 /* ManagedGarden.swift */; };
@@ -238,6 +240,8 @@
 		227FAFD1292FADB10080FB9C /* FavoriteInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteInfos.swift; sourceTree = "<group>"; };
 		229AC9EB293CBD53005248E9 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		229AC9ED293CC0D5005248E9 /* TagCollectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionHandler.swift; sourceTree = "<group>"; };
+		229AC9EF293D7735005248E9 /* CollectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHandler.swift; sourceTree = "<group>"; };
+		229AC9F1293D794E005248E9 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		22A3916D28F6E62700A42DC1 /* InfoGardenCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenCellProtocol.swift; sourceTree = "<group>"; };
 		22A3917328F784B200A42DC1 /* ManagedGardenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedGardenData.swift; sourceTree = "<group>"; };
 		22A3917528F784FB00A42DC1 /* ManagedGarden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedGarden.swift; sourceTree = "<group>"; };
@@ -1015,6 +1019,8 @@
 			children = (
 				22A3918328F7AD5D00A42DC1 /* SearchProtocol.swift */,
 				22A75A8D290CC6DC001CEA7E /* CustomNavigationProtocol.swift */,
+				229AC9EF293D7735005248E9 /* CollectionHandler.swift */,
+				229AC9F1293D794E005248E9 /* CustomCell.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1340,6 +1346,7 @@
 				223B75D928F0DBA60034B2C4 /* DataType.swift in Sources */,
 				22A75A8E290CC6DC001CEA7E /* CustomNavigationProtocol.swift in Sources */,
 				224BC12629391D02009D92FE /* UDKeys.swift in Sources */,
+				229AC9F2293D794E005248E9 /* CustomCell.swift in Sources */,
 				2210246228D84C6800F412A5 /* InfoGardenProtocol.swift in Sources */,
 				225FA1F1292D65E50004D131 /* PopUpInfo.swift in Sources */,
 				22A3917A28F7858100A42DC1 /* ManagedHourInfo.swift in Sources */,
@@ -1420,6 +1427,7 @@
 				22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */,
 				B2DE49582911AFCE00293E6A /* OnboardingDataSource.swift in Sources */,
 				B20D436A293798C5009A7028 /* InfoGardenController.swift in Sources */,
+				229AC9F0293D7735005248E9 /* CollectionHandler.swift in Sources */,
 				2229384F28C8964200515095 /* MainView.swift in Sources */,
 				22EDD4B328DA2D4F001CE093 /* HourInfoController.swift in Sources */,
 				B227C5CB290B032C00B07918 /* CustomNavigationController.swift in Sources */,

@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Elementos de UI da célula das tags
-class TagCell: UICollectionViewCell {
+class TagCell: UICollectionViewCell, CustomCell {
     
     /* MARK: - Atributos */
 
@@ -45,8 +45,6 @@ class TagCell: UICollectionViewCell {
         self.setupViews()
         self.setupConstraints()
         self.setupColors(when: false)
-        
-        
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -119,6 +117,7 @@ class TagCell: UICollectionViewCell {
     /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
     private func setupStaticTexts() {
         let fontSize = self.superview?.getEquivalent(20) ?? 20
+        
         self.label.setupText(with: FontInfo(fontSize: fontSize, weight: .regular))
     }
 	  
