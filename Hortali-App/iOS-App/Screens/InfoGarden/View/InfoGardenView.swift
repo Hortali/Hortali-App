@@ -341,7 +341,7 @@ class InfoGardenView: UIView, FavoriteHandler {
         self.scrollView.addViewInScroll(self.imagesPageControl)
         self.scrollView.addViewInScroll(self.container)
         
-        self.container.contentView.addSubview(self.tagsCollection)
+        self.scrollView.addViewInScroll(self.tagsCollection)
         self.container.contentView.addSubview(self.expansiveLabel)
         self.scrollView.addViewInScroll(self.infosCollectionGp)
         self.scrollView.addViewInScroll(self.lastUpdateLabel)
@@ -459,7 +459,7 @@ class InfoGardenView: UIView, FavoriteHandler {
             self.container.bottomAnchor.constraint(equalTo: self.scrollView.contentView.bottomAnchor),
             
             
-            self.tagsCollection.topAnchor.constraint(equalTo: self.container.titleLabel.bottomAnchor, constant: -betweenSmaller),
+            self.tagsCollection.topAnchor.constraint(equalTo: self.container.titleLabel.bottomAnchor),
             self.tagsCollection.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
             self.tagsCollection.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
             self.tagsCollection.heightAnchor.constraint(equalToConstant: tagCollectionHeight),
