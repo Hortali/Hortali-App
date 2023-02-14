@@ -1,7 +1,8 @@
 /* Macro - Grupo 05 */
 
 /* Bibliotecas necessárias: */
-import UIKit
+import class Foundation.NSCoder
+import class UIKit.UIViewController
 
 
 /// Controller responsável pelo pop up
