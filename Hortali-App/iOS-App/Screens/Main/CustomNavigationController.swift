@@ -14,9 +14,7 @@ class CustomNavigationController: UINavigationController, CustomNavigationProtoc
     
     /// Esconde a navigation bar
     override var isNavigationBarHidden: Bool {
-        didSet {
-            self.gestureHandler()
-        }
+        didSet { self.gestureHandler() }
     }
     
     
@@ -33,15 +31,12 @@ class CustomNavigationController: UINavigationController, CustomNavigationProtoc
     
     /// Lida com o gesto de pop
     private func gestureHandler() {
-        if self.isNavigationBarHidden {
-            if self.popGestureDelegate == nil {
-                self.popGestureDelegate = PopGestureDelegate()
-                self.popGestureDelegate?.setNavProtocol(for: self)
-                
-                self.interactivePopGestureRecognizer?.delegate = self.popGestureDelegate
-            }
-        } else {
-            self.popGestureDelegate = nil
-        }
+        guard self.isNavigationBarHidden else { self.popGestureDelegate = nil; return }
+        
+        guard self.popGestureDelegate.isNil else { return }
+        self.popGestureDelegate = PopGestureDelegate()
+        self.popGestureDelegate?.setNavProtocol(for: self)
+        
+        self.interactivePopGestureRecognizer?.delegate = self.popGestureDelegate
     }
 }
