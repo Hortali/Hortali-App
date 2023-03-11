@@ -11,16 +11,12 @@ class CustomLabel: UILabel {
     
     /// Estado de quando a label é circular ou não. (Padrão: true)
     internal var isCircular = false {
-        didSet {
-            self.setupCorner()
-        }
+        didSet { self.setupCorner() }
     }
     
     /// Tamanho da label quando for circular (Padrão: 35)
     internal var circleSize: CGFloat = 35 {
-        didSet {
-            self.setupCorner()
-        }
+        didSet { self.setupCorner() }
     }
     
     
@@ -29,9 +25,7 @@ class CustomLabel: UILabel {
     
     
     override var bounds: CGRect {
-        didSet {
-            self.setupCorner()
-        }
+        didSet { self.setupCorner() }
     }
     
     
@@ -59,12 +53,11 @@ class CustomLabel: UILabel {
     
     /// Configura a borda para quando o botão for redondo (ou não)
     private func setupCorner() {
-        switch self.isCircular {
-        case true:
+        if isCircular {
             self.setupRoundedConstraints()
-            self.layer.cornerRadius = self.bounds.height / 2
-        case false:
-            NSLayoutConstraint.deactivate(self.dynamicConstraints)
+            self.setupRoundedCorner()
+        } else {
+            self.removeRoundedConstraints()
         }
     }
     
@@ -79,5 +72,15 @@ class CustomLabel: UILabel {
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
+    }
+    
+    
+    private func setupRoundedCorner() {
+        self.layer.cornerRadius = self.bounds.height / 2
+    }
+    
+    
+    private func removeRoundedConstraints() {
+        NSLayoutConstraint.deactivate(self.dynamicConstraints)
     }
 }

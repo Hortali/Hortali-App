@@ -5,16 +5,14 @@ import UIKit
 
 
 /// Componentes de toda tela vazia.
-class EmptyView: UIView {
+class EmptyView: UIView, ViewCode {
     
     /* MARK: - Atributos */
     
     // Views
     
-    /// Container da emptyv iew em si
     private var contentView = CustomViews.newView()
     
-    /// Título: "OPS"
     private var titleLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textAlignment = .center
@@ -24,11 +22,10 @@ class EmptyView: UIView {
         return lbl
     }()
     
-    /// Texto que muda de acordo com a  tela que vai ser usado
-    public var dynamicLabel: UILabel = {
+    private var descriptionLabel: UILabel = {
         let lbl = CustomViews.newLabel()
-        lbl.textAlignment = .center
         lbl.numberOfLines = 2
+        lbl.textAlignment = .center
         lbl.adjustsFontSizeToFitWidth = true
         lbl.textColor = UIColor(originalColor: .greyButton)
         
@@ -38,8 +35,11 @@ class EmptyView: UIView {
     
     // Outros
     
-    /// Constraints que vão mudar de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
+    final var dynamicConstraints: [NSLayoutConstraint] = []
+    
+    public var emptyViewText: EmptyTexts? {
+        didSet { self.setupEmptyViewDescription() }
+    }
     
     
     
@@ -47,11 +47,9 @@ class EmptyView: UIView {
     
     init(emptyViewType: EmptyTexts? = nil) {
         super.init(frame: .zero)
-        self.translatesAutoresizingMaskIntoConstraints = false
         
-        self.setupText(style: emptyViewType ?? .search)
-        self.setupViews()
-        self.setupUI()
+        self.setupEmptyViewText(emptyViewType)
+        self.createView()
     }
     
     required init?(coder: NSCoder)  { fatalError("init(coder:) has not been implemented") }
@@ -62,47 +60,52 @@ class EmptyView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        self.setupStaticTexts()
-        self.setupDynamicConstraints()
+        self.updateUI()
     }
     
     
     
     /* MARK: - Configurações */
     
-    /// Textos das labels que mudam de acordo com a tela.
-    /// - Parameter style: estulo do texto
-    private func setupText(style: EmptyTexts){
-        self.dynamicLabel.text = style.text
+    private func setupEmptyViewText(_ type: EmptyTexts?) {
+        self.emptyViewText = type
     }
     
     
-    /// Adiciona os elementos (Views) na tela
-    private func setupViews() {
-        self.addSubview(contentView)
-        self.contentView.addSubview(titleLabel)
-        self.contentView.addSubview(dynamicLabel)
+    private func setupEmptyViewDescription() {
+        guard let text = self.emptyViewText?.text else { return }
+        self.descriptionLabel.text = text
     }
     
     
-    /// Personalização da UI
-    private func setupUI() {
+    
+    /* MARK: - Protocolo */
+    
+    final func setupView() {
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .clear
     }
     
     
-    /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {
-        self.titleLabel.setupText(with: FontInfo(text: "OPS ", fontSize: 72, weight: .bold, fontFamily: .graffiti))
+    final func setupHierarchy() {
+        self.addSubview(contentView)
+        self.contentView.addSubview(titleLabel)
+        self.contentView.addSubview(descriptionLabel)
     }
     
     
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() {
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
-        
-        self.dynamicConstraints = [
+    final func setupStaticTexts() {
+        self.titleLabel.text = "OPS "
+    }
+    
+    
+    final func setupFonts() {
+        self.titleLabel.setupText(with: FontInfo(fontSize: 72, weight: .bold, fontFamily: .graffiti))
+    }
+    
+    
+    final func setupStaticConstraints() {
+        NSLayoutConstraint.activate([
             self.contentView.topAnchor.constraint(equalTo: self.topAnchor),
             self.contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
@@ -113,10 +116,13 @@ class EmptyView: UIView {
             self.titleLabel.bottomAnchor.constraint(equalTo: self.contentView.centerYAnchor),
             
             
-            self.dynamicLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
-            self.dynamicLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-        ]
-        
-        NSLayoutConstraint.activate(self.dynamicConstraints)
+            self.descriptionLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
+            self.descriptionLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+        ])
     }
+    
+    
+    final func setupDynamicConstraints() { }
+    
+    final func setupUI() { }
 }

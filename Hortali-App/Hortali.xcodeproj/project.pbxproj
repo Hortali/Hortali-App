@@ -94,6 +94,7 @@
 		225FA205292DF37E0004D131 /* SF-Pro-Rounded-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 225FA1FC292DF37E0004D131 /* SF-Pro-Rounded-Heavy.otf */; };
 		225FA206292DF37E0004D131 /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 225FA1FD292DF37E0004D131 /* SF-Pro-Rounded-Bold.otf */; };
 		225FA208292E01150004D131 /* FontWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225FA207292E01150004D131 /* FontWeight.swift */; };
+		2270F70429BCC88B008DFBDA /* UIView+strechToBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270F70329BCC88B008DFBDA /* UIView+strechToBounds.swift */; };
 		227FAFD0292FACAE0080FB9C /* FavoriteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FAFCF292FACAE0080FB9C /* FavoriteHandler.swift */; };
 		227FAFD2292FADB10080FB9C /* FavoriteInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FAFD1292FADB10080FB9C /* FavoriteInfos.swift */; };
 		229AC9EC293CBD53005248E9 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229AC9EB293CBD53005248E9 /* TagCell.swift */; };
@@ -240,6 +241,7 @@
 		225FA1FC292DF37E0004D131 /* SF-Pro-Rounded-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Heavy.otf"; sourceTree = "<group>"; };
 		225FA1FD292DF37E0004D131 /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
 		225FA207292E01150004D131 /* FontWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontWeight.swift; sourceTree = "<group>"; };
+		2270F70329BCC88B008DFBDA /* UIView+strechToBounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+strechToBounds.swift"; sourceTree = "<group>"; };
 		227FAFCF292FACAE0080FB9C /* FavoriteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHandler.swift; sourceTree = "<group>"; };
 		227FAFD1292FADB10080FB9C /* FavoriteInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteInfos.swift; sourceTree = "<group>"; };
 		229AC9EB293CBD53005248E9 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
@@ -597,6 +599,7 @@
 		222937DE28C66F4D00515095 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2270F70329BCC88B008DFBDA /* UIView+strechToBounds.swift */,
 				2229384C28C8942B00515095 /* UIViewController+setupTab.swift */,
 				2229382828C85EF700515095 /* UITextField+setupPlaceHolder.swift */,
 				2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */,
@@ -1345,6 +1348,7 @@
 				2210245D28D8494A00F412A5 /* InfoGardenImagesCell.swift in Sources */,
 				224BC12929393735009D92FE /* OnBoardingInfos.swift in Sources */,
 				B241564728D26E4C009F011C /* FoodCell.swift in Sources */,
+				2270F70429BCC88B008DFBDA /* UIView+strechToBounds.swift in Sources */,
 				2229382628C852D200515095 /* CustomButton.swift in Sources */,
 				222937BE28C66B5600515095 /* AppDelegate.swift in Sources */,
 				2212E82B28DB8734004CCBAA /* GardenDelegate.swift in Sources */,

@@ -68,14 +68,14 @@ class FavoriteView: MainView {
     /// Verifica a quantidade de dados das hortas
     /// - Parameter gardenDataCount: quantidade de dados das hortas
     public func checkGardenData(with gardenDataCount: Int) {
-        self.gardenGroup.isCollectionEmpty(with: gardenDataCount == 0)
+        self.gardenGroup.isCollectionEmpty = gardenDataCount == 0
     }
     
     
     /// Verifica a quantidade de dados das hortas
     /// - Parameter foodDataCount: quantidade de dados dos alimentos
     public func checkFoodData(with foodDataCount: Int) {
-        self.foodGroup.isCollectionEmpty(with: foodDataCount == 0)
+        self.foodGroup.isCollectionEmpty = foodDataCount == 0
     }
     
     
@@ -223,11 +223,11 @@ class FavoriteView: MainView {
         
         let foodGpHeight = self.getEquivalent(187, dimension: .height)   // 150+12+25
         
-        self.foodGroup.setPadding(for: lateral)
-        self.gardenGroup.setPadding(for: lateral)
+        self.foodGroup.setupLateralPadding(lateral)
+        self.gardenGroup.setupLateralPadding(lateral)
         
-        self.foodGroup.setLabelSpace(for: lateral)
-        self.gardenGroup.setLabelSpace(for: lateral)
+        self.foodGroup.setupTitleLabelLeftSpace(lateral)
+        self.gardenGroup.setupTitleLabelLeftSpace(lateral)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         

@@ -419,8 +419,8 @@ class InfoGardenView: UIView, FavoriteHandler {
         let tagCollectionHeight = self.getEquivalent(25)
         
         
-        self.infosCollectionGp.setPadding(for: lateral)
-        self.tagsCollection.setPadding(for: lateral)
+        self.infosCollectionGp.setupLateralPadding(lateral)
+        self.tagsCollection.setupLateralPadding(lateral)
         
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)

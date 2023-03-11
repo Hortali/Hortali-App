@@ -62,7 +62,7 @@ extension ViewCode {
     
     
     /// Faz as chamadas necessárias para os momentos que precisam ser atualizados quando há uma mudança na tela
-    internal func dynamicCall() {
+    internal func updateUI() {
         self.setupUI()
         self.setupFonts()
         self.setupDynamicConstraints()

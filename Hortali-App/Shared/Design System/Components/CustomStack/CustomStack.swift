@@ -38,25 +38,34 @@ class CustomStack: UIStackView {
     /// Essa função só faz sentido para caso os elementos que foram adicionados na
     /// stack view forem do mesmo tamanho.
     public func getEqualSpace(for space: CGFloat) -> CGFloat {
-        var superViewValue: CGFloat? = nil
+        let spaceAvaiable = self.getSpaceAvaiableOnSuperview()
+        guard let spaceAvaiable else { return 0 }
         
+        let equalSpace = self.calculateEqualSpace(spaceAvaiable: spaceAvaiable, spaceUsed: space)
+        return equalSpace
+        
+    }
+    
+    
+    private func getSpaceAvaiableOnSuperview() -> CGFloat? {
         switch self.axis {
         case .horizontal:
-            superViewValue = self.superview?.bounds.width
+            return self.superview?.bounds.width
             
         case .vertical:
-            superViewValue = self.superview?.bounds.height
+            return self.superview?.bounds.height
             
-        @unknown default: break
+        @unknown default:
+            return nil
         }
-        
-        if let superViewValue = superViewValue {
-            let totalViewsInStack = CGFloat(self.arrangedSubviews.count)
-            
-            let spaceToDivide: CGFloat = superViewValue - (space * totalViewsInStack)
-            
-            return spaceToDivide / (totalViewsInStack + 1)
-        }
-        return 0
     }
+    
+    
+    private func calculateEqualSpace(spaceAvaiable: CGFloat, spaceUsed: CGFloat) -> CGFloat {
+        let viewsInStack = CGFloat(self.arrangedSubviews.count)
+        let spaceToDivide: CGFloat = spaceAvaiable - (spaceUsed * viewsInStack)
+        let equalSpace = spaceToDivide / (viewsInStack + 1)
+        return equalSpace
+    }
+    
 }

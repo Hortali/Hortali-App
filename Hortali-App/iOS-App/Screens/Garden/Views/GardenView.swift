@@ -74,7 +74,7 @@ class GardenView: MainView {
     
     /// Verifica a existencia de dados na collection
     public func checkData(with dataCount: Int) {
-        self.gardenGroup.isCollectionEmpty(with: dataCount == 0)
+        self.gardenGroup.isCollectionEmpty = dataCount == 0
     }
     
     
@@ -272,7 +272,7 @@ class GardenView: MainView {
         
         let tagCollectionHeight = self.getEquivalent(25)
         
-        self.tagGroup.setPadding(for: lateral)
+        self.tagGroup.setupLateralPadding(lateral)
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
         
@@ -297,7 +297,7 @@ class GardenView: MainView {
         // Collection
         switch self.visualizationType {
         case .grid:
-            self.gardenGroup.setPadding(for: 0)
+            self.gardenGroup.setupLateralPadding(0)
             
             self.dynamicConstraints += [
                 self.gardenGroup.topAnchor.constraint(equalTo: self.tagGroup.bottomAnchor, constant: lateral),
@@ -308,7 +308,7 @@ class GardenView: MainView {
                 
         case .carousel:
             let emptySpace = self.getEmptySpace()
-            self.gardenGroup.setPadding(for: lateral)
+            self.gardenGroup.setupLateralPadding(lateral)
             
             self.dynamicConstraints += [
                 self.gardenGroup.topAnchor.constraint(equalTo: self.tagGroup.bottomAnchor, constant: emptySpace),

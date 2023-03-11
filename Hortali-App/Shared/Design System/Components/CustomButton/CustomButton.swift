@@ -11,27 +11,20 @@ class CustomButton: UIButton {
     
     /// Estado de quando o botão é circular ou não. (Padrão: true)
     internal var isCircular = true {
-        didSet {
-            self.setupCorner()
-        }
+        didSet { self.setupCorner() }
     }
     
     /// Tamanho do botão quando for circular (Padrão: 45)
     internal var circleSize: CGFloat = 45 {
-        didSet {
-            self.setupCorner()
-        }
+        didSet { self.setupCorner() }
     }
-    
     
     /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
     private var dynamicConstraints: [NSLayoutConstraint] = []
     
     
     override var bounds: CGRect {
-        didSet {
-            self.setupCorner()
-        }
+        didSet { self.setupCorner() }
     }
     
     

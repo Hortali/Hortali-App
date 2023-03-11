@@ -68,7 +68,7 @@ class CustomScroll: UIView, ViewCode {
     override public func layoutSubviews() {
         super.layoutSubviews()
         
-        self.dynamicCall()
+        self.updateUI()
         self.setupScrollSize()
     }
     
@@ -111,7 +111,7 @@ class CustomScroll: UIView, ViewCode {
     
     /// Determina a nova altura da scroll
     private func setupNewScrollSize() {
-        var height = lastViewAdded!.frame.origin.y + lastViewAdded!.frame.height
+        let height = lastViewAdded!.frame.origin.y + lastViewAdded!.frame.height
         
         guard height != self.frame.height else { return }
         self.scrollContentSize = CGSize(
