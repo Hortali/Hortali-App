@@ -12,7 +12,7 @@ class HourInfoView: ContainerView {
     // Views
     
     /// Collection principal da tela
-    private let hourInfoGp = CollectionGroup(style: .justCollection)
+    private let hourInfoGp = CustomCollection()
     
     /// Barra superior
     private let homeIndicatorView: UIView = {

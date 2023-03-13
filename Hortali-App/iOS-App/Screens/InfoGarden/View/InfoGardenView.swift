@@ -22,8 +22,8 @@ class InfoGardenView: UIView, FavoriteHandler {
     }()
     
     /// Conjunto de imagens da horta
-    private let imagesCollectionGp: CollectionGroup = {
-        let colGp = CollectionGroup(style: .justCollection)
+    private let imagesCollectionGp: CustomCollection = {
+        let colGp = CustomCollection()
         colGp.collection.isPagingEnabled = true
         return colGp
     }()
@@ -35,13 +35,13 @@ class InfoGardenView: UIView, FavoriteHandler {
     private let container = ContainerView()
     
     /// Collection que mostra as tags
-    private let tagsCollection = CollectionGroup(style: .justCollection)
+    private let tagsCollection = CustomCollection()
     
     /// Label expandível
     private let expansiveLabel = ExpansiveLabel()
     
     /// Collection das informações sobre a horta
-    private let infosCollectionGp = CollectionGroup(style: .justCollection)
+    private let infosCollectionGp = CustomCollection()
     
     /// Mostra que um texto foi copiado
     private let copyWarning: ViewLabel = {

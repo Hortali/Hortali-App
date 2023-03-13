@@ -12,7 +12,7 @@ class SettingsView: MainView {
     // Views
     
     /// Collection principal da tela
-    private let settingsCollection = CollectionGroup(style: .justCollection)
+    private let settingsCollection = CustomCollection()
     
     
     // Outros

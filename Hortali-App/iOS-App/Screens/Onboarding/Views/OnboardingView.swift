@@ -12,8 +12,8 @@ class OnboardingView: UIView {
     // Views
     
     /// Collection das telas de onboarding
-    private let onBoardingGroup = {
-        let col = CollectionGroup(style: .justCollection)
+    private let onBoardingGroup: CustomCollection = {
+        let col = CustomCollection()
         col.collection.isPagingEnabled = true
         col.backgroundColor = .clear
         

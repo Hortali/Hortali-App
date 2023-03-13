@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Cria uma scroll view e já configura ela de acordo com o tamanho que vai ser definido pra ela
-class CustomScroll: UIView, ViewCode {
+class CustomScroll: ViewCode {
     
     /* MARK: - Atributos */
     
@@ -23,12 +23,6 @@ class CustomScroll: UIView, ViewCode {
     public let contentView = CustomViews.newView()
     
     
-    // Protocol:  View Code
-    
-    /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
-    internal var dynamicConstraints: [NSLayoutConstraint] = []
-    
-    
     // Outros
     
     /// Tamanho da scrollView
@@ -38,18 +32,6 @@ class CustomScroll: UIView, ViewCode {
     
     /// Último componente adicionado na scroll
     private var lastViewAdded: UIView?
-    
-    
-
-    /* MARK: - Construtor */
-    
-    init() {
-        super.init(frame: .zero)
-        self.createView()
-    }
-    
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
     
     
     /* MARK: - Encapsulamento */
@@ -67,8 +49,6 @@ class CustomScroll: UIView, ViewCode {
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-        
-        self.updateUI()
         self.setupScrollSize()
     }
     
@@ -126,19 +106,19 @@ class CustomScroll: UIView, ViewCode {
     
     /* View Code */
     
-    internal func setupHierarchy() {
+    override func setupHierarchy() {
         self.addSubview(self.scroll)
         self.scroll.addSubview(self.contentView)
     }
     
     
-    internal func setupView() {
+    override func setupView() {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     
-    internal func setupStaticConstraints() {
-        NSLayoutConstraint.activate([
+    override func createStaticConstraints() -> [NSLayoutConstraint] {
+        let constraints = [
             self.scroll.topAnchor.constraint(equalTo: self.topAnchor),
             self.scroll.leftAnchor.constraint(equalTo: self.leftAnchor),
             self.scroll.rightAnchor.constraint(equalTo: self.rightAnchor),
@@ -150,11 +130,12 @@ class CustomScroll: UIView, ViewCode {
             self.contentView.rightAnchor.constraint(equalTo: self.scroll.rightAnchor),
             self.contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.contentView.widthAnchor.constraint(equalTo: self.scroll.widthAnchor),
-        ])
+        ]
+        return constraints
     }
     
     
-    internal func setupDynamicConstraints() {
+    override func createDynamicConstraints() {
         let safeAreaTop = self.scroll.safeAreaInsets.top
         
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
@@ -165,11 +146,4 @@ class CustomScroll: UIView, ViewCode {
         
         NSLayoutConstraint.activate(self.dynamicConstraints)
     }
-    
-    
-    internal func setupStaticTexts() {}
-    
-    internal func setupUI() {}
-    
-    internal func setupFonts() {}
 }

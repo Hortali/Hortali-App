@@ -22,7 +22,7 @@ class FoodView: MainView {
     
     
     /// Collection de alimentos
-    private let foodGroup = CollectionGroup(style: .justCollection)
+    private let foodGroup = CustomCollection()
     
     
     // Outros

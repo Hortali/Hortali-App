@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Componentes de toda tela vazia.
-class EmptyView: UIView, ViewCode {
+class EmptyView: ViewCode {
     
     /* MARK: - Atributos */
     
@@ -35,8 +35,6 @@ class EmptyView: UIView, ViewCode {
     
     // Outros
     
-    final var dynamicConstraints: [NSLayoutConstraint] = []
-    
     public var emptyViewText: EmptyTexts? {
         didSet { self.setupEmptyViewDescription() }
     }
@@ -46,22 +44,11 @@ class EmptyView: UIView, ViewCode {
     /* MARK: - Construtor */
     
     init(emptyViewType: EmptyTexts? = nil) {
-        super.init(frame: .zero)
-        
+        super.init()
         self.setupEmptyViewText(emptyViewType)
-        self.createView()
     }
     
-    required init?(coder: NSCoder)  { fatalError("init(coder:) has not been implemented") }
-    
-    
-    
-    /* MARK: - Ciclo de Vida */
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.updateUI()
-    }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     
     
@@ -73,56 +60,53 @@ class EmptyView: UIView, ViewCode {
     
     
     private func setupEmptyViewDescription() {
-        guard let text = self.emptyViewText?.text else { return }
-        self.descriptionLabel.text = text
+        self.descriptionLabel.text = self.emptyViewText?.text
     }
     
     
     
-    /* MARK: - Protocolo */
+    /* MARK: - ViewCode */
     
-    final func setupView() {
+    override func setupView() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .clear
     }
     
     
-    final func setupHierarchy() {
-        self.addSubview(contentView)
-        self.contentView.addSubview(titleLabel)
-        self.contentView.addSubview(descriptionLabel)
+    override func setupHierarchy() {
+        self.addSubview(self.contentView)
+        self.contentView.addSubview(self.titleLabel)
+        self.contentView.addSubview(self.descriptionLabel)
     }
     
     
-    final func setupStaticTexts() {
+    override func setupStaticTexts() {
         self.titleLabel.text = "OPS "
+        self.descriptionLabel.text = self.emptyViewText?.text
     }
     
     
-    final func setupFonts() {
+    override func setupFonts() {
         self.titleLabel.setupText(with: FontInfo(fontSize: 72, weight: .bold, fontFamily: .graffiti))
     }
     
     
-    final func setupStaticConstraints() {
-        NSLayoutConstraint.activate([
-            self.contentView.topAnchor.constraint(equalTo: self.topAnchor),
-            self.contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            
-            
-            self.titleLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.titleLabel.bottomAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            
-            
-            self.descriptionLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
-            self.descriptionLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-        ])
+    override func createStaticConstraints() -> [NSLayoutConstraint] {
+        var constraints = self.contentView.strechToBounds(of: self)
+        constraints += self.createLabelsConstraints()
+        return constraints
     }
     
     
-    final func setupDynamicConstraints() { }
     
-    final func setupUI() { }
+    private func createLabelsConstraints() -> [NSLayoutConstraint] {
+        let constraints = [
+            self.titleLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.titleLabel.bottomAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            
+            self.descriptionLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
+            self.descriptionLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+        ]
+        return constraints
+    }
 }

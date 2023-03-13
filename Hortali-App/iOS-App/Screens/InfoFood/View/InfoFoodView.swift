@@ -59,7 +59,7 @@ class InfoFoodView: UIView, FavoriteHandler {
     }()
     
     /// Collection  "Como plantar"
-    private let howToCollection = CollectionGroup()
+    private let howToCollection = CustomCollectionWithTitle()
     
     /// Botão de sasonaliade
     private var seasonalityButton: CustomButton?

@@ -5,14 +5,14 @@ import class UIKit.UIView
 import class UIKit.NSLayoutConstraint
 
 
-extension UIView {
+public extension UIView {
     
     /// Cria as contrainsts fixando na view inteira
     /// - Parameter view: view que vai ser fixada
     /// - Returns: lista com as contraints
     ///
     /// Esse método não ativa as constraints apenas cria elas
-    public func strechToBounds(of view: UIView) -> [NSLayoutConstraint] {
+    func strechToBounds(of view: UIView) -> [NSLayoutConstraint] {
         let constraints = [
             self.topAnchor.constraint(equalTo: view.topAnchor),
             self.leadingAnchor.constraint(equalTo: view.leadingAnchor),

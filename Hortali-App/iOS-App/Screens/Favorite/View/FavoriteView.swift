@@ -12,10 +12,10 @@ class FavoriteView: MainView {
     // Views
     
     /// Collection de alimentos
-    private let foodGroup = CollectionGroup(emptyViewType: .food)
+    private let foodGroup = CustomCollectionWithTitle(emptyViewType: .food)
     
     /// Collection das hortas
-    private let gardenGroup = CollectionGroup(emptyViewType: .garden)
+    private let gardenGroup = CustomCollectionWithTitle(emptyViewType: .garden)
     
     /// Empty view da tela
     private let emptyView = EmptyView(emptyViewType: .favorite)
@@ -68,14 +68,14 @@ class FavoriteView: MainView {
     /// Verifica a quantidade de dados das hortas
     /// - Parameter gardenDataCount: quantidade de dados das hortas
     public func checkGardenData(with gardenDataCount: Int) {
-        self.gardenGroup.isCollectionEmpty = gardenDataCount == 0
+        self.gardenGroup.collectionHasData = gardenDataCount == 0
     }
     
     
     /// Verifica a quantidade de dados das hortas
     /// - Parameter foodDataCount: quantidade de dados dos alimentos
     public func checkFoodData(with foodDataCount: Int) {
-        self.foodGroup.isCollectionEmpty = foodDataCount == 0
+        self.foodGroup.collectionHasData = foodDataCount == 0
     }
     
     

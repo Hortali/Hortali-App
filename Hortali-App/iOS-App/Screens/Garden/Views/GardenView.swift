@@ -15,10 +15,10 @@ class GardenView: MainView {
     private let search = CustomViews.newSearch()
     
     /// Collection das hortas
-    private let gardenGroup = CollectionGroup(style: .justCollection)
+    private let gardenGroup = CustomCollection(emptyViewType: .garden)
     
     /// Collection das tags
-    private let tagGroup = CollectionGroup(style: .justCollection)
+    private let tagGroup = CustomCollection()
     
     
     /// Botão de mudar a visualização das hortas
@@ -74,7 +74,7 @@ class GardenView: MainView {
     
     /// Verifica a existencia de dados na collection
     public func checkData(with dataCount: Int) {
-        self.gardenGroup.isCollectionEmpty = dataCount == 0
+        self.gardenGroup.collectionHasData = dataCount == 0
     }
     
     
