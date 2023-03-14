@@ -278,7 +278,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
         self.myView.setImagesDataSource(for: self.imagesDataSource)
         self.myView.setImagesDelegate(for: self.imagesDelegate)
         
-        let tagCollection = self.myView.tagCollection
+        let tagCollection = self.myView.tagsCollection
         self.tagCollectionHandler.link(with: tagCollection)
     }
     
@@ -311,6 +311,5 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     /// - Parameter textToCopy: texto que vai ser copiado
     private func copyHandler(textToCopy: String) {
         UIPasteboard.general.string = textToCopy
-        self.myView.showCopyWarning()
     }
 }

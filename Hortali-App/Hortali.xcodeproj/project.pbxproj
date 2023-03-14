@@ -96,6 +96,7 @@
 		2270F70429BCC88B008DFBDA /* UIView+strechToBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270F70329BCC88B008DFBDA /* UIView+strechToBounds.swift */; };
 		2270F70629BCD0A9008DFBDA /* CustomCollectionWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270F70529BCD0A9008DFBDA /* CustomCollectionWithTitle.swift */; };
 		2270F70829BF7251008DFBDA /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270F70729BF7251008DFBDA /* ViewCode.swift */; };
+		2270F70A29C0845C008DFBDA /* CopyWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270F70929C0845C008DFBDA /* CopyWarning.swift */; };
 		227FAFD0292FACAE0080FB9C /* FavoriteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FAFCF292FACAE0080FB9C /* FavoriteHandler.swift */; };
 		227FAFD2292FADB10080FB9C /* FavoriteInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FAFD1292FADB10080FB9C /* FavoriteInfos.swift */; };
 		229AC9EC293CBD53005248E9 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229AC9EB293CBD53005248E9 /* TagCell.swift */; };
@@ -244,6 +245,7 @@
 		2270F70329BCC88B008DFBDA /* UIView+strechToBounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+strechToBounds.swift"; sourceTree = "<group>"; };
 		2270F70529BCD0A9008DFBDA /* CustomCollectionWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionWithTitle.swift; sourceTree = "<group>"; };
 		2270F70729BF7251008DFBDA /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
+		2270F70929C0845C008DFBDA /* CopyWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyWarning.swift; sourceTree = "<group>"; };
 		227FAFCF292FACAE0080FB9C /* FavoriteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHandler.swift; sourceTree = "<group>"; };
 		227FAFD1292FADB10080FB9C /* FavoriteInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteInfos.swift; sourceTree = "<group>"; };
 		229AC9EB293CBD53005248E9 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
@@ -693,6 +695,7 @@
 				2229384E28C8964200515095 /* MainView.swift */,
 				22A3DB29290CED4700B34CEC /* ViewLabel.swift */,
 				222937F228C6844E00515095 /* CustomViews.swift */,
+				2270F70929C0845C008DFBDA /* CopyWarning.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1417,6 +1420,7 @@
 				222937F128C6837500515095 /* UIButton+IconInfo.swift in Sources */,
 				2244432C293BF109002E6C29 /* ManagedSeasonality.swift in Sources */,
 				223B75E628F16D280034B2C4 /* FavoriteAction.swift in Sources */,
+				2270F70A29C0845C008DFBDA /* CopyWarning.swift in Sources */,
 				2229382928C85EF700515095 /* UITextField+setupPlaceHolder.swift in Sources */,
 				B214C3E8291AF4E30033CFAE /* OnboardingProtocol.swift in Sources */,
 				2229385928C9D1DF00515095 /* Screens.swift in Sources */,

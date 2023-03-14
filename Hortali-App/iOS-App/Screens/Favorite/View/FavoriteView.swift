@@ -11,23 +11,14 @@ class FavoriteView: MainView {
     
     // Views
     
-    /// Collection de alimentos
     private let foodGroup = CustomCollectionWithTitle(emptyViewType: .food)
     
-    /// Collection das hortas
     private let gardenGroup = CustomCollectionWithTitle(emptyViewType: .garden)
     
-    /// Empty view da tela
     private let emptyView = EmptyView(emptyViewType: .favorite)
     
     
-    // Constraints
-    
-    /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-    
-    
-    // Collection
+    // Collections
     
     /// Configurações do layout da collection de Alimentos
     private let foodCollectionFlow: UICollectionViewFlowLayout = {
@@ -52,9 +43,7 @@ class FavoriteView: MainView {
     override init() {
         super.init()
         
-        self.setupViews()
         self.registerCells()
-        self.setupCollectionFlow()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -126,130 +115,136 @@ class FavoriteView: MainView {
     public func setGardenDelegate(with delegate: GardenDelegate) {
         self.gardenGroup.collection.delegate = delegate
     }
+
         
-    
-    
-    /* MARK: - Ciclo de Vida */
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        self.setupStaticTexts()
-        self.setupDynamicConstraints()
-        self.setupUI()
-    }
-    
-    
     
     /* MARK: - Configurações */
     
-    // Collection
-    
-    /// Registra as células nas collections/table
     private func registerCells() {
         self.foodGroup.collection.register(FoodCell.self, forCellWithReuseIdentifier: FoodCell.identifier)
         self.gardenGroup.collection.register(GardenCell.self, forCellWithReuseIdentifier: GardenCell.identifier)
     }
     
     
-    /// Define o layout da collection
     private func setupCollectionFlow() {
         self.foodGroup.collection.collectionViewLayout = self.foodCollectionFlow
         self.gardenGroup.collection.collectionViewLayout = self.gardenCollectionFlow
     }
         
     
-    // Views
     
-    /// Adiciona os elementos (Views) na tela
-    private func setupViews() {
+    /* MARK: - ViewCode */
+    
+    override func setupHierarchy() {
+        super.setupHierarchy()
         self.contentView.addSubview(self.foodGroup)
         self.contentView.addSubview(self.gardenGroup)
         self.contentView.addSubview(self.emptyView)
     }
     
     
-    /// Personalização da UI
-    private func setupUI() {
+    override func setupView() {
         self.backgroundColor = UIColor(.favoriteBack)
-        
-        // Collection
+    }
+    
+    
+    override func setupUI() {
+        self.setFoodCollectionItemSize()
+        self.setGardenCollectionItemSize()
+    }
+
+    
+    private func setGardenCollectionItemSize() {
+        guard self.gardenGroup.collection.bounds.width != 0 else { return }
         let minimumSpace = self.getEquivalent(10)
+        let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
         
-        if self.gardenGroup.collection.bounds.width != 0 {
-            let screenReferenceSize = SizeInfo(screenSize: CGSize(width: 240, height: 400), dimension: .height)
-            
-            self.gardenCollectionFlow.itemSize = CGSize(
-                width: self.gardenGroup.collection.getEquivalent(240, screenReference: screenReferenceSize),
-                height: self.gardenGroup.collection.bounds.height
-            )
-            self.gardenCollectionFlow.minimumInteritemSpacing = minimumSpace
-        }
-        
-        
-        if self.foodGroup.collection.bounds.width != 0 {
-            let cellReferenceSize = SizeInfo(screenSize: CGSize(width: 170, height: 192), dimension: .height)
-            
-            self.foodCollectionFlow.itemSize = CGSize(
-                width: self.foodGroup.collection.getEquivalent(170, screenReference: cellReferenceSize),
-                height: self.foodGroup.collection.bounds.height
-            )
-            self.foodCollectionFlow.minimumInteritemSpacing = minimumSpace
-        }
+        self.gardenCollectionFlow.itemSize = CGSize(
+            width: self.gardenGroup.collection.getEquivalent(240, screenReference: screenReferenceSize),
+            height: self.gardenGroup.collection.bounds.height
+        )
+        self.gardenCollectionFlow.minimumInteritemSpacing = minimumSpace
     }
     
     
-    /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {
+    private func setFoodCollectionItemSize() {
+        guard self.foodGroup.collection.bounds.width != 0 else { return }
+        let minimumSpace = self.getEquivalent(10)
+        let cellReferenceSize = SizeInfo(screenSize: CGSize(width: 170, height: 192), dimension: .height)
+        
+        self.foodCollectionFlow.itemSize = CGSize(
+            width: self.foodGroup.collection.getEquivalent(170, screenReference: cellReferenceSize),
+            height: self.foodGroup.collection.bounds.height
+        )
+        self.foodCollectionFlow.minimumInteritemSpacing = minimumSpace
+        
+    }
+    
+    
+    override func setupStaticTexts() {
         self.setTitleText(with: "Favoritos da sua \nmesa")
-        
-        let subTitleSize: CGFloat = self.getEquivalent(25, dimension: .height)
-        
-        self.foodGroup.titleLabel.setupText(with: FontInfo(
-            text: "Alimentos", fontSize: subTitleSize, weight: .medium)
-        )
-        
-        self.gardenGroup.titleLabel.setupText(with: FontInfo(
-            text: "Hortas", fontSize: subTitleSize, weight: .medium)
-        )
+        self.foodGroup.titleLabel.text = "Alimentos"
+        self.gardenGroup.titleLabel.text = "Hortas"
     }
     
     
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() {
-        let lateral: CGFloat = self.getEquivalent(15)
-        let between: CGFloat = self.getEquivalent(28, dimension: .height)
+    override func setupFonts() {
+        let subTitleSize: CGFloat = self.getEquivalent(25, dimension: .height)
+        let font = FontInfo(fontSize: subTitleSize, weight: .medium)
         
-        
-        let foodGpHeight = self.getEquivalent(187, dimension: .height)   // 150+12+25
-        
-        self.foodGroup.setupLateralPadding(lateral)
-        self.gardenGroup.setupLateralPadding(lateral)
-        
-        self.foodGroup.setupTitleLabelLeftSpace(lateral)
-        self.gardenGroup.setupTitleLabelLeftSpace(lateral)
-        
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
-        
-        self.dynamicConstraints = [
+        self.foodGroup.titleLabel.setupText(with: font)
+        self.gardenGroup.titleLabel.setupText(with: font)
+    }
+    
+    
+    override func createStaticConstraints() -> [NSLayoutConstraint] {
+        let emptyView = self.emptyView.strechToBounds(of: self.contentView)
+        var constrains = [
             self.foodGroup.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             self.foodGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.foodGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.foodGroup.heightAnchor.constraint(equalToConstant: foodGpHeight),
+        
             
-            
-            self.gardenGroup.topAnchor.constraint(equalTo: self.foodGroup.bottomAnchor, constant: between),
             self.gardenGroup.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.gardenGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.gardenGroup.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -lateral),
-            
-            
-            self.emptyView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            self.emptyView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.emptyView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.emptyView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
         ]
+        constrains += emptyView
+        return constrains
+    }
+    
+    
+    override func createDynamicConstraints() {
+        self.setDynamicConstraints()
+        self.setCollectionsPadding()
+        self.setCollectionsTitleLabelPadding()
+    }
+    
+    
+    private func setDynamicConstraints() {
+        let bottom: CGFloat = self.getEquivalent(15)
+        let between: CGFloat = self.getEquivalent(28, dimension: .height)
+        let foodCollectionHeight = self.getEquivalent(187, dimension: .height)   // 150+12+25
         
-        NSLayoutConstraint.activate(self.dynamicConstraints)
+        self.dynamicConstraints = [
+            self.gardenGroup.topAnchor.constraint(equalTo: self.foodGroup.bottomAnchor, constant: between),
+            self.gardenGroup.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -bottom),
+            
+            
+            self.foodGroup.heightAnchor.constraint(equalToConstant: foodCollectionHeight),
+        ]
+    }
+    
+    
+    private func setCollectionsPadding() {
+        let padding: CGFloat = self.getEquivalent(15)
+        self.foodGroup.setupLateralPadding(padding)
+        self.gardenGroup.setupLateralPadding(padding)
+    }
+    
+    
+    private func setCollectionsTitleLabelPadding() {
+        let padding: CGFloat = self.getEquivalent(15)
+        self.foodGroup.setupTitleLabelLeftSpace(padding)
+        self.gardenGroup.setupTitleLabelLeftSpace(padding)
     }
 }

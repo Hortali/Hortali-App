@@ -24,10 +24,10 @@ extension CollectionHandler {
     /// - Parameter collection: collection que vai ser linkada
     ///
     /// Essa função também faz o registro da célula
-    func link(with collection: UICollectionView) {
-        self.registerCell(in: collection)
+    func link(with view: CustomCollection) {
+        self.registerCell(in: view.collection)
         
-        collection.delegate = self
-        collection.dataSource = self
+        view.collection.delegate = self
+        view.collection.dataSource = self
     }
 }

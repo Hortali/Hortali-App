@@ -4,84 +4,63 @@
 import UIKit
 
 
-/// Componentes de toda tela inicial.
- class MainView: UIView {
+/// Componentes das telas iniciais
+class MainView: ViewCode {
     
     /* MARK: - Atributos */
     
-    // Views
-    
-    /// Tela de acordo com o padrão da tela
     private let container = ContainerView()
     
-    /// Espaço para colocar os componentes da tela
     public var contentView: UIView
-        
-    
-    // Outros
-    
-    /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
-    private var dynamicConstraintsMain: [NSLayoutConstraint] = []
         
     
 
     /* MARK: - Construtor */
     
-    init() {
+    override init() {
         self.contentView = self.container.contentView
-        super.init(frame: .zero)
         
-        self.setupViewsMain()
+        super.init()
+        self.setupMainViewConstraints()
     }
     
-     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     
     
     /* MARK: - Encapsulamento */
     
-    /// Define o título da tela
-    /// - Parameter text: título da tela
     public func setTitleText(with text: String) {
         self.container.setTitleText(with: text)
     }
     
-    /// Label de título
+    
     public var titleLabel: UILabel {
         return self.container.titleLabel
     }
-    
-    
 
-    /* MARK: - Ciclo de Vida */
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-          
-        self.setupDynamicConstraintsMain()
-    }
-    
-    
-    
-    /* MARK: - Configurações */
+     
+        
+    /* MARK: - ViewCode */
 
-    /// Adiciona os elementos (Views) na tela
-    private func setupViewsMain() {
+    override func setupHierarchy() {
         self.addSubview(self.container)
     }
     
+
+    private func setupMainViewConstraints() {
+        let constraints = self.createMainViewConstraints()
+        self.activateConstraints(for: constraints)
+    }
     
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraintsMain() {
-        NSLayoutConstraint.deactivate(self.dynamicConstraintsMain)
     
-        self.dynamicConstraintsMain = [
+    private func createMainViewConstraints() -> [NSLayoutConstraint] {
+        let constraints = [
             self.container.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             self.container.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
             self.container.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
             self.container.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ]
-        
-        NSLayoutConstraint.activate(self.dynamicConstraintsMain)
+        return constraints
     }
 }

@@ -11,7 +11,6 @@ class FoodView: MainView {
     
     // Views
     
-    /// Menu dos alimentos separados por categorias
     private let foodSegmented: UISegmentedControl = {
         let itensSeg = DataManager.shared.getAllCategories()
         let seg = CustomViews.newSegmentation(with: itensSeg)
@@ -20,16 +19,11 @@ class FoodView: MainView {
         return seg
     }()
     
-    
-    /// Collection de alimentos
     private let foodGroup = CustomCollection()
     
     
     // Outros
     
-    /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-        
     /// Configurações do layout da collection
     private let collectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
@@ -45,7 +39,6 @@ class FoodView: MainView {
     override init() {
         super.init()
         
-        self.setupViews()
         self.registerCells()
         self.setupCollectionFlow()
     }
@@ -93,18 +86,6 @@ class FoodView: MainView {
         self.foodGroup.collection.setContentOffset(.zero, animated: true)
     }
     
-
-    
-    /* MARK: - Ciclo de Vida */
-    
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-          
-        self.setupUI()
-        self.setupStaticTexts()
-        self.setupDynamicConstraints()
-    }
-    
     
     
     /* MARK: - Configurações */
@@ -125,17 +106,25 @@ class FoodView: MainView {
     
     // View
     
-    /// Adiciona os elementos (Views) na tela
-    private func setupViews() {
+    
+    override func setupHierarchy() {
+        super.setupHierarchy()
         self.addSubview(self.foodSegmented)
         self.addSubview(self.foodGroup)
     }
     
     
-    /// Personalização da UI
-    private func setupUI() {
+    override func setupView() {
         self.backgroundColor = UIColor(.foodBack)
-        
+    }
+    
+    
+    override func setupUI() {
+        self.setFoodCollectionItemSize()
+    }
+    
+    
+    private func setFoodCollectionItemSize() {
         self.collectionFlow.itemSize = CGSize(
             width: self.getEquivalent(170),
             height: self.getEquivalent(192)
@@ -143,19 +132,15 @@ class FoodView: MainView {
     }
     
     
-    /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {
+    override func setupStaticTexts() {
         self.setTitleText(with: "Hora da sua\ncolheita")
     }
       
     
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() {
+    override func createDynamicConstraints() {
         let lateral: CGFloat = self.getEquivalent(15)
         let between: CGFloat = self.getEquivalent(20)
-        
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
-    
+            
         self.dynamicConstraints = [
             self.foodSegmented.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: lateral),
             self.foodSegmented.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
@@ -167,7 +152,5 @@ class FoodView: MainView {
             self.foodGroup.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
             self.foodGroup.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
         ]
-        
-        NSLayoutConstraint.activate(self.dynamicConstraints)
     }
 }

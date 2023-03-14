@@ -5,13 +5,12 @@ import UIKit
 
 
 /// UI da tela de onboarding
-class OnboardingView: UIView {
+class OnboardingView: ViewCode {
     
     /* MARK: - Atributos */
     
     // Views
     
-    /// Collection das telas de onboarding
     private let onBoardingGroup: CustomCollection = {
         let col = CustomCollection()
         col.collection.isPagingEnabled = true
@@ -20,39 +19,30 @@ class OnboardingView: UIView {
         return col
     }()
     
-    /// Botão de fechar as telas de onboarding
     private let closeButton = {
         let btn = CustomViews.newButton()
         btn.isCircular = false
         btn.backgroundColor = .clear
         btn.setTitleColor(UIColor(.secondaryTitle), for:.normal)
-        btn.setTitle("Fechar", for: .normal)
-        
         return btn
     }()
     
-    /// Botão que leva a próxima tela de onboarding
     private let nextButton = {
         let btn = CustomViews.newButton()
         btn.isCircular = false
         btn.backgroundColor = .clear
         btn.setTitleColor(UIColor(.secondaryTitle), for: .normal)
-        
         return btn
     }()
     
-    /// Botão que retorna a tela de onboarding anterior
     private let backButton = {
         let btn = CustomViews.newButton()
         btn.isCircular = false
         btn.backgroundColor = .clear
-        btn.setTitleColor(UIColor(.secondaryTitle), for:.normal)
-        btn.setTitle("Voltar", for: .normal)
-        
+        btn.setTitleColor(UIColor(.secondaryTitle), for: .normal)
         return btn
     }()
     
-    /// Controle de páginas
     private let pageControl = {
         let page = CustomViews.newPageControl()
         page.numberOfPages = 3
@@ -67,13 +57,8 @@ class OnboardingView: UIView {
     }()
     
     
-    // Outros
+    // Collection
     
-    /// Constraints que vão mudar de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-    
-    
-    /// Configurações do layout da collection
     private let collectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
@@ -86,10 +71,8 @@ class OnboardingView: UIView {
     
     /* MARK: - Construtor */
     
-    init() {
-        super.init(frame: .zero)
-        
-        self.setupViews()
+    override init() {
+        super.init()
         self.registerCells()
         self.setupCollectionFlow()
         self.setupToInitialState()
@@ -130,53 +113,39 @@ class OnboardingView: UIView {
     /// Configura a view para o estado inicial
     public func setupToInitialState() {
         self.updateCurrentPage(for: 0)
+        self.backgroundColor = .clear
         
-        if !UserDefaults.getValue(for: .onBoardingPresented) {
-            self.closeButton.isHidden = true
-            self.backgroundColor = UIColor(originalColor: .white)
-        } else {
-            self.backgroundColor = .clear
-        }
+        guard onBoardingWasPresented else { return }
+        self.closeButton.isHidden = true
+        self.backgroundColor = UIColor(originalColor: .white)
+    }
+    
+    
+    private var onBoardingWasPresented: Bool {
+        return UserDefaults.getValue(for: .onBoardingPresented)
     }
     
     
     /* Ações de botões */
     
-    /// Define a ação do botão de voltar
     public func setCloseButtonAction(target: Any?, action: Selector) -> Void {
         self.closeButton.addTarget(target, action: action, for: .touchDown)
     }
     
     
-    /// Define a ação do botão de voltar
     public func setBackButtonAction(target: Any?, action: Selector) -> Void {
         self.backButton.addTarget(target, action: action, for: .touchDown)
     }
     
     
-    /// Define a ação do botão de voltar
     public func setNextButtonAction(target: Any?, action: Selector) -> Void {
         self.nextButton.addTarget(target, action: action, for: .touchDown)
     }
     
     
-    /// Define a ação do botão de expandir a label
     public func setPageControlAction(target: Any?, action: Selector) -> Void {
         self.pageControl.addTarget(target, action: action, for: .valueChanged)
     }
-    
-    
-    
-    /* MARK: - Ciclo de Vida */
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        self.setupUI()
-        self.setupStaticTexts()
-        self.setupDynamicConstraints()
-    }
-    
     
     
     /* MARK: - Configurações */
@@ -227,10 +196,10 @@ class OnboardingView: UIView {
     }
     
     
-    /* Geral */
     
-    /// Adiciona os elementos (Views) na tela
-    private func setupViews() {
+    /* MARK: - ViewCode */
+    
+    override func setupHierarchy() {
         self.addSubview(self.onBoardingGroup)
         self.addSubview(self.pageControl)
         self.addSubview(self.closeButton)
@@ -239,20 +208,32 @@ class OnboardingView: UIView {
     }
     
     
-    /// Personalização da UI
-    private func setupUI() {
+    override func setupUI() {
+        self.setCollectionCorner()
+        self.setCollectionCellSize()
+    }
+    
+    
+    private func setCollectionCorner() {
         self.onBoardingGroup.collection.layer.cornerRadius = self.getEquivalent(30)
         self.onBoardingGroup.collection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
-        // Define o tamanho que a célula vai ter
+    }
+    
+    
+    private func setCollectionCellSize(){
         let cellHeight = self.onBoardingGroup.collection.frame.height
         let cellWidth = self.frame.width
         self.collectionFlow.itemSize = CGSize(width: cellWidth, height: cellHeight)
     }
     
     
-    /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {
+    override func setupStaticTexts() {
+        self.closeButton.setTitle("Fechar", for: .normal)
+        self.backButton.setTitle("Voltar", for: .normal)
+    }
+    
+    
+    override func setupFonts() {
         let fontInfo = FontInfo(fontSize: self.getEquivalent(25), weight: .regular, fontFamily: .graffiti)
         
         self.closeButton.setupText(with: fontInfo)
@@ -261,14 +242,8 @@ class OnboardingView: UIView {
     }
     
     
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() {
-        let lateral: CGFloat = self.getEquivalent(15)
-        let between: CGFloat = self.getEquivalent(10)
-        
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
-        
-        self.dynamicConstraints = [
+    override func createStaticConstraints() -> [NSLayoutConstraint] {
+        let constraints = [
             self.onBoardingGroup.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             self.onBoardingGroup.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.onBoardingGroup.trailingAnchor.constraint(equalTo: self.trailingAnchor),
@@ -276,19 +251,27 @@ class OnboardingView: UIView {
             
             
             self.pageControl.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.pageControl.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -between),
-            
-            
-            self.closeButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: lateral),
-            self.closeButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
-            
-            
             self.nextButton.centerYAnchor.constraint(equalTo: self.pageControl.centerYAnchor),
-            self.nextButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
-            
-            
             self.backButton.centerYAnchor.constraint(equalTo: self.pageControl.centerYAnchor),
-            self.backButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
+        ]
+        return constraints
+    }
+    
+    
+    override func createDynamicConstraints() {
+        let lateral: CGFloat = self.getEquivalent(15)
+        let between: CGFloat = self.getEquivalent(10)
+        
+        let safeArea = self.safeAreaLayoutGuide
+        
+        self.dynamicConstraints = [
+            self.pageControl.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -between),
+            
+            self.closeButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
+            self.closeButton.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: lateral),
+            
+            self.nextButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -lateral),
+            self.backButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: lateral),
         ]
         
         NSLayoutConstraint.activate(self.dynamicConstraints)

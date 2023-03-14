@@ -5,54 +5,36 @@ import UIKit
 
 
 /// Tela com os elementos de UI da tela de ver informações de uma horta
-class InfoGardenView: UIView, FavoriteHandler {
+class InfoGardenView: ViewCode, FavoriteHandler {
     
     /* MARK: - Atributos */
     
     // Views
     
-    /// Scroll View da tela
     private let scrollView = CustomScroll()
     
-    /// Botão de voltar para a página anterior
     private let backButton: CustomButton = {
         let but = CustomViews.newButton()
         but.tintColor = UIColor(.favoriteNotSelectedIcon)
         return but
     }()
     
-    /// Conjunto de imagens da horta
     private let imagesCollectionGp: CustomCollection = {
         let colGp = CustomCollection()
         colGp.collection.isPagingEnabled = true
         return colGp
     }()
 
-    /// Controle de páginas
     private let imagesPageControl = CustomViews.newPageControl()
     
-    /// Grupo de UI para colocar os elementos de informação sobre a horta
     private let container = ContainerView()
     
-    /// Collection que mostra as tags
-    private let tagsCollection = CustomCollection()
+    final let tagsCollection = CustomCollection()
     
-    /// Label expandível
     private let expansiveLabel = ExpansiveLabel()
     
-    /// Collection das informações sobre a horta
     private let infosCollectionGp = CustomCollection()
     
-    /// Mostra que um texto foi copiado
-    private let copyWarning: ViewLabel = {
-        let lbl = ViewLabel()
-        lbl.isHidden = true
-        lbl.backgroundColor = UIColor(originalColor: .greenLight)
-        lbl.label.textColor = UIColor(originalColor: .greenDark)
-        return lbl
-    }()
-    
-    /// Data da última atualização dos dados
     private let lastUpdateLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textColor = UIColor(originalColor: .greenLight)
@@ -66,15 +48,8 @@ class InfoGardenView: UIView, FavoriteHandler {
     static var todayWeek: String = ""
     
     
-    // Constraints
-    
-    /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-    
-    
     // Collection
     
-    /// Configurações do layout da collection de informações
     private let infosCollectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
@@ -82,7 +57,6 @@ class InfoGardenView: UIView, FavoriteHandler {
         return cvFlow
     }()
     
-    /// Configurações do layout da collection de imagens
     private let imagesCollectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .horizontal
@@ -91,7 +65,6 @@ class InfoGardenView: UIView, FavoriteHandler {
         return cvFlow
     }()
     
-    /// Configurações do layout da collection das tags
     private let tagsCollectionFlow: UICollectionViewFlowLayout = {
         let flow = UICollectionViewFlowLayout()
         flow.scrollDirection = .horizontal
@@ -109,19 +82,26 @@ class InfoGardenView: UIView, FavoriteHandler {
     
     
     internal func favoriteHandler(for fav: Bool? = nil) -> Bool {
+        self.updateFavoriteStatus(for: fav)
+        self.updateFavoriteUI()
+        self.setFavoriteIcon()
+        return self.isFavorite
+    }
+    
+    
+    private func updateFavoriteStatus(for fav: Bool? = nil) {
         if let fav {
             self.isFavorite = fav
         } else {
             self.isFavorite.toggle()
         }
-        
+    }
+    
+    
+    private func updateFavoriteUI() {
         let infos = self.favoriteInfos
-        
         self.favoriteButton.backgroundColor = infos.backColor
         self.favoriteButton.tintColor = infos.iconColor
-        self.setupStaticTexts()
-        
-        return self.isFavorite
     }
 
 
@@ -129,9 +109,8 @@ class InfoGardenView: UIView, FavoriteHandler {
     /* MARK: - Construtor */
     
     init(data: ManagedGarden) {
-        super.init(frame: .zero)
+        super.init()
         
-        self.setupViews()
         self.registerCell()
         self.setupCollectionFlow()
         
@@ -144,25 +123,6 @@ class InfoGardenView: UIView, FavoriteHandler {
     
     /* MARK: - Encapsulamento */
     
-    /// Mostra com animação o aviso de texto copiado
-    public func showCopyWarning() -> Void {
-        // Mostra a view
-        UIView.transition(
-            with: self.copyWarning, duration: 0.5, options: .transitionCrossDissolve,
-            animations: {
-                self.copyWarning.isHidden = false
-            }
-        )
-        
-        let delay: TimeInterval = 3
-        
-        // Executa a ação depois do delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-            self.copyWarning.isHidden = true
-        }
-    }
-
-        
     /// Atualiza a página no Page Control
     /// - Parameter index: index (número) da página
     public func updateCurrentPage(for index: Int) {
@@ -215,13 +175,7 @@ class InfoGardenView: UIView, FavoriteHandler {
     
     
     /* Collection */
-    
-    /// Collection das tags
-    public var tagCollection: UICollectionView {
-        return self.tagsCollection.collection
-    }
-    
-    
+        
     /// Atualiza os dados das collections
     public func reloadCollectionsData() {
         self.imagesCollectionGp.collection.reloadData()
@@ -265,18 +219,6 @@ class InfoGardenView: UIView, FavoriteHandler {
 
 
     
-    /* MARK: - Ciclo de Vida */
-    
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-	      
-        self.setupUI()
-        self.setupStaticTexts()
-        self.setupDynamicConstraints()
-    }
-    
-    
-    
     /* MARK: - Configurações */
     
     /* Geral */
@@ -297,19 +239,19 @@ class InfoGardenView: UIView, FavoriteHandler {
     /// - Returns: data no formato: 'mes' de 'ano'
     private func getDate(for strDate: String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.locale = Locale(identifier: "pt-br")
         
-        if let date = dateFormatter.date(from: strDate) {
-            dateFormatter.dateFormat = "LLLL"
-            let monthName = dateFormatter.string(from: date)
-            
-            dateFormatter.dateFormat = "yyyy"
-            let year = dateFormatter.string(from: date)
-            
-            return "\(monthName) de \(year)"
-        }
-        return "sem informações"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: strDate)
+        guard let date else { return "sem informações" }
+        
+        dateFormatter.dateFormat = "LLLL"
+        let monthName = dateFormatter.string(from: date)
+        
+        dateFormatter.dateFormat = "yyyy"
+        let year = dateFormatter.string(from: date)
+        
+        return "\(monthName) de \(year)"
     }
 
     
@@ -331,101 +273,102 @@ class InfoGardenView: UIView, FavoriteHandler {
     }
     
     
-    /* View */
+    /* MARK: - ViewCode */
     
-    /// Adiciona os elementos (Views) na tela
-    private func setupViews() {
+    override func setupHierarchy() {
         self.addSubview(self.scrollView)
         
-        self.scrollView.addViewInScroll(self.imagesCollectionGp)
-        self.scrollView.addViewInScroll(self.imagesPageControl)
-        self.scrollView.addViewInScroll(self.container)
+        self.addViewInScroll(self.imagesCollectionGp)
+        self.addViewInScroll(self.imagesPageControl)
+        self.addViewInScroll(self.container)
         
-        self.scrollView.addViewInScroll(self.tagsCollection)
+        self.addViewInScroll(self.tagsCollection)
         self.container.contentView.addSubview(self.expansiveLabel)
-        self.scrollView.addViewInScroll(self.infosCollectionGp)
-        self.scrollView.addViewInScroll(self.lastUpdateLabel)
+        self.addViewInScroll(self.infosCollectionGp)
+        self.addViewInScroll(self.lastUpdateLabel)
         
         self.addSubview(self.backButton)
         self.addSubview(self.favoriteButton)
-
-        self.addSubview(self.copyWarning)
     }
     
     
-    /// Personalização da UI
-    private func setupUI() {
-        self.copyWarning.layer.cornerRadius = 5
+    private func addViewInScroll(_ view: UIView) {
+        self.scrollView.addViewInScroll(view)
+    }
+
+    
+    override func setupUI() {
+        self.setInfosCollectionCellSize()
+        self.setImagesCollectionCellSize()
+        self.updateScrollSize()
+        self.setUICorners()
+    }
+    
+    
+    private func setUICorners() {
         self.imagesPageControl.layer.cornerRadius = self.imagesPageControl.bounds.height / 2
-        
-        // Collections
-        
+    }
+    
+    
+    private func updateScrollSize() {
+        self.scrollView.updateScrollSize()
+    }
+    
+    
+    private func setInfosCollectionCellSize() {
         self.infosCollectionFlow.itemSize = CGSize(
             width: self.getEquivalent(165),
             height: self.infosCollectionGp.bounds.height
         )
         self.infosCollectionFlow.minimumLineSpacing = self.getEquivalent(10)
-        
-        
+    }
+    
+    
+    private func setImagesCollectionCellSize() {
         self.imagesCollectionFlow.itemSize = CGSize(
             width: self.getEquivalent(390),
             height: self.getEquivalent(510)
         )
-        
-        self.scrollView.updateScrollSize()
     }
     
     
-    /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {
-        let btSize: CGFloat = self.getEquivalent(22)
-        
-        self.backButton.setupIcon(with: IconInfo(
-            icon: .back, size: btSize, weight: .regular, scale: .default
-        ))
-        
-        self.favoriteButton.setupIcon(with: IconInfo(
-            icon: self.favoriteIcon, size: btSize, weight: .regular, scale: .default
-        ))
-                
-        /* Labels */
-        
-        self.copyWarning.label.setupText(with: FontInfo(
-            text: "Texto copiado para área de tranferência", fontSize: self.getEquivalent(15), weight: .medium
-        ))
-        
+    override func setupFonts() {
+        self.setLabelsFont()
+        self.setButtonsIconSize()
+    }
+    
+    
+    private func setLabelsFont() {
         self.lastUpdateLabel.setupText(with: FontInfo(
             fontSize: self.getEquivalent(17), weight: .medium
         ))
     }
     
     
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() {
-        // Espaçamentos
-        let lateral = self.getEquivalent(15)
-        let between = self.getEquivalent(12)
-        let gap = self.getEquivalent(25)
-        let warning = self.getEquivalent(10)
-        let betweenSmaller = between / 1.5
+    private func setButtonsIconSize() {
+        let btSize: CGFloat = self.getEquivalent(22)
         
-        // Altura dos botões
-        self.backButton.circleSize = self.getEquivalent(45)
-        self.favoriteButton.circleSize = self.getEquivalent(45)
+        self.backButton.setupIcon(with: IconInfo(
+            icon: .back, size: btSize, weight: .regular, scale: .default
+        ))
         
-        // Altura dos elementos
-        let imagesHeight = self.getEquivalent(510)
-        let collectionHeight = self.getEquivalent(200)
-        let tagCollectionHeight = self.getEquivalent(25)
-        
-        
-        self.infosCollectionGp.setupLateralPadding(lateral)
-        self.tagsCollection.setupLateralPadding(lateral)
-        
-        
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
+        self.setFavoriteIcon()
+    }
     
-        self.dynamicConstraints = [
+    
+    private func setFavoriteIcon() {
+        let btSize: CGFloat = self.getEquivalent(22)
+        self.favoriteButton.setupIcon(with: IconInfo(
+            icon: self.favoriteIcon, size: btSize, weight: .regular, scale: .default
+        ))
+    }
+    
+    
+    override func createStaticConstraints () -> [NSLayoutConstraint] {
+        let scrollContentView = self.scrollView.contentView
+        let safeArea = self.safeAreaLayoutGuide
+        
+        let constraints = [
             self.scrollView.topAnchor.constraint(equalTo: self.topAnchor),
             self.scrollView.leftAnchor.constraint(equalTo: self.leftAnchor),
             self.scrollView.rightAnchor.constraint(equalTo: self.rightAnchor),
@@ -433,35 +376,92 @@ class InfoGardenView: UIView, FavoriteHandler {
             self.scrollView.widthAnchor.constraint(equalTo: self.widthAnchor),
             
             
-            self.imagesCollectionGp.topAnchor.constraint(equalTo: self.scrollView.contentView.topAnchor),
-            self.imagesCollectionGp.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
-            self.imagesCollectionGp.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
-            self.imagesCollectionGp.heightAnchor.constraint(equalToConstant: imagesHeight),
-            
-            
-            self.imagesPageControl.bottomAnchor.constraint(equalTo: self.container.topAnchor, constant: -betweenSmaller),
+            self.imagesCollectionGp.topAnchor.constraint(equalTo: scrollContentView.topAnchor),
+            self.imagesCollectionGp.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor),
+            self.imagesCollectionGp.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor),
+        
+    
             self.imagesPageControl.centerXAnchor.constraint(equalTo: self.imagesCollectionGp.centerXAnchor),
             
+            self.backButton.topAnchor.constraint(equalTo: safeArea.topAnchor),
             
-            self.backButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            self.backButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
-
-
             self.favoriteButton.centerYAnchor.constraint(equalTo: self.backButton.centerYAnchor),
-            self.favoriteButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
             
             
             /* Container */
             
-            self.container.topAnchor.constraint(equalTo: self.imagesCollectionGp.bottomAnchor, constant: -gap),
-            self.container.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
-            self.container.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
-            self.container.bottomAnchor.constraint(equalTo: self.scrollView.contentView.bottomAnchor),
+            self.container.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor),
+            self.container.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor),
+            self.container.bottomAnchor.constraint(equalTo: scrollContentView.bottomAnchor),
             
             
             self.tagsCollection.topAnchor.constraint(equalTo: self.container.titleLabel.bottomAnchor),
             self.tagsCollection.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
             self.tagsCollection.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
+            
+
+            self.infosCollectionGp.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.infosCollectionGp.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
+            
+            
+            self.lastUpdateLabel.leadingAnchor.constraint(equalTo: self.expansiveLabel.leadingAnchor),
+            self.lastUpdateLabel.trailingAnchor.constraint(equalTo: self.expansiveLabel.trailingAnchor),
+        ]
+        return constraints
+    }
+    
+    
+    override func createDynamicConstraints() {
+        self.setButtonsHeight()
+        self.setCollectionsLateralPaddins()
+        self.setDynamicConstraints()
+        self.setupExpansiveLabelHeight()
+    }
+    
+    
+    private func setButtonsHeight() {
+        let height = self.getEquivalent(45)
+        self.backButton.circleSize = height
+        self.favoriteButton.circleSize = height
+    }
+    
+    
+    private func setCollectionsLateralPaddins() {
+        let padding = self.getEquivalent(15)
+        self.infosCollectionGp.setupLateralPadding(padding)
+        self.tagsCollection.setupLateralPadding(padding)
+    }
+    
+    
+    private func setDynamicConstraints() {
+        let safeArea = self.safeAreaLayoutGuide
+        
+        // Espaçamentos
+        let lateral = self.getEquivalent(15)
+        let between = self.getEquivalent(12)
+        let gap = self.getEquivalent(25)
+        let betweenSmaller = between / 1.5
+        
+        // Altura dos elementos
+        let imagesHeight = self.getEquivalent(510)
+        let collectionHeight = self.getEquivalent(200)
+        let tagCollectionHeight = self.getEquivalent(25)
+        
+        
+        self.dynamicConstraints = [
+            self.imagesCollectionGp.heightAnchor.constraint(equalToConstant: imagesHeight),
+            
+            self.imagesPageControl.bottomAnchor.constraint(equalTo: self.container.topAnchor, constant: -betweenSmaller),
+            
+            self.backButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: lateral),
+            
+            self.favoriteButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -lateral),
+            
+            
+            /* Container */
+            
+            self.container.topAnchor.constraint(equalTo: self.imagesCollectionGp.bottomAnchor, constant: -gap),
+            
             self.tagsCollection.heightAnchor.constraint(equalToConstant: tagCollectionHeight),
             
 
@@ -471,28 +471,14 @@ class InfoGardenView: UIView, FavoriteHandler {
             
             
             self.infosCollectionGp.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
-            self.infosCollectionGp.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
-            self.infosCollectionGp.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
             self.infosCollectionGp.heightAnchor.constraint(equalToConstant: collectionHeight),
             
             
             self.lastUpdateLabel.topAnchor.constraint(equalTo: self.infosCollectionGp.bottomAnchor, constant: betweenSmaller),
-            self.lastUpdateLabel.leadingAnchor.constraint(equalTo: self.expansiveLabel.leadingAnchor),
-            self.lastUpdateLabel.trailingAnchor.constraint(equalTo: self.expansiveLabel.trailingAnchor),
-            
-            
-            self.copyWarning.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -warning),
-            self.copyWarning.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.copyWarning.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7),
         ]
-        
-        NSLayoutConstraint.activate(self.dynamicConstraints)
-        
-        self.setupExpansiveLabelHeight()
     }
     
     
-    /// Configura a altura da label expandível
     private func setupExpansiveLabelHeight() {
         self.expansiveLabel.setupHeight()
     }
