@@ -52,6 +52,11 @@ class TagCollectionHandler: NSObject, CollectionHandler {
     }
     
     
+    func setupFlowLayoutSettings(_ collection: CustomCollection) {
+        collection.scrollDirection = .horizontal
+    }
+    
+    
     
     /* MARK: - Data Sources (Collection) */
     

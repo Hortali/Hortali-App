@@ -97,6 +97,9 @@
 		2270F70629BCD0A9008DFBDA /* CustomCollectionWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270F70529BCD0A9008DFBDA /* CustomCollectionWithTitle.swift */; };
 		2270F70829BF7251008DFBDA /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270F70729BF7251008DFBDA /* ViewCode.swift */; };
 		2270F70A29C0845C008DFBDA /* CopyWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270F70929C0845C008DFBDA /* CopyWarning.swift */; };
+		2270F70D29C09C8E008DFBDA /* CustomCollectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270F70C29C09C8E008DFBDA /* CustomCollectionProtocol.swift */; };
+		2270F70F29C09CDC008DFBDA /* CollectionFlowLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270F70E29C09CDC008DFBDA /* CollectionFlowLayoutAttributes.swift */; };
+		2270F71129C09D63008DFBDA /* GardenCollectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270F71029C09D63008DFBDA /* GardenCollectionHandler.swift */; };
 		227FAFD0292FACAE0080FB9C /* FavoriteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FAFCF292FACAE0080FB9C /* FavoriteHandler.swift */; };
 		227FAFD2292FADB10080FB9C /* FavoriteInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227FAFD1292FADB10080FB9C /* FavoriteInfos.swift */; };
 		229AC9EC293CBD53005248E9 /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229AC9EB293CBD53005248E9 /* TagCell.swift */; };
@@ -246,6 +249,9 @@
 		2270F70529BCD0A9008DFBDA /* CustomCollectionWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionWithTitle.swift; sourceTree = "<group>"; };
 		2270F70729BF7251008DFBDA /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
 		2270F70929C0845C008DFBDA /* CopyWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyWarning.swift; sourceTree = "<group>"; };
+		2270F70C29C09C8E008DFBDA /* CustomCollectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionProtocol.swift; sourceTree = "<group>"; };
+		2270F70E29C09CDC008DFBDA /* CollectionFlowLayoutAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFlowLayoutAttributes.swift; sourceTree = "<group>"; };
+		2270F71029C09D63008DFBDA /* GardenCollectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCollectionHandler.swift; sourceTree = "<group>"; };
 		227FAFCF292FACAE0080FB9C /* FavoriteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHandler.swift; sourceTree = "<group>"; };
 		227FAFD1292FADB10080FB9C /* FavoriteInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteInfos.swift; sourceTree = "<group>"; };
 		229AC9EB293CBD53005248E9 /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
@@ -327,6 +333,7 @@
 			children = (
 				B20D4361293795C7009A7028 /* GardenDataSource.swift */,
 				229AC9ED293CC0D5005248E9 /* TagCollectionHandler.swift */,
+				2270F71029C09D63008DFBDA /* GardenCollectionHandler.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -996,6 +1003,16 @@
 			path = "SF-Pro";
 			sourceTree = "<group>";
 		};
+		2270F70B29C09C74008DFBDA /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				229AC9EF293D7735005248E9 /* CollectionHandler.swift */,
+				2270F70C29C09C8E008DFBDA /* CustomCollectionProtocol.swift */,
+				2270F70E29C09CDC008DFBDA /* CollectionFlowLayoutAttributes.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
 		227FAFCE292FAC950080FB9C /* FavoriteHandler */ = {
 			isa = PBXGroup;
 			children = (
@@ -1040,9 +1057,9 @@
 		22A3918228F7AD2000A42DC1 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				2270F70B29C09C74008DFBDA /* Collection */,
 				22A3918328F7AD5D00A42DC1 /* SearchProtocol.swift */,
 				22A75A8D290CC6DC001CEA7E /* CustomNavigationProtocol.swift */,
-				229AC9EF293D7735005248E9 /* CollectionHandler.swift */,
 				229AC9F1293D794E005248E9 /* CustomCell.swift */,
 			);
 			path = Protocol;
@@ -1338,6 +1355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2212E82D28DB877B004CCBAA /* GardenProtocol.swift in Sources */,
+				2270F70D29C09C8E008DFBDA /* CustomCollectionProtocol.swift in Sources */,
 				224F057229281A9300B20447 /* SettingsDelegate.swift in Sources */,
 				224F057829281D2800B20447 /* SettingsData.swift in Sources */,
 				223B75CD28F0D9B00034B2C4 /* DataManager.swift in Sources */,
@@ -1428,6 +1446,7 @@
 				22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */,
 				223B75E828F16D670034B2C4 /* FavoriteUpdate.swift in Sources */,
 				22D59A2E2926C3CF00C98630 /* GardenVisualization.swift in Sources */,
+				2270F70F29C09CDC008DFBDA /* CollectionFlowLayoutAttributes.swift in Sources */,
 				22EDD4B528DA2DC7001CE093 /* HourInfoDataSource.swift in Sources */,
 				22A3918128F7862800A42DC1 /* ManagedVitamins.swift in Sources */,
 				222937E328C66F7F00515095 /* AppColors.swift in Sources */,
@@ -1436,6 +1455,7 @@
 				2229384828C8931B00515095 /* FoodController.swift in Sources */,
 				22D59A332926C9DD00C98630 /* SettingsView.swift in Sources */,
 				2210246628D8DC0800F412A5 /* InfoGardenContact.swift in Sources */,
+				2270F71129C09D63008DFBDA /* GardenCollectionHandler.swift in Sources */,
 				22A3917428F784B200A42DC1 /* ManagedGardenData.swift in Sources */,
 				222937E128C66F7300515095 /* AppIcons.swift in Sources */,
 				229AC9EC293CBD53005248E9 /* TagCell.swift in Sources */,

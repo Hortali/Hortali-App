@@ -13,12 +13,10 @@ class GardenView: MainView {
     
     private let search = CustomViews.newSearch()
     
-    private let gardenCollection = CustomCollection(emptyViewType: .garden)
+    final let gardenCollection = CustomCollection(emptyViewType: .garden)
     
     final let tagCollection = CustomCollection()
     
-    
-    /// Botão de mudar a visualização das hortas
     private let visualizationButton: CustomButton = {
         let btn = CustomViews.newButton()
         btn.tintColor = UIColor(.visualizationButton)
@@ -30,33 +28,9 @@ class GardenView: MainView {
     
     // Collection
     
-    /// Configurações do layout da collection de hortas
-    private let gardenFlow = UICollectionViewFlowLayout()
-    
-    /// Configurações do layout da collection das tags
-    private let tagFlow: UICollectionViewFlowLayout = {
-        let flow = UICollectionViewFlowLayout()
-        flow.scrollDirection = .horizontal
-        flow.estimatedItemSize = .zero
-        return flow
-    }()
-        
-    
     private var visualizationType: GardenVisualization = .carousel
     
    
-    
-    /* MARK: - Construtor */
-    
-    override init() {
-        super.init()
-        self.registerCells()
-        self.setupCollectionFlow()
-    }
-    
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
-    
     
     /* MARK: - Encapsulamento */
     
@@ -84,11 +58,11 @@ class GardenView: MainView {
     public func changeVisualization(to visu: GardenVisualization? = nil) {
         if let visu {
             self.visualizationType = visu
-        } else {
-            switch self.visualizationType {
-            case .grid: self.visualizationType = .carousel
-            case .carousel: self.visualizationType = .grid
-            }
+            return
+        }
+        switch self.visualizationType {
+        case .grid: self.visualizationType = .carousel
+        case .carousel: self.visualizationType = .grid
         }
         
         self.setupCollectionVisualization()
@@ -104,15 +78,13 @@ class GardenView: MainView {
     
     /// Atualiza os dados da collection
     public func reloadCollectionData() {
-        self.gardenCollection.collection.reloadData()
-        self.gardenCollection.collection.reloadInputViews()
+        self.gardenCollection.reloadCollectionData()
     }
     
     
     /// Atualiza os dados da collection de tags
     public func reloadTagData() {
-        self.tagCollection.collection.reloadData()
-        self.tagCollection.collection.reloadInputViews()
+        self.tagCollection.reloadCollectionData()
     }
     
     
@@ -121,21 +93,6 @@ class GardenView: MainView {
         self.tagCollection.collection.deselectItem(at: indexPath, animated: true)
     }
     
-    
-    /// Define o data source da collection das hortas
-    /// - Parameter dataSource: data source da collection das hortas
-    public func setDataSource(with dataSource: GardenDataSource) {
-        self.gardenCollection.collection.dataSource = dataSource
-    }
-    
-    
-    /// Define o delegate da collection das hortas
-    /// - Parameter delegate: delegate da collection das hortas
-    public func setDelegate(with delegate: GardenDelegate) {
-        self.gardenCollection.collection.delegate = delegate
-    }
-    
-        
     
     /* Ações de botões */
     
@@ -147,23 +104,6 @@ class GardenView: MainView {
 
     
     /* MARK: - Configurações */
-    
-    /* Collection */
-    
-    /// Registra as células nas collections/table
-    private func registerCells() {
-        self.gardenCollection.collection.register(GardenCell.self, forCellWithReuseIdentifier: GardenCell.identifier)
-    }
-    
-    
-    /// Define o layout da collection
-    private func setupCollectionFlow() {
-        self.gardenCollection.collection.collectionViewLayout = self.gardenFlow
-        self.tagCollection.collection.collectionViewLayout = self.tagFlow
-    }
-    
-    
-    /* Geral */
     
     /// Define o tamanho das células da collection a partir do tipo de visualização
     private func setupCollectionVisualization() {
@@ -189,10 +129,10 @@ class GardenView: MainView {
     
     
     private func setItemSizeForGrid() {
-        self.gardenFlow.scrollDirection = .vertical
-        self.gardenFlow.minimumInteritemSpacing = 0
+        self.gardenCollection.scrollDirection = .vertical
+        self.gardenCollection.spaceBetweenCells = 0
         
-        self.gardenFlow.itemSize = CGSize(
+        self.gardenCollection.cellSize = CGSize(
             width: self.getEquivalent(175, dimension: .height),
             height: self.getEquivalent(295, dimension: .height)
         )
@@ -200,10 +140,10 @@ class GardenView: MainView {
     
     
     private func setItemSizeForCarousel() {
-        self.gardenFlow.scrollDirection = .horizontal
-        self.gardenFlow.minimumInteritemSpacing = self.getEquivalent(10)
+        self.gardenCollection.scrollDirection = .horizontal
+        self.gardenCollection.spaceBetweenCells = self.getEquivalent(10)
         
-        self.gardenFlow.itemSize = CGSize(
+        self.gardenCollection.cellSize = CGSize(
             width: self.getEquivalent(240, dimension: .height),
             height: self.getEquivalent(400, dimension: .height)
         )
@@ -214,7 +154,6 @@ class GardenView: MainView {
     /* MARK: - ViewCode */
     
     override func setupHierarchy() {
-        print("Criando hirarquia")
         super.setupHierarchy()
         self.addSubview(self.search)
         self.addSubview(self.visualizationButton)

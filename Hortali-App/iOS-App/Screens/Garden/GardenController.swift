@@ -15,28 +15,23 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     private let myView = GardenView()
     
     
-    /* Delegate & Data Sources */
+    /* Handlers & Delegates */
     
-    /// Data source da collections das hortas
-    private let gardenDataSource = GardenDataSource()
+    private let gardenCollectionHandler = GardenCollectionHandler()
     
-    /// Delegate da collection das hortas
-    private let gardenDelegate = GardenDelegate()
-    
-    /// Data source da collections das tags
     private let tagCollectionHandler = TagCollectionHandler()
     
-    /// Delegate da barra de busca
     private let searchDelegate = SearchDelegate()
-    
-    /// Último tipo de visualização das hortas antes de entrar na search bar
-    private var lastGardenVisualization: GardenVisualization?
     
     
     /* Dados das Hortas */
     
-    /// Dados das hortas
     private lazy var gardenData: [ManagedGarden] = []
+    
+    
+    /* Outros */
+    
+    private var lastGardenVisualization: GardenVisualization?
     
     
     
@@ -73,7 +68,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     /* Garden Protocol */
     
     internal func openGardenInfo(for index: Int) {
-        let selectedCell = self.gardenDataSource.data[index]
+        let selectedCell = self.gardenCollectionHandler.data[index]
                 
         let controller = InfoGardenController(with: selectedCell)
         controller.hidesBottomBarWhenPushed = true
@@ -127,19 +122,22 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     /* MARK: - Configurações */
     
-    /// Função para exibir tela de onboarding
     private func showOnBoarding() {
-        if !UserDefaults.getValue(for: .onBoardingPresented) {
-            let controller = OnboardingViewController()
-            controller.hidesBottomBarWhenPushed = true
-            controller.modalPresentationStyle = .fullScreen
+        guard !self.onBoardingHasPresented else { return }
+        
+        let controller = OnboardingViewController()
+        controller.hidesBottomBarWhenPushed = true
+        controller.modalPresentationStyle = .fullScreen
             
-            self.navigationController?.present(controller, animated: true)
-        }
+        self.navigationController?.present(controller, animated: true)
     }
     
     
-    /// Lida com o toque na tela para retirar o teclado
+    private var onBoardingHasPresented: Bool {
+        return UserDefaults.getValue(for: .onBoardingPresented)
+    }
+    
+    
     private func setupKeyboardHandler() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -147,29 +145,36 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     }
     
     
-    /// Definindo as ações dos botões
     private func setupButtonsAction() {
         self.myView.setVisualizationButtonAction(target: self, action: #selector(self.visualizationAction))
     }
     
     
-    /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-        // Collection
-        self.gardenDelegate.setProtocol(with: self)
+        self.setupGardenCollectionHandler()
+        self.setupTagCollectionHandler()
+        self.setupSearchDelegate()
+    }
+    
+    
+    private func setupGardenCollectionHandler() {
+        self.gardenCollectionHandler.setProtocol(with: self)
         
-        self.myView.setDataSource(with: self.gardenDataSource)
-        self.myView.setDelegate(with: self.gardenDelegate)
-        
-        
+        let gardenCollection = self.myView.gardenCollection
+        self.gardenCollectionHandler.link(with: gardenCollection)
+    }
+    
+    
+    private func setupTagCollectionHandler() {
         self.tagCollectionHandler.setProtocol(with: self)
         
         let tagCollection = self.myView.tagCollection
         self.tagCollectionHandler.link(with: tagCollection)
-        
-        // Search
+    }
+    
+    
+    private func setupSearchDelegate() {
         self.searchDelegate.setProtocol(with: self)
-        
         self.myView.setSearchDelegate(with: self.searchDelegate)
     }
     
@@ -177,7 +182,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     /// Define os dados da collection
     private func setupDataSourceData(with data: [ManagedGarden]? = nil) {
         if let data {
-            self.gardenDataSource.data = data
+            self.gardenCollectionHandler.data = data
             self.myView.checkData(with: data.count)
             self.myView.reloadCollectionData()
             return
@@ -185,7 +190,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         
         let gardenData = DataManager.shared.getGardenData()
         
-        self.gardenDataSource.data = gardenData
+        self.gardenCollectionHandler.data = gardenData
         self.myView.checkData(with: gardenData.count)
         self.myView.reloadCollectionData()
         
@@ -225,10 +230,8 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         
         if isTag {
             for data in self.gardenData {
-                for tag in data.tags {
-                    if tag.name == text {
-                        dataFiltered.append(data)
-                    }
+                for tag in data.tags where tag.name == text {
+                    dataFiltered.append(data)
                 }
             }
         } else {

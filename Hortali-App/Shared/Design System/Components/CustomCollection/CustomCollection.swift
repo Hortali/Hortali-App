@@ -4,43 +4,7 @@
 import UIKit
 
 
-protocol CollectionFlowLayoutAtributs {
-    
-    var cellSize: CGSize { get set }
-    
-    var spaceBetweenCells: CGFloat { get set }
-    
-    var scrollDirection: UICollectionView.ScrollDirection { get set }
-}
-
-protocol CustomCollectionProtocol {
-    
-    var collection: UICollectionView { get set }
-    
-    var flowLayout: UICollectionViewFlowLayout { get set }
-}
-
-
-extension CustomCollectionProtocol {
-    
-    public func reloadCollectionData() {
-        self.collection.reloadData()
-        self.collection.reloadInputViews()
-    }
-    
-    public func setCollectionHandler(with handler: CollectionHandler) {
-        self.collection.delegate = handler
-        self.collection.dataSource = handler
-    }
-    
-    
-    func setupCollectionFlowLayout() {
-        self.collection.collectionViewLayout = self.flowLayout
-    }
-}
-
-
-class CustomCollection: ViewCode, CustomCollectionProtocol, CollectionFlowLayoutAtributs {
+class CustomCollection: ViewCode, CustomCollectionProtocol, CollectionFlowLayoutAttributes {
     
     /* MARK: - Atributos */
     
@@ -66,7 +30,7 @@ class CustomCollection: ViewCode, CustomCollectionProtocol, CollectionFlowLayout
     
     final var flowLayout = UICollectionViewFlowLayout()
     
-    public var cellSize: CGSize = CGSize() {
+    public var cellSize = CGSize() {
         didSet { self.updateCellSize() }
     }
     
