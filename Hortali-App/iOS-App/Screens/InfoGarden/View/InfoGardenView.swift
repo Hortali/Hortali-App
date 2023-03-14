@@ -81,27 +81,11 @@ class InfoGardenView: ViewCode, FavoriteHandler {
     internal var favoriteButton: CustomButton = CustomViews.newButton()
     
     
-    internal func favoriteHandler(for fav: Bool? = nil) -> Bool {
-        self.updateFavoriteStatus(for: fav)
-        self.updateFavoriteUI()
-        self.setFavoriteIcon()
-        return self.isFavorite
-    }
-    
-    
-    private func updateFavoriteStatus(for fav: Bool? = nil) {
-        if let fav {
-            self.isFavorite = fav
-        } else {
-            self.isFavorite.toggle()
-        }
-    }
-    
-    
-    private func updateFavoriteUI() {
-        let infos = self.favoriteInfos
-        self.favoriteButton.backgroundColor = infos.backColor
-        self.favoriteButton.tintColor = infos.iconColor
+    internal func setFavoriteIcon() {
+        let btSize: CGFloat = self.getEquivalent(22)
+        self.favoriteButton.setupIcon(with: IconInfo(
+            icon: self.favoriteIcon, size: btSize, weight: .regular, scale: .default
+        ))
     }
 
 
@@ -353,14 +337,6 @@ class InfoGardenView: ViewCode, FavoriteHandler {
         ))
         
         self.setFavoriteIcon()
-    }
-    
-    
-    private func setFavoriteIcon() {
-        let btSize: CGFloat = self.getEquivalent(22)
-        self.favoriteButton.setupIcon(with: IconInfo(
-            icon: self.favoriteIcon, size: btSize, weight: .regular, scale: .default
-        ))
     }
     
     
