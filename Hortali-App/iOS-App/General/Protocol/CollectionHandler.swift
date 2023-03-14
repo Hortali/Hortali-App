@@ -1,12 +1,7 @@
 /* Macro - Grupo 05 */
 
 /* Bibliotecas necessárias: */
-import class Foundation.NSObject
-import class UIKit.UICollectionView
-
-import protocol UIKit.UICollectionViewDataSource
-import protocol UIKit.UICollectionViewDelegateFlowLayout
-
+import UIKit
 
 
 /// Os tipos que estão de acordo com esse protocolo são classes que lidam com o data source e delegate de uma collection
@@ -24,10 +19,8 @@ extension CollectionHandler {
     /// - Parameter collection: collection que vai ser linkada
     ///
     /// Essa função também faz o registro da célula
-    func link(with view: CustomCollection) {
+    func link(with view: CustomCollectionProtocol) {
         self.registerCell(in: view.collection)
-        
-        view.collection.delegate = self
-        view.collection.dataSource = self
+        view.setCollectionHandler(with: self)
     }
 }

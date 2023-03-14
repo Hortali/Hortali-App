@@ -4,13 +4,51 @@
 import UIKit
 
 
-class CustomCollection: ViewCode {
+protocol CollectionFlowLayoutAtributs {
+    
+    var cellSize: CGSize { get set }
+    
+    var spaceBetweenCells: CGFloat { get set }
+    
+    var scrollDirection: UICollectionView.ScrollDirection { get set }
+}
+
+protocol CustomCollectionProtocol {
+    
+    var collection: UICollectionView { get set }
+    
+    var flowLayout: UICollectionViewFlowLayout { get set }
+}
+
+
+extension CustomCollectionProtocol {
+    
+    public func reloadCollectionData() {
+        self.collection.reloadData()
+        self.collection.reloadInputViews()
+    }
+    
+    public func setCollectionHandler(with handler: CollectionHandler) {
+        self.collection.delegate = handler
+        self.collection.dataSource = handler
+    }
+    
+    
+    func setupCollectionFlowLayout() {
+        self.collection.collectionViewLayout = self.flowLayout
+    }
+}
+
+
+class CustomCollection: ViewCode, CustomCollectionProtocol, CollectionFlowLayoutAtributs {
     
     /* MARK: - Atributos */
     
+    // Views
+    
     private lazy var emptyView = EmptyView()
     
-    public let collection: UICollectionView = {
+    public var collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         
         let col = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -22,11 +60,27 @@ class CustomCollection: ViewCode {
         
         return col
     }()
+    
 
+    // FlowLayout
+    
+    final var flowLayout = UICollectionViewFlowLayout()
+    
+    public var cellSize: CGSize = CGSize() {
+        didSet { self.updateCellSize() }
+    }
+    
+    public var spaceBetweenCells: CGFloat = 0 {
+        didSet { self.updateSpaceBetweenCells() }
+    }
+    
+    public var scrollDirection: UICollectionView.ScrollDirection = .vertical {
+        didSet { self.updateScrollDirection() }
+    }
+    
     
     // Constraints
     
-    /// Espaço de diferença que a label vai ter
     final var labelSpace: CGFloat = 0
     
     
@@ -45,6 +99,7 @@ class CustomCollection: ViewCode {
         
         self.setupEmptyView(with: emptyViewType)
         self.updateViewsVisibility()
+        self.setupCollectionFlowLayout()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -64,9 +119,25 @@ class CustomCollection: ViewCode {
     
     
     
-    /* MARK: - Protocolo */
+    /* MARK: - Configurações */
     
-    /* ViewCode */
+    private func updateCellSize() {
+        self.flowLayout.itemSize = self.cellSize
+    }
+    
+    
+    private func updateSpaceBetweenCells() {
+        self.flowLayout.minimumInteritemSpacing = self.spaceBetweenCells
+    }
+    
+    
+    private func updateScrollDirection() {
+        self.flowLayout.scrollDirection = self.scrollDirection
+    }
+    
+    
+    
+    /* MARK: - ViewCode */
     
     override func setupHierarchy() {
         self.addSubview(self.collection)
@@ -86,12 +157,8 @@ class CustomCollection: ViewCode {
     }
     
     
-    
-    /* MARK: - Configurações */
-    
     public func createEmptyViewConstraints() -> [NSLayoutConstraint] {
-        let constraints = self.emptyView.strechToBounds(of: self.collection)
-        return constraints
+        return self.emptyView.strechToBounds(of: self.collection)
     }
     
     
