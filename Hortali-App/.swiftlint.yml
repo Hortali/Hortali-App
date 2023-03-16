@@ -9,8 +9,8 @@ type_name:
   min_length:
     error: 6
   max_length:
-    warning: 30
-    error: 35
+    warning: 40
+    error: 45
 
 identifier_name:
   min_length:
@@ -92,7 +92,6 @@ only_rules:
   - vertical_parameter_alignment_on_call
   - xct_specific_matcher
   - yoda_condition
-  - missing_docs
 
 
 line_length: 
