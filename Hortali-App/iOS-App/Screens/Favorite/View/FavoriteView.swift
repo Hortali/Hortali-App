@@ -4,7 +4,6 @@
 import UIKit
 
 
-/// UI da tela de ver os favoritos
 class FavoriteView: MainView {
     
     /* MARK: - Atributos */
@@ -61,9 +60,9 @@ class FavoriteView: MainView {
     
     override func setupHierarchy() {
         super.setupHierarchy()
-        self.contentView.addSubview(self.foodCollection)
-        self.contentView.addSubview(self.gardenCollection)
-        self.contentView.addSubview(self.emptyView)
+        self.addViewInContent(self.foodCollection)
+        self.addViewInContent(self.gardenCollection)
+        self.addViewInContent(self.emptyView)
     }
     
     
@@ -97,14 +96,15 @@ class FavoriteView: MainView {
         let collection = self.foodCollection.collection
         guard collection.bounds.width != 0 else { return }
         
+        let cellReferenceSize = SizeInfo(screenSize: CGSize(width: 170, height: 192), dimension: .height)
+        let cellSize = CGSize(
+            width: collection.getEquivalent(170, screenReference: cellReferenceSize),
+            height: collection.frame.height
+        )
+        self.foodCollection.cellSize = cellSize
+        
         let minimumSpace = self.getEquivalent(10)
         self.foodCollection.spaceBetweenCells = minimumSpace
-        
-        let cellReferenceSize = SizeInfo(screenSize: CGSize(width: 170, height: 192), dimension: .height)
-        self.foodCollection.cellSize = CGSize(
-            width: collection.getEquivalent(170, screenReference: cellReferenceSize),
-            height: collection.bounds.height
-        )
     }
     
     
@@ -125,7 +125,6 @@ class FavoriteView: MainView {
     
     
     override func createStaticConstraints() -> [NSLayoutConstraint] {
-        let emptyView = self.emptyView.strechToBounds(of: self.contentView)
         var constrains = [
             self.foodCollection.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             self.foodCollection.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
@@ -135,6 +134,7 @@ class FavoriteView: MainView {
             self.gardenCollection.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.gardenCollection.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
         ]
+        let emptyView = self.emptyView.strechToBounds(of: self.contentView)
         constrains += emptyView
         return constrains
     }
@@ -150,12 +150,12 @@ class FavoriteView: MainView {
     private func setDynamicConstraints() {
         let bottom: CGFloat = self.getEquivalent(15)
         let between: CGFloat = self.getEquivalent(28, dimension: .height)
+        
         let foodCollectionHeight = self.getEquivalent(187, dimension: .height)   // 150+12+25
         
-        self.dynamicConstraints = [
+        self.dynamicConstraints += [
             self.gardenCollection.topAnchor.constraint(equalTo: self.foodCollection.bottomAnchor, constant: between),
             self.gardenCollection.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -bottom),
-            
             
             self.foodCollection.heightAnchor.constraint(equalToConstant: foodCollectionHeight),
         ]

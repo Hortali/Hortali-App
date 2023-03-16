@@ -24,7 +24,7 @@ class CustomButton: UIButton {
     
     
     override var bounds: CGRect {
-        didSet { self.setupCorner() }
+        didSet { }//self.setupCorner() }
     }
     
     
@@ -61,6 +61,7 @@ class CustomButton: UIButton {
             
         case false:
             NSLayoutConstraint.deactivate(self.dynamicConstraints)
+            self.dynamicConstraints.removeAll()
         }
     }
     
@@ -68,6 +69,7 @@ class CustomButton: UIButton {
     /// Define as contraints de altura e largura pra quando o botão for arredondado
     private func setupRoundedConstraints() {
         NSLayoutConstraint.deactivate(self.dynamicConstraints)
+        self.dynamicConstraints.removeAll()
         
         self.dynamicConstraints = [
             self.heightAnchor.constraint(equalToConstant: self.circleSize),

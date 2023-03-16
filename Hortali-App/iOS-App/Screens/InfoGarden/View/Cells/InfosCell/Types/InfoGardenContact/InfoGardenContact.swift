@@ -11,7 +11,11 @@ class InfoGardenContact: ViewWithViewCode, InfoGardenCellProtocol {
 
     // Views
     
-    private let contactStack: CustomStack = CustomViews.newStackView()
+    private let contactStack: CustomStack = {
+        let stack = CustomViews.newStackView()
+        stack.sameDimensionValue = .width
+        return stack
+    }()
     
     private let contactViews: [ContactGroup] = [ContactGroup(), ContactGroup(), ContactGroup()]
     

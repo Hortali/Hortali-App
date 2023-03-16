@@ -105,18 +105,10 @@ class GardenView: MainView {
     
     /* MARK: - Configurações */
     
-    /// Define o tamanho das células da collection a partir do tipo de visualização
     private func setupCollectionVisualization() {
         self.setupDynamicConstraints()
         self.updateButtonIcon()
-        
-        switch self.visualizationType {
-        case .grid:
-            self.setItemSizeForGrid()
-            
-        case .carousel:
-            self.setItemSizeForCarousel()
-        }
+        self.adaptCellSizeForVisualizationType()
     }
     
     
@@ -125,6 +117,19 @@ class GardenView: MainView {
             icon: self.visualizationType.iconToggle,
             size: self.getEquivalent(25), weight: .medium, scale: .default
         ))
+    }
+    
+    
+    private func adaptCellSizeForVisualizationType() {
+        guard self.gardenCollection.collection.bounds.width != 0 else { return }
+        
+        switch self.visualizationType {
+        case .grid:
+            self.setItemSizeForGrid()
+            
+        case .carousel:
+            self.setItemSizeForCarousel()
+        }
     }
     
     

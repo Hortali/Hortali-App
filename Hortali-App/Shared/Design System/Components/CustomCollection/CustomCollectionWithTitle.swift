@@ -8,8 +8,6 @@ class CustomCollectionWithTitle: CustomCollection {
     
     /* MARK: - Atributos */
     
-    // Views
-    
     public let titleLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textColor = UIColor(.subTitle)
@@ -18,38 +16,34 @@ class CustomCollectionWithTitle: CustomCollection {
     
     
     
-    /* MARK: - Override */
+    /* MARK: - ViewCode */
     
     override func setupHierarchy() {
-        self.addSubview(self.titleLabel)
         super.setupHierarchy()
+        self.addSubview(self.titleLabel)
     }
 
-    /* MARK: - Configurações */
-    
+    // Não mexer nas constraints da collection
     override func createStaticConstraints() -> [NSLayoutConstraint] {
         var constraints = [
             self.collection.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.collection.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.collection.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            
-            
+            self.collection.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 12),
+
+
             self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ]
         constraints += self.createEmptyViewConstraints()
         return constraints
     }
-    
-    
+
+
     override func createDynamicConstraints() {
-        let between: CGFloat = self.getEquivalent(12)
         let titleLabelHeight: CGFloat = self.superview?.getEquivalent(25) ?? 0
-        
+
         self.dynamicConstraints = [
-            self.collection.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: between),
-            
-            
             self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: self.labelSpace),
             self.titleLabel.heightAnchor.constraint(equalToConstant: titleLabelHeight),
         ]

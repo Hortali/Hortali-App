@@ -38,13 +38,18 @@ class MainView: ViewWithViewCode {
     public var titleLabel: UILabel {
         return self.container.titleLabel
     }
-
-     
-        
+    
+    
+    
     /* MARK: - ViewCode */
 
     override func setupHierarchy() {
         self.addSubview(self.container)
+    }
+    
+    
+    final func addViewInContent(_ view: UIView) {
+        self.contentView.addSubview(view)
     }
     
 

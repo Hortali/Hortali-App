@@ -31,7 +31,6 @@ class InfoFoodView: ViewWithViewCode, FavoriteHandler {
     
     private let vitaminsStack: CustomStack = {
         let stack = CustomViews.newStackView()
-        stack.sameDimensionValue = .height
         stack.axis = .horizontal
         return stack
     }()
@@ -342,7 +341,7 @@ class InfoFoodView: ViewWithViewCode, FavoriteHandler {
     
     
     private func setButtonsHeightFromVitaminsStack() {
-        let height = self.getEquivalent(35)
+        let height = self.vitaminsStack.bounds.height
         self.vitaminsTypesButtons.forEach() {
             $0.circleSize = height
             $0.setupText(with: FontInfo(fontSize: height, weight: .medium))

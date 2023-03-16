@@ -986,8 +986,8 @@
 		227FAFCE292FAC950080FB9C /* FavoriteHandler */ = {
 			isa = PBXGroup;
 			children = (
-				227FAFCF292FACAE0080FB9C /* FavoriteHandler.swift */,
 				227FAFD1292FADB10080FB9C /* FavoriteInfos.swift */,
+				227FAFCF292FACAE0080FB9C /* FavoriteHandler.swift */,
 			);
 			path = FavoriteHandler;
 			sourceTree = "<group>";

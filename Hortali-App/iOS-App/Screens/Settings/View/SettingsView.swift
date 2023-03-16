@@ -98,6 +98,8 @@ class SettingsView: MainView {
     
     
     private func setSettingsCollectionItemSize() {
+        guard self.settingsCollection.collection.bounds.width != 0 else { return }
+        
         self.collectionFlow.minimumLineSpacing = self.getEquivalent(15)
         self.collectionFlow.itemSize = CGSize(
             width: self.settingsCollection.bounds.width,

@@ -77,9 +77,9 @@ extension ViewCode {
     ///
     /// Esse método deve ser chamado na função `layoutSubviews` por exemplo.
     internal func reloadView() {
+        self.setupDynamicConstraints()
         self.setupUI()
         self.setupFonts()
-        self.setupDynamicConstraints()
     }
     
     

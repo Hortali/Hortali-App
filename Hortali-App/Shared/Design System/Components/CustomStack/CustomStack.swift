@@ -10,7 +10,7 @@ class CustomStack: UIStackView {
     /* MARK:  Atributos */
     
     /// Deixar o valor das views igual a do stack
-    public var sameDimensionValue: Dimension = .width
+    public var sameDimensionValue: Dimension?
     
     
     
@@ -24,6 +24,8 @@ class CustomStack: UIStackView {
             view.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         case .width:
             view.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        default:
+            break
         }
     }
     
@@ -43,7 +45,6 @@ class CustomStack: UIStackView {
         
         let equalSpace = self.calculateEqualSpace(spaceAvaiable: spaceAvaiable, spaceUsed: space)
         return equalSpace
-        
     }
     
     

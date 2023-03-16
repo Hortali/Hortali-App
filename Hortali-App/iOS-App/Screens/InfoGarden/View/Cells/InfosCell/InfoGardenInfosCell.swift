@@ -80,7 +80,7 @@ class InfoGardenInfosCell: CollectionCellWithViewCode {
     
     
     override func createStaticConstraints() -> [NSLayoutConstraint] {
-        var constraints = [
+        let constraints = [
             self.titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
