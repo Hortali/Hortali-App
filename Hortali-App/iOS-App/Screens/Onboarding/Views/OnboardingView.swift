@@ -188,9 +188,9 @@ class OnboardingView: ViewWithViewCode {
     override func setupFonts() {
         let fontInfo = FontInfo(fontSize: self.getEquivalent(25), weight: .regular, fontFamily: .graffiti)
         
-        self.closeButton.setupText(with: fontInfo)
-        self.nextButton.setupText(with: fontInfo)
-        self.backButton.setupText(with: fontInfo)
+        self.closeButton.setupFont(with: fontInfo)
+        self.nextButton.setupFont(with: fontInfo)
+        self.backButton.setupFont(with: fontInfo)
     }
     
     

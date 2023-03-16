@@ -175,10 +175,10 @@ class TimeGroup: ViewWithViewCode {
     
     override func setupFonts() {
         let bigFont = FontInfo(fontSize: self.getConstant(for: 15), weight: .medium)
-        self.closeLabel.setupText(with: bigFont)
-        self.weekLabel.setupText(with: bigFont)
+        self.closeLabel.setupFont(with: bigFont)
+        self.weekLabel.setupFont(with: bigFont)
         
-        self.hourLabel.setupText(with: FontInfo(
+        self.hourLabel.setupFont(with: FontInfo(
             fontSize: self.getConstant(for: 12), weight: .medium
         ))
     }

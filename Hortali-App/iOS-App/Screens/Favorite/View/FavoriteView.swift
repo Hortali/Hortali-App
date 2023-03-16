@@ -119,8 +119,8 @@ class FavoriteView: MainView {
         let subTitleSize: CGFloat = self.getEquivalent(25, dimension: .height)
         let font = FontInfo(fontSize: subTitleSize, weight: .medium)
         
-        self.foodCollection.titleLabel.setupText(with: font)
-        self.gardenCollection.titleLabel.setupText(with: font)
+        self.foodCollection.titleLabel.setupFont(with: font)
+        self.gardenCollection.titleLabel.setupFont(with: font)
     }
     
     

@@ -71,11 +71,11 @@ class GardenCell: CollectionCellWithViewCode, CustomCell {
         let titleSize: CGFloat = self.getEquivalent(25, screenReference: screenReferenceSize)
         let subtitleSize: CGFloat = self.getEquivalent(20, screenReference: screenReferenceSize)
         
-        self.titleLabel.setupText(with: FontInfo(
+        self.titleLabel.setupFont(with: FontInfo(
             fontSize: titleSize, weight: .semibold
         ))
         
-        self.adressLabel.setupText(with: FontInfo(
+        self.adressLabel.setupFont(with: FontInfo(
             fontSize: subtitleSize, weight: .medium
         ))
     }

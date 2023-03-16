@@ -66,11 +66,11 @@ class ContactGroup: ViewWithViewCode {
     
     
     override func setupFonts() {
-        self.contactLabel.setupText(with: FontInfo(
+        self.contactLabel.setupFont(with: FontInfo(
             fontSize: self.getConstant(for: 20), weight: .regular, fontFamily: .graffiti
         ))
         
-        self.descriptionLabel.setupText(with: FontInfo(
+        self.descriptionLabel.setupFont(with: FontInfo(
             fontSize: self.getConstant(for: 15), weight: .regular
         ))
     }

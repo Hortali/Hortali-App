@@ -123,11 +123,11 @@ class InfoGardenTime: ViewWithViewCode, InfoGardenCellProtocol {
     
     
     override func setupFonts() {
-        self.todayLabel.setupText(with: FontInfo(
+        self.todayLabel.setupFont(with: FontInfo(
             fontSize: self.getConstant(for: 30), weight: .semibold
         ))
         
-        self.todayWeekLabel.setupText(with: FontInfo(
+        self.todayWeekLabel.setupFont(with: FontInfo(
             fontSize: self.getConstant(for: 27), weight: .regular, fontFamily: .graffiti
         ))
     }

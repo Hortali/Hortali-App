@@ -213,14 +213,14 @@ class InfoFoodView: ViewWithViewCode, FavoriteHandler {
     
     private func setupLabelsFont() {
         let titleFont = FontInfo(fontSize: self.getEquivalent(25), weight: .medium)
-        self.benefitsLabel.setupText(with: titleFont)
-        self.vitaminsLabel.setupText(with: titleFont)
+        self.benefitsLabel.setupFont(with: titleFont)
+        self.vitaminsLabel.setupFont(with: titleFont)
         
         let descriptionFont = FontInfo(fontSize: 20, weight: .regular)
-        self.mineralsLabel.setupText(with: descriptionFont)
+        self.mineralsLabel.setupFont(with: descriptionFont)
         
         let seasonalityFont = FontInfo(fontSize: self.getEquivalent(45), weight: .regular, fontFamily: .graffiti)
-        self.seasonalityButton?.setupText(with: seasonalityFont)
+        self.seasonalityButton?.setupFont(with: seasonalityFont)
     }
     
     
@@ -344,7 +344,7 @@ class InfoFoodView: ViewWithViewCode, FavoriteHandler {
         let height = self.vitaminsStack.bounds.height
         self.vitaminsTypesButtons.forEach() {
             $0.circleSize = height
-            $0.setupText(with: FontInfo(fontSize: height, weight: .medium))
+            $0.setupFont(with: FontInfo(fontSize: height, weight: .medium))
         }
     }
     

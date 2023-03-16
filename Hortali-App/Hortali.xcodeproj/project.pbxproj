@@ -36,7 +36,6 @@
 		222937E928C6824600515095 /* IconInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937E828C6824600515095 /* IconInfo.swift */; };
 		222937EB28C6828500515095 /* UILabel+FontInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937EA28C6828500515095 /* UILabel+FontInfo.swift */; };
 		222937ED28C682C900515095 /* UIButton+FontInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937EC28C682C900515095 /* UIButton+FontInfo.swift */; };
-		222937EF28C6831300515095 /* UITextField+FontInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937EE28C6831300515095 /* UITextField+FontInfo.swift */; };
 		222937F128C6837500515095 /* UIButton+IconInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937F028C6837500515095 /* UIButton+IconInfo.swift */; };
 		222937F328C6844E00515095 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937F228C6844E00515095 /* CustomViews.swift */; };
 		222937F528C6846700515095 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222937F428C6846700515095 /* ContainerView.swift */; };
@@ -183,7 +182,6 @@
 		222937E828C6824600515095 /* IconInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconInfo.swift; sourceTree = "<group>"; };
 		222937EA28C6828500515095 /* UILabel+FontInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+FontInfo.swift"; sourceTree = "<group>"; };
 		222937EC28C682C900515095 /* UIButton+FontInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+FontInfo.swift"; sourceTree = "<group>"; };
-		222937EE28C6831300515095 /* UITextField+FontInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+FontInfo.swift"; sourceTree = "<group>"; };
 		222937F028C6837500515095 /* UIButton+IconInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+IconInfo.swift"; sourceTree = "<group>"; };
 		222937F228C6844E00515095 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
 		222937F428C6846700515095 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
@@ -634,7 +632,6 @@
 			children = (
 				222937EA28C6828500515095 /* UILabel+FontInfo.swift */,
 				222937EC28C682C900515095 /* UIButton+FontInfo.swift */,
-				222937EE28C6831300515095 /* UITextField+FontInfo.swift */,
 				2229383928C8829000515095 /* UIFont+setupFont.swift */,
 			);
 			path = Extensions;
@@ -662,17 +659,12 @@
 		2229383428C87DA300515095 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				2238A34E299BB2E500B86F64 /* CustomButton */,
-				2238A34D299BB2DC00B86F64 /* CustomScroll */,
-				2238A34C299BB2D100B86F64 /* CustomStack */,
-				2238A34B299BB2C800B86F64 /* CustomLabel */,
+				22F9910629C38E76009174FC /* Custom */,
 				224BC12A2939472F009D92FE /* EmptyView */,
-				2229383728C8815000515095 /* CustomCollection */,
-				222937F428C6846700515095 /* ContainerView.swift */,
 				220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */,
 				2229384E28C8964200515095 /* MainView.swift */,
+				222937F428C6846700515095 /* ContainerView.swift */,
 				22A3DB29290CED4700B34CEC /* ViewLabel.swift */,
-				222937F228C6844E00515095 /* CustomViews.swift */,
 				2270F70929C0845C008DFBDA /* CopyWarning.swift */,
 			);
 			path = Components;
@@ -684,15 +676,6 @@
 				222937E428C6779500515095 /* UIColors+AppColors.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		2229383728C8815000515095 /* CustomCollection */ = {
-			isa = PBXGroup;
-			children = (
-				B20D435F29379462009A7028 /* CustomCollection.swift */,
-				2270F70529BCD0A9008DFBDA /* CustomCollectionWithTitle.swift */,
-			);
-			path = CustomCollection;
 			sourceTree = "<group>";
 		};
 		2229383B28C8922000515095 /* Garden */ = {
@@ -787,38 +770,6 @@
 				2229385C28C9D55700515095 /* Dimension.swift */,
 			);
 			path = Enum;
-			sourceTree = "<group>";
-		};
-		2238A34B299BB2C800B86F64 /* CustomLabel */ = {
-			isa = PBXGroup;
-			children = (
-				2212E84128DCEC07004CCBAA /* CustomLabel.swift */,
-			);
-			path = CustomLabel;
-			sourceTree = "<group>";
-		};
-		2238A34C299BB2D100B86F64 /* CustomStack */ = {
-			isa = PBXGroup;
-			children = (
-				22EDD4AA28D95812001CE093 /* CustomStack.swift */,
-			);
-			path = CustomStack;
-			sourceTree = "<group>";
-		};
-		2238A34D299BB2DC00B86F64 /* CustomScroll */ = {
-			isa = PBXGroup;
-			children = (
-				220A63ED28D3BDF700D9E2A9 /* CustomScroll.swift */,
-			);
-			path = CustomScroll;
-			sourceTree = "<group>";
-		};
-		2238A34E299BB2E500B86F64 /* CustomButton */ = {
-			isa = PBXGroup;
-			children = (
-				2229382528C852D200515095 /* CustomButton.swift */,
-			);
-			path = CustomButton;
 			sourceTree = "<group>";
 		};
 		2238A351299D27C400B86F64 /* ViewCode */ = {
@@ -1133,6 +1084,20 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		22F9910629C38E76009174FC /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				222937F228C6844E00515095 /* CustomViews.swift */,
+				2229382528C852D200515095 /* CustomButton.swift */,
+				2212E84128DCEC07004CCBAA /* CustomLabel.swift */,
+				220A63ED28D3BDF700D9E2A9 /* CustomScroll.swift */,
+				22EDD4AA28D95812001CE093 /* CustomStack.swift */,
+				B20D435F29379462009A7028 /* CustomCollection.swift */,
+				2270F70529BCD0A9008DFBDA /* CustomCollectionWithTitle.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		B214C3E6291AF4B70033CFAE /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -1321,7 +1286,6 @@
 				227FAFD2292FADB10080FB9C /* FavoriteInfos.swift in Sources */,
 				220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */,
 				2244432E293CA4A9002E6C29 /* ManagedTags.swift in Sources */,
-				222937EF28C6831300515095 /* UITextField+FontInfo.swift in Sources */,
 				2210245D28D8494A00F412A5 /* InfoGardenImagesCell.swift in Sources */,
 				224BC12929393735009D92FE /* OnBoardingInfos.swift in Sources */,
 				B241564728D26E4C009F011C /* FoodCell.swift in Sources */,

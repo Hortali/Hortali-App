@@ -176,7 +176,7 @@ class ExpansiveLabel: ViewWithViewCode {
     
     
     override func setupFonts() {
-        self.paragraphLabel.setupText(with: FontInfo(
+        self.paragraphLabel.setupFont(with: FontInfo(
             fontSize: 20, weight: .regular
         ))
     }

@@ -65,11 +65,11 @@ class FoodCell: CollectionCellWithViewCode, CustomCell {
     
     
     override func setupFonts() {
-        self.foodLabel.setupText(with: FontInfo(
+        self.foodLabel.setupFont(with: FontInfo(
             fontSize: self.superview?.getEquivalent(16) ?? 0, weight: .regular
         ))
         
-        self.seasonalityLabel.setupText(with: FontInfo(
+        self.seasonalityLabel.setupFont(with: FontInfo(
             fontSize: self.superview?.getEquivalent(37) ?? 0, weight: .regular, fontFamily: .graffiti
         ))
     }

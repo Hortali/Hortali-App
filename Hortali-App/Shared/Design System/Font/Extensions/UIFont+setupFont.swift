@@ -11,7 +11,7 @@ extension UIFont {
     /// - Returns: fonte configurada de acordo com o modelo passado.
     static func setupFont(with config: FontInfo) -> UIFont? {
         let family = config.fontFamily.fontName(weight: config.weight)
-        
-        return UIFont(name: family, size: config.fontSize)
+        let font = UIFont(name: family, size: config.fontSize)
+        return font
     }
 }

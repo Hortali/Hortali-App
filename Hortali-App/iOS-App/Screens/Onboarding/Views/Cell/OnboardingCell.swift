@@ -94,11 +94,11 @@ class OnboardingCell: CollectionCellWithViewCode {
     
     
     override func setupFonts() {
-        self.primaryTitle.setupText(with: FontInfo(fontSize: 32, weight: .semibold))
-        self.secondaryTitle.setupText(with: FontInfo(fontSize: 52, weight: .bold, fontFamily: .graffiti))
+        self.primaryTitle.setupFont(with: FontInfo(fontSize: 32, weight: .semibold))
+        self.secondaryTitle.setupFont(with: FontInfo(fontSize: 52, weight: .bold, fontFamily: .graffiti))
         
-        self.primaryDescription.setupText(with: FontInfo(fontSize: 20, weight: .semibold))
-        self.secondaryDescription.setupText(with: FontInfo(fontSize: 20, weight: .regular))
+        self.primaryDescription.setupFont(with: FontInfo(fontSize: 20, weight: .semibold))
+        self.secondaryDescription.setupFont(with: FontInfo(fontSize: 20, weight: .regular))
     }
     
     

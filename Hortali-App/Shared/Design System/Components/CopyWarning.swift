@@ -62,7 +62,7 @@ class CopyWarning: ViewLabel {
     override func setupFonts() {
         let fontSize = self.superview?.getEquivalent(15) ?? 15
         
-        self.label.setupText(with: FontInfo(
+        self.label.setupFont(with: FontInfo(
             fontSize: fontSize, weight: .medium
         ))
     }

@@ -83,17 +83,17 @@ class SettingsCell: CollectionCellWithViewCode, CustomCell {
     
     
     override func setupFonts() {
-        self.titleLabel.setupText(with: FontInfo(
+        self.titleLabel.setupFont(with: FontInfo(
             fontSize: self.getConstant(for: 25), weight: .semibold
         ))
         
         let secondaryFontSize: CGFloat = self.getConstant(for: 15)
         
-        self.subTitleLabel.setupText(with: FontInfo(
+        self.subTitleLabel.setupFont(with: FontInfo(
             fontSize: secondaryFontSize, weight: .bold
         ))
         
-        self.descriptionLabel.setupText(with: FontInfo(
+        self.descriptionLabel.setupFont(with: FontInfo(
             fontSize: secondaryFontSize, weight: .medium
         ))
     }

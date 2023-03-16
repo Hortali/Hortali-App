@@ -16,9 +16,6 @@ enum AppFonts {
     
     /* MARK: - Variáveis */
     
-    /// Nome da fonte
-    /// - Parameter weight: peso da fonte
-    /// - Returns: fonte com o peso
     func fontName(weight: FontWeight = .regular) -> String {
         switch self {
         case .default: return "SFProRounded-\(weight.type)"

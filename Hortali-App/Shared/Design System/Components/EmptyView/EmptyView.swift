@@ -87,7 +87,7 @@ class EmptyView: ViewWithViewCode {
     
     
     override func setupFonts() {
-        self.titleLabel.setupText(with: FontInfo(fontSize: 72, weight: .bold, fontFamily: .graffiti))
+        self.titleLabel.setupFont(with: FontInfo(fontSize: 72, weight: .bold, fontFamily: .graffiti))
     }
     
     

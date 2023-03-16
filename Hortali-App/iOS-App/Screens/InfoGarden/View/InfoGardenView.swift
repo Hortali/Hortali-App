@@ -233,7 +233,7 @@ class InfoGardenView: ViewWithViewCode, FavoriteHandler {
     
     
     private func setLabelsFont() {
-        self.lastUpdateLabel.setupText(with: FontInfo(
+        self.lastUpdateLabel.setupFont(with: FontInfo(
             fontSize: self.getEquivalent(17), weight: .medium
         ))
     }

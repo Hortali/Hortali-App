@@ -111,15 +111,15 @@ class PopUpView: ViewWithViewCode {
 	  
     
     override func setupFonts() {
-        self.titleLabel.setupText(with: FontInfo(
+        self.titleLabel.setupFont(with: FontInfo(
             fontSize: self.getEquivalent(45), weight: .bold, fontFamily: .graffiti
         ))
         
-        self.descriptionLabel.setupText(with: FontInfo(
+        self.descriptionLabel.setupFont(with: FontInfo(
             fontSize: self.getEquivalent(20), weight: .regular
         ))
         
-        self.closeButton.setupText(with: FontInfo(
+        self.closeButton.setupFont(with: FontInfo(
             fontSize: self.getEquivalent(25), weight: .semibold, fontFamily: .graffiti
         ))
     }

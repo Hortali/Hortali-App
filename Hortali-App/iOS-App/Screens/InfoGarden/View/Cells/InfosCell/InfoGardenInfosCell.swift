@@ -73,7 +73,7 @@ class InfoGardenInfosCell: CollectionCellWithViewCode {
     
     
     override func setupFonts() {
-        self.titleLabel.setupText(with: FontInfo(
+        self.titleLabel.setupFont(with: FontInfo(
             fontSize: self.getConstant(for: 22), weight: .medium
         ))
     }

@@ -55,7 +55,7 @@ class ContainerView: ViewWithViewCode {
     
     
     override func setupFonts() {
-        self.titleLabel.setupText(with: FontInfo(
+        self.titleLabel.setupFont(with: FontInfo(
             fontSize: self.getEquivalent(35), weight: .bold
         ))
     }

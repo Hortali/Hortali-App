@@ -110,7 +110,7 @@ class TagCell: CollectionCellWithViewCode, CustomCell {
     
     override func setupFonts() {
         let fontSize = self.superview?.getEquivalent(20) ?? 20
-        self.label.setupText(with: FontInfo(fontSize: fontSize, weight: .regular))
+        self.label.setupFont(with: FontInfo(fontSize: fontSize, weight: .regular))
     }
 	  
     

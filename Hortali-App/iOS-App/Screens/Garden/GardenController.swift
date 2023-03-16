@@ -4,12 +4,9 @@
 import UIKit
 
 
-/// Controller responsável pela principal de ver todas as hortas
 class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     /* MARK: - Atributos */
-    
-    /* View */
     
     private let myView = GardenView()
     
@@ -23,12 +20,9 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     private let searchDelegate = SearchDelegate()
     
     
-    /* Dados */
+    /* Outros */
     
     private lazy var gardenData: [ManagedGarden] = []
-    
-    
-    /* Outros */
     
     private var lastGardenVisualization: GardenVisualization?
     
@@ -257,7 +251,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     private func getFilteredDataFromTag(_ tagText: String) -> [ManagedGarden] {
         return self.gardenData.filter() {
-            return checkIfGardenHasSelectedTag(tagText, garden: $0)
+            return self.checkIfGardenHasSelectedTag(tagText, garden: $0)
         }
     }
     

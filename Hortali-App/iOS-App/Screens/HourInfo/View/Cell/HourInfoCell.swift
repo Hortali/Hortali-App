@@ -137,11 +137,11 @@ class HourInfoCell: CollectionCellWithViewCode, CustomCell {
     
     
     override func setupFonts() {
-        self.dayLabel.setupText(with: FontInfo(
+        self.dayLabel.setupFont(with: FontInfo(
             fontSize: self.getEquivalent(35), weight: .regular, fontFamily: .graffiti
         ))
         
-        self.hourLabel.setupText(with: FontInfo(fontSize: 20, weight: .semibold))
+        self.hourLabel.setupFont(with: FontInfo(fontSize: 20, weight: .semibold))
     }
     
 

@@ -226,7 +226,7 @@ class InfoGardenMap: ViewWithViewCode, InfoGardenCellProtocol {
     
     
     override func setupFonts() {
-        self.addressLabel.label.setupText(with: FontInfo(
+        self.addressLabel.label.setupFont(with: FontInfo(
             fontSize: self.getConstant(for: 15), weight: .regular
         ))
     }
