@@ -9,38 +9,28 @@ class TagCollectionHandler: NSObject, CollectionHandler {
     
     /* MARK: - Atributos */
     
-    /// Dados usados no data source
     private var mainData: [ManagedTags] = []
     
-    /// Protocolo de comunicação com a controller da collection
-    private weak var `protocol`: SearchProtocol?
+    private weak var searchProtocol: SearchProtocol?
     
-    /// Index da célula (tag) selecionada
     private var selectedCell: IndexPath?
     
 
     
     /* MARK: - Encapsulamento */
     
-    /// Permissão para as células poderem ser clicadas
     public var isSelectionAllowed = true
     
-    /// Verifica se existe alguma tag selecionada
-    public var tagSelected: IndexPath? {
-        return self.selectedCell
-    }
+    public var tagSelected: IndexPath? { self.selectedCell }
     
-    /// Dados que estão sendo usados no dados source
     public var data: [ManagedTags] {
         set (newData) { self.mainData = newData }
         get { self.mainData }
     }
     
     
-    /// Configura o protocolo de comunicação
-    /// - Parameter `protocol`: protocolo
     public func setProtocol(with `protocol`: SearchProtocol) {
-        self.protocol = `protocol`
+        self.searchProtocol = `protocol`
     }
     
     
@@ -60,44 +50,51 @@ class TagCollectionHandler: NSObject, CollectionHandler {
     
     /* MARK: - Data Sources (Collection) */
     
-    /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.mainData.count
     }
     
     
-    /// Configura uma célula
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.identifier, for: indexPath) as? TagCell else {
-            return UICollectionViewCell()
-        }
-        let data = self.mainData[indexPath.row]
-        cell.setupCell(with: data.name)
-        cell.isSelectionAllowed = self.isSelectionAllowed
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.identifier, for: indexPath) as? TagCell
+        else { return UICollectionViewCell() }
         
-        cell.layer.cornerRadius = collectionView.superview?.getEquivalent(5) ?? 5
-        
+        self.setupCell(cell, collectionView, atRow: indexPath.row)
         return cell
     }
     
     
+    private func setupCell(_ cell: TagCell, _ collection: UICollectionView, atRow row: Int) {
+        let data = self.mainData[row]
+        cell.setupCell(with: data.name)
+        cell.isSelectionAllowed = self.isSelectionAllowed
+    }
+    
 
+    
     /* MARK: - Delegate (Collection) */
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let lastCellIndex = self.selectedCell {
-            if indexPath == lastCellIndex {
-                collectionView.deselectItem(at: indexPath, animated: true)
-                self.selectedCell = nil
-                self.protocol?.updateCollection(tag: "")
-                return
-            }
+        if self.selectedCell.isNil {
+            self.selectNewCell(at: indexPath); return
         }
-        
+        self.deselectCellSelected(collectionView, at: indexPath)
+    }
+    
+    
+    private func deselectCellSelected(_ collection: UICollectionView, at indexPath: IndexPath) {
+        guard indexPath == self.selectedCell else { return }
+        collection.deselectItem(at: indexPath, animated: true)
+        self.selectedCell = nil
+        self.searchProtocol?.updateCollection(tag: "")
+    }
+    
+    
+    private func selectNewCell(at indexPath: IndexPath) {
         self.selectedCell = indexPath
         
         let data = self.mainData[indexPath.row]
-        self.protocol?.updateCollection(tag: data.name)
+        self.searchProtocol?.updateCollection(tag: data.name)
     }
 
 
@@ -106,7 +103,8 @@ class TagCollectionHandler: NSObject, CollectionHandler {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let fontSize = collectionView.superview?.getEquivalent(20) ?? 20
-        guard let font = UIFont.setupFont(with: FontInfo(fontSize: fontSize, weight: .regular)) else { return .zero }
+        let font = UIFont.setupFont(with: FontInfo(fontSize: fontSize, weight: .regular))
+        guard let font else { return .zero }
         
         let data = self.mainData[indexPath.row]
         let text = "    \(data.name)    "

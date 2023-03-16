@@ -1,12 +1,9 @@
 /* Macro - Grupo 05 */
 
 /* Bibliotecas necessárias: */
-import class UIKit.UIColor
-import class UIKit.UIViewController
-import class UIKit.UITabBarController
+import UIKit
 
 
-/// Controller principal usada na criaçào das telas principais do app que participam da tab bar.
 class MainController: UITabBarController {
     
     /* MARK: - Ciclo de Vida */
@@ -28,7 +25,6 @@ class MainController: UITabBarController {
     }
     
     
-    /// Define as controllers que vão aparecer na Tab Bar
     private func setupControllers() {
         self.viewControllers = [
             self.createNavigation(for: GardenController()),
@@ -43,7 +39,6 @@ class MainController: UITabBarController {
         let nav = CustomNavigationController()
         nav.pushViewController(controller, animated: true)
         nav.isNavigationBarHidden = true
-        
         return nav
     }
     
@@ -64,16 +59,11 @@ class MainController: UITabBarController {
     private func setupTabInfos(for index: Int) {
         let controller = self.viewControllers?[index]
         switch index {
-        case 0:
-            controller?.setupTab(text: "Hortas", icon: .gardenTab)
-        case 1:
-            controller?.setupTab(text: "Alimentos", icon: .foodTab)
-        case 2:
-            controller?.setupTab(text: "Favoritos", icon: .favoriteTab)
-        case 3:
-            controller?.setupTab(text: "Configurações", icon: .settingsTab)
-        default:
-            break
+        case 0: controller?.setupTab(text: "Hortas", icon: .gardenTab)
+        case 1: controller?.setupTab(text: "Alimentos", icon: .foodTab)
+        case 2: controller?.setupTab(text: "Favoritos", icon: .favoriteTab)
+        case 3: controller?.setupTab(text: "Configurações", icon: .settingsTab)
+        default: break
         }
     }
 }

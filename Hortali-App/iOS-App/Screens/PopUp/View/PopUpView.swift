@@ -8,8 +8,6 @@ import UIKit
 class PopUpView: ViewWithViewCode {
     
     /* MARK: - Atributos */
-
-    // Views
     
     private let container = CustomViews.newView()
     

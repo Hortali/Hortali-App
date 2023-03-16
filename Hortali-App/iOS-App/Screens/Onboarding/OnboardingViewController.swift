@@ -9,7 +9,7 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     
     /* MARK: - Atributos */
     
-    /// Muda a cor da status bar
+    // Muda a cor da status bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if UserDefaults.getValue(for: .onBoardingPresented) {
             return .lightContent
@@ -23,7 +23,7 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     private let myView = OnboardingView()
     
     
-    /* handlers & Delegate */
+    /* Handlers & Delegate */
     
     private let onBoardingCollectionHandler = OnBoardingCollectionHandler()
     
@@ -64,20 +64,15 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     
     @objc
     private func closeAction() {
-        UserDefaults.setValue(true, forKey: .onBoardingPresented)
-        
-        self.navigationController?.popViewController(animated: true)
-        self.navigationController?.dismiss(animated: true)
-        self.dismiss(animated: true)
+        self.saveOnBordingHasBeenPresented()
+        self.dismissController()
     }
     
     
     @objc
     private func backAction() {
         let currentPage = self.myView.currentPage - 1
-        
-        self.myView.updateCurrentCell(for: currentPage)
-        self.myView.updateCurrentPage(for: currentPage)
+        self.updateCurrentPage(currentPage)
     }
     
     
@@ -88,8 +83,7 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
         if currentPage == self.onBoardingCollectionHandler.totalPages {
             self.closeAction()
         } else {
-            self.myView.updateCurrentCell(for: currentPage)
-            self.myView.updateCurrentPage(for: currentPage)
+            self.updateCurrentPage(currentPage)
         }
     }
     
@@ -116,5 +110,23 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
         
         let collection = self.myView.onBoardingCollection
         self.onBoardingCollectionHandler.link(with: collection)
+    }
+    
+    
+    private func saveOnBordingHasBeenPresented() {
+        UserDefaults.setValue(true, forKey: .onBoardingPresented)
+    }
+    
+    
+    private func dismissController() {
+        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.dismiss(animated: true)
+        self.dismiss(animated: true)
+    }
+    
+    
+    private func updateCurrentPage(_ page: Int) {
+        self.myView.updateCurrentCell(for: page)
+        self.myView.updateCurrentPage(for: page)
     }
 }

@@ -4,7 +4,6 @@
 import UIKit
 
 
-/// Elementos de UI da célula das tags
 class TagCell: CollectionCellWithViewCode, CustomCell {
     
     /* MARK: - Atributos */
@@ -14,7 +13,6 @@ class TagCell: CollectionCellWithViewCode, CustomCell {
 
     // Views
     
-    /// Texto da célula
     private let label: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textAlignment = .center
@@ -49,10 +47,10 @@ class TagCell: CollectionCellWithViewCode, CustomCell {
         didSet { self.updateUIWhenSelection(is: !self.isSelectionAllowed) }
     }
     
+    
     public func setupCell(with text: String) {
         self.label.text = text
     }
-    
     
     
 
@@ -60,16 +58,21 @@ class TagCell: CollectionCellWithViewCode, CustomCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.label.text = nil
+        self.clearLabelText()
     }
-        
+    
     
     
     /* MARK: - Configurações */
     
+    private func clearLabelText() {
+        self.label.text = nil
+    }
+    
+    
     private func updateUIWhenSelection(is status: Bool) {
         if status {
-            return self.setUIWhenIsSelected()
+            self.setUIWhenIsSelected(); return
         }
         self.setUIWhenIsNotSelected()
     }
@@ -97,6 +100,11 @@ class TagCell: CollectionCellWithViewCode, CustomCell {
     
     override func setupView() {
         self.layer.masksToBounds = true
+    }
+    
+    
+    override func setupUI() {
+        self.layer.cornerRadius = self.superview?.getEquivalent(5) ?? 5
     }
     
     

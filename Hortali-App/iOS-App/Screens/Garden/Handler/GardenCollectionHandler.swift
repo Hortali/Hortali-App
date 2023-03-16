@@ -3,6 +3,7 @@
 /* Bibliotecas necessárias: */
 import UIKit
 
+
 class GardenCollectionHandler: NSObject, CollectionHandler {
     
     /* MARK: - Atributos */
@@ -33,9 +34,8 @@ class GardenCollectionHandler: NSObject, CollectionHandler {
         collection.register(GardenCell.self, forCellWithReuseIdentifier: GardenCell.identifier)
     }
     
-    func setupFlowLayoutSettings(_ collection: CustomCollection) {
-        
-    }
+    
+    func setupFlowLayoutSettings(_ collection: CustomCollection) { }
     
     
     
@@ -47,9 +47,8 @@ class GardenCollectionHandler: NSObject, CollectionHandler {
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GardenCell.identifier, for: indexPath) as? GardenCell else {
-            return UICollectionViewCell()
-        }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GardenCell.identifier, for: indexPath) as? GardenCell
+        else { return UICollectionViewCell() }
         
         let actualData = self.mainData[indexPath.row]
         cell.setupCell(for: actualData)

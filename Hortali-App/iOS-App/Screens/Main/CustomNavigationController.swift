@@ -4,7 +4,7 @@
 import class UIKit.UINavigationController
 
 
-/// Navigation controller costumizada que lida com o gesto de pop para as telas que não usa a navigation bar
+// Navigation controller costumizada que lida com o gesto de pop para as telas que não usa a navigation bar
 class CustomNavigationController: UINavigationController, CustomNavigationProtocol {
     
     /* MARK: - Atributos */

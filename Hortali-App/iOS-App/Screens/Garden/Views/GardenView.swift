@@ -4,7 +4,6 @@
 import UIKit
 
 
-/// UI da tela de ver todas as hortas
 class GardenView: MainView {
     
     /* MARK: - Atributos */
@@ -34,7 +33,6 @@ class GardenView: MainView {
     
     /* MARK: - Encapsulamento */
     
-    /// Verifica a existencia de dados na collection
     public func checkData(with dataCount: Int) {
         self.gardenCollection.collectionHasData = dataCount == 0
     }
@@ -42,8 +40,6 @@ class GardenView: MainView {
     
     // Search
     
-    /// Define o delegate da barra de busca das hortas
-    /// - Parameter delegate: delegate da barra de bysca
     public func setSearchDelegate(with delegate: SearchDelegate) {
         self.search.delegate = delegate
     }
@@ -51,44 +47,31 @@ class GardenView: MainView {
     
     // Collection
     
-    /// Muda a visualização
-    /// - Parameter visu: visualização desejada
-    ///
-    /// Caso não passe um valor por parâmetro ele vai fazer a troca para a outra visualização.
     public func changeVisualization(to visu: GardenVisualization? = nil) {
         if let visu {
-            self.visualizationType = visu
-            return
+            self.visualizationType = visu; return
         }
-        switch self.visualizationType {
-        case .grid: self.visualizationType = .carousel
-        case .carousel: self.visualizationType = .grid
-        }
-        
+        self.changeVisualizationType()
         self.setupCollectionVisualization()
     }
     
     
-    /// Pega a visualização atual
     public var actualGardenVisualization: GardenVisualization {
         set (value) { self.changeVisualization(to: value) }
         get { return self.visualizationType }
     }
     
     
-    /// Atualiza os dados da collection
     public func reloadCollectionData() {
         self.gardenCollection.reloadCollectionData()
     }
     
     
-    /// Atualiza os dados da collection de tags
     public func reloadTagData() {
         self.tagCollection.reloadCollectionData()
     }
     
     
-    /// 
     public func deselectTag(at indexPath: IndexPath) {
         self.tagCollection.collection.deselectItem(at: indexPath, animated: true)
     }
@@ -96,7 +79,6 @@ class GardenView: MainView {
     
     /* Ações de botões */
     
-    /// Define a ação do botão de ajuda
     public func setVisualizationButtonAction(target: Any?, action: Selector) -> Void {
         self.visualizationButton.addTarget(target, action: action, for: .touchDown)
     }
@@ -104,6 +86,14 @@ class GardenView: MainView {
 
     
     /* MARK: - Configurações */
+    
+    private func changeVisualizationType() {
+        switch self.visualizationType {
+        case .grid: self.visualizationType = .carousel
+        case .carousel: self.visualizationType = .grid
+        }
+    }
+    
     
     private func setupCollectionVisualization() {
         self.setupDynamicConstraints()
@@ -126,7 +116,6 @@ class GardenView: MainView {
         switch self.visualizationType {
         case .grid:
             self.setItemSizeForGrid()
-            
         case .carousel:
             self.setItemSizeForCarousel()
         }
@@ -202,15 +191,7 @@ class GardenView: MainView {
     override func createDynamicConstraints() {
         self.setCollectionsLateralPadding()
         self.createGeneralDynamicConstraints()
-        
-        
-        switch self.visualizationType {
-        case .grid:
-            self.createConstraintsForGrid()
-                
-        case .carousel:
-            self.createConstraintsForCarrousel()
-        }
+        self.setConstraintsForVisualizationType()
     }
     
     
@@ -226,16 +207,25 @@ class GardenView: MainView {
     private func createGeneralDynamicConstraints() {
         let lateral = self.getEquivalent(15)
         let between = self.getEquivalent(5)
-        let tagCollectionHeight = self.getEquivalent(25)
         
+        let tagCollectionHeight = self.getEquivalent(25)
         
         self.dynamicConstraints = [
             self.visualizationButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
             
-            
             self.tagCollection.topAnchor.constraint(equalTo: self.search.bottomAnchor, constant: between),
             self.tagCollection.heightAnchor.constraint(equalToConstant: tagCollectionHeight)
         ]
+    }
+    
+    
+    private func setConstraintsForVisualizationType() {
+        switch self.visualizationType {
+        case .grid:
+            self.createConstraintsForGrid()
+        case .carousel:
+            self.createConstraintsForCarrousel()
+        }
     }
     
     
@@ -251,7 +241,7 @@ class GardenView: MainView {
     }
     
     
-    /// Essa função calcula o espaço disponível que tem para a collection das hortas ser colocada no centro.
+    // Essa função calcula o espaço disponível que tem para a collection das hortas ser colocada no centro.
     private func getTopBottomSpace() -> CGFloat {
         let top = self.tagCollection.frame.origin.y + self.tagCollection.frame.height
         let collectionHeight = self.getEquivalent(400)

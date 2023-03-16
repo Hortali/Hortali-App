@@ -51,7 +51,6 @@ class PopUpController: UIViewController {
     
     /* MARK: - Configurações */
 
-    /// Definindo as ações dos botões
     private func setupButtonsAction() {
         self.myView.setCloseButtonAction(target: self, action: #selector(self.closeAction))
     }
