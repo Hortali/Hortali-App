@@ -5,27 +5,23 @@ import UIKit
 
 
 /// Célula que mostra os alimentos
-class FoodCell: UICollectionViewCell {
+class FoodCell: CollectionCellWithViewCode, CustomCell {
     
     /* MARK: - Atributos */
     
-    /// Identificador da célula
     static let identifier = "FoodCellIdentifier"
     
     
     // Views
-    
-    /// Nome do alimento
+
     private let foodLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textAlignment = .center
         return lbl
     }()
     
-    /// ImageView da célula de cada alimento
     private let foodImage: UIImageView = CustomViews.newImage()
     
-    /// Selo de sazonalidade
     private let seasonalityLabel: CustomLabel = {
         let lbl = CustomViews.newLabel()
         lbl.isCircular = true
@@ -40,44 +36,9 @@ class FoodCell: UICollectionViewCell {
     }()
     
     
-    // Outros
-    
-    /// Constraints que vão mudar de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-    
-      
-    
-    /* MARK: - Construtor */
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.setupViews()
-    }
-    
-    
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-
-    
-    
-    /* MARK: - Ciclo de Vida */
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        self.setupStaticTexts()
-        self.setupDynamicConstraints()
-        self.setupUI()
-        
-        self.reloadInputViews()
-    }
-    
-    
     
     /* MARK: - Encapsulamento */
     
-    /// Configura a célula a partir dos dados passados
-    /// - Parameter data: dados da célula
     public func setupCell(for data: ManagedFood) {
         self.foodLabel.text = data.name
         self.foodImage.image = UIImage(named: data.coverImage.name)
@@ -88,26 +49,22 @@ class FoodCell: UICollectionViewCell {
     
     
     
-    /* MARK: - Configurações */
+    /* MARK: - ViewCode */
     
-    /// Adiciona os elementos (Views) na tela
-    private func setupViews() {
-        self.contentView.addSubview(self.foodImage)
-        self.contentView.addSubview(self.foodLabel)
-        self.contentView.addSubview(self.seasonalityLabel)
+    override func setupHierarchy() {
+        self.addViewInContent(self.foodImage)
+        self.addViewInContent(self.foodLabel)
+        self.addViewInContent(self.seasonalityLabel)
     }
     
-    
-    /// Personalização da UI
-    private func setupUI() {
+
+    override func setupUI() {
         self.foodImage.layer.cornerRadius = self.superview?.getEquivalent(20) ?? 0
-        
         self.seasonalityLabel.layer.borderWidth = self.getEquivalent(5)
     }
     
     
-    /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {
+    override func setupFonts() {
         self.foodLabel.setupText(with: FontInfo(
             fontSize: self.superview?.getEquivalent(16) ?? 0, weight: .regular
         ))
@@ -116,37 +73,47 @@ class FoodCell: UICollectionViewCell {
             fontSize: self.superview?.getEquivalent(37) ?? 0, weight: .regular, fontFamily: .graffiti
         ))
     }
-      
+     
     
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() {
-        let imageHeight: CGFloat = self.bounds.width
-        let between: CGFloat = self.getEquivalent(2)
-        
-        let space = self.getEquivalent(10)
-        
-        self.seasonalityLabel.circleSize = self.superview?.self.getEquivalent(35) ?? 0
-        
-        
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
-    
-        self.dynamicConstraints = [
+    override func createStaticConstraints() -> [NSLayoutConstraint] {
+        let constraints = [
             self.foodImage.topAnchor.constraint(equalTo: self.contentView.topAnchor),
             self.foodImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.foodImage.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.foodImage.heightAnchor.constraint(equalToConstant: imageHeight),
             
             
-            self.foodLabel.topAnchor.constraint(equalTo: self.foodImage.bottomAnchor, constant: between),
             self.foodLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.foodLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.foodLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+        ]
+        return constraints
+    }
+    
+    
+    override func createDynamicConstraints() {
+        self.setIconCicleSize()
+        self.setDynamicConstraints()
+    }
+    
+    
+    private func setIconCicleSize() {
+        self.seasonalityLabel.circleSize = self.superview?.self.getEquivalent(35) ?? 0
+    }
+    
+    
+    private func setDynamicConstraints() {
+        let imageHeight: CGFloat = self.bounds.width
+        
+        let between: CGFloat = self.getEquivalent(2)
+        let space = self.getEquivalent(10)
+    
+        self.dynamicConstraints = [
+            self.foodImage.heightAnchor.constraint(equalToConstant: imageHeight),
             
+            self.foodLabel.topAnchor.constraint(equalTo: self.foodImage.bottomAnchor, constant: between),
             
             self.seasonalityLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: space),
             self.seasonalityLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -space)
         ]
-        
-        NSLayoutConstraint.activate(self.dynamicConstraints)
     }
 }

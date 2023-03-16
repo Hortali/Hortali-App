@@ -28,7 +28,7 @@ extension FavoriteHandler {
         return self.isFavorite ? .favoriteSelected : .favoriteNotSelected
     }
     
-    
+    @discardableResult
     mutating func favoriteHandler(for fav: Bool? = nil) -> Bool {
         self.updateFavoriteStatus(for: fav)
         self.updateFavoriteUI()

@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Grupo que lida com a label e um botão que faz com que a label se expanda
-class ExpansiveLabel: ViewCode {
+class ExpansiveLabel: ViewWithViewCode {
     
     /* MARK: - Atributos */
 

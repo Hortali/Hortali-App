@@ -5,13 +5,13 @@ import UIKit
 
 
 /// UI da tela de onboarding
-class OnboardingView: ViewCode {
+class OnboardingView: ViewWithViewCode {
     
     /* MARK: - Atributos */
     
     // Views
     
-    private let onBoardingGroup: CustomCollection = {
+    final let onBoardingCollection: CustomCollection = {
         let col = CustomCollection()
         col.collection.isPagingEnabled = true
         col.backgroundColor = .clear
@@ -57,24 +57,11 @@ class OnboardingView: ViewCode {
     }()
     
     
-    // Collection
-    
-    private let collectionFlow: UICollectionViewFlowLayout = {
-        let cvFlow = UICollectionViewFlowLayout()
-        cvFlow.scrollDirection = .horizontal
-        cvFlow.minimumLineSpacing = 0
-        
-        return cvFlow
-    }()
-    
-    
     
     /* MARK: - Construtor */
     
     override init() {
         super.init()
-        self.registerCells()
-        self.setupCollectionFlow()
         self.setupToInitialState()
     }
     
@@ -84,24 +71,19 @@ class OnboardingView: ViewCode {
     
     /* MARK: - Encapsulamento */
     
-    /// Mostra em qual página o page control está
     public var currentPage: Int {
         return self.pageControl.currentPage
     }
     
     
-    /// Atualiza a página no Page Control
-    /// - Parameter index: index (número) da página
     public func updateCurrentPage(for index: Int) {
         self.pageControl.currentPage = index
         self.setupButton(for: index)
     }
     
     
-    /// Atualiza  a célula que é mostrada a partir do item do page control selecionado
-    /// - Parameter index: index selecionado
     public func updateCurrentCell(for index: Int) {
-        self.onBoardingGroup.collection.scrollToItem(
+        self.onBoardingCollection.collection.scrollToItem(
             at: IndexPath(row: index, section: 0),
             at: .centeredHorizontally,
             animated: true
@@ -110,7 +92,6 @@ class OnboardingView: ViewCode {
     }
     
     
-    /// Configura a view para o estado inicial
     public func setupToInitialState() {
         self.updateCurrentPage(for: 0)
         self.backgroundColor = .clear
@@ -150,8 +131,6 @@ class OnboardingView: ViewCode {
     
     /* MARK: - Configurações */
     
-    /// Configura os botões a partir da página do page control
-    /// - Parameter index: página usada para configuração
     private func setupButton(for index: Int) {
         self.nextButton.setTitle("Proximo", for: .normal)
         
@@ -169,38 +148,11 @@ class OnboardingView: ViewCode {
     }
     
     
-    /* Collection */
-    
-    /// Registra as células nas collections/table
-    private func registerCells() {
-        self.onBoardingGroup.collection.register(OnboardingCell.self, forCellWithReuseIdentifier: OnboardingCell.identifier)
-    }
-    
-    
-    /// Define o layout da collection
-    private func setupCollectionFlow() {
-        self.onBoardingGroup.collection.collectionViewLayout = self.collectionFlow
-    }
-    
-    
-    /// Define o data source da collection de onboarding
-    /// - Parameter dataSource: data source da collection de onboarding
-    public func setDataSource(with dataSource: OnboardingDataSource) {
-        self.onBoardingGroup.collection.dataSource = dataSource
-    }
-    
-    /// Define o delegate da collection de onboarding
-    /// - Parameter delegate: delegate da collection de onboarding
-    public func setDelegate(with delegate: OnboardingDelegate) {
-        self.onBoardingGroup.collection.delegate = delegate
-    }
-    
-    
     
     /* MARK: - ViewCode */
     
     override func setupHierarchy() {
-        self.addSubview(self.onBoardingGroup)
+        self.addSubview(self.onBoardingCollection)
         self.addSubview(self.pageControl)
         self.addSubview(self.closeButton)
         self.addSubview(self.nextButton)
@@ -215,15 +167,15 @@ class OnboardingView: ViewCode {
     
     
     private func setCollectionCorner() {
-        self.onBoardingGroup.collection.layer.cornerRadius = self.getEquivalent(30)
-        self.onBoardingGroup.collection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        self.onBoardingCollection.collection.layer.cornerRadius = self.getEquivalent(30)
+        self.onBoardingCollection.collection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     
-    private func setCollectionCellSize(){
-        let cellHeight = self.onBoardingGroup.collection.frame.height
+    private func setCollectionCellSize() {
+        let cellHeight = self.onBoardingCollection.collection.frame.height
         let cellWidth = self.frame.width
-        self.collectionFlow.itemSize = CGSize(width: cellWidth, height: cellHeight)
+        self.onBoardingCollection.cellSize = CGSize(width: cellWidth, height: cellHeight)
     }
     
     
@@ -244,10 +196,10 @@ class OnboardingView: ViewCode {
     
     override func createStaticConstraints() -> [NSLayoutConstraint] {
         let constraints = [
-            self.onBoardingGroup.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            self.onBoardingGroup.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.onBoardingGroup.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.onBoardingGroup.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.onBoardingCollection.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            self.onBoardingCollection.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.onBoardingCollection.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.onBoardingCollection.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             
             self.pageControl.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -273,7 +225,5 @@ class OnboardingView: ViewCode {
             self.nextButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -lateral),
             self.backButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: lateral),
         ]
-        
-        NSLayoutConstraint.activate(self.dynamicConstraints)
     }
 }

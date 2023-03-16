@@ -41,13 +41,11 @@ class GardenCollectionHandler: NSObject, CollectionHandler {
     
     /* MARK: - Data Sources */
     
-    /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.mainData.count
     }
     
     
-    /// Configura uma célula
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GardenCell.identifier, for: indexPath) as? GardenCell else {
             return UICollectionViewCell()

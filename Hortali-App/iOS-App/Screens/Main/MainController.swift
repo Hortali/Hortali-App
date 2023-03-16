@@ -13,7 +13,6 @@ class MainController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.initializeController()
     }
     
@@ -40,9 +39,6 @@ class MainController: UITabBarController {
     }
     
     
-    /// Cria uma Navigation Controller para uma controller
-    /// - Parameter controller: controller inicial
-    /// - Returns: navigation controller criada
     private func createNavigation(for controller: UIViewController) -> CustomNavigationController {
         let nav = CustomNavigationController()
         nav.pushViewController(controller, animated: true)
@@ -52,7 +48,6 @@ class MainController: UITabBarController {
     }
     
     
-    /// Configurações iniciais da Tab Bar
     private func setupTab() {
         self.tabBar.backgroundColor = UIColor(.viewBack)
         self.tabBar.tintColor = UIColor(.tabSelected)
@@ -60,15 +55,12 @@ class MainController: UITabBarController {
     }
     
     
-    /// Configura os ícones e títulos de cada item da tab bar
     private func setupTabBarItens() {
         let controllerCount = self.viewControllers?.count ?? 0
         for ind in 0..<controllerCount { self.setupTabInfos(for: ind) }
     }
     
     
-    /// Configura os ícones e títulos para cada controller
-    /// - Parameter index: posiçào da controller na tab bar
     private func setupTabInfos(for index: Int) {
         let controller = self.viewControllers?[index]
         switch index {

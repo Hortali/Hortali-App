@@ -9,16 +9,12 @@ class HourInfoView: ContainerView {
     
     /* MARK: - Atributos */
     
-    // Views
-    
-    /// Collection principal da tela
-    private let hourInfoCollection: CustomCollection = {
+    final let hourInfoCollection: CustomCollection = {
         let col = CustomCollection()
         col.collection.backgroundColor = UIColor(originalColor: .greenLight)
         return col
     }()
     
-    /// Barra superior
     private let homeIndicatorView: UIView = {
         let view = CustomViews.newView()
         view.layer.cornerRadius = 3
@@ -26,61 +22,12 @@ class HourInfoView: ContainerView {
         return view
     }()
     
-    // Outros
-    
-    /// Configurações do layout da collection
-    private let collectionFlow: UICollectionViewFlowLayout = {
-        let cvFlow = UICollectionViewFlowLayout()
-        cvFlow.scrollDirection = .vertical
-        
-        return cvFlow
-    }()
-    
-    
-    
-    /* MARK: - Construtor */
-    
-    override init() {
-        super.init()
-        
-        self.registerCell()
-        self.setupCollectionFlow()
-    }
-    
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
-    
-    
-    /* MARK: - Encapsulamento */
-    
-    /// Define o data source personalizado da collection
-    /// - Parameter dataSource: data source da collection
-    public func setDataSource(with dataSource: HourInfoDataSource) {
-        self.hourInfoCollection.collection.dataSource = dataSource
-    }
-    
-    
-    /// Atualiza os dados da collection
-    public func reloadCollectionData() {
-        self.hourInfoCollection.collection.reloadData()
-        self.hourInfoCollection.collection.reloadInputViews()
-    }
-    
     
     
     /* MARK: - Configurações */
     
-    private func registerCell() {
-        self.hourInfoCollection.collection.register(HourInfoCell.self, forCellWithReuseIdentifier: HourInfoCell.identifier)
-    }
-    
-    
-    private func setupCollectionFlow() {
-        self.hourInfoCollection.collection.collectionViewLayout = self.collectionFlow
-    }
-
-    
     override func setupHierarchy() {
+        super.setupHierarchy()
         self.contentView.addSubview(self.hourInfoCollection)
         self.contentView.addSubview(self.homeIndicatorView)
     }
@@ -90,14 +37,14 @@ class HourInfoView: ContainerView {
     /* MARK: - ViewCode */
     
     override func setupView() {
-        self.setBackgroundColors()
+        self.backgroundColor = UIColor(originalColor: .greenLight)
+        self.contentView.backgroundColor = UIColor(originalColor: .greenLight)
     }
     
     
-    private func setBackgroundColors() {
-        self.backgroundColor = UIColor(originalColor: .greenLight)
-        self.contentView.backgroundColor = UIColor(originalColor: .greenLight)
-        
+    override func setupStaticTexts() {
+        self.setTitleText(with: "Horário de funcionamento")
+        self.titleLabel.textColor = UIColor(originalColor: .greenDark)
     }
     
     
@@ -107,14 +54,8 @@ class HourInfoView: ContainerView {
     
     
     private func setCollectionItemSize() {
-        self.collectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
-        self.collectionFlow.itemSize = CGSize(width: self.hourInfoCollection.frame.width, height: 60)
-    }
-    
-    
-    override func setupStaticTexts() {
-        self.setTitleText(with: "Horário de funcionamento")
-        self.titleLabel.textColor = UIColor(originalColor: .greenDark)
+        self.hourInfoCollection.spaceBetweenCells = self.getEquivalent(10)
+        self.hourInfoCollection.cellSize = CGSize(width: self.hourInfoCollection.frame.width, height: 60)
     }
     
     

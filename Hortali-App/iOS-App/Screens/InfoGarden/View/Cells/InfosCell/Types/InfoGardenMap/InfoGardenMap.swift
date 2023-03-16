@@ -4,17 +4,140 @@
 import MapKit
 
 
+class ScreenShotFromMapCreation {
+    
+    let viewBounds: CGRect
+    
+    let pin: MKPointAnnotation
+    
+    init(viewBounds: CGRect, pin: MKPointAnnotation) {
+        self.viewBounds = viewBounds
+        self.pin = pin
+    }
+    
+    
+    public func createScreenShot(_ handler: @escaping (UIImage?, Error?) -> Void) {
+        let mapInfos = self.createInfosForMap()
+        self.setupMapScreenShot(with: mapInfos) { image, error in
+            handler(image, error)
+        }
+    }
+    
+    
+    private func setupMapScreenShot(with mapInfos: MKMapSnapshotter.Options, _ handler: @escaping (UIImage?, Error?) -> Void) {
+        let snapshot = MKMapSnapshotter(options: mapInfos)
+        snapshot.start { snapshot, error in
+            guard error.isNil else { return handler(nil, error) }
+            guard let snapshot else { return handler(nil, nil) }
+            
+            let imageCreated = self.createImageFromSnapshot(snapshot, size: mapInfos.size)
+            handler(imageCreated, nil)
+        }
+    }
+    
+    
+    private func createInfosForMap() -> MKMapSnapshotter.Options {
+        let option = MKMapSnapshotter.Options()
+        self.setGeneralOptions(option)
+        self.setRegionOnMap(option)
+        self.setMapSize(option)
+        return option
+    }
+    
+    
+    private func setGeneralOptions(_ info: MKMapSnapshotter.Options) {
+        info.showsBuildings = true
+    }
+    
+    
+    private func setRegionOnMap(_ info: MKMapSnapshotter.Options) {
+        let radius: CLLocationDistance = 600
+        let region = MKCoordinateRegion(
+            center: self.pin.coordinate,
+            latitudinalMeters: radius,
+            longitudinalMeters: radius
+        )
+        
+        info.region = region
+        info.region.center = self.pin.coordinate
+    }
+    
+    
+    private func setMapSize(_ info: MKMapSnapshotter.Options) {
+        /*
+         Ao tirar um print do mapa ele não fica centralizado. Quando da um zoom no mapa
+         ele fica com as bordas borradas. Esse espaço a mais pega extamente a área que
+         não fica borrada
+         */
+        let gap: CGFloat = 50
+        info.size = CGSize(
+            width: self.viewBounds.width + gap,
+            height: self.viewBounds.height + gap
+        )
+    }
+    
+    
+    private func createImageFromSnapshot(_ snapshot: MKMapSnapshotter.Snapshot, size: CGSize) -> UIImage? {
+        self.startBitmapImageCreation(snapshot, size: size)
+        self.drawImageOnSnapshot(snapshot)
+        
+        let pinPoints = self.setPinOnSnapshot(snapshot)
+        self.drawPinOnMapImage(imagePinPoint: pinPoints)
+        
+        let imageCreated = self.finishBitmapImageCreation()
+        return imageCreated
+    }
+    
+    
+    private func startBitmapImageCreation(_ snapshot: MKMapSnapshotter.Snapshot, size: CGSize) {
+        UIGraphicsBeginImageContextWithOptions(size, true, snapshot.traitCollection.displayScale)
+    }
+    
+    
+    private func drawImageOnSnapshot(_ snapshot: MKMapSnapshotter.Snapshot) {
+        snapshot.image.draw(at: .zero)
+    }
+    
+    
+    private func setPinOnSnapshot(_ snapshot: MKMapSnapshotter.Snapshot) -> CGPoint {
+        let pinPoint = snapshot.point(for: self.pin.coordinate)
+        return pinPoint
+    }
+    
+    
+    private func drawPinOnMapImage(imagePinPoint: CGPoint) {
+        let annotationView = MKMarkerAnnotationView(annotation: self.pin, reuseIdentifier: "")
+
+        let pinSize: CGFloat = 35
+        annotationView.bounds = CGRect(x: 0, y: 0, width: pinSize, height: pinSize)
+        annotationView.contentMode = .scaleAspectFit
+        
+        annotationView.drawHierarchy(
+            in: CGRect(
+                x: imagePinPoint.x,
+                y: imagePinPoint.y,
+                width: annotationView.bounds.size.width,
+                height: annotationView.bounds.size.height
+            ),
+            afterScreenUpdates: true
+        )
+    }
+    
+    
+    private func finishBitmapImageCreation() -> UIImage? {
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+}
+
 /// Conteúdo da célula para mostrar o local
-class InfoGardenMap: UIView, InfoGardenCellProtocol {
+class InfoGardenMap: ViewWithViewCode, InfoGardenCellProtocol {
     
     /* MARK: - Atributos */
 
     // Views
     
-    /// Vosualização do mapa
     private let mapView: UIImageView = CustomViews.newImage()
     
-    /// Endereço da rua
     private let addressLabel: ViewLabel = {
         let lbl = ViewLabel()
         lbl.backgroundColor = UIColor(.viewBack)?.withAlphaComponent(0.6)
@@ -24,41 +147,31 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     }()
     
     
-    // Outros
-    
-    /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-    
-    
     // Data info
     
     /// Ponto no mapa
     private var pin: MKPointAnnotation?
 		
-    
-    /* MARK: - Construtor */
-    
-    init() {
-        super.init(frame: .zero)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.setupViews()
-    }
-    
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
-    
-    
+
+
     /* MARK: - Protocol */
     
     internal func setupView(for data: ManagedGarden) {
-        self.addressLabel.label.text = data.address
-        
+        self.setAddressInfo(data.address)
+        self.createPin(from: data)
+    }
+    
+    
+    private func setAddressInfo(_ address: String) {
+        self.addressLabel.label.text = address
+    }
+    
+    
+    private func createPin(from data: ManagedGarden) {
         let pin = MKPointAnnotation()
         pin.coordinate = data.coords!
         pin.title = data.name
         pin.subtitle = data.address
-        
         self.pin = pin
     }
     
@@ -68,10 +181,6 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-	      
-        self.setupUI()
-        self.setupStaticTexts()
-        self.setupDynamicConstraints()
         self.setupMap()
     }
     
@@ -79,124 +188,70 @@ class InfoGardenMap: UIView, InfoGardenCellProtocol {
     
     /* MARK: - Configurações */
     
-    // Mapa
-    
-    /// Configura o print do mapa
     private func setupMap() {
         guard self.mapView.bounds.size != .zero else { return }
-        guard let pin = self.pin else { return }
+        guard let pin else { return }
         
-        let option = MKMapSnapshotter.Options()
-        option.showsBuildings = true
-        
-        // Zoom
-        let radius: CLLocationDistance = 600
-        let region = MKCoordinateRegion(
-            center: pin.coordinate,
-            latitudinalMeters: radius,
-            longitudinalMeters: radius
-        )
-        
-        option.region = region
-        option.region.center = pin.coordinate
-        
-        // Tamanho do mapa
-        let gap: CGFloat = 50
-        option.size = CGSize(
-            width: self.mapView.bounds.width + gap,
-            height: self.mapView.bounds.height + gap
-        )
-        
-        // Print do mapa
-        let snapshot = MKMapSnapshotter(options: option)
-        snapshot.start { snapshot, error in
-            if error != nil {
-                return
-            }
-            
-            if let snapshot {
-                UIGraphicsBeginImageContextWithOptions(option.size, true, snapshot.traitCollection.displayScale)
-                snapshot.image.draw(at: .zero)
-                
-                let snapshotPin = snapshot.point(for: pin.coordinate)
-
-                // Desenhando o pin na imagem
-                let annotationView = MKMarkerAnnotationView(annotation: pin, reuseIdentifier: "")
-    
-                let pinSize: CGFloat = 35
-                annotationView.bounds = CGRect(x: 0, y: 0, width: pinSize, height: pinSize)
-                annotationView.contentMode = .scaleAspectFit
-                
-                annotationView.drawHierarchy(
-                    in: CGRect(
-                    x: snapshotPin.x, y: snapshotPin.y,
-                    width: annotationView.bounds.size.width, height: annotationView.bounds.size.height),
-                    afterScreenUpdates: true
-                )
-                
-                // Gerando a imagem
-                let drawnImagem = UIGraphicsGetImageFromCurrentImageContext()
-                
-                self.mapView.image = drawnImagem
-                self.mapView.layer.contentsRect = CGRectMake(0.175, 0.3, 0.72, 0.72)
-                self.mapView.contentMode = .scaleAspectFill
-            }
+        let screenShotCreator = ScreenShotFromMapCreation(viewBounds: self.mapView.bounds, pin: pin)
+        screenShotCreator.createScreenShot() { image, _ in
+            self.setupMapView(image: image)
         }
     }
     
     
-    // View
+    private func setupMapView(image: UIImage?) {
+        self.mapView.image = image
+        self.mapView.layer.contentsRect = CGRectMake(0.175, 0.3, 0.72, 0.72)
+        self.mapView.contentMode = .scaleAspectFill
+    }
+    
+    
+    
+    /* MARK: - ViewCode */
 
-    /// Adiciona os elementos (Views) na tela
-    private func setupViews() {
+    override func setupHierarchy() {
         self.addSubview(self.mapView)
         self.addSubview(self.addressLabel)
     }
     
     
-    /// Personalização da UI
-    private func setupUI() {
+    override func setupView() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    
+    override func setupUI() {
         self.addressLabel.layer.cornerRadius = self.getConstant(for: 10)
     }
     
     
-    /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {
+    override func setupFonts() {
         self.addressLabel.label.setupText(with: FontInfo(
             fontSize: self.getConstant(for: 15), weight: .regular
         ))
     }
-	  
     
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() { 
+    
+    override func createStaticConstraints() -> [NSLayoutConstraint] {
+        let constraints = self.mapView.strechToBounds(of: self)
+        return constraints
+    }
+    
+    
+    override func createDynamicConstraints() {
         let lateral: CGFloat = self.getConstant(for: 10)
         
         let labelHeight: CGFloat = self.getConstant(for: 50)
 
-        
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
-    
         self.dynamicConstraints = [
-            self.mapView.topAnchor.constraint(equalTo: self.topAnchor),
-            self.mapView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.mapView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.mapView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            
-            
             self.addressLabel.heightAnchor.constraint(equalToConstant: labelHeight),
             self.addressLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
             self.addressLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
             self.addressLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -lateral),
         ]
-        
-        NSLayoutConstraint.activate(self.dynamicConstraints)
     }
     
     
-    /// Responsável por pegar o valor referente à célula
-    /// - Parameter space: valor para ser convertido
-    /// - Returns: valor em relação à tela
     private func getConstant(for space: CGFloat) -> CGFloat {
         let screenReference = SizeInfo(
             screenSize: CGSize(width: 163, height: 163),

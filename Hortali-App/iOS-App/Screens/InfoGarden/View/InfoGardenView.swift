@@ -4,8 +4,7 @@
 import UIKit
 
 
-/// Tela com os elementos de UI da tela de ver informações de uma horta
-class InfoGardenView: ViewCode, FavoriteHandler {
+class InfoGardenView: ViewWithViewCode, FavoriteHandler {
     
     /* MARK: - Atributos */
     
@@ -19,10 +18,11 @@ class InfoGardenView: ViewCode, FavoriteHandler {
         return but
     }()
     
-    private let imagesCollectionGp: CustomCollection = {
-        let colGp = CustomCollection()
-        colGp.collection.isPagingEnabled = true
-        return colGp
+    final let imagesCollection: CustomCollection = {
+        let col = CustomCollection()
+        col.collection.isPagingEnabled = true
+        col.scrollDirection = .horizontal
+        return col
     }()
 
     private let imagesPageControl = CustomViews.newPageControl()
@@ -33,7 +33,7 @@ class InfoGardenView: ViewCode, FavoriteHandler {
     
     private let expansiveLabel = ExpansiveLabel()
     
-    private let infosCollectionGp = CustomCollection()
+    final let infosCollection = CustomCollection()
     
     private let lastUpdateLabel: UILabel = {
         let lbl = CustomViews.newLabel()
@@ -46,31 +46,6 @@ class InfoGardenView: ViewCode, FavoriteHandler {
     
     /// Fala qual é o dia da semana de hoje
     static var todayWeek: String = ""
-    
-    
-    // Collection
-    
-    private let infosCollectionFlow: UICollectionViewFlowLayout = {
-        let cvFlow = UICollectionViewFlowLayout()
-        cvFlow.scrollDirection = .horizontal
-        
-        return cvFlow
-    }()
-    
-    private let imagesCollectionFlow: UICollectionViewFlowLayout = {
-        let cvFlow = UICollectionViewFlowLayout()
-        cvFlow.scrollDirection = .horizontal
-        cvFlow.minimumLineSpacing = 0
-        
-        return cvFlow
-    }()
-    
-    private let tagsCollectionFlow: UICollectionViewFlowLayout = {
-        let flow = UICollectionViewFlowLayout()
-        flow.scrollDirection = .horizontal
-        flow.estimatedItemSize = .zero
-        return flow
-    }()
     
     
     
@@ -94,10 +69,6 @@ class InfoGardenView: ViewCode, FavoriteHandler {
     
     init(data: ManagedGarden) {
         super.init()
-        
-        self.registerCell()
-        self.setupCollectionFlow()
-        
         self.setupViewFor(data: data)
     }
     
@@ -107,17 +78,13 @@ class InfoGardenView: ViewCode, FavoriteHandler {
     
     /* MARK: - Encapsulamento */
     
-    /// Atualiza a página no Page Control
-    /// - Parameter index: index (número) da página
     public func updateCurrentPage(for index: Int) {
         self.imagesPageControl.currentPage = index
     }
     
     
-    /// Atualiza  a célula que é mostrada a partir do item do page control selecionado
-    /// - Parameter index: index selecionado
     public func updateCurrentCell(for index: Int) {
-        self.imagesCollectionGp.collection.scrollToItem(
+        self.imagesCollection.collection.scrollToItem(
             at: IndexPath(row: index, section: 0),
             at: .centeredHorizontally,
             animated: true
@@ -125,7 +92,6 @@ class InfoGardenView: ViewCode, FavoriteHandler {
     }
     
     
-    /// Configurações para expandir a label
     public func expandLabel() {
         self.expansiveLabel.setupExtension()
         self.scrollView.updateScrollSize()
@@ -134,25 +100,21 @@ class InfoGardenView: ViewCode, FavoriteHandler {
     
     /* Ações de botões */
     
-    /// Define a ação do botão de voltar
     public func setBackButtonAction(target: Any?, action: Selector) -> Void {
         self.backButton.addTarget(target, action: action, for: .touchDown)
     }
     
     
-    /// Define a ação do botão de favorito
     public func setFavoriteButtonAction(target: Any?, action: Selector) -> Void {
         self.favoriteButton.addTarget(target, action: action, for: .touchDown)
     }
     
     
-    /// Define a ação do botão de expandir a label
     public func setExpLabelButtonAction(target: Any?, action: Selector) -> Void {
         self.expansiveLabel.setExpansiveButtonAction(target: target, action: action)
     }
     
     
-    /// Define a ação do botão de expandir a label
     public func setPageControlAction(target: Any?, action: Selector) -> Void {
         self.imagesPageControl.addTarget(target, action: action, for: .valueChanged)
     }
@@ -160,55 +122,23 @@ class InfoGardenView: ViewCode, FavoriteHandler {
     
     /* Collection */
         
-    /// Atualiza os dados das collections
     public func reloadCollectionsData() {
-        self.imagesCollectionGp.collection.reloadData()
-        self.imagesCollectionGp.collection.reloadInputViews()
-        
-        self.infosCollectionGp.collection.reloadData()
-        self.infosCollectionGp.collection.reloadInputViews()
-        
-        self.tagsCollection.collection.reloadData()
-        self.tagsCollection.collection.reloadInputViews()
+        self.imagesCollection.reloadCollectionData()
+        self.infosCollection.reloadCollectionData()
+        self.tagsCollection.reloadCollectionData()
     }
         
     
-    /// Define o data source da collection de informações da horta
-    /// - Parameter dataSource: data source da collection
-    public func setInfoDataSource(for dataSource: InfoGardenInfosDataSource) {
-        self.infosCollectionGp.collection.dataSource = dataSource
+    public func setNumbersOgPagesInPageControl(_ num: Int) {
+        self.imagesPageControl.numberOfPages = num
     }
     
     
-    /// Define o delegate da collection de informações da horta
-    /// - Parameter delegate: delegate da collection
-    public func setInfoDelegate(for delegate: InfoGardenInfosDelegate) {
-        self.infosCollectionGp.collection.delegate = delegate
-    }
-    
-    
-    /// Define o data source da collection das imagens da horta
-    /// - Parameter dataSource: data source da collection
-    public func setImagesDataSource(for dataSource: InfoGardenImagesDataSource) {
-        self.imagesCollectionGp.collection.dataSource = dataSource
-        self.imagesPageControl.numberOfPages = dataSource.getDataCount()
-    }
-    
-    
-    /// Define o delegate da collection das imagens da horta
-    /// - Parameter delegate: delegate da collection
-    public func setImagesDelegate(for delegate: InfoGardenImagesDelegate) {
-        self.imagesCollectionGp.collection.delegate = delegate
-    }
-
-
     
     /* MARK: - Configurações */
     
     /* Geral */
     
-    /// Configura a view a partir dos dados recebidos
-    /// - Parameter data: dados recebidos
     private func setupViewFor(data: ManagedGarden) {
         self.container.setTitleText(with: data.name)
         self.expansiveLabel.setInfoText(for: data.biograph)
@@ -218,9 +148,6 @@ class InfoGardenView: ViewCode, FavoriteHandler {
     }
     
     
-    /// Pega o mês e ano de uma data em string
-    /// - Parameter strDate: data no formato: ano-mes-dia
-    /// - Returns: data no formato: 'mes' de 'ano'
     private func getDate(for strDate: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "pt-br")
@@ -239,36 +166,19 @@ class InfoGardenView: ViewCode, FavoriteHandler {
     }
 
     
-    /* Collection */
-    
-    /// Registra as células nas collections/table
-    private func registerCell() {
-        self.infosCollectionGp.collection.register(InfoGardenInfosCell.self, forCellWithReuseIdentifier: InfoGardenInfosCell.identifier)
-        
-        self.imagesCollectionGp.collection.register(InfoGardenImagesCell.self, forCellWithReuseIdentifier: InfoGardenImagesCell.identifier)
-    }
-
-
-    /// Define o layout da collection
-    private func setupCollectionFlow() {
-        self.infosCollectionGp.collection.collectionViewLayout = self.infosCollectionFlow
-        self.imagesCollectionGp.collection.collectionViewLayout = self.imagesCollectionFlow
-        self.tagsCollection.collection.collectionViewLayout = self.tagsCollectionFlow
-    }
-    
     
     /* MARK: - ViewCode */
     
     override func setupHierarchy() {
         self.addSubview(self.scrollView)
         
-        self.addViewInScroll(self.imagesCollectionGp)
+        self.addViewInScroll(self.imagesCollection)
         self.addViewInScroll(self.imagesPageControl)
         self.addViewInScroll(self.container)
         
         self.addViewInScroll(self.tagsCollection)
         self.container.contentView.addSubview(self.expansiveLabel)
-        self.addViewInScroll(self.infosCollectionGp)
+        self.addViewInScroll(self.infosCollection)
         self.addViewInScroll(self.lastUpdateLabel)
         
         self.addSubview(self.backButton)
@@ -300,16 +210,16 @@ class InfoGardenView: ViewCode, FavoriteHandler {
     
     
     private func setInfosCollectionCellSize() {
-        self.infosCollectionFlow.itemSize = CGSize(
+        self.infosCollection.cellSize = CGSize(
             width: self.getEquivalent(165),
-            height: self.infosCollectionGp.bounds.height
+            height: self.infosCollection.bounds.height
         )
-        self.infosCollectionFlow.minimumLineSpacing = self.getEquivalent(10)
+        self.infosCollection.spaceBetweenCells = self.getEquivalent(10)
     }
     
     
     private func setImagesCollectionCellSize() {
-        self.imagesCollectionFlow.itemSize = CGSize(
+        self.imagesCollection.cellSize = CGSize(
             width: self.getEquivalent(390),
             height: self.getEquivalent(510)
         )
@@ -352,12 +262,12 @@ class InfoGardenView: ViewCode, FavoriteHandler {
             self.scrollView.widthAnchor.constraint(equalTo: self.widthAnchor),
             
             
-            self.imagesCollectionGp.topAnchor.constraint(equalTo: scrollContentView.topAnchor),
-            self.imagesCollectionGp.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor),
-            self.imagesCollectionGp.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor),
+            self.imagesCollection.topAnchor.constraint(equalTo: scrollContentView.topAnchor),
+            self.imagesCollection.leadingAnchor.constraint(equalTo: scrollContentView.leadingAnchor),
+            self.imagesCollection.trailingAnchor.constraint(equalTo: scrollContentView.trailingAnchor),
         
     
-            self.imagesPageControl.centerXAnchor.constraint(equalTo: self.imagesCollectionGp.centerXAnchor),
+            self.imagesPageControl.centerXAnchor.constraint(equalTo: self.imagesCollection.centerXAnchor),
             
             self.backButton.topAnchor.constraint(equalTo: safeArea.topAnchor),
             
@@ -376,8 +286,8 @@ class InfoGardenView: ViewCode, FavoriteHandler {
             self.tagsCollection.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
             
 
-            self.infosCollectionGp.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
-            self.infosCollectionGp.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
+            self.infosCollection.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
+            self.infosCollection.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
             
             
             self.lastUpdateLabel.leadingAnchor.constraint(equalTo: self.expansiveLabel.leadingAnchor),
@@ -404,7 +314,7 @@ class InfoGardenView: ViewCode, FavoriteHandler {
     
     private func setCollectionsLateralPaddins() {
         let padding = self.getEquivalent(15)
-        self.infosCollectionGp.setupLateralPadding(padding)
+        self.infosCollection.setupLateralPadding(padding)
         self.tagsCollection.setupLateralPadding(padding)
     }
     
@@ -425,7 +335,7 @@ class InfoGardenView: ViewCode, FavoriteHandler {
         
         
         self.dynamicConstraints = [
-            self.imagesCollectionGp.heightAnchor.constraint(equalToConstant: imagesHeight),
+            self.imagesCollection.heightAnchor.constraint(equalToConstant: imagesHeight),
             
             self.imagesPageControl.bottomAnchor.constraint(equalTo: self.container.topAnchor, constant: -betweenSmaller),
             
@@ -436,7 +346,7 @@ class InfoGardenView: ViewCode, FavoriteHandler {
             
             /* Container */
             
-            self.container.topAnchor.constraint(equalTo: self.imagesCollectionGp.bottomAnchor, constant: -gap),
+            self.container.topAnchor.constraint(equalTo: self.imagesCollection.bottomAnchor, constant: -gap),
             
             self.tagsCollection.heightAnchor.constraint(equalToConstant: tagCollectionHeight),
             
@@ -446,11 +356,11 @@ class InfoGardenView: ViewCode, FavoriteHandler {
             self.expansiveLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
             
             
-            self.infosCollectionGp.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
-            self.infosCollectionGp.heightAnchor.constraint(equalToConstant: collectionHeight),
+            self.infosCollection.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
+            self.infosCollection.heightAnchor.constraint(equalToConstant: collectionHeight),
             
             
-            self.lastUpdateLabel.topAnchor.constraint(equalTo: self.infosCollectionGp.bottomAnchor, constant: betweenSmaller),
+            self.lastUpdateLabel.topAnchor.constraint(equalTo: self.infosCollection.bottomAnchor, constant: betweenSmaller),
         ]
     }
     

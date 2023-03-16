@@ -9,10 +9,9 @@ class CustomNavigationController: UINavigationController, CustomNavigationProtoc
     
     /* MARK: - Atributos */
     
-    /// Delegate que lida com gesto de pop
     private var popGestureDelegate: PopGestureDelegate?
     
-    /// Esconde a navigation bar
+    
     override var isNavigationBarHidden: Bool {
         didSet { self.gestureHandler() }
     }
@@ -29,7 +28,6 @@ class CustomNavigationController: UINavigationController, CustomNavigationProtoc
     
     /* MARK: - Configurações */
     
-    /// Lida com o gesto de pop
     private func gestureHandler() {
         guard self.isNavigationBarHidden else { self.popGestureDelegate = nil; return }
         

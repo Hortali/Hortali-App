@@ -6,7 +6,7 @@ import UIKit
 
 /// View que contém o estilo de modal (de acordo com o padrão do projeto), o título
 /// da tela e a área em que os elementos vão ser adicionados na tela.
-class ContainerView: ViewCode {
+class ContainerView: ViewWithViewCode {
     
     /* MARK: - Atributos */
     

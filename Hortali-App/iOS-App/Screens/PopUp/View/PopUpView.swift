@@ -5,17 +5,15 @@ import UIKit
 
 
 /// UI do pop up de informação
-class PopUpView: UIView {
+class PopUpView: ViewWithViewCode {
     
     /* MARK: - Atributos */
 
     // Views
     
-    /// View onde mostra as infos
     private let container = CustomViews.newView()
     
-    /// Botão de fechar a página
-    private let closeButton: UIButton = {
+    private let closeButton: CustomButton = {
         let but = CustomViews.newButton()
         but.backgroundColor = .clear
         but.isCircular = false
@@ -23,14 +21,12 @@ class PopUpView: UIView {
         return but
     }()
     
-    /// Título do pop up
     private let titleLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textColor = UIColor(.secondaryTitle)
         return lbl
     }()
     
-    /// Descrição do pop up
     private let descriptionLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textColor = UIColor(.secondaryTitle)
@@ -40,20 +36,12 @@ class PopUpView: UIView {
         return lbl
     }()
     
-    
-    // Outros
-    
-    /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-
 
 
     /* MARK: - Construtor */
     
     init(info: PopUpInfo) {
-        super.init(frame: .zero)
-        
-        self.setupViews()
+        super.init()
         self.setupPopup(for: info)
     }
     
@@ -63,62 +51,68 @@ class PopUpView: UIView {
     
     /* MARK: - Encapsulamento */
     
-    /// Configura o pop up a partir das informações passadas
-    /// - Parameter infos: conjunto de informações
     public func setupPopup(for infos: PopUpInfo) {
-        self.titleLabel.text = infos.title
-        self.descriptionLabel.text = infos.description
-        
-        self.container.backgroundColor = UIColor(infos.backgroundColor)
-        self.closeButton.setTitleColor(UIColor(infos.buttonColor), for: .normal)
+        self.setPopupTexts(with: infos)
+        self.setPopupColors(with: infos)
     }
-
+    
     
     /* Ações de botões */
 
-    /// Ação do botão de fechar a tela
     public func setCloseButtonAction(target: Any?, action: Selector) -> Void {
         self.closeButton.addTarget(target, action: action, for: .touchDown)
     }
     
     
-
-    /* MARK: - Ciclo de Vida */
-    
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-	      
-        self.setupUI()
-        self.setupStaticTexts()
-        self.setupDynamicConstraints()
-    }
-    
-    
     
     /* MARK: - Configurações */
-
-    /// Adiciona os elementos (Views) na tela
-    private func setupViews() {
-        self.addSubview(self.container)
-        self.container.addSubview(self.closeButton)
-        self.container.addSubview(self.titleLabel)
-        self.container.addSubview(self.descriptionLabel)
+    
+    private func setPopupTexts(with infos: PopUpInfo) {
+        self.titleLabel.text = infos.title
+        self.descriptionLabel.text = infos.description
     }
     
     
-    /// Personalização da UI
-    private func setupUI() {
+    private func setPopupColors(with infos: PopUpInfo) {
+        self.container.backgroundColor = UIColor(infos.backgroundColor)
+        self.closeButton.setTitleColor(UIColor(infos.buttonColor), for: .normal)
+    }
+    
+    
+    
+    /* MARK: - ViewCode */
+
+    override func setupHierarchy() {
+        self.addSubview(self.container)
+        self.addViewInContent(self.closeButton)
+        self.addViewInContent(self.titleLabel)
+        self.addViewInContent(self.descriptionLabel)
+    }
+    
+    
+    private func addViewInContent(_ view: UIView) {
+        self.container.addSubview(view)
+    }
+    
+    
+    override func setupView() {
         self.backgroundColor = UIColor(.popupBackBlur)?.withAlphaComponent(0.8)
         self.container.layer.borderColor = UIColor(.popupBorder)?.cgColor
-        
+    }
+    
+    
+    override func setupUI() {
         self.container.layer.borderWidth = self.getEquivalent(5)
         self.container.layer.cornerRadius = self.getEquivalent(20)
     }
     
     
-    /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {		
-        /* Labels */
+    override func setupStaticTexts() {
+        self.closeButton.setTitle("Fechar", for: .normal)
+    }
+	  
+    
+    override func setupFonts() {
         self.titleLabel.setupText(with: FontInfo(
             fontSize: self.getEquivalent(45), weight: .bold, fontFamily: .graffiti
         ))
@@ -127,29 +121,28 @@ class PopUpView: UIView {
             fontSize: self.getEquivalent(20), weight: .regular
         ))
         
-
-        /* Botões */
         self.closeButton.setupText(with: FontInfo(
-            text:"Fechar" , fontSize: self.getEquivalent(25), weight: .semibold, fontFamily: .graffiti
+            fontSize: self.getEquivalent(25), weight: .semibold, fontFamily: .graffiti
         ))
     }
-	  
     
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() { 
-        let lateral: CGFloat = self.getEquivalent(15)
-        let between: CGFloat = self.getEquivalent(5)
-        
-        
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
     
-        self.dynamicConstraints = [
+    override func createStaticConstraints() -> [NSLayoutConstraint] {
+        let constraints = [
             self.container.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.container.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             self.container.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7),
             self.container.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.3),
-            
-            
+        ]
+        return constraints
+    }
+    
+    
+    override func createDynamicConstraints() {
+        let lateral: CGFloat = self.getEquivalent(15)
+        let between: CGFloat = self.getEquivalent(5)
+        
+        self.dynamicConstraints = [
             self.closeButton.topAnchor.constraint(equalTo: self.container.topAnchor, constant: between),
             self.closeButton.trailingAnchor.constraint(equalTo: self.container.trailingAnchor, constant: -lateral),
             
@@ -163,7 +156,5 @@ class PopUpView: UIView {
             self.descriptionLabel.trailingAnchor.constraint(equalTo: self.container.trailingAnchor, constant: -lateral),
             self.descriptionLabel.leadingAnchor.constraint(equalTo: self.container.leadingAnchor, constant: lateral),
         ]
-        
-        NSLayoutConstraint.activate(self.dynamicConstraints)
     }
 }

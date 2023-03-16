@@ -4,27 +4,45 @@
 import UIKit
 
 
-/// Data source da collection do on boarding
-class OnboardingDataSource: NSObject, UICollectionViewDataSource {
+class OnBoardingCollectionHandler: NSObject, CollectionHandler {
+    
+    /* MARK: - Atributos */
+    
+    public var totalPages: Int { return 3 }
+    
+    private weak var onboardingProtocol: OnboardingProtocol?
+    
+    
     
     /* MARK: - Encapsulamento */
+        
+    public func setProtocol(with delegate: OnboardingProtocol) {
+        self.onboardingProtocol = delegate
+    }
     
-    /// Total de células que a colelction vai mostrar
-    public var totalPages: Int {
-        return 3
+    
+    
+    /* MARK: - Protocolo */
+    
+    func registerCell(in collection: UICollectionView) {
+        collection.register(OnboardingCell.self, forCellWithReuseIdentifier: OnboardingCell.identifier)
+    }
+    
+    
+    func setupFlowLayoutSettings(_ collection: CustomCollection) {
+        collection.scrollDirection = .horizontal
+        collection.spaceBetweenCells = 0
     }
     
     
     
     /* MARK: - Data Sources */
     
-    /// Mostra quantas células vão ser mostradas
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.totalPages
     }
     
     
-    /// Configura uma célula
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCell.identifier, for: indexPath) as? OnboardingCell else {
             return UICollectionViewCell()
@@ -38,11 +56,15 @@ class OnboardingDataSource: NSObject, UICollectionViewDataSource {
     
     
     
+    /* MARK: - Delegate */
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        self.onboardingProtocol?.updateCurrentPage(to: indexPath.row)
+    }
+    
+    
     /* MARK: - Configurações */
     
-    /// Pega os dados da célula a partir da linha
-    /// - Parameter row: linha
-    /// - Returns: dados da célula
     private func getInfos(for row: Int) -> OnBoardingInfos {
         let image = UIImage(named: "OnBoarding-\(row)")
         

@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Elemento de UI da tela de ver informações dos aliementos
-class InfoFoodView: ViewCode, FavoriteHandler {
+class InfoFoodView: ViewWithViewCode, FavoriteHandler {
     
     /* MARK: - Atributos */
     

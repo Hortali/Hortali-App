@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Componentes de toda tela vazia.
-class EmptyView: ViewCode {
+class EmptyView: ViewWithViewCode {
     
     /* MARK: - Atributos */
     

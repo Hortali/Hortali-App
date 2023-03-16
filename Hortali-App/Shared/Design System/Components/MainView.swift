@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Componentes das telas iniciais
-class MainView: ViewCode {
+class MainView: ViewWithViewCode {
     
     /* MARK: - Atributos */
     

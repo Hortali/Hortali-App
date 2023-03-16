@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Cria uma scroll view e já configura ela de acordo com o tamanho que vai ser definido pra ela
-class CustomScroll: ViewCode {
+class CustomScroll: ViewWithViewCode {
     
     /* MARK: - Atributos */
     

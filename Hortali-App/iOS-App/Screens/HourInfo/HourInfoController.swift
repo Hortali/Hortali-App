@@ -4,19 +4,16 @@
 import UIKit
 
 
-/// Controller responsável por mostrar os horários de funcionamento das hortas
 class HourInfoController: UIViewController {
     
     /* MARK: - Atributos */
 
-    /// View principal que a classe vai controlar
     private let myView = HourInfoView()
     
     
-    /* Delegate & Data Sources */
+    /* Handler & Delegates */
     
-    /// Data source da collection de horários de funcionamento
-    private let collectionDataSource = HourInfoDataSource()
+    private let collectionHandler = HourInfoHandler()
 
     
     
@@ -41,7 +38,6 @@ class HourInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.setupDelegates()
     }
     
@@ -49,16 +45,19 @@ class HourInfoController: UIViewController {
     
     /* MARK: - Configurações */
     
-    /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-        self.myView.setDataSource(with: self.collectionDataSource)
+        let collection = self.myView.hourInfoCollection
+        self.collectionHandler.link(with: collection)
     }
     
     
-    /// Define os dados que vão aparecerna collection
-    /// - Parameter data: dados da collection
     private func setupDataSourceData(for data: [ManagedHourInfo]) {
-        self.collectionDataSource.data = data
-        self.myView.reloadCollectionData()
+        self.collectionHandler.data = data
+        self.reloadCollectionData()
+    }
+    
+    
+    private func reloadCollectionData() {
+        self.myView.hourInfoCollection.reloadCollectionData()
     }
 }

@@ -11,27 +11,15 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
 
     /* View */
 
-    /// View principal que a classe vai controlar
     private var myView: InfoGardenView
     
     
-    /* Delegate & Data Sources */
+    /* Handlers & Delegates */
     
-    /// Data Source da collection de informações da horta
-    private let infoDataSource = InfoGardenInfosDataSource()
+    private let infosCollectionHandler = InfoGardenInfosCollectionHandler()
     
-    /// Delegate da collection de informações da horta
-    private let infoDelegate = InfoGardenInfosDelegate()
+    private let imagesCollectionHandler = InfoGardenImagesCollectionHandler()
     
-    
-    /// Data Source da collection de imagens da horta
-    private let imagesDataSource = InfoGardenImagesDataSource()
-    
-    /// Delegate da collection de imagens da horta
-    private let imagesDelegate = InfoGardenImagesDelegate()
-    
-    
-    /// Data source da collections das tags
     private let tagCollectionHandler: TagCollectionHandler = {
         let handler = TagCollectionHandler()
         handler.isSelectionAllowed = false
@@ -79,10 +67,11 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
 
         self.setupDelegates()
         self.setupButtonsAction()
+        self.setNumberOfPageInPageControl()
     }
     
-
-
+    
+    
     /* MARK: - Protocolo */
     
     internal func updateCurrentPage(to index: Int) {
@@ -91,7 +80,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
 	
     
     internal func openHourInfoPage() {
-        let data = self.infoDataSource.data?.hourInfo ?? []
+        let data = self.infosCollectionHandler.data?.hourInfo ?? []
         
         let controller = HourInfoController(with: data)
         controller.modalTransitionStyle = .coverVertical
@@ -122,14 +111,12 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     
     /* MARK: - Ações de botões */
     
-    /// Ação de voltar para a tela anterior
     @objc
     private func backAction() {
         self.navigationController?.popViewController(animated: true)
     }
     
     
-    /// Ação de favoritar um card
     @objc
     private func favoriteAction() {
         switch self.myView.favoriteHandler() {
@@ -143,17 +130,15 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     }
     
     
-    /// Ação de expandir uma label
     @objc
     private func expandLabelAction() {
         self.myView.expandLabel()
     }
     
     
-    /// Mostra os possíveis contatos
     @objc
     private func openContactOptions() {
-        guard let contacts = self.infoDataSource.data?.contacts else { return }
+        guard let contacts = self.infosCollectionHandler.data?.contacts else { return }
         
         // Verifica se é possível abrir os links
         var contactLinks: [Int:URL] = [:]
@@ -193,10 +178,9 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     }
     
     
-    /// Mostra o local em algum app de navegação
     @objc
     private func openPlaceOnNavigationApp() {
-        guard let data = self.infoDataSource.data else { return }
+        guard let data = self.infosCollectionHandler.data else { return }
         
         let latitude = data.latitude
         let longitude = data.longitude
@@ -247,8 +231,6 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     }
     
     
-    /// Ação de quando altera a page control
-    /// - Parameter sender: page control que foi alterada
     @objc
     private func pageControlAction(sender: UIPageControl) {
         self.myView.updateCurrentCell(for: sender.currentPage)
@@ -258,7 +240,12 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     
     /* MARK: - Configurações */
 
-    /// Definindo as ações dos botões
+    private func setNumberOfPageInPageControl() {
+        let imagesCount = self.imagesCollectionHandler.getDataCount()
+        self.myView.setNumbersOgPagesInPageControl(imagesCount)
+    }
+    
+    
     private func setupButtonsAction() {
         self.myView.setBackButtonAction(target: self, action: #selector(self.backAction))
         self.myView.setFavoriteButtonAction(target: self, action: #selector(self.favoriteAction))
@@ -267,48 +254,59 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     }
     
     
-    /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-        self.imagesDelegate.setProtocol(with: self)
-        self.infoDelegate.setProtocol(with: self)
+        self.setImagesCollectionHandler()
+        self.setInfosCollectionHandler()
+        self.setTagsCollectionHandler()
+    }
+    
+    
+    private func setInfosCollectionHandler() {
+        self.infosCollectionHandler.setProtocol(with: self)
         
-        self.myView.setInfoDataSource(for: self.infoDataSource)
-        self.myView.setInfoDelegate(for: self.infoDelegate)
+        let collection = self.myView.infosCollection
+        self.infosCollectionHandler.link(with: collection)
+    }
+    
+    
+    private func setImagesCollectionHandler() {
+        self.imagesCollectionHandler.setProtocol(with: self)
         
-        self.myView.setImagesDataSource(for: self.imagesDataSource)
-        self.myView.setImagesDelegate(for: self.imagesDelegate)
-        
+        let collection = self.myView.imagesCollection
+        self.imagesCollectionHandler.link(with: collection)
+    }
+    
+    
+    private func setTagsCollectionHandler() {
         let tagCollection = self.myView.tagsCollection
         self.tagCollectionHandler.link(with: tagCollection)
     }
     
     
-    /// Definindo os delegates, data sources e protocolos
     private func setupDataSourcesData(for data: ManagedGarden) {
-        self.infoDataSource.data = data
-        self.imagesDataSource.data = data.pageImages
+        self.infosCollectionHandler.data = data
+        self.imagesCollectionHandler.data = data.pageImages
         self.tagCollectionHandler.data = data.tags
         
         self.myView.reloadCollectionsData()
     }
     
     
-    /// Configura a view pra caso for favorito
-    /// - Parameter data: dado
     private func setupFavoriteStatus(for data: ManagedGarden) {
-        var status = false
-        for id in DataManager.shared.getFavoriteIds(for: .garden) {
-            if data.id == id {
-                status = true
-                break
-            }
-        }
-        let _ = self.myView.favoriteHandler(for: status)
+        let status = self.checkIfIsFavorited(gardenId: data.id)
+        self.myView.favoriteHandler(for: status)
     }
     
     
-    /// Lida com o processo de copiar um texto na área de tranferência
-    /// - Parameter textToCopy: texto que vai ser copiado
+    private func checkIfIsFavorited(gardenId: Int) -> Bool {
+        let allFavoriteGardens = DataManager.shared.getFavoriteIds(for: .garden)
+        for id in allFavoriteGardens where gardenId == id {
+            return true
+        }
+        return false
+    }
+    
+    
     private func copyHandler(textToCopy: String) {
         UIPasteboard.general.string = textToCopy
     }

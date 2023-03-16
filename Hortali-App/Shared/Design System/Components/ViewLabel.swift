@@ -7,7 +7,7 @@ import UIKit
 /// Uma view que possui uma label dentro
 ///
 /// Esse componente é usado principalemente pra cliar uma label que não fique grudada na borda dela
-class ViewLabel: ViewCode {
+class ViewLabel: ViewWithViewCode {
     
     /* MARK: - Atributos */
 

@@ -4,7 +4,7 @@
 import UIKit
 
 
-class CustomCollection: ViewCode, CustomCollectionProtocol, CollectionFlowLayoutAttributes {
+class CustomCollection: ViewWithViewCode, CustomCollectionProtocol, CollectionFlowLayoutAttributes {
     
     /* MARK: - Atributos */
     
@@ -34,11 +34,13 @@ class CustomCollection: ViewCode, CustomCollectionProtocol, CollectionFlowLayout
         didSet { self.updateCellSize() }
     }
     
-    public var spaceBetweenCells: CGFloat = 0 {
+    /// Padrão: .zero
+    public var spaceBetweenCells: CGFloat = .zero {
         didSet { self.updateSpaceBetweenCells() }
     }
     
-    public var scrollDirection: UICollectionView.ScrollDirection = .vertical {
+    /// Padrão: horizontal
+    public var scrollDirection: UICollectionView.ScrollDirection = .horizontal {
         didSet { self.updateScrollDirection() }
     }
     

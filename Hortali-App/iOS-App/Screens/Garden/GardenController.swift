@@ -11,7 +11,6 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     /* View */
     
-    /// View principal que a classe vai controlar
     private let myView = GardenView()
     
     
@@ -24,7 +23,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     private let searchDelegate = SearchDelegate()
     
     
-    /* Dados das Hortas */
+    /* Dados */
     
     private lazy var gardenData: [ManagedGarden] = []
     
@@ -45,8 +44,8 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupDataSourceData()
-        self.setupTagData()
+        self.setupGardenCollectionData()
+        self.setupTagCollectionData()
         self.setupDelegates()
         self.setupKeyboardHandler()
         self.setupButtonsAction()
@@ -56,9 +55,8 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.showOnBoarding()
-        self.myView.reloadTagData()
+        self.reloadTagCollection()
     }
     
     
@@ -69,7 +67,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     internal func openGardenInfo(for index: Int) {
         let selectedCell = self.gardenCollectionHandler.data[index]
-                
+        
         let controller = InfoGardenController(with: selectedCell)
         controller.hidesBottomBarWhenPushed = true
         
@@ -80,11 +78,14 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     /* Search Protocol */
     
     internal func updateCollection(textSearch: String) {
-        if let tagIndex = self.tagCollectionHandler.tagSelected {
-            self.myView.deselectTag(at: tagIndex)
-        }
-        
+        self.deselectTagIfNeeded()
         self.filterData(by: textSearch, isTag: false)
+    }
+    
+    
+    private func deselectTagIfNeeded() {
+        guard let tagIndex = self.tagCollectionHandler.tagSelected else { return }
+        self.myView.deselectTag(at: tagIndex)
     }
     
     
@@ -96,14 +97,12 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     /* MARK: - Ações de Botões */
     
-    /// Função para retirar o teclado da tela
     @objc
     private func dismissKeyboard() {
         self.view.endEditing(true)
     }
     
     
-    /// Função para exibir tela de onboarding
     @objc
     private func onboardingAction() {
         let controller = OnboardingViewController()
@@ -112,7 +111,6 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     }
     
     
-    /// Ação do botão de mudar a visualização da collection
     @objc
     private func visualizationAction() {
         self.myView.changeVisualization()
@@ -128,7 +126,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
         let controller = OnboardingViewController()
         controller.hidesBottomBarWhenPushed = true
         controller.modalPresentationStyle = .fullScreen
-            
+        
         self.navigationController?.present(controller, animated: true)
     }
     
@@ -179,76 +177,112 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     }
     
     
-    /// Define os dados da collection
-    private func setupDataSourceData(with data: [ManagedGarden]? = nil) {
-        if let data {
-            self.gardenCollectionHandler.data = data
-            self.myView.checkData(with: data.count)
-            self.myView.reloadCollectionData()
-            return
-        }
-        
-        let gardenData = DataManager.shared.getGardenData()
-        
-        self.gardenCollectionHandler.data = gardenData
-        self.myView.checkData(with: gardenData.count)
+    /* Collection */
+    
+    private func reloadGardenCollection() {
         self.myView.reloadCollectionData()
-        
+    }
+    
+    
+    private func reloadTagCollection() {
+        self.myView.reloadTagData()
+    }
+    
+    
+    private func setupGardenCollectionData(with data: [ManagedGarden]? = nil) {
+        if let data {
+            self.updateGardenData(data)
+        } else {
+            let gardenData = self.getGardenDataFromStorage()
+            self.updateGardenData(gardenData)
+        }
+        self.updateGardenVisualization()
+    }
+    
+    
+    private func updateGardenData(_ data: [ManagedGarden]) {
+        self.gardenCollectionHandler.data = data
+        self.myView.checkData(with: data.count)
+        self.reloadGardenCollection()
+    }
+    
+    
+    private func getGardenDataFromStorage() -> [ManagedGarden] {
+        let gardenData = DataManager.shared.getGardenData()
         if self.gardenData.isEmpty {
             self.gardenData = gardenData
         }
-
-        if let visu = self.lastGardenVisualization {
-            self.myView.actualGardenVisualization = visu
-            self.lastGardenVisualization = nil
-        }
+        return gardenData
     }
     
     
-    /// Configura os dados das tags
-    private func setupTagData() {
+    private func updateGardenVisualization() {
+        guard let visu = self.lastGardenVisualization else { return }
+        self.myView.actualGardenVisualization = visu
+        self.lastGardenVisualization = nil
+    }
+    
+    
+    private func setupTagCollectionData() {
         let tags = DataManager.shared.getAllTags()
         self.tagCollectionHandler.data = tags ?? []
+        self.reloadTagCollection()
     }
     
     
-    /// Filtra os dados da collection de hortas
-    /// - Parameters:
-    ///   - text: dado que vai ser filtrado
-    ///   - isTag: caso o filtro seja uma tag
+    /* Filtro */
+    
     private func filterData(by text: String, isTag: Bool) {
-        if self.lastGardenVisualization == nil {
-            self.lastGardenVisualization = self.myView.actualGardenVisualization
-        }
-         
-        if text.isEmpty {
-            self.setupDataSourceData()
-            return
-        }
+        self.setGardenVisualizationIfNeeded()
         
-        var dataFiltered: [ManagedGarden] = []
+        guard !text.isEmpty else { self.setupGardenCollectionData(); return }
         
-        if isTag {
-            for data in self.gardenData {
-                for tag in data.tags where tag.name == text {
-                    dataFiltered.append(data)
-                }
-            }
-        } else {
-            for data in self.gardenData {
-                if data.name.lowercased().contains(text) {
-                    dataFiltered.append(data)
-                    continue
-                }
-                
-                if data.address.lowercased().contains(text) {
-                    dataFiltered.append(data)
-                }
-            }
-            
-        }
-        
-        self.setupDataSourceData(with: dataFiltered)
+        let dataFiltered = self.getDataFiltered(text: text, isFromTag: isTag)
+        self.setupGardenCollectionData(with: dataFiltered)
         self.myView.actualGardenVisualization = .grid
+    }
+    
+    
+    private func setGardenVisualizationIfNeeded() {
+        guard self.lastGardenVisualization.isNil else { return }
+        self.lastGardenVisualization = self.myView.actualGardenVisualization
+    }
+    
+    
+    private func getDataFiltered(text: String, isFromTag: Bool) -> [ManagedGarden] {
+        if isFromTag { return self.getFilteredDataFromTag(text) }
+        return self.getFilteredDataFromSearch(text)
+    }
+    
+    
+    private func getFilteredDataFromTag(_ tagText: String) -> [ManagedGarden] {
+        return self.gardenData.filter() {
+            return checkIfGardenHasSelectedTag(tagText, garden: $0)
+        }
+    }
+    
+    
+    private func checkIfGardenHasSelectedTag(_ tagName: String, garden: ManagedGarden) -> Bool {
+        let gardenWithTag = garden.tags.filter() { $0.name == tagName }
+        return !gardenWithTag.isEmpty
+    }
+    
+    
+    private func getFilteredDataFromSearch(_ searchText: String) -> [ManagedGarden] {
+        return self.gardenData.filter() {
+            let hasName = checkIfHasSameName(in: $0, searchText)
+            let hasAddress = checkIfHasSameAddress(in: $0, searchText)
+            return hasName || hasAddress
+        }
+    }
+    
+    
+    private func checkIfHasSameName(in data: ManagedGarden, _ text: String) -> Bool {
+        return data.name.lowercased().contains(text)
+    }
+    
+    
+    private func checkIfHasSameAddress(in data: ManagedGarden, _ text: String) -> Bool {
+        return data.address.lowercased().contains(text)
     }
 }
