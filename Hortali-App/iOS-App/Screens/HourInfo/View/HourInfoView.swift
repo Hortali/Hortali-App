@@ -4,146 +4,104 @@
 import UIKit
 
 
-/// Componentes de UI da tela que mostra os hor;arios de funcionamento
-class HourInfoView: ContainerView {
+class HourInfoView: ViewWithViewCode {
     
     /* MARK: - Atributos */
     
-    // Views
+    final let hourInfoCollection: CustomCollection = {
+        let col = CustomCollection()
+        col.collection.backgroundColor = UIColor(originalColor: .greenLight)
+        return col
+    }()
     
-    /// Collection principal da tela
-    private let hourInfoGp = CollectionGroup(style: .justCollection)
+    final let titleLabel: CustomLabel = {
+        let lbl = CustomViews.newLabel()
+        lbl.isCircular = false
+        lbl.numberOfLines = 2
+        lbl.adjustsFontSizeToFitWidth = true
+        lbl.textColor = UIColor(originalColor: .greenDark)
+        return lbl
+    }()
     
-    /// Barra superior
     private let homeIndicatorView: UIView = {
         let view = CustomViews.newView()
+        view.layer.cornerRadius = 3
         view.backgroundColor = UIColor(originalColor: .white)
-
         return view
     }()
     
-    // Outros
-    
-    /// Constraints que vão mudar de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-    
-    /// Configurações do layout da collection
-    private let collectionFlow: UICollectionViewFlowLayout = {
-        let cvFlow = UICollectionViewFlowLayout()
-        cvFlow.scrollDirection = .vertical
-        
-        return cvFlow
-    }()
     
     
+    /* MARK: - ViewCode */
     
-    /* MARK: - Construtor */
-    
-    override init() {
-        super.init()
-        
-        self.setupViews()
-        self.registerCell()
-        self.setupCollectionFlow()
-        self.setupStaticTexts()
-    }
-    
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
-    
-    
-    /* MARK: - Encapsulamento */
-    
-    /// Define o data source personalizado da collection
-    /// - Parameter dataSource: data source da collection
-    public func setDataSource(with dataSource: HourInfoDataSource) {
-        self.hourInfoGp.collection.dataSource = dataSource
+    override func setupHierarchy() {
+        self.addSubview(self.homeIndicatorView)
+        self.addSubview(self.titleLabel)
+        self.addSubview(self.hourInfoCollection)
     }
     
     
-    /// Atualiza os dados da collection
-    public func reloadCollectionData() {
-        self.hourInfoGp.collection.reloadData()
-        self.hourInfoGp.collection.reloadInputViews()
-    }
-    
-    
-    
-    /* MARK: - Ciclo de Vida */
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        self.setupUI()
-        self.setupDynamicConstraints()
-    }
-    
-    
-    
-    /* MARK: - Configurações */
-    
-    /// Registra as células nas collections/table
-    private func registerCell() {
-        self.hourInfoGp.collection.register(HourInfoCell.self, forCellWithReuseIdentifier: HourInfoCell.identifier)
-    }
-    
-    
-    /// Define o layout da collection
-    private func setupCollectionFlow() {
-        self.hourInfoGp.collection.collectionViewLayout = self.collectionFlow
-    }
-
-    
-    /// Adiciona os elementos (Views) na tela
-    private func setupViews() {
-        self.contentView.addSubview(self.hourInfoGp)
-        self.contentView.addSubview(self.homeIndicatorView)
-    }
-    
-    
-    /// Personalização da UI
-    private func setupUI() {
-       // Define a cor do background
-        self.hourInfoGp.collection.backgroundColor = UIColor(originalColor: .greenLight)
-        self.contentView.backgroundColor = UIColor(originalColor: .greenLight)
+    override func setupView() {
+        super.setupView()
         self.backgroundColor = UIColor(originalColor: .greenLight)
-        
-        // Define o tamanho que a célula vai ter
-        self.collectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
-        self.collectionFlow.itemSize = CGSize(width: self.hourInfoGp.frame.width, height: 60)
-        
-        // Define o aredondamento do indicador de Scroll
-        homeIndicatorView.layer.cornerRadius = 3
+        self.backgroundColor = UIColor(originalColor: .greenLight)
     }
     
     
-    /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {
-        self.setTitleText(with: "Horário de funcionamento")
-        self.titleLabel.textColor = UIColor(originalColor: .greenDark)
+    override func setupStaticTexts() {
+        self.titleLabel.text = "Horário de funcionamento"
     }
     
     
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() {
+    override func setupFonts() {
+        self.titleLabel.setupFont(with: FontInfo(
+            fontSize: self.getEquivalent(35), weight: .bold
+        ))
+    }
+    
+    
+    override func setupUI() {
+        self.setCollectionItemSize()
+    }
+    
+    
+    private func setCollectionItemSize() {
+        guard self.hourInfoCollection.hasSuperview else { return }
+        self.hourInfoCollection.spaceBetweenCells = self.getEquivalent(10)
+        self.hourInfoCollection.cellSize = CGSize(width: self.hourInfoCollection.frame.width, height: 60)
+    }
+    
+    
+    override func createStaticConstraints() -> [NSLayoutConstraint] {
+        let barHeight: CGFloat = 5
+        
+        let constraints = [
+            self.homeIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.homeIndicatorView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3),
+            self.homeIndicatorView.heightAnchor.constraint(equalToConstant: barHeight),
+            
+            self.hourInfoCollection.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+        ]
+        return constraints
+    }
+    
+    
+    override func createDynamicConstraints() {
         let lateral = self.getEquivalent(15)
-        let width = self.getEquivalent(70)
-        let space = self.getEquivalent(5)
-        
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
+        let space = self.getEquivalent(10)
         
         self.dynamicConstraints = [
-            self.hourInfoGp.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: lateral),
-            self.hourInfoGp.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
-            self.hourInfoGp.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
-            self.hourInfoGp.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            
             self.homeIndicatorView.topAnchor.constraint(equalTo: self.topAnchor, constant: space),
-            self.homeIndicatorView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.homeIndicatorView.heightAnchor.constraint(equalToConstant: space),
-            self.homeIndicatorView.widthAnchor.constraint(equalToConstant: width)
+            
+            
+            self.titleLabel.topAnchor.constraint(equalTo: self.homeIndicatorView.bottomAnchor, constant: space),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
+            
+            
+            self.hourInfoCollection.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: lateral),
+            self.hourInfoCollection.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
+            self.hourInfoCollection.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
         ]
-        
-        NSLayoutConstraint.activate(self.dynamicConstraints)
     }
 }

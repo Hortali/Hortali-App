@@ -9,25 +9,14 @@ class FavoriteViewController: UIViewController, GardenProtocol, FoodProtocol {
     
     /* MARK: - Atributos */
     
-    /* View */
-
-    /// View principal que a classe vai controlar
     private let myView = FavoriteView()
     
     
-    /* Delegate & Data Sources */
+    /* Handler & Delegate */
     
-    /// Data source da collection de alimentos
-    private let foodDataSource = FoodDataSource()
+    private let foodCollectionHandler = FoodCollectionHandler()
     
-    /// Delegate da collection de alimentos
-    private let foodDelegate = FoodDelegate()
-    
-    /// Data source da collection das hortas
-    private let gardenDataSource = GardenDataSource()
-    
-    /// Delegate da collection das hortas
-    private let gardenDelegate = GardenDelegate()
+    private let gardenCollectionHandler = GardenCollectionHandler()
 
 
         
@@ -40,15 +29,13 @@ class FavoriteViewController: UIViewController, GardenProtocol, FoodProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.setupDelegates()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.setupDataSourcesData()
+        self.setupCollectionsData()
     }
 
     
@@ -56,19 +43,22 @@ class FavoriteViewController: UIViewController, GardenProtocol, FoodProtocol {
     /* MARK: - Protocolo */
     
     internal func openGardenInfo(for index: Int) {
-        let selectedCell = self.gardenDataSource.data[index]
+        let selectedCell = self.gardenCollectionHandler.data[index]
                 
         let controller = InfoGardenController(with: selectedCell)
-        controller.hidesBottomBarWhenPushed = true
-        
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.showController(controller)
     }
     
         
     internal func openFoodInfo(for index: Int) {
-        let selectedCell = self.foodDataSource.data[index]
+        let selectedCell = self.foodCollectionHandler.data[index]
         
         let controller = InfoFoodController(with: selectedCell)
+        self.showController(controller)
+    }
+    
+    
+    private func showController(_ controller: UIViewController) {
         controller.hidesBottomBarWhenPushed = true
         
         self.navigationController?.pushViewController(controller, animated: true)
@@ -80,42 +70,55 @@ class FavoriteViewController: UIViewController, GardenProtocol, FoodProtocol {
 
     /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-        self.gardenDelegate.setProtocol(with: self)
-        self.foodDelegate.setProtocol(with: self)
+        self.setGardenCollectionHandler()
+        self.setFoodCollectionHandler()
+    }
+    
+    private func setGardenCollectionHandler() {
+        self.gardenCollectionHandler.setProtocol(with: self)
         
-        self.myView.setFoodDataSource(with: self.foodDataSource)
-        self.myView.setFoodDelegate(with: self.foodDelegate)
-        
-        self.myView.setGardenDataSource(with: self.gardenDataSource)
-        self.myView.setGardenDelegate(with: self.gardenDelegate)
+        let collection = self.myView.gardenCollection
+        self.gardenCollectionHandler.link(with: collection)
     }
     
     
-    /// Configura os dadso das colelctions
-    private func setupDataSourcesData() {
-        // Alimentos
-        let foodFavorite = DataManager.shared.getFavoriteItens(for: .food)
-        if let foodFav = foodFavorite as? [ManagedFood] {
-            self.foodDataSource.data = foodFav
-        }
+    private func setFoodCollectionHandler() {
+        self.foodCollectionHandler.setProtocol(with: self)
         
-        // Hortas
-        let gardenFavorite = DataManager.shared.getFavoriteItens(for: .garden)
-        if let gardenFav = gardenFavorite as? [ManagedGarden] {
-            self.gardenDataSource.data = gardenFav
-        }
-        
+        let collection = self.myView.foodCollection
+        self.foodCollectionHandler.link(with: collection)
+    }
+    
+    
+    private func setupCollectionsData() {
+        self.setFoodCollectionData()
+        self.setGardenCollectionData()
         self.setupEmptyView()
         self.myView.reloadCollectionsData()
     }
     
     
-    /// Configura a empty view caso precisa
+    private func setFoodCollectionData() {
+        let foodFavorite = DataManager.shared.getFavoriteItens(for: .food)
+        if let foodFav = foodFavorite as? [ManagedFood] {
+            self.foodCollectionHandler.data = foodFav
+        }
+    }
+    
+    
+    private func setGardenCollectionData() {
+        let gardenFavorite = DataManager.shared.getFavoriteItens(for: .garden)
+        if let gardenFav = gardenFavorite as? [ManagedGarden] {
+            self.gardenCollectionHandler.data = gardenFav
+        }
+    }
+    
+    
     private func setupEmptyView() {
-        let isEmpty = self.foodDataSource.data.isEmpty && self.gardenDataSource.data.isEmpty
+        let isEmpty = self.foodCollectionHandler.data.isEmpty && self.gardenCollectionHandler.data.isEmpty
         self.myView.setCollectionView(with: isEmpty)
         
-        self.myView.checkFoodData(with: self.foodDataSource.data.count)
-        self.myView.checkGardenData(with: self.gardenDataSource.data.count)
+        self.myView.checkFoodData(with: self.foodCollectionHandler.data.count)
+        self.myView.checkGardenData(with: self.gardenCollectionHandler.data.count)
     }
 }

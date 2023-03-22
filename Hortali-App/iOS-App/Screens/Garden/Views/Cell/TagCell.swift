@@ -4,18 +4,15 @@
 import UIKit
 
 
-/// Elementos de UI da célula das tags
-class TagCell: UICollectionViewCell, CustomCell {
+class TagCell: CollectionCellWithViewCode, CustomCell {
     
     /* MARK: - Atributos */
 
-    /// Identificador da célula
     static let identifier = "IdTagCell"
     
 
     // Views
     
-    /// Texto da célula
     private let label: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.textAlignment = .center
@@ -28,10 +25,7 @@ class TagCell: UICollectionViewCell, CustomCell {
     // Override
     
     override var isSelected: Bool {
-        didSet {
-            guard self.isSelectionAllowed else { return }
-            self.setupColors(when: self.isSelected)
-        }
+        didSet { self.updateUIWhenSelection(is: self.isSelected) }
     }
     
     
@@ -40,11 +34,7 @@ class TagCell: UICollectionViewCell, CustomCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.setupUI()
-        self.setupViews()
-        self.setupConstraints()
-        self.setupColors(when: false)
+        self.setUIWhenIsNotSelected()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -53,16 +43,11 @@ class TagCell: UICollectionViewCell, CustomCell {
     
     /* MARK: - Encapsulamento */
     
-    /// Estado que define se é permitido que as células possam ser selecionadas ou não
     public var isSelectionAllowed = true {
-        didSet {
-            self.setupColors(when: !self.isSelectionAllowed)
-        }
+        didSet { self.updateUIWhenSelection(is: !self.isSelectionAllowed) }
     }
-        
     
-    /// Configura a célula a aprtir do texto que vai receber
-    /// - Parameter text: texto
+    
     public func setupCell(with text: String) {
         self.label.text = text
     }
@@ -71,64 +56,66 @@ class TagCell: UICollectionViewCell, CustomCell {
 
     /* MARK: - Ciclo de Vida */
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        self.setupStaticTexts()
-        self.setupUI()
-    }
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.label.text = nil
+        self.clearLabelText()
     }
-        
+    
     
     
     /* MARK: - Configurações */
     
-    /// Configura as cores da célula a partir do estado dela
-    /// - Parameter isSelected: estado de quando está selecionado ou não
-    private func setupColors(when isSelected: Bool) {
-        switch isSelected {
-        case false:
-            self.backgroundColor = UIColor(originalColor: .greenLight)
-            self.label.textColor = UIColor(originalColor: .greenMedium)
-        case true:
-            self.backgroundColor = UIColor(originalColor: .greenMedium)
-            self.label.textColor = UIColor(originalColor: .greenLight)
+    private func clearLabelText() {
+        self.label.text = nil
+    }
+    
+    
+    private func updateUIWhenSelection(is status: Bool) {
+        if status {
+            self.setUIWhenIsSelected(); return
         }
+        self.setUIWhenIsNotSelected()
     }
     
     
-    /// Adiciona os elementos (Views) na tela
-    private func setupViews() {    
-        self.contentView.addSubview(self.label)
+    private func setUIWhenIsNotSelected() {
+        self.backgroundColor = UIColor(originalColor: .greenLight)
+        self.label.textColor = UIColor(originalColor: .greenMedium)
     }
     
     
-    /// Personalização da UI
-    private func setupUI() {
+    private func setUIWhenIsSelected() {
+        self.backgroundColor = UIColor(originalColor: .greenMedium)
+        self.label.textColor = UIColor(originalColor: .greenLight)
+    }
+    
+    
+
+    /* MARK: - ViewCode */
+
+    override func setupHierarchy() {
+        self.addViewInContent(self.label)
+    }
+    
+    
+    override func setupView() {
         self.layer.masksToBounds = true
     }
     
     
-    /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {
+    override func setupUI() {
+        self.layer.cornerRadius = self.superview?.getEquivalent(5) ?? 5
+    }
+    
+    
+    override func setupFonts() {
         let fontSize = self.superview?.getEquivalent(20) ?? 20
-        
-        self.label.setupText(with: FontInfo(fontSize: fontSize, weight: .regular))
+        self.label.setupFont(with: FontInfo(fontSize: fontSize, weight: .regular))
     }
 	  
     
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            self.label.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            self.label.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.label.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.label.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-        ])
+    override func createStaticConstraints() -> [NSLayoutConstraint] {
+        let constraints = self.label.strechToBounds(of: self.contentView)
+        return constraints
     }
 }

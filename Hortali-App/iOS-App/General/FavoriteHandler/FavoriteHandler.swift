@@ -13,29 +13,47 @@ protocol FavoriteHandler {
     /// Botão de favoritar
     var favoriteButton: CustomButton { get set }
     
-    
-    /// Lida com a mudança de estado
-    /// - Parameter fav: valor para definir estado de favorito
-    /// - Returns: estado pós mudança
-    func favoriteHandler(for fav: Bool?) -> Bool
+    /// Configura o botão de favorito
+    func setFavoriteIcon()
 }
 
 
 extension FavoriteHandler {
     
-    /// Informações do estado do favorito
     var favoriteInfos: FavoriteInfo {
         return FavoriteInfo(isFavorite: self.isFavorite)
     }
     
-    /// Ícone do botão a partir do estado de favorito
     var favoriteIcon: AppIcons {
         return self.isFavorite ? .favoriteSelected : .favoriteNotSelected
     }
     
+    @discardableResult
+    mutating func favoriteHandler(for fav: Bool? = nil) -> Bool {
+        self.updateFavoriteStatus(for: fav)
+        self.updateFavoriteUI()
+        self.setFavoriteIcon()
+        return self.isFavorite
+    }
     
-    /// Define a ação do botão de favorito
-    public func setFavoriteButtonAction(target: Any?, action: Selector) -> Void {
+    
+    mutating func updateFavoriteStatus(for fav: Bool? = nil) {
+        if let fav {
+            self.isFavorite = fav
+        } else {
+            self.isFavorite.toggle()
+        }
+    }
+    
+    
+    func updateFavoriteUI() {
+        let infos = self.favoriteInfos
+        self.favoriteButton.backgroundColor = infos.backColor
+        self.favoriteButton.tintColor = infos.iconColor
+    }
+    
+    
+    func setFavoriteButtonAction(target: Any?, action: Selector) -> Void {
         self.favoriteButton.addTarget(target, action: action, for: .touchDown)
     }
 }

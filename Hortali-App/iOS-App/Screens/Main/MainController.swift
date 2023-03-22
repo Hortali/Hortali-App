@@ -4,49 +4,45 @@
 import UIKit
 
 
-/// Controller principal usada para a criação da tab bar
 class MainController: UITabBarController {
-    
-    /* MARK: - Atributos */
-    
-    /// Controller da tela 01: Ver todas as hortas
-    private let gardenController = GardenController()
-    
-    /// Controller da tela 02: Ver todas os alimentos
-    private let foodController = FoodController()
-    
-    /// Controller da tela 03: Ver os favoritos
-    private let favoriteController = FavoriteViewController()
-    
-    /// Controller da tela 04: Configurações
-    private let settingsController = SettingsController()
-    
-    
     
     /* MARK: - Ciclo de Vida */
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.setupTab()
-        self.setupTabBarItens()
-        self.setupControllers()
+        self.initializeController()
     }
     
     
     
     /* MARK: - Configurações */
     
-    /// Configurações iniciais da Navigation Controller
-    private func getNavigation(for controller: UIViewController) -> CustomNavigationController {
+    /// Inicializa a controller
+    private func initializeController() {
+        self.setupControllers()
+        self.setupTab()
+        self.setupTabBarItens()
+    }
+    
+    
+    private func setupControllers() {
+        self.viewControllers = [
+            self.createNavigation(for: GardenController()),
+            self.createNavigation(for: FoodController()),
+            self.createNavigation(for: FavoriteViewController()),
+            self.createNavigation(for: SettingsController()),
+        ]
+    }
+    
+    
+    private func createNavigation(for controller: UIViewController) -> CustomNavigationController {
         let nav = CustomNavigationController()
         nav.pushViewController(controller, animated: true)
         nav.isNavigationBarHidden = true
-        
         return nav
     }
     
-    /// Configurações iniciais da Tab Bar
+    
     private func setupTab() {
         self.tabBar.backgroundColor = UIColor(.viewBack)
         self.tabBar.tintColor = UIColor(.tabSelected)
@@ -54,22 +50,20 @@ class MainController: UITabBarController {
     }
     
     
-    /// Define as controllers que vão aparecer na Tab Bar
-    private func setupControllers() {
-        self.viewControllers = [
-            self.getNavigation(for: self.gardenController),
-            self.getNavigation(for: self.foodController),
-            self.getNavigation(for: self.favoriteController),
-            self.getNavigation(for: self.settingsController),
-        ]
+    private func setupTabBarItens() {
+        let controllerCount = self.viewControllers?.count ?? 0
+        for ind in 0..<controllerCount { self.setupTabInfos(for: ind) }
     }
     
     
-    /// Configura os ícones e títulos de cada item da tab bar
-    private func setupTabBarItens() {
-        self.gardenController.setupTab(text: "Hortas", icon: .gardenTab)
-        self.foodController.setupTab(text: "Alimentos", icon: .foodTab)
-        self.favoriteController.setupTab(text: "Favoritos", icon: .favoriteTab)
-        self.settingsController.setupTab(text: "Configurações", icon: .settingsTab)
+    private func setupTabInfos(for index: Int) {
+        let controller = self.viewControllers?[index]
+        switch index {
+        case 0: controller?.setupTab(text: "Hortas", icon: .gardenTab)
+        case 1: controller?.setupTab(text: "Alimentos", icon: .foodTab)
+        case 2: controller?.setupTab(text: "Favoritos", icon: .favoriteTab)
+        case 3: controller?.setupTab(text: "Configurações", icon: .settingsTab)
+        default: break
+        }
     }
 }
