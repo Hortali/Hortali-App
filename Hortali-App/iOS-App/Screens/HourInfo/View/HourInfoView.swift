@@ -4,7 +4,6 @@
 import UIKit
 
 
-/// Componentes de UI da tela que mostra os hor;arios de funcionamento
 class HourInfoView: ContainerView {
     
     /* MARK: - Atributos */
@@ -24,7 +23,7 @@ class HourInfoView: ContainerView {
     
     
     
-    /* MARK: - Configurações */
+    /* MARK: - ViewCode */
     
     override func setupHierarchy() {
         super.setupHierarchy()
@@ -33,47 +32,53 @@ class HourInfoView: ContainerView {
     }
     
     
-    
-    /* MARK: - ViewCode */
-    
     override func setupView() {
+        super.setupView()
         self.backgroundColor = UIColor(originalColor: .greenLight)
         self.contentView.backgroundColor = UIColor(originalColor: .greenLight)
     }
     
     
     override func setupStaticTexts() {
+        super.setupStaticTexts()
         self.setTitleText(with: "Horário de funcionamento")
         self.titleLabel.textColor = UIColor(originalColor: .greenDark)
     }
     
     
     override func setupUI() {
+        super.setupUI()
         self.setCollectionItemSize()
     }
     
     
     private func setCollectionItemSize() {
+        guard self.hourInfoCollection.hasSuperview else { return }
         self.hourInfoCollection.spaceBetweenCells = self.getEquivalent(10)
         self.hourInfoCollection.cellSize = CGSize(width: self.hourInfoCollection.frame.width, height: 60)
     }
     
     
     override func createDynamicConstraints() {
+        super.createDynamicConstraints()
+        
         let lateral = self.getEquivalent(15)
         let width = self.getEquivalent(70)
-        let space = self.getEquivalent(5)
+        let space = self.getEquivalent(10)
         
-        self.dynamicConstraints = [
+        let barHeight = self.getEquivalent(5)
+        
+        self.dynamicConstraints += [
             self.hourInfoCollection.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: lateral),
             self.hourInfoCollection.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
             self.hourInfoCollection.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
             self.hourInfoCollection.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
             
+            
             self.homeIndicatorView.topAnchor.constraint(equalTo: self.topAnchor, constant: space),
             self.homeIndicatorView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.homeIndicatorView.heightAnchor.constraint(equalToConstant: space),
-            self.homeIndicatorView.widthAnchor.constraint(equalToConstant: width)
+            self.homeIndicatorView.heightAnchor.constraint(equalToConstant: barHeight),
+            self.homeIndicatorView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.3)
         ]
     }
 }

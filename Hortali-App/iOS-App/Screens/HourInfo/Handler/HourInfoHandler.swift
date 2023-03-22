@@ -8,7 +8,7 @@ class HourInfoHandler: NSObject, CollectionHandler {
     
     /* MARK: - Atributos */
     
-    private var mainData : [ManagedHourInfo] = []
+    private var mainData: [ManagedHourInfo] = []
 
         
     
@@ -30,13 +30,6 @@ class HourInfoHandler: NSObject, CollectionHandler {
     
     func setupFlowLayoutSettings(_ collection: CustomCollection) {
         collection.scrollDirection = .vertical
-        
-        guard let colSuperview = collection.superview else { return }
-        collection.spaceBetweenCells = colSuperview.getEquivalent(10)
-        collection.cellSize = CGSize(
-            width: colSuperview.frame.width,
-            height: 60
-        )
     }
     
     
@@ -44,6 +37,7 @@ class HourInfoHandler: NSObject, CollectionHandler {
     /* MARK: - Data Sources */
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("Quantidade de dados \(self.data.count)")
         return self.data.count
     }
     

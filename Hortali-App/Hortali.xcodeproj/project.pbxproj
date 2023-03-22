@@ -75,6 +75,7 @@
 		224F057229281A9300B20447 /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057129281A9300B20447 /* SettingsDelegate.swift */; };
 		224F057529281B5300B20447 /* SettingsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057429281B5300B20447 /* SettingsProtocol.swift */; };
 		224F057829281D2800B20447 /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057729281D2800B20447 /* SettingsData.swift */; };
+		225E383D29CB20CE00265535 /* UIView+hasSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E383C29CB20CE00265535 /* UIView+hasSuperview.swift */; };
 		225FA1EB292D5C0F0004D131 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225FA1EA292D5C0F0004D131 /* PopUpView.swift */; };
 		225FA1EE292D5C230004D131 /* PopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225FA1ED292D5C230004D131 /* PopUpController.swift */; };
 		225FA1F1292D65E50004D131 /* PopUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225FA1F0292D65E50004D131 /* PopUpInfo.swift */; };
@@ -221,6 +222,7 @@
 		224F057129281A9300B20447 /* SettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
 		224F057429281B5300B20447 /* SettingsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProtocol.swift; sourceTree = "<group>"; };
 		224F057729281D2800B20447 /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
+		225E383C29CB20CE00265535 /* UIView+hasSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+hasSuperview.swift"; sourceTree = "<group>"; };
 		225FA1EA292D5C0F0004D131 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		225FA1ED292D5C230004D131 /* PopUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpController.swift; sourceTree = "<group>"; };
 		225FA1F0292D65E50004D131 /* PopUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpInfo.swift; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 				2229382828C85EF700515095 /* UITextField+setupPlaceHolder.swift */,
 				2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */,
 				2238A34F299BB4A500B86F64 /* Optional+isNil.swift */,
+				225E383C29CB20CE00265535 /* UIView+hasSuperview.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1366,6 +1369,7 @@
 				222937E928C6824600515095 /* IconInfo.swift in Sources */,
 				2229384828C8931B00515095 /* FoodController.swift in Sources */,
 				22D59A332926C9DD00C98630 /* SettingsView.swift in Sources */,
+				225E383D29CB20CE00265535 /* UIView+hasSuperview.swift in Sources */,
 				2210246628D8DC0800F412A5 /* InfoGardenContact.swift in Sources */,
 				2270F71129C09D63008DFBDA /* GardenCollectionHandler.swift in Sources */,
 				22A3917428F784B200A42DC1 /* ManagedGardenData.swift in Sources */,
