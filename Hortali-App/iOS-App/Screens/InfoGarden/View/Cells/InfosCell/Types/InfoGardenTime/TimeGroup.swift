@@ -4,12 +4,9 @@
 import UIKit
 
 
-/// Cria a área de visualizar uma dia da semana e o horário de funcionamento
 class TimeGroup: ViewWithViewCode {
     
     /* MARK: - Atributos */
-    
-    // Views
     
     private let weekLabel: UILabel = {
         let lbl = CustomViews.newLabel()
@@ -59,6 +56,7 @@ class TimeGroup: ViewWithViewCode {
     }
     
     
+    
     /* MARK: - Configurações */
     
     private func setupColors() {
@@ -83,8 +81,8 @@ class TimeGroup: ViewWithViewCode {
     
     
     private func setTimeData() {
-        let startTime = self.mainData?.startTime ?? ""
-        let endTime = self.mainData?.endTime ?? ""
+        let startTime = self.mainData?.startTime ?? "adf"
+        let endTime = self.mainData?.endTime ?? "adsf"
         self.hourLabel.text = "\(startTime) - \(endTime)"
     }
     
@@ -158,6 +156,7 @@ class TimeGroup: ViewWithViewCode {
         self.addSubview(self.barView)
     }
     
+    
     override func setupView() {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -198,9 +197,9 @@ class TimeGroup: ViewWithViewCode {
             
             self.weekLabel.rightAnchor.constraint(equalTo: self.rightAnchor),
             self.weekLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            
-            
             self.hourLabel.leftAnchor.constraint(equalTo: self.weekLabel.leftAnchor),
+            
+            
             self.hourLabel.rightAnchor.constraint(equalTo: self.weekLabel.rightAnchor),
             self.hourLabel.topAnchor.constraint(equalTo: self.weekLabel.bottomAnchor),
             self.hourLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
@@ -219,8 +218,6 @@ class TimeGroup: ViewWithViewCode {
         self.dynamicConstraints = [
             self.barView.widthAnchor.constraint(equalToConstant: barLine),
             
-            self.closeLabel.heightAnchor.constraint(equalToConstant: weekLabelHeight),
-            
             self.weekLabel.leftAnchor.constraint(equalTo: self.barView.rightAnchor, constant: between),
             self.weekLabel.heightAnchor.constraint(equalToConstant: weekLabelHeight),
         ]
@@ -235,3 +232,4 @@ class TimeGroup: ViewWithViewCode {
         return self.getEquivalent(space, screenReference: screenReference)
     }
 }
+

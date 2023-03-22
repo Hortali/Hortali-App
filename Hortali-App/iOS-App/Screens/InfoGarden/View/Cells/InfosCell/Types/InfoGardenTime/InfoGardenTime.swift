@@ -4,13 +4,10 @@
 import UIKit
 
 
-/// Conteúdo da célula para mostrar os horários de funcionamento
 class InfoGardenTime: ViewWithViewCode, InfoGardenCellProtocol {
     
     /* MARK: - Atributos */
 
-    // Views
-    
     private let todayLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.backgroundColor = UIColor(originalColor: .greenLight)
@@ -36,14 +33,14 @@ class InfoGardenTime: ViewWithViewCode, InfoGardenCellProtocol {
         didSet { self.setupViewFromData() }
     }
     
-    
+
     
     /* MARK: - Protocol */
     
     internal func setupView(for data: ManagedGarden) {
         self.getTodayWeekDataIfExists(from: data.hourInfo)
     }
-    
+
     
     
     /* MARK: - Configurações */
@@ -102,7 +99,7 @@ class InfoGardenTime: ViewWithViewCode, InfoGardenCellProtocol {
     
     
     
-    /* MARK: - ViewCode */
+    /* MARK: - Configurações */
     
     override func setupHierarchy() {
         self.addSubview(self.todayLabel)
@@ -135,35 +132,32 @@ class InfoGardenTime: ViewWithViewCode, InfoGardenCellProtocol {
     
     override func createStaticConstraints() -> [NSLayoutConstraint] {
         let constraints = [
+            self.todayWeekLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            
             self.todayLabel.bottomAnchor.constraint(equalTo: self.todayWeekLabel.topAnchor),
             self.todayLabel.leadingAnchor.constraint(equalTo: self.todayWeekLabel.leadingAnchor),
             self.todayLabel.trailingAnchor.constraint(equalTo: self.todayWeekLabel.trailingAnchor),
             
-            self.todayWeekLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            
             self.todayTimeGroup.leadingAnchor.constraint(equalTo: self.todayWeekLabel.leadingAnchor),
-            
         ]
         return constraints
     }
     
     
-    private func setupDynamicConstraints() {
-        // Espaçamentos
+    override func createDynamicConstraints() {
         let lateral: CGFloat = self.getConstant(for: 15)
         let between: CGFloat = self.getConstant(for: 5)
         
-        // Alturas
         let timeGroupHeight: CGFloat = self.getConstant(for: 35)
         let widthStack: CGFloat = self.getConstant(for: 120)
-        
-        
+    
+    
         self.dynamicConstraints = [
             self.todayWeekLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
             self.todayWeekLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
             
-            
             self.todayTimeGroup.topAnchor.constraint(equalTo: self.todayWeekLabel.bottomAnchor, constant: between),
+            
             self.todayTimeGroup.heightAnchor.constraint(equalToConstant: timeGroupHeight),
             self.todayTimeGroup.widthAnchor.constraint(equalToConstant: widthStack),
         ]

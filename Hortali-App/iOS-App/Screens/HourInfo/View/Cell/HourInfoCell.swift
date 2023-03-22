@@ -13,15 +13,17 @@ class HourInfoCell: CollectionCellWithViewCode, CustomCell {
     
     // Views
     
-    private let dayLabel: UILabel = {
+    private let dayLabel: CustomLabel = {
         let lbl = CustomViews.newLabel()
+        lbl.isCircular = false
         lbl.adjustsFontSizeToFitWidth = true
         lbl.backgroundColor = .clear
         return lbl
     }()
     
-    private let hourLabel: UILabel = {
+    private let hourLabel: CustomLabel = {
         let lbl = CustomViews.newLabel()
+        lbl.isCircular = false
         lbl.adjustsFontSizeToFitWidth = true
         lbl.textColor = UIColor(originalColor: .greenDark)
         return lbl
@@ -159,7 +161,6 @@ class HourInfoCell: CollectionCellWithViewCode, CustomCell {
             
             self.hourLabel.topAnchor.constraint(equalTo: self.dayLabel.bottomAnchor),
             self.hourLabel.trailingAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.hourLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
         ]
         return constraints
     }
@@ -167,12 +168,10 @@ class HourInfoCell: CollectionCellWithViewCode, CustomCell {
     
     override func createDynamicConstraints() {
         let lateral = self.getEquivalent(15)
-        let width = self.getEquivalent(45)
         let barLine = self.getEquivalent(3)
         
         self.dynamicConstraints = [
             self.dayLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
-            self.dayLabel.widthAnchor.constraint(equalToConstant: width),
             
             self.barView.widthAnchor.constraint(equalToConstant: barLine),
             

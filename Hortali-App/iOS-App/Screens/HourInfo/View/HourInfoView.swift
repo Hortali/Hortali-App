@@ -4,7 +4,7 @@
 import UIKit
 
 
-class HourInfoView: ContainerView {
+class HourInfoView: ViewWithViewCode {
     
     /* MARK: - Atributos */
     
@@ -12,6 +12,15 @@ class HourInfoView: ContainerView {
         let col = CustomCollection()
         col.collection.backgroundColor = UIColor(originalColor: .greenLight)
         return col
+    }()
+    
+    final let titleLabel: CustomLabel = {
+        let lbl = CustomViews.newLabel()
+        lbl.isCircular = false
+        lbl.numberOfLines = 2
+        lbl.adjustsFontSizeToFitWidth = true
+        lbl.textColor = UIColor(originalColor: .greenDark)
+        return lbl
     }()
     
     private let homeIndicatorView: UIView = {
@@ -26,28 +35,32 @@ class HourInfoView: ContainerView {
     /* MARK: - ViewCode */
     
     override func setupHierarchy() {
-        super.setupHierarchy()
-        self.contentView.addSubview(self.hourInfoCollection)
-        self.contentView.addSubview(self.homeIndicatorView)
+        self.addSubview(self.homeIndicatorView)
+        self.addSubview(self.titleLabel)
+        self.addSubview(self.hourInfoCollection)
     }
     
     
     override func setupView() {
         super.setupView()
         self.backgroundColor = UIColor(originalColor: .greenLight)
-        self.contentView.backgroundColor = UIColor(originalColor: .greenLight)
+        self.backgroundColor = UIColor(originalColor: .greenLight)
     }
     
     
     override func setupStaticTexts() {
-        super.setupStaticTexts()
-        self.setTitleText(with: "Horário de funcionamento")
-        self.titleLabel.textColor = UIColor(originalColor: .greenDark)
+        self.titleLabel.text = "Horário de funcionamento"
+    }
+    
+    
+    override func setupFonts() {
+        self.titleLabel.setupFont(with: FontInfo(
+            fontSize: self.getEquivalent(35), weight: .bold
+        ))
     }
     
     
     override func setupUI() {
-        super.setupUI()
         self.setCollectionItemSize()
     }
     
@@ -59,26 +72,36 @@ class HourInfoView: ContainerView {
     }
     
     
-    override func createDynamicConstraints() {
-        super.createDynamicConstraints()
+    override func createStaticConstraints() -> [NSLayoutConstraint] {
+        let barHeight: CGFloat = 5
         
+        let constraints = [
+            self.homeIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.homeIndicatorView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3),
+            self.homeIndicatorView.heightAnchor.constraint(equalToConstant: barHeight),
+            
+            self.hourInfoCollection.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+        ]
+        return constraints
+    }
+    
+    
+    override func createDynamicConstraints() {
         let lateral = self.getEquivalent(15)
-        let width = self.getEquivalent(70)
         let space = self.getEquivalent(10)
         
-        let barHeight = self.getEquivalent(5)
-        
-        self.dynamicConstraints += [
-            self.hourInfoCollection.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: lateral),
-            self.hourInfoCollection.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
-            self.hourInfoCollection.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
-            self.hourInfoCollection.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            
-            
+        self.dynamicConstraints = [
             self.homeIndicatorView.topAnchor.constraint(equalTo: self.topAnchor, constant: space),
-            self.homeIndicatorView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.homeIndicatorView.heightAnchor.constraint(equalToConstant: barHeight),
-            self.homeIndicatorView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.3)
+            
+            
+            self.titleLabel.topAnchor.constraint(equalTo: self.homeIndicatorView.bottomAnchor, constant: space),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
+            
+            
+            self.hourInfoCollection.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: lateral),
+            self.hourInfoCollection.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
+            self.hourInfoCollection.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
         ]
     }
 }

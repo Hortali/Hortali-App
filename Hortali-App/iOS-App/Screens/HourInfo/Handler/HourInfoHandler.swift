@@ -37,7 +37,6 @@ class HourInfoHandler: NSObject, CollectionHandler {
     /* MARK: - Data Sources */
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("Quantidade de dados \(self.data.count)")
         return self.data.count
     }
     
