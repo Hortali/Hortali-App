@@ -4,8 +4,7 @@
 import UIKit
 
 
-/// Controller responsável pela tela de onboarding
-class OnboardingViewController: UIViewController, OnboardingProtocol{
+class OnboardingViewController: UIViewController, OnboardingProtocol {
     
     /* MARK: - Atributos */
     
@@ -46,8 +45,7 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.myView.setupToInitialState()
+        self.notifyViewThatHasAppeared()
     }
     
 
@@ -128,5 +126,10 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     private func updateCurrentPage(_ page: Int) {
         self.myView.updateCurrentCell(for: page)
         self.myView.updateCurrentPage(for: page)
+    }
+    
+    
+    private func notifyViewThatHasAppeared() {
+        self.myView.viewHasAppeared = true
     }
 }

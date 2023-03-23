@@ -32,6 +32,7 @@ class OnBoardingCollectionHandler: NSObject, CollectionHandler {
     func setupFlowLayoutSettings(_ collection: CustomCollection) {
         collection.scrollDirection = .horizontal
         collection.spaceBetweenCells = 0
+        collection.flowLayout.minimumLineSpacing = 0
     }
     
     
@@ -59,8 +60,10 @@ class OnBoardingCollectionHandler: NSObject, CollectionHandler {
     /* MARK: - Delegate */
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print("Entrei no delegate")
         self.onboardingProtocol?.updateCurrentPage(to: indexPath.row)
     }
+    
     
     
     /* MARK: - Configurações */

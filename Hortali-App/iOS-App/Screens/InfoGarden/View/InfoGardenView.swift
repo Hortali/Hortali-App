@@ -21,7 +21,6 @@ class InfoGardenView: ViewWithViewCode, FavoriteHandler {
     final let imagesCollection: CustomCollection = {
         let col = CustomCollection()
         col.collection.isPagingEnabled = true
-        col.scrollDirection = .horizontal
         return col
     }()
 
