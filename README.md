@@ -1,6 +1,6 @@
 # Hortali - App
-[![Versão](https://img.shields.io/badge/versão-1.0-orange)](https://github.com/Hortali/Hortali-App/releases/tag/appStore-1.0)
-![Tamanho](https://img.shields.io/badge/tamanho-98,5%20MB-blue)
+[![Versão](https://img.shields.io/badge/versão-1.2-orange)](https://github.com/Hortali/Hortali-App/releases/tag/appStore-1.2)
+![Tamanho](https://img.shields.io/badge/tamanho-65%20MB-blue)
 ![Plataforma](https://img.shields.io/badge/plataforma-IOS-lightgrey?logo=ios)
 ![Framework](https://img.shields.io/badge/framework-UIKit-red?logo=uikit)
 [![Swift Versão](https://img.shields.io/badge/swift-v5.4+-blue?logo=swift)](https://swift.org/download/#releases)
@@ -45,9 +45,10 @@ A aplicação foi feito com a linguagem swift e todo código criado e utilizado 
 
 ## Demonstração
 <p align="center">
-    <img width=32% src="https://github.com/Hortali/Hortali-App/blob/main/Files/Images/tela_01.png"/>
-    <img width=32% src="https://github.com/Hortali/Hortali-App/blob/main/Files/Images/tela_02.png"/>
-    <img width=32% src="https://github.com/Hortali/Hortali-App/blob/main/Files/Images/tela_03.png"/>
+    <img width=24% src="https://github.com/Hortali/Hortali-App/blob/main/Files/Images/tela_01.png"/>
+    <img width=24% src="https://github.com/Hortali/Hortali-App/blob/main/Files/Images/tela_02.png"/>
+    <img width=24% src="https://github.com/Hortali/Hortali-App/blob/main/Files/Images/tela_03.png"/>
+    <img width=24% src="https://github.com/Hortali/Hortali-App/blob/main/Files/Images/tela_04.png"/>
 </p>
 
 
@@ -71,7 +72,7 @@ Esse projeto é open source e licenciado pela [GNU General Public License v3.0](
                     <b>Débora Kassardjian</b>
                 </sub>
             </a>
-	        <p> Design </p>
+	        <p> Design Leader </p>
         </td>
         </td>
 		    <td align="center">
@@ -81,7 +82,7 @@ Esse projeto é open source e licenciado pela [GNU General Public License v3.0](
                     <b>Celso Muza</b>
                 </sub>
             </a>
-		    <p> Product </p>
+		    <p> Product Manager</p>
         </td>
         <td align="center">
          <a href="https://github.com/batistagc">
@@ -90,7 +91,7 @@ Esse projeto é open source e licenciado pela [GNU General Public License v3.0](
                     <b>Gabriel Batista</b>
                 </sub>
             </a>
-            <p> Technical </p>
+            <p> Dev iOS</p>
         </td>
         <td align="center">
        <a href="https://github.com/Gui25Reis">
@@ -99,7 +100,7 @@ Esse projeto é open source e licenciado pela [GNU General Public License v3.0](
                     <b>Gui Reis</b>
                 </sub>
             </a>
-		 <p> Technical </p>
+		 <p> Tech Lead</p>
         </td>
         <td align="center">
             <a href="https://github.com/Letchern">
@@ -117,7 +118,7 @@ Esse projeto é open source e licenciado pela [GNU General Public License v3.0](
                     <b>Thallis Sousa</b>
                 </sub>
             </a>
-		    <p> Technical </p>
+		    <p> Dev iOS</p>
         </td>
     </tr>
 </table>
