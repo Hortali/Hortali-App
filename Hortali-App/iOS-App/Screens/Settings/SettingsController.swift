@@ -4,23 +4,17 @@
 import UIKit
 
 
-/// Controller responsável pela tela de configurações
 class SettingsController: UIViewController, SettingsProtocol {
     
     /* MARK: - Atributos */
 
-    /* View */
-
-    /// View principal que a classe vai controlar
     private let myView = SettingsView()
     
     
     /* Delegate & Data Sources */
     
-    /// Data source da collection principal
     private let settingsDataSource = SettingsDataSource()
     
-    /// Delegate da collection principal
     private let settingsDelegate = SettingsDelegate()
 
 
@@ -34,7 +28,6 @@ class SettingsController: UIViewController, SettingsProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.setupDelegates()
     }
     
@@ -54,7 +47,6 @@ class SettingsController: UIViewController, SettingsProtocol {
     
     /* MARK: - Configurações */
 
-    /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
         self.settingsDelegate.setProtocol(with: self)
         
@@ -63,8 +55,6 @@ class SettingsController: UIViewController, SettingsProtocol {
     }
     
     
-    /// Abre no navegador principal
-    /// - Parameter index: index da célula
     private func openLink(for index: Int) {
         let data = self.settingsDataSource.collectionData[index]
         let link = data.link ?? ""
@@ -75,7 +65,6 @@ class SettingsController: UIViewController, SettingsProtocol {
     }
     
     
-    /// Função para exibir tela de onboarding
     private func showOnBoarding() {
         let controller = OnboardingViewController()
         controller.hidesBottomBarWhenPushed = true
