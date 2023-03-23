@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Controller responsável pela tela de ver informações da Horta
-class InfoGardenController: UIViewController, InfoGardenProtocol {
+class InfoGardenController: UIViewController, InfoGardenProtocol, ExpansiveLabelDelegate {
     
     /* MARK: - Atributos */
 
@@ -72,7 +72,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     
     
     
-    /* MARK: - Protocolo */
+    /* MARK: - InfoGardenProtocol */
     
     internal func updateCurrentPage(to index: Int) {
         self.myView.updateCurrentPage(for: index)
@@ -106,7 +106,15 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
-
+    
+    
+    
+    /* MARK: - ExpansiveLabelProtocol */
+    
+    internal func actionWhenLabelWasExpanded() {
+        self.myView.updateScrollSize()
+    }
+    
     
     
     /* MARK: - Ações de botões */
@@ -258,6 +266,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
         self.setImagesCollectionHandler()
         self.setInfosCollectionHandler()
         self.setTagsCollectionHandler()
+        self.setExpansiveLabelDelegate()
     }
     
     
@@ -280,6 +289,11 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     private func setTagsCollectionHandler() {
         let tagCollection = self.myView.tagsCollection
         self.tagCollectionHandler.link(with: tagCollection)
+    }
+    
+    
+    private func setExpansiveLabelDelegate() {
+        self.myView.setExpansiveLabelDelegate(self)
     }
     
     
