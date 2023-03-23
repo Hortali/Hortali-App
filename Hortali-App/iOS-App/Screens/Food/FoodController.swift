@@ -9,19 +9,14 @@ class FoodController: UIViewController, FoodProtocol {
     
     /* MARK: - Atributos */
 
-    /// View principal que a classe vai controlar
     private let myView = FoodView()
     
 
-    /* Delegate & Data Sources */
+    /* Handler & Delegate */
     
-    /// Data source da collection de alimentos
-    private let foodDataSource = FoodDataSource()
-    
-    /// Delegate da collection de alimentos
-    private let foodDelegate = FoodDelegate()
-
+    private let foodCollectionHandler = FoodCollectionHandler()
         
+    
     
     /* MARK: - Ciclo de Vida */
     
@@ -35,7 +30,6 @@ class FoodController: UIViewController, FoodProtocol {
 
         self.setupDelegates()
         self.setupButtonsAction()
-        
         self.updateFoodData(for: 0)
     }
     
@@ -44,7 +38,7 @@ class FoodController: UIViewController, FoodProtocol {
     /* MARK: - Protocolo */
     
     internal func openFoodInfo(for index: Int) {
-        let selectedCell = self.foodDataSource.data[index]
+        let selectedCell = self.foodCollectionHandler.data[index]
         
         let controller = InfoFoodController(with: selectedCell)
         controller.hidesBottomBarWhenPushed = true
@@ -56,8 +50,6 @@ class FoodController: UIViewController, FoodProtocol {
     
     /* MARK: - Ações de Botões */
     
-    /// Ação da segmentation dos alimentos
-    /// - Parameter sender: segmentation
     @objc
     func segmentationAction(sender: UISegmentedControl) {
         let index = sender.selectedSegmentIndex
@@ -69,16 +61,17 @@ class FoodController: UIViewController, FoodProtocol {
     
     /* MARK: - Configurações */
     
-    /// Define os dados collection
-    /// - Parameter data: dado que a collection vai mostrar
     private func updateCollectionData(for data: [ManagedFood]) {
-        self.foodDataSource.data = data
-        self.myView.reloadCollectionData()
+        self.foodCollectionHandler.data = data
+        self.reloadCollectionData()
     }
     
     
-    /// Atualiza os alimentos que vão ser exibidos
-    /// - Parameter index: index do item selecionado da seg
+    private func reloadCollectionData() {
+        self.myView.foodCollection.reloadCollectionData()
+    }
+    
+    
     private func updateFoodData(for index: Int) {
         let category = DataManager.shared.getAllCategories()[index]
     
@@ -86,18 +79,16 @@ class FoodController: UIViewController, FoodProtocol {
         self.updateCollectionData(for: foodData)
     }
     
-        
-    /// Definindo os delegates, data sources e protocolos
-    private func setupDelegates() {
-        self.foodDelegate.setProtocol(with: self)
-        
-        self.myView.setDataSource(with: self.foodDataSource)
-        self.myView.setDelegate(with: self.foodDelegate)
-    }
     
-    
-    /// Definindo as ações dos botões
     private func setupButtonsAction() {
         self.myView.setSegAction(target: self, action: #selector(self.segmentationAction(sender:)))
+    }
+     
+    
+    private func setupDelegates() {
+        self.foodCollectionHandler.setProtocol(with: self)
+        
+        let collection = self.myView.foodCollection
+        self.foodCollectionHandler.link(with: collection)
     }
 }

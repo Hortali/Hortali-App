@@ -29,9 +29,7 @@ class PopGestureDelegate: NSObject, UIGestureRecognizerDelegate {
     /* MARK: - Delegate */
     
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if let navProtocol = self.navControllerProtocol {
-            return navProtocol.getControllersCount() > 1
-        }
-        return false
+        guard let navProtocol = self.navControllerProtocol else { return false }
+        return navProtocol.getControllersCount() > 1
     }
 }

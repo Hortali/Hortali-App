@@ -4,28 +4,22 @@
 import UIKit
 
 
-/// Conteúdo da célula para mostrar os horários de funcionamento
-class InfoGardenTime: UIView, InfoGardenCellProtocol {
+class InfoGardenTime: ViewWithViewCode, InfoGardenCellProtocol {
     
     /* MARK: - Atributos */
 
-    // Views
-    
-    /// Mostra o "Hoje"
     private let todayLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.backgroundColor = UIColor(originalColor: .greenLight)
         return lbl
     }()
     
-    /// Mostra o dia da semana que é
     private let todayWeekLabel: UILabel = {
         let lbl = CustomViews.newLabel()
         lbl.backgroundColor = UIColor(originalColor: .greenLight)
         return lbl
     }()
     
-    /// Mostra as informações do dia da semana
     private let todayTimeGroup: TimeGroup = {
         let group = TimeGroup()
         group.isTodayComponent = true
@@ -33,146 +27,148 @@ class InfoGardenTime: UIView, InfoGardenCellProtocol {
     }()
     
     
-    
     // Outros
     
-    /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-
-
-
-    /* MARK: - Construtor */
-    
-    init() {
-        super.init(frame: .zero)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.setupViews()
+    private var mainData: ManagedHourInfo? {
+        didSet { self.setupViewFromData() }
     }
     
-    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
-    
+
     
     /* MARK: - Protocol */
     
     internal func setupView(for data: ManagedGarden) {
-        self.setupDates(for: data.hourInfo)
+        self.getTodayWeekDataIfExists(from: data.hourInfo)
     }
-    
 
     
-    /* MARK: - Ciclo de Vida */
     
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-	      
-        self.setupUI()
-        self.setupStaticTexts()
-        self.setupDynamicConstraints()
+    /* MARK: - Configurações */
+    
+    private func getTodayWeekDataIfExists(from data: [ManagedHourInfo]) {
+        let todayWeekNumber = self.getWeekNumberIfExists()
+        guard let todayWeekNumber else { return }
+        self.mainData = data[todayWeekNumber]
+    }
+    
+    
+    private func getWeekNumberIfExists() -> Int? {
+        let today = self.getWeekNumberFromToday()
+        guard let today else { return nil }
+        let todayWeek = self.getEquivalentWeekNumber(from: today)
+        return todayWeek
+    }
+    
+    
+    private func getWeekNumberFromToday() -> Int? {
+        let today = Date()
+        let currentData = Calendar.current.dateComponents([.weekday], from: today)
+        let weekNumber = currentData.weekday
+        return weekNumber // sunday 1 - 7 saturday
+    }
+    
+    
+    private func getEquivalentWeekNumber(from number: Int) -> Int {
+        let todayWeek = number - 2  // seg = 0 | dom = 6
+        if todayWeek < 0 {          // Domingo
+            return 6
+        }
+        return todayWeek
+    }
+    
+    
+    private func setupViewFromData() {
+        self.saveTodayWeekNumberIfNeeded()
+        self.setTodayInfo()
+    }
+    
+    
+    private func saveTodayWeekNumberIfNeeded() {
+        guard InfoGardenView.todayWeek.isEmpty,
+            let todayWeekData = self.mainData?.week
+        else { return }
+        InfoGardenView.todayWeek = todayWeekData
+    }
+    
+    
+    private func setTodayInfo() {
+        guard let todayData = self.mainData else { return }
+        self.todayTimeGroup.setupInfos(for: todayData)
+        self.todayWeekLabel.text = todayData.week
     }
     
     
     
     /* MARK: - Configurações */
     
-    // Geral
-    
-    /// Configura as datas que são mostradas na célula
-    /// - Parameter data: Horários de funcionamento
-    private func setupDates(for data: [ManagedHourInfo]) {
-        let today = Date()
-        
-        // sunday 1 - 7 saturday
-        if let week = Calendar.current.dateComponents([.weekday], from: today).weekday {
-            var todayWeek = week - 2 // seg = 0 | dom = 6
-            if todayWeek < 0 {       // Domingo
-                todayWeek = 6
-            }
-            
-            if InfoGardenView.todayWeek.isEmpty {
-                InfoGardenView.todayWeek = data[todayWeek].week
-            }
-            
-            // Hoje
-            let todayData = data[todayWeek]
-            self.todayTimeGroup.setupInfos(for: todayData)
-            self.todayWeekLabel.text = todayData.week
-        }
-    }
-    
-    
-    // Views
-    
-    /// Adiciona os elementos (Views) na tela
-    private func setupViews() {
+    override func setupHierarchy() {
         self.addSubview(self.todayLabel)
         self.addSubview(self.todayWeekLabel)
         self.addSubview(self.todayTimeGroup)
-        
     }
     
     
-    /// Personalização da UI
-    private func setupUI() {
+    override func setupView() {
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor(originalColor: .greenLight)
     }
     
     
-    /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {		
-        self.todayLabel.setupText(with: FontInfo(
-            text: "Hoje", fontSize: self.getConstant(for: 30), weight: .semibold
+    override func setupStaticTexts() {
+        self.todayLabel.text = "Hoje"
+    }
+    
+    
+    override func setupFonts() {
+        self.todayLabel.setupFont(with: FontInfo(
+            fontSize: self.getConstant(for: 30), weight: .semibold
         ))
         
-        self.todayWeekLabel.setupText(with: FontInfo(
+        self.todayWeekLabel.setupFont(with: FontInfo(
             fontSize: self.getConstant(for: 27), weight: .regular, fontFamily: .graffiti
         ))
     }
     
     
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() {
-        // Espaçamentos
-        let lateral: CGFloat = self.getConstant(for: 15)
-        let between: CGFloat = self.getConstant(for: 5)
-        
-        let timeGroupHeight: CGFloat = self.getConstant(for: 35)
-        let widthStack: CGFloat = self.getConstant(for: 120)
-        
-        
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
-    
-        self.dynamicConstraints = [
-            self.todayWeekLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
-            self.todayWeekLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
+    override func createStaticConstraints() -> [NSLayoutConstraint] {
+        let constraints = [
             self.todayWeekLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            
             
             self.todayLabel.bottomAnchor.constraint(equalTo: self.todayWeekLabel.topAnchor),
             self.todayLabel.leadingAnchor.constraint(equalTo: self.todayWeekLabel.leadingAnchor),
             self.todayLabel.trailingAnchor.constraint(equalTo: self.todayWeekLabel.trailingAnchor),
             
-            
-            self.todayTimeGroup.topAnchor.constraint(equalTo: self.todayWeekLabel.bottomAnchor, constant: between),
             self.todayTimeGroup.leadingAnchor.constraint(equalTo: self.todayWeekLabel.leadingAnchor),
-            self.todayTimeGroup.heightAnchor.constraint(equalToConstant: timeGroupHeight),
-            self.todayTimeGroup.widthAnchor.constraint(equalToConstant: widthStack),
         ]
-        
-        NSLayoutConstraint.activate(self.dynamicConstraints)
+        return constraints
     }
     
     
-    /// Responsável por pegar o valor referente à célula
-    /// - Parameter space: valor para ser convertido
-    /// - Returns: valor em relação à tela
+    override func createDynamicConstraints() {
+        let lateral: CGFloat = self.getConstant(for: 15)
+        let between: CGFloat = self.getConstant(for: 5)
+        
+        let timeGroupHeight: CGFloat = self.getConstant(for: 35)
+        let widthStack: CGFloat = self.getConstant(for: 120)
+    
+    
+        self.dynamicConstraints = [
+            self.todayWeekLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
+            self.todayWeekLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
+            
+            self.todayTimeGroup.topAnchor.constraint(equalTo: self.todayWeekLabel.bottomAnchor, constant: between),
+            
+            self.todayTimeGroup.heightAnchor.constraint(equalToConstant: timeGroupHeight),
+            self.todayTimeGroup.widthAnchor.constraint(equalToConstant: widthStack),
+        ]
+    }
+    
+    
     private func getConstant(for space: CGFloat) -> CGFloat {
         let screenReference = SizeInfo(
             screenSize: CGSize(width: 163, height: 163),
             dimension: .width
         )
-
         return self.getEquivalent(space, screenReference: screenReference)
     }
 }

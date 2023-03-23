@@ -1,15 +1,14 @@
 /* Macro - Grupo 05 */
 
 /* Bibliotecas necessárias: */
-import UIKit
+import class Foundation.NSCoder
+import class UIKit.UIViewController
 
 
-/// Controller responsável pelo pop up
 class PopUpController: UIViewController {
     
     /* MARK: - Atributos */
 
-    /// View principal que a classe vai controlar
     private var myView: PopUpView
 
     
@@ -35,7 +34,6 @@ class PopUpController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.setupButtonsAction()
     }
     
@@ -43,7 +41,6 @@ class PopUpController: UIViewController {
     
     /* MARK: - Ações de botões */
     
-    /// Ação de fechar o pop up
     @objc
     private func closeAction() {
         self.navigationController?.popViewController(animated: true)
@@ -54,7 +51,6 @@ class PopUpController: UIViewController {
     
     /* MARK: - Configurações */
 
-    /// Definindo as ações dos botões
     private func setupButtonsAction() {
         self.myView.setCloseButtonAction(target: self, action: #selector(self.closeAction))
     }

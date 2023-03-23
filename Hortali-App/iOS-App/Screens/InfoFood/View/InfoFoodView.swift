@@ -5,49 +5,38 @@ import UIKit
 
 
 /// Elemento de UI da tela de ver informações dos aliementos
-class InfoFoodView: UIView, FavoriteHandler {
+class InfoFoodView: ViewWithViewCode, FavoriteHandler {
     
     /* MARK: - Atributos */
     
     // Views
     
-    /// Scroll View da tela
     private let scrollView = CustomScroll()
     
-    /// Botão de voltar para a página anterior
     private let backButton: CustomButton = {
         let but = CustomViews.newButton()
         but.tintColor = UIColor(.favoriteNotSelectedIcon)
         return but
     }()
     
-    /// Capa do alimento
     private let coverImage = CustomViews.newImage()
     
-    /// Grupo de UI para colocar os elementos de informação sobre o alimento
     private let container = ContainerView()
     
-    /// Label de título dos benefícios
     private let benefitsLabel = CustomViews.newLabel()
     
-    /// Label expandível
     private let expansiveLabel = ExpansiveLabel()
     
-    /// Label seção vitaminas
     private let vitaminsLabel = CustomViews.newLabel()
     
-    /// Stack das labels de vitamina
     private let vitaminsStack: CustomStack = {
         let stack = CustomViews.newStackView()
-        stack.sameDimensionValue = .height
         stack.axis = .horizontal
         return stack
     }()
     
-    /// Tipos de vitaminas (views para a Stack)
     private var vitaminsTypesButtons: [CustomButton] = []
     
-    /// Label de informações das vitaminas
     private let mineralsLabel = {
         let lbl = CustomViews.newLabel()
         lbl.numberOfLines = 3
@@ -57,26 +46,8 @@ class InfoFoodView: UIView, FavoriteHandler {
         lbl.sizeToFit()
         return lbl
     }()
-    
-    /// Collection  "Como plantar"
-    private let howToCollection = CollectionGroup()
-    
-    /// Botão de sasonaliade
-    private var seasonalityButton: CustomButton?
-    
-    
-    // Outros
-    
-    /// Constraints dinâmicas que mudam de acordo com o tamanho da tela
-    private var dynamicConstraints: [NSLayoutConstraint] = []
-    
-    /// Configurações do layout da collection
-    private let collectionFlow: UICollectionViewFlowLayout = {
-        let cvFlow = UICollectionViewFlowLayout()
-        cvFlow.scrollDirection = .horizontal
         
-        return cvFlow
-    }()
+    private var seasonalityButton: CustomButton?
     
     
     
@@ -86,21 +57,11 @@ class InfoFoodView: UIView, FavoriteHandler {
     
     internal var favoriteButton: CustomButton = CustomViews.newButton()
     
-    
-    internal func favoriteHandler(for fav: Bool? = nil) -> Bool {
-        if let fav {
-            self.isFavorite = fav
-        } else {
-            self.isFavorite.toggle()
-        }
-        
-        let infos = self.favoriteInfos
-        
-        self.favoriteButton.backgroundColor = infos.backColor
-        self.favoriteButton.tintColor = infos.iconColor
-        self.setupStaticTexts()
-        
-        return self.isFavorite
+    internal func setFavoriteIcon() {
+        let btSize: CGFloat = self.getEquivalent(22)
+        self.favoriteButton.setupIcon(with: IconInfo(
+            icon: self.favoriteIcon, size: btSize, weight: .regular, scale: .default
+        ))
     }
     
     
@@ -108,15 +69,8 @@ class InfoFoodView: UIView, FavoriteHandler {
     /* MARK: - Construtor */
     
     init(data: ManagedFood) {
-        super.init(frame: .zero)
-        
-        self.registerCells()
-        self.setupCollectionFlow()
-        
-        self.hideCollection()
-        
+        super.init()
         self.setupViewFor(data: data)
-        self.setupViews()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -160,41 +114,9 @@ class InfoFoodView: UIView, FavoriteHandler {
     }
     
     
-    /* Collection */
-    
-    /// Define o data source da collection de como plantar
-    /// - Parameter dataSource: data source da collection de como plantar
-    public func setDataSource(with dataSource: GardenDataSource) {
-        self.howToCollection.collection.dataSource = dataSource
-    }
-    
-    
-    /// Define o delegate da collection de como plantar
-    /// - Parameter delegate: delegate da collection de como plantar
-    public func setDelegate(with delegate: GardenDelegate) {
-        self.howToCollection.collection.delegate = delegate
-    }
-    
-    
-    
-    /* MARK: - Ciclo de Vida */
-    
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-        
-        self.setupUI()
-        self.setupStaticTexts()
-        self.setupDynamicConstraints()
-    }
-    
-    
     
     /* MARK: - Configurações */
     
-    /* Geral */
-    
-    /// Configura a view a partir dos dados recebidos
-    /// - Parameter data: dados recebidos
     private func setupViewFor(data: ManagedFood) {
         self.coverImage.image = UIImage(named: data.pageImage.name)
         self.container.setTitleText(with: data.name)
@@ -203,15 +125,20 @@ class InfoFoodView: UIView, FavoriteHandler {
         self.setupVitaminsStackViews(for: data.vitamins)
         self.mineralsLabel.text = data.minerals
         
-        self.seasonalityButton = self.getVitaminButton(for: "S")
+        self.createSeasonalityButton()
+    }
+    
+    
+    private func createSeasonalityButton() {
+        self.seasonalityButton = self.createDefaultCircularButton(letter: "S")
+        self.addSubview(self.seasonalityButton!)
     }
 
         
-    /// Cria e adiciona as views que vão ser colocadas na stack
     private func setupVitaminsStackViews(for vitamins: [ManagedVitamins]) {
         for ind in 0..<vitamins.count {
             let vitName = vitamins[ind].name
-            let vitBut = self.getVitaminButton(for: vitName)
+            let vitBut = self.createDefaultCircularButton(letter: vitName)
             vitBut.tag = ind
             
             self.vitaminsTypesButtons.append(vitBut)
@@ -220,221 +147,7 @@ class InfoFoodView: UIView, FavoriteHandler {
     }
     
     
-    /* Collection */
-    
-    /// Registra as células nas collections/table
-    private func registerCells() {
-        self.howToCollection.collection.register(GardenCell.self, forCellWithReuseIdentifier: GardenCell.identifier)
-
-    }
-    
-    
-    /// Define o layout da collection
-    private func setupCollectionFlow() {
-        self.howToCollection.collection.collectionViewLayout = self.collectionFlow
-    }
-    
-    
-    /* View */
-    
-    /// Adiciona os elementos (Views) na tela
-    private func setupViews() {
-        self.addSubview(self.scrollView)
-        
-        self.addSubview(self.backButton)
-        self.addSubview(self.favoriteButton)
-        
-        self.scrollView.addViewInScroll(self.coverImage)
-        self.scrollView.addViewInScroll(self.container)
-        
-        self.container.contentView.addSubview(self.benefitsLabel)
-        self.container.contentView.addSubview(self.expansiveLabel)
-        self.container.contentView.addSubview(self.vitaminsLabel)
-        self.container.contentView.addSubview(self.vitaminsStack)
-        self.container.contentView.addSubview(self.mineralsLabel)
-        
-        self.scrollView.addViewInScroll(self.mineralsLabel)
-        self.container.contentView.addSubview(self.howToCollection)
-        
-        if let seasonalityButton = self.seasonalityButton {
-            self.addSubview(seasonalityButton)
-        }
-    }
-    
-    
-    /// Personalização da UI
-    private func setupUI() {
-        self.scrollView.updateScrollSize()
-        
-        // Collection
-        self.collectionFlow.minimumInteritemSpacing = self.getEquivalent(10)
-        
-        self.collectionFlow.itemSize = CGSize(
-            width: self.getEquivalent(250),
-            height: self.howToCollection.collection.bounds.height
-        )
-    }
-    
-    
-    /// Define os textos que são estáticos (os textos em si que vão sempre ser o mesmo)
-    private func setupStaticTexts() {
-        /* Labels */
-        
-        let titleFontSize = self.getEquivalent(25)
-        
-        self.benefitsLabel.setupText(with: FontInfo(
-            text: "Benefícios", fontSize: titleFontSize, weight: .medium
-        ))
-        
-        self.vitaminsLabel.setupText(with: FontInfo(
-            text: "Vitaminas", fontSize: titleFontSize, weight: .medium
-        ))
-        
-        self.howToCollection.titleLabel.setupText(with: FontInfo(
-            text: "Como Plantar", fontSize: titleFontSize, weight: .medium
-        ))
-        
-        self.mineralsLabel.setupText(with: FontInfo(fontSize: 20, weight: .regular))
-        
-        
-        /* Botões */
-        
-        let btSize: CGFloat = self.getEquivalent(22)
-        
-        self.backButton.setupIcon(with: IconInfo(
-            icon: .back, size: btSize, weight: .regular, scale: .default
-        ))
-        
-        self.favoriteButton.setupIcon(with: IconInfo(
-            icon: self.favoriteIcon, size: btSize, weight: .regular, scale: .default
-        ))
-        
-        self.seasonalityButton?.setupText(with: FontInfo(
-            fontSize: self.getEquivalent(45), weight: .regular, fontFamily: .graffiti
-        ))
-    }
-    
-    
-    /// Define as constraints que dependem do tamanho da tela
-    private func setupDynamicConstraints() {
-        // Espaçamentos
-        let lateral = self.getEquivalent(15)
-        let between = self.getEquivalent(20)
-        let gap = self.getEquivalent(25)
-        
-        
-        // Altura dos botões
-        self.backButton.circleSize = self.getEquivalent(45)
-        self.favoriteButton.circleSize = self.getEquivalent(45)
-        
-        // Altura dos elementos
-        let imageHeight = self.getEquivalent(510)
-        let titlesLabelHeight = self.getEquivalent(25)
-        let collectionHeight = self.getEquivalent(400)
-        
-        // Stack
-        let stackHeight = self.getEquivalent(35)
-        let stackSpace = self.vitaminsStack.getEqualSpace(for: stackHeight)
-        
-        // Botões circulares (stack)
-        for but in self.vitaminsTypesButtons {
-            but.circleSize = stackHeight
-            but.setupText(with: FontInfo(fontSize: stackHeight, weight: .medium))
-        }
-        
-        
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
-        
-        self.dynamicConstraints = [
-            self.scrollView.topAnchor.constraint(equalTo: self.topAnchor),
-            self.scrollView.leftAnchor.constraint(equalTo: self.leftAnchor),
-            self.scrollView.rightAnchor.constraint(equalTo: self.rightAnchor),
-            self.scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            self.scrollView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            
-            
-            self.coverImage.topAnchor.constraint(equalTo: self.scrollView.contentView.topAnchor),
-            self.coverImage.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
-            self.coverImage.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
-            self.coverImage.heightAnchor.constraint(equalToConstant: imageHeight),
-            
-            
-            self.backButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            self.backButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
-            
-            
-            self.favoriteButton.centerYAnchor.constraint(equalTo: self.backButton.centerYAnchor),
-            self.favoriteButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
-            
-            
-            /* Container */
-            
-            self.container.topAnchor.constraint(equalTo: self.coverImage.bottomAnchor, constant: -gap),
-            self.container.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
-            self.container.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
-            self.container.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
-            
-            self.benefitsLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),
-            self.benefitsLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor, constant: lateral),
-            self.benefitsLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
-            self.benefitsLabel.heightAnchor.constraint(equalToConstant: titlesLabelHeight),
-            
-            
-            self.expansiveLabel.topAnchor.constraint(equalTo: self.benefitsLabel.bottomAnchor, constant: lateral),
-            self.expansiveLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
-            self.expansiveLabel.trailingAnchor.constraint(equalTo: self.benefitsLabel.trailingAnchor),
-            
-            
-            self.vitaminsLabel.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
-            self.vitaminsLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
-            self.vitaminsLabel.trailingAnchor.constraint(equalTo: self.container.trailingAnchor),
-            self.vitaminsLabel.heightAnchor.constraint(equalToConstant: titlesLabelHeight),
-            
-            
-            self.vitaminsStack.topAnchor.constraint(equalTo: self.vitaminsLabel.bottomAnchor, constant: lateral),
-            self.vitaminsStack.leadingAnchor.constraint(equalTo: self.container.leadingAnchor, constant: stackSpace),
-            self.vitaminsStack.trailingAnchor.constraint(equalTo: self.container.trailingAnchor, constant: -stackSpace),
-            self.vitaminsStack.heightAnchor.constraint(equalToConstant: stackHeight),
-            
-            
-            self.mineralsLabel.topAnchor.constraint(equalTo: self.vitaminsStack.bottomAnchor, constant: lateral),
-            self.mineralsLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
-            self.mineralsLabel.trailingAnchor.constraint(equalTo: self.benefitsLabel.trailingAnchor),
-            
-            
-            self.howToCollection.topAnchor.constraint(equalTo: self.mineralsLabel.bottomAnchor, constant: between),
-            self.howToCollection.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor),
-            self.howToCollection.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor),
-            self.howToCollection.heightAnchor.constraint(equalToConstant: collectionHeight),
-        ]
-        
-        
-        if let seasonalityButton = self.seasonalityButton {
-            seasonalityButton.circleSize = self.getEquivalent(40)
-            
-            self.dynamicConstraints += [
-                seasonalityButton.centerYAnchor.constraint(equalTo: self.container.titleLabel.centerYAnchor),
-                seasonalityButton.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
-            ]
-        }
-        
-        
-        NSLayoutConstraint.activate(self.dynamicConstraints)
-        
-        self.setupExpansiveLabelHeight()
-    }
-    
-    
-    /* MARK: - Outros */
-    
-    /// Configura a altura da label expandível
-    private func setupExpansiveLabelHeight() {
-        self.expansiveLabel.setupHeight()
-    }
-    
-    
-    /// Cria os botões da stack view
-    private func getVitaminButton(for letter: String) -> CustomButton {
+    private func createDefaultCircularButton(letter: String) -> CustomButton {
         let but = CustomViews.newButton()
         but.backgroundColor = UIColor(originalColor: .orange)
         but.setTitleColor(UIColor(originalColor: .white), for: .normal)
@@ -445,8 +158,232 @@ class InfoFoodView: UIView, FavoriteHandler {
     }
     
     
-    /// Esconde a collection de como plantar (MVP)
-    private func hideCollection() {
-        self.howToCollection.isHidden = true
+    
+    /* MARK: - ViewCode */
+    
+    override func setupHierarchy() {
+        self.addSubview(self.scrollView)
+        
+        self.addSubview(self.backButton)
+        self.addSubview(self.favoriteButton)
+        
+        self.addViewInScroll(self.coverImage)
+        self.addViewInScroll(self.container)
+        
+        self.addViewInContent(self.benefitsLabel)
+        self.addViewInContent(self.expansiveLabel)
+        self.addViewInContent(self.vitaminsLabel)
+        self.addViewInContent(self.vitaminsStack)
+        self.addViewInContent(self.mineralsLabel)
+        
+        self.addViewInScroll(self.mineralsLabel)
+    }
+    
+    
+    private func addViewInScroll(_ view: UIView) {
+        self.scrollView.addViewInScroll(view)
+    }
+    
+    
+    private func addViewInContent(_ view: UIView) {
+        self.container.contentView.addSubview(view)
+    }
+    
+    
+    override func setupUI() {
+        self.updateScrollSize()
+    }
+    
+    private func updateScrollSize() {
+        self.scrollView.updateScrollSize()
+    }
+    
+    
+    override func setupStaticTexts() {
+        self.benefitsLabel.text = "Benefícios"
+        self.vitaminsLabel.text = "Vitaminas"
+    }
+    
+    
+    override func setupFonts() {
+        self.setupLabelsFont()
+        self.setupButtonsIcon()
+    }
+    
+    
+    private func setupLabelsFont() {
+        let titleFont = FontInfo(fontSize: self.getEquivalent(25), weight: .medium)
+        self.benefitsLabel.setupFont(with: titleFont)
+        self.vitaminsLabel.setupFont(with: titleFont)
+        
+        let descriptionFont = FontInfo(fontSize: 20, weight: .regular)
+        self.mineralsLabel.setupFont(with: descriptionFont)
+        
+        let seasonalityFont = FontInfo(fontSize: self.getEquivalent(45), weight: .regular, fontFamily: .graffiti)
+        self.seasonalityButton?.setupFont(with: seasonalityFont)
+    }
+    
+    
+    private func setupButtonsIcon() {
+        let btSize: CGFloat = self.getEquivalent(22)
+        
+        self.backButton.setupIcon(with: IconInfo(
+            icon: .back, size: btSize, weight: .regular, scale: .default
+        ))
+        
+        self.setFavoriteIcon()
+    }
+    
+        
+    override func createStaticConstraints() -> [NSLayoutConstraint] {
+        let constraints = [
+            self.scrollView.topAnchor.constraint(equalTo: self.topAnchor),
+            self.scrollView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            self.scrollView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            self.scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.scrollView.widthAnchor.constraint(equalTo: self.widthAnchor),
+            
+            
+            self.coverImage.topAnchor.constraint(equalTo: self.scrollView.contentView.topAnchor),
+            self.coverImage.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
+            self.coverImage.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
+            
+            
+            self.backButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            
+            self.favoriteButton.centerYAnchor.constraint(equalTo: self.backButton.centerYAnchor),
+            
+            
+            /* Container */
+            
+            self.container.leadingAnchor.constraint(equalTo: self.scrollView.contentView.leadingAnchor),
+            self.container.trailingAnchor.constraint(equalTo: self.scrollView.contentView.trailingAnchor),
+            self.container.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
+            
+            self.benefitsLabel.topAnchor.constraint(equalTo: self.container.contentView.topAnchor),
+            
+            self.expansiveLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
+            self.expansiveLabel.trailingAnchor.constraint(equalTo: self.benefitsLabel.trailingAnchor),
+            
+    
+            self.vitaminsLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
+            self.vitaminsLabel.trailingAnchor.constraint(equalTo: self.container.trailingAnchor),
+            
+            
+            self.mineralsLabel.leadingAnchor.constraint(equalTo: self.benefitsLabel.leadingAnchor),
+            self.mineralsLabel.trailingAnchor.constraint(equalTo: self.benefitsLabel.trailingAnchor),
+        
+        ]
+        return constraints
+    }
+    
+    
+    override func createDynamicConstraints() {
+        self.setButtonsHeight()
+        self.setDynamicConstraints()
+        self.createVitaminsStackContraints()
+        self.createSeasonalityButtonConstraints()
+        self.setupExpansiveLabelHeight()
+    }
+    
+    
+    private func setButtonsHeight() {
+        let height = self.getEquivalent(45)
+        self.backButton.circleSize = height
+        self.favoriteButton.circleSize = height
+    }
+    
+    
+    private func setDynamicConstraints() {
+        // Espaçamentos
+        let lateral = self.getEquivalent(15)
+        let between = self.getEquivalent(20)
+        let gap = self.getEquivalent(25)
+        
+        // Altura dos elementos
+        let imageHeight = self.getEquivalent(510)
+        let titlesLabelHeight = self.getEquivalent(25)
+        
+        
+        self.dynamicConstraints = [
+            self.coverImage.heightAnchor.constraint(equalToConstant: imageHeight),
+            
+            self.backButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: lateral),
+            
+            self.favoriteButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -lateral),
+            
+            
+            /* Container */
+            
+            self.container.topAnchor.constraint(equalTo: self.coverImage.bottomAnchor, constant: -gap),
+            
+            
+            self.benefitsLabel.leadingAnchor.constraint(equalTo: self.container.contentView.leadingAnchor, constant: lateral),
+            self.benefitsLabel.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
+    
+            
+            self.expansiveLabel.topAnchor.constraint(equalTo: self.benefitsLabel.bottomAnchor, constant: lateral),
+            
+            
+            self.vitaminsLabel.topAnchor.constraint(equalTo: self.expansiveLabel.bottomAnchor, constant: between),
+            self.vitaminsLabel.heightAnchor.constraint(equalToConstant: titlesLabelHeight),
+            
+            
+            self.mineralsLabel.topAnchor.constraint(equalTo: self.vitaminsStack.bottomAnchor, constant: lateral),
+        ]
+    }
+    
+    
+    private func createVitaminsStackContraints() {
+        self.setButtonsHeightFromVitaminsStack()
+        self.setVitaminsStackContraints()
+    }
+    
+    
+    private func setButtonsHeightFromVitaminsStack() {
+        let height = self.vitaminsStack.bounds.height
+        self.vitaminsTypesButtons.forEach() {
+            $0.circleSize = height
+            $0.setupFont(with: FontInfo(fontSize: height, weight: .medium))
+        }
+    }
+    
+    
+    private func setVitaminsStackContraints() {
+        let between = self.getEquivalent(15)
+        let height = self.getEquivalent(35)
+        let lateral = self.getLateralPaddingForStack(stackHeight: height)
+        
+        self.dynamicConstraints += [
+            self.vitaminsStack.topAnchor.constraint(equalTo: self.vitaminsLabel.bottomAnchor, constant: between),
+            self.vitaminsStack.leadingAnchor.constraint(equalTo: self.container.leadingAnchor, constant: lateral),
+            self.vitaminsStack.trailingAnchor.constraint(equalTo: self.container.trailingAnchor, constant: -lateral),
+            self.vitaminsStack.heightAnchor.constraint(equalToConstant: height),
+        ]
+    }
+    
+    
+    private func getLateralPaddingForStack(stackHeight: CGFloat) -> CGFloat {
+        return self.vitaminsStack.getEqualSpace(for: stackHeight)
+    }
+    
+    
+    private func createSeasonalityButtonConstraints() {
+        guard let seasonalityButton else { return }
+        
+        let lateral = self.getEquivalent(15)
+        let btHeight = self.getEquivalent(40)
+        
+        seasonalityButton.circleSize = btHeight
+        
+        self.dynamicConstraints += [
+            seasonalityButton.centerYAnchor.constraint(equalTo: self.container.titleLabel.centerYAnchor),
+            seasonalityButton.trailingAnchor.constraint(equalTo: self.container.contentView.trailingAnchor, constant: -lateral),
+        ]
+    }
+    
+
+    private func setupExpansiveLabelHeight() {
+        self.expansiveLabel.setupHeight()
     }
 }

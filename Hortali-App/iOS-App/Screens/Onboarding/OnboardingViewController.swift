@@ -9,7 +9,7 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     
     /* MARK: - Atributos */
     
-    /// Muda a cor da status bar
+    // Muda a cor da status bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if UserDefaults.getValue(for: .onBoardingPresented) {
             return .lightContent
@@ -20,17 +20,12 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     
     /* View */
 
-    /// View principal que a classe vai controlar
     private let myView = OnboardingView()
     
     
-    /* Delegate & Data Sources */
+    /* Handlers & Delegate */
     
-    /// Data Source da collection de onboarding
-    private let onboardingDataSource = OnboardingDataSource()
-    
-    /// Delegate da collection de onboarding
-    private let onboardingDelegate = OnboardingDelegate()
+    private let onBoardingCollectionHandler = OnBoardingCollectionHandler()
     
 
         
@@ -67,43 +62,32 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     
     /* MARK: - Ações de botões */
     
-    /// Ação de fechar a tela de onboarding
     @objc
     private func closeAction() {
-        UserDefaults.setValue(true, forKey: .onBoardingPresented)
-        
-        self.navigationController?.popViewController(animated: true)
-        self.navigationController?.dismiss(animated: true)
-        self.dismiss(animated: true)
+        self.saveOnBordingHasBeenPresented()
+        self.dismissController()
     }
     
     
-    /// Ação de voltar uma célula
     @objc
     private func backAction() {
         let currentPage = self.myView.currentPage - 1
-        
-        self.myView.updateCurrentCell(for: currentPage)
-        self.myView.updateCurrentPage(for: currentPage)
+        self.updateCurrentPage(currentPage)
     }
     
     
-    /// Ação de ir para a próxima célula
     @objc
     private func nextAction() {
         let currentPage = self.myView.currentPage + 1
         
-        if currentPage == self.onboardingDataSource.totalPages {
+        if currentPage == self.onBoardingCollectionHandler.totalPages {
             self.closeAction()
         } else {
-            self.myView.updateCurrentCell(for: currentPage)
-            self.myView.updateCurrentPage(for: currentPage)
+            self.updateCurrentPage(currentPage)
         }
     }
     
     
-    /// Ação de quando muda a célula pela page control
-    /// - Parameter sender: page control que foi alterada
     @objc
     private func pageControlAction(sender: UIPageControl) {
         self.myView.updateCurrentCell(for: sender.currentPage)
@@ -113,7 +97,6 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     
     /* MARK: - Configurações */
     
-    /// Definindo as ações dos botões
     private func setupButtonsAction() {
         self.myView.setCloseButtonAction(target: self, action: #selector(self.closeAction))
         self.myView.setPageControlAction(target: self, action: #selector(self.pageControlAction(sender:)))
@@ -122,11 +105,28 @@ class OnboardingViewController: UIViewController, OnboardingProtocol{
     }
     
     
-    /// Definindo os delegates, data sources e protocolos
     private func setupDelegates() {
-        self.onboardingDelegate.setProtocol(with: self)
+        self.onBoardingCollectionHandler.setProtocol(with: self)
         
-        self.myView.setDataSource(with: self.onboardingDataSource)
-        self.myView.setDelegate(with: self.onboardingDelegate)
+        let collection = self.myView.onBoardingCollection
+        self.onBoardingCollectionHandler.link(with: collection)
+    }
+    
+    
+    private func saveOnBordingHasBeenPresented() {
+        UserDefaults.setValue(true, forKey: .onBoardingPresented)
+    }
+    
+    
+    private func dismissController() {
+        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.dismiss(animated: true)
+        self.dismiss(animated: true)
+    }
+    
+    
+    private func updateCurrentPage(_ page: Int) {
+        self.myView.updateCurrentCell(for: page)
+        self.myView.updateCurrentPage(for: page)
     }
 }
