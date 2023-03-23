@@ -72,10 +72,15 @@ class InfoGardenView: ViewWithViewCode, FavoriteHandler {
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    
-    
+
+        
     
     /* MARK: - Encapsulamento */
+    
+    public func setExpansiveLabelDelegate(_ delegate: ExpansiveLabelDelegate) {
+        self.expansiveLabel.setExpansiveLabelDelegate(delegate)
+    }
+    
     
     public func updateCurrentPage(for index: Int) {
         self.imagesPageControl.currentPage = index
@@ -93,7 +98,6 @@ class InfoGardenView: ViewWithViewCode, FavoriteHandler {
     
     public func expandLabel() {
         self.expansiveLabel.setupExtension()
-        self.scrollView.updateScrollSize()
     }
 
     
@@ -190,10 +194,14 @@ class InfoGardenView: ViewWithViewCode, FavoriteHandler {
     }
 
     
+    override func didMoveToSuperview() {
+        self.updateScrollSize()
+    }
+    
+    
     override func setupUI() {
         self.setInfosCollectionCellSize()
         self.setImagesCollectionCellSize()
-        self.updateScrollSize()
         self.setUICorners()
     }
     
@@ -203,7 +211,7 @@ class InfoGardenView: ViewWithViewCode, FavoriteHandler {
     }
     
     
-    private func updateScrollSize() {
+    public func updateScrollSize() {
         self.scrollView.updateScrollSize()
     }
     

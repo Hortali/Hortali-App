@@ -8,10 +8,7 @@ import UIKit
 class CustomScroll: ViewWithViewCode {
     
     /* MARK: - Atributos */
-    
-    // Views
-    
-    /// Scrool view padrão do UIKit
+        
     public let scroll: UIScrollView = {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
@@ -25,19 +22,16 @@ class CustomScroll: ViewWithViewCode {
     
     // Outros
     
-    /// Tamanho da scrollView
     private var scrollContentSize = CGSize() {
         didSet { self.setupScrollSize() }
     }
     
-    /// Último componente adicionado na scroll
     private var lastViewAdded: UIView?
+    
     
     
     /* MARK: - Encapsulamento */
     
-    /// Adiciona uma view na scroll
-    /// - Parameter view: view que vai ser adicionada
     public func addViewInScroll(_ view: UIView) {
         self.contentView.addSubview(view)
         self.lastViewAdded = view
@@ -45,18 +39,8 @@ class CustomScroll: ViewWithViewCode {
     
     
     
-    /* MARK: - Ciclo de Vida */
-    
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-        self.setupScrollSize()
-    }
-    
-    
-    
     /* MARK: - Configurações */
     
-    /// Configura o tamanho da scroll e a contentView dela
     private func setupScrollSize() {
         self.scroll.frame = self.bounds
         self.contentView.frame.size = self.scrollContentSize
@@ -66,32 +50,30 @@ class CustomScroll: ViewWithViewCode {
     }
     
     
-    /// Atualiza o tamanho da scroll a partir da posição do último elemento adicionado
-    public func updateScrollSize() {
+    final func updateScrollSize() {
         guard !self.lastViewAdded.isNil, !self.superview.isNil else { return }
         
-        self.removeAdditionalSpace()
-        self.setupNewScrollSize()
+        let space = self.removeAdditionalSpace()
+        self.setupNewScrollSize(space)
     }
     
     
-    /// Remove espaço adicional dependendo da altura
-    private func removeAdditionalSpace() {
+    private func removeAdditionalSpace() -> CGFloat {
         var height = lastViewAdded!.frame.origin.y + lastViewAdded!.frame.height
         
-        if height > self.frame.height {
-            let removeSpace = self.superview!.safeAreaInsets.bottom
-            
-            if (height - removeSpace) > self.superview!.bounds.height {
-                height -= removeSpace
-            }
+        guard height > self.frame.height else { return height }
+        
+        let removeSpace = self.superview!.safeAreaInsets.bottom
+        
+        if (height - removeSpace) > self.superview!.bounds.height {
+            height -= removeSpace
         }
+        return height
     }
     
     
-    /// Determina a nova altura da scroll
-    private func setupNewScrollSize() {
-        let height = lastViewAdded!.frame.origin.y + lastViewAdded!.frame.height
+    private func setupNewScrollSize(_ space: CGFloat) {
+        let height = space
         
         guard height != self.frame.height else { return }
         self.scrollContentSize = CGSize(
@@ -102,9 +84,7 @@ class CustomScroll: ViewWithViewCode {
     
     
     
-    /* MARK: - Protocol */
-    
-    /* View Code */
+    /* MARK: - View Code */
     
     override func setupHierarchy() {
         self.addSubview(self.scroll)
@@ -137,13 +117,9 @@ class CustomScroll: ViewWithViewCode {
     
     override func createDynamicConstraints() {
         let safeAreaTop = self.scroll.safeAreaInsets.top
-        
-        NSLayoutConstraint.deactivate(self.dynamicConstraints)
-        
+                
         self.dynamicConstraints = [
             self.contentView.topAnchor.constraint(equalTo: self.scroll.topAnchor, constant: -safeAreaTop),
         ]
-        
-        NSLayoutConstraint.activate(self.dynamicConstraints)
     }
 }

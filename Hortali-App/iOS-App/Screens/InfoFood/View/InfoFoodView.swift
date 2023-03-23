@@ -9,8 +9,6 @@ class InfoFoodView: ViewWithViewCode, FavoriteHandler {
     
     /* MARK: - Atributos */
     
-    // Views
-    
     private let scrollView = CustomScroll()
     
     private let backButton: CustomButton = {
@@ -79,34 +77,33 @@ class InfoFoodView: ViewWithViewCode, FavoriteHandler {
     
     /* MARK: - Encapsulamento */
     
-    /// Configurações para expandir a label
+    public func setExpansiveLabelDelegate(_ delegate: ExpansiveLabelDelegate) {
+        self.expansiveLabel.setExpansiveLabelDelegate(delegate)
+    }
+    
+    
     public func expandLabel() {
         self.expansiveLabel.setupExtension()
-        self.scrollView.updateScrollSize()
     }
     
     
     /* Ações de botões */
     
-    /// Define a ação do botão de voltar
     public func setBackButtonAction(target: Any?, action: Selector) -> Void {
         self.backButton.addTarget(target, action: action, for: .touchDown)
     }
     
     
-    /// Define a ação do botão de expandir a label
     public func setExpLabelButtonAction(target: Any?, action: Selector) -> Void {
         self.expansiveLabel.setExpansiveButtonAction(target: target, action: action)
     }
     
     
-    /// Define a ação do botão de sazonalidade
     public func setSeasonalityButtonAction(target: Any?, action: Selector) -> Void {
         self.seasonalityButton?.addTarget(target, action: action, for: .touchDown)
     }
     
     
-    /// Define a ação do botão das vitaminas
     public func setVitaminsButtonAction(target: Any?, action: Selector) -> Void {
         for but in self.vitaminsTypesButtons {
             but.addTarget(target, action: action, for: .touchDown)
@@ -194,7 +191,8 @@ class InfoFoodView: ViewWithViewCode, FavoriteHandler {
         self.updateScrollSize()
     }
     
-    private func updateScrollSize() {
+    
+    public func updateScrollSize() {
         self.scrollView.updateScrollSize()
     }
     
