@@ -30,7 +30,6 @@ class MainController: UITabBarController {
             self.createNavigation(for: GardenController()),
             self.createNavigation(for: FoodController()),
             self.createNavigation(for: FavoriteViewController()),
-            self.createNavigation(for: SettingsController()),
         ]
     }
     
@@ -62,7 +61,6 @@ class MainController: UITabBarController {
         case 0: controller?.setupTab(text: "Hortas", icon: .gardenTab)
         case 1: controller?.setupTab(text: "Alimentos", icon: .foodTab)
         case 2: controller?.setupTab(text: "Favoritos", icon: .favoriteTab)
-        case 3: controller?.setupTab(text: "Configurações", icon: .settingsTab)
         default: break
         }
     }
