@@ -55,21 +55,17 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     
     
-    /* MARK: - Protocolo */
-    
-    /* Garden Protocol */
+    /* MARK: - GardenProtocol */
     
     internal func openGardenInfo(for index: Int) {
         let selectedCell = self.gardenCollectionHandler.data[index]
-        
         let controller = InfoGardenController(with: selectedCell)
-        controller.hidesBottomBarWhenPushed = true
-        
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.presentController(controller)
     }
     
     
-    /* Search Protocol */
+    
+    /* MARK: - SearchProtocol */
     
     internal func updateCollection(textSearch: String) {
         self.deselectTagIfNeeded()
@@ -98,30 +94,26 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     
     @objc
-    private func onboardingAction() {
-        let controller = OnboardingViewController()
-        controller.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    
-    @objc
     private func visualizationAction() {
-        self.myView.changeVisualization()
+        self.presentController(SettingsController())
     }
     
     
     
     /* MARK: - Configurações */
     
+    private func presentController(_ controller: UIViewController) {
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    
     private func showOnBoarding() {
         guard !self.onBoardingHasPresented else { return }
         
         let controller = OnboardingViewController()
-        controller.hidesBottomBarWhenPushed = true
         controller.modalPresentationStyle = .fullScreen
-        
-        self.navigationController?.present(controller, animated: true)
+        self.presentController(controller)
     }
     
     
@@ -190,7 +182,6 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
             let gardenData = self.getGardenDataFromStorage()
             self.updateGardenData(gardenData)
         }
-        self.updateGardenVisualization()
     }
     
     
@@ -210,13 +201,6 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     }
     
     
-    private func updateGardenVisualization() {
-        guard let visu = self.lastGardenVisualization else { return }
-        self.myView.actualGardenVisualization = visu
-        self.lastGardenVisualization = nil
-    }
-    
-    
     private func setupTagCollectionData() {
         let tags = DataManager.shared.getAllTags()
         self.tagCollectionHandler.data = tags ?? []
@@ -227,19 +211,10 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     /* Filtro */
     
     private func filterData(by text: String, isTag: Bool) {
-        self.setGardenVisualizationIfNeeded()
-        
         guard !text.isEmpty else { self.setupGardenCollectionData(); return }
         
         let dataFiltered = self.getDataFiltered(text: text, isFromTag: isTag)
         self.setupGardenCollectionData(with: dataFiltered)
-        self.myView.actualGardenVisualization = .grid
-    }
-    
-    
-    private func setGardenVisualizationIfNeeded() {
-        guard self.lastGardenVisualization.isNil else { return }
-        self.lastGardenVisualization = self.myView.actualGardenVisualization
     }
     
     

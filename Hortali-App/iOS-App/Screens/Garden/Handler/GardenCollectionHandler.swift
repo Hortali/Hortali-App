@@ -35,7 +35,10 @@ class GardenCollectionHandler: NSObject, CollectionHandler {
     }
     
     
-    func setupFlowLayoutSettings(_ collection: CustomCollection) { }
+    func setupFlowLayoutSettings(_ collection: CustomCollection) {
+        collection.spaceBetweenCells = 0
+        collection.scrollDirection = .vertical
+    }
     
     
     

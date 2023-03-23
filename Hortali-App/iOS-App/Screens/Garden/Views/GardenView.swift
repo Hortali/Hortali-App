@@ -25,12 +25,6 @@ class GardenView: MainView {
     }()
     
     
-    // Collection
-    
-    private var visualizationType: GardenVisualization = .carousel
-    
-   
-    
     /* MARK: - Encapsulamento */
     
     public func checkData(with dataCount: Int) {
@@ -46,21 +40,6 @@ class GardenView: MainView {
     
     
     // Collection
-    
-    public func changeVisualization(to visu: GardenVisualization? = nil) {
-        if let visu {
-            self.visualizationType = visu; return
-        }
-        self.changeVisualizationType()
-        self.setupCollectionVisualization()
-    }
-    
-    
-    public var actualGardenVisualization: GardenVisualization {
-        set (value) { self.changeVisualization(to: value) }
-        get { return self.visualizationType }
-    }
-    
     
     public func reloadCollectionData() {
         self.gardenCollection.reloadCollectionData()
@@ -83,66 +62,6 @@ class GardenView: MainView {
         self.visualizationButton.addTarget(target, action: action, for: .touchDown)
     }
     
-
-    
-    /* MARK: - Configurações */
-    
-    private func changeVisualizationType() {
-        switch self.visualizationType {
-        case .grid: self.visualizationType = .carousel
-        case .carousel: self.visualizationType = .grid
-        }
-    }
-    
-    
-    private func setupCollectionVisualization() {
-        self.setupDynamicConstraints()
-        self.updateButtonIcon()
-        self.adaptCellSizeForVisualizationType()
-    }
-    
-    
-    private func updateButtonIcon() {
-        self.visualizationButton.setupIcon(with: IconInfo(
-            icon: self.visualizationType.iconToggle,
-            size: self.getEquivalent(25), weight: .medium, scale: .default
-        ))
-    }
-    
-    
-    private func adaptCellSizeForVisualizationType() {
-        guard self.gardenCollection.collection.bounds.width != 0 else { return }
-        
-        switch self.visualizationType {
-        case .grid:
-            self.setItemSizeForGrid()
-        case .carousel:
-            self.setItemSizeForCarousel()
-        }
-    }
-    
-    
-    private func setItemSizeForGrid() {
-        self.gardenCollection.scrollDirection = .vertical
-        self.gardenCollection.spaceBetweenCells = 0
-        
-        self.gardenCollection.cellSize = CGSize(
-            width: self.getEquivalent(175, dimension: .height),
-            height: self.getEquivalent(295, dimension: .height)
-        )
-    }
-    
-    
-    private func setItemSizeForCarousel() {
-        self.gardenCollection.scrollDirection = .horizontal
-        self.gardenCollection.spaceBetweenCells = self.getEquivalent(10)
-        
-        self.gardenCollection.cellSize = CGSize(
-            width: self.getEquivalent(240, dimension: .height),
-            height: self.getEquivalent(400, dimension: .height)
-        )
-    }
-    
     
     
     /* MARK: - ViewCode */
@@ -162,12 +81,33 @@ class GardenView: MainView {
     
     
     override func setupUI() {
-        self.setupCollectionVisualization()
+        self.setColllectionCellSize()
     }
     
-        
+    
+    private func setColllectionCellSize() {
+        self.gardenCollection.cellSize = CGSize(
+            width: self.getEquivalent(175, dimension: .height),
+            height: self.getEquivalent(295, dimension: .height)
+        )
+    }
+    
+    
     override func setupStaticTexts() {
         self.setTitleText(with: "Descubra novas \nhortas")
+    }
+    
+    
+    override func setupFonts() {
+        super.setupFonts()
+        self.setInfoButtonIcon()
+    }
+    
+    
+    private func setInfoButtonIcon() {
+        self.visualizationButton.setupIcon(with: IconInfo(
+            icon: .back, size: self.getEquivalent(25), weight: .medium, scale: .default
+        ))
     }
     
     
@@ -189,78 +129,33 @@ class GardenView: MainView {
     
     
     override func createDynamicConstraints() {
-        self.setCollectionsLateralPadding()
-        self.createGeneralDynamicConstraints()
-        self.setConstraintsForVisualizationType()
+        self.setCollectionLateralPadding()
+        self.setDynamicConstraints()
     }
     
     
-    private func setCollectionsLateralPadding() {
+    private func setCollectionLateralPadding() {
         let padding = self.getEquivalent(15)
-        let gardenPadding = self.visualizationType == .carousel ? padding : 0
-        
         self.tagCollection.setupLateralPadding(padding)
-        self.gardenCollection.setupLateralPadding(gardenPadding)
     }
     
     
-    private func createGeneralDynamicConstraints() {
+    private func setDynamicConstraints() {
         let lateral = self.getEquivalent(15)
         let between = self.getEquivalent(5)
         
         let tagCollectionHeight = self.getEquivalent(25)
         
         self.dynamicConstraints = [
+            self.gardenCollection.topAnchor.constraint(equalTo: self.tagCollection.bottomAnchor, constant: lateral),
+            self.gardenCollection.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
+            self.gardenCollection.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
+            self.gardenCollection.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+            
             self.visualizationButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
             
             self.tagCollection.topAnchor.constraint(equalTo: self.search.bottomAnchor, constant: between),
             self.tagCollection.heightAnchor.constraint(equalToConstant: tagCollectionHeight)
-        ]
-    }
-    
-    
-    private func setConstraintsForVisualizationType() {
-        switch self.visualizationType {
-        case .grid:
-            self.createConstraintsForGrid()
-        case .carousel:
-            self.createConstraintsForCarrousel()
-        }
-    }
-    
-    
-    private func createConstraintsForCarrousel() {
-        let space = self.getTopBottomSpace()
-        
-        self.dynamicConstraints += [
-            self.gardenCollection.topAnchor.constraint(equalTo: self.tagCollection.bottomAnchor, constant: space),
-            self.gardenCollection.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -space),
-            self.gardenCollection.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.gardenCollection.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-        ]
-    }
-    
-    
-    // Essa função calcula o espaço disponível que tem para a collection das hortas ser colocada no centro.
-    private func getTopBottomSpace() -> CGFloat {
-        let top = self.tagCollection.frame.origin.y + self.tagCollection.frame.height
-        let collectionHeight = self.getEquivalent(400)
-        let bottom = self.safeAreaInsets.bottom
-         
-        let totalEmptySpace = (self.frame.height - top - collectionHeight - bottom) / 2
-         
-        return totalEmptySpace
-    }
-    
-    
-    private func createConstraintsForGrid() {
-        let lateral = self.getEquivalent(15)
-        
-        self.dynamicConstraints += [
-            self.gardenCollection.topAnchor.constraint(equalTo: self.tagCollection.bottomAnchor, constant: lateral),
-            self.gardenCollection.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
-            self.gardenCollection.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
-            self.gardenCollection.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
         ]
     }
 }
