@@ -106,7 +106,7 @@ class GardenView: MainView {
     
     private func setInfoButtonIcon() {
         self.visualizationButton.setupIcon(with: IconInfo(
-            icon: .back, size: self.getEquivalent(25), weight: .medium, scale: .default
+            icon: .moreInfos, size: self.getEquivalent(25), weight: .medium, scale: .default
         ))
     }
     

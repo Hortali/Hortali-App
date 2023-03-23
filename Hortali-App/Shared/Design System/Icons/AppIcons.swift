@@ -23,6 +23,9 @@ enum AppIcons: CustomStringConvertible {
     /// Símbolo - 􀆇
     case showLess
     
+    /// Símbolo - 􁌴
+    case moreInfos
+    
     
     // Collection
     
@@ -76,6 +79,7 @@ enum AppIcons: CustomStringConvertible {
         case .favoriteSelected: return "heart.fill"
         case .showMore: return "chevron.down"
         case .showLess: return "chevron.up"
+        case .moreInfos: return "info.bubble"
             
         case .grid: return "square.grid.2x2"
         case .carousel: return "rectangle.split.3x1"
