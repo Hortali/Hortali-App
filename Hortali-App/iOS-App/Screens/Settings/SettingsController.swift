@@ -28,6 +28,7 @@ class SettingsController: UIViewController, SettingsProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupButtonsAction()
         self.setupDelegates()
     }
     
@@ -42,10 +43,24 @@ class SettingsController: UIViewController, SettingsProtocol {
             self.openLink(for: index)
         }
     }
-
+    
+    
+    
+    /* MARK: - Ações de Botões */
+    
+    @objc
+    private func backAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     
     /* MARK: - Configurações */
+    
+    private func setupButtonsAction() {
+        self.myView.setBackButtonAction(target: self, action: #selector(self.backAction))
+    }
+    
 
     private func setupDelegates() {
         self.settingsDelegate.setProtocol(with: self)

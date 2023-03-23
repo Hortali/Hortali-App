@@ -4,20 +4,33 @@
 import UIKit
 
 
-/// UI da tela de configurações
-class SettingsView: MainView {
+class SettingsView: ViewWithViewCode {
     
     /* MARK: - Atributos */
-
-    // Views
     
-    /// Collection principal da tela
+    private let backButton: CustomButton = {
+        let but = CustomViews.newButton()
+        but.backgroundColor = .clear
+        but.setTitleColor(UIColor(originalColor: .greenMedium), for: .normal)
+        but.titleLabel?.textAlignment = .left
+        but.isCircular = false
+        but.sizeToFit()
+        return but
+    }()
+    
+    private let titleLabel: UILabel = {
+        let lbl = CustomViews.newLabel()
+        lbl.numberOfLines = 2
+        lbl.adjustsFontSizeToFitWidth = true
+        lbl.textColor = UIColor(.title)
+        return lbl
+    }()
+    
     private let settingsCollection = CustomCollection()
     
     
     // Outros
     
-    /// Configurações do layout da collection
     private let collectionFlow: UICollectionViewFlowLayout = {
         let cvFlow = UICollectionViewFlowLayout()
         cvFlow.scrollDirection = .vertical
@@ -31,7 +44,6 @@ class SettingsView: MainView {
     
     override init() {
         super.init()
-        
         self.registerCells()
         self.setupCollectionFlow()
     }
@@ -41,25 +53,24 @@ class SettingsView: MainView {
     
     
     /* MARK: - Encapsulamento */
+    
+    public func setBackButtonAction(target: Any?, action: Selector) -> Void {
+        self.backButton.addTarget(target, action: action, for: .touchDown)
+    }
+    
 
     /* Collection */
     
-    /// Atualiza os dados das collections
     public func reloadCollectionsData() {
-        self.settingsCollection.collection.reloadData()
-        self.settingsCollection.collection.reloadInputViews()
+        self.settingsCollection.reloadCollectionData()
     }
     
     
-    /// Define o data source da collection de configurações
-    /// - Parameter dataSource: data source da collection
     public func setCollectionDataSource(for dataSource: SettingsDataSource) {
         self.settingsCollection.collection.dataSource = dataSource
     }
     
     
-    /// Define o delegate da collection de configurações
-    /// - Parameter delegate: delegate da collection
     public func setCollectionDelegate(for delegate: SettingsDelegate) {
         self.settingsCollection.collection.delegate = delegate
     }
@@ -82,13 +93,14 @@ class SettingsView: MainView {
     /* MARK: - ViewCode */
     
     override func setupHierarchy() {
-        super.setupHierarchy()
-        self.contentView.addSubview(self.settingsCollection)
+        self.addSubview(self.backButton)
+        self.addSubview(self.titleLabel)
+        self.addSubview(self.settingsCollection)
     }
     
     
     override func setupView() {
-        self.backgroundColor = UIColor(.settingsBack)
+        self.backgroundColor = UIColor(.viewBack)
     }
     
     
@@ -109,7 +121,20 @@ class SettingsView: MainView {
     
     
     override func setupStaticTexts() {
-        self.setTitleText(with: "Seu espaço de \nfala")
+        self.titleLabel.text = "Seu espaço de \nfala"
+        self.backButton.setTitle("Voltar", for: .normal)
+    }
+    
+    
+    override func setupFonts() {
+        self.titleLabel.setupFont(with: FontInfo(
+            fontSize: self.getEquivalent(35), weight: .bold
+        ))
+        
+        
+        self.backButton.setupFont(with: FontInfo(
+            fontSize: self.getEquivalent(25), weight: .semibold, fontFamily: .graffiti
+        ))
     }
 	  
     
@@ -130,12 +155,25 @@ class SettingsView: MainView {
     
     private func setDynamicConstraints() {
         let lateral: CGFloat = self.getEquivalent(15)
+        let between: CGFloat = self.getEquivalent(10)
+        
+        let titleLabelHeight = self.getEquivalent(75)
         
         self.dynamicConstraints = [
-            self.settingsCollection.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            self.settingsCollection.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: lateral),
-            self.settingsCollection.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -lateral),
-            self.settingsCollection.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            self.backButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            self.backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: lateral),
+            
+            
+            self.titleLabel.topAnchor.constraint(equalTo: self.backButton.bottomAnchor, constant: between),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.backButton.leadingAnchor),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -lateral),
+            self.titleLabel.heightAnchor.constraint(equalToConstant: titleLabelHeight),
+            
+            
+            self.settingsCollection.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: lateral),
+            self.settingsCollection.leadingAnchor.constraint(equalTo: self.titleLabel.leadingAnchor),
+            self.settingsCollection.trailingAnchor.constraint(equalTo: self.titleLabel.trailingAnchor),
+            self.settingsCollection.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
         ]
     }
 }
