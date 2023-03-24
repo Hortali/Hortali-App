@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFBD28D2526600F024E7 /* GardenCell.swift */; };
+		22091F5D29CE3612007B6FBE /* ScreenShotFromMapCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22091F5C29CE3612007B6FBE /* ScreenShotFromMapCreation.swift */; };
 		220A63EC28D24CFA00D9E2A9 /* ExpansiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63EB28D24CFA00D9E2A9 /* ExpansiveLabel.swift */; };
 		220A63EE28D3BDF700D9E2A9 /* CustomScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63ED28D3BDF700D9E2A9 /* CustomScroll.swift */; };
 		2210244628D5201500F412A5 /* InfoGardenInfosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244528D5201500F412A5 /* InfoGardenInfosCell.swift */; };
@@ -154,6 +155,7 @@
 
 /* Begin PBXFileReference section */
 		065ECFBD28D2526600F024E7 /* GardenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCell.swift; sourceTree = "<group>"; };
+		22091F5C29CE3612007B6FBE /* ScreenShotFromMapCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotFromMapCreation.swift; sourceTree = "<group>"; };
 		220A63EB28D24CFA00D9E2A9 /* ExpansiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansiveLabel.swift; sourceTree = "<group>"; };
 		220A63ED28D3BDF700D9E2A9 /* CustomScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScroll.swift; sourceTree = "<group>"; };
 		2210244528D5201500F412A5 /* InfoGardenInfosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenInfosCell.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 		2210244C28D5298A00F412A5 /* InfoGardenMap */ = {
 			isa = PBXGroup;
 			children = (
+				22091F5C29CE3612007B6FBE /* ScreenShotFromMapCreation.swift */,
 				2210244A28D5272C00F412A5 /* InfoGardenMap.swift */,
 			);
 			path = InfoGardenMap;
@@ -1341,6 +1344,7 @@
 				B241564C28D2722B009F011C /* FoodCollectionHandler.swift in Sources */,
 				2212E83D28DB9F7B004CCBAA /* InfoFoodView.swift in Sources */,
 				222937C028C66B5600515095 /* SceneDelegate.swift in Sources */,
+				22091F5D29CE3612007B6FBE /* ScreenShotFromMapCreation.swift in Sources */,
 				223B75E328F1473D0034B2C4 /* FoodDataManager.swift in Sources */,
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
 				B2DE4951291192E700293E6A /* OnboardingCell.swift in Sources */,

@@ -34,7 +34,7 @@ class CustomCollection: ViewWithViewCode, CustomCollectionProtocol, CollectionFl
         didSet { self.updateCellSize() }
     }
     
-    /// Padrão: .zero
+    /// Padrão: .zero (minimumInteritemSpacing)
     public var spaceBetweenCells: CGFloat = .zero {
         didSet { self.updateSpaceBetweenCells() }
     }
@@ -81,6 +81,14 @@ class CustomCollection: ViewWithViewCode, CustomCollectionProtocol, CollectionFl
     
     public func setupTitleLabelLeftSpace(_ space: CGFloat) {
         self.labelSpace = space
+    }
+    
+    
+    public func resetCollectionScroll(animated: Bool = true) {
+        let xPoint = 0 - self.collection.contentInset.left
+        let YPoint = 0 - self.collection.contentInset.top
+        let point = CGPoint(x: xPoint, y: YPoint)
+        self.collection.setContentOffset(point, animated: animated)
     }
     
     

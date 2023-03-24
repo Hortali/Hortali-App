@@ -4,7 +4,6 @@
 import UIKit
 
 
-/// Elemento de UI da tela de ver informações dos aliementos
 class InfoFoodView: ViewWithViewCode, FavoriteHandler {
     
     /* MARK: - Atributos */
@@ -105,8 +104,8 @@ class InfoFoodView: ViewWithViewCode, FavoriteHandler {
     
     
     public func setVitaminsButtonAction(target: Any?, action: Selector) -> Void {
-        for but in self.vitaminsTypesButtons {
-            but.addTarget(target, action: action, for: .touchDown)
+        self.vitaminsTypesButtons.forEach() {
+            $0.addTarget(target, action: action, for: .touchDown)
         }
     }
     

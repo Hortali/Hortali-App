@@ -60,7 +60,6 @@ class OnBoardingCollectionHandler: NSObject, CollectionHandler {
     /* MARK: - Delegate */
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print("Entrei no delegate")
         self.onboardingProtocol?.updateCurrentPage(to: indexPath.row)
     }
     

@@ -127,13 +127,8 @@ class InfoGardenController: UIViewController, InfoGardenProtocol, ExpansiveLabel
     
     @objc
     private func favoriteAction() {
-        switch self.myView.favoriteHandler() {
-        case true:
-            self.favUpdate.action = .add
-        case false:
-            self.favUpdate.action = .remove
-        }
-        
+        let isFavorited = self.myView.favoriteHandler()
+        self.favUpdate.action = isFavorited ? .add : .remove
         DataManager.shared.updateFavoriteList(for: self.favUpdate)
     }
     
@@ -314,10 +309,8 @@ class InfoGardenController: UIViewController, InfoGardenProtocol, ExpansiveLabel
     
     private func checkIfIsFavorited(gardenId: Int) -> Bool {
         let allFavoriteGardens = DataManager.shared.getFavoriteIds(for: .garden)
-        for id in allFavoriteGardens where gardenId == id {
-            return true
-        }
-        return false
+        let filter = allFavoriteGardens.filter() { $0 == gardenId }
+        return !filter.isEmpty
     }
     
     
