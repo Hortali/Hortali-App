@@ -1,5 +1,5 @@
 # Hortali - App
-[![Versão](https://img.shields.io/badge/versão-1.2-orange)](https://github.com/Hortali/Hortali-App/releases/tag/appStore-1.2)
+[![Versão](https://img.shields.io/badge/versão-1.3-orange)](https://github.com/Hortali/Hortali-App/releases/tag/appStore-1.3)
 ![Tamanho](https://img.shields.io/badge/tamanho-65%20MB-blue)
 ![Plataforma](https://img.shields.io/badge/plataforma-IOS-lightgrey?logo=ios)
 ![Framework](https://img.shields.io/badge/framework-UIKit-red?logo=uikit)
