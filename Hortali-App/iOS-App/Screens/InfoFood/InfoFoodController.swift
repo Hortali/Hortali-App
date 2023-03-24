@@ -68,13 +68,8 @@ class InfoFoodController: UIViewController, ExpansiveLabelDelegate {
     
     @objc
     private func favoriteAction() {
-        switch self.myView.favoriteHandler() {
-        case true:
-            self.favUpdate.action = .add
-        case false:
-            self.favUpdate.action = .remove
-        }
-        
+        let isFavorited = self.myView.favoriteHandler()
+        self.favUpdate.action = isFavorited ? .add : .remove
         DataManager.shared.updateFavoriteList(for: self.favUpdate)
     }
     
@@ -103,11 +98,7 @@ class InfoFoodController: UIViewController, ExpansiveLabelDelegate {
     private func seasonalityAction() {
         let seasonalityData = self.foodData.seasonality
         let isSeason = Self.checkSeasonality(for: seasonalityData)
-        
-        var title = "sazonalidade"
-        if isSeason {
-            title = "ta na epoca!"
-        }
+        let title = isSeason ? "ta na epoca!" : "sazonalidade"
         
         let popupInfos = PopUpInfo(
             title: title,
@@ -129,9 +120,7 @@ class InfoFoodController: UIViewController, ExpansiveLabelDelegate {
     
     private func setFavoriteConfigurations(id: Int) {
         self.favUpdate = FavoriteUpdate(
-            favoriteType: .food,
-            id: id,
-            action: .add
+            favoriteType: .food, id: id, action: .add
         )
     }
     
@@ -140,7 +129,6 @@ class InfoFoodController: UIViewController, ExpansiveLabelDelegate {
         let controller = PopUpController(infos: info)
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle = .crossDissolve
-        
         self.present(controller, animated: true)
     }
     
@@ -160,14 +148,15 @@ class InfoFoodController: UIViewController, ExpansiveLabelDelegate {
     
     
     private func setupFavoriteStatus(for data: ManagedFood) {
-        var status = false
-        for id in DataManager.shared.getFavoriteIds(for: .food) {
-            if data.id == id {
-                status = true
-                break
-            }
-        }
-        let _ = self.myView.favoriteHandler(for: status)
+        let status = self.checkIfIsFavorited(foodId: data.id)
+        self.myView.favoriteHandler(for: status)
+    }
+    
+    
+    private func checkIfIsFavorited(foodId: Int) -> Bool {
+        let allFavoriteFoods = DataManager.shared.getFavoriteIds(for: .food)
+        let filter = allFavoriteFoods.filter() { $0 == foodId }
+        return !filter.isEmpty
     }
     
     
@@ -182,4 +171,3 @@ class InfoFoodController: UIViewController, ExpansiveLabelDelegate {
         return data.period.contains(currentMonth)
     }
 }
-
