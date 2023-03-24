@@ -195,8 +195,9 @@ class OnboardingView: ViewWithViewCode {
     
     
     private func setCollectionCellSize() {
-        let cellHeight = self.onBoardingCollection.collection.frame.height
-        let cellWidth = self.frame.width
+        guard self.onBoardingCollection.bounds.height != 0 else { return }
+        let cellHeight = self.onBoardingCollection.collection.bounds.height
+        let cellWidth = self.onBoardingCollection.collection.bounds.width
         self.onBoardingCollection.cellSize = CGSize(width: cellWidth, height: cellHeight)
     }
     
