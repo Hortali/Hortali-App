@@ -24,7 +24,7 @@ class FoodView: MainView {
     /* MARK: - Encapsulamento */
 
     public func resetCollectionScroll() {
-        self.foodCollection.collection.setContentOffset(.zero, animated: true)
+        self.foodCollection.resetCollectionScroll()
     }
 
     
