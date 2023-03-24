@@ -5,7 +5,7 @@ import UIKit
 
 
 /// Controller responsável pela tela de ver informações da Horta
-class InfoGardenController: UIViewController, InfoGardenProtocol {
+class InfoGardenController: UIViewController, InfoGardenProtocol, ExpansiveLabelDelegate {
     
     /* MARK: - Atributos */
 
@@ -72,7 +72,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     
     
     
-    /* MARK: - Protocolo */
+    /* MARK: - InfoGardenProtocol */
     
     internal func updateCurrentPage(to index: Int) {
         self.myView.updateCurrentPage(for: index)
@@ -106,7 +106,15 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
-
+    
+    
+    
+    /* MARK: - ExpansiveLabelProtocol */
+    
+    internal func actionWhenLabelWasExpanded() {
+        self.myView.updateScrollSize()
+    }
+    
     
     
     /* MARK: - Ações de botões */
@@ -119,13 +127,8 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     
     @objc
     private func favoriteAction() {
-        switch self.myView.favoriteHandler() {
-        case true:
-            self.favUpdate.action = .add
-        case false:
-            self.favUpdate.action = .remove
-        }
-        
+        let isFavorited = self.myView.favoriteHandler()
+        self.favUpdate.action = isFavorited ? .add : .remove
         DataManager.shared.updateFavoriteList(for: self.favUpdate)
     }
     
@@ -258,6 +261,7 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
         self.setImagesCollectionHandler()
         self.setInfosCollectionHandler()
         self.setTagsCollectionHandler()
+        self.setExpansiveLabelDelegate()
     }
     
     
@@ -283,6 +287,11 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     }
     
     
+    private func setExpansiveLabelDelegate() {
+        self.myView.setExpansiveLabelDelegate(self)
+    }
+    
+    
     private func setupDataSourcesData(for data: ManagedGarden) {
         self.infosCollectionHandler.data = data
         self.imagesCollectionHandler.data = data.pageImages
@@ -300,10 +309,8 @@ class InfoGardenController: UIViewController, InfoGardenProtocol {
     
     private func checkIfIsFavorited(gardenId: Int) -> Bool {
         let allFavoriteGardens = DataManager.shared.getFavoriteIds(for: .garden)
-        for id in allFavoriteGardens where gardenId == id {
-            return true
-        }
-        return false
+        let filter = allFavoriteGardens.filter() { $0 == gardenId }
+        return !filter.isEmpty
     }
     
     

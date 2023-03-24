@@ -49,8 +49,8 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.showOnBoarding()
         self.reloadTagCollection()
+        self.showOnBoarding()
     }
     
     

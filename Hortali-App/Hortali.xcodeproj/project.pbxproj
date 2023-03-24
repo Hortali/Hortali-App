@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065ECFBD28D2526600F024E7 /* GardenCell.swift */; };
-		220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */; };
+		22091F5D29CE3612007B6FBE /* ScreenShotFromMapCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22091F5C29CE3612007B6FBE /* ScreenShotFromMapCreation.swift */; };
+		220A63EC28D24CFA00D9E2A9 /* ExpansiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63EB28D24CFA00D9E2A9 /* ExpansiveLabel.swift */; };
 		220A63EE28D3BDF700D9E2A9 /* CustomScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63ED28D3BDF700D9E2A9 /* CustomScroll.swift */; };
 		2210244628D5201500F412A5 /* InfoGardenInfosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244528D5201500F412A5 /* InfoGardenInfosCell.swift */; };
 		2210244828D5230C00F412A5 /* InfoGardenCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244728D5230C00F412A5 /* InfoGardenCellType.swift */; };
@@ -70,6 +71,7 @@
 		223B75E828F16D670034B2C4 /* FavoriteUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */; };
 		2244432C293BF109002E6C29 /* ManagedSeasonality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244432B293BF109002E6C29 /* ManagedSeasonality.swift */; };
 		2244432E293CA4A9002E6C29 /* ManagedTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244432D293CA4A9002E6C29 /* ManagedTags.swift */; };
+		2249B16729CCC01F00C29086 /* ExpansiveLabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2249B16629CCC01F00C29086 /* ExpansiveLabelDelegate.swift */; };
 		224BC12629391D02009D92FE /* UDKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BC12529391D02009D92FE /* UDKeys.swift */; };
 		224BC12929393735009D92FE /* OnBoardingInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BC12829393735009D92FE /* OnBoardingInfos.swift */; };
 		224F057229281A9300B20447 /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057129281A9300B20447 /* SettingsDelegate.swift */; };
@@ -153,7 +155,8 @@
 
 /* Begin PBXFileReference section */
 		065ECFBD28D2526600F024E7 /* GardenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenCell.swift; sourceTree = "<group>"; };
-		220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExpansive.swift; sourceTree = "<group>"; };
+		22091F5C29CE3612007B6FBE /* ScreenShotFromMapCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotFromMapCreation.swift; sourceTree = "<group>"; };
+		220A63EB28D24CFA00D9E2A9 /* ExpansiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansiveLabel.swift; sourceTree = "<group>"; };
 		220A63ED28D3BDF700D9E2A9 /* CustomScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScroll.swift; sourceTree = "<group>"; };
 		2210244528D5201500F412A5 /* InfoGardenInfosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenInfosCell.swift; sourceTree = "<group>"; };
 		2210244728D5230C00F412A5 /* InfoGardenCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenCellType.swift; sourceTree = "<group>"; };
@@ -217,6 +220,7 @@
 		223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUpdate.swift; sourceTree = "<group>"; };
 		2244432B293BF109002E6C29 /* ManagedSeasonality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSeasonality.swift; sourceTree = "<group>"; };
 		2244432D293CA4A9002E6C29 /* ManagedTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedTags.swift; sourceTree = "<group>"; };
+		2249B16629CCC01F00C29086 /* ExpansiveLabelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansiveLabelDelegate.swift; sourceTree = "<group>"; };
 		224BC12529391D02009D92FE /* UDKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDKeys.swift; sourceTree = "<group>"; };
 		224BC12829393735009D92FE /* OnBoardingInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingInfos.swift; sourceTree = "<group>"; };
 		224F057129281A9300B20447 /* SettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
@@ -370,6 +374,7 @@
 		2210244C28D5298A00F412A5 /* InfoGardenMap */ = {
 			isa = PBXGroup;
 			children = (
+				22091F5C29CE3612007B6FBE /* ScreenShotFromMapCreation.swift */,
 				2210244A28D5272C00F412A5 /* InfoGardenMap.swift */,
 			);
 			path = InfoGardenMap;
@@ -662,9 +667,9 @@
 		2229383428C87DA300515095 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2249B16529CCC00A00C29086 /* LabelExpasive */,
 				22F9910629C38E76009174FC /* Custom */,
 				224BC12A2939472F009D92FE /* EmptyView */,
-				220A63EB28D24CFA00D9E2A9 /* LabelExpansive.swift */,
 				2229384E28C8964200515095 /* MainView.swift */,
 				222937F428C6846700515095 /* ContainerView.swift */,
 				22A3DB29290CED4700B34CEC /* ViewLabel.swift */,
@@ -842,6 +847,15 @@
 				223B75E728F16D670034B2C4 /* FavoriteUpdate.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		2249B16529CCC00A00C29086 /* LabelExpasive */ = {
+			isa = PBXGroup;
+			children = (
+				2249B16629CCC01F00C29086 /* ExpansiveLabelDelegate.swift */,
+				220A63EB28D24CFA00D9E2A9 /* ExpansiveLabel.swift */,
+			);
+			path = LabelExpasive;
 			sourceTree = "<group>";
 		};
 		224BC1272939371C009D92FE /* Model */ = {
@@ -1287,7 +1301,7 @@
 				B20D436029379462009A7028 /* CustomCollection.swift in Sources */,
 				2229382C28C87BC400515095 /* AppPureColors.swift in Sources */,
 				227FAFD2292FADB10080FB9C /* FavoriteInfos.swift in Sources */,
-				220A63EC28D24CFA00D9E2A9 /* LabelExpansive.swift in Sources */,
+				220A63EC28D24CFA00D9E2A9 /* ExpansiveLabel.swift in Sources */,
 				2244432E293CA4A9002E6C29 /* ManagedTags.swift in Sources */,
 				2210245D28D8494A00F412A5 /* InfoGardenImagesCell.swift in Sources */,
 				224BC12929393735009D92FE /* OnBoardingInfos.swift in Sources */,
@@ -1316,6 +1330,7 @@
 				2229385B28C9D3AC00515095 /* ScreenInfo.swift in Sources */,
 				2229382028C7C3FC00515095 /* MainController.swift in Sources */,
 				B20D436E293799CE009A7028 /* FavoriteView.swift in Sources */,
+				2249B16729CCC01F00C29086 /* ExpansiveLabelDelegate.swift in Sources */,
 				2210245428D52B2B00F412A5 /* InfoGardenInfosCollectionHandler.swift in Sources */,
 				222937E528C6779500515095 /* UIColors+AppColors.swift in Sources */,
 				2212E84228DCEC07004CCBAA /* CustomLabel.swift in Sources */,
@@ -1329,6 +1344,7 @@
 				B241564C28D2722B009F011C /* FoodCollectionHandler.swift in Sources */,
 				2212E83D28DB9F7B004CCBAA /* InfoFoodView.swift in Sources */,
 				222937C028C66B5600515095 /* SceneDelegate.swift in Sources */,
+				22091F5D29CE3612007B6FBE /* ScreenShotFromMapCreation.swift in Sources */,
 				223B75E328F1473D0034B2C4 /* FoodDataManager.swift in Sources */,
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
 				B2DE4951291192E700293E6A /* OnboardingCell.swift in Sources */,
@@ -1540,7 +1556,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 534V229RMK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-App/Info.plist";
@@ -1554,7 +1570,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = app.hortali;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1569,7 +1585,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 534V229RMK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS-App/Info.plist";
@@ -1583,7 +1599,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = app.hortali;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

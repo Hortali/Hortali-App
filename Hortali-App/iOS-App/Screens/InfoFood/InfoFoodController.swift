@@ -4,47 +4,30 @@
 import UIKit
 
 
-/// Controller responsável pela tela de mostrar as informações dos alimentos
-class InfoFoodController: UIViewController {
+class InfoFoodController: UIViewController, ExpansiveLabelDelegate {
     
     /* MARK: - Atributos */
 
-    /* View */
-
-    /// View principal que a classe vai controlar
-    private var myView: InfoFoodView
+    private var myView: InfoFoodView!
         
     
     /* Outros */
     
-    /// Configurações para atualizar o estado de favoritos
-    private var favUpdate: FavoriteUpdate
+    private var favUpdate: FavoriteUpdate!
     
-    /// Dados das vitaminas
-    private var vitaminsData: [ManagedVitamins] = []
-    
-    /// Dados de sazonalidade
-    private var seasonalityData: ManagedSeasonality!
+    private var foodData: ManagedFood!
     
     
     
     /* MARK: - Construtor */
     
     init(with data: ManagedFood) {
-        self.myView = InfoFoodView(data: data)
-        
-        self.favUpdate = FavoriteUpdate(
-            favoriteType: .food,
-            id: data.id,
-            action: .add
-        )
-        
+        self.foodData = data
         super.init(nibName: nil, bundle: nil)
         
+        self.createView(for: data)
+        self.setFavoriteConfigurations(id: data.id)
         self.setupFavoriteStatus(for: data)
-        self.vitaminsData = data.vitamins
-        
-        self.seasonalityData = data.seasonality
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -62,45 +45,44 @@ class InfoFoodController: UIViewController {
         super.viewDidLoad()
         
         self.setupButtonsAction()
+        self.setupDelegates()
+    }
+    
+    
+    
+    /* MARK: - ExpansiveLabelDelegate */
+    
+    internal func actionWhenLabelWasExpanded() {
+        self.myView.updateScrollSize()
     }
     
     
     
     /* MARK: - Ações de botões */
 
-    /// Ação de voltar para a tela anterior
     @objc
     private func backAction() {
         self.navigationController?.popViewController(animated: true)
     }
     
     
-    /// Ação de favoritar um card
     @objc
     private func favoriteAction() {
-        switch self.myView.favoriteHandler() {
-        case true:
-            self.favUpdate.action = .add
-        case false:
-            self.favUpdate.action = .remove
-        }
-        
+        let isFavorited = self.myView.favoriteHandler()
+        self.favUpdate.action = isFavorited ? .add : .remove
         DataManager.shared.updateFavoriteList(for: self.favUpdate)
     }
     
     
-    /// Ação de expandir uma label
     @objc
     private func expandLabelAction() {
         self.myView.expandLabel()
     }
     
     
-    /// Ação de voltar para a tela anterior
-    /// - Parameter sender: botão que vai receber a ação
     @objc
     private func vitaminsAction(sender: UIButton) {
-        let vitaminName = self.vitaminsData[sender.tag].name
+        let vitaminName = self.foodData.vitamins[sender.tag].name
         
         let vitaminInfo = DataManager.shared.getVitamin(for: vitaminName)
     
@@ -112,19 +94,15 @@ class InfoFoodController: UIViewController {
     }
     
     
-    /// Ação de mostrar informações sobre a sazonalidade
     @objc
     private func seasonalityAction() {
-        let isSeason = Self.checkSeasonality(for: self.seasonalityData)
-        
-        var title = "sazonalidade"
-        if isSeason {
-            title = "ta na epoca!"
-        }
+        let seasonalityData = self.foodData.seasonality
+        let isSeason = Self.checkSeasonality(for: seasonalityData)
+        let title = isSeason ? "ta na epoca!" : "sazonalidade"
         
         let popupInfos = PopUpInfo(
             title: title,
-            description: self.seasonalityData.description,
+            description: seasonalityData.description,
             backgroundColor: .seasonalityBack,
             buttonColor: .seasonalityButton
         )
@@ -135,18 +113,26 @@ class InfoFoodController: UIViewController {
     
     /* MARK: - Configurações */
     
-    /// Mostra um popup a partir dos dados passados
-    /// - Parameter info: informações que vão ser passadas
+    private func createView(for data: ManagedFood) {
+        self.myView = InfoFoodView(data: data)
+    }
+    
+    
+    private func setFavoriteConfigurations(id: Int) {
+        self.favUpdate = FavoriteUpdate(
+            favoriteType: .food, id: id, action: .add
+        )
+    }
+    
+    
     private func showPopUp(with info: PopUpInfo) {
         let controller = PopUpController(infos: info)
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle = .crossDissolve
-        
         self.present(controller, animated: true)
     }
     
 
-    /// Definindo as ações dos botões
     private func setupButtonsAction() {
         self.myView.setBackButtonAction(target: self, action: #selector(self.backAction))
         self.myView.setFavoriteButtonAction(target: self, action: #selector(self.favoriteAction))
@@ -156,35 +142,32 @@ class InfoFoodController: UIViewController {
     }
     
     
-    /// Configura a view pra caso for favorito
-    /// - Parameter data: dado
+    private func setupDelegates() {
+        self.myView.setExpansiveLabelDelegate(self)
+    }
+    
+    
     private func setupFavoriteStatus(for data: ManagedFood) {
-        var status = false
-        for id in DataManager.shared.getFavoriteIds(for: .food) {
-            if data.id == id {
-                status = true
-                break
-            }
-        }
-        let _ = self.myView.favoriteHandler(for: status)
+        let status = self.checkIfIsFavorited(foodId: data.id)
+        self.myView.favoriteHandler(for: status)
+    }
+    
+    
+    private func checkIfIsFavorited(foodId: Int) -> Bool {
+        let allFavoriteFoods = DataManager.shared.getFavoriteIds(for: .food)
+        let filter = allFavoriteFoods.filter() { $0 == foodId }
+        return !filter.isEmpty
     }
     
     
     
     /* MARK: - Singleton */
     
-    /// Verifica se está na época de sazonalidade
-    /// - Parameter data: dados de sazonalidade
-    /// - Returns: estado que diz se está na época ou não
     static func checkSeasonality(for data: ManagedSeasonality) -> Bool {
-        if data.allYear {
-            return true
-        }
+        if data.allYear { return true }
         
         let today = Date()
         let currentMonth = Calendar.current.dateComponents([.month], from: today).month ?? 0
-        
         return data.period.contains(currentMonth)
     }
 }
-

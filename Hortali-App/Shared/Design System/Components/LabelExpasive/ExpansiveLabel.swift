@@ -4,10 +4,14 @@
 import UIKit
 
 
-/// Grupo que lida com a label e um botão que faz com que a label se expanda
 class ExpansiveLabel: ViewWithViewCode {
     
     /* MARK: - Atributos */
+    
+    override var bounds: CGRect {
+        didSet { self.updateWhenBoundsChanged() }
+    }
+    
 
     // Views
         
@@ -29,19 +33,23 @@ class ExpansiveLabel: ViewWithViewCode {
     
     // Constraints
     
-    /// Constraints dinâmicas que mudam de acordo com a altura da view
     private var heightConstraints: [NSLayoutConstraint] = []
     
     
     // Tamanhos
     
-    /// Tamanho do texto que fica aparecendo sem expandir
     private let textCountFit: Int = 120
     
-    /// Boleando que indica se a label está expandida ou não
+    public var defaultHeight: CGFloat = 100
+    
     private var isExtended = false
     
-        
+    
+    // Delegate
+    
+    private weak var delegate: ExpansiveLabelDelegate?
+    
+    
     
     /* MARK: - Construtor */
     
@@ -55,6 +63,11 @@ class ExpansiveLabel: ViewWithViewCode {
     
     
     /* MARK: - Encapsulamento */
+    
+    public func setExpansiveLabelDelegate(_ delegate: ExpansiveLabelDelegate) {
+        self.delegate = delegate
+    }
+    
 
     public func setInfoText(for text: String) {
         self.paragraphLabel.text = text
@@ -69,11 +82,25 @@ class ExpansiveLabel: ViewWithViewCode {
         self.setExtensionStatus(with: extended)
         self.updateLabelFromExtensio()
         self.setupHeight()
+        self.setupButtonIcon()
+    }
+    
+    
+    /* Ações de botões */
+
+    public func setExpansiveButtonAction(target: Any?, action: Selector) -> Void {
+        self.expansiveButton.addTarget(target, action: action, for: .touchDown)
     }
     
     
     
-    /* MARK: - Encapsulamento */
+    /* MARK: - Configurações */
+    
+    private func updateWhenBoundsChanged() {
+        guard self.bounds.height >= self.defaultHeight else { return }
+        self.delegate?.actionWhenLabelWasExpanded()
+    }
+    
     
     private func hideButton() {
         self.expansiveButton.isHidden = true
@@ -110,33 +137,22 @@ class ExpansiveLabel: ViewWithViewCode {
     
     
     private func clearHeightConstraints() {
-        if !self.heightConstraints.isEmpty {
-            NSLayoutConstraint.deactivate(self.heightConstraints)
-            self.heightConstraints.removeAll()
-        }
+        guard !self.heightConstraints.isEmpty else { return }
+        NSLayoutConstraint.deactivate(self.heightConstraints)
+        self.heightConstraints.removeAll()
     }
     
     
     private func createHeightConstraints() {
         guard !self.expansiveButton.isHidden && !self.isExtended else { return }
         
-        let minimunLabelSize: CGFloat = self.superview?.getEquivalent(100) ?? 00
-        
         self.heightConstraints = [
-            self.heightAnchor.constraint(equalToConstant: minimunLabelSize),
+            self.heightAnchor.constraint(equalToConstant: self.defaultHeight),
         ]
     }
     
 
-    /* Ações de botões */
-
-    /// Ação do botão  de expansão
-    public func setExpansiveButtonAction(target: Any?, action: Selector) -> Void {
-        self.expansiveButton.addTarget(target, action: action, for: .touchDown)
-    }
     
-    
-
     /* MARK: - Ciclo de Vida */
     
     override public func layoutSubviews() {
@@ -146,9 +162,7 @@ class ExpansiveLabel: ViewWithViewCode {
     
     
     
-    /* MARK: - Configurações */
-    
-    /* View */
+    /* MARK: - View Code */
     
     override func setupHierarchy() {
         self.addSubview(self.paragraphLabel)
@@ -166,7 +180,7 @@ class ExpansiveLabel: ViewWithViewCode {
     }
     
     
-    public func setupButtonIcon() {
+    private func setupButtonIcon() {
         let icon: AppIcons = self.isExtended ? .showLess : .showMore
         
         self.expansiveButton.setupIcon(with: IconInfo(
@@ -233,7 +247,6 @@ class ExpansiveLabel: ViewWithViewCode {
     }
     
     
-    /// Cria o gradiente transparente
     private func setupGradient() {
         if isExtended {
             return self.removeMask()

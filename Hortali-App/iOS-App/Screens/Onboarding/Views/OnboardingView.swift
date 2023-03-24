@@ -4,12 +4,9 @@
 import UIKit
 
 
-/// UI da tela de onboarding
 class OnboardingView: ViewWithViewCode {
     
     /* MARK: - Atributos */
-    
-    // Views
     
     final let onBoardingCollection: CustomCollection = {
         let col = CustomCollection()
@@ -23,6 +20,7 @@ class OnboardingView: ViewWithViewCode {
         let btn = CustomViews.newButton()
         btn.isCircular = false
         btn.backgroundColor = .clear
+        btn.isHidden = true
         btn.setTitleColor(UIColor(.secondaryTitle), for:.normal)
         return btn
     }()
@@ -46,6 +44,7 @@ class OnboardingView: ViewWithViewCode {
     private let pageControl = {
         let page = CustomViews.newPageControl()
         page.numberOfPages = 3
+        page.currentPage = 0
         page.backgroundStyle = .minimal
         page.backgroundColor = .clear
         
@@ -57,12 +56,19 @@ class OnboardingView: ViewWithViewCode {
     }()
     
     
+    // Outros
+    
+    private var onBoardingWasPresented: Bool {
+        return UserDefaults.getValue(for: .onBoardingPresented)
+    }
+    
+    
     
     /* MARK: - Construtor */
     
     override init() {
         super.init()
-        self.setupToInitialState()
+        self.setupInitialState()
     }
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -71,12 +77,22 @@ class OnboardingView: ViewWithViewCode {
     
     /* MARK: - Encapsulamento */
     
+    /*
+     Essa variável passa a ser necessária para saber quando que é possível fazer a mudança
+     do page control.
+     BUG: Por algum motivo o delegate da collection está sendo ativado automaticamente
+     fazendo com que mude o page control e alterando a os elementos da view.
+     */
+    public var viewHasAppeared = false
+    
+    
     public var currentPage: Int {
         return self.pageControl.currentPage
     }
     
     
     public func updateCurrentPage(for index: Int) {
+        guard self.viewHasAppeared else { return }
         self.pageControl.currentPage = index
         self.setupButton(for: index)
     }
@@ -92,18 +108,12 @@ class OnboardingView: ViewWithViewCode {
     }
     
     
-    public func setupToInitialState() {
-        self.updateCurrentPage(for: 0)
-        self.backgroundColor = .clear
-        
-        guard onBoardingWasPresented else { return }
+    public func setupInitialState() {
+        self.setupButton(for: 0)
         self.closeButton.isHidden = true
-        self.backgroundColor = UIColor(originalColor: .white)
-    }
-    
-    
-    private var onBoardingWasPresented: Bool {
-        return UserDefaults.getValue(for: .onBoardingPresented)
+        
+        guard self.onBoardingWasPresented else { return }
+        self.closeButton.isHidden = false
     }
     
     
@@ -127,6 +137,7 @@ class OnboardingView: ViewWithViewCode {
     public func setPageControlAction(target: Any?, action: Selector) -> Void {
         self.pageControl.addTarget(target, action: action, for: .valueChanged)
     }
+    
     
     
     /* MARK: - Configurações */
@@ -160,6 +171,16 @@ class OnboardingView: ViewWithViewCode {
     }
     
     
+    override func setupView() {
+        self.setViewBackgroundColor()
+    }
+    
+    
+    private func setViewBackgroundColor() {
+        self.backgroundColor = UIColor(.viewBack)
+    }
+    
+    
     override func setupUI() {
         self.setCollectionCorner()
         self.setCollectionCellSize()
@@ -167,14 +188,16 @@ class OnboardingView: ViewWithViewCode {
     
     
     private func setCollectionCorner() {
+        guard !self.onBoardingWasPresented else { return }
         self.onBoardingCollection.collection.layer.cornerRadius = self.getEquivalent(30)
         self.onBoardingCollection.collection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     
     private func setCollectionCellSize() {
-        let cellHeight = self.onBoardingCollection.collection.frame.height
-        let cellWidth = self.frame.width
+        guard self.onBoardingCollection.bounds.height != 0 else { return }
+        let cellHeight = self.onBoardingCollection.collection.bounds.height
+        let cellWidth = self.onBoardingCollection.collection.bounds.width
         self.onBoardingCollection.cellSize = CGSize(width: cellWidth, height: cellHeight)
     }
     

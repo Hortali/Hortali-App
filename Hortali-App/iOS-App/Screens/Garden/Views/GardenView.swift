@@ -99,6 +99,7 @@ class GardenView: MainView {
         self.setupDynamicConstraints()
         self.updateButtonIcon()
         self.adaptCellSizeForVisualizationType()
+        self.gardenCollection.resetCollectionScroll(animated: false)
     }
     
     
@@ -127,8 +128,8 @@ class GardenView: MainView {
         self.gardenCollection.spaceBetweenCells = 0
         
         self.gardenCollection.cellSize = CGSize(
-            width: self.getEquivalent(175, dimension: .height),
-            height: self.getEquivalent(295, dimension: .height)
+            width: self.getEquivalent(175, dimension: .width),
+            height: self.getEquivalent(295, dimension: .width)
         )
     }
     

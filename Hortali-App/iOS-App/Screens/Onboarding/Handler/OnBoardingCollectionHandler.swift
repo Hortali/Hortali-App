@@ -32,6 +32,7 @@ class OnBoardingCollectionHandler: NSObject, CollectionHandler {
     func setupFlowLayoutSettings(_ collection: CustomCollection) {
         collection.scrollDirection = .horizontal
         collection.spaceBetweenCells = 0
+        collection.flowLayout.minimumLineSpacing = 0
     }
     
     
@@ -61,6 +62,7 @@ class OnBoardingCollectionHandler: NSObject, CollectionHandler {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         self.onboardingProtocol?.updateCurrentPage(to: indexPath.row)
     }
+    
     
     
     /* MARK: - Configurações */
