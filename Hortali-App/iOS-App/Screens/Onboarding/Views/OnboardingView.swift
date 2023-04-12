@@ -59,7 +59,7 @@ class OnboardingView: ViewWithViewCode {
     // Outros
     
     private var onBoardingWasPresented: Bool {
-        return UserDefaults.getValue(for: .onBoardingPresented)
+        return !CDManager.shared.checkIsFirstTime()
     }
     
     

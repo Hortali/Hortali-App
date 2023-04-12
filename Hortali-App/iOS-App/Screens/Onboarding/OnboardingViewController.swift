@@ -10,10 +10,10 @@ class OnboardingViewController: UIViewController, OnboardingProtocol {
     
     // Muda a cor da status bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        if UserDefaults.getValue(for: .onBoardingPresented) {
-            return .lightContent
+        if CDManager.shared.checkIsFirstTime() {
+            return .darkContent
         }
-        return .darkContent
+        return .lightContent
     }
     
     
@@ -112,7 +112,7 @@ class OnboardingViewController: UIViewController, OnboardingProtocol {
     
     
     private func saveOnBordingHasBeenPresented() {
-        UserDefaults.setValue(true, forKey: .onBoardingPresented)
+        CDManager.shared.confirmOnBoardingHasShowed()
     }
     
     

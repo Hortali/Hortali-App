@@ -126,7 +126,7 @@ class GardenController: UIViewController, GardenProtocol, SearchProtocol {
     
     
     private var onBoardingHasPresented: Bool {
-        return UserDefaults.getValue(for: .onBoardingPresented)
+        return !CDManager.shared.checkIsFirstTime()
     }
     
     

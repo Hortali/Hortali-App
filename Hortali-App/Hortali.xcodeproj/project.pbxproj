@@ -104,7 +104,6 @@
 		2244432C293BF109002E6C29 /* ManagedSeasonality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244432B293BF109002E6C29 /* ManagedSeasonality.swift */; };
 		2244432E293CA4A9002E6C29 /* ManagedTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244432D293CA4A9002E6C29 /* ManagedTags.swift */; };
 		2249B16729CCC01F00C29086 /* ExpansiveLabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2249B16629CCC01F00C29086 /* ExpansiveLabelDelegate.swift */; };
-		224BC12629391D02009D92FE /* UDKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BC12529391D02009D92FE /* UDKeys.swift */; };
 		224BC12929393735009D92FE /* OnBoardingInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BC12829393735009D92FE /* OnBoardingInfos.swift */; };
 		224F057229281A9300B20447 /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057129281A9300B20447 /* SettingsDelegate.swift */; };
 		224F057529281B5300B20447 /* SettingsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057429281B5300B20447 /* SettingsProtocol.swift */; };
@@ -285,7 +284,6 @@
 		2244432B293BF109002E6C29 /* ManagedSeasonality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSeasonality.swift; sourceTree = "<group>"; };
 		2244432D293CA4A9002E6C29 /* ManagedTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedTags.swift; sourceTree = "<group>"; };
 		2249B16629CCC01F00C29086 /* ExpansiveLabelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansiveLabelDelegate.swift; sourceTree = "<group>"; };
-		224BC12529391D02009D92FE /* UDKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDKeys.swift; sourceTree = "<group>"; };
 		224BC12829393735009D92FE /* OnBoardingInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingInfos.swift; sourceTree = "<group>"; };
 		224F057129281A9300B20447 /* SettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
 		224F057429281B5300B20447 /* SettingsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProtocol.swift; sourceTree = "<group>"; };
@@ -947,7 +945,6 @@
 		223B75C828F0D97F0034B2C4 /* User Defaults */ = {
 			isa = PBXGroup;
 			children = (
-				224BC12529391D02009D92FE /* UDKeys.swift */,
 				223B75CA28F0D99B0034B2C4 /* UDHandler+DataType.swift */,
 			);
 			path = "User Defaults";
@@ -1473,7 +1470,6 @@
 				223B75D928F0DBA60034B2C4 /* DataType.swift in Sources */,
 				2270F70629BCD0A9008DFBDA /* CustomCollectionWithTitle.swift in Sources */,
 				22A75A8E290CC6DC001CEA7E /* CustomNavigationProtocol.swift in Sources */,
-				224BC12629391D02009D92FE /* UDKeys.swift in Sources */,
 				229AC9F2293D794E005248E9 /* CustomCell.swift in Sources */,
 				2210246228D84C6800F412A5 /* InfoGardenProtocol.swift in Sources */,
 				225FA1F1292D65E50004D131 /* PopUpInfo.swift in Sources */,
