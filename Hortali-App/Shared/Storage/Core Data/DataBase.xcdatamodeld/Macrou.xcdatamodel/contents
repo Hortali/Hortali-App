@@ -5,20 +5,26 @@
         <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="garden" maxCount="1" deletionRule="Nullify" destinationEntity="DBGarden" inverseName="address" inverseEntity="DBGarden"/>
     </entity>
     <entity name="DBCategorie" representedClassName="DBCategorie" syncable="YES" codeGenerationType="class">
         <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="name" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="foods" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DBFood" inverseName="categorie" inverseEntity="DBFood"/>
     </entity>
     <entity name="DBContact" representedClassName="DBContact" syncable="YES" codeGenerationType="class">
         <attribute name="contact" attributeType="String"/>
         <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="link" attributeType="String"/>
+        <relationship name="contactType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBContactType" inverseName="contacts" inverseEntity="DBContactType"/>
+        <relationship name="gardens" toMany="YES" deletionRule="Nullify" destinationEntity="DBGarden" inverseName="contacts" inverseEntity="DBGarden"/>
     </entity>
     <entity name="DBContactType" representedClassName="DBContactType" syncable="YES" codeGenerationType="class">
         <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="info" optional="YES" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
+        <relationship name="contactImage" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DBImages" inverseName="contactType" inverseEntity="DBImages"/>
+        <relationship name="contacts" toMany="YES" deletionRule="Cascade" destinationEntity="DBContact" inverseName="contactType" inverseEntity="DBContact"/>
     </entity>
     <entity name="DBFood" representedClassName="DBFood" syncable="YES" codeGenerationType="class">
         <attribute name="benefits" attributeType="String"/>
@@ -26,13 +32,25 @@
         <attribute name="isFavorited" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="minerals" optional="YES" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
+        <relationship name="categorie" maxCount="1" deletionRule="Nullify" destinationEntity="DBCategorie" inverseName="foods" inverseEntity="DBCategorie"/>
+        <relationship name="coverImage" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DBImages" inverseName="foodCover" inverseEntity="DBImages"/>
+        <relationship name="pageImage" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DBImages" inverseName="foodPage" inverseEntity="DBImages"/>
+        <relationship name="seasonality" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DBSeasonality" inverseName="food" inverseEntity="DBSeasonality"/>
+        <relationship name="vitamins" toMany="YES" deletionRule="Nullify" destinationEntity="DBVitamins" inverseName="foods" inverseEntity="DBVitamins"/>
     </entity>
     <entity name="DBGarden" representedClassName="DBGarden" syncable="YES" codeGenerationType="class">
         <attribute name="biography" optional="YES" attributeType="String"/>
         <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="isFavorited" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="lastUpdate" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DBAddress" inverseName="garden" inverseEntity="DBAddress"/>
+        <relationship name="contacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBContact" inverseName="gardens" inverseEntity="DBContact"/>
+        <relationship name="coverImage" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DBImages" inverseName="gardenCover" inverseEntity="DBImages"/>
+        <relationship name="hourInfos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DBHourInfo" inverseName="garden" inverseEntity="DBHourInfo"/>
+        <relationship name="mapImage" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DBImages" inverseName="gardenMap" inverseEntity="DBImages"/>
+        <relationship name="pagesImages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DBImages" inverseName="gardenPage" inverseEntity="DBImages"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBTags" inverseName="gardens" inverseEntity="DBTags"/>
     </entity>
     <entity name="DBHourInfo" representedClassName="DBHourInfo" syncable="YES" codeGenerationType="class">
         <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -40,6 +58,7 @@
         <attribute name="startTime" optional="YES" attributeType="String"/>
         <attribute name="status" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="week" attributeType="String"/>
+        <relationship name="garden" maxCount="1" deletionRule="Nullify" destinationEntity="DBGarden" inverseName="hourInfos" inverseEntity="DBGarden"/>
     </entity>
     <entity name="DBImages" representedClassName="DBImages" syncable="YES" codeGenerationType="class">
         <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -47,14 +66,23 @@
         <attribute name="link" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="contactType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBContactType" inverseName="contactImage" inverseEntity="DBContactType"/>
+        <relationship name="foodCover" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBFood" inverseName="coverImage" inverseEntity="DBFood"/>
+        <relationship name="foodPage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBFood" inverseName="pageImage" inverseEntity="DBFood"/>
+        <relationship name="gardenCover" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBGarden" inverseName="coverImage" inverseEntity="DBGarden"/>
+        <relationship name="gardenMap" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBGarden" inverseName="mapImage" inverseEntity="DBGarden"/>
+        <relationship name="gardenPage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBGarden" inverseName="pagesImages" inverseEntity="DBGarden"/>
     </entity>
     <entity name="DBSeasonality" representedClassName="DBSeasonality" syncable="YES" codeGenerationType="class">
         <attribute name="allYear" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="info" attributeType="String"/>
+        <relationship name="food" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBFood" inverseName="seasonality" inverseEntity="DBFood"/>
+        <relationship name="seasonalityPeriod" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBSeasonalityPeriod" inverseName="seasonalities" inverseEntity="DBSeasonalityPeriod"/>
     </entity>
     <entity name="DBSeasonalityPeriod" representedClassName="DBSeasonalityPeriod" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String"/>
         <attribute name="number" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="seasonalities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBSeasonality" inverseName="seasonalityPeriod" inverseEntity="DBSeasonality"/>
     </entity>
     <entity name="DBSettings" representedClassName="DBSettings" syncable="YES" codeGenerationType="class">
         <attribute name="isFirstTime" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -64,10 +92,12 @@
     <entity name="DBTags" representedClassName="DBTags" syncable="YES" codeGenerationType="class">
         <attribute name="dataID" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
+        <relationship name="gardens" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBGarden" inverseName="tags" inverseEntity="DBGarden"/>
     </entity>
     <entity name="DBVitamins" representedClassName="DBVitamins" syncable="YES" codeGenerationType="class">
         <attribute name="dataID" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="info" optional="YES" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
+        <relationship name="foods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DBFood" inverseName="vitamins" inverseEntity="DBFood"/>
     </entity>
 </model>
