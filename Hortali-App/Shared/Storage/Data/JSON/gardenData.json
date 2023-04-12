@@ -26,6 +26,44 @@
             "name": "Tem Mutirão"
         }
     ],
+    "contactTypes": [
+        {
+            "id": 0,
+            "name": "Whatsapp",
+            "description": "Mensagem",
+            "image": "https://drive.google.com/uc?id=1IAgUC-a3rjnF2-U7uVXs2bHKCReojOcB"
+        },
+        {
+            "id": 1,
+            "name": "Instagram",
+            "description": "Perfil do instagram",
+            "image": "https://drive.google.com/uc?id=1b8nduIog0KjcnwPGZsHu58adDGwCm2IR"
+        },
+        {
+            "id": 2,
+            "name": "Ligação",
+            "description": "Ligar para o telefone",
+            "image": "https://drive.google.com/uc?id=1HeF3Lpuyq0LNeQ--MHNavaS4JVrdxs5j"
+        },
+        {
+            "id": 3,
+            "name": "Facebook",
+            "description": "Grupo do Facebook",
+            "image": "https://drive.google.com/uc?id=1IAboz4byY-xwwyp97ErMZ8DKC6rot483"
+        },
+        {
+            "id": 4,
+            "name": "Email",
+            "description": "Contato de E-Mail",
+            "image": "https://drive.google.com/uc?id=1tEOhw7Px5pWKVLaUGbbXhVTO5hAeLmop"
+        },
+        {
+            "id": 5,
+            "name": "Site",
+            "description": "Página web",
+            "image": "https://drive.google.com/uc?id=1JDorEqybKiJmSci5FTHw_rhAFzG0waJk"
+        }
+    ],
     "gardens": [
         {
             "id": 0,
