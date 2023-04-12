@@ -11,6 +11,38 @@
 		22091F5D29CE3612007B6FBE /* ScreenShotFromMapCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22091F5C29CE3612007B6FBE /* ScreenShotFromMapCreation.swift */; };
 		220A63EC28D24CFA00D9E2A9 /* ExpansiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63EB28D24CFA00D9E2A9 /* ExpansiveLabel.swift */; };
 		220A63EE28D3BDF700D9E2A9 /* CustomScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220A63ED28D3BDF700D9E2A9 /* CustomScroll.swift */; };
+		220FEF1B29E6C4D40072B097 /* CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF1A29E6C4D40072B097 /* CoreDataProperties.swift */; };
+		220FEF1F29E6C54E0072B097 /* ErrorWarnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF1D29E6C54E0072B097 /* ErrorWarnings.swift */; };
+		220FEF2029E6C54E0072B097 /* ErrorCDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF1E29E6C54E0072B097 /* ErrorCDHandler.swift */; };
+		220FEF2329E6C5B80072B097 /* CDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF2229E6C5B80072B097 /* CDManager.swift */; };
+		220FEF2629E6C7020072B097 /* CDManager+DBSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF2529E6C7020072B097 /* CDManager+DBSettings.swift */; };
+		220FEF4129E6C88D0072B097 /* DBImages+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF2729E6C88C0072B097 /* DBImages+CoreDataClass.swift */; };
+		220FEF4229E6C88D0072B097 /* DBImages+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF2829E6C88C0072B097 /* DBImages+CoreDataProperties.swift */; };
+		220FEF4329E6C88D0072B097 /* DBSeasonalityPeriod+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF2929E6C88C0072B097 /* DBSeasonalityPeriod+CoreDataClass.swift */; };
+		220FEF4429E6C88D0072B097 /* DBSeasonalityPeriod+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF2A29E6C88C0072B097 /* DBSeasonalityPeriod+CoreDataProperties.swift */; };
+		220FEF4529E6C88D0072B097 /* DBSettings+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF2B29E6C88C0072B097 /* DBSettings+CoreDataClass.swift */; };
+		220FEF4629E6C88D0072B097 /* DBSettings+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF2C29E6C88C0072B097 /* DBSettings+CoreDataProperties.swift */; };
+		220FEF4729E6C88D0072B097 /* DBHourInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF2D29E6C88C0072B097 /* DBHourInfo+CoreDataClass.swift */; };
+		220FEF4829E6C88D0072B097 /* DBHourInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF2E29E6C88C0072B097 /* DBHourInfo+CoreDataProperties.swift */; };
+		220FEF4929E6C88D0072B097 /* DBContactType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF2F29E6C88C0072B097 /* DBContactType+CoreDataClass.swift */; };
+		220FEF4A29E6C88D0072B097 /* DBContactType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3029E6C88D0072B097 /* DBContactType+CoreDataProperties.swift */; };
+		220FEF4B29E6C88D0072B097 /* DBVitamins+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3129E6C88D0072B097 /* DBVitamins+CoreDataClass.swift */; };
+		220FEF4C29E6C88D0072B097 /* DBVitamins+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3229E6C88D0072B097 /* DBVitamins+CoreDataProperties.swift */; };
+		220FEF4D29E6C88D0072B097 /* DBAddress+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3329E6C88D0072B097 /* DBAddress+CoreDataClass.swift */; };
+		220FEF4E29E6C88D0072B097 /* DBAddress+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3429E6C88D0072B097 /* DBAddress+CoreDataProperties.swift */; };
+		220FEF4F29E6C88D0072B097 /* DBGarden+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3529E6C88D0072B097 /* DBGarden+CoreDataClass.swift */; };
+		220FEF5029E6C88D0072B097 /* DBGarden+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3629E6C88D0072B097 /* DBGarden+CoreDataProperties.swift */; };
+		220FEF5129E6C88D0072B097 /* DBSeasonality+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3729E6C88D0072B097 /* DBSeasonality+CoreDataClass.swift */; };
+		220FEF5229E6C88D0072B097 /* DBSeasonality+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3829E6C88D0072B097 /* DBSeasonality+CoreDataProperties.swift */; };
+		220FEF5329E6C88D0072B097 /* DBContact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3929E6C88D0072B097 /* DBContact+CoreDataClass.swift */; };
+		220FEF5429E6C88D0072B097 /* DBContact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3A29E6C88D0072B097 /* DBContact+CoreDataProperties.swift */; };
+		220FEF5529E6C88D0072B097 /* DBTags+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3B29E6C88D0072B097 /* DBTags+CoreDataClass.swift */; };
+		220FEF5629E6C88D0072B097 /* DBTags+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3C29E6C88D0072B097 /* DBTags+CoreDataProperties.swift */; };
+		220FEF5729E6C88D0072B097 /* DBCategorie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3D29E6C88D0072B097 /* DBCategorie+CoreDataClass.swift */; };
+		220FEF5829E6C88D0072B097 /* DBCategorie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3E29E6C88D0072B097 /* DBCategorie+CoreDataProperties.swift */; };
+		220FEF5929E6C88D0072B097 /* DBFood+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF3F29E6C88D0072B097 /* DBFood+CoreDataClass.swift */; };
+		220FEF5A29E6C88D0072B097 /* DBFood+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF4029E6C88D0072B097 /* DBFood+CoreDataProperties.swift */; };
+		220FEF5E29E6CA4C0072B097 /* SettingsCDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEF5D29E6CA4C0072B097 /* SettingsCDM.swift */; };
 		2210244628D5201500F412A5 /* InfoGardenInfosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244528D5201500F412A5 /* InfoGardenInfosCell.swift */; };
 		2210244828D5230C00F412A5 /* InfoGardenCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244728D5230C00F412A5 /* InfoGardenCellType.swift */; };
 		2210244B28D5272C00F412A5 /* InfoGardenMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2210244A28D5272C00F412A5 /* InfoGardenMap.swift */; };
@@ -158,6 +190,38 @@
 		22091F5C29CE3612007B6FBE /* ScreenShotFromMapCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotFromMapCreation.swift; sourceTree = "<group>"; };
 		220A63EB28D24CFA00D9E2A9 /* ExpansiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpansiveLabel.swift; sourceTree = "<group>"; };
 		220A63ED28D3BDF700D9E2A9 /* CustomScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScroll.swift; sourceTree = "<group>"; };
+		220FEF1A29E6C4D40072B097 /* CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataProperties.swift; sourceTree = "<group>"; };
+		220FEF1D29E6C54E0072B097 /* ErrorWarnings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorWarnings.swift; sourceTree = "<group>"; };
+		220FEF1E29E6C54E0072B097 /* ErrorCDHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCDHandler.swift; sourceTree = "<group>"; };
+		220FEF2229E6C5B80072B097 /* CDManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDManager.swift; sourceTree = "<group>"; };
+		220FEF2529E6C7020072B097 /* CDManager+DBSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDManager+DBSettings.swift"; sourceTree = "<group>"; };
+		220FEF2729E6C88C0072B097 /* DBImages+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBImages+CoreDataClass.swift"; sourceTree = "<group>"; };
+		220FEF2829E6C88C0072B097 /* DBImages+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBImages+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		220FEF2929E6C88C0072B097 /* DBSeasonalityPeriod+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBSeasonalityPeriod+CoreDataClass.swift"; sourceTree = "<group>"; };
+		220FEF2A29E6C88C0072B097 /* DBSeasonalityPeriod+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBSeasonalityPeriod+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		220FEF2B29E6C88C0072B097 /* DBSettings+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBSettings+CoreDataClass.swift"; sourceTree = "<group>"; };
+		220FEF2C29E6C88C0072B097 /* DBSettings+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBSettings+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		220FEF2D29E6C88C0072B097 /* DBHourInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBHourInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		220FEF2E29E6C88C0072B097 /* DBHourInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBHourInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		220FEF2F29E6C88C0072B097 /* DBContactType+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBContactType+CoreDataClass.swift"; sourceTree = "<group>"; };
+		220FEF3029E6C88D0072B097 /* DBContactType+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBContactType+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		220FEF3129E6C88D0072B097 /* DBVitamins+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBVitamins+CoreDataClass.swift"; sourceTree = "<group>"; };
+		220FEF3229E6C88D0072B097 /* DBVitamins+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBVitamins+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		220FEF3329E6C88D0072B097 /* DBAddress+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBAddress+CoreDataClass.swift"; sourceTree = "<group>"; };
+		220FEF3429E6C88D0072B097 /* DBAddress+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBAddress+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		220FEF3529E6C88D0072B097 /* DBGarden+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBGarden+CoreDataClass.swift"; sourceTree = "<group>"; };
+		220FEF3629E6C88D0072B097 /* DBGarden+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBGarden+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		220FEF3729E6C88D0072B097 /* DBSeasonality+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBSeasonality+CoreDataClass.swift"; sourceTree = "<group>"; };
+		220FEF3829E6C88D0072B097 /* DBSeasonality+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBSeasonality+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		220FEF3929E6C88D0072B097 /* DBContact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBContact+CoreDataClass.swift"; sourceTree = "<group>"; };
+		220FEF3A29E6C88D0072B097 /* DBContact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBContact+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		220FEF3B29E6C88D0072B097 /* DBTags+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBTags+CoreDataClass.swift"; sourceTree = "<group>"; };
+		220FEF3C29E6C88D0072B097 /* DBTags+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBTags+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		220FEF3D29E6C88D0072B097 /* DBCategorie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBCategorie+CoreDataClass.swift"; sourceTree = "<group>"; };
+		220FEF3E29E6C88D0072B097 /* DBCategorie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBCategorie+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		220FEF3F29E6C88D0072B097 /* DBFood+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBFood+CoreDataClass.swift"; sourceTree = "<group>"; };
+		220FEF4029E6C88D0072B097 /* DBFood+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBFood+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		220FEF5D29E6CA4C0072B097 /* SettingsCDM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCDM.swift; sourceTree = "<group>"; };
 		2210244528D5201500F412A5 /* InfoGardenInfosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenInfosCell.swift; sourceTree = "<group>"; };
 		2210244728D5230C00F412A5 /* InfoGardenCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenCellType.swift; sourceTree = "<group>"; };
 		2210244A28D5272C00F412A5 /* InfoGardenMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoGardenMap.swift; sourceTree = "<group>"; };
@@ -360,6 +424,81 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		220FEF1929E6C4C90072B097 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				220FEF1A29E6C4D40072B097 /* CoreDataProperties.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		220FEF1C29E6C52F0072B097 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				220FEF2129E6C5580072B097 /* Protocols */,
+				220FEF1E29E6C54E0072B097 /* ErrorCDHandler.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		220FEF2129E6C5580072B097 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				220FEF1D29E6C54E0072B097 /* ErrorWarnings.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		220FEF2429E6C6340072B097 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				220FEF2229E6C5B80072B097 /* CDManager.swift */,
+				220FEF2529E6C7020072B097 /* CDManager+DBSettings.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		220FEF5B29E6C8930072B097 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				220FEF2729E6C88C0072B097 /* DBImages+CoreDataClass.swift */,
+				220FEF2829E6C88C0072B097 /* DBImages+CoreDataProperties.swift */,
+				220FEF2929E6C88C0072B097 /* DBSeasonalityPeriod+CoreDataClass.swift */,
+				220FEF2A29E6C88C0072B097 /* DBSeasonalityPeriod+CoreDataProperties.swift */,
+				220FEF2B29E6C88C0072B097 /* DBSettings+CoreDataClass.swift */,
+				220FEF2C29E6C88C0072B097 /* DBSettings+CoreDataProperties.swift */,
+				220FEF2D29E6C88C0072B097 /* DBHourInfo+CoreDataClass.swift */,
+				220FEF2E29E6C88C0072B097 /* DBHourInfo+CoreDataProperties.swift */,
+				220FEF2F29E6C88C0072B097 /* DBContactType+CoreDataClass.swift */,
+				220FEF3029E6C88D0072B097 /* DBContactType+CoreDataProperties.swift */,
+				220FEF3129E6C88D0072B097 /* DBVitamins+CoreDataClass.swift */,
+				220FEF3229E6C88D0072B097 /* DBVitamins+CoreDataProperties.swift */,
+				220FEF3329E6C88D0072B097 /* DBAddress+CoreDataClass.swift */,
+				220FEF3429E6C88D0072B097 /* DBAddress+CoreDataProperties.swift */,
+				220FEF3529E6C88D0072B097 /* DBGarden+CoreDataClass.swift */,
+				220FEF3629E6C88D0072B097 /* DBGarden+CoreDataProperties.swift */,
+				220FEF3729E6C88D0072B097 /* DBSeasonality+CoreDataClass.swift */,
+				220FEF3829E6C88D0072B097 /* DBSeasonality+CoreDataProperties.swift */,
+				220FEF3929E6C88D0072B097 /* DBContact+CoreDataClass.swift */,
+				220FEF3A29E6C88D0072B097 /* DBContact+CoreDataProperties.swift */,
+				220FEF3B29E6C88D0072B097 /* DBTags+CoreDataClass.swift */,
+				220FEF3C29E6C88D0072B097 /* DBTags+CoreDataProperties.swift */,
+				220FEF3D29E6C88D0072B097 /* DBCategorie+CoreDataClass.swift */,
+				220FEF3E29E6C88D0072B097 /* DBCategorie+CoreDataProperties.swift */,
+				220FEF3F29E6C88D0072B097 /* DBFood+CoreDataClass.swift */,
+				220FEF4029E6C88D0072B097 /* DBFood+CoreDataProperties.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		220FEF5C29E6CA270072B097 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				220FEF5D29E6CA4C0072B097 /* SettingsCDM.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		2210244928D526EB00F412A5 /* Types */ = {
 			isa = PBXGroup;
 			children = (
@@ -507,6 +646,7 @@
 		222937D528C66B6D00515095 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				220FEF1C29E6C52F0072B097 /* Errors */,
 				222937D728C66B8200515095 /* Assets */,
 				223B75C728F0D9770034B2C4 /* Storage */,
 				222937D828C66B8900515095 /* Design System */,
@@ -518,6 +658,10 @@
 		222937D628C66B7200515095 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				220FEF5C29E6CA270072B097 /* Managers */,
+				220FEF5B29E6C8930072B097 /* Entities */,
+				220FEF1929E6C4C90072B097 /* Protocols */,
+				220FEF2429E6C6340072B097 /* Manager */,
 				222937C628C66B5600515095 /* DataBase.xcdatamodeld */,
 			);
 			path = "Core Data";
@@ -1293,14 +1437,18 @@
 				2270F70D29C09C8E008DFBDA /* CustomCollectionProtocol.swift in Sources */,
 				224F057229281A9300B20447 /* SettingsDelegate.swift in Sources */,
 				224F057829281D2800B20447 /* SettingsData.swift in Sources */,
+				220FEF4629E6C88D0072B097 /* DBSettings+CoreDataProperties.swift in Sources */,
 				223B75CD28F0D9B00034B2C4 /* DataManager.swift in Sources */,
 				22D59A312926C9C600C98630 /* SettingsController.swift in Sources */,
+				220FEF5929E6C88D0072B097 /* DBFood+CoreDataClass.swift in Sources */,
 				065ECFBE28D2526600F024E7 /* GardenCell.swift in Sources */,
 				222937ED28C682C900515095 /* UIButton+FontInfo.swift in Sources */,
 				B20D435C29379279009A7028 /* EmptyTexts.swift in Sources */,
 				B20D436029379462009A7028 /* CustomCollection.swift in Sources */,
+				220FEF4E29E6C88D0072B097 /* DBAddress+CoreDataProperties.swift in Sources */,
 				2229382C28C87BC400515095 /* AppPureColors.swift in Sources */,
 				227FAFD2292FADB10080FB9C /* FavoriteInfos.swift in Sources */,
+				220FEF5429E6C88D0072B097 /* DBContact+CoreDataProperties.swift in Sources */,
 				220A63EC28D24CFA00D9E2A9 /* ExpansiveLabel.swift in Sources */,
 				2244432E293CA4A9002E6C29 /* ManagedTags.swift in Sources */,
 				2210245D28D8494A00F412A5 /* InfoGardenImagesCell.swift in Sources */,
@@ -1308,6 +1456,7 @@
 				B241564728D26E4C009F011C /* FoodCell.swift in Sources */,
 				2270F70429BCC88B008DFBDA /* UIView+strechToBounds.swift in Sources */,
 				2229382628C852D200515095 /* CustomButton.swift in Sources */,
+				220FEF4429E6C88D0072B097 /* DBSeasonalityPeriod+CoreDataProperties.swift in Sources */,
 				222937BE28C66B5600515095 /* AppDelegate.swift in Sources */,
 				224F057529281B5300B20447 /* SettingsProtocol.swift in Sources */,
 				2210244B28D5272C00F412A5 /* InfoGardenMap.swift in Sources */,
@@ -1315,10 +1464,12 @@
 				22EDD4AB28D95812001CE093 /* CustomStack.swift in Sources */,
 				B20D4370293799DC009A7028 /* FavoriteViewController.swift in Sources */,
 				2229384D28C8942B00515095 /* UIViewController+setupTab.swift in Sources */,
+				220FEF4929E6C88D0072B097 /* DBContactType+CoreDataClass.swift in Sources */,
 				2210244828D5230C00F412A5 /* InfoGardenCellType.swift in Sources */,
 				222937EB28C6828500515095 /* UILabel+FontInfo.swift in Sources */,
 				2270F70829BF7251008DFBDA /* ViewWithViewCode.swift in Sources */,
 				223B75DB28F0DC840034B2C4 /* ManagedImage.swift in Sources */,
+				220FEF2329E6C5B80072B097 /* CDManager.swift in Sources */,
 				223B75D928F0DBA60034B2C4 /* DataType.swift in Sources */,
 				2270F70629BCD0A9008DFBDA /* CustomCollectionWithTitle.swift in Sources */,
 				22A75A8E290CC6DC001CEA7E /* CustomNavigationProtocol.swift in Sources */,
@@ -1326,7 +1477,10 @@
 				229AC9F2293D794E005248E9 /* CustomCell.swift in Sources */,
 				2210246228D84C6800F412A5 /* InfoGardenProtocol.swift in Sources */,
 				225FA1F1292D65E50004D131 /* PopUpInfo.swift in Sources */,
+				220FEF1F29E6C54E0072B097 /* ErrorWarnings.swift in Sources */,
 				22A3917A28F7858100A42DC1 /* ManagedHourInfo.swift in Sources */,
+				220FEF2629E6C7020072B097 /* CDManager+DBSettings.swift in Sources */,
+				220FEF5E29E6CA4C0072B097 /* SettingsCDM.swift in Sources */,
 				2229385B28C9D3AC00515095 /* ScreenInfo.swift in Sources */,
 				2229382028C7C3FC00515095 /* MainController.swift in Sources */,
 				B20D436E293799CE009A7028 /* FavoriteView.swift in Sources */,
@@ -1341,16 +1495,22 @@
 				22A3DB2A290CED4700B34CEC /* ViewLabel.swift in Sources */,
 				22A3916E28F6E62700A42DC1 /* InfoGardenCellProtocol.swift in Sources */,
 				22EDD4BE28DA4A6A001CE093 /* AppImages.swift in Sources */,
+				220FEF4A29E6C88D0072B097 /* DBContactType+CoreDataProperties.swift in Sources */,
 				B241564C28D2722B009F011C /* FoodCollectionHandler.swift in Sources */,
 				2212E83D28DB9F7B004CCBAA /* InfoFoodView.swift in Sources */,
 				222937C028C66B5600515095 /* SceneDelegate.swift in Sources */,
 				22091F5D29CE3612007B6FBE /* ScreenShotFromMapCreation.swift in Sources */,
+				220FEF4329E6C88D0072B097 /* DBSeasonalityPeriod+CoreDataClass.swift in Sources */,
 				223B75E328F1473D0034B2C4 /* FoodDataManager.swift in Sources */,
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
 				B2DE4951291192E700293E6A /* OnboardingCell.swift in Sources */,
 				B20D436C293798DF009A7028 /* InfoGardenView.swift in Sources */,
+				220FEF4D29E6C88D0072B097 /* DBAddress+CoreDataClass.swift in Sources */,
+				220FEF4F29E6C88D0072B097 /* DBGarden+CoreDataClass.swift in Sources */,
 				22E8C4E028D9188400CE6061 /* InfoGardenTime.swift in Sources */,
 				227FAFD0292FACAE0080FB9C /* FavoriteHandler.swift in Sources */,
+				220FEF4229E6C88D0072B097 /* DBImages+CoreDataProperties.swift in Sources */,
+				220FEF4529E6C88D0072B097 /* DBSettings+CoreDataClass.swift in Sources */,
 				22A3918428F7AD5D00A42DC1 /* SearchProtocol.swift in Sources */,
 				2212E83B28DB9F60004CCBAA /* InfoFoodController.swift in Sources */,
 				2229384A28C8934100515095 /* FoodView.swift in Sources */,
@@ -1364,23 +1524,31 @@
 				2229383A28C8829000515095 /* UIFont+setupFont.swift in Sources */,
 				22EDD4C128DA4B33001CE093 /* UIImage+AppImages.swift in Sources */,
 				22A3917D28F785C300A42DC1 /* ManagedFoodData.swift in Sources */,
+				220FEF5629E6C88D0072B097 /* DBTags+CoreDataProperties.swift in Sources */,
 				225FA1EB292D5C0F0004D131 /* PopUpView.swift in Sources */,
 				22A3917F28F7860100A42DC1 /* ManagedFood.swift in Sources */,
 				222937F128C6837500515095 /* UIButton+IconInfo.swift in Sources */,
 				2244432C293BF109002E6C29 /* ManagedSeasonality.swift in Sources */,
+				220FEF5229E6C88D0072B097 /* DBSeasonality+CoreDataProperties.swift in Sources */,
+				220FEF5829E6C88D0072B097 /* DBCategorie+CoreDataProperties.swift in Sources */,
 				223B75E628F16D280034B2C4 /* FavoriteAction.swift in Sources */,
+				220FEF2029E6C54E0072B097 /* ErrorCDHandler.swift in Sources */,
 				2270F70A29C0845C008DFBDA /* CopyWarning.swift in Sources */,
 				2229382928C85EF700515095 /* UITextField+setupPlaceHolder.swift in Sources */,
 				B214C3E8291AF4E30033CFAE /* OnboardingProtocol.swift in Sources */,
 				2229385928C9D1DF00515095 /* Screens.swift in Sources */,
 				2229382228C7C5DE00515095 /* UIImage+AppIcons.swift in Sources */,
+				220FEF4829E6C88D0072B097 /* DBHourInfo+CoreDataProperties.swift in Sources */,
 				22EDD4B928DA313B001CE093 /* HourInfoView.swift in Sources */,
 				223B75E828F16D670034B2C4 /* FavoriteUpdate.swift in Sources */,
+				220FEF5129E6C88D0072B097 /* DBSeasonality+CoreDataClass.swift in Sources */,
 				22D59A2E2926C3CF00C98630 /* GardenVisualization.swift in Sources */,
 				2270F70F29C09CDC008DFBDA /* CollectionFlowLayoutAttributes.swift in Sources */,
+				220FEF4C29E6C88D0072B097 /* DBVitamins+CoreDataProperties.swift in Sources */,
 				22EDD4B528DA2DC7001CE093 /* HourInfoHandler.swift in Sources */,
 				22A3918128F7862800A42DC1 /* ManagedVitamins.swift in Sources */,
 				222937E328C66F7F00515095 /* AppColors.swift in Sources */,
+				220FEF4729E6C88D0072B097 /* DBHourInfo+CoreDataClass.swift in Sources */,
 				22A3917828F7854000A42DC1 /* ManagedContact.swift in Sources */,
 				222937E928C6824600515095 /* IconInfo.swift in Sources */,
 				2229384828C8931B00515095 /* FoodController.swift in Sources */,
@@ -1391,6 +1559,7 @@
 				22A3917428F784B200A42DC1 /* ManagedGardenData.swift in Sources */,
 				222937E128C66F7300515095 /* AppIcons.swift in Sources */,
 				229AC9EC293CBD53005248E9 /* TagCell.swift in Sources */,
+				220FEF5529E6C88D0072B097 /* DBTags+CoreDataClass.swift in Sources */,
 				2229385528C9335C00515095 /* UIView+AdpativeLayout.swift in Sources */,
 				2210245928D845D800F412A5 /* InfoGardenImagesCollectionHandler.swift in Sources */,
 				B20D436829379766009A7028 /* GardenView.swift in Sources */,
@@ -1398,11 +1567,14 @@
 				2210244628D5201500F412A5 /* InfoGardenInfosCell.swift in Sources */,
 				B20D4364293795FC009A7028 /* GardenController.swift in Sources */,
 				223B75CB28F0D99B0034B2C4 /* UDHandler+DataType.swift in Sources */,
+				220FEF5329E6C88D0072B097 /* DBContact+CoreDataClass.swift in Sources */,
 				2212E84528DD0DA9004CCBAA /* FoodProtocol.swift in Sources */,
 				22A75A8C290CC681001CEA7E /* PopGestureDelegate.swift in Sources */,
+				220FEF1B29E6C4D40072B097 /* CoreDataProperties.swift in Sources */,
 				22D59A3A2926CDDA00C98630 /* SettingsDataSource.swift in Sources */,
 				22EDD4B728DA2E00001CE093 /* HourInfoCell.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
+				220FEF4129E6C88D0072B097 /* DBImages+CoreDataClass.swift in Sources */,
 				22E8C4E428D918B500CE6061 /* TimeGroup.swift in Sources */,
 				B2DE49582911AFCE00293E6A /* OnBoardingCollectionHandler.swift in Sources */,
 				B20D436A293798C5009A7028 /* InfoGardenController.swift in Sources */,
@@ -1414,10 +1586,14 @@
 				225FA1F3292DEFFB0004D131 /* AppFonts.swift in Sources */,
 				2229386628C9DA1600515095 /* UITextField+setupIconsColor.swift in Sources */,
 				225FA208292E01150004D131 /* FontWeight.swift in Sources */,
+				220FEF5029E6C88D0072B097 /* DBGarden+CoreDataProperties.swift in Sources */,
+				220FEF5A29E6C88D0072B097 /* DBFood+CoreDataProperties.swift in Sources */,
 				222937F328C6844E00515095 /* CustomViews.swift in Sources */,
 				B2DE494F29118F7000293E6A /* OnboardingViewController.swift in Sources */,
 				B2DE494D29118ADD00293E6A /* OnboardingView.swift in Sources */,
 				229AC9EE293CC0D5005248E9 /* TagCollectionHandler.swift in Sources */,
+				220FEF5729E6C88D0072B097 /* DBCategorie+CoreDataClass.swift in Sources */,
+				220FEF4B29E6C88D0072B097 /* DBVitamins+CoreDataClass.swift in Sources */,
 				22D59A372926CB7C00C98630 /* SeetingsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
