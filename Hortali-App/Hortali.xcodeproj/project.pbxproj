@@ -108,6 +108,13 @@
 		224F057229281A9300B20447 /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057129281A9300B20447 /* SettingsDelegate.swift */; };
 		224F057529281B5300B20447 /* SettingsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057429281B5300B20447 /* SettingsProtocol.swift */; };
 		224F057829281D2800B20447 /* SettingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F057729281D2800B20447 /* SettingsData.swift */; };
+		225A5DB629E81BD6001C785A /* SeasonalityPeriodCDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A5DB529E81BD6001C785A /* SeasonalityPeriodCDM.swift */; };
+		225A5DB829E82639001C785A /* FoodCDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A5DB729E82639001C785A /* FoodCDM.swift */; };
+		225A5DBA29E82C02001C785A /* Int+Int16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A5DB929E82C02001C785A /* Int+Int16.swift */; };
+		225A5DBC29E82E92001C785A /* CDManeger+DBFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A5DBB29E82E92001C785A /* CDManeger+DBFood.swift */; };
+		225A5DBE29E83386001C785A /* CategorieCDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A5DBD29E83386001C785A /* CategorieCDM.swift */; };
+		225A5DC029E83973001C785A /* CDManager+CategorieCDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A5DBF29E83973001C785A /* CDManager+CategorieCDM.swift */; };
+		225A5DC229E8416C001C785A /* SeasonalityCDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A5DC129E8416C001C785A /* SeasonalityCDM.swift */; };
 		225E383D29CB20CE00265535 /* UIView+hasSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E383C29CB20CE00265535 /* UIView+hasSuperview.swift */; };
 		225FA1EB292D5C0F0004D131 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225FA1EA292D5C0F0004D131 /* PopUpView.swift */; };
 		225FA1EE292D5C230004D131 /* PopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225FA1ED292D5C230004D131 /* PopUpController.swift */; };
@@ -288,6 +295,13 @@
 		224F057129281A9300B20447 /* SettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
 		224F057429281B5300B20447 /* SettingsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProtocol.swift; sourceTree = "<group>"; };
 		224F057729281D2800B20447 /* SettingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsData.swift; sourceTree = "<group>"; };
+		225A5DB529E81BD6001C785A /* SeasonalityPeriodCDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonalityPeriodCDM.swift; sourceTree = "<group>"; };
+		225A5DB729E82639001C785A /* FoodCDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCDM.swift; sourceTree = "<group>"; };
+		225A5DB929E82C02001C785A /* Int+Int16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Int16.swift"; sourceTree = "<group>"; };
+		225A5DBB29E82E92001C785A /* CDManeger+DBFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDManeger+DBFood.swift"; sourceTree = "<group>"; };
+		225A5DBD29E83386001C785A /* CategorieCDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorieCDM.swift; sourceTree = "<group>"; };
+		225A5DBF29E83973001C785A /* CDManager+CategorieCDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDManager+CategorieCDM.swift"; sourceTree = "<group>"; };
+		225A5DC129E8416C001C785A /* SeasonalityCDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonalityCDM.swift; sourceTree = "<group>"; };
 		225E383C29CB20CE00265535 /* UIView+hasSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+hasSuperview.swift"; sourceTree = "<group>"; };
 		225FA1EA292D5C0F0004D131 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		225FA1ED292D5C230004D131 /* PopUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpController.swift; sourceTree = "<group>"; };
@@ -452,6 +466,8 @@
 			children = (
 				220FEF2229E6C5B80072B097 /* CDManager.swift */,
 				220FEF2529E6C7020072B097 /* CDManager+DBSettings.swift */,
+				225A5DBB29E82E92001C785A /* CDManeger+DBFood.swift */,
+				225A5DBF29E83973001C785A /* CDManager+CategorieCDM.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -493,6 +509,10 @@
 			isa = PBXGroup;
 			children = (
 				220FEF5D29E6CA4C0072B097 /* SettingsCDM.swift */,
+				225A5DB529E81BD6001C785A /* SeasonalityPeriodCDM.swift */,
+				225A5DB729E82639001C785A /* FoodCDM.swift */,
+				225A5DBD29E83386001C785A /* CategorieCDM.swift */,
+				225A5DC129E8416C001C785A /* SeasonalityCDM.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -734,6 +754,7 @@
 				2229386528C9DA1600515095 /* UITextField+setupIconsColor.swift */,
 				2238A34F299BB4A500B86F64 /* Optional+isNil.swift */,
 				225E383C29CB20CE00265535 /* UIView+hasSuperview.swift */,
+				225A5DB929E82C02001C785A /* Int+Int16.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1463,6 +1484,7 @@
 				2229384D28C8942B00515095 /* UIViewController+setupTab.swift in Sources */,
 				220FEF4929E6C88D0072B097 /* DBContactType+CoreDataClass.swift in Sources */,
 				2210244828D5230C00F412A5 /* InfoGardenCellType.swift in Sources */,
+				225A5DB829E82639001C785A /* FoodCDM.swift in Sources */,
 				222937EB28C6828500515095 /* UILabel+FontInfo.swift in Sources */,
 				2270F70829BF7251008DFBDA /* ViewWithViewCode.swift in Sources */,
 				223B75DB28F0DC840034B2C4 /* ManagedImage.swift in Sources */,
@@ -1497,6 +1519,7 @@
 				222937C028C66B5600515095 /* SceneDelegate.swift in Sources */,
 				22091F5D29CE3612007B6FBE /* ScreenShotFromMapCreation.swift in Sources */,
 				220FEF4329E6C88D0072B097 /* DBSeasonalityPeriod+CoreDataClass.swift in Sources */,
+				225A5DBC29E82E92001C785A /* CDManeger+DBFood.swift in Sources */,
 				223B75E328F1473D0034B2C4 /* FoodDataManager.swift in Sources */,
 				222937E728C6822200515095 /* FontInfo.swift in Sources */,
 				B2DE4951291192E700293E6A /* OnboardingCell.swift in Sources */,
@@ -1527,8 +1550,10 @@
 				2244432C293BF109002E6C29 /* ManagedSeasonality.swift in Sources */,
 				220FEF5229E6C88D0072B097 /* DBSeasonality+CoreDataProperties.swift in Sources */,
 				220FEF5829E6C88D0072B097 /* DBCategorie+CoreDataProperties.swift in Sources */,
+				225A5DBA29E82C02001C785A /* Int+Int16.swift in Sources */,
 				223B75E628F16D280034B2C4 /* FavoriteAction.swift in Sources */,
 				220FEF2029E6C54E0072B097 /* ErrorCDHandler.swift in Sources */,
+				225A5DBE29E83386001C785A /* CategorieCDM.swift in Sources */,
 				2270F70A29C0845C008DFBDA /* CopyWarning.swift in Sources */,
 				2229382928C85EF700515095 /* UITextField+setupPlaceHolder.swift in Sources */,
 				B214C3E8291AF4E30033CFAE /* OnboardingProtocol.swift in Sources */,
@@ -1544,6 +1569,7 @@
 				22EDD4B528DA2DC7001CE093 /* HourInfoHandler.swift in Sources */,
 				22A3918128F7862800A42DC1 /* ManagedVitamins.swift in Sources */,
 				222937E328C66F7F00515095 /* AppColors.swift in Sources */,
+				225A5DC029E83973001C785A /* CDManager+CategorieCDM.swift in Sources */,
 				220FEF4729E6C88D0072B097 /* DBHourInfo+CoreDataClass.swift in Sources */,
 				22A3917828F7854000A42DC1 /* ManagedContact.swift in Sources */,
 				222937E928C6824600515095 /* IconInfo.swift in Sources */,
@@ -1568,6 +1594,7 @@
 				22A75A8C290CC681001CEA7E /* PopGestureDelegate.swift in Sources */,
 				220FEF1B29E6C4D40072B097 /* CoreDataProperties.swift in Sources */,
 				22D59A3A2926CDDA00C98630 /* SettingsDataSource.swift in Sources */,
+				225A5DC229E8416C001C785A /* SeasonalityCDM.swift in Sources */,
 				22EDD4B728DA2E00001CE093 /* HourInfoCell.swift in Sources */,
 				222937F528C6846700515095 /* ContainerView.swift in Sources */,
 				220FEF4129E6C88D0072B097 /* DBImages+CoreDataClass.swift in Sources */,
@@ -1586,6 +1613,7 @@
 				220FEF5A29E6C88D0072B097 /* DBFood+CoreDataProperties.swift in Sources */,
 				222937F328C6844E00515095 /* CustomViews.swift in Sources */,
 				B2DE494F29118F7000293E6A /* OnboardingViewController.swift in Sources */,
+				225A5DB629E81BD6001C785A /* SeasonalityPeriodCDM.swift in Sources */,
 				B2DE494D29118ADD00293E6A /* OnboardingView.swift in Sources */,
 				229AC9EE293CC0D5005248E9 /* TagCollectionHandler.swift in Sources */,
 				220FEF5729E6C88D0072B097 /* DBCategorie+CoreDataClass.swift in Sources */,

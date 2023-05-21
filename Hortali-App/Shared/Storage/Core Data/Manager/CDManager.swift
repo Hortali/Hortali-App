@@ -16,6 +16,10 @@ class CDManager: NSObject, CoreDataProperties {
     /* Managers */
     
     lazy var settingsCDM = SettingsCDM()
+    
+    lazy var foodCDM = FoodCDM()
+    
+    lazy var categorieCDM = CategorieCDM()
 
     
     

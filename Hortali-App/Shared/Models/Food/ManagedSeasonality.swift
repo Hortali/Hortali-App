@@ -7,3 +7,15 @@ struct ManagedSeasonality: Codable {
     let period : [Int]
     let description: String
 }
+
+
+struct ManagedSeasonalityPeriod: Codable {
+    let number: Int
+    let name: String
+}
+
+
+struct ManagedCategorie: Codable {
+    let id: Int
+    let name: String
+}

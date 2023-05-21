@@ -1,7 +1,8 @@
-/* Gui Reis    -    gui.sreis25@gmail.com */
+/* Macro - Grupo 05 */
+
+/* Bibliotecas necessárias: */
 
 
-/// Lida com os dados de ajustes salvos no core data
 internal class SettingsCDM {
     
     /* MARK: - Atributos */
@@ -80,7 +81,6 @@ internal class SettingsCDM {
         
         return newData
     }
-    
     
     
     private func saveChangesAndUpdateCache(on data: DBSettings) -> ErrorCDHandler? {

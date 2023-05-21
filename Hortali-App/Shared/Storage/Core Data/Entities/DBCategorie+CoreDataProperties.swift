@@ -17,7 +17,7 @@ extension DBCategorie {
     }
 
     @NSManaged public var dataID: Int16
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
     @NSManaged public var foods: NSSet?
 
 }
